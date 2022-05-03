@@ -45,6 +45,7 @@ function parse(pool: Pool, txHash: string, event: Event): Swap {
 
 const CLASSIFIERS: Classifier[] = [
   {
+    protocol: 'UniswapV3',
     event: { name: 'Swap', type: 'swap', parse, fetchPool },
     abi: poolAbi,
   },

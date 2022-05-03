@@ -9,6 +9,8 @@ interface Pool {
   assets: string[];
 }
 
+type Protocol = 'BalancerV1' | 'BalancerV2' | 'UniswapV2' | 'UniswapV3';
+
 interface SwapEvent {
   name: string;
   type: 'swap';
@@ -17,6 +19,7 @@ interface SwapEvent {
 }
 
 interface Classifier {
+  protocol: Protocol;
   event: SwapEvent;
   abi: JsonFragment[];
 }

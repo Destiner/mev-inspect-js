@@ -40,6 +40,7 @@ function parse(pool: Pool, txHash: string, event: Event): Swap {
 
 const CLASSIFIERS: Classifier[] = [
   {
+    protocol: 'BalancerV1',
     event: { name: 'LOG_SWAP', type: 'swap', parse, fetchPool },
     abi: poolAbi,
   },
