@@ -1,6 +1,6 @@
 # MEV Inspect
 
-A JS port of `mev-inspect-py` that optimizes for ease of use.
+A JS port of `mev-inspect-py` optimised for ease of use.
 
 ## Motivation
 
@@ -27,7 +27,7 @@ The project is at the "proof of concept" stage. Currently, only arbitrage is det
 ## TODO
 
 - [ ] uniswap v3
-- [ ] balancer v1
+- [ ] balancer v1/v2
 - [ ] curve
 - [ ] 0x
 - [ ] enrich mev events with metadata

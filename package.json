@@ -1,7 +1,7 @@
 {
   "name": "mev-inspect",
   "version": "1.0.0",
-  "description": "A JS port of 'mev-inspect-py' that optimizes for ease of use.",
+  "description": "A JS port of 'mev-inspect-py' optimised for ease of use.",
   "type": "module",
   "exports": "./index.js",
   "author": "Timur Badretdinov <destinerx@gmail.com>",
