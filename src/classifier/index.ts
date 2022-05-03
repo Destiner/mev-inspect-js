@@ -4,6 +4,7 @@ import { Log } from '../chain.js';
 
 import { Classifier } from './base.js';
 import { CLASSIFIERS as uniswapV2Classifiers } from './uniswapV2.js';
+import { CLASSIFIERS as uniswapV3Classifiers } from './uniswapV3.js';
 
 interface ClassifiedLog {
   address: string;
@@ -41,7 +42,7 @@ function classifyLog(log: Log): ClassifiedLog | undefined {
 }
 
 function getClassifiers(): Classifier[] {
-  const classifiers = [uniswapV2Classifiers];
+  const classifiers = [uniswapV2Classifiers, uniswapV3Classifiers];
   return classifiers.flat();
 }
 
