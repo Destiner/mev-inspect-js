@@ -26,7 +26,6 @@ The project is at the "proof of concept" stage. Currently, only arbitrage is det
 
 ## TODO
 
-- [ ] uniswap v3
 - [ ] balancer v1/v2
 - [ ] curve
 - [ ] 0x
