@@ -1,0 +1,26 @@
+import Inspector from '../src/index.js';
+
+import getProvider from './utils.js';
+
+const CHAIN_ID = 1;
+
+const UNI_V2_SINGLE_SWAP_TX = '0xad39a3e5109e2c146f85f5db53a72da9af886b861d4965aacafdb165c1aec35e';
+const UNI_V2_MULTI_PATH_TX = '0xd4ddb9ff1d8368dad9f3710d513021b093f303e02c7169467c0badcf6f44231b';
+const SUSHI_UNI_V2_ARB_TX = '0x8baefcf7a8b848bdf8be594d55cb84ed26bf6ea6191dafaf33eedf09198453c6';
+const SUSHI_SUSHI_SUSHI_ARB_TX = '0x861d5aba1de00eb99af5f6130d67543c0c79df9471b8ba4a8fe3ff9da60af2dc';
+
+const BAL_V1_BAL_V2_UNI_V2_SUSHI_SPLIT_TX = '0x93812ac129372837e1cee00bd09e9404fe604983181a457f8aaac41a645d0af8';
+const BAL_V2_UNI_V2_SPLIT_TX = '0x7054b0a671d433a0309f58bea26afc3c45d8a6af6472996a5eb2acd8a3da2eca';
+const BAL_V1_BAL_V2_0X_SPLIT_TX = '0x15db3882045da8df942d1d9c5069575d920002254b79c9d7b5c3ce4a385f1b83';
+
+async function run(): Promise<void> {
+  const provider = getProvider(CHAIN_ID);
+  const inspector = new Inspector(CHAIN_ID, provider);
+  const mevA = await inspector.tx(UNI_V2_SINGLE_SWAP_TX);
+  const mevB = await inspector.tx(UNI_V2_MULTI_PATH_TX);
+  const mevC = await inspector.tx(SUSHI_UNI_V2_ARB_TX);
+  const mevD = await inspector.tx(SUSHI_SUSHI_SUSHI_ARB_TX);
+  console.log(mevA, mevB, mevC, mevD);
+}
+
+run();
