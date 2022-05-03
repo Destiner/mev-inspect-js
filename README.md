@@ -1,6 +1,6 @@
 # MEV Inspect
 
-A JS port of `mev-inspect-py` optimized for ease of use.
+A JS port of `mev-inspect-py` optimised for ease of use.
 
 ## Motivation
 
