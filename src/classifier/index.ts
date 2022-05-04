@@ -3,6 +3,7 @@ import Coder, { Event } from 'abi-coder';
 import { Log } from '../chain.js';
 
 import { CLASSIFIERS as balancerV1Classifiers } from './balancerV1.js';
+import { CLASSIFIERS as balancerV2Classifiers } from './balancerV2.js';
 import { Classifier } from './base.js';
 import { CLASSIFIERS as uniswapV2Classifiers } from './uniswapV2.js';
 import { CLASSIFIERS as uniswapV3Classifiers } from './uniswapV3.js';
@@ -45,6 +46,7 @@ function classifyLog(log: Log): ClassifiedLog | undefined {
 function getClassifiers(): Classifier[] {
   const classifiers = [
     balancerV1Classifiers,
+    balancerV2Classifiers,
     uniswapV2Classifiers,
     uniswapV3Classifiers,
   ];
