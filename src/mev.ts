@@ -1,4 +1,4 @@
-import { Pool } from './classifier/base.js';
+import { Pool, Transfer } from './classifier/base.js';
 import { ClassifiedLog } from './classifier/index.js';
 
 interface Base {
@@ -40,6 +40,17 @@ type TxMev = Arbitrage | Liquidation;
 type BlockMev = TxMev | Sandwich;
 
 const MAX_TOKEN_AMOUNT_PERCENT_DIFFERENCE = 1;
+
+function getTransfers(logs: ClassifiedLog[]): Transfer[] {
+  return logs
+    .map((log) => {
+      if (log.classifier.event.type !== 'transfer') {
+        return null;
+      }
+      return log.classifier.event.parse(log.address, log.event);
+    })
+    .filter((transfer: Transfer | null): transfer is Transfer => !!transfer);
+}
 
 function getSwaps(pools: Pool[], logs: ClassifiedLog[]): Swap[] {
   return logs
@@ -230,4 +241,5 @@ export {
   TxMev,
   getArbitrages,
   getSwaps,
+  getTransfers,
 };
