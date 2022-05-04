@@ -48,12 +48,13 @@ function getSwaps(
       if (log.classifier.event.type !== 'swap') {
         return null;
       }
-      const pool = pools.find((pool) => pool.address === log.address);
+      const poolAddress = getPoolAddress(log);
+      const pool = pools.find((pool) => pool.address === poolAddress);
       if (!pool) {
         return null;
       }
       const { transactionHash, logIndex, event } = log;
-      return log.classifier.event.parse(pool, transactionHash, logIndex, event);
+      return log.classifier.event.parse(pool, transactionHash, logIndex, event, transfers);
     })
     .filter((swap: Swap | null): swap is Swap => !!swap);
 }
@@ -221,6 +222,14 @@ function equalWithPercent(
   const diff =
     (100n * 2n * (firstValue - secondValue)) / (firstValue + secondValue);
   return diff >= 0 ? diff < thresholdPercent : diff > -thresholdPercent;
+}
+
+function getPoolAddress(log: ClassifiedLog): string {
+  if (log.classifier.protocol === 'BalancerV2') {
+    const poolId = log.event.values[0] as string;
+    return poolId.substring(0, 42);
+  }
+  return log.address;
 }
 
 export {

@@ -41,7 +41,7 @@ interface TransferEvent {
 interface SwapEvent {
   name: string;
   type: 'swap';
-  parse: (pool: Pool, txHash: string, logIndex: number, event: Event) => Swap;
+  parse: (pool: Pool, txHash: string, logIndex: number, event: Event, transfers: Transfer[]) => Swap | null;
   fetchPool: (provider: Provider, id: string) => Promise<Pool>;
 }
 
