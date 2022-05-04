@@ -26,7 +26,6 @@ The project is at the "proof of concept" stage. Currently, only arbitrage is det
 
 ## TODO
 
-- [ ] balancer v2
 - [ ] curve
 - [ ] 0x
 - [ ] enrich mev events with metadata
