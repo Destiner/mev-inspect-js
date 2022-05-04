@@ -15,6 +15,10 @@ const transactions: Transaction[] = [
     hash: '0xad39a3e5109e2c146f85f5db53a72da9af886b861d4965aacafdb165c1aec35e',
   },
   {
+    label: 'Balancer V2: single swap',
+    hash: '0x01cba79049f6506d01210608351d414ad11a800451b1d34b828531f454f041c3',
+  },
+  {
     label: 'Uniswap V2: multipath',
     hash: '0xd4ddb9ff1d8368dad9f3710d513021b093f303e02c7169467c0badcf6f44231b',
   },
@@ -50,6 +54,18 @@ const transactions: Transaction[] = [
     label: 'Sushiswap X Balancer V1 arbitrage',
     hash: '0xc9f1ebca7b22e1561b3488105b52ada628c0dc38f3eda5e7b5a84952fb5a0c63',
   },
+  {
+    label: 'Uniswap V3 X Balancer V2 arbitrage',
+    hash: '0x4a4021e87ca17a19574371cb0bd9004970f1f9c5202e42a2efd7cafb979fd504',
+  },
+  // {
+  //   label: 'CoW trade, TBD',
+  //   hash: '0x7f3217772fe64386dc7c3fbd1e809660c669969405a3b6fca1dcfd6b1dc55fe7',
+  // },
+  // {
+  //   label: 'Many swap events, TBD',
+  //   hash: '0x2df4bf1526fcbf5995aaceac44ec95ee5a7d2055dab7bec47e4558518f609b1f',
+  // },
   {
     label: '3 arbitrages 1 transaction',
     hash: '0xa99c50336025abfaf8fa7df3e3617f77c4c99319d1173ce4cc86e730d3eb283a',
