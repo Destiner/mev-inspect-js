@@ -17,7 +17,8 @@
     "lint:prettier": "prettier -c \"{src,test}/**/*.{json,js,ts}\"",
     "test": "",
     "build": "tsc",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "examples/inspect-tx.ts": "node --loader ts-node/esm examples/inspect-tx.ts"
   },
   "repository": {
     "type": "git",
