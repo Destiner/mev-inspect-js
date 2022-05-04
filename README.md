@@ -22,7 +22,7 @@ It starts by fetching all event logs for a given transaction or block. Then, it 
 
 ## Status
 
-The project is at the "proof of concept" stage. Currently, only arbitrage is detected on Uniswap V2 and its forks.
+The project is at the "proof of concept" stage. Currently, only arbitrage is detected on Balancer, Uniswap, and their forks.
 
 ## TODO
 
