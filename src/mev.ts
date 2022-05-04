@@ -52,7 +52,11 @@ function getTransfers(logs: ClassifiedLog[]): Transfer[] {
     .filter((transfer: Transfer | null): transfer is Transfer => !!transfer);
 }
 
-function getSwaps(pools: Pool[], logs: ClassifiedLog[]): Swap[] {
+function getSwaps(
+  pools: Pool[],
+  transfers: Transfer[],
+  logs: ClassifiedLog[],
+): Swap[] {
   return logs
     .map((log) => {
       if (log.classifier.event.type !== 'swap') {

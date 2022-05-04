@@ -3,7 +3,7 @@ import { Provider } from '@ethersproject/providers';
 import Chain from './chain.js';
 import classify from './classifier/index.js';
 import fetchPools from './fetch.js';
-import { TxMev, BlockMev, getSwaps, getArbitrages } from './mev.js';
+import { TxMev, BlockMev, getSwaps, getArbitrages, getTransfers } from './mev.js';
 
 class Inspector {
   chainId: number;
@@ -20,7 +20,8 @@ class Inspector {
     const logs = await this.chain.getTransactionLogs(hash);
     const classified = classify(logs);
     const pools = await fetchPools(this.provider, classified);
-    const swaps = getSwaps(pools, classified);
+    const transfers = getTransfers(classified);
+    const swaps = getSwaps(pools, transfers, classified);
     const arbitrages = getArbitrages(swaps);
     return arbitrages;
   }
@@ -29,7 +30,8 @@ class Inspector {
     const logs = await this.chain.getBlockLogs(number);
     const classified = classify(logs);
     const pools = await fetchPools(this.provider, classified);
-    const swaps = getSwaps(pools, classified);
+    const transfers = getTransfers(classified);
+    const swaps = getSwaps(pools, transfers, classified);
     const arbitrages = getArbitrages(swaps);
     return arbitrages;
   }
