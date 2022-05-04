@@ -16,6 +16,20 @@ While mev-inspect-py is a great resource, I think that there are a few changes c
 
 TODO. For usage examlples, see `/examples`.
 
+### Running Examples
+
+* Install Dependencies
+
+```bash
+npm install
+```
+
+* Run `examples/arbitrage.ts`
+
+```bash
+npx ts-node --esm examples/arbitrage.ts
+```
+
 ## How it works
 
 It starts by fetching all event logs for a given transaction or block. Then, it "sorts" logs based on their source and type. From those logs, it extracts swap data. It then analyzes the swaps to find arbitrage.
