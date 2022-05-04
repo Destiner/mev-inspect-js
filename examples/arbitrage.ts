@@ -16,7 +16,7 @@ const transactions: Transaction[] = [
   },
   {
     label: 'Balancer V2: single swap',
-    hash: '0x01cba79049f6506d01210608351d414ad11a800451b1d34b828531f454f041c3',
+    hash: '0x0beab997294942e83fa3f1328562fcf1ce8299470f5351a63d7f385c2becbf48',
   },
   {
     label: 'Uniswap V2: multipath',
