@@ -1,6 +1,4 @@
 import { BigNumber } from '@ethersproject/bignumber';
-import { Contract } from '@ethersproject/contracts';
-import { Provider } from '@ethersproject/providers';
 import { Event } from 'abi-coder';
 
 import erc20Abi from '../abi/erc20.js';
