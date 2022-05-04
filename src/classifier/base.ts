@@ -13,10 +13,10 @@ interface Metadata {
 }
 
 interface Transfer {
-  asset: string;
   from: string;
   to: string;
   value: bigint;
+  metadata: Metadata;
 }
 
 interface Swap {
@@ -34,7 +34,7 @@ type Protocol = 'BalancerV1' | 'BalancerV2' | 'UniswapV2' | 'UniswapV3';
 interface TransferEvent {
   name: string;
   type: 'transfer';
-  parse: (asset: string, event: Event) => Transfer;
+  parse: (asset: string, txHash: string, event: Event) => Transfer;
 }
 
 interface SwapEvent {

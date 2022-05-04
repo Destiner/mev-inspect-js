@@ -5,7 +5,7 @@ import erc20Abi from '../abi/erc20.js';
 
 import { Classifier, Transfer } from './base.js';
 
-function parse(asset: string, event: Event): Transfer {
+function parse(asset: string, txHash: string, event: Event): Transfer {
   const { values } = event;
 
   const from = values[0] as string;
@@ -13,10 +13,13 @@ function parse(asset: string, event: Event): Transfer {
   const value = (values[2] as BigNumber).toBigInt();
 
   return {
-    asset,
     from,
     to,
     value,
+    metadata: {
+      transactionHash: txHash,
+      eventAddress: asset,
+    }
   }
 }
 
