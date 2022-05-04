@@ -9,7 +9,20 @@ interface Pool {
   assets: string[];
 }
 
+interface Transfer {
+  asset: string;
+  from: string;
+  to: string;
+  value: bigint;
+}
+
 type Protocol = 'BalancerV1' | 'BalancerV2' | 'UniswapV2' | 'UniswapV3';
+
+interface TransferEvent {
+  name: string;
+  type: 'transfer';
+  parse: (asset: string, event: Event) => Transfer;
+}
 
 interface SwapEvent {
   name: string;
@@ -19,9 +32,9 @@ interface SwapEvent {
 }
 
 interface Classifier {
-  protocol: Protocol;
-  event: SwapEvent;
+  protocol?: Protocol;
+  event: TransferEvent | SwapEvent;
   abi: JsonFragment[];
 }
 
-export { Classifier, Pool };
+export { Classifier, Pool, Transfer };
