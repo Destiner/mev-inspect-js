@@ -12,11 +12,18 @@ async function fetchPools(
     if (log.classifier.event.type !== 'swap') {
       continue;
     }
-    const address = log.address;
-    const pool = await log.classifier.event.fetchPool(provider, address);
+    const id = getPoolId(log);
+    const pool = await log.classifier.event.fetchPool(provider, id);
     pools.push(pool);
   }
   return pools;
+}
+
+function getPoolId(log: ClassifiedLog): string {
+  if (log.classifier.protocol === 'BalancerV2') {
+    return log.event.values[0];
+  }
+  return log.address;
 }
 
 export default fetchPools;

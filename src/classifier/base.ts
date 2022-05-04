@@ -15,7 +15,7 @@ interface SwapEvent {
   name: string;
   type: 'swap';
   parse: (pool: Pool, txHash: string, event: Event) => Swap;
-  fetchPool: (provider: Provider, address: string) => Promise<Pool>;
+  fetchPool: (provider: Provider, id: string) => Promise<Pool>;
 }
 
 interface Classifier {
