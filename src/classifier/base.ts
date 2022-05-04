@@ -2,11 +2,14 @@ import { JsonFragment } from '@ethersproject/abi';
 import { Provider } from '@ethersproject/providers';
 import { Event } from 'abi-coder';
 
-import { Swap } from '../mev.js';
-
 interface Pool {
   address: string;
   assets: string[];
+}
+
+interface Metadata {
+  transactionHash: string;
+  eventAddress: string;
 }
 
 interface Transfer {
@@ -14,6 +17,16 @@ interface Transfer {
   from: string;
   to: string;
   value: bigint;
+}
+
+interface Swap {
+  maker: string;
+  makerAsset: string;
+  makerAmount: bigint;
+  taker: string;
+  takerAsset: string;
+  takerAmount: bigint;
+  metadata: Metadata;
 }
 
 type Protocol = 'BalancerV1' | 'BalancerV2' | 'UniswapV2' | 'UniswapV3';
@@ -37,4 +50,4 @@ interface Classifier {
   abi: JsonFragment[];
 }
 
-export { Classifier, Pool, Transfer };
+export { Classifier, Pool, Transfer, Swap };

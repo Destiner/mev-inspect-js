@@ -3,7 +3,13 @@ import { Provider } from '@ethersproject/providers';
 import Chain from './chain.js';
 import classify from './classifier/index.js';
 import fetchPools from './fetch.js';
-import { TxMev, BlockMev, getSwaps, getArbitrages, getTransfers } from './mev.js';
+import {
+  TxMev,
+  BlockMev,
+  getSwaps,
+  getArbitrages,
+  getTransfers,
+} from './mev.js';
 
 class Inspector {
   chainId: number;

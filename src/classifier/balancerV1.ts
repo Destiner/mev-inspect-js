@@ -4,9 +4,8 @@ import { Provider } from '@ethersproject/providers';
 import { Event } from 'abi-coder';
 
 import poolAbi from '../abi/balancerV1/pool.js';
-import { Swap } from '../mev.js';
 
-import { Classifier, Pool } from './base.js';
+import { Classifier, Pool, Swap } from './base.js';
 
 async function fetchPool(provider: Provider, address: string): Promise<Pool> {
   const poolContract = new Contract(address, poolAbi, provider);

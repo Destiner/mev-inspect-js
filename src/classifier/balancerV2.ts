@@ -4,9 +4,8 @@ import { Provider } from '@ethersproject/providers';
 import { Event } from 'abi-coder';
 
 import vaultAbi from '../abi/balancerV2/vault.js';
-import { Swap } from '../mev.js';
 
-import { Classifier, Pool } from './base.js';
+import { Classifier, Pool, Swap } from './base.js';
 
 async function fetchPool(provider: Provider, id: string): Promise<Pool> {
   const address = id.substring(0, 42);

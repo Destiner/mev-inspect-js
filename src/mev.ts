@@ -1,25 +1,10 @@
-import { Pool, Transfer } from './classifier/base.js';
+import { Swap, Pool, Transfer } from './classifier/base.js';
 import { ClassifiedLog } from './classifier/index.js';
 
 interface Base {
   tx: {
     hash: string;
   };
-}
-
-interface Metadata {
-  transactionHash: string;
-  eventAddress: string;
-}
-
-interface Swap {
-  maker: string;
-  makerAsset: string;
-  makerAmount: bigint;
-  taker: string;
-  takerAsset: string;
-  takerAmount: bigint;
-  metadata: Metadata;
 }
 
 interface Arbitrage {
@@ -241,7 +226,6 @@ export {
   BlockMev,
   Liquidation,
   Sandwich,
-  Swap,
   TxMev,
   getArbitrages,
   getSwaps,
