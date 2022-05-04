@@ -2,6 +2,7 @@ import { Provider } from '@ethersproject/providers';
 
 interface Log {
   transactionHash: string;
+  logIndex: number;
   address: string;
   topics: string[];
   data: string;
@@ -17,9 +18,10 @@ class Chain {
   async getTransactionLogs(hash: string): Promise<Log[]> {
     const receipt = await this.provider.getTransactionReceipt(hash);
     return receipt.logs.map((log) => {
-      const { transactionHash, address, topics, data } = log;
+      const { transactionHash, logIndex, address, topics, data } = log;
       return {
         transactionHash,
+        logIndex,
         address,
         topics,
         data,

@@ -12,6 +12,7 @@ import { CLASSIFIERS as uniswapV3Classifiers } from './uniswapV3.js';
 interface ClassifiedLog {
   address: string;
   transactionHash: string;
+  logIndex: number;
   event: Event;
   classifier: Classifier;
 }
@@ -34,6 +35,7 @@ function classifyLog(log: Log): ClassifiedLog | undefined {
       return {
         address: log.address,
         transactionHash: log.transactionHash,
+        logIndex: log.logIndex,
         event,
         classifier,
       };

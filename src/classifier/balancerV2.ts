@@ -15,7 +15,7 @@ async function fetchPool(provider: Provider, id: string): Promise<Pool> {
   return { address, assets };
 }
 
-function parse(pool: Pool, txHash: string, event: Event): Swap {
+function parse(pool: Pool, transactionHash: string, logIndex: number, event: Event): Swap {
   const { values } = event;
   const { address } = pool;
 
@@ -33,7 +33,8 @@ function parse(pool: Pool, txHash: string, event: Event): Swap {
     takerAmount,
     takerAsset,
     metadata: {
-      transactionHash: txHash,
+      transactionHash,
+      logIndex,
       eventAddress: address,
     },
   };

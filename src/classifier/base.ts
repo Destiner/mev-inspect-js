@@ -10,6 +10,7 @@ interface Pool {
 interface Metadata {
   transactionHash: string;
   eventAddress: string;
+  logIndex: number;
 }
 
 interface Transfer {
@@ -34,13 +35,13 @@ type Protocol = 'BalancerV1' | 'BalancerV2' | 'UniswapV2' | 'UniswapV3';
 interface TransferEvent {
   name: string;
   type: 'transfer';
-  parse: (asset: string, txHash: string, event: Event) => Transfer;
+  parse: (asset: string, txHash: string, logIndex: number, event: Event) => Transfer;
 }
 
 interface SwapEvent {
   name: string;
   type: 'swap';
-  parse: (pool: Pool, txHash: string, event: Event) => Swap;
+  parse: (pool: Pool, txHash: string, logIndex: number, event: Event) => Swap;
   fetchPool: (provider: Provider, id: string) => Promise<Pool>;
 }
 
