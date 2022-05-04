@@ -5,39 +5,80 @@ import { Event } from 'abi-coder';
 
 import vaultAbi from '../abi/balancerV2/vault.js';
 
-import { Classifier, Pool, Swap } from './base.js';
+import { Classifier, Pool, Swap, Transfer } from './base.js';
+
+const VAULT = '0xBA12222222228d8Ba445958a75a0704d566BF2C8';
 
 async function fetchPool(provider: Provider, id: string): Promise<Pool> {
   const address = id.substring(0, 42);
-  const vaultContract = new Contract(address, vaultAbi, provider);
-  const poolTokens = await vaultContract.getPoolTokens(address);
+  const vaultContract = new Contract(VAULT, vaultAbi, provider);
+  const poolTokens = await vaultContract.getPoolTokens(id);
   const assets = poolTokens.tokens;
   return { address, assets };
 }
 
-function parse(pool: Pool, transactionHash: string, logIndex: number, event: Event): Swap {
+function parse(pool: Pool, transactionHash: string, logIndex: number, event: Event, transfers: Transfer[]): Swap | null {
   const { values } = event;
   const { address } = pool;
 
-  const sender = '0x0000000000000000000000000000000000000000';
   const takerAsset = values[1] as string;
   const makerAsset = values[2] as string;
   const takerAmount = (values[3] as BigNumber).toBigInt();
   const makerAmount = (values[4] as BigNumber).toBigInt();
 
+  const swapTransfers = getSwapTransfers(logIndex, transfers);
+  if (!swapTransfers) {
+    return null;
+  }
+  const [transferIn, transferOut] = swapTransfers;
+  if (transferIn.metadata.eventAddress !== takerAsset) {
+    return null;
+  }
+  if (transferOut.metadata.eventAddress !== makerAsset) {
+    return null;
+  }
+  if (transferIn.value !== takerAmount) {
+    return null;
+  }
+  if (transferOut.value !== makerAmount) {
+    return null;
+  }
+  if (transferIn.to !== VAULT) {
+    return null;
+  }
+  if (transferOut.from !== VAULT) {
+    return null;
+  }
+  if (transferIn.from !== transferOut.to) {
+    return null;
+  }
+  const taker = transferIn.from;
+
   return {
     maker: address,
     makerAmount,
     makerAsset,
-    taker: sender,
+    taker,
     takerAmount,
     takerAsset,
     metadata: {
       transactionHash,
       logIndex,
-      eventAddress: address,
+      eventAddress: VAULT,
     },
   };
+}
+
+function getSwapTransfers(logIndex: number, transfers: Transfer[]): [Transfer, Transfer] | null {
+  const transferIn = transfers.find((transfer) => transfer.metadata.logIndex === logIndex + 1);
+  const transferOut = transfers.find((transfer) => transfer.metadata.logIndex === logIndex + 2);
+  if (!transferIn) {
+    return null;
+  }
+  if (!transferOut) {
+    return null;
+  }
+  return [transferIn, transferOut];
 }
 
 const CLASSIFIERS: Classifier[] = [
