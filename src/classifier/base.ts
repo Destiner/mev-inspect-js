@@ -35,13 +35,24 @@ type Protocol = 'BalancerV1' | 'BalancerV2' | 'UniswapV2' | 'UniswapV3';
 interface TransferEvent {
   name: string;
   type: 'transfer';
-  parse: (asset: string, txHash: string, logIndex: number, event: Event) => Transfer;
+  parse: (
+    asset: string,
+    txHash: string,
+    logIndex: number,
+    event: Event,
+  ) => Transfer;
 }
 
 interface SwapEvent {
   name: string;
   type: 'swap';
-  parse: (pool: Pool, txHash: string, logIndex: number, event: Event, transfers: Transfer[]) => Swap | null;
+  parse: (
+    pool: Pool,
+    txHash: string,
+    logIndex: number,
+    event: Event,
+    transfers: Transfer[],
+  ) => Swap | null;
   fetchPool: (provider: Provider, id: string) => Promise<Pool>;
 }
 

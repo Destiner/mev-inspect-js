@@ -17,7 +17,13 @@ async function fetchPool(provider: Provider, id: string): Promise<Pool> {
   return { address, assets };
 }
 
-function parse(pool: Pool, transactionHash: string, logIndex: number, event: Event, transfers: Transfer[]): Swap | null {
+function parse(
+  pool: Pool,
+  transactionHash: string,
+  logIndex: number,
+  event: Event,
+  transfers: Transfer[],
+): Swap | null {
   const { values } = event;
   const { address } = pool;
 
@@ -69,9 +75,16 @@ function parse(pool: Pool, transactionHash: string, logIndex: number, event: Eve
   };
 }
 
-function getSwapTransfers(logIndex: number, transfers: Transfer[]): [Transfer, Transfer] | null {
-  const transferIn = transfers.find((transfer) => transfer.metadata.logIndex === logIndex + 1);
-  const transferOut = transfers.find((transfer) => transfer.metadata.logIndex === logIndex + 2);
+function getSwapTransfers(
+  logIndex: number,
+  transfers: Transfer[],
+): [Transfer, Transfer] | null {
+  const transferIn = transfers.find(
+    (transfer) => transfer.metadata.logIndex === logIndex + 1,
+  );
+  const transferOut = transfers.find(
+    (transfer) => transfer.metadata.logIndex === logIndex + 2,
+  );
   if (!transferIn) {
     return null;
   }

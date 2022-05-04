@@ -33,7 +33,12 @@ function getTransfers(logs: ClassifiedLog[]): Transfer[] {
         return null;
       }
       const { address, transactionHash, logIndex, event } = log;
-      return log.classifier.event.parse(address, transactionHash, logIndex, event);
+      return log.classifier.event.parse(
+        address,
+        transactionHash,
+        logIndex,
+        event,
+      );
     })
     .filter((transfer: Transfer | null): transfer is Transfer => !!transfer);
 }
@@ -54,7 +59,13 @@ function getSwaps(
         return null;
       }
       const { transactionHash, logIndex, event } = log;
-      return log.classifier.event.parse(pool, transactionHash, logIndex, event, transfers);
+      return log.classifier.event.parse(
+        pool,
+        transactionHash,
+        logIndex,
+        event,
+        transfers,
+      );
     })
     .filter((swap: Swap | null): swap is Swap => !!swap);
 }

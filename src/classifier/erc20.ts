@@ -5,7 +5,12 @@ import erc20Abi from '../abi/erc20.js';
 
 import { Classifier, Transfer } from './base.js';
 
-function parse(asset: string, transactionHash: string, logIndex: number, event: Event): Transfer {
+function parse(
+  asset: string,
+  transactionHash: string,
+  logIndex: number,
+  event: Event,
+): Transfer {
   const { values } = event;
 
   const from = values[0] as string;
@@ -20,8 +25,8 @@ function parse(asset: string, transactionHash: string, logIndex: number, event: 
       transactionHash,
       logIndex,
       eventAddress: asset,
-    }
-  }
+    },
+  };
 }
 
 const CLASSIFIERS: Classifier[] = [
