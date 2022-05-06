@@ -4,26 +4,25 @@ import { Log } from '../chain.js';
 
 import { CLASSIFIERS as balancerV1Classifiers } from './balancerV1.js';
 import { CLASSIFIERS as balancerV2Classifiers } from './balancerV2.js';
-import { Classifier } from './base.js';
+import { Classifier, Pool, Swap, Transaction, Transfer } from './base.js';
 import erc20Classifiers from './erc20.js';
 import { CLASSIFIERS as uniswapV2Classifiers } from './uniswapV2.js';
 import { CLASSIFIERS as uniswapV3Classifiers } from './uniswapV3.js';
 
-interface ClassifiedLog {
+interface ClassifiedEvent extends Event {
   address: string;
   transactionHash: string;
   logIndex: number;
-  event: Event;
   classifier: Classifier;
 }
 
-function classify(logs: Log[]): ClassifiedLog[] {
+function classify(logs: Log[]): ClassifiedEvent[] {
   return logs
     .map((log) => classifyLog(log))
-    .filter((log): log is ClassifiedLog => !!log);
+    .filter((log): log is ClassifiedEvent => !!log);
 }
 
-function classifyLog(log: Log): ClassifiedLog | undefined {
+function classifyLog(log: Log): ClassifiedEvent | undefined {
   const classifiers = getClassifiers();
   for (const classifier of classifiers) {
     const coder = new Coder.default(classifier.abi);
@@ -36,8 +35,8 @@ function classifyLog(log: Log): ClassifiedLog | undefined {
         address: log.address,
         transactionHash: log.transactionHash,
         logIndex: log.logIndex,
-        event,
         classifier,
+        ...event,
       };
     } catch {
       continue;
@@ -59,4 +58,4 @@ function getClassifiers(): Classifier[] {
 
 export default classify;
 
-export { ClassifiedLog };
+export { ClassifiedEvent, Pool, Swap, Transaction, Transfer };

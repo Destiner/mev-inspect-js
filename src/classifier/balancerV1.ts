@@ -1,11 +1,12 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import { Contract } from '@ethersproject/contracts';
 import { Provider } from '@ethersproject/providers';
-import { Event } from 'abi-coder';
 
 import poolAbi from '../abi/balancerV1/pool.js';
 
 import { Classifier, Pool, Swap } from './base.js';
+
+import { ClassifiedEvent } from './index.js';
 
 async function fetchPool(provider: Provider, address: string): Promise<Pool> {
   const poolContract = new Contract(address, poolAbi, provider);
@@ -13,14 +14,9 @@ async function fetchPool(provider: Provider, address: string): Promise<Pool> {
   return { address, assets };
 }
 
-function parse(
-  pool: Pool,
-  transactionHash: string,
-  logIndex: number,
-  event: Event,
-): Swap {
-  const { values } = event;
-  const { address } = pool;
+function parse(pool: Pool, event: ClassifiedEvent): Swap {
+  const { values, transactionHash: hash, logIndex, address } = event;
+  const { address: poolAddress } = pool;
 
   const sender = values[0] as string;
   const takerAsset = values[1] as string;
@@ -29,16 +25,18 @@ function parse(
   const makerAmount = (values[4] as BigNumber).toBigInt();
 
   return {
-    maker: address,
+    maker: poolAddress,
     makerAmount,
     makerAsset,
     taker: sender,
     takerAmount,
     takerAsset,
-    metadata: {
-      transactionHash,
+    transaction: {
+      hash,
+    },
+    event: {
       logIndex,
-      eventAddress: address,
+      address,
     },
   };
 }

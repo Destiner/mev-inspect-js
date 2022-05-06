@@ -1,17 +1,13 @@
 import { BigNumber } from '@ethersproject/bignumber';
-import { Event } from 'abi-coder';
 
 import erc20Abi from '../abi/erc20.js';
 
 import { Classifier, Transfer } from './base.js';
 
-function parse(
-  asset: string,
-  transactionHash: string,
-  logIndex: number,
-  event: Event,
-): Transfer {
-  const { values } = event;
+import { ClassifiedEvent } from './index.js';
+
+function parse(event: ClassifiedEvent): Transfer {
+  const { values, transactionHash: hash, logIndex, address } = event;
 
   const from = values[0] as string;
   const to = values[1] as string;
@@ -21,10 +17,12 @@ function parse(
     from,
     to,
     value,
-    metadata: {
-      transactionHash,
+    transaction: {
+      hash,
+    },
+    event: {
       logIndex,
-      eventAddress: asset,
+      address,
     },
   };
 }

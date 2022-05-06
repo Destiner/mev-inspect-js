@@ -1,4 +1,4 @@
-import Inspector from '../src/index.js';
+import { Inspector } from '../src/index.js';
 
 import getProvider from './utils.js';
 
@@ -57,6 +57,10 @@ const transactions: Transaction[] = [
   {
     label: 'Uniswap V3 X Balancer V2 arbitrage',
     hash: '0x4a4021e87ca17a19574371cb0bd9004970f1f9c5202e42a2efd7cafb979fd504',
+  },
+  {
+    label: 'Balancer V1 X Balancer V2 arbitrage',
+    hash: '0x486bc5218470355cbb40bed89a7df8283d08e95034fa6788c4c406b7e1ec2125',
   },
   // {
   //   label: 'CoW trade, TBD',

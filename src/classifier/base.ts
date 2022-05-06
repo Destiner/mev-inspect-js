@@ -1,56 +1,54 @@
 import { JsonFragment } from '@ethersproject/abi';
 import { Provider } from '@ethersproject/providers';
-import { Event } from 'abi-coder';
+
+import { ClassifiedEvent } from './index.js';
 
 interface Pool {
   address: string;
   assets: string[];
 }
 
-interface Metadata {
-  transactionHash: string;
-  eventAddress: string;
-  logIndex: number;
+interface Transaction {
+  hash: string;
 }
 
-interface Transfer {
+interface Base {
+  transaction: Transaction;
+  event: {
+    address: string;
+    logIndex: number;
+  };
+}
+
+interface Transfer extends Base {
   from: string;
   to: string;
   value: bigint;
-  metadata: Metadata;
 }
 
-interface Swap {
+interface Swap extends Base {
   maker: string;
   makerAsset: string;
   makerAmount: bigint;
   taker: string;
   takerAsset: string;
   takerAmount: bigint;
-  metadata: Metadata;
 }
 
 type Protocol = 'BalancerV1' | 'BalancerV2' | 'UniswapV2' | 'UniswapV3';
 
-interface TransferEvent {
+interface TransferClassifier {
   name: string;
   type: 'transfer';
-  parse: (
-    asset: string,
-    txHash: string,
-    logIndex: number,
-    event: Event,
-  ) => Transfer;
+  parse: (event: ClassifiedEvent) => Transfer;
 }
 
-interface SwapEvent {
+interface SwapClassifier {
   name: string;
   type: 'swap';
   parse: (
     pool: Pool,
-    txHash: string,
-    logIndex: number,
-    event: Event,
+    event: ClassifiedEvent,
     transfers: Transfer[],
   ) => Swap | null;
   fetchPool: (provider: Provider, id: string) => Promise<Pool>;
@@ -58,8 +56,8 @@ interface SwapEvent {
 
 interface Classifier {
   protocol?: Protocol;
-  event: TransferEvent | SwapEvent;
+  event: TransferClassifier | SwapClassifier;
   abi: JsonFragment[];
 }
 
-export { Classifier, Pool, Transfer, Swap };
+export { Classifier, Transaction, Pool, Transfer, Swap };

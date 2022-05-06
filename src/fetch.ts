@@ -1,11 +1,10 @@
 import { Provider } from '@ethersproject/providers';
 
-import { Pool } from './classifier/base.js';
-import { ClassifiedLog } from './classifier/index.js';
+import { ClassifiedEvent, Pool } from './classifier/index.js';
 
 async function fetchPools(
   provider: Provider,
-  logs: ClassifiedLog[],
+  logs: ClassifiedEvent[],
 ): Promise<Pool[]> {
   const pools: Pool[] = [];
   for (const log of logs) {
@@ -19,9 +18,9 @@ async function fetchPools(
   return pools;
 }
 
-function getPoolId(log: ClassifiedLog): string {
+function getPoolId(log: ClassifiedEvent): string {
   if (log.classifier.protocol === 'BalancerV2') {
-    return log.event.values[0];
+    return log.values[0];
   }
   return log.address;
 }

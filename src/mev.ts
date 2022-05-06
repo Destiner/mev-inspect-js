@@ -1,11 +1,4 @@
-import { Swap, Pool, Transfer } from './classifier/base.js';
-import { ClassifiedLog } from './classifier/index.js';
-
-interface Base {
-  tx: {
-    hash: string;
-  };
-}
+import { Swap, Pool, Transfer, ClassifiedEvent } from './classifier/index.js';
 
 interface Arbitrage {
   swaps: Swap[];
@@ -15,10 +8,11 @@ interface Arbitrage {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface Liquidation extends Base {}
+interface Liquidation {}
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface Sandwich extends Base {}
+interface Sandwich {
+  swaps: Swap[];
+}
 
 type TxMev = Arbitrage | Liquidation;
 
@@ -26,19 +20,13 @@ type BlockMev = TxMev | Sandwich;
 
 const MAX_TOKEN_AMOUNT_PERCENT_DIFFERENCE = 1;
 
-function getTransfers(logs: ClassifiedLog[]): Transfer[] {
+function getTransfers(logs: ClassifiedEvent[]): Transfer[] {
   return logs
     .map((log) => {
       if (log.classifier.event.type !== 'transfer') {
         return null;
       }
-      const { address, transactionHash, logIndex, event } = log;
-      return log.classifier.event.parse(
-        address,
-        transactionHash,
-        logIndex,
-        event,
-      );
+      return log.classifier.event.parse(log);
     })
     .filter((transfer: Transfer | null): transfer is Transfer => !!transfer);
 }
@@ -46,7 +34,7 @@ function getTransfers(logs: ClassifiedLog[]): Transfer[] {
 function getSwaps(
   pools: Pool[],
   transfers: Transfer[],
-  logs: ClassifiedLog[],
+  logs: ClassifiedEvent[],
 ): Swap[] {
   return logs
     .map((log) => {
@@ -58,14 +46,7 @@ function getSwaps(
       if (!pool) {
         return null;
       }
-      const { transactionHash, logIndex, event } = log;
-      return log.classifier.event.parse(
-        pool,
-        transactionHash,
-        logIndex,
-        event,
-        transfers,
-      );
+      return log.classifier.event.parse(pool, log, transfers);
     })
     .filter((swap: Swap | null): swap is Swap => !!swap);
 }
@@ -120,7 +101,7 @@ function getTransactionArbitrages(swaps: Swap[]): Arbitrage[] {
 
 function groupSwapsByHash(swaps: Swap[]): Record<string, Swap[]> {
   return swaps.reduce((result, swap) => {
-    const hash = swap.metadata.transactionHash;
+    const hash = swap.transaction.hash;
     if (!result[hash]) result[hash] = [];
     result[hash].push(swap);
     return result;
@@ -186,7 +167,7 @@ function getShortestRoute(
 }
 
 function getStartEndSwaps(swaps: Swap[]): [Swap, Swap[]][] {
-  const pools = swaps.map((swap) => swap.metadata.eventAddress);
+  const pools = swaps.map((swap) => swap.event.address);
   const startEnds: [Swap, Swap[]][] = [];
 
   for (const index in swaps) {
@@ -235,9 +216,9 @@ function equalWithPercent(
   return diff >= 0 ? diff < thresholdPercent : diff > -thresholdPercent;
 }
 
-function getPoolAddress(log: ClassifiedLog): string {
+function getPoolAddress(log: ClassifiedEvent): string {
   if (log.classifier.protocol === 'BalancerV2') {
-    const poolId = log.event.values[0] as string;
+    const poolId = log.values[0] as string;
     return poolId.substring(0, 42);
   }
   return log.address;

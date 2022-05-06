@@ -1,11 +1,12 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import { Contract } from '@ethersproject/contracts';
 import { Provider } from '@ethersproject/providers';
-import { Event } from 'abi-coder';
 
 import vaultAbi from '../abi/balancerV2/vault.js';
 
 import { Classifier, Pool, Swap, Transfer } from './base.js';
+
+import { ClassifiedEvent } from './index.js';
 
 const VAULT = '0xBA12222222228d8Ba445958a75a0704d566BF2C8';
 
@@ -19,13 +20,11 @@ async function fetchPool(provider: Provider, id: string): Promise<Pool> {
 
 function parse(
   pool: Pool,
-  transactionHash: string,
-  logIndex: number,
-  event: Event,
+  event: ClassifiedEvent,
   transfers: Transfer[],
 ): Swap | null {
-  const { values } = event;
-  const { address } = pool;
+  const { values, transactionHash: hash, logIndex, address } = event;
+  const { address: poolAddress } = pool;
 
   const takerAsset = values[1] as string;
   const makerAsset = values[2] as string;
@@ -37,10 +36,10 @@ function parse(
     return null;
   }
   const [transferIn, transferOut] = swapTransfers;
-  if (transferIn.metadata.eventAddress !== takerAsset) {
+  if (transferIn.event.address !== takerAsset) {
     return null;
   }
-  if (transferOut.metadata.eventAddress !== makerAsset) {
+  if (transferOut.event.address !== makerAsset) {
     return null;
   }
   if (transferIn.value !== takerAmount) {
@@ -61,16 +60,18 @@ function parse(
   const taker = transferIn.from;
 
   return {
-    maker: address,
+    maker: poolAddress,
     makerAmount,
     makerAsset,
     taker,
     takerAmount,
     takerAsset,
-    metadata: {
-      transactionHash,
+    transaction: {
+      hash,
+    },
+    event: {
       logIndex,
-      eventAddress: VAULT,
+      address,
     },
   };
 }
@@ -80,10 +81,10 @@ function getSwapTransfers(
   transfers: Transfer[],
 ): [Transfer, Transfer] | null {
   const transferIn = transfers.find(
-    (transfer) => transfer.metadata.logIndex === logIndex + 1,
+    (transfer) => transfer.event.logIndex === logIndex + 1,
   );
   const transferOut = transfers.find(
-    (transfer) => transfer.metadata.logIndex === logIndex + 2,
+    (transfer) => transfer.event.logIndex === logIndex + 2,
   );
   if (!transferIn) {
     return null;
