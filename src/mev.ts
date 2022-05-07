@@ -218,7 +218,7 @@ function equalWithPercent(
 
 function getPoolAddress(log: ClassifiedEvent): string {
   if (log.classifier.protocol === 'BalancerV2') {
-    const poolId = log.values[0] as string;
+    const poolId = log.values.poolId as string;
     return poolId.substring(0, 42);
   }
   return log.address;

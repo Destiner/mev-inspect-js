@@ -9,9 +9,9 @@ import { ClassifiedEvent } from './index.js';
 function parse(event: ClassifiedEvent): Transfer {
   const { values, transactionHash: hash, logIndex, address } = event;
 
-  const from = values[0] as string;
-  const to = values[1] as string;
-  const value = (values[2] as BigNumber).toBigInt();
+  const from = values.from as string;
+  const to = values.to as string;
+  const value = (values.value as BigNumber).toBigInt();
 
   return {
     from,

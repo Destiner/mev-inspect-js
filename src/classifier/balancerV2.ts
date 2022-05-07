@@ -26,10 +26,10 @@ function parse(
   const { values, transactionHash: hash, logIndex, address } = event;
   const { address: poolAddress } = pool;
 
-  const takerAsset = values[1] as string;
-  const makerAsset = values[2] as string;
-  const takerAmount = (values[3] as BigNumber).toBigInt();
-  const makerAmount = (values[4] as BigNumber).toBigInt();
+  const takerAsset = values.tokenIn as string;
+  const makerAsset = values.tokenOut as string;
+  const takerAmount = (values.amountIn as BigNumber).toBigInt();
+  const makerAmount = (values.amountOut as BigNumber).toBigInt();
 
   const swapTransfers = getSwapTransfers(logIndex, transfers);
   if (!swapTransfers) {

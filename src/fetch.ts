@@ -20,7 +20,7 @@ async function fetchPools(
 
 function getPoolId(log: ClassifiedEvent): string {
   if (log.classifier.protocol === 'BalancerV2') {
-    return log.values[0];
+    return log.values.poolId as string;
   }
   return log.address;
 }

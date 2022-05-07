@@ -19,9 +19,9 @@ function parse(pool: Pool, event: ClassifiedEvent): Swap {
   const { values, transactionHash: hash, logIndex, address } = event;
   const { address: poolAddress, assets } = pool;
 
-  const sender = values[0] as string;
-  const amount0 = (values[2] as BigNumber).toBigInt();
-  const amount1 = (values[3] as BigNumber).toBigInt();
+  const sender = values.sender as string;
+  const amount0 = (values.amount0 as BigNumber).toBigInt();
+  const amount1 = (values.amount1 as BigNumber).toBigInt();
 
   const makerAsset = amount0 < 0 ? assets[0] : assets[1];
   const makerAmount = amount0 < 0 ? amount0 * -1n : amount1 * -1n;
