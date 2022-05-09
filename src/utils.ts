@@ -1,5 +1,5 @@
 import { Transaction } from './classifier/index.js';
-import { BlockMev } from './mev.js';
+import { BlockMev } from './mev/index.js';
 
 function getTransaction(mev: BlockMev): Transaction | null {
   if ('swaps' in mev) {

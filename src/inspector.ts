@@ -9,7 +9,7 @@ import {
   getSwaps,
   getArbitrages,
   getTransfers,
-} from './mev.js';
+} from './mev/index.js';
 
 class Inspector {
   chainId: number;
