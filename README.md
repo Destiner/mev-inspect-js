@@ -42,7 +42,6 @@ The project is at the "proof of concept" stage. Currently, only arbitrage is det
 
 - [ ] curve
 - [ ] 0x
-- [ ] enrich mev events with metadata
 - [ ] distinguish forks
 - [ ] liquidations
 - [ ] sandwitches
