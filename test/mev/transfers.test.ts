@@ -1,10 +1,10 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import { describe, test, expect } from 'vitest';
 
-import { ClassifiedEvent } from '../../src/classifier';
-import erc20Classifiers from '../../src/classifier/erc20';
-import { CLASSIFIERS as uniswapV2Classifiers } from '../../src/classifier/uniswapV2';
-import getTransfers from '../../src/mev/transfers';
+import erc20Classifiers from '../../src/classifier/erc20.js';
+import { ClassifiedEvent } from '../../src/classifier/index.js';
+import { CLASSIFIERS as uniswapV2Classifiers } from '../../src/classifier/uniswapV2.js';
+import getTransfers from '../../src/mev/transfers.js';
 
 describe('MEV: transfers', () => {
   test('parses a transfer from a log', () => {
