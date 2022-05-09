@@ -47,6 +47,7 @@
     "eslint-plugin-import": "^2.26.0",
     "prettier": "^2.6.2",
     "ts-node": "^10.7.0",
-    "typescript": "^4.7.0-dev.20220501"
+    "typescript": "^4.7.0-dev.20220501",
+    "vitest": "^0.12.2"
   }
 }
