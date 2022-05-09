@@ -26,15 +26,7 @@ npm i mev-inspect
 
 TODO. For usage examlples, see [`examples`](./examples/).
 
-### Running Examples
-
-* Install Dependencies
-
-```bash
-npm install
-```
-
-* Run `examples/arbitrage.ts`
+You can run examples using `ts-node`, for example:
 
 ```bash
 npx ts-node --esm examples/arbitrage.ts
