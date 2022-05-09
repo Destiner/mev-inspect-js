@@ -12,6 +12,12 @@ While mev-inspect-py is a great resource, I think that there are a few changes c
 * Added single transaction inspection: while missing some types of MEV, this is helpful for quick transaction review
 * Using logs instead of call traces: any historical node would work
 
+## Usage
+
+```bash
+npm i mev-inspect
+```
+
 ## Docs
 
 TODO. For usage examlples, see `/examples`.
