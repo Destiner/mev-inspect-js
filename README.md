@@ -14,6 +14,8 @@ While mev-inspect-py is a great resource, I think that there are a few changes c
 
 ## Usage
 
+> This package uses [BigInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt). If you use a bundler, you may want to set target to `es2020`.
+
 ```bash
 npm i mev-inspect
 ```
