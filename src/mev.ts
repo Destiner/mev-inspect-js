@@ -53,7 +53,7 @@ function getSwaps(
 
 function getArbitrages(swaps: Swap[]): Arbitrage[] {
   const arbitrages: Arbitrage[] = [];
-  const groupedSwaps = groupSwapsByHash(swaps);
+  const groupedSwaps = groupSwapsByTransaction(swaps);
   for (const hash in groupedSwaps) {
     const swaps = groupedSwaps[hash];
     const transactionArbitrages = getTransactionArbitrages(swaps);
@@ -99,7 +99,7 @@ function getTransactionArbitrages(swaps: Swap[]): Arbitrage[] {
   return arbitrages;
 }
 
-function groupSwapsByHash(swaps: Swap[]): Record<string, Swap[]> {
+function groupSwapsByTransaction(swaps: Swap[]): Record<string, Swap[]> {
   return swaps.reduce((result, swap) => {
     const hash = swap.transaction.hash;
     if (!result[hash]) result[hash] = [];
