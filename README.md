@@ -24,7 +24,7 @@ npm i mev-inspect
 
 ## Docs
 
-TODO. For usage examlples, see `/examples`.
+TODO. For usage examlples, see [`examples`](./examples/).
 
 ### Running Examples
 
