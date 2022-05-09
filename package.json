@@ -3,6 +3,7 @@
   "version": "0.1.1",
   "description": "A JS port of 'mev-inspect-py' optimised for ease of use.",
   "type": "module",
+  "main": "./lib/index.js",
   "exports": "./lib/index.js",
   "author": "Timur Badretdinov <destinerx@gmail.com>",
   "keywords": [
