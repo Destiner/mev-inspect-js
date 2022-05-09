@@ -1,6 +1,6 @@
 import Chain from '../src/chain.js';
 import classify from '../src/classifier/index.js';
-import { getTransfers } from '../src/mev.js';
+import { getTransfers } from '../src/mev/index.js';
 
 import getProvider from './utils.js';
 
