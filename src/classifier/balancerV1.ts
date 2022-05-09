@@ -1,5 +1,4 @@
 import { BigNumber } from '@ethersproject/bignumber';
-import { Contract } from '@ethersproject/contracts';
 import { Provider } from '@ethersproject/providers';
 
 import poolAbi from '../abi/balancerV1/pool.js';
@@ -8,10 +7,11 @@ import { Classifier, Pool, Swap } from './base.js';
 
 import { ClassifiedEvent } from './index.js';
 
-async function fetchPool(provider: Provider, address: string): Promise<Pool> {
-  const poolContract = new Contract(address, poolAbi, provider);
-  const assets = await poolContract.getCurrentTokens();
-  return { address, assets };
+async function fetchPool(_provider: Provider, address: string): Promise<Pool> {
+  // const poolContract = new Contract(address, poolAbi, provider);
+  // const assets = await poolContract.getCurrentTokens();
+  // return { address, assets };
+  return { address, assets: [] };
 }
 
 function parse(pool: Pool, event: ClassifiedEvent): Swap {
