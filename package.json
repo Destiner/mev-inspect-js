@@ -5,6 +5,9 @@
   "type": "module",
   "main": "./lib/index.js",
   "exports": "./lib/index.js",
+  "files": [
+    "lib/"
+  ],
   "author": "Timur Badretdinov <destinerx@gmail.com>",
   "keywords": [
     "mev",
