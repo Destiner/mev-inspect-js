@@ -8,13 +8,14 @@ import { Classifier, Pool, Swap, Transfer } from './base.js';
 
 import { ClassifiedEvent } from './index.js';
 
-const VAULT = '0xBA12222222228d8Ba445958a75a0704d566BF2C8';
+const VAULT = '0xba12222222228d8ba445958a75a0704d566bf2c8';
 
 async function fetchPool(provider: Provider, id: string): Promise<Pool> {
   const address = id.substring(0, 42);
   const vaultContract = new Contract(VAULT, vaultAbi, provider);
   const poolTokens = await vaultContract.getPoolTokens(id);
-  const assets = poolTokens.tokens;
+  const tokens = poolTokens.tokens as string[];
+  const assets = tokens.map((token) => token.toLowerCase());
   return { address, assets };
 }
 
@@ -26,8 +27,8 @@ function parse(
   const { values, transactionHash: hash, gasUsed, logIndex, address } = event;
   const { address: poolAddress } = pool;
 
-  const assetIn = values.tokenIn as string;
-  const assetOut = values.tokenOut as string;
+  const assetIn = (values.tokenIn as string).toLowerCase();
+  const assetOut = (values.tokenOut as string).toLowerCase();
   const amountIn = (values.amountIn as BigNumber).toBigInt();
   const amountOut = (values.amountOut as BigNumber).toBigInt();
 
@@ -71,7 +72,7 @@ function parse(
     },
     event: {
       logIndex,
-      address,
+      address: address.toLowerCase(),
     },
   };
 }

@@ -9,8 +9,8 @@ import { ClassifiedEvent } from './index.js';
 function parse(event: ClassifiedEvent): Transfer {
   const { values, transactionHash: hash, gasUsed, logIndex, address } = event;
 
-  const from = values.from as string;
-  const to = values.to as string;
+  const from = (values.from as string).toLowerCase();
+  const to = (values.to as string).toLowerCase();
   const value = (values.value as BigNumber).toBigInt();
 
   return {
@@ -23,7 +23,7 @@ function parse(event: ClassifiedEvent): Transfer {
     },
     event: {
       logIndex,
-      address,
+      address: address.toLowerCase(),
     },
   };
 }

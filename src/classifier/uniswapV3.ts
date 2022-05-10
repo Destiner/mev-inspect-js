@@ -10,17 +10,18 @@ import { ClassifiedEvent } from './index.js';
 
 async function fetchPool(provider: Provider, address: string): Promise<Pool> {
   const poolContract = new Contract(address, poolAbi, provider);
-  const asset0 = await poolContract.token0();
-  const asset1 = await poolContract.token1();
-  return { address, assets: [asset0, asset1] };
+  const asset0 = (await poolContract.token0()) as string;
+  const asset1 = (await poolContract.token1()) as string;
+  const assets = [asset0.toLowerCase(), asset1.toLowerCase()];
+  return { address: address.toLowerCase(), assets };
 }
 
 function parse(pool: Pool, event: ClassifiedEvent): Swap {
   const { values, transactionHash: hash, gasUsed, logIndex, address } = event;
   const { address: poolAddress, assets } = pool;
 
-  const from = values.sender as string;
-  const to = values.recipient as string;
+  const from = (values.sender as string).toLowerCase();
+  const to = (values.recipient as string).toLowerCase();
   const amount0 = (values.amount0 as BigNumber).toBigInt();
   const amount1 = (values.amount1 as BigNumber).toBigInt();
 
@@ -43,7 +44,7 @@ function parse(pool: Pool, event: ClassifiedEvent): Swap {
       gasUsed,
     },
     event: {
-      address,
+      address: address.toLowerCase(),
       logIndex,
     },
   };

@@ -11,16 +11,16 @@ async function fetchPool(_provider: Provider, address: string): Promise<Pool> {
   // const poolContract = new Contract(address, poolAbi, provider);
   // const assets = await poolContract.getCurrentTokens();
   // return { address, assets };
-  return { address, assets: [] };
+  return { address: address.toLowerCase(), assets: [] };
 }
 
 function parse(pool: Pool, event: ClassifiedEvent): Swap {
   const { values, transactionHash: hash, gasUsed, logIndex, address } = event;
   const { address: poolAddress } = pool;
 
-  const sender = values.caller as string;
-  const assetIn = values.tokenIn as string;
-  const assetOut = values.tokenOut as string;
+  const sender = (values.caller as string).toLowerCase();
+  const assetIn = (values.tokenIn as string).toLowerCase();
+  const assetOut = (values.tokenOut as string).toLowerCase();
   const amountIn = (values.tokenAmountIn as BigNumber).toBigInt();
   const amountOut = (values.tokenAmountOut as BigNumber).toBigInt();
 
@@ -38,7 +38,7 @@ function parse(pool: Pool, event: ClassifiedEvent): Swap {
     },
     event: {
       logIndex,
-      address,
+      address: address.toLowerCase(),
     },
   };
 }

@@ -11,10 +11,10 @@ describe('MEV: transfers', () => {
     const hash =
       '0xfbf98ea48bb2a1210ac1974b432c4604a9978e766c133f9543da3df9421b7e81';
     const gasUsed = 51818;
-    const address = '0x6b175474e89094c44da98b954eedeac495271d0f';
+    const address = '0x6B175474E89094C44Da98b954EedeAC495271d0F';
     const logIndex = 49;
-    const from = '0xbe6356e4d92ecbd321c83ccdd79b3fd6f2d4f0e7';
-    const to = '0x3b0a40b97a1037a09c2075ca472868d668454a18';
+    const from = '0xbe6356E4D92ECBD321C83CCDD79B3fD6F2D4f0e7';
+    const to = '0x3B0a40B97a1037A09C2075CA472868D668454a18';
     const value = BigNumber.from('50000000000000000000');
 
     const logs: ClassifiedEvent[] = [
@@ -36,8 +36,8 @@ describe('MEV: transfers', () => {
 
     expect(transfers).toEqual([
       {
-        from,
-        to,
+        from: from.toLowerCase(),
+        to: to.toLowerCase(),
         value: value.toBigInt(),
         transaction: {
           hash,
@@ -45,7 +45,7 @@ describe('MEV: transfers', () => {
         },
         event: {
           logIndex,
-          address,
+          address: address.toLowerCase(),
         },
       },
     ]);
@@ -58,21 +58,21 @@ describe('MEV: transfers', () => {
       '0x1aa9e2ecd0efe3acd30d89654fb366ffee66995465cbaacc80bfb16467ce8219',
     ];
     const addresses = [
-      '0x6b175474e89094c44da98b954eedeac495271d0f',
-      '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
-      '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2',
+      '0x6B175474E89094C44Da98b954EedeAC495271d0F',
+      '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
+      '0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2',
     ];
     const gasUsedList = [46458, 65625, 54338];
     const logIndices = [415, 346, 45];
     const fromList = [
-      '0x0d46f66d13c630d3f554e74c3eff711452d2c180',
-      '0xcbe300403ec18503bb2b93574fa738dc8f629f63',
-      '0x95a9bd206ae52c4ba8eecfc93d18eacdd41c88cc',
+      '0x0D46F66D13C630D3F554e74c3eFF711452D2C180',
+      '0xCbE300403Ec18503Bb2b93574FA738dc8f629F63',
+      '0x95A9bd206aE52C4BA8EecFc93d18EACDd41C88CC',
     ];
     const toList = [
-      '0x0a3e1c20b5384eb97d2ccff9a96bc91f0c77e7db',
-      '0x01b950718eb78cb2f3d2e26605ff7121170864df',
-      '0x3aff86656a65f3d81b3e0b4c4f8d4199f3b3fbde',
+      '0x0A3e1c20B5384eB97D2CCfF9a96bc91f0c77e7dB',
+      '0x01B950718eB78cB2f3D2E26605fF7121170864df',
+      '0x3Aff86656A65F3d81B3E0B4C4F8d4199f3B3Fbde',
     ];
     const valueList = [
       BigNumber.from(
@@ -101,8 +101,8 @@ describe('MEV: transfers', () => {
 
     const expectedTransfers = hashes.map((hash, index) => {
       return {
-        from: fromList[index],
-        to: toList[index],
+        from: fromList[index].toLowerCase(),
+        to: toList[index].toLowerCase(),
         value: valueList[index].toBigInt(),
         transaction: {
           hash,
@@ -110,7 +110,7 @@ describe('MEV: transfers', () => {
         },
         event: {
           logIndex: logIndices[index],
-          address: addresses[index],
+          address: addresses[index].toLowerCase(),
         },
       };
     });

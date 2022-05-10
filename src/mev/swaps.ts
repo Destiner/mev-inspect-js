@@ -5,7 +5,7 @@ function getPoolAddress(log: ClassifiedEvent): string {
     const poolId = log.values.poolId as string;
     return poolId.substring(0, 42);
   }
-  return log.address;
+  return log.address.toLowerCase();
 }
 
 function getSwaps(
