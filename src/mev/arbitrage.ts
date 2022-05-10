@@ -48,9 +48,9 @@ function getTransactionArbitrages(swaps: Swap[]): Arbitrage[] {
     const route = getShortestRoute(start, unusedEnds, swaps);
 
     if (route.length > 0) {
-      const startAmount = route[0].takerAmount;
-      const endAmount = route[route.length - 1].makerAmount;
-      const profitAsset = route[0].takerAsset;
+      const startAmount = route[0].amountIn;
+      const endAmount = route[route.length - 1].amountOut;
+      const profitAsset = route[0].assetIn;
 
       const arbitrage = {
         swaps: route,
@@ -146,9 +146,9 @@ function getStartEndSwaps(swaps: Swap[]): [Swap, Swap[]][] {
 
     for (const potentialEndSwap of remainingSwaps) {
       if (
-        potentialStartSwap.takerAsset === potentialEndSwap.makerAsset &&
-        potentialStartSwap.taker === potentialEndSwap.taker &&
-        !pools.includes(potentialStartSwap.taker)
+        potentialStartSwap.assetIn === potentialEndSwap.assetOut &&
+        potentialStartSwap.from === potentialEndSwap.to &&
+        !pools.includes(potentialStartSwap.from)
       ) {
         endsForStart.push(potentialEndSwap);
       }
@@ -164,12 +164,13 @@ function getStartEndSwaps(swaps: Swap[]): [Swap, Swap[]][] {
 
 function swapOutsMatchSwapIns(swapOut: Swap, swapIn: Swap): boolean {
   return (
-    swapOut.makerAsset === swapIn.takerAsset &&
-    // TODO compare w/ contract address (?)
-    swapOut.taker === swapIn.taker &&
+    swapOut.assetOut === swapIn.assetIn &&
+    (swapOut.contract == swapIn.from ||
+      swapOut.to == swapIn.contract ||
+      swapOut.to == swapIn.from) &&
     equalWithPercent(
-      swapOut.makerAmount,
-      swapIn.takerAmount,
+      swapOut.amountOut,
+      swapIn.amountIn,
       MAX_TOKEN_AMOUNT_PERCENT_DIFFERENCE,
     )
   );

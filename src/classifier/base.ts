@@ -27,12 +27,13 @@ interface Transfer extends Base {
 }
 
 interface Swap extends Base {
-  maker: string;
-  makerAsset: string;
-  makerAmount: bigint;
-  taker: string;
-  takerAsset: string;
-  takerAmount: bigint;
+  contract: string;
+  from: string;
+  to: string;
+  assetIn: string;
+  amountIn: bigint;
+  assetOut: string;
+  amountOut: bigint;
 }
 
 type Protocol = 'BalancerV1' | 'BalancerV2' | 'UniswapV2' | 'UniswapV3';

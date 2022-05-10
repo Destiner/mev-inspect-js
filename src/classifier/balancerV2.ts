@@ -26,26 +26,26 @@ function parse(
   const { values, transactionHash: hash, logIndex, address } = event;
   const { address: poolAddress } = pool;
 
-  const takerAsset = values.tokenIn as string;
-  const makerAsset = values.tokenOut as string;
-  const takerAmount = (values.amountIn as BigNumber).toBigInt();
-  const makerAmount = (values.amountOut as BigNumber).toBigInt();
+  const assetIn = values.tokenIn as string;
+  const assetOut = values.tokenOut as string;
+  const amountIn = (values.amountIn as BigNumber).toBigInt();
+  const amountOut = (values.amountOut as BigNumber).toBigInt();
 
   const swapTransfers = getSwapTransfers(logIndex, transfers);
   if (!swapTransfers) {
     return null;
   }
   const [transferIn, transferOut] = swapTransfers;
-  if (transferIn.event.address !== takerAsset) {
+  if (transferIn.event.address !== assetIn) {
     return null;
   }
-  if (transferOut.event.address !== makerAsset) {
+  if (transferOut.event.address !== assetOut) {
     return null;
   }
-  if (transferIn.value !== takerAmount) {
+  if (transferIn.value !== amountIn) {
     return null;
   }
-  if (transferOut.value !== makerAmount) {
+  if (transferOut.value !== amountOut) {
     return null;
   }
   if (transferIn.to !== VAULT) {
@@ -54,18 +54,17 @@ function parse(
   if (transferOut.from !== VAULT) {
     return null;
   }
-  if (transferIn.from !== transferOut.to) {
-    return null;
-  }
-  const taker = transferIn.from;
+  const from = transferIn.from;
+  const to = transferOut.to;
 
   return {
-    maker: poolAddress,
-    makerAmount,
-    makerAsset,
-    taker,
-    takerAmount,
-    takerAsset,
+    contract: poolAddress,
+    from,
+    to,
+    assetIn,
+    amountIn,
+    assetOut,
+    amountOut,
     transaction: {
       hash,
     },

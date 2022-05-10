@@ -19,18 +19,19 @@ function parse(pool: Pool, event: ClassifiedEvent): Swap {
   const { address: poolAddress } = pool;
 
   const sender = values.caller as string;
-  const takerAsset = values.tokenIn as string;
-  const makerAsset = values.tokenOut as string;
-  const takerAmount = (values.tokenAmountIn as BigNumber).toBigInt();
-  const makerAmount = (values.tokenAmountOut as BigNumber).toBigInt();
+  const assetIn = values.tokenIn as string;
+  const assetOut = values.tokenOut as string;
+  const amountIn = (values.tokenAmountIn as BigNumber).toBigInt();
+  const amountOut = (values.tokenAmountOut as BigNumber).toBigInt();
 
   return {
-    maker: poolAddress,
-    makerAmount,
-    makerAsset,
-    taker: sender,
-    takerAmount,
-    takerAsset,
+    contract: poolAddress,
+    from: sender,
+    to: sender,
+    assetIn,
+    amountIn,
+    assetOut,
+    amountOut,
     transaction: {
       hash,
     },
