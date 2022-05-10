@@ -12,4 +12,14 @@ function getTransaction(mev: BlockMev): Transaction | null {
   return null;
 }
 
-export default getTransaction;
+function equalWithPercent(
+  firstValue: bigint,
+  secondValue: bigint,
+  thresholdPercent: number,
+): boolean {
+  const diff =
+    (100n * 2n * (firstValue - secondValue)) / (firstValue + secondValue);
+  return diff >= 0 ? diff < thresholdPercent : diff > -thresholdPercent;
+}
+
+export { equalWithPercent, getTransaction };

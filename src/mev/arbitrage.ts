@@ -1,4 +1,5 @@
 import { Swap } from '../classifier/index.js';
+import { equalWithPercent } from '../utils.js';
 
 interface Arbitrage {
   swaps: Swap[];
@@ -174,16 +175,6 @@ function swapOutsMatchSwapIns(swapOut: Swap, swapIn: Swap): boolean {
       MAX_TOKEN_AMOUNT_PERCENT_DIFFERENCE,
     )
   );
-}
-
-function equalWithPercent(
-  firstValue: bigint,
-  secondValue: bigint,
-  thresholdPercent: number,
-): boolean {
-  const diff =
-    (100n * 2n * (firstValue - secondValue)) / (firstValue + secondValue);
-  return diff >= 0 ? diff < thresholdPercent : diff > -thresholdPercent;
 }
 
 export { Arbitrage, BlockMev, Liquidation, Sandwich, TxMev, getArbitrages };
