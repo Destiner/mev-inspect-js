@@ -18,6 +18,7 @@ describe('Classfiers: Balancer V2', () => {
       address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
       transactionHash:
         '0x0beab997294942e83fa3f1328562fcf1ce8299470f5351a63d7f385c2becbf48',
+      gasUsed: 130598,
       logIndex: 10,
       classifier: swapClassifier,
       name: 'Swap',
@@ -34,6 +35,7 @@ describe('Classfiers: Balancer V2', () => {
       {
         transaction: {
           hash: '0x0beab997294942e83fa3f1328562fcf1ce8299470f5351a63d7f385c2becbf48',
+          gasUsed: 130598,
         },
         event: {
           address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
@@ -46,6 +48,7 @@ describe('Classfiers: Balancer V2', () => {
       {
         transaction: {
           hash: '0x0beab997294942e83fa3f1328562fcf1ce8299470f5351a63d7f385c2becbf48',
+          gasUsed: 130598,
         },
         event: {
           address: '0xba100000625a3754423978a60c9317c58a424e3d',
@@ -64,6 +67,7 @@ describe('Classfiers: Balancer V2', () => {
     expect(swap).toEqual({
       transaction: {
         hash: '0x0beab997294942e83fa3f1328562fcf1ce8299470f5351a63d7f385c2becbf48',
+        gasUsed: 130598,
       },
       event: {
         address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
@@ -91,6 +95,7 @@ describe('Classfiers: Balancer V2', () => {
       address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
       transactionHash:
         '0x49fb0fb07827b3e6fa425fbb7ef1f1fbe3dfedbf656519bfe6d4bf9391aea1d2',
+      gasUsed: 162269,
       logIndex: 14,
       classifier: swapClassifier,
       name: 'Swap',
@@ -107,6 +112,7 @@ describe('Classfiers: Balancer V2', () => {
       {
         transaction: {
           hash: '0x49fb0fb07827b3e6fa425fbb7ef1f1fbe3dfedbf656519bfe6d4bf9391aea1d2',
+          gasUsed: 162269,
         },
         event: {
           address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
@@ -119,6 +125,7 @@ describe('Classfiers: Balancer V2', () => {
       {
         transaction: {
           hash: '0x49fb0fb07827b3e6fa425fbb7ef1f1fbe3dfedbf656519bfe6d4bf9391aea1d2',
+          gasUsed: 162269,
         },
         event: {
           address: '0xa3bed4e1c75d00fa6f4e5e6922db7261b5e9acd2',
@@ -137,6 +144,7 @@ describe('Classfiers: Balancer V2', () => {
     expect(swap).toEqual({
       transaction: {
         hash: '0x49fb0fb07827b3e6fa425fbb7ef1f1fbe3dfedbf656519bfe6d4bf9391aea1d2',
+        gasUsed: 162269,
       },
       event: {
         address: '0xba12222222228d8ba445958a75a0704d566bf2c8',

@@ -10,6 +10,7 @@ interface Pool {
 
 interface Transaction {
   hash: string;
+  gasUsed: number;
 }
 
 interface Base {

@@ -15,6 +15,7 @@ describe('MEV: arbitrage', () => {
         amountOut: 29934139188201577438792n,
         transaction: {
           hash: '0xad39a3e5109e2c146f85f5db53a72da9af886b861d4965aacafdb165c1aec35e',
+          gasUsed: 106802,
         },
         event: {
           address: '0x9928e4046d7c6513326cCeA028cD3e7a91c7590A',
@@ -39,6 +40,7 @@ describe('MEV: arbitrage', () => {
         amountOut: 11499148166696888n,
         transaction: {
           hash: '0xd4ddb9ff1d8368dad9f3710d513021b093f303e02c7169467c0badcf6f44231b',
+          gasUsed: 159041,
         },
         event: {
           address: '0xa2107FA5B38d9bbd2C461D6EDf11B11A50F6b974',
@@ -55,6 +57,7 @@ describe('MEV: arbitrage', () => {
         amountOut: 13787057162799104322n,
         transaction: {
           hash: '0xd4ddb9ff1d8368dad9f3710d513021b093f303e02c7169467c0badcf6f44231b',
+          gasUsed: 159041,
         },
         event: {
           address: '0xCE84867c3c02B05dc570d0135103d3fB9CC19433',
@@ -79,6 +82,7 @@ describe('MEV: arbitrage', () => {
         amountOut: 12343477954337594771362n,
         transaction: {
           hash: '0x93812ac129372837e1cee00bd09e9404fe604983181a457f8aaac41a645d0af8',
+          gasUsed: 421973,
         },
         event: {
           address: '0x8Bd1661Da98EBDd3BD080F0bE4e6d9bE8cE9858c',
@@ -95,6 +99,7 @@ describe('MEV: arbitrage', () => {
         amountOut: 22594064483837836468324n,
         transaction: {
           hash: '0x93812ac129372837e1cee00bd09e9404fe604983181a457f8aaac41a645d0af8',
+          gasUsed: 421973,
         },
         event: {
           logIndex: 77,
@@ -111,6 +116,7 @@ describe('MEV: arbitrage', () => {
         amountOut: 24663570517081979225739n,
         transaction: {
           hash: '0x93812ac129372837e1cee00bd09e9404fe604983181a457f8aaac41a645d0af8',
+          gasUsed: 421973,
         },
         event: {
           logIndex: 81,
@@ -127,6 +133,7 @@ describe('MEV: arbitrage', () => {
         amountOut: 43098743320715046083583n,
         transaction: {
           hash: '0x93812ac129372837e1cee00bd09e9404fe604983181a457f8aaac41a645d0af8',
+          gasUsed: 421973,
         },
         event: {
           address: '0x611CDe65deA90918c0078ac0400A72B0D25B9bb1',
@@ -155,6 +162,7 @@ describe('MEV: arbitrage', () => {
         amountOut: 6627194964611846570392n,
         transaction: {
           hash: '0x06387618ee3752bed447f192802895921a7d45a60875927adfedc93a68bcbe05',
+          gasUsed: 277422,
         },
         event: {
           address: '0x41B536722C014a577F06A4Bb0dFa08BF0b8F5E87',
@@ -171,6 +179,7 @@ describe('MEV: arbitrage', () => {
         amountOut: 206953215405128955955015n,
         transaction: {
           hash: '0x06387618ee3752bed447f192802895921a7d45a60875927adfedc93a68bcbe05',
+          gasUsed: 277422,
         },
         event: {
           address: '0x3Ce42eF6b6617b5950C13D1c258eCFDcd30bB4De',
@@ -187,6 +196,7 @@ describe('MEV: arbitrage', () => {
         amountOut: 91552167112393573131n,
         transaction: {
           hash: '0x06387618ee3752bed447f192802895921a7d45a60875927adfedc93a68bcbe05',
+          gasUsed: 277422,
         },
         event: {
           address: '0xCC2bd4F3c00c37aDb00864D9a0a8cfEf8B6Ff56a',
@@ -203,6 +213,7 @@ describe('MEV: arbitrage', () => {
         amountOut: 778733861336038399n,
         transaction: {
           hash: '0x06387618ee3752bed447f192802895921a7d45a60875927adfedc93a68bcbe05',
+          gasUsed: 277422,
         },
         event: {
           address: '0x2519042aa735eDb4688a8376d69D4BB69431206c',
@@ -234,6 +245,7 @@ describe('MEV: arbitrage', () => {
         amountOut: 8519704802137125560027n,
         transaction: {
           hash: '0x8baefcf7a8b848bdf8be594d55cb84ed26bf6ea6191dafaf33eedf09198453c6',
+          gasUsed: 130574,
         },
         event: {
           address: '0x1eC9b867b701C1E5ce9a6567eCC4B71838497c27',
@@ -250,6 +262,7 @@ describe('MEV: arbitrage', () => {
         amountOut: 74553296475971132n,
         transaction: {
           hash: '0x8baefcf7a8b848bdf8be594d55cb84ed26bf6ea6191dafaf33eedf09198453c6',
+          gasUsed: 130574,
         },
         event: {
           address: '0x0beC54c89a7d9F15C4e7fAA8d47ADEdF374462eD',
@@ -283,6 +296,7 @@ describe('MEV: arbitrage', () => {
         amountOut: 76585579871319070341n,
         transaction: {
           hash: '0x0ec1a4297b198c61598307ed92aa254a234abe8a6ee9415713f8f35a491e9d01',
+          gasUsed: 249345,
         },
         event: {
           logIndex: 12,
@@ -299,6 +313,7 @@ describe('MEV: arbitrage', () => {
         amountOut: 3796458224n,
         transaction: {
           hash: '0x0ec1a4297b198c61598307ed92aa254a234abe8a6ee9415713f8f35a491e9d01',
+          gasUsed: 249345,
         },
         event: {
           address: '0x7b28470032DA06051f2E620531adBAeAdb285408',
@@ -315,6 +330,7 @@ describe('MEV: arbitrage', () => {
         amountOut: 1334971529092923524n,
         transaction: {
           hash: '0x0ec1a4297b198c61598307ed92aa254a234abe8a6ee9415713f8f35a491e9d01',
+          gasUsed: 249345,
         },
         event: {
           address: '0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640',
@@ -346,6 +362,7 @@ describe('MEV: arbitrage', () => {
         amountOut: 634888n,
         transaction: {
           hash: '0xe7cbe0629983e0673c4d971858d05874dbb938bf2b5f0ad4be2fa217ed78a547',
+          gasUsed: 818860,
         },
         event: {
           address: '0x231B7589426Ffe1b75405526fC32aC09D44364c4',
@@ -362,6 +379,7 @@ describe('MEV: arbitrage', () => {
         amountOut: 1275909030322046339158n,
         transaction: {
           hash: '0xe7cbe0629983e0673c4d971858d05874dbb938bf2b5f0ad4be2fa217ed78a547',
+          gasUsed: 818860,
         },
         event: {
           address: '0xEE51984781254Ad1a0eE3ae0ca26c4D53Dea6ecB',
@@ -378,6 +396,7 @@ describe('MEV: arbitrage', () => {
         amountOut: 263265751127846220157n,
         transaction: {
           hash: '0xe7cbe0629983e0673c4d971858d05874dbb938bf2b5f0ad4be2fa217ed78a547',
+          gasUsed: 818860,
         },
         event: {
           address: '0xf3933A6a82fba8a349a7124c8D8226d7c4d7b6Cb',
@@ -409,6 +428,7 @@ describe('MEV: arbitrage', () => {
         amountOut: 55589057873471949n,
         transaction: {
           hash: '0xa99c50336025abfaf8fa7df3e3617f77c4c99319d1173ce4cc86e730d3eb283a',
+          gasUsed: 424142,
         },
         event: {
           address: '0x7f46c12a7Ac8343D11652FfFDaed411D2D427eB0',
@@ -425,6 +445,7 @@ describe('MEV: arbitrage', () => {
         amountOut: 1987151334450n,
         transaction: {
           hash: '0xa99c50336025abfaf8fa7df3e3617f77c4c99319d1173ce4cc86e730d3eb283a',
+          gasUsed: 424142,
         },
         event: {
           address: '0x4Efc9E2E3E77732Ce2F9612b8F050082C01688BD',
@@ -441,6 +462,7 @@ describe('MEV: arbitrage', () => {
         amountOut: 1370607005377n,
         transaction: {
           hash: '0xa99c50336025abfaf8fa7df3e3617f77c4c99319d1173ce4cc86e730d3eb283a',
+          gasUsed: 424142,
         },
         event: {
           address: '0x9C18A2F9545112AB2FCBDd228536562406A53232',
@@ -457,6 +479,7 @@ describe('MEV: arbitrage', () => {
         amountOut: 240392410078442798n,
         transaction: {
           hash: '0xa99c50336025abfaf8fa7df3e3617f77c4c99319d1173ce4cc86e730d3eb283a',
+          gasUsed: 424142,
         },
         event: {
           address: '0x5399a36F54cA91a5DB5C148eEB2B909bBA81B82C',
@@ -473,6 +496,7 @@ describe('MEV: arbitrage', () => {
         amountOut: 4834125186588659431531n,
         transaction: {
           hash: '0xa99c50336025abfaf8fa7df3e3617f77c4c99319d1173ce4cc86e730d3eb283a',
+          gasUsed: 424142,
         },
         event: {
           address: '0xC8CA3C0f011FE42C48258ECBbf5d94c51f141C17',
@@ -489,6 +513,7 @@ describe('MEV: arbitrage', () => {
         amountOut: 1191073880145115762817n,
         transaction: {
           hash: '0xa99c50336025abfaf8fa7df3e3617f77c4c99319d1173ce4cc86e730d3eb283a',
+          gasUsed: 424142,
         },
         event: {
           address: '0x1374042F78Fb0fc78658b17c053678940C008543',
@@ -505,6 +530,7 @@ describe('MEV: arbitrage', () => {
         amountOut: 421189973521534385n,
         transaction: {
           hash: '0xa99c50336025abfaf8fa7df3e3617f77c4c99319d1173ce4cc86e730d3eb283a',
+          gasUsed: 424142,
         },
         event: {
           address: '0x60594a405d53811d3BC4766596EFD80fd545A270',
@@ -548,6 +574,7 @@ describe('MEV: arbitrage', () => {
         amountOut: 1482727342492416365490n,
         transaction: {
           hash: '0x08b606f3c528907688cdcab26a70cea2b9dd409850838662eb4b98a30ac33900',
+          gasUsed: 485584,
         },
         event: {
           address: '0x25be6ce04a504D4BCEcb6ba7f5967F7aae6Af579',
@@ -564,6 +591,7 @@ describe('MEV: arbitrage', () => {
         amountOut: 8570113295352525635508n,
         transaction: {
           hash: '0x08b606f3c528907688cdcab26a70cea2b9dd409850838662eb4b98a30ac33900',
+          gasUsed: 485584,
         },
         event: {
           address: '0x9A834b70C07C81a9fcD6F22E842BF002fBfFbe4D',
@@ -580,6 +608,7 @@ describe('MEV: arbitrage', () => {
         amountOut: 8673476107028977732054n,
         transaction: {
           hash: '0x08b606f3c528907688cdcab26a70cea2b9dd409850838662eb4b98a30ac33900',
+          gasUsed: 485584,
         },
         event: {
           address: '0x8fE536c7dC019455cce34746755C64bBE2Aa163b',
@@ -596,6 +625,7 @@ describe('MEV: arbitrage', () => {
         amountOut: 8667791350n,
         transaction: {
           hash: '0x08b606f3c528907688cdcab26a70cea2b9dd409850838662eb4b98a30ac33900',
+          gasUsed: 485584,
         },
         event: {
           address: '0xc63B0708E2F7e69CB8A1df0e1389A98C35A76D52',

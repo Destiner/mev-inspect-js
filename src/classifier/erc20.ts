@@ -7,7 +7,7 @@ import { Classifier, Transfer } from './base.js';
 import { ClassifiedEvent } from './index.js';
 
 function parse(event: ClassifiedEvent): Transfer {
-  const { values, transactionHash: hash, logIndex, address } = event;
+  const { values, transactionHash: hash, gasUsed, logIndex, address } = event;
 
   const from = values.from as string;
   const to = values.to as string;
@@ -19,6 +19,7 @@ function parse(event: ClassifiedEvent): Transfer {
     value,
     transaction: {
       hash,
+      gasUsed,
     },
     event: {
       logIndex,

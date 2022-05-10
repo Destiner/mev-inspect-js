@@ -23,7 +23,7 @@ function parse(
   event: ClassifiedEvent,
   transfers: Transfer[],
 ): Swap | null {
-  const { values, transactionHash: hash, logIndex, address } = event;
+  const { values, transactionHash: hash, gasUsed, logIndex, address } = event;
   const { address: poolAddress } = pool;
 
   const assetIn = values.tokenIn as string;
@@ -67,6 +67,7 @@ function parse(
     amountOut,
     transaction: {
       hash,
+      gasUsed,
     },
     event: {
       logIndex,

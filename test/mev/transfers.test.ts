@@ -10,6 +10,7 @@ describe('MEV: transfers', () => {
   test('parses a transfer from a log', () => {
     const hash =
       '0xfbf98ea48bb2a1210ac1974b432c4604a9978e766c133f9543da3df9421b7e81';
+    const gasUsed = 51818;
     const address = '0x6b175474e89094c44da98b954eedeac495271d0f';
     const logIndex = 49;
     const from = '0xbe6356e4d92ecbd321c83ccdd79b3fd6f2d4f0e7';
@@ -20,6 +21,7 @@ describe('MEV: transfers', () => {
       {
         address,
         transactionHash: hash,
+        gasUsed,
         logIndex,
         classifier: erc20Classifiers[0],
         name: 'Transfer',
@@ -39,6 +41,7 @@ describe('MEV: transfers', () => {
         value: value.toBigInt(),
         transaction: {
           hash,
+          gasUsed,
         },
         event: {
           logIndex,
@@ -59,6 +62,7 @@ describe('MEV: transfers', () => {
       '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
       '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2',
     ];
+    const gasUsedList = [46458, 65625, 54338];
     const logIndices = [415, 346, 45];
     const fromList = [
       '0x0d46f66d13c630d3f554e74c3eff711452d2c180',
@@ -82,6 +86,7 @@ describe('MEV: transfers', () => {
       return {
         address: addresses[index],
         transactionHash: hash,
+        gasUsed: gasUsedList[index],
         logIndex: logIndices[index],
         classifier: erc20Classifiers[0],
         name: 'Transfer',
@@ -101,6 +106,7 @@ describe('MEV: transfers', () => {
         value: valueList[index].toBigInt(),
         transaction: {
           hash,
+          gasUsed: gasUsedList[index],
         },
         event: {
           logIndex: logIndices[index],
@@ -116,6 +122,7 @@ describe('MEV: transfers', () => {
       address: '0xa478c2975ab1ea89e8196811f51a7b7ade33eb11',
       transactionHash:
         '0xa04871a6008a2a97b73abbcfc1297a4a921dfdc17583b4bb66097d4b4b7c8a81',
+      gasUsed: 98948,
       logIndex: 141,
       classifier: uniswapV2Classifiers[0],
       name: 'Swap',

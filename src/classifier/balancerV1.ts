@@ -15,7 +15,7 @@ async function fetchPool(_provider: Provider, address: string): Promise<Pool> {
 }
 
 function parse(pool: Pool, event: ClassifiedEvent): Swap {
-  const { values, transactionHash: hash, logIndex, address } = event;
+  const { values, transactionHash: hash, gasUsed, logIndex, address } = event;
   const { address: poolAddress } = pool;
 
   const sender = values.caller as string;
@@ -34,6 +34,7 @@ function parse(pool: Pool, event: ClassifiedEvent): Swap {
     amountOut,
     transaction: {
       hash,
+      gasUsed,
     },
     event: {
       logIndex,
