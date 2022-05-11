@@ -3,8 +3,15 @@ import { Contract } from '@ethersproject/contracts';
 import { Provider } from '@ethersproject/providers';
 
 import pairAbi from '../abi/uniswapV2/pair.js';
+import { equalWithTolerance } from '../utils.js';
 
-import { Classifier, Pool, Swap } from './base.js';
+import {
+  Classifier,
+  Pool,
+  Swap,
+  Transfer,
+  getLatestPoolTransfer,
+} from './base.js';
 
 import { ClassifiedEvent } from './index.js';
 
@@ -16,11 +23,20 @@ async function fetchPool(provider: Provider, address: string): Promise<Pool> {
   return { address: address.toLowerCase(), assets };
 }
 
-function parse(pool: Pool, event: ClassifiedEvent): Swap {
+function parse(
+  pool: Pool,
+  event: ClassifiedEvent,
+  transfers: Transfer[],
+): Swap | null {
   const { values, transactionHash: hash, gasUsed, logIndex, address } = event;
   const { address: poolAddress, assets } = pool;
 
-  const from = (values.sender as string).toLowerCase();
+  const poolTransfer = getLatestPoolTransfer(poolAddress, logIndex, transfers);
+  if (!poolTransfer) {
+    return null;
+  }
+
+  const from = poolTransfer.from;
   const to = (values.to as string).toLowerCase();
   const amount0In = (values.amount0In as BigNumber).toBigInt();
   const amount1In = (values.amount1In as BigNumber).toBigInt();
@@ -32,6 +48,13 @@ function parse(pool: Pool, event: ClassifiedEvent): Swap {
 
   const assetIn = amount0In === 0n ? assets[1] : assets[0];
   const amountIn = amount0In === 0n ? amount1In : amount0In;
+
+  if (poolTransfer.event.address !== assetIn) {
+    return null;
+  }
+  if (!equalWithTolerance(poolTransfer.value, amountIn, 0.001)) {
+    return null;
+  }
 
   return {
     contract: poolAddress,
