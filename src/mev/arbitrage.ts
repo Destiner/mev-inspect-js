@@ -1,5 +1,5 @@
 import { Swap } from '../classifier/index.js';
-import { equalWithPercent } from '../utils.js';
+import { equalWithTolerance } from '../utils.js';
 
 interface Arbitrage {
   swaps: Swap[];
@@ -169,7 +169,7 @@ function swapOutsMatchSwapIns(swapOut: Swap, swapIn: Swap): boolean {
     (swapOut.contract == swapIn.from ||
       swapOut.to == swapIn.contract ||
       swapOut.to == swapIn.from) &&
-    equalWithPercent(
+    equalWithTolerance(
       swapOut.amountOut,
       swapIn.amountIn,
       MAX_TOKEN_AMOUNT_PERCENT_DIFFERENCE,

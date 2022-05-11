@@ -12,7 +12,7 @@ function getTransaction(mev: BlockMev): Transaction | null {
   return null;
 }
 
-function equalWithPercent(
+function equalWithTolerance(
   firstValue: bigint,
   secondValue: bigint,
   threshold: number,
@@ -45,4 +45,4 @@ function equalWithPercent(
   return isWithinLowerBound && isWithinHigherBound;
 }
 
-export { equalWithPercent, getTransaction };
+export { equalWithTolerance, getTransaction };
