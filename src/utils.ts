@@ -39,9 +39,11 @@ function equalWithTolerance(
   // a * (1 + threshold) >= b >= a * (1 - threshold)
   const divisionMultiplier = 1_000_000_000n;
   const thresholdMultiplier = Number(divisionMultiplier);
-  const rate = divisionMultiplier * secondValue / firstValue;
-  const isWithinLowerBound = threshold * thresholdMultiplier >= rate - divisionMultiplier;
-  const isWithinHigherBound = threshold * thresholdMultiplier >= divisionMultiplier - rate;
+  const rate = (divisionMultiplier * secondValue) / firstValue;
+  const isWithinLowerBound =
+    threshold * thresholdMultiplier >= rate - divisionMultiplier;
+  const isWithinHigherBound =
+    threshold * thresholdMultiplier >= divisionMultiplier - rate;
   return isWithinLowerBound && isWithinHigherBound;
 }
 

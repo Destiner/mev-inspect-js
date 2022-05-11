@@ -595,7 +595,7 @@ describe('MEV: arbitrage', () => {
     ]);
   });
 
-test('finds arbitrage of swaps with different amounts', () => {
+  test('finds arbitrage of swaps with different amounts', () => {
     const swaps = [
       {
         contract: '0xc8ca3c0f011fe42c48258ecbbf5d94c51f141c17',
