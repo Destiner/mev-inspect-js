@@ -576,6 +576,27 @@ describe('MEV: arbitrage', () => {
           logIndex: 35,
         },
       },
+    ];
+    const arbitrages = getArbitrages(swaps);
+
+    expect(arbitrages).toEqual([
+      {
+        swaps: [swaps[1], swaps[0]],
+        startAmount: 50662506837650511n,
+        endAmount: 55589057873471949n,
+        profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      },
+      {
+        swaps: [swaps[2], swaps[3]],
+        startAmount: 236177765391862272n,
+        endAmount: 240392410078442798n,
+        profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      },
+    ]);
+  });
+
+test('finds arbitrage of swaps with different amounts', () => {
+    const swaps = [
       {
         contract: '0xc8ca3c0f011fe42c48258ecbbf5d94c51f141c17',
         from: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
@@ -632,19 +653,7 @@ describe('MEV: arbitrage', () => {
 
     expect(arbitrages).toEqual([
       {
-        swaps: [swaps[1], swaps[0]],
-        startAmount: 50662506837650511n,
-        endAmount: 55589057873471949n,
-        profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      },
-      {
-        swaps: [swaps[2], swaps[3]],
-        startAmount: 236177765391862272n,
-        endAmount: 240392410078442798n,
-        profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      },
-      {
-        swaps: [swaps[4], swaps[5], swaps[6]],
+        swaps,
         startAmount: 414065221269164835n,
         endAmount: 421189973521534385n,
         profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
