@@ -146,8 +146,53 @@ describe('MEV: arbitrage', () => {
     expect(arbitrages).toEqual([]);
   });
 
-  test.todo('finds 2-swap internal arbitrage', () => {
-    // tx 0xc158502a952c98c8fe282b5e2bbe56e46fd0a4221c527e7d045f25ccca6a77b2
+  test('finds 2-swap internal arbitrage', () => {
+    const swaps = [
+      {
+        contract: '0x4585fe77225b41b697c938b018e2ac67ac5a20c0',
+        from: '0x0000000000005117dd3a72e64a705198753fdd54',
+        to: '0x0000000000005117dd3a72e64a705198753fdd54',
+        assetIn: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+        amountIn: 1750639111n,
+        assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        amountOut: 239024634916096132545n,
+        transaction: {
+          hash: '0xc158502a952c98c8fe282b5e2bbe56e46fd0a4221c527e7d045f25ccca6a77b2',
+          gasUsed: 230198,
+        },
+        event: {
+          address: '0x4585fe77225b41b697c938b018e2ac67ac5a20c0',
+          logIndex: 33,
+        },
+      },
+      {
+        contract: '0xcbcdf9626bc03e24f779434178a73a0b4bad62ed',
+        from: '0x0000000000005117dd3a72e64a705198753fdd54',
+        to: '0x0000000000005117dd3a72e64a705198753fdd54',
+        assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        amountIn: 238841017533640100000n,
+        assetOut: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+        amountOut: 1750639111n,
+        transaction: {
+          hash: '0xc158502a952c98c8fe282b5e2bbe56e46fd0a4221c527e7d045f25ccca6a77b2',
+          gasUsed: 230198,
+        },
+        event: {
+          address: '0xcbcdf9626bc03e24f779434178a73a0b4bad62ed',
+          logIndex: 35,
+        },
+      },
+    ];
+    const arbitrages = getArbitrages(swaps);
+
+    expect(arbitrages).toEqual([
+      {
+        swaps: [swaps[1], swaps[0]],
+        startAmount: 238841017533640100000n,
+        endAmount: 239024634916096132545n,
+        profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      },
+    ]);
   });
 
   test('finds multistep internal arbitrage', () => {
@@ -234,7 +279,7 @@ describe('MEV: arbitrage', () => {
   });
 
   test('finds 2-swap cross-protocol arbitrage', () => {
-    const swaps = [
+    const swapsA = [
       {
         contract: '0x1ec9b867b701c1e5ce9a6567ecc4b71838497c27',
         from: '0xab319a82803ea5f8f335dc373ce248008d4f2671',
@@ -270,18 +315,63 @@ describe('MEV: arbitrage', () => {
         },
       },
     ];
-    const arbitrages = getArbitrages(swaps);
+    const arbitragesA = getArbitrages(swapsA);
 
-    expect(arbitrages).toEqual([
+    expect(arbitragesA).toEqual([
       {
-        swaps,
+        swaps: swapsA,
         startAmount: 69743953265453911n,
         endAmount: 74553296475971132n,
         profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       },
     ]);
 
-    // tx 0xd53808dc31c908b7acad610d5efa726afe67e7c9739083be9c1b4cb6d2cdaeac
+    const swapsB = [
+      {
+        contract: '0x69b81152c5a8d35a67b32a4d3772795d96cae4da',
+        from: '0x5aa3393e361c2eb342408559309b3e873cd876d6',
+        to: '0x58418d6c83efab01ed78b0ac42e55af01ee77dba',
+        assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        amountIn: 5137825921816247575n,
+        assetOut: '0x64aa3364f17a4d01c6f1751fd97c2bd3d7e7f1d5',
+        amountOut: 722121104748n,
+        transaction: {
+          hash: '0xd53808dc31c908b7acad610d5efa726afe67e7c9739083be9c1b4cb6d2cdaeac',
+          gasUsed: 152180,
+        },
+        event: {
+          address: '0x69b81152c5a8d35a67b32a4d3772795d96cae4da',
+          logIndex: 10,
+        },
+      },
+      {
+        contract: '0x88051b0eea095007d3bef21ab287be961f3d8598',
+        from: '0x58418d6c83efab01ed78b0ac42e55af01ee77dba',
+        to: '0x5aa3393e361c2eb342408559309b3e873cd876d6',
+        assetIn: '0x64aa3364f17a4d01c6f1751fd97c2bd3d7e7f1d5',
+        amountIn: 722121104748n,
+        assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        amountOut: 5187612076728941787n,
+        transaction: {
+          hash: '0xd53808dc31c908b7acad610d5efa726afe67e7c9739083be9c1b4cb6d2cdaeac',
+          gasUsed: 152180,
+        },
+        event: {
+          address: '0x88051b0eea095007d3bef21ab287be961f3d8598',
+          logIndex: 13,
+        },
+      },
+    ];
+    const arbitragesB = getArbitrages(swapsB);
+
+    expect(arbitragesB).toEqual([
+      {
+        swaps: swapsB,
+        startAmount: 5137825921816247575n,
+        endAmount: 5187612076728941787n,
+        profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      },
+    ]);
   });
 
   test('finds 3-swap cross-protocol arbitrage', () => {
