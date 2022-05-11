@@ -19,7 +19,7 @@ type TxMev = Arbitrage | Liquidation;
 
 type BlockMev = TxMev | Sandwich;
 
-const MAX_TOKEN_AMOUNT_PERCENT_DIFFERENCE = 1;
+const MAX_TOKEN_AMOUNT_PERCENT_DIFFERENCE = 0.01;
 
 function getArbitrages(swaps: Swap[]): Arbitrage[] {
   const arbitrages: Arbitrage[] = [];

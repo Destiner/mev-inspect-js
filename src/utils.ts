@@ -15,11 +15,34 @@ function getTransaction(mev: BlockMev): Transaction | null {
 function equalWithPercent(
   firstValue: bigint,
   secondValue: bigint,
-  thresholdPercent: number,
+  threshold: number,
 ): boolean {
-  const diff =
-    (100n * 2n * (firstValue - secondValue)) / (firstValue + secondValue);
-  return diff >= 0 ? diff < thresholdPercent : diff > -thresholdPercent;
+  // Special case: either of values is zero
+  if (firstValue === 0n || secondValue === 0n) {
+    if (firstValue === 0n && secondValue === 0n) {
+      return true;
+    }
+    if (firstValue === 0n) {
+      return false;
+    }
+    return threshold >= 1;
+  }
+  // Should be of the same sign
+  if (firstValue > 0 !== secondValue > 0) {
+    return false;
+  }
+  // Compare in absolute values
+  if (firstValue < 0n) {
+    firstValue = -firstValue;
+    secondValue = -secondValue;
+  }
+  // a * (1 + threshold) >= b >= a * (1 - threshold)
+  const divisionMultiplier = 1_000_000_000n;
+  const thresholdMultiplier = Number(divisionMultiplier);
+  const rate = divisionMultiplier * secondValue / firstValue;
+  const isWithinLowerBound = threshold * thresholdMultiplier >= rate - divisionMultiplier;
+  const isWithinHigherBound = threshold * thresholdMultiplier >= divisionMultiplier - rate;
+  return isWithinLowerBound && isWithinHigherBound;
 }
 
 export { equalWithPercent, getTransaction };
