@@ -84,8 +84,11 @@ function parse(
 }
 
 const CLASSIFIER: Classifier = {
+  type: 'swap',
+  name: 'Swap',
   protocol: 'UniswapV2',
-  event: { name: 'Swap', type: 'swap', parse, fetchPool },
   abi: pairAbi,
+  parse,
+  fetchPool,
 };
 export { fetchPool, CLASSIFIER };

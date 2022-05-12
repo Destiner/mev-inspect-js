@@ -103,9 +103,12 @@ function getSwapTransfers(
 }
 
 const CLASSIFIER: Classifier = {
+  type: 'swap',
+  name: 'Swap',
   protocol: 'BalancerV2',
-  event: { name: 'Swap', type: 'swap', parse, fetchPool },
   abi: vaultAbi,
+  parse,
+  fetchPool,
 };
 
 export { fetchPool, CLASSIFIER };

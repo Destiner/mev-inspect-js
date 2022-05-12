@@ -30,7 +30,7 @@ function classifyLog(log: Log): ClassifiedEvent | undefined {
     const coder = new Coder.default(classifier.abi);
     try {
       const event = coder.decodeEvent(log.topics, log.data);
-      if (classifier.event.name !== event.name) {
+      if (classifier.name !== event.name) {
         continue;
       }
       return {

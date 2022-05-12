@@ -27,7 +27,9 @@ function parse(event: ClassifiedEvent): Transfer {
 }
 
 const CLASSIFIER: Classifier = {
-  event: { name: 'Transfer', type: 'transfer', parse },
+  type: 'transfer',
+  name: 'Transfer',
   abi: erc20Abi,
+  parse,
 };
 export default CLASSIFIER;

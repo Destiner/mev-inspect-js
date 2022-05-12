@@ -1,6 +1,9 @@
 import { Swap, Pool, Transfer, ClassifiedEvent, directory } from '../classifier/index.js';
 
 function getPoolAddress(log: ClassifiedEvent): string {
+  if (log.classifier.type !== 'swap') {
+    return '';
+  }
   if (log.classifier.protocol === 'BalancerV2') {
     const poolId = log.values.poolId as string;
     return poolId.substring(0, 42);
@@ -16,7 +19,7 @@ function getSwaps(
 ): Swap[] {
   return logs
     .map((log) => {
-      if (log.classifier.event.type !== 'swap') {
+      if (log.classifier.type !== 'swap') {
         return null;
       }
       const poolAddress = getPoolAddress(log);
@@ -32,7 +35,7 @@ function getSwaps(
       if (!allowedFactories.includes(pool.factory)) {
         return null;
       }
-      return log.classifier.event.parse(pool, log, transfers);
+      return log.classifier.parse(pool, log, transfers);
     })
     .filter((swap: Swap | null): swap is Swap => !!swap);
 }

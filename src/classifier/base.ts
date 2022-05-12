@@ -46,14 +46,18 @@ interface Swap extends Base {
 
 type Protocol = 'BalancerV1' | 'BalancerV2' | 'UniswapV2' | 'UniswapV3';
 
-interface TransferClassifier {
+interface BaseClassifier {
   name: string;
+  abi: JsonFragment[];
+}
+
+interface TransferClassifier extends BaseClassifier {
   type: 'transfer';
   parse: (event: ClassifiedEvent) => Transfer;
 }
 
-interface SwapClassifier {
-  name: string;
+interface SwapClassifier extends BaseClassifier {
+  protocol: Protocol;
   type: 'swap';
   parse: (
     pool: Pool,
@@ -63,11 +67,7 @@ interface SwapClassifier {
   fetchPool: (provider: Provider, id: string) => Promise<Pool | null>;
 }
 
-interface Classifier {
-  protocol?: Protocol;
-  event: TransferClassifier | SwapClassifier;
-  abi: JsonFragment[];
-}
+type Classifier = TransferClassifier | SwapClassifier;
 
 function getLatestPoolTransfer(
   pool: string,

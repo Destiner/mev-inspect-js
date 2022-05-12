@@ -8,11 +8,11 @@ async function fetchPools(
 ): Promise<Pool[]> {
   const pools: Pool[] = [];
   for (const log of logs) {
-    if (log.classifier.event.type !== 'swap') {
+    if (log.classifier.type !== 'swap') {
       continue;
     }
     const id = getPoolId(log);
-    const pool = await log.classifier.event.fetchPool(provider, id);
+    const pool = await log.classifier.fetchPool(provider, id);
     if (!pool) {
       continue;
     }
@@ -22,6 +22,9 @@ async function fetchPools(
 }
 
 function getPoolId(log: ClassifiedEvent): string {
+  if (log.classifier.type !== 'swap') {
+    return '';
+  }
   if (log.classifier.protocol === 'BalancerV2') {
     return log.values.poolId as string;
   }

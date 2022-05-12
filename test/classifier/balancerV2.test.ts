@@ -59,10 +59,10 @@ describe('Classfiers: Balancer V2', () => {
       },
     ];
 
-    if (swapClassifier.event.type !== 'swap') {
+    if (swapClassifier.type !== 'swap') {
       expect.fail();
     }
-    const swap = swapClassifier.event.parse(pool, event, transfers);
+    const swap = swapClassifier.parse(pool, event, transfers);
     expect(swap).toEqual({
       transaction: {
         hash: '0x0beab997294942e83fa3f1328562fcf1ce8299470f5351a63d7f385c2becbf48',
@@ -143,10 +143,10 @@ describe('Classfiers: Balancer V2', () => {
       },
     ];
 
-    if (swapClassifier.event.type !== 'swap') {
+    if (swapClassifier.type !== 'swap') {
       expect.fail();
     }
-    const swap = swapClassifier.event.parse(pool, event, transfers);
+    const swap = swapClassifier.parse(pool, event, transfers);
     expect(swap).toEqual({
       transaction: {
         hash: '0x49fb0fb07827b3e6fa425fbb7ef1f1fbe3dfedbf656519bfe6d4bf9391aea1d2',

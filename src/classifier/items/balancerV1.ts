@@ -59,9 +59,12 @@ function parse(pool: Pool, event: ClassifiedEvent): Swap | null {
 }
 
 const CLASSIFIER: Classifier = {
+  type: 'swap',
+  name: 'LOG_SWAP',
   protocol: 'BalancerV1',
-  event: { name: 'LOG_SWAP', type: 'swap', parse, fetchPool },
   abi: poolAbi,
+  parse,
+  fetchPool,
 };
 
 export { fetchPool, CLASSIFIER };
