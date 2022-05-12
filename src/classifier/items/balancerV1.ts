@@ -2,8 +2,8 @@ import { BigNumber } from '@ethersproject/bignumber';
 import { Contract } from '@ethersproject/contracts';
 import { Provider } from '@ethersproject/providers';
 
-import factoryAbi from '../../abi/balancerV1/factory.js';
-import poolAbi from '../../abi/balancerV1/pool.js';
+import factoryAbi from '../../abi/balancerV1Factory.js';
+import poolAbi from '../../abi/balancerV1Pool.js';
 import { Classifier, Pool, Swap } from '../base.js';
 import { ClassifiedEvent } from '../index.js';
 

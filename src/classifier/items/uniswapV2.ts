@@ -2,7 +2,7 @@ import { BigNumber } from '@ethersproject/bignumber';
 import { Contract } from '@ethersproject/contracts';
 import { Provider } from '@ethersproject/providers';
 
-import pairAbi from '../../abi/uniswapV2/pair.js';
+import pairAbi from '../../abi/uniswapV2Pair.js';
 import { equalWithTolerance } from '../../utils.js';
 import {
   Classifier,
