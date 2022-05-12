@@ -13,6 +13,7 @@ describe('Classfiers: Balancer V2', () => {
         '0xba100000625a3754423978a60c9317c58a424e3D',
         '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       ],
+      factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
     };
     const event = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
@@ -73,7 +74,13 @@ describe('Classfiers: Balancer V2', () => {
         address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
         logIndex: 10,
       },
-      contract: '0x5c6ee304399dbdb9c8ef030ab642b10820db8f56',
+      contract: {
+        address: '0x5c6ee304399dbdb9c8ef030ab642b10820db8f56',
+        protocol: {
+          abi: 'BalancerV2',
+          factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        },
+      },
       from: '0x0000006daea1723962647b7e189d311d757fb793',
       to: '0x0000006daea1723962647b7e189d311d757fb793',
       assetOut: '0xba100000625a3754423978a60c9317c58a424e3d',
@@ -90,6 +97,7 @@ describe('Classfiers: Balancer V2', () => {
         '0xa3bed4e1c75d00fa6f4e5e6922db7261b5e9acd2',
         '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       ],
+      factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
     };
     const event = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
@@ -150,7 +158,13 @@ describe('Classfiers: Balancer V2', () => {
         address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
         logIndex: 14,
       },
-      contract: '0xe2469f47ab58cf9cf59f9822e3c5de4950a41c49',
+      contract: {
+        address: '0xe2469f47ab58cf9cf59f9822e3c5de4950a41c49',
+        protocol: {
+          abi: 'BalancerV2',
+          factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        },
+      },
       from: '0x45716d9eddbc332df1d42b9f540fbebed671b20f',
       to: '0x0d0d65e7a7db277d3e0f5e1676325e75f3340455',
       assetOut: '0xa3bed4e1c75d00fa6f4e5e6922db7261b5e9acd2',

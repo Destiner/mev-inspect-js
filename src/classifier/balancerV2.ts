@@ -2,6 +2,7 @@ import { BigNumber } from '@ethersproject/bignumber';
 import { Contract } from '@ethersproject/contracts';
 import { Provider } from '@ethersproject/providers';
 
+import poolAbi from '../abi/balancerV2/pool.js';
 import vaultAbi from '../abi/balancerV2/vault.js';
 
 import { Classifier, Pool, Swap, Transfer } from './base.js';
@@ -12,11 +13,13 @@ const VAULT = '0xba12222222228d8ba445958a75a0704d566bf2c8';
 
 async function fetchPool(provider: Provider, id: string): Promise<Pool> {
   const address = id.substring(0, 42);
+  const poolContract = new Contract(address, poolAbi, provider);
+  const vault = (await poolContract.getVault()) as string;
   const vaultContract = new Contract(VAULT, vaultAbi, provider);
   const poolTokens = await vaultContract.getPoolTokens(id);
   const tokens = poolTokens.tokens as string[];
   const assets = tokens.map((token) => token.toLowerCase());
-  return { address, assets };
+  return { address, assets, factory: vault.toLowerCase() };
 }
 
 function parse(
@@ -25,7 +28,6 @@ function parse(
   transfers: Transfer[],
 ): Swap | null {
   const { values, transactionHash: hash, gasUsed, logIndex, address } = event;
-  const { address: poolAddress } = pool;
 
   const assetIn = (values.tokenIn as string).toLowerCase();
   const assetOut = (values.tokenOut as string).toLowerCase();
@@ -59,7 +61,13 @@ function parse(
   const to = transferOut.to;
 
   return {
-    contract: poolAddress,
+    contract: {
+      address: pool.address,
+      protocol: {
+        abi: 'BalancerV2',
+        factory: pool.factory,
+      },
+    },
     from,
     to,
     assetIn,

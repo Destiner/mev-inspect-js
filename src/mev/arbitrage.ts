@@ -166,8 +166,8 @@ function getStartEndSwaps(swaps: Swap[]): [Swap, Swap[]][] {
 function swapOutsMatchSwapIns(swapOut: Swap, swapIn: Swap): boolean {
   return (
     swapOut.assetOut === swapIn.assetIn &&
-    (swapOut.contract == swapIn.from ||
-      swapOut.to == swapIn.contract ||
+    (swapOut.contract.address == swapIn.from ||
+      swapOut.to == swapIn.contract.address ||
       swapOut.to == swapIn.from) &&
     equalWithTolerance(
       swapOut.amountOut,

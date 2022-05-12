@@ -13,6 +13,9 @@ async function fetchPools(
     }
     const id = getPoolId(log);
     const pool = await log.classifier.event.fetchPool(provider, id);
+    if (!pool) {
+      continue;
+    }
     pools.push(pool);
   }
   return pools;

@@ -17,10 +17,14 @@ import { ClassifiedEvent } from './index.js';
 
 async function fetchPool(provider: Provider, address: string): Promise<Pool> {
   const poolContract = new Contract(address, poolAbi, provider);
+  const factory = (await poolContract.factory()) as string;
   const asset0 = (await poolContract.token0()) as string;
   const asset1 = (await poolContract.token1()) as string;
-  const assets = [asset0.toLowerCase(), asset1.toLowerCase()];
-  return { address: address.toLowerCase(), assets };
+  return {
+    address: address.toLowerCase(),
+    assets: [asset0.toLowerCase(), asset1.toLowerCase()],
+    factory: factory.toLowerCase(),
+  };
 }
 
 function parse(
@@ -55,7 +59,13 @@ function parse(
   }
 
   return {
-    contract: poolAddress,
+    contract: {
+      address: pool.address,
+      protocol: {
+        abi: 'UniswapV3',
+        factory: pool.factory,
+      },
+    },
     from,
     to,
     assetIn,

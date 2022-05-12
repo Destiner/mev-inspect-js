@@ -5,6 +5,7 @@ import { ClassifiedEvent } from './index.js';
 
 interface Pool {
   address: string;
+  factory: string;
   assets: string[];
 }
 
@@ -28,7 +29,13 @@ interface Transfer extends Base {
 }
 
 interface Swap extends Base {
-  contract: string;
+  contract: {
+    address: string;
+    protocol: {
+      abi: Protocol;
+      factory: string;
+    };
+  };
   from: string;
   to: string;
   assetIn: string;
@@ -53,7 +60,7 @@ interface SwapClassifier {
     event: ClassifiedEvent,
     transfers: Transfer[],
   ) => Swap | null;
-  fetchPool: (provider: Provider, id: string) => Promise<Pool>;
+  fetchPool: (provider: Provider, id: string) => Promise<Pool | null>;
 }
 
 interface Classifier {
@@ -77,4 +84,4 @@ function getLatestPoolTransfer(
   return previousTransfers[0];
 }
 
-export { Classifier, Transaction, Pool, Transfer, Swap, getLatestPoolTransfer };
+export { Classifier, Transaction, Pool, Protocol, Transfer, Swap, getLatestPoolTransfer };

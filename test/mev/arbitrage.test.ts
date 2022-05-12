@@ -1,12 +1,19 @@
 import { describe, test, expect } from 'vitest';
 
+import { Swap } from '../../src/index.js';
 import { getArbitrages } from '../../src/mev/arbitrage.js';
 
 describe('MEV: arbitrage', () => {
   test('skips a simple swap', () => {
-    const swaps = [
+    const swaps: Swap[] = [
       {
-        contract: '0x9928e4046d7c6513326ccea028cd3e7a91c7590a',
+        contract: {
+          address: '0x9928e4046d7c6513326ccea028cd3e7a91c7590a',
+          protocol: {
+            abi: 'UniswapV2',
+            factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+          },
+        },
         from: '0x7a250d5630b4cf539739df2c5dacb4c659f2488d',
         to: '0xef3375b491cff653eaf7c9955a5466f7ea06f37b',
         assetIn: '0xc7283b66eb1eb5fb86327f08e1b5816b0720212b',
@@ -29,9 +36,15 @@ describe('MEV: arbitrage', () => {
   });
 
   test('skips a multipath swap', () => {
-    const swaps = [
+    const swaps: Swap[] = [
       {
-        contract: '0xa2107fa5b38d9bbd2c461d6edf11b11a50f6b974',
+        contract: {
+          address: '0xa2107fa5b38d9bbd2c461d6edf11b11a50f6b974',
+          protocol: {
+            abi: 'UniswapV2',
+            factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+          },
+        },
         from: '0x11111112542d85b3ef69ae05771c2dccff4faa26',
         to: '0xce84867c3c02b05dc570d0135103d3fb9cc19433',
         assetIn: '0x514910771af9ca656af840dff83e8264ecf986ca',
@@ -48,7 +61,13 @@ describe('MEV: arbitrage', () => {
         },
       },
       {
-        contract: '0xce84867c3c02b05dc570d0135103d3fb9cc19433',
+        contract: {
+          address: '0xce84867c3c02b05dc570d0135103d3fb9cc19433',
+          protocol: {
+            abi: 'UniswapV2',
+            factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+          },
+        },
         from: '0x11111112542d85b3ef69ae05771c2dccff4faa26',
         to: '0x416d1a4f718a8c3dda7fc3645435580e743d9249',
         assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
@@ -71,9 +90,15 @@ describe('MEV: arbitrage', () => {
   });
 
   test('skips a cross-protocol split swap', () => {
-    const swaps = [
+    const swaps: Swap[] = [
       {
-        contract: '0x8bd1661da98ebdd3bd080f0be4e6d9be8ce9858c',
+        contract: {
+          address: '0x8bd1661da98ebdd3bd080f0be4e6d9be8ce9858c',
+          protocol: {
+            abi: 'UniswapV2',
+            factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+          },
+        },
         from: '0x220bda5c8994804ac96ebe4df184d25e5c2196d4',
         to: '0x220bda5c8994804ac96ebe4df184d25e5c2196d4',
         assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
@@ -90,7 +115,13 @@ describe('MEV: arbitrage', () => {
         },
       },
       {
-        contract: '0x49ff149d649769033d43783e7456f626862cd160',
+        contract: {
+          address: '0x49ff149d649769033d43783e7456f626862cd160',
+          protocol: {
+            abi: 'BalancerV1',
+            factory: '0x9424b1412450d0f8fc2255faf6046b98213b76bd',
+          },
+        },
         from: '0x220bda5c8994804ac96ebe4df184d25e5c2196d4',
         to: '0x220bda5c8994804ac96ebe4df184d25e5c2196d4',
         assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
@@ -107,7 +138,13 @@ describe('MEV: arbitrage', () => {
         },
       },
       {
-        contract: '0xec60a5fef79a92c741cb74fdd6bfc340c0279b01',
+        contract: {
+          address: '0xec60a5fef79a92c741cb74fdd6bfc340c0279b01',
+          protocol: {
+            abi: 'BalancerV2',
+            factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+          },
+        },
         from: '0x220bda5c8994804ac96ebe4df184d25e5c2196d4',
         to: '0x220bda5c8994804ac96ebe4df184d25e5c2196d4',
         assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
@@ -124,7 +161,13 @@ describe('MEV: arbitrage', () => {
         },
       },
       {
-        contract: '0x611cde65dea90918c0078ac0400a72b0d25b9bb1',
+        contract: {
+          address: '0x611cde65dea90918c0078ac0400a72b0d25b9bb1',
+          protocol: {
+            abi: 'UniswapV2',
+            factory: '0xc0aee478e3658e2610c5f7a4a2e1777ce9e4f2ac',
+          },
+        },
         from: '0x220bda5c8994804ac96ebe4df184d25e5c2196d4',
         to: '0x220bda5c8994804ac96ebe4df184d25e5c2196d4',
         assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
@@ -147,9 +190,15 @@ describe('MEV: arbitrage', () => {
   });
 
   test('finds 2-swap internal arbitrage', () => {
-    const swaps = [
+    const swaps: Swap[] = [
       {
-        contract: '0x4585fe77225b41b697c938b018e2ac67ac5a20c0',
+        contract: {
+          address: '0x4585fe77225b41b697c938b018e2ac67ac5a20c0',
+          protocol: {
+            abi: 'UniswapV3',
+            factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+          },
+        },
         from: '0x0000000000005117dd3a72e64a705198753fdd54',
         to: '0x0000000000005117dd3a72e64a705198753fdd54',
         assetIn: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
@@ -166,7 +215,13 @@ describe('MEV: arbitrage', () => {
         },
       },
       {
-        contract: '0xcbcdf9626bc03e24f779434178a73a0b4bad62ed',
+        contract: {
+          address: '0xcbcdf9626bc03e24f779434178a73a0b4bad62ed',
+          protocol: {
+            abi: 'UniswapV3',
+            factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+          },
+        },
         from: '0x0000000000005117dd3a72e64a705198753fdd54',
         to: '0x0000000000005117dd3a72e64a705198753fdd54',
         assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
@@ -196,9 +251,15 @@ describe('MEV: arbitrage', () => {
   });
 
   test('finds multistep internal arbitrage', () => {
-    const swaps = [
+    const swaps: Swap[] = [
       {
-        contract: '0x41b536722c014a577f06a4bb0dfa08bf0b8f5e87',
+        contract: {
+          address: '0x41b536722c014a577f06a4bb0dfa08bf0b8f5e87',
+          protocol: {
+            abi: 'UniswapV3',
+            factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+          },
+        },
         from: '0x5f62593c70069abb35dfe2b63db969e8906609d6',
         to: '0x3ce42ef6b6617b5950c13d1c258ecfdcd30bb4de',
         assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
@@ -215,7 +276,13 @@ describe('MEV: arbitrage', () => {
         },
       },
       {
-        contract: '0x3ce42ef6b6617b5950c13d1c258ecfdcd30bb4de',
+        contract: {
+          address: '0x3ce42ef6b6617b5950c13d1c258ecfdcd30bb4de',
+          protocol: {
+            abi: 'UniswapV3',
+            factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+          },
+        },
         from: '0x5f62593c70069abb35dfe2b63db969e8906609d6',
         to: '0xcc2bd4f3c00c37adb00864d9a0a8cfef8b6ff56a',
         assetIn: '0x4fe83213d56308330ec302a8bd641f1d0113a4cc',
@@ -232,7 +299,13 @@ describe('MEV: arbitrage', () => {
         },
       },
       {
-        contract: '0xcc2bd4f3c00c37adb00864d9a0a8cfef8b6ff56a',
+        contract: {
+          address: '0xcc2bd4f3c00c37adb00864d9a0a8cfef8b6ff56a',
+          protocol: {
+            abi: 'UniswapV3',
+            factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+          },
+        },
         from: '0x5f62593c70069abb35dfe2b63db969e8906609d6',
         to: '0x2519042aa735edb4688a8376d69d4bb69431206c',
         assetIn: '0x3b94440c8c4f69d5c9f47bab9c5a93064df460f5',
@@ -249,7 +322,13 @@ describe('MEV: arbitrage', () => {
         },
       },
       {
-        contract: '0x2519042aa735edb4688a8376d69d4bb69431206c',
+        contract: {
+          address: '0x2519042aa735edb4688a8376d69d4bb69431206c',
+          protocol: {
+            abi: 'UniswapV3',
+            factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+          },
+        },
         from: '0x5f62593c70069abb35dfe2b63db969e8906609d6',
         to: '0x5f62593c70069abb35dfe2b63db969e8906609d6',
         assetIn: '0x58b6a8a3302369daec383334672404ee733ab239',
@@ -279,9 +358,15 @@ describe('MEV: arbitrage', () => {
   });
 
   test('finds 2-swap cross-protocol arbitrage', () => {
-    const swapsA = [
+    const swapsA: Swap[] = [
       {
-        contract: '0x1ec9b867b701c1e5ce9a6567ecc4b71838497c27',
+        contract: {
+          address: '0x1ec9b867b701c1e5ce9a6567ecc4b71838497c27',
+          protocol: {
+            abi: 'UniswapV2',
+            factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+          },
+        },
         from: '0xab319a82803ea5f8f335dc373ce248008d4f2671',
         to: '0x0bec54c89a7d9f15c4e7faa8d47adedf374462ed',
         assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
@@ -298,7 +383,13 @@ describe('MEV: arbitrage', () => {
         },
       },
       {
-        contract: '0x0bec54c89a7d9f15c4e7faa8d47adedf374462ed',
+        contract: {
+          address: '0x0bec54c89a7d9f15c4e7faa8d47adedf374462ed',
+          protocol: {
+            abi: 'UniswapV2',
+            factory: '0xc0aee478e3658e2610c5f7a4a2e1777ce9e4f2ac',
+          },
+        },
         from: '0xab319a82803ea5f8f335dc373ce248008d4f2671',
         to: '0xab319a82803ea5f8f335dc373ce248008d4f2671',
         assetIn: '0x2791bfd60d232150bff86b39b7146c0eaaa2ba81',
@@ -326,9 +417,15 @@ describe('MEV: arbitrage', () => {
       },
     ]);
 
-    const swapsB = [
+    const swapsB: Swap[] = [
       {
-        contract: '0x69b81152c5a8d35a67b32a4d3772795d96cae4da',
+        contract: {
+          address: '0x69b81152c5a8d35a67b32a4d3772795d96cae4da',
+          protocol: {
+            abi: 'UniswapV2',
+            factory: '0xc0aee478e3658e2610c5f7a4a2e1777ce9e4f2ac',
+          },
+        },
         from: '0x5aa3393e361c2eb342408559309b3e873cd876d6',
         to: '0x58418d6c83efab01ed78b0ac42e55af01ee77dba',
         assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
@@ -345,7 +442,13 @@ describe('MEV: arbitrage', () => {
         },
       },
       {
-        contract: '0x88051b0eea095007d3bef21ab287be961f3d8598',
+        contract: {
+          address: '0x88051b0eea095007d3bef21ab287be961f3d8598',
+          protocol: {
+            abi: 'UniswapV3',
+            factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+          },
+        },
         from: '0x58418d6c83efab01ed78b0ac42e55af01ee77dba',
         to: '0x5aa3393e361c2eb342408559309b3e873cd876d6',
         assetIn: '0x64aa3364f17a4d01c6f1751fd97c2bd3d7e7f1d5',
@@ -375,9 +478,15 @@ describe('MEV: arbitrage', () => {
   });
 
   test('finds 3-swap cross-protocol arbitrage', () => {
-    const swaps = [
+    const swaps: Swap[] = [
       {
-        contract: '0x30b705bfa64be9ae395bd9238efc63e9f5f8d1cc',
+        contract: {
+          address: '0x30b705bfa64be9ae395bd9238efc63e9f5f8d1cc',
+          protocol: {
+            abi: 'BalancerV1',
+            factory: '0x9424b1412450d0f8fc2255faf6046b98213b76bd',
+          },
+        },
         from: '0x563bdabaa8846ec445b25bfbed88d160890a02ed',
         to: '0x563bdabaa8846ec445b25bfbed88d160890a02ed',
         assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
@@ -394,7 +503,13 @@ describe('MEV: arbitrage', () => {
         },
       },
       {
-        contract: '0x7b28470032da06051f2e620531adbaeadb285408',
+        contract: {
+          address: '0x7b28470032da06051f2e620531adbaeadb285408',
+          protocol: {
+            abi: 'UniswapV2',
+            factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+          },
+        },
         from: '0x563bdabaa8846ec445b25bfbed88d160890a02ed',
         to: '0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640',
         assetIn: '0x33349b282065b0284d756f0577fb39c158f935e6',
@@ -411,7 +526,13 @@ describe('MEV: arbitrage', () => {
         },
       },
       {
-        contract: '0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640',
+        contract: {
+          address: '0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640',
+          protocol: {
+            abi: 'UniswapV3',
+            factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+          },
+        },
         from: '0x563bdabaa8846ec445b25bfbed88d160890a02ed',
         to: '0x563bdabaa8846ec445b25bfbed88d160890a02ed',
         assetIn: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
@@ -441,9 +562,15 @@ describe('MEV: arbitrage', () => {
   });
 
   test('finds a USD profit arbitrage', () => {
-    const swaps = [
+    const swaps: Swap[] = [
       {
-        contract: '0x231b7589426ffe1b75405526fc32ac09d44364c4',
+        contract: {
+          address: '0x231b7589426ffe1b75405526fc32ac09d44364c4',
+          protocol: {
+            abi: 'UniswapV2',
+            factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+          },
+        },
         from: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
         to: '0xee51984781254ad1a0ee3ae0ca26c4d53dea6ecb',
         assetIn: '0x6b175474e89094c44da98b954eedeac495271d0f',
@@ -460,7 +587,13 @@ describe('MEV: arbitrage', () => {
         },
       },
       {
-        contract: '0xee51984781254ad1a0ee3ae0ca26c4d53dea6ecb',
+        contract: {
+          address: '0xee51984781254ad1a0ee3ae0ca26c4d53dea6ecb',
+          protocol: {
+            abi: 'UniswapV2',
+            factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+          },
+        },
         from: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
         to: '0xf3933a6a82fba8a349a7124c8d8226d7c4d7b6cb',
         assetIn: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
@@ -477,7 +610,13 @@ describe('MEV: arbitrage', () => {
         },
       },
       {
-        contract: '0xf3933a6a82fba8a349a7124c8d8226d7c4d7b6cb',
+        contract: {
+          address: '0xf3933a6a82fba8a349a7124c8d8226d7c4d7b6cb',
+          protocol: {
+            abi: 'UniswapV2',
+            factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+          },
+        },
         from: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
         to: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
         assetIn: '0x697ef32b4a3f5a4c39de1cb7563f24ca7bfc5947',
@@ -507,9 +646,15 @@ describe('MEV: arbitrage', () => {
   });
 
   test('finds multiple mev in one transaction', () => {
-    const swaps = [
+    const swaps: Swap[] = [
       {
-        contract: '0x7f46c12a7ac8343d11652fffdaed411d2d427eb0',
+        contract: {
+          address: '0x7f46c12a7ac8343d11652fffdaed411d2d427eb0',
+          protocol: {
+            abi: 'UniswapV2',
+            factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+          },
+        },
         from: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
         to: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
         assetIn: '0xb2089a7069861c8d90c8da3aacab8e9188c0c531',
@@ -526,7 +671,13 @@ describe('MEV: arbitrage', () => {
         },
       },
       {
-        contract: '0x4efc9e2e3e77732ce2f9612b8f050082c01688bd',
+        contract: {
+          address: '0x4efc9e2e3e77732ce2f9612b8f050082c01688bd',
+          protocol: {
+            abi: 'UniswapV3',
+            factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+          },
+        },
         from: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
         to: '0x7f46c12a7ac8343d11652fffdaed411d2d427eb0',
         assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
@@ -543,7 +694,13 @@ describe('MEV: arbitrage', () => {
         },
       },
       {
-        contract: '0x9c18a2f9545112ab2fcbdd228536562406a53232',
+        contract: {
+          address: '0x9c18a2f9545112ab2fcbdd228536562406a53232',
+          protocol: {
+            abi: 'UniswapV2',
+            factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+          },
+        },
         from: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
         to: '0x5399a36f54ca91a5db5c148eeb2b909bba81b82c',
         assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
@@ -560,7 +717,13 @@ describe('MEV: arbitrage', () => {
         },
       },
       {
-        contract: '0x5399a36f54ca91a5db5c148eeb2b909bba81b82c',
+        contract: {
+          address: '0x5399a36f54ca91a5db5c148eeb2b909bba81b82c',
+          protocol: {
+            abi: 'UniswapV2',
+            factory: '0xc0aee478e3658e2610c5f7a4a2e1777ce9e4f2ac',
+          },
+        },
         from: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
         to: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
         assetIn: '0x630d98424efe0ea27fb1b3ab7741907dffeaad78',
@@ -596,9 +759,15 @@ describe('MEV: arbitrage', () => {
   });
 
   test('finds arbitrage of swaps with different amounts', () => {
-    const swaps = [
+    const swaps: Swap[] = [
       {
-        contract: '0xc8ca3c0f011fe42c48258ecbbf5d94c51f141c17',
+        contract: {
+          address: '0xc8ca3c0f011fe42c48258ecbbf5d94c51f141c17',
+          protocol: {
+            abi: 'UniswapV2',
+            factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+          },
+        },
         from: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
         to: '0x1374042f78fb0fc78658b17c053678940c008543',
         assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
@@ -615,7 +784,13 @@ describe('MEV: arbitrage', () => {
         },
       },
       {
-        contract: '0x1374042f78fb0fc78658b17c053678940c008543',
+        contract: {
+          address: '0x1374042f78fb0fc78658b17c053678940c008543',
+          protocol: {
+            abi: 'UniswapV3',
+            factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+          },
+        },
         from: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
         to: '0x60594a405d53811d3bc4766596efd80fd545a270',
         assetIn: '0x1fe24f25b1cf609b9c4e7e12d802e3640dfa5e43',
@@ -632,7 +807,13 @@ describe('MEV: arbitrage', () => {
         },
       },
       {
-        contract: '0x60594a405d53811d3bc4766596efd80fd545a270',
+        contract: {
+          address: '0x60594a405d53811d3bc4766596efd80fd545a270',
+          protocol: {
+            abi: 'UniswapV3',
+            factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+          },
+        },
         from: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
         to: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
         assetIn: '0x6b175474e89094c44da98b954eedeac495271d0f',
@@ -662,9 +843,15 @@ describe('MEV: arbitrage', () => {
   });
 
   test('counts russian doll arbitrage as a single item', () => {
-    const swaps = [
+    const swaps: Swap[] = [
       {
-        contract: '0x25be6ce04a504d4bcecb6ba7f5967f7aae6af579',
+        contract: {
+          address: '0x25be6ce04a504d4bcecb6ba7f5967f7aae6af579',
+          protocol: {
+            abi: 'UniswapV2',
+            factory: '0x54f454d747e037da288db568d4121117eab34e79',
+          },
+        },
         from: '0xeef86c2e49e11345f1a693675df9a38f7d880c8f',
         to: '0x8fe536c7dc019455cce34746755c64bbe2aa163b',
         assetIn: '0x853d955acef822db058eb8505911ed77f175b99e',
@@ -681,7 +868,13 @@ describe('MEV: arbitrage', () => {
         },
       },
       {
-        contract: '0x9a834b70c07c81a9fcd6f22e842bf002fbffbe4d',
+        contract: {
+          address: '0x9a834b70c07c81a9fcd6f22e842bf002fbffbe4d',
+          protocol: {
+            abi: 'UniswapV3',
+            factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+          },
+        },
         from: '0xeef86c2e49e11345f1a693675df9a38f7d880c8f',
         to: '0x25be6ce04a504d4bcecb6ba7f5967f7aae6af579',
         assetIn: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
@@ -698,7 +891,13 @@ describe('MEV: arbitrage', () => {
         },
       },
       {
-        contract: '0x8fe536c7dc019455cce34746755c64bbe2aa163b',
+        contract: {
+          address: '0x8fe536c7dc019455cce34746755c64bbe2aa163b',
+          protocol: {
+            abi: 'UniswapV3',
+            factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+          },
+        },
         from: '0xeef86c2e49e11345f1a693675df9a38f7d880c8f',
         to: '0xc63b0708e2f7e69cb8a1df0e1389a98c35a76d52',
         assetIn: '0xc2544a32872a91f4a553b404c6950e89de901fdb',
@@ -715,7 +914,13 @@ describe('MEV: arbitrage', () => {
         },
       },
       {
-        contract: '0xc63b0708e2f7e69cb8a1df0e1389a98c35a76d52',
+        contract: {
+          address: '0xc63b0708e2f7e69cb8a1df0e1389a98c35a76d52',
+          protocol: {
+            abi: 'UniswapV3',
+            factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+          },
+        },
         from: '0xeef86c2e49e11345f1a693675df9a38f7d880c8f',
         to: '0xeef86c2e49e11345f1a693675df9a38f7d880c8f',
         assetIn: '0x853d955acef822db058eb8505911ed77f175b99e',
