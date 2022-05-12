@@ -1,4 +1,11 @@
-import { ChainId, Swap, Pool, Transfer, ClassifiedEvent, directory } from '../classifier/index.js';
+import {
+  ChainId,
+  Swap,
+  Pool,
+  Transfer,
+  ClassifiedEvent,
+  directory,
+} from '../classifier/index.js';
 
 function getPoolAddress(log: ClassifiedEvent): string {
   if (log.classifier.type !== 'swap') {

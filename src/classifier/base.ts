@@ -84,4 +84,12 @@ function getLatestPoolTransfer(
   return previousTransfers[0];
 }
 
-export { Classifier, Transaction, Pool, Protocol, Transfer, Swap, getLatestPoolTransfer };
+export {
+  Classifier,
+  Transaction,
+  Pool,
+  Protocol,
+  Transfer,
+  Swap,
+  getLatestPoolTransfer,
+};
