@@ -2,12 +2,10 @@ import { BigNumber } from '@ethersproject/bignumber';
 import { Contract } from '@ethersproject/contracts';
 import { Provider } from '@ethersproject/providers';
 
-import factoryAbi from '../abi/balancerV1/factory.js';
-import poolAbi from '../abi/balancerV1/pool.js';
-
-import { Classifier, Pool, Swap } from './base.js';
-
-import { ClassifiedEvent } from './index.js';
+import factoryAbi from '../../abi/balancerV1/factory.js';
+import poolAbi from '../../abi/balancerV1/pool.js';
+import { Classifier, Pool, Swap } from '../base.js';
+import { ClassifiedEvent } from '../index.js';
 
 const FACTORY_ADDRESS = '0x9424b1412450d0f8fc2255faf6046b98213b76bd';
 

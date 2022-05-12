@@ -1,9 +1,9 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import { describe, test, expect } from 'vitest';
 
-import erc20Classifiers from '../../src/classifier/erc20.js';
 import { ClassifiedEvent } from '../../src/classifier/index.js';
-import { CLASSIFIERS as uniswapV2Classifiers } from '../../src/classifier/uniswapV2.js';
+import erc20Classifiers from '../../src/classifier/items/erc20.js';
+import { CLASSIFIER as uniswapV2Classifiers } from '../../src/classifier/items/uniswapV2.js';
 import getTransfers from '../../src/mev/transfers.js';
 
 describe('MEV: transfers', () => {
@@ -23,7 +23,7 @@ describe('MEV: transfers', () => {
         transactionHash: hash,
         gasUsed,
         logIndex,
-        classifier: erc20Classifiers[0],
+        classifier: erc20Classifiers,
         name: 'Transfer',
         values: {
           from,
@@ -88,7 +88,7 @@ describe('MEV: transfers', () => {
         transactionHash: hash,
         gasUsed: gasUsedList[index],
         logIndex: logIndices[index],
-        classifier: erc20Classifiers[0],
+        classifier: erc20Classifiers,
         name: 'Transfer',
         values: {
           from: fromList[index],
@@ -124,7 +124,7 @@ describe('MEV: transfers', () => {
         '0xa04871a6008a2a97b73abbcfc1297a4a921dfdc17583b4bb66097d4b4b7c8a81',
       gasUsed: 98948,
       logIndex: 141,
-      classifier: uniswapV2Classifiers[0],
+      classifier: uniswapV2Classifiers,
       name: 'Swap',
       values: {
         sender: '0x8aff5ca996f77487a4f04f1ce905bf3d27455580',

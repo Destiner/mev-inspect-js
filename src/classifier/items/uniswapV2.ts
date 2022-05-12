@@ -2,18 +2,16 @@ import { BigNumber } from '@ethersproject/bignumber';
 import { Contract } from '@ethersproject/contracts';
 import { Provider } from '@ethersproject/providers';
 
-import pairAbi from '../abi/uniswapV2/pair.js';
-import { equalWithTolerance } from '../utils.js';
-
+import pairAbi from '../../abi/uniswapV2/pair.js';
+import { equalWithTolerance } from '../../utils.js';
 import {
   Classifier,
   Pool,
   Swap,
   Transfer,
   getLatestPoolTransfer,
-} from './base.js';
-
-import { ClassifiedEvent } from './index.js';
+} from '../base.js';
+import { ClassifiedEvent } from '../index.js';
 
 async function fetchPool(provider: Provider, address: string): Promise<Pool> {
   const pairContract = new Contract(address, pairAbi, provider);

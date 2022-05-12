@@ -2,13 +2,13 @@ import Coder, { Event } from 'abi-coder';
 
 import { Log } from '../chain.js';
 
-import { CLASSIFIER as balancerV1Classifier } from './balancerV1.js';
-import { CLASSIFIER as balancerV2Classifier } from './balancerV2.js';
 import { Classifier, Pool, Swap, Transaction, Transfer } from './base.js';
 import directory from './directory.js';
-import erc20Classifier from './erc20.js';
-import { CLASSIFIER as uniswapV2Classifier } from './uniswapV2.js';
-import { CLASSIFIER as uniswapV3Classifier } from './uniswapV3.js';
+import { CLASSIFIER as balancerV1Classifier } from './items/balancerV1.js';
+import { CLASSIFIER as balancerV2Classifier } from './items/balancerV2.js';
+import erc20Classifier from './items/erc20.js';
+import { CLASSIFIER as uniswapV2Classifier } from './items/uniswapV2.js';
+import { CLASSIFIER as uniswapV3Classifier } from './items/uniswapV3.js';
 
 interface ClassifiedEvent extends Event {
   address: string;

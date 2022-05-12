@@ -2,12 +2,10 @@ import { BigNumber } from '@ethersproject/bignumber';
 import { Contract } from '@ethersproject/contracts';
 import { Provider } from '@ethersproject/providers';
 
-import poolAbi from '../abi/balancerV2/pool.js';
-import vaultAbi from '../abi/balancerV2/vault.js';
-
-import { Classifier, Pool, Swap, Transfer } from './base.js';
-
-import { ClassifiedEvent } from './index.js';
+import poolAbi from '../../abi/balancerV2/pool.js';
+import vaultAbi from '../../abi/balancerV2/vault.js';
+import { Classifier, Pool, Swap, Transfer } from '../base.js';
+import { ClassifiedEvent } from '../index.js';
 
 const VAULT = '0xba12222222228d8ba445958a75a0704d566bf2c8';
 

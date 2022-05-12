@@ -1,7 +1,7 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import { describe, test, expect } from 'vitest';
 
-import { CLASSIFIER as swapClassifier } from '../../src/classifier/uniswapV2.js';
+import { CLASSIFIER as swapClassifier } from '../../src/classifier/items/uniswapV2.js';
 
 describe('Classfiers: Uniswap V2', () => {
   test('parses a swap', () => {

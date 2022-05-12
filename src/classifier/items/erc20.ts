@@ -1,10 +1,8 @@
 import { BigNumber } from '@ethersproject/bignumber';
 
-import erc20Abi from '../abi/erc20.js';
-
-import { Classifier, Transfer } from './base.js';
-
-import { ClassifiedEvent } from './index.js';
+import erc20Abi from '../../abi/erc20.js';
+import { Classifier, Transfer } from '../base.js';
+import { ClassifiedEvent } from '../index.js';
 
 function parse(event: ClassifiedEvent): Transfer {
   const { values, transactionHash: hash, gasUsed, logIndex, address } = event;
