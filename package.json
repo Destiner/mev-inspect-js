@@ -3,8 +3,8 @@
   "version": "0.3.2",
   "description": "A JS port of 'mev-inspect-py' optimised for ease of use.",
   "type": "module",
-  "main": "./lib/index.js",
-  "exports": "./lib/index.js",
+  "main": "./lib/src/index.js",
+  "exports": "./lib/src/index.js",
   "files": [
     "lib/"
   ],
