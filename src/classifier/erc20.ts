@@ -28,11 +28,8 @@ function parse(event: ClassifiedEvent): Transfer {
   };
 }
 
-const CLASSIFIERS: Classifier[] = [
-  {
-    event: { name: 'Transfer', type: 'transfer', parse },
-    abi: erc20Abi,
-  },
-];
-
-export default CLASSIFIERS;
+const CLASSIFIER: Classifier = {
+  event: { name: 'Transfer', type: 'transfer', parse },
+  abi: erc20Abi,
+};
+export default CLASSIFIER;

@@ -2,13 +2,13 @@ import Coder, { Event } from 'abi-coder';
 
 import { Log } from '../chain.js';
 
-import { CLASSIFIERS as balancerV1Classifiers } from './balancerV1.js';
-import { CLASSIFIERS as balancerV2Classifiers } from './balancerV2.js';
+import { CLASSIFIER as balancerV1Classifier } from './balancerV1.js';
+import { CLASSIFIER as balancerV2Classifier } from './balancerV2.js';
 import { Classifier, Pool, Swap, Transaction, Transfer } from './base.js';
 import directory from './directory.js';
-import erc20Classifiers from './erc20.js';
-import { CLASSIFIERS as uniswapV2Classifiers } from './uniswapV2.js';
-import { CLASSIFIERS as uniswapV3Classifiers } from './uniswapV3.js';
+import erc20Classifier from './erc20.js';
+import { CLASSIFIER as uniswapV2Classifier } from './uniswapV2.js';
+import { CLASSIFIER as uniswapV3Classifier } from './uniswapV3.js';
 
 interface ClassifiedEvent extends Event {
   address: string;
@@ -49,14 +49,13 @@ function classifyLog(log: Log): ClassifiedEvent | undefined {
 }
 
 function getClassifiers(): Classifier[] {
-  const classifiers = [
-    balancerV1Classifiers,
-    balancerV2Classifiers,
-    erc20Classifiers,
-    uniswapV2Classifiers,
-    uniswapV3Classifiers,
+  return [
+    balancerV1Classifier,
+    balancerV2Classifier,
+    erc20Classifier,
+    uniswapV2Classifier,
+    uniswapV3Classifier,
   ];
-  return classifiers.flat();
 }
 
 export default classify;

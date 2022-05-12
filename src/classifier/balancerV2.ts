@@ -104,12 +104,10 @@ function getSwapTransfers(
   return [transferIn, transferOut];
 }
 
-const CLASSIFIERS: Classifier[] = [
-  {
-    protocol: 'BalancerV2',
-    event: { name: 'Swap', type: 'swap', parse, fetchPool },
-    abi: vaultAbi,
-  },
-];
+const CLASSIFIER: Classifier = {
+  protocol: 'BalancerV2',
+  event: { name: 'Swap', type: 'swap', parse, fetchPool },
+  abi: vaultAbi,
+};
 
-export { fetchPool, CLASSIFIERS };
+export { fetchPool, CLASSIFIER };

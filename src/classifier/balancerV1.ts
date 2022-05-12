@@ -60,12 +60,10 @@ function parse(pool: Pool, event: ClassifiedEvent): Swap | null {
   };
 }
 
-const CLASSIFIERS: Classifier[] = [
-  {
-    protocol: 'BalancerV1',
-    event: { name: 'LOG_SWAP', type: 'swap', parse, fetchPool },
-    abi: poolAbi,
-  },
-];
+const CLASSIFIER: Classifier = {
+  protocol: 'BalancerV1',
+  event: { name: 'LOG_SWAP', type: 'swap', parse, fetchPool },
+  abi: poolAbi,
+};
 
-export { fetchPool, CLASSIFIERS };
+export { fetchPool, CLASSIFIER };

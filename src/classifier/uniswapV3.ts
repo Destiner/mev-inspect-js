@@ -83,12 +83,9 @@ function parse(
   };
 }
 
-const CLASSIFIERS: Classifier[] = [
-  {
-    protocol: 'UniswapV3',
-    event: { name: 'Swap', type: 'swap', parse, fetchPool },
-    abi: poolAbi,
-  },
-];
-
-export { fetchPool, CLASSIFIERS };
+const CLASSIFIER: Classifier = {
+  protocol: 'UniswapV3',
+  event: { name: 'Swap', type: 'swap', parse, fetchPool },
+  abi: poolAbi,
+};
+export { fetchPool, CLASSIFIER };
