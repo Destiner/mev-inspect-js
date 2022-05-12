@@ -3,7 +3,7 @@ import Coder, { Event } from 'abi-coder';
 import { Log } from '../chain.js';
 
 import { Classifier, Pool, Swap, Transaction, Transfer } from './base.js';
-import directory from './directory.js';
+import directory, { ChainId } from './directory.js';
 import { CLASSIFIER as balancerV1Classifier } from './items/balancerV1.js';
 import { CLASSIFIER as balancerV2Classifier } from './items/balancerV2.js';
 import erc20Classifier from './items/erc20.js';
@@ -60,4 +60,12 @@ function getClassifiers(): Classifier[] {
 
 export default classify;
 
-export { ClassifiedEvent, Pool, Swap, Transaction, Transfer, directory };
+export {
+  ChainId,
+  ClassifiedEvent,
+  Pool,
+  Swap,
+  Transaction,
+  Transfer,
+  directory,
+};

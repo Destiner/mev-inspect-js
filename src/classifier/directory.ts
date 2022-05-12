@@ -2,7 +2,9 @@ import { Protocol } from './base.js';
 
 const ETHEREUM = 1;
 
-const directory: Record<number, Record<Protocol, string[]>> = {
+type ChainId = typeof ETHEREUM;
+
+const directory: Record<ChainId, Record<Protocol, string[]>> = {
   [ETHEREUM]: {
     UniswapV2: [
       // Uniswap
@@ -15,5 +17,7 @@ const directory: Record<number, Record<Protocol, string[]>> = {
     BalancerV2: ['0xba12222222228d8ba445958a75a0704d566bf2c8'],
   },
 };
+
+export type { ChainId };
 
 export default directory;

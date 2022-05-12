@@ -1,7 +1,7 @@
 import { Provider } from '@ethersproject/providers';
 
 import Chain from './chain.js';
-import classify from './classifier/index.js';
+import classify, { ChainId } from './classifier/index.js';
 import fetchPools from './fetch.js';
 import {
   TxMev,
@@ -12,11 +12,11 @@ import {
 } from './mev/index.js';
 
 class Inspector {
-  chainId: number;
+  chainId: ChainId;
   provider: Provider;
   chain: Chain;
 
-  constructor(chainId: number, provider: Provider) {
+  constructor(chainId: ChainId, provider: Provider) {
     this.chainId = chainId;
     this.provider = provider;
     this.chain = new Chain(provider);
