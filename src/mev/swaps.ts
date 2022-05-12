@@ -1,4 +1,4 @@
-import { Swap, Pool, Transfer, ClassifiedEvent } from '../classifier/index.js';
+import { Swap, Pool, Transfer, ClassifiedEvent, directory } from '../classifier/index.js';
 
 function getPoolAddress(log: ClassifiedEvent): string {
   if (log.classifier.protocol === 'BalancerV2') {
@@ -9,6 +9,7 @@ function getPoolAddress(log: ClassifiedEvent): string {
 }
 
 function getSwaps(
+  chainId: number,
   pools: Pool[],
   transfers: Transfer[],
   logs: ClassifiedEvent[],
@@ -21,6 +22,14 @@ function getSwaps(
       const poolAddress = getPoolAddress(log);
       const pool = pools.find((pool) => pool.address === poolAddress);
       if (!pool) {
+        return null;
+      }
+      const protocol = log.classifier.protocol;
+      if (!protocol) {
+        return null;
+      }
+      const allowedFactories = directory[chainId][protocol];
+      if (!allowedFactories.includes(pool.factory)) {
         return null;
       }
       return log.classifier.event.parse(pool, log, transfers);

@@ -27,7 +27,7 @@ class Inspector {
     const classified = classify(logs);
     const pools = await fetchPools(this.provider, classified);
     const transfers = getTransfers(classified);
-    const swaps = getSwaps(pools, transfers, classified);
+    const swaps = getSwaps(this.chainId, pools, transfers, classified);
     const arbitrages = getArbitrages(swaps);
     return arbitrages;
   }
@@ -37,7 +37,7 @@ class Inspector {
     const classified = classify(logs);
     const pools = await fetchPools(this.provider, classified);
     const transfers = getTransfers(classified);
-    const swaps = getSwaps(pools, transfers, classified);
+    const swaps = getSwaps(this.chainId, pools, transfers, classified);
     const arbitrages = getArbitrages(swaps);
     return arbitrages;
   }

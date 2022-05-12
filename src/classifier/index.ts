@@ -5,6 +5,7 @@ import { Log } from '../chain.js';
 import { CLASSIFIERS as balancerV1Classifiers } from './balancerV1.js';
 import { CLASSIFIERS as balancerV2Classifiers } from './balancerV2.js';
 import { Classifier, Pool, Swap, Transaction, Transfer } from './base.js';
+import directory from './directory.js';
 import erc20Classifiers from './erc20.js';
 import { CLASSIFIERS as uniswapV2Classifiers } from './uniswapV2.js';
 import { CLASSIFIERS as uniswapV3Classifiers } from './uniswapV3.js';
@@ -60,4 +61,4 @@ function getClassifiers(): Classifier[] {
 
 export default classify;
 
-export { ClassifiedEvent, Pool, Swap, Transaction, Transfer };
+export { ClassifiedEvent, Pool, Swap, Transaction, Transfer, directory };
