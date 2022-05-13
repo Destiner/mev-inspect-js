@@ -55,7 +55,6 @@ class Chain {
       try {
         receipt = await this.provider.getTransactionReceipt(hash);
       } catch (e: unknown) {
-        console.error('Ethers error:', e);
         const errorCode = (e as Error).code;
         if (
           errorCode === ErrorCode.SERVER_ERROR ||
@@ -78,7 +77,6 @@ class Chain {
       try {
         block = await this.provider.getBlockWithTransactions(number);
       } catch (e: unknown) {
-        console.error('Ethers error:', e);
         const errorCode = (e as Error).code;
         if (
           errorCode === ErrorCode.SERVER_ERROR ||
