@@ -26,7 +26,7 @@
     "lint:prettier": "prettier -c \"{src,test}/**/*.{json,js,ts}\"",
     "test": "vitest run",
     "build": "tsc",
-    "prepublishOnly": "npm run build"
+    "prepack": "npm run build"
   },
   "dependencies": {
     "@ethersproject/abi": "^5.6.1",
