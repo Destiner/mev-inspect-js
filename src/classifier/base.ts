@@ -23,6 +23,7 @@ interface Base {
 }
 
 interface Transfer extends Base {
+  asset: string;
   from: string;
   to: string;
   value: bigint;

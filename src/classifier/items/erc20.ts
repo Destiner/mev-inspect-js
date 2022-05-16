@@ -12,6 +12,7 @@ function parse(event: ClassifiedEvent): Transfer {
   const value = (values.value as BigNumber).toBigInt();
 
   return {
+    asset: address.toLowerCase(),
     from,
     to,
     value,
