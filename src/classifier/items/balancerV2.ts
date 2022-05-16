@@ -20,7 +20,7 @@ async function fetchPool(provider: Provider, id: string): Promise<Pool> {
   return { address, assets, factory: vault.toLowerCase() };
 }
 
-function parse(
+function parseSwap(
   pool: Pool,
   event: ClassifiedEvent,
   transfers: Transfer[],
@@ -83,6 +83,33 @@ function parse(
   };
 }
 
+function parseTransfer(event: ClassifiedEvent): Transfer {
+  const { values, transactionHash: hash, gasUsed, logIndex, address } = event;
+
+  const user = (values.user as string).toLowerCase();
+  const token = (values.token as string).toLowerCase();
+  const delta = (values.delta as BigNumber).toBigInt();
+
+  const from = delta > 0 ? VAULT : user
+  const to = delta > 0 ? user : VAULT;
+  const value = delta > 0 ? delta : -delta;
+
+  return {
+    asset: token,
+    from,
+    to,
+    value,
+    transaction: {
+      hash,
+      gasUsed,
+    },
+    event: {
+      logIndex,
+      address: address.toLowerCase(),
+    },
+  };
+}
+
 function getSwapTransfers(
   logIndex: number,
   transfers: Transfer[],
@@ -102,13 +129,18 @@ function getSwapTransfers(
   return [transferIn, transferOut];
 }
 
-const CLASSIFIER: Classifier = {
+const CLASSIFIERS: Classifier[] = [{
   type: 'swap',
   name: 'Swap',
   protocol: 'BalancerV2',
   abi: vaultAbi,
-  parse,
+  parse: parseSwap,
   fetchPool,
-};
+}, {
+  type: 'transfer',
+  name: 'InternalBalanceChanged',
+  abi: vaultAbi,
+  parse: parseTransfer,
+}];
 
-export { fetchPool, CLASSIFIER };
+export { fetchPool, CLASSIFIERS };
