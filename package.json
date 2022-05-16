@@ -21,7 +21,7 @@
     "lint:prettier": "prettier -c \"{src,test}/**/*.{json,js,ts}\"",
     "test": "vitest run",
     "build": "tsc",
-    "prepare": "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
