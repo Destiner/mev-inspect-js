@@ -303,4 +303,71 @@ describe('Classfiers: Balancer V2', () => {
       amountIn: 728566000000000000n,
     });
   });
+
+  test('parses an internal transfer', () => {
+    if (transferClassifier.type !== 'transfer') {
+      expect.fail();
+    }
+
+    const eventA = {
+      address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+      transactionHash:
+        '0x42e27e3bed9a2ab343880e8ab4c4de121fc337a7334170a9dc632a36fe757fb9',
+      gasUsed: 157031,
+      logIndex: 33,
+      classifier: transferClassifier,
+      name: 'Transfer',
+      values: {
+        user: '0x0000E0Ca771e21bD00057F54A68C30D400000000',
+        token: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', 
+        delta: BigNumber.from('-7355372670797717877'),
+      },
+    };
+    const transferA = transferClassifier.parse(eventA);
+
+    const eventB = {
+      address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+      transactionHash:
+        '0x11bdb8d6d7e0fdd9933ce9673db55524fe7d13f4e6401a40c03c04d1ba06055f',
+      gasUsed: 129388,
+      logIndex: 65,
+      classifier: transferClassifier,
+      name: 'Transfer',
+      values: {
+        user: '0x4d944a25bC871D6C6EE08baEf0b7dA0b08E6b7b3',
+        token: '0x6B175474E89094C44Da98b954EedeAC495271d0F', 
+        delta: BigNumber.from('8761963574800069056410'),
+      },
+    };
+    const transferB = transferClassifier.parse(eventB);
+
+    expect(transferA).toEqual({
+      asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      from: '0x0000e0ca771e21bd00057f54a68c30d400000000',
+      to: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+      value: 7355372670797717877n,
+      transaction: {
+        hash: '0x42e27e3bed9a2ab343880e8ab4c4de121fc337a7334170a9dc632a36fe757fb9',
+        gasUsed: 157031,
+      },
+      event: {
+        logIndex: 33,
+        address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+      },
+    });
+    expect(transferB).toEqual({
+      asset: '0x6b175474e89094c44da98b954eedeac495271d0f',
+      from: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+      to: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
+      value: 8761963574800069056410n,
+      transaction: {
+        hash: '0x11bdb8d6d7e0fdd9933ce9673db55524fe7d13f4e6401a40c03c04d1ba06055f',
+        gasUsed: 129388,
+      },
+      event: {
+        logIndex: 65,
+        address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+      },
+    });
+  });
 });
