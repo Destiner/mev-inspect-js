@@ -36,6 +36,7 @@ describe('MEV: transfers', () => {
 
     expect(transfers).toEqual([
       {
+        asset: address.toLowerCase(),
         from: from.toLowerCase(),
         to: to.toLowerCase(),
         value: value.toBigInt(),
@@ -101,6 +102,7 @@ describe('MEV: transfers', () => {
 
     const expectedTransfers = hashes.map((hash, index) => {
       return {
+        asset: addresses[index].toLowerCase(),
         from: fromList[index].toLowerCase(),
         to: toList[index].toLowerCase(),
         value: valueList[index].toBigInt(),
