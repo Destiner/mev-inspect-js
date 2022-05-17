@@ -64,6 +64,7 @@ interface SwapClassifier extends BaseClassifier {
     pool: Pool,
     event: ClassifiedEvent,
     transfers: Transfer[],
+    allEvents: ClassifiedEvent[],
   ) => Swap | null;
   fetchPool: (provider: Provider, id: string) => Promise<Pool | null>;
 }

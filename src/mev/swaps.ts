@@ -42,7 +42,7 @@ function getSwaps(
       if (!allowedFactories.includes(pool.factory)) {
         return null;
       }
-      return log.classifier.parse(pool, log, transfers);
+      return log.classifier.parse(pool, log, transfers, logs);
     })
     .filter((swap: Swap | null): swap is Swap => !!swap);
 }
