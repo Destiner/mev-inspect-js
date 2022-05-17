@@ -2,6 +2,7 @@ import { BigNumber } from '@ethersproject/bignumber';
 import { describe, test, expect } from 'vitest';
 
 import { CLASSIFIERS } from '../../src/classifier/items/balancerV2.js';
+import { CLASSIFIER as uniswapClassifier } from '../../src/classifier/items/uniswapV2.js';
 
 const swapClassifier = CLASSIFIERS[0];
 const transferClassifier = CLASSIFIERS[1];
@@ -262,14 +263,14 @@ describe('Classfiers: Balancer V2', () => {
           '0x49fb0fb07827b3e6fa425fbb7ef1f1fbe3dfedbf656519bfe6d4bf9391aea1d2',
         gasUsed: 162269,
         logIndex: 19,
-        classifier: swapClassifier,
+        classifier: uniswapClassifier,
         name: 'Swap',
         values: {
           sender: '0x45716d9EDdbc332df1D42b9F540FBEBeD671B20F',
-          amount0In: BigNumber.from('6329353631552147493643'), 
-          amount1In: BigNumber.from('0'), 
-          amount0Out: BigNumber.from('0'), 
-          amount1Out: BigNumber.from('736414889979992618'), 
+          amount0In: BigNumber.from('6329353631552147493643'),
+          amount1In: BigNumber.from('0'),
+          amount0Out: BigNumber.from('0'),
+          amount1Out: BigNumber.from('736414889979992618'),
           to: '0x45716d9EDdbc332df1D42b9F540FBEBeD671B20F',
         },
       },
@@ -304,6 +305,1293 @@ describe('Classfiers: Balancer V2', () => {
     });
   });
 
+  test('parses a eth -> token swap', () => {
+    const pool = {
+      address: '0x0bf37157d30dfe6f56757dcadff01aed83b08cd6',
+      assets: [
+        '0x333a4823466879eef910a04d473505da62142069',
+        '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      ],
+      factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+    };
+    const event = {
+      address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+      transactionHash:
+        '0xc785c5713ef1d2e527559746004276f15aaedf62503b670bdf16e156b82aa39b',
+      gasUsed: 97449,
+      logIndex: 686,
+      classifier: swapClassifier,
+      name: 'Swap',
+      values: {
+        poolId:
+          '0x0bf37157d30dfe6f56757dcadff01aed83b08cd600020000000000000000019a',
+        tokenIn: '0x333A4823466879eeF910A04D473505da62142069',
+        tokenOut: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+        amountIn: BigNumber.from('0x29a2047c65342d17'),
+        amountOut: BigNumber.from('0x260c600b5dd64e21'),
+      },
+    };
+    const transfers = [
+      {
+        asset: '0x333a4823466879eef910a04d473505da62142069',
+        from: '0xed308a08b051da28d59606d9dd9a3dced7ad188c',
+        to: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        value: 2999965234102545687n,
+        transaction: {
+          hash: '0xc785c5713ef1d2e527559746004276f15aaedf62503b670bdf16e156b82aa39b',
+          gasUsed: 97449,
+        },
+        event: {
+          logIndex: 687,
+          address: '0x333a4823466879eef910a04d473505da62142069',
+        },
+      },
+    ];
+    const allEvents = [
+      {
+        address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+        transactionHash:
+          '0xc785c5713ef1d2e527559746004276f15aaedf62503b670bdf16e156b82aa39b',
+        gasUsed: 97449,
+        logIndex: 686,
+        classifier: swapClassifier,
+        name: 'Swap',
+        values: {
+          poolId:
+            '0x0bf37157d30dfe6f56757dcadff01aed83b08cd600020000000000000000019a',
+          tokenIn: '0x333A4823466879eeF910A04D473505da62142069',
+          tokenOut: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+          amountIn: BigNumber.from('0x29a2047c65342d17'),
+          amountOut: BigNumber.from('0x260c600b5dd64e21'),
+        },
+      },
+      {
+        address: '0x333A4823466879eeF910A04D473505da62142069',
+        transactionHash:
+          '0xc785c5713ef1d2e527559746004276f15aaedf62503b670bdf16e156b82aa39b',
+        gasUsed: 97449,
+        logIndex: 687,
+        classifier: transferClassifier,
+        name: 'Transfer',
+        values: {
+          from: '0xEd308A08B051dA28D59606D9Dd9a3dced7Ad188c',
+          to: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+          value: BigNumber.from('0x29a2047c65342d17'),
+        },
+      },
+    ];
+
+    if (swapClassifier.type !== 'swap') {
+      expect.fail();
+    }
+    const swap = swapClassifier.parse(pool, event, transfers, allEvents);
+    expect(swap).toEqual({
+      amountIn: 2999965234102545687n,
+      amountOut: 2741671875097021985n,
+      assetIn: '0x333a4823466879eef910a04d473505da62142069',
+      assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      from: '0xed308a08b051da28d59606d9dd9a3dced7ad188c',
+      to: '0xed308a08b051da28d59606d9dd9a3dced7ad188c',
+      contract: {
+        address: '0x0bf37157d30dfe6f56757dcadff01aed83b08cd6',
+        protocol: {
+          abi: 'BalancerV2',
+          factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        },
+      },
+      event: {
+        address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        logIndex: 686,
+      },
+      transaction: {
+        gasUsed: 97449,
+        hash: '0xc785c5713ef1d2e527559746004276f15aaedf62503b670bdf16e156b82aa39b',
+      },
+    });
+  });
+
+  test('parses a token -> eth swap', () => {
+    const pool = {
+      address: '0x3ebf48cd7586d7a4521ce59e53d9a907ebf1480f',
+      assets: [
+        '0xba100000625a3754423978a60c9317c58a424e3d',
+        '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      ],
+      factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+    };
+    const event = {
+      address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+      transactionHash:
+        '0xa87d22940d3b93b491683de99d48cab79c171fe1535586862e0c0ace381928f0',
+      gasUsed: 132494,
+      logIndex: 298,
+      classifier: swapClassifier,
+      name: 'Swap',
+      values: {
+        poolId:
+          '0x3ebf48cd7586d7a4521ce59e53d9a907ebf1480f000200000000000000000028',
+        tokenIn: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+        tokenOut: '0xba100000625a3754423978a60c9317c58a424e3D',
+        amountIn: BigNumber.from('0x0853a0d2313c0000'),
+        amountOut: BigNumber.from('0x070b5240281ba628ab'),
+      },
+    };
+    const transfers = [
+      {
+        asset: '0xba100000625a3754423978a60c9317c58a424e3d',
+        from: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        to: '0x98bed949d4e5607a753185cfb7153b53e0c3c80a',
+        value: 129942993539481086123n,
+        transaction: {
+          hash: '0xa87d22940d3b93b491683de99d48cab79c171fe1535586862e0c0ace381928f0',
+          gasUsed: 132494,
+        },
+        event: {
+          logIndex: 300,
+          address: '0xba100000625a3754423978a60c9317c58a424e3d',
+        },
+      },
+    ];
+    const allEvents = [
+      {
+        address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+        transactionHash:
+          '0xa87d22940d3b93b491683de99d48cab79c171fe1535586862e0c0ace381928f0',
+        gasUsed: 132494,
+        logIndex: 298,
+        classifier: swapClassifier,
+        name: 'Swap',
+        values: {
+          poolId:
+            '0x3ebf48cd7586d7a4521ce59e53d9a907ebf1480f000200000000000000000028',
+          tokenIn: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+          tokenOut: '0xba100000625a3754423978a60c9317c58a424e3D',
+          amountIn: BigNumber.from('0x0853a0d2313c0000'),
+          amountOut: BigNumber.from('0x070b5240281ba628ab'),
+        },
+      },
+      {
+        address: '0xba100000625a3754423978a60c9317c58a424e3D',
+        transactionHash:
+          '0xa87d22940d3b93b491683de99d48cab79c171fe1535586862e0c0ace381928f0',
+        gasUsed: 132494,
+        logIndex: 300,
+        classifier: transferClassifier,
+        name: 'Transfer',
+        values: {
+          from: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+          to: '0x98bED949D4e5607A753185cfb7153B53e0c3c80a',
+          value: BigNumber.from('0x070b5240281ba628ab'),
+        },
+      },
+    ];
+
+    if (swapClassifier.type !== 'swap') {
+      expect.fail();
+    }
+    const swap = swapClassifier.parse(pool, event, transfers, allEvents);
+    expect(swap).toEqual({
+      amountIn: 600000000000000000n,
+      amountOut: 129942993539481086123n,
+      assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      assetOut: '0xba100000625a3754423978a60c9317c58a424e3d',
+      from: '0x98bed949d4e5607a753185cfb7153b53e0c3c80a',
+      to: '0x98bed949d4e5607a753185cfb7153b53e0c3c80a',
+      contract: {
+        address: '0x3ebf48cd7586d7a4521ce59e53d9a907ebf1480f',
+        protocol: {
+          abi: 'BalancerV2',
+          factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        },
+      },
+      event: {
+        address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        logIndex: 298,
+      },
+      transaction: {
+        gasUsed: 132494,
+        hash: '0xa87d22940d3b93b491683de99d48cab79c171fe1535586862e0c0ace381928f0',
+      },
+    });
+  });
+
+  test('parses a swap with an approval', () => {
+    if (swapClassifier.type !== 'swap') {
+      expect.fail();
+    }
+
+    const transfers = [
+      {
+        asset: '0xba100000625a3754423978a60c9317c58a424e3d',
+        from: '0x20eadfcaf91bd98674ff8fc341d148e1731576a4',
+        to: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        value: 707320915873140540667n,
+        transaction: {
+          hash: '0x01cba79049f6506d01210608351d414ad11a800451b1d34b828531f454f041c3',
+          gasUsed: 168611,
+        },
+        event: {
+          logIndex: 195,
+          address: '0xba100000625a3754423978a60c9317c58a424e3d',
+        },
+      },
+      {
+        asset: '0x6b175474e89094c44da98b954eedeac495271d0f',
+        from: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        to: '0x20eadfcaf91bd98674ff8fc341d148e1731576a4',
+        value: 8969838903747320318121n,
+        transaction: {
+          hash: '0x01cba79049f6506d01210608351d414ad11a800451b1d34b828531f454f041c3',
+          gasUsed: 168611,
+        },
+        event: {
+          logIndex: 197,
+          address: '0x6b175474e89094c44da98b954eedeac495271d0f',
+        },
+      },
+    ];
+    const allEvents = [
+      {
+        address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+        transactionHash:
+          '0x01cba79049f6506d01210608351d414ad11a800451b1d34b828531f454f041c3',
+        gasUsed: 168611,
+        logIndex: 193,
+        classifier: swapClassifier,
+        name: 'Swap',
+        values: {
+          poolId:
+            '0x5c6ee304399dbdb9c8ef030ab642b10820db8f56000200000000000000000014',
+          tokenIn: '0xba100000625a3754423978a60c9317c58a424e3D',
+          tokenOut: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+          amountIn: BigNumber.from('0x26580cb170967f84fb'),
+          amountOut: BigNumber.from('0x2c2b087daf9f259c'),
+        },
+      },
+      {
+        address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+        transactionHash:
+          '0x01cba79049f6506d01210608351d414ad11a800451b1d34b828531f454f041c3',
+        gasUsed: 168611,
+        logIndex: 194,
+        classifier: swapClassifier,
+        name: 'Swap',
+        values: {
+          poolId:
+            '0x0b09dea16768f0799065c475be02919503cb2a3500020000000000000000001a',
+          tokenIn: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+          tokenOut: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
+          amountIn: BigNumber.from('0x2c2b087daf9f259c'),
+          amountOut: BigNumber.from('0x01e641855eb7024988a9'),
+        },
+      },
+      {
+        address: '0xba100000625a3754423978a60c9317c58a424e3D',
+        transactionHash:
+          '0x01cba79049f6506d01210608351d414ad11a800451b1d34b828531f454f041c3',
+        gasUsed: 168611,
+        logIndex: 195,
+        classifier: transferClassifier,
+        name: 'Transfer',
+        values: {
+          from: '0x20EADfcaf91BD98674FF8fc341D148E1731576A4',
+          to: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+          value: BigNumber.from('0x26580cb170967f84fb'),
+        },
+      },
+      {
+        address: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
+        transactionHash:
+          '0x01cba79049f6506d01210608351d414ad11a800451b1d34b828531f454f041c3',
+        gasUsed: 168611,
+        logIndex: 197,
+        classifier: transferClassifier,
+        name: 'Transfer',
+        values: {
+          from: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+          to: '0x20EADfcaf91BD98674FF8fc341D148E1731576A4',
+          value: BigNumber.from('0x01e641855eb7024988a9'),
+        },
+      },
+    ];
+
+    const poolA = {
+      address: '0x5c6ee304399dbdb9c8ef030ab642b10820db8f56',
+      assets: [
+        '0xba100000625a3754423978a60c9317c58a424e3d',
+        '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      ],
+      factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+    };
+    const eventA = {
+      address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+      transactionHash:
+        '0x01cba79049f6506d01210608351d414ad11a800451b1d34b828531f454f041c3',
+      gasUsed: 168611,
+      logIndex: 193,
+      classifier: swapClassifier,
+      name: 'Swap',
+      values: {
+        poolId:
+          '0x5c6ee304399dbdb9c8ef030ab642b10820db8f56000200000000000000000014',
+        tokenIn: '0xba100000625a3754423978a60c9317c58a424e3D',
+        tokenOut: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+        amountIn: BigNumber.from('0x26580cb170967f84fb'),
+        amountOut: BigNumber.from('0x2c2b087daf9f259c'),
+      },
+    };
+    const swapA = swapClassifier.parse(poolA, eventA, transfers, allEvents);
+
+    const poolB = {
+      address: '0x0b09dea16768f0799065c475be02919503cb2a35',
+      assets: [
+        '0x6b175474e89094c44da98b954eedeac495271d0f',
+        '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      ],
+      factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+    };
+    const eventB = {
+      address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+      transactionHash:
+        '0x01cba79049f6506d01210608351d414ad11a800451b1d34b828531f454f041c3',
+      gasUsed: 168611,
+      logIndex: 194,
+      classifier: swapClassifier,
+      name: 'Swap',
+      values: {
+        poolId:
+          '0x0b09dea16768f0799065c475be02919503cb2a3500020000000000000000001a',
+        tokenIn: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+        tokenOut: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
+        amountIn: BigNumber.from('0x2c2b087daf9f259c'),
+        amountOut: BigNumber.from('0x01e641855eb7024988a9'),
+      },
+    };
+
+    const swapB = swapClassifier.parse(poolB, eventB, transfers, allEvents);
+
+    expect(swapA).toEqual({
+      amountIn: 707320915873140540667n,
+      amountOut: 3182646897577764252n,
+      assetIn: '0xba100000625a3754423978a60c9317c58a424e3d',
+      assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      from: '0x20eadfcaf91bd98674ff8fc341d148e1731576a4',
+      to: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+      contract: {
+        address: '0x5c6ee304399dbdb9c8ef030ab642b10820db8f56',
+        protocol: {
+          abi: 'BalancerV2',
+          factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        },
+      },
+      event: {
+        address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        logIndex: 193,
+      },
+      transaction: {
+        gasUsed: 168611,
+        hash: '0x01cba79049f6506d01210608351d414ad11a800451b1d34b828531f454f041c3',
+      },
+    });
+    expect(swapB).toEqual({
+      amountIn: 3182646897577764252n,
+      amountOut: 8969838903747320318121n,
+      assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      assetOut: '0x6b175474e89094c44da98b954eedeac495271d0f',
+      from: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+      to: '0x20eadfcaf91bd98674ff8fc341d148e1731576a4',
+      contract: {
+        address: '0x0b09dea16768f0799065c475be02919503cb2a35',
+        protocol: {
+          abi: 'BalancerV2',
+          factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        },
+      },
+      event: {
+        address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        logIndex: 194,
+      },
+      transaction: {
+        gasUsed: 168611,
+        hash: '0x01cba79049f6506d01210608351d414ad11a800451b1d34b828531f454f041c3',
+      },
+    });
+  });
+
+  test('parses a multi-path swap', () => {
+    if (swapClassifier.type !== 'swap') {
+      expect.fail();
+    }
+
+    const transfers = [
+      {
+        asset: '0x90b831fa3bebf58e9744a14d638e25b4ee06f9bc',
+        from: '0x0b8f77dcedbb7d6cee0905b0ebc4af6d50b4a07d',
+        to: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        value: 5555555555555556000000n,
+        transaction: {
+          hash: '0x336151dd41fe447f05d6ef0bde9b0fdf6d4455b39e08c93c4a7c94ba89ef4a3c',
+          gasUsed: 173471,
+        },
+        event: {
+          logIndex: 245,
+          address: '0x90b831fa3bebf58e9744a14d638e25b4ee06f9bc',
+        },
+      },
+    ];
+    const allEvents = [
+      {
+        address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+        transactionHash:
+          '0x336151dd41fe447f05d6ef0bde9b0fdf6d4455b39e08c93c4a7c94ba89ef4a3c',
+        gasUsed: 173471,
+        logIndex: 243,
+        classifier: swapClassifier,
+        name: 'Swap',
+        values: {
+          poolId:
+            '0x5b1c06c4923dbba4b27cfa270ffb2e60aa28615900020000000000000000004a',
+          tokenIn: '0x90B831fa3Bebf58E9744A14D638E25B4eE06f9Bc',
+          tokenOut: '0x68037790A0229e9Ce6EaA8A99ea92964106C4703',
+          amountIn: BigNumber.from('0x012d2ad2372ed4d50100'),
+          amountOut: BigNumber.from('0x103b144fb7853812fa'),
+        },
+      },
+      {
+        address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+        transactionHash:
+          '0x336151dd41fe447f05d6ef0bde9b0fdf6d4455b39e08c93c4a7c94ba89ef4a3c',
+        gasUsed: 173471,
+        logIndex: 244,
+        classifier: swapClassifier,
+        name: 'Swap',
+        values: {
+          poolId:
+            '0x29d7a7e0d781c957696697b94d4bc18c651e358e000200000000000000000049',
+          tokenIn: '0x68037790A0229e9Ce6EaA8A99ea92964106C4703',
+          tokenOut: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+          amountIn: BigNumber.from('0x103b144fb7853812fa'),
+          amountOut: BigNumber.from('0x018988518f9e65b9'),
+        },
+      },
+      {
+        address: '0x90B831fa3Bebf58E9744A14D638E25B4eE06f9Bc',
+        transactionHash:
+          '0x336151dd41fe447f05d6ef0bde9b0fdf6d4455b39e08c93c4a7c94ba89ef4a3c',
+        gasUsed: 173471,
+        logIndex: 245,
+        classifier: transferClassifier,
+        name: 'Transfer',
+        values: {
+          from: '0x0B8F77DCeDbb7D6cEE0905b0EBc4AF6D50b4a07d',
+          to: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+          value: BigNumber.from('0x012d2ad2372ed4d50100'),
+        },
+      },
+    ];
+
+    const poolA = {
+      address: '0x5b1c06c4923dbba4b27cfa270ffb2e60aa286159',
+      assets: [
+        '0x68037790a0229e9ce6eaa8a99ea92964106c4703',
+        '0x90b831fa3bebf58e9744a14d638e25b4ee06f9bc',
+      ],
+      factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+    };
+    const eventA = {
+      address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+      transactionHash:
+        '0x336151dd41fe447f05d6ef0bde9b0fdf6d4455b39e08c93c4a7c94ba89ef4a3c',
+      gasUsed: 173471,
+      logIndex: 243,
+      classifier: swapClassifier,
+      name: 'Swap',
+      values: {
+        poolId:
+          '0x5b1c06c4923dbba4b27cfa270ffb2e60aa28615900020000000000000000004a',
+        tokenIn: '0x90B831fa3Bebf58E9744A14D638E25B4eE06f9Bc',
+        tokenOut: '0x68037790A0229e9Ce6EaA8A99ea92964106C4703',
+        amountIn: BigNumber.from('0x012d2ad2372ed4d50100'),
+        amountOut: BigNumber.from('0x103b144fb7853812fa'),
+      },
+    };
+
+    const poolB = {
+      address: '0x29d7a7e0d781c957696697b94d4bc18c651e358e',
+      assets: [
+        '0x68037790a0229e9ce6eaa8a99ea92964106c4703',
+        '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      ],
+      factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+    };
+    const eventB = {
+      address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+      transactionHash:
+        '0x336151dd41fe447f05d6ef0bde9b0fdf6d4455b39e08c93c4a7c94ba89ef4a3c',
+      gasUsed: 173471,
+      logIndex: 244,
+      classifier: swapClassifier,
+      name: 'Swap',
+      values: {
+        poolId:
+          '0x29d7a7e0d781c957696697b94d4bc18c651e358e000200000000000000000049',
+        tokenIn: '0x68037790A0229e9Ce6EaA8A99ea92964106C4703',
+        tokenOut: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+        amountIn: BigNumber.from('0x103b144fb7853812fa'),
+        amountOut: BigNumber.from('0x018988518f9e65b9'),
+      },
+    };
+
+    const swapA = swapClassifier.parse(poolA, eventA, transfers, allEvents);
+    const swapB = swapClassifier.parse(poolB, eventB, transfers, allEvents);
+
+    expect(swapA).toEqual({
+      amountIn: 5555555555555556000000n,
+      amountOut: 299405020376757441274n,
+      assetIn: '0x90b831fa3bebf58e9744a14d638e25b4ee06f9bc',
+      assetOut: '0x68037790a0229e9ce6eaa8a99ea92964106c4703',
+      from: '0x0b8f77dcedbb7d6cee0905b0ebc4af6d50b4a07d',
+      to: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+      contract: {
+        address: '0x5b1c06c4923dbba4b27cfa270ffb2e60aa286159',
+        protocol: {
+          abi: 'BalancerV2',
+          factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        },
+      },
+      event: {
+        address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        logIndex: 243,
+      },
+      transaction: {
+        gasUsed: 173471,
+        hash: '0x336151dd41fe447f05d6ef0bde9b0fdf6d4455b39e08c93c4a7c94ba89ef4a3c',
+      },
+    });
+    expect(swapB).toEqual({
+      amountIn: 299405020376757441274n,
+      amountOut: 110769549730538937n,
+      assetIn: '0x68037790a0229e9ce6eaa8a99ea92964106c4703',
+      assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      from: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+      to: '0x0b8f77dcedbb7d6cee0905b0ebc4af6d50b4a07d',
+      contract: {
+        address: '0x29d7a7e0d781c957696697b94d4bc18c651e358e',
+        protocol: {
+          abi: 'BalancerV2',
+          factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        },
+      },
+      event: {
+        address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        logIndex: 244,
+      },
+      transaction: {
+        gasUsed: 173471,
+        hash: '0x336151dd41fe447f05d6ef0bde9b0fdf6d4455b39e08c93c4a7c94ba89ef4a3c',
+      },
+    });
+  });
+
+  test('parses a swap with internal "from" transfer', () => {
+    if (swapClassifier.type !== 'swap') {
+      expect.fail();
+    }
+
+    const pool = {
+      address: '0x0b09dea16768f0799065c475be02919503cb2a35',
+      assets: [
+        '0x6b175474e89094c44da98b954eedeac495271d0f',
+        '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      ],
+      factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+    };
+    const event = {
+      address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+      transactionHash:
+        '0x42e27e3bed9a2ab343880e8ab4c4de121fc337a7334170a9dc632a36fe757fb9',
+      gasUsed: 157031,
+      logIndex: 32,
+      classifier: swapClassifier,
+      name: 'Swap',
+      values: {
+        poolId:
+          '0x0b09dea16768f0799065c475be02919503cb2a3500020000000000000000001a',
+        tokenIn: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+        tokenOut: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
+        amountIn: BigNumber.from('0x661388794183a175'),
+        amountOut: BigNumber.from('0x030a1105d5ea33bdaddd'),
+      },
+    };
+    const transfers = [
+      {
+        asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        from: '0x0000e0ca771e21bd00057f54a68c30d400000000',
+        to: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        value: 7355372670797717877n,
+        transaction: {
+          hash: '0x42e27e3bed9a2ab343880e8ab4c4de121fc337a7334170a9dc632a36fe757fb9',
+          gasUsed: 157031,
+        },
+        event: {
+          logIndex: 33,
+          address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        },
+      },
+      {
+        asset: '0x6b175474e89094c44da98b954eedeac495271d0f',
+        from: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        to: '0xa478c2975ab1ea89e8196811f51a7b7ade33eb11',
+        value: 14352793511021426617821n,
+        transaction: {
+          hash: '0x42e27e3bed9a2ab343880e8ab4c4de121fc337a7334170a9dc632a36fe757fb9',
+          gasUsed: 157031,
+        },
+        event: {
+          logIndex: 34,
+          address: '0x6b175474e89094c44da98b954eedeac495271d0f',
+        },
+      },
+      {
+        asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        from: '0xa478c2975ab1ea89e8196811f51a7b7ade33eb11',
+        to: '0x0000e0ca771e21bd00057f54a68c30d400000000',
+        value: 7373981984700594919n,
+        transaction: {
+          hash: '0x42e27e3bed9a2ab343880e8ab4c4de121fc337a7334170a9dc632a36fe757fb9',
+          gasUsed: 157031,
+        },
+        event: {
+          logIndex: 35,
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
+      },
+    ];
+    const allEvents = [
+      {
+        address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+        transactionHash:
+          '0x42e27e3bed9a2ab343880e8ab4c4de121fc337a7334170a9dc632a36fe757fb9',
+        gasUsed: 157031,
+        logIndex: 32,
+        classifier: swapClassifier,
+        name: 'Swap',
+        values: {
+          poolId:
+            '0x0b09dea16768f0799065c475be02919503cb2a3500020000000000000000001a',
+          tokenIn: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+          tokenOut: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
+          amountIn: BigNumber.from('0x661388794183a175'),
+          amountOut: BigNumber.from('0x030a1105d5ea33bdaddd'),
+        },
+      },
+      {
+        address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+        transactionHash:
+          '0x42e27e3bed9a2ab343880e8ab4c4de121fc337a7334170a9dc632a36fe757fb9',
+        gasUsed: 157031,
+        logIndex: 33,
+        classifier: transferClassifier,
+        name: 'InternalBalanceChanged',
+        values: {
+          user: '0x0000E0Ca771e21bD00057F54A68C30D400000000',
+          token: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+          delta: BigNumber.from('-0x661388794183a175'),
+        },
+      },
+      {
+        address: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
+        transactionHash:
+          '0x42e27e3bed9a2ab343880e8ab4c4de121fc337a7334170a9dc632a36fe757fb9',
+        gasUsed: 157031,
+        logIndex: 34,
+        classifier: transferClassifier,
+        name: 'Transfer',
+        values: {
+          from: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+          to: '0xA478c2975Ab1Ea89e8196811F51A7B7Ade33eB11',
+          value: BigNumber.from('0x030a1105d5ea33bdaddd'),
+        },
+      },
+      {
+        address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+        transactionHash:
+          '0x42e27e3bed9a2ab343880e8ab4c4de121fc337a7334170a9dc632a36fe757fb9',
+        gasUsed: 157031,
+        logIndex: 35,
+        classifier: transferClassifier,
+        name: 'Transfer',
+        values: {
+          from: '0xA478c2975Ab1Ea89e8196811F51A7B7Ade33eB11',
+          to: '0x0000E0Ca771e21bD00057F54A68C30D400000000',
+          value: BigNumber.from('0x6655a58bca357ae7'),
+        },
+      },
+      {
+        address: '0xA478c2975Ab1Ea89e8196811F51A7B7Ade33eB11',
+        transactionHash:
+          '0x42e27e3bed9a2ab343880e8ab4c4de121fc337a7334170a9dc632a36fe757fb9',
+        gasUsed: 157031,
+        logIndex: 37,
+        classifier: uniswapClassifier,
+        name: 'Swap',
+        values: {
+          sender: '0x0000E0Ca771e21bD00057F54A68C30D400000000',
+          amount0In: BigNumber.from('0x030a1105d5ea33bdaddd'),
+          amount1In: BigNumber.from('0x00'),
+          amount0Out: BigNumber.from('0x00'),
+          amount1Out: BigNumber.from('0x6655a58bca357ae7'),
+          to: '0x0000E0Ca771e21bD00057F54A68C30D400000000',
+        },
+      },
+    ];
+
+    const swap = swapClassifier.parse(pool, event, transfers, allEvents);
+
+    expect(swap).toEqual({
+      amountIn: 7355372670797717877n,
+      amountOut: 14352793511021426617821n,
+      assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      assetOut: '0x6b175474e89094c44da98b954eedeac495271d0f',
+      from: '0x0000e0ca771e21bd00057f54a68c30d400000000',
+      to: '0xa478c2975ab1ea89e8196811f51a7b7ade33eb11',
+      contract: {
+        address: '0x0b09dea16768f0799065c475be02919503cb2a35',
+        protocol: {
+          abi: 'BalancerV2',
+          factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        },
+      },
+      event: {
+        address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        logIndex: 32,
+      },
+      transaction: {
+        gasUsed: 157031,
+        hash: '0x42e27e3bed9a2ab343880e8ab4c4de121fc337a7334170a9dc632a36fe757fb9',
+      },
+    });
+  });
+
+  test('parses a swap with internal "to" transfer', () => {
+    if (swapClassifier.type !== 'swap') {
+      expect.fail();
+    }
+
+    const pool = {
+      address: '0x0b09dea16768f0799065c475be02919503cb2a35',
+      assets: [
+        '0x6b175474e89094c44da98b954eedeac495271d0f',
+        '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      ],
+      factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+    };
+    const event = {
+      address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+      transactionHash:
+        '0x11bdb8d6d7e0fdd9933ce9673db55524fe7d13f4e6401a40c03c04d1ba06055f',
+      gasUsed: 129388,
+      logIndex: 63,
+      classifier: swapClassifier,
+      name: 'Swap',
+      values: {
+        poolId:
+          '0x0b09dea16768f0799065c475be02919503cb2a3500020000000000000000001a',
+        tokenIn: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+        tokenOut: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
+        amountIn: BigNumber.from('0x3dbf3801863365f6'),
+        amountOut: BigNumber.from('0x01dafcabd86875e6579a'),
+      },
+    };
+    const transfers = [
+      {
+        asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        from: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
+        to: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        value: 4449336536062977526n,
+        transaction: {
+          hash: '0x11bdb8d6d7e0fdd9933ce9673db55524fe7d13f4e6401a40c03c04d1ba06055f',
+          gasUsed: 129388,
+        },
+        event: {
+          logIndex: 64,
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
+      },
+      {
+        asset: '0x6b175474e89094c44da98b954eedeac495271d0f',
+        from: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        to: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
+        value: 8761963574800069056410n,
+        transaction: {
+          hash: '0x11bdb8d6d7e0fdd9933ce9673db55524fe7d13f4e6401a40c03c04d1ba06055f',
+          gasUsed: 129388,
+        },
+        event: {
+          logIndex: 65,
+          address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        },
+      },
+      {
+        asset: '0x6b175474e89094c44da98b954eedeac495271d0f',
+        from: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
+        to: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        value: 8761954770088929600025n,
+        transaction: {
+          hash: '0x11bdb8d6d7e0fdd9933ce9673db55524fe7d13f4e6401a40c03c04d1ba06055f',
+          gasUsed: 129388,
+        },
+        event: {
+          logIndex: 67,
+          address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        },
+      },
+      {
+        asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        from: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        to: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
+        value: 4473474941147401506n,
+        transaction: {
+          hash: '0x11bdb8d6d7e0fdd9933ce9673db55524fe7d13f4e6401a40c03c04d1ba06055f',
+          gasUsed: 129388,
+        },
+        event: {
+          logIndex: 68,
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
+      },
+    ];
+    const allEvents = [
+      {
+        address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+        transactionHash:
+          '0x11bdb8d6d7e0fdd9933ce9673db55524fe7d13f4e6401a40c03c04d1ba06055f',
+        gasUsed: 129388,
+        logIndex: 63,
+        classifier: swapClassifier,
+        name: 'Swap',
+        values: {
+          poolId:
+            '0x0b09dea16768f0799065c475be02919503cb2a3500020000000000000000001a',
+          tokenIn: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+          tokenOut: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
+          amountIn: BigNumber.from('0x3dbf3801863365f6'),
+          amountOut: BigNumber.from('0x01dafcabd86875e6579a'),
+        },
+      },
+      {
+        address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+        transactionHash:
+          '0x11bdb8d6d7e0fdd9933ce9673db55524fe7d13f4e6401a40c03c04d1ba06055f',
+        gasUsed: 129388,
+        logIndex: 64,
+        classifier: transferClassifier,
+        name: 'Transfer',
+        values: {
+          from: '0x4d944a25bC871D6C6EE08baEf0b7dA0b08E6b7b3',
+          to: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+          value: BigNumber.from('0x3dbf3801863365f6'),
+        },
+      },
+      {
+        address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+        transactionHash:
+          '0x11bdb8d6d7e0fdd9933ce9673db55524fe7d13f4e6401a40c03c04d1ba06055f',
+        gasUsed: 129388,
+        logIndex: 65,
+        classifier: transferClassifier,
+        name: 'InternalBalanceChanged',
+        values: {
+          user: '0x4d944a25bC871D6C6EE08baEf0b7dA0b08E6b7b3',
+          token: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
+          delta: BigNumber.from('0x01dafcabd86875e6579a'),
+        },
+      },
+      {
+        address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+        transactionHash:
+          '0x11bdb8d6d7e0fdd9933ce9673db55524fe7d13f4e6401a40c03c04d1ba06055f',
+        gasUsed: 129388,
+        logIndex: 66,
+        classifier: swapClassifier,
+        name: 'Swap',
+        values: {
+          poolId:
+            '0xc45d42f801105e861e86658648e3678ad7aa70f900010000000000000000011e',
+          tokenIn: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
+          tokenOut: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+          amountIn: BigNumber.from('0x01dafc8c9091e6152219'),
+          amountOut: BigNumber.from('0x3e14f9c1eab3cd22'),
+        },
+      },
+      {
+        address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+        transactionHash:
+          '0x11bdb8d6d7e0fdd9933ce9673db55524fe7d13f4e6401a40c03c04d1ba06055f',
+        gasUsed: 129388,
+        logIndex: 67,
+        classifier: transferClassifier,
+        name: 'InternalBalanceChanged',
+        values: {
+          user: '0x4d944a25bC871D6C6EE08baEf0b7dA0b08E6b7b3',
+          token: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
+          delta: BigNumber.from('-0x01dafc8c9091e6152219'),
+        },
+      },
+      {
+        address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+        transactionHash:
+          '0x11bdb8d6d7e0fdd9933ce9673db55524fe7d13f4e6401a40c03c04d1ba06055f',
+        gasUsed: 129388,
+        logIndex: 68,
+        classifier: transferClassifier,
+        name: 'Transfer',
+        values: {
+          from: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+          to: '0x4d944a25bC871D6C6EE08baEf0b7dA0b08E6b7b3',
+          value: BigNumber.from('0x3e14f9c1eab3cd22'),
+        },
+      },
+    ];
+
+    const swap = swapClassifier.parse(pool, event, transfers, allEvents);
+
+    expect(swap).toEqual({
+      amountIn: 4449336536062977526n,
+      amountOut: 8761963574800069056410n,
+      assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      assetOut: '0x6b175474e89094c44da98b954eedeac495271d0f',
+      from: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
+      to: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
+      contract: {
+        address: '0x0b09dea16768f0799065c475be02919503cb2a35',
+        protocol: {
+          abi: 'BalancerV2',
+          factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        },
+      },
+      event: {
+        address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        logIndex: 63,
+      },
+      transaction: {
+        gasUsed: 129388,
+        hash: '0x11bdb8d6d7e0fdd9933ce9673db55524fe7d13f4e6401a40c03c04d1ba06055f',
+      },
+    });
+  });
+
+  test('parses a batch swap', () => {
+    if (swapClassifier.type !== 'swap') {
+      expect.fail();
+    }
+
+    const transfers = [
+      {
+        asset: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        from: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        to: '0xb0057edcd99b344a3b3738690e0792f8723a879a',
+        value: 210527750n,
+        transaction: {
+          hash: '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
+          gasUsed: 335297,
+        },
+        event: {
+          logIndex: 22,
+          address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        },
+      },
+    ];
+    const allEvents = [
+      {
+        address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+        transactionHash:
+          '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
+        gasUsed: 335297,
+        logIndex: 17,
+        classifier: swapClassifier,
+        name: 'Swap',
+        values: {
+          poolId:
+            '0x06df3b2bbb68adc8b0e302443692037ed9f91b42000000000000000000000063',
+          tokenIn: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
+          tokenOut: '0xdAC17F958D2ee523a2206206994597C13D831ec7',
+          amountIn: BigNumber.from('0x84b6a5c400'),
+          amountOut: BigNumber.from('0x852dfd1a83'),
+        },
+      },
+      {
+        address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+        transactionHash:
+          '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
+        gasUsed: 335297,
+        logIndex: 18,
+        classifier: swapClassifier,
+        name: 'Swap',
+        values: {
+          poolId:
+            '0x2bbf681cc4eb09218bee85ea2a5d3d13fa40fc0c0000000000000000000000fd',
+          tokenIn: '0xdAC17F958D2ee523a2206206994597C13D831ec7',
+          tokenOut: '0x2BBf681cC4eb09218BEe85EA2a5d3D13Fa40fC0C',
+          amountIn: BigNumber.from('0x852dfd1a83'),
+          amountOut: BigNumber.from('0x77f15faa70a5e5607ba2'),
+        },
+      },
+      {
+        address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+        transactionHash:
+          '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
+        gasUsed: 335297,
+        logIndex: 20,
+        classifier: swapClassifier,
+        name: 'Swap',
+        values: {
+          poolId:
+            '0x7b50775383d3d6f0215a8f290f2c9e2eebbeceb20000000000000000000000fe',
+          tokenIn: '0x2BBf681cC4eb09218BEe85EA2a5d3D13Fa40fC0C',
+          tokenOut: '0x9210F1204b5a24742Eba12f710636D76240dF3d0',
+          amountIn: BigNumber.from('0x77f15faa70a5e5607ba2'),
+          amountOut: BigNumber.from('0x77bd95aa1a8fb342ec60'),
+        },
+      },
+      {
+        address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+        transactionHash:
+          '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
+        gasUsed: 335297,
+        logIndex: 21,
+        classifier: swapClassifier,
+        name: 'Swap',
+        values: {
+          poolId:
+            '0x9210f1204b5a24742eba12f710636d76240df3d00000000000000000000000fc',
+          tokenIn: '0x9210F1204b5a24742Eba12f710636D76240dF3d0',
+          tokenOut: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
+          amountIn: BigNumber.from('0x77bd95aa1a8fb342ec60'),
+          amountOut: BigNumber.from('0x84c3322a06'),
+        },
+      },
+      {
+        address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+        transactionHash:
+          '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
+        gasUsed: 335297,
+        logIndex: 22,
+        classifier: transferClassifier,
+        name: 'InternalBalanceChanged',
+        values: {
+          user: '0xb0057edcd99B344a3B3738690e0792F8723a879A',
+          token: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
+          delta: BigNumber.from('0x0c8c6606'),
+        },
+      },
+    ];
+
+    const poolA = {
+      address: '0x06df3b2bbb68adc8b0e302443692037ed9f91b42',
+      assets: [
+        '0x6b175474e89094c44da98b954eedeac495271d0f',
+        '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        '0xdac17f958d2ee523a2206206994597c13d831ec7',
+      ],
+      factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+    };
+    const eventA = {
+      address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+      transactionHash:
+        '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
+      gasUsed: 335297,
+      logIndex: 17,
+      classifier: swapClassifier,
+      name: 'Swap',
+      values: {
+        poolId:
+          '0x06df3b2bbb68adc8b0e302443692037ed9f91b42000000000000000000000063',
+        tokenIn: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
+        tokenOut: '0xdAC17F958D2ee523a2206206994597C13D831ec7',
+        amountIn: BigNumber.from('0x84b6a5c400'),
+        amountOut: BigNumber.from('0x852dfd1a83'),
+      },
+    };
+    const poolB = {
+      address: '0x2bbf681cc4eb09218bee85ea2a5d3d13fa40fc0c',
+      assets: [
+        '0x2bbf681cc4eb09218bee85ea2a5d3d13fa40fc0c',
+        '0xdac17f958d2ee523a2206206994597c13d831ec7',
+        '0xf8fd466f12e236f4c96f7cce6c79eadb819abf58',
+      ],
+      factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+    };
+    const eventB = {
+      address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+      transactionHash:
+        '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
+      gasUsed: 335297,
+      logIndex: 18,
+      classifier: swapClassifier,
+      name: 'Swap',
+      values: {
+        poolId:
+          '0x2bbf681cc4eb09218bee85ea2a5d3d13fa40fc0c0000000000000000000000fd',
+        tokenIn: '0xdAC17F958D2ee523a2206206994597C13D831ec7',
+        tokenOut: '0x2BBf681cC4eb09218BEe85EA2a5d3D13Fa40fC0C',
+        amountIn: BigNumber.from('0x852dfd1a83'),
+        amountOut: BigNumber.from('0x77f15faa70a5e5607ba2'),
+      },
+    };
+    const poolC = {
+      address: '0x7b50775383d3d6f0215a8f290f2c9e2eebbeceb2',
+      assets: [
+        '0x2bbf681cc4eb09218bee85ea2a5d3d13fa40fc0c',
+        '0x7b50775383d3d6f0215a8f290f2c9e2eebbeceb2',
+        '0x804cdb9116a10bb78768d3252355a1b18067bf8f',
+        '0x9210f1204b5a24742eba12f710636d76240df3d0',
+      ],
+      factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+    };
+    const eventC = {
+      address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+      transactionHash:
+        '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
+      gasUsed: 335297,
+      logIndex: 20,
+      classifier: swapClassifier,
+      name: 'Swap',
+      values: {
+        poolId:
+          '0x7b50775383d3d6f0215a8f290f2c9e2eebbeceb20000000000000000000000fe',
+        tokenIn: '0x2BBf681cC4eb09218BEe85EA2a5d3D13Fa40fC0C',
+        tokenOut: '0x9210F1204b5a24742Eba12f710636D76240dF3d0',
+        amountIn: BigNumber.from('0x77f15faa70a5e5607ba2'),
+        amountOut: BigNumber.from('0x77bd95aa1a8fb342ec60'),
+      },
+    };
+    const poolD = {
+      address: '0x9210f1204b5a24742eba12f710636d76240df3d0',
+      assets: [
+        '0x9210f1204b5a24742eba12f710636d76240df3d0',
+        '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        '0xd093fa4fb80d09bb30817fdcd442d4d02ed3e5de',
+      ],
+      factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+    };
+    const eventD = {
+      address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+      transactionHash:
+        '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
+      gasUsed: 335297,
+      logIndex: 21,
+      classifier: swapClassifier,
+      name: 'Swap',
+      values: {
+        poolId:
+          '0x9210f1204b5a24742eba12f710636d76240df3d00000000000000000000000fc',
+        tokenIn: '0x9210F1204b5a24742Eba12f710636D76240dF3d0',
+        tokenOut: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
+        amountIn: BigNumber.from('0x77bd95aa1a8fb342ec60'),
+        amountOut: BigNumber.from('0x84c3322a06'),
+      },
+    };
+
+    const swapA = swapClassifier.parse(poolA, eventA, transfers, allEvents);
+    const swapB = swapClassifier.parse(poolB, eventB, transfers, allEvents);
+    const swapC = swapClassifier.parse(poolC, eventC, transfers, allEvents);
+    const swapD = swapClassifier.parse(poolD, eventD, transfers, allEvents);
+
+    expect(swapA).toEqual({
+      amountIn: 570000000000n,
+      amountOut: 572002212483n,
+      assetIn: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+      assetOut: '0xdac17f958d2ee523a2206206994597c13d831ec7',
+      from: '0xb0057edcd99b344a3b3738690e0792f8723a879a',
+      to: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+      contract: {
+        address: '0x06df3b2bbb68adc8b0e302443692037ed9f91b42',
+        protocol: {
+          abi: 'BalancerV2',
+          factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        },
+      },
+      event: {
+        address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        logIndex: 17,
+      },
+      transaction: {
+        gasUsed: 335297,
+        hash: '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
+      },
+    });
+    expect(swapB).toEqual({
+      amountIn: 572002212483n,
+      amountOut: 566414170229289246555042n,
+      assetIn: '0xdac17f958d2ee523a2206206994597c13d831ec7',
+      assetOut: '0x2bbf681cc4eb09218bee85ea2a5d3d13fa40fc0c',
+      from: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+      to: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+      contract: {
+        address: '0x2bbf681cc4eb09218bee85ea2a5d3d13fa40fc0c',
+        protocol: {
+          abi: 'BalancerV2',
+          factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        },
+      },
+      event: {
+        address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        logIndex: 18,
+      },
+      transaction: {
+        gasUsed: 335297,
+        hash: '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
+      },
+    });
+    expect(swapC).toEqual({
+      amountIn: 566414170229289246555042n,
+      amountOut: 565458830552881067912288n,
+      assetIn: '0x2bbf681cc4eb09218bee85ea2a5d3d13fa40fc0c',
+      assetOut: '0x9210f1204b5a24742eba12f710636d76240df3d0',
+      from: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+      to: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+      contract: {
+        address: '0x7b50775383d3d6f0215a8f290f2c9e2eebbeceb2',
+        protocol: {
+          abi: 'BalancerV2',
+          factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        },
+      },
+      event: {
+        address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        logIndex: 20,
+      },
+      transaction: {
+        gasUsed: 335297,
+        hash: '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
+      },
+    });
+    expect(swapD).toEqual({
+      amountIn: 565458830552881067912288n,
+      amountOut: 570210527750n,
+      assetIn: '0x9210f1204b5a24742eba12f710636d76240df3d0',
+      assetOut: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+      from: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+      to: '0xb0057edcd99b344a3b3738690e0792f8723a879a',
+      contract: {
+        address: '0x9210f1204b5a24742eba12f710636d76240df3d0',
+        protocol: {
+          abi: 'BalancerV2',
+          factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        },
+      },
+      event: {
+        address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        logIndex: 21,
+      },
+      transaction: {
+        gasUsed: 335297,
+        hash: '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
+      },
+    });
+  });
+
   test('parses an internal transfer', () => {
     if (transferClassifier.type !== 'transfer') {
       expect.fail();
@@ -319,7 +1607,7 @@ describe('Classfiers: Balancer V2', () => {
       name: 'Transfer',
       values: {
         user: '0x0000E0Ca771e21bD00057F54A68C30D400000000',
-        token: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', 
+        token: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
         delta: BigNumber.from('-7355372670797717877'),
       },
     };
@@ -335,7 +1623,7 @@ describe('Classfiers: Balancer V2', () => {
       name: 'Transfer',
       values: {
         user: '0x4d944a25bC871D6C6EE08baEf0b7dA0b08E6b7b3',
-        token: '0x6B175474E89094C44Da98b954EedeAC495271d0F', 
+        token: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
         delta: BigNumber.from('8761963574800069056410'),
       },
     };
