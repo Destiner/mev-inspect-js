@@ -67,7 +67,12 @@ interface Liquidation extends Base {
   amountSeized: bigint;
 }
 
-type Protocol = 'BalancerV1' | 'BalancerV2' | 'UniswapV2' | 'UniswapV3';
+type Protocol =
+  | 'BalancerV1'
+  | 'BalancerV2'
+  | 'UniswapV2'
+  | 'UniswapV3'
+  | 'CompoundV2';
 
 interface BaseClassifier {
   name: string;
@@ -95,11 +100,7 @@ interface LiquidationClassifier extends BaseClassifier {
   protocol: Protocol;
   type: 'liquidation';
   parse: (market: Market, event: ClassifiedEvent) => Liquidation | null;
-  fetchMarket: (
-    chainId: ChainId,
-    provider: Provider,
-    address: string,
-  ) => Promise<Market | null>;
+  fetchMarket: (chainId: ChainId, provider: Provider, address: string) => Promise<Market | null>;
 }
 
 type Classifier = TransferClassifier | SwapClassifier | LiquidationClassifier;

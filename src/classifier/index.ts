@@ -6,6 +6,7 @@ import { Classifier, Liquidation, Market, Pool, Swap, Transaction, Transfer } fr
 import { nativeAsset, directory, ChainId } from './directory.js';
 import { CLASSIFIER as balancerV1Classifier } from './items/balancerV1.js';
 import { CLASSIFIERS as balancerV2Classifiers } from './items/balancerV2.js';
+import compoundV2Classifier from './items/compoundV2.js';
 import erc20Classifier from './items/erc20.js';
 import { CLASSIFIER as uniswapV2Classifier } from './items/uniswapV2.js';
 import { CLASSIFIER as uniswapV3Classifier } from './items/uniswapV3.js';
@@ -55,6 +56,7 @@ function getClassifiers(): Classifier[] {
     erc20Classifier,
     uniswapV2Classifier,
     uniswapV3Classifier,
+    compoundV2Classifier,
   ];
 }
 
