@@ -2,11 +2,12 @@ import {
   Arbitrage,
   getArbitrages,
 } from './arbitrage.js';
+import {
+  Liquidation,
+  getLiquidations,
+} from './liquidation.js';
 import getSwaps from './swaps.js';
 import getTransfers from './transfers.js';
-
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface Liquidation {}
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Sandwich {}
@@ -22,6 +23,7 @@ export {
   Sandwich,
   TxMev,
   getArbitrages,
+  getLiquidations,
   getSwaps,
   getTransfers,
 };
