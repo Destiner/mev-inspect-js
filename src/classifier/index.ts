@@ -2,7 +2,15 @@ import Coder, { Event } from 'abi-coder';
 
 import { Log } from '../chain.js';
 
-import { Classifier, Liquidation, Market, Pool, Swap, Transaction, Transfer } from './base.js';
+import {
+  Classifier,
+  Liquidation,
+  Market,
+  Pool,
+  Swap,
+  Transaction,
+  Transfer,
+} from './base.js';
 import { nativeAsset, directory, ChainId } from './directory.js';
 import { CLASSIFIER as balancerV1Classifier } from './items/balancerV1.js';
 import { CLASSIFIERS as balancerV2Classifiers } from './items/balancerV2.js';

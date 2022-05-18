@@ -100,7 +100,11 @@ interface LiquidationClassifier extends BaseClassifier {
   protocol: Protocol;
   type: 'liquidation';
   parse: (market: Market, event: ClassifiedEvent) => Liquidation | null;
-  fetchMarket: (chainId: ChainId, provider: Provider, address: string) => Promise<Market | null>;
+  fetchMarket: (
+    chainId: ChainId,
+    provider: Provider,
+    address: string,
+  ) => Promise<Market | null>;
 }
 
 type Classifier = TransferClassifier | SwapClassifier | LiquidationClassifier;
