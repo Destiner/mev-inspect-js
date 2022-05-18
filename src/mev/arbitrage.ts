@@ -8,17 +8,6 @@ interface Arbitrage {
   endAmount: bigint;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface Liquidation {}
-
-interface Sandwich {
-  swaps: Swap[];
-}
-
-type TxMev = Arbitrage | Liquidation;
-
-type BlockMev = TxMev | Sandwich;
-
 const MAX_TOKEN_AMOUNT_PERCENT_DIFFERENCE = 0.00001;
 
 function getArbitrages(swaps: Swap[]): Arbitrage[] {
@@ -177,4 +166,4 @@ function swapOutsMatchSwapIns(swapOut: Swap, swapIn: Swap): boolean {
   );
 }
 
-export { Arbitrage, BlockMev, Liquidation, Sandwich, TxMev, getArbitrages };
+export { Arbitrage, getArbitrages };
