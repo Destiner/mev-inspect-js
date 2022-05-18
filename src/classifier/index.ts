@@ -2,8 +2,8 @@ import Coder, { Event } from 'abi-coder';
 
 import { Log } from '../chain.js';
 
-import { Classifier, Pool, Swap, Transaction, Transfer } from './base.js';
-import directory, { ChainId } from './directory.js';
+import { Classifier, Liquidation, Market, Pool, Swap, Transaction, Transfer } from './base.js';
+import { nativeAsset, directory, ChainId } from './directory.js';
 import { CLASSIFIER as balancerV1Classifier } from './items/balancerV1.js';
 import { CLASSIFIERS as balancerV2Classifiers } from './items/balancerV2.js';
 import erc20Classifier from './items/erc20.js';
@@ -63,9 +63,12 @@ export default classify;
 export {
   ChainId,
   ClassifiedEvent,
+  Liquidation,
+  Market,
   Pool,
   Swap,
   Transaction,
   Transfer,
   directory,
+  nativeAsset,
 };

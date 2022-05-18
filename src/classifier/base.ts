@@ -1,12 +1,18 @@
 import { JsonFragment } from '@ethersproject/abi';
 import { Provider } from '@ethersproject/providers';
 
-import { ClassifiedEvent } from './index.js';
+import { ChainId, ClassifiedEvent } from './index.js';
 
 interface Pool {
   address: string;
   factory: string;
   assets: string[];
+}
+
+interface Market {
+  address: string;
+  pool: string;
+  asset: string;
 }
 
 interface Transaction {
@@ -45,6 +51,22 @@ interface Swap extends Base {
   amountOut: bigint;
 }
 
+interface Liquidation extends Base {
+  contract: {
+    address: string;
+    protocol: {
+      abi: Protocol;
+      pool: string;
+    };
+  };
+  liquidator: string;
+  borrower: string;
+  assetRepay: string;
+  amountRepay: bigint;
+  assetSeized: string;
+  amountSeized: bigint;
+}
+
 type Protocol = 'BalancerV1' | 'BalancerV2' | 'UniswapV2' | 'UniswapV3';
 
 interface BaseClassifier {
@@ -69,7 +91,18 @@ interface SwapClassifier extends BaseClassifier {
   fetchPool: (provider: Provider, id: string) => Promise<Pool | null>;
 }
 
-type Classifier = TransferClassifier | SwapClassifier;
+interface LiquidationClassifier extends BaseClassifier {
+  protocol: Protocol;
+  type: 'liquidation';
+  parse: (market: Market, event: ClassifiedEvent) => Liquidation | null;
+  fetchMarket: (
+    chainId: ChainId,
+    provider: Provider,
+    address: string,
+  ) => Promise<Market | null>;
+}
+
+type Classifier = TransferClassifier | SwapClassifier | LiquidationClassifier;
 
 function getLatestPoolTransfer(
   pool: string,
@@ -90,8 +123,10 @@ export {
   Classifier,
   Transaction,
   Pool,
+  Market,
   Protocol,
   Transfer,
   Swap,
+  Liquidation,
   getLatestPoolTransfer,
 };

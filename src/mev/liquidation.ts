@@ -1,12 +1,63 @@
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface Liquidation {}
+import {
+  ChainId,
+  ClassifiedEvent,
+  Liquidation as LiquidationEvent,
+  Market,
+  directory,
+} from '../classifier/index.js';
 
-function getLiquidations(): Liquidation[] {
-  const liquidation: Liquidation[] = [];
-  return liquidation;
+interface Liquidation {
+  liquidator: string;
+  borrower: string;
+  assetRepay: string;
+  amountRepay: bigint;
+  assetSeized: string;
+  amountSeized: bigint;
 }
 
-export {
-  Liquidation,
-  getLiquidations,
+function getMarketAddress(log: ClassifiedEvent): string {
+  return log.address;
 }
+
+function getLiquidations(
+  chainId: ChainId,
+  markets: Market[],
+  logs: ClassifiedEvent[],
+): Liquidation[] {
+  return logs
+    .map((log) => {
+      if (log.classifier.type !== 'liquidation') {
+        return null;
+      }
+      const marketAddress = getMarketAddress(log);
+      const market = markets.find((pool) => pool.address === marketAddress);
+      if (!market) {
+        return null;
+      }
+      const protocol = log.classifier.protocol;
+      if (!protocol) {
+        return null;
+      }
+      const allowedPools = directory[chainId][protocol];
+      if (!allowedPools.includes(market.pool)) {
+        return null;
+      }
+      return log.classifier.parse(market, log);
+    })
+    .filter(
+      (liquidation: LiquidationEvent | null): liquidation is LiquidationEvent =>
+        !!liquidation,
+    )
+    .map((liquidation: Liquidation) => {
+      return {
+        liquidator: liquidation.liquidator,
+        borrower: liquidation.borrower,
+        assetRepay: liquidation.assetRepay,
+        amountRepay: liquidation.amountRepay,
+        assetSeized: liquidation.assetSeized,
+        amountSeized: liquidation.amountSeized,
+      };
+    });
+}
+
+export { Liquidation, getLiquidations };

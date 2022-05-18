@@ -1,6 +1,6 @@
 import { Provider } from '@ethersproject/providers';
 
-import { ClassifiedEvent, Pool } from './classifier/index.js';
+import { ChainId, ClassifiedEvent, Market, Pool } from './classifier/index.js';
 
 async function fetchPools(
   provider: Provider,
@@ -21,6 +21,26 @@ async function fetchPools(
   return pools;
 }
 
+async function fetchMarkets(
+  chainId: ChainId,
+  provider: Provider,
+  logs: ClassifiedEvent[],
+): Promise<Market[]> {
+  const markets: Market[] = [];
+  for (const log of logs) {
+    if (log.classifier.type !== 'liquidation') {
+      continue;
+    }
+    const address = getMarketAddress(log);
+    const market = await log.classifier.fetchMarket(chainId, provider, address);
+    if (!market) {
+      continue;
+    }
+    markets.push(market);
+  }
+  return markets;
+}
+
 function getPoolId(log: ClassifiedEvent): string {
   if (log.classifier.type !== 'swap') {
     return '';
@@ -31,4 +51,8 @@ function getPoolId(log: ClassifiedEvent): string {
   return log.address;
 }
 
-export default fetchPools;
+function getMarketAddress(log: ClassifiedEvent): string {
+  return log.address;
+}
+
+export { fetchPools, fetchMarkets };
