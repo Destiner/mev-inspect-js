@@ -67,12 +67,11 @@ interface Liquidation extends Base {
   amountSeized: bigint;
 }
 
-type Protocol =
-  | 'BalancerV1'
-  | 'BalancerV2'
-  | 'UniswapV2'
-  | 'UniswapV3'
-  | 'CompoundV2';
+type SwapProtocol = 'BalancerV1' | 'BalancerV2' | 'UniswapV2' | 'UniswapV3';
+
+type LendingProtocol = 'CompoundV2';
+
+type Protocol = SwapProtocol | LendingProtocol;
 
 interface BaseClassifier {
   name: string;
@@ -126,12 +125,14 @@ function getLatestPoolTransfer(
 
 export {
   Classifier,
-  Transaction,
-  Pool,
-  Market,
-  Protocol,
-  Transfer,
-  Swap,
+  LendingProtocol,
   Liquidation,
+  Market,
+  Pool,
+  Protocol,
+  Swap,
+  SwapProtocol,
+  Transaction,
+  Transfer,
   getLatestPoolTransfer,
 };

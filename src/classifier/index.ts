@@ -4,14 +4,21 @@ import { Log } from '../chain.js';
 
 import {
   Classifier,
+  LendingProtocol,
   Liquidation,
   Market,
   Pool,
   Swap,
+  SwapProtocol,
   Transaction,
   Transfer,
 } from './base.js';
-import { nativeAsset, directory, ChainId } from './directory.js';
+import {
+  ChainId,
+  lendingPools,
+  nativeAsset,
+  swapFactories,
+} from './directory.js';
 import { CLASSIFIER as balancerV1Classifier } from './items/balancerV1.js';
 import { CLASSIFIERS as balancerV2Classifiers } from './items/balancerV2.js';
 import compoundV2Classifier from './items/compoundV2.js';
@@ -73,12 +80,15 @@ export default classify;
 export {
   ChainId,
   ClassifiedEvent,
+  LendingProtocol,
   Liquidation,
   Market,
   Pool,
   Swap,
+  SwapProtocol,
   Transaction,
   Transfer,
-  directory,
+  lendingPools,
   nativeAsset,
+  swapFactories,
 };

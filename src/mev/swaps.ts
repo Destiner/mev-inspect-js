@@ -1,10 +1,11 @@
 import {
   ChainId,
-  Swap,
-  Pool,
-  Transfer,
   ClassifiedEvent,
-  directory,
+  Pool,
+  Swap,
+  SwapProtocol,
+  Transfer,
+  swapFactories,
 } from '../classifier/index.js';
 
 function getPoolAddress(log: ClassifiedEvent): string {
@@ -38,7 +39,11 @@ function getSwaps(
       if (!protocol) {
         return null;
       }
-      const allowedFactories = directory[chainId][protocol];
+      const swapProtocol = protocol as SwapProtocol;
+      const allowedFactories = swapFactories[chainId][swapProtocol];
+      if (!allowedFactories) {
+        return null;
+      }
       if (!allowedFactories.includes(pool.factory)) {
         return null;
       }

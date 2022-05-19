@@ -1,9 +1,10 @@
 import {
   ChainId,
   ClassifiedEvent,
+  LendingProtocol,
   Liquidation as LiquidationEvent,
   Market,
-  directory,
+  lendingPools,
 } from '../classifier/index.js';
 
 interface Liquidation {
@@ -38,8 +39,13 @@ function getLiquidations(
       if (!protocol) {
         return null;
       }
-      const allowedPools = directory[chainId][protocol];
-      if (!allowedPools.includes(market.pool)) {
+      const lendingProtocol = protocol as LendingProtocol;
+      const allowedPools = lendingPools[chainId][lendingProtocol];
+      if (!allowedPools) {
+        return null;
+      }
+      const allowed = allowedPools.some((pools) => pools.includes(market.pool));
+      if (!allowed) {
         return null;
       }
       return log.classifier.parse(market, log);

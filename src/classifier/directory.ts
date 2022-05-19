@@ -1,4 +1,4 @@
-import { Protocol } from './base.js';
+import { SwapProtocol, LendingProtocol } from './base.js';
 
 const ETHEREUM = 1;
 
@@ -8,7 +8,7 @@ const nativeAsset: Record<ChainId, string> = {
   [ETHEREUM]: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
 };
 
-const directory: Record<ChainId, Record<Protocol, string[]>> = {
+const swapFactories: Record<ChainId, Record<SwapProtocol, string[]>> = {
   [ETHEREUM]: {
     UniswapV2: [
       // Uniswap
@@ -33,8 +33,13 @@ const directory: Record<ChainId, Record<Protocol, string[]>> = {
     UniswapV3: ['0x1f98431c8ad98523631ae4a59f267346ea31f984'],
     BalancerV1: ['0x9424b1412450d0f8fc2255faf6046b98213b76bd'],
     BalancerV2: ['0xba12222222228d8ba445958a75a0704d566bf2c8'],
-    CompoundV2: ['0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b'],
   },
 };
 
-export { ChainId, nativeAsset, directory };
+const lendingPools: Record<ChainId, Record<LendingProtocol, string[][]>> = {
+  [ETHEREUM]: {
+    CompoundV2: [['0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b']],
+  }
+};
+
+export { ChainId, nativeAsset, swapFactories, lendingPools };
