@@ -1,4 +1,4 @@
-import Coder, { Event } from 'abi-coder';
+import { Coder, Event } from 'abi-coder';
 
 import { Log } from '../chain.js';
 
@@ -44,7 +44,7 @@ function classify(logs: Log[]): ClassifiedEvent[] {
 function classifyLog(log: Log): ClassifiedEvent | undefined {
   const classifiers = getClassifiers();
   for (const classifier of classifiers) {
-    const coder = new Coder.default(classifier.abi);
+    const coder = new Coder(classifier.abi);
     try {
       const event = coder.decodeEvent(log.topics, log.data);
       if (classifier.name !== event.name) {
