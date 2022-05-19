@@ -28,7 +28,7 @@ async function fetchMarket(
       ? native
       : ((await marketContract.underlying()) as string).toLowerCase();
   return {
-    address,
+    address: address.toLowerCase(),
     pool: comptroller,
     asset: underlying,
   };

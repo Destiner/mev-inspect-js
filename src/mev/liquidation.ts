@@ -17,7 +17,7 @@ interface Liquidation {
 }
 
 function getMarketAddress(log: ClassifiedEvent): string {
-  return log.address;
+  return log.address.toLowerCase();
 }
 
 function getLiquidations(

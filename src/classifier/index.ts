@@ -19,6 +19,7 @@ import {
   nativeAsset,
   swapFactories,
 } from './directory.js';
+import aaveV2Classifier from './items/aaveV2.js';
 import { CLASSIFIER as balancerV1Classifier } from './items/balancerV1.js';
 import { CLASSIFIERS as balancerV2Classifiers } from './items/balancerV2.js';
 import compoundV2Classifier from './items/compoundV2.js';
@@ -72,6 +73,7 @@ function getClassifiers(): Classifier[] {
     uniswapV2Classifier,
     uniswapV3Classifier,
     compoundV2Classifier,
+    aaveV2Classifier,
   ];
 }
 
