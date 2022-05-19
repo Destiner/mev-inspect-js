@@ -69,7 +69,7 @@ interface Liquidation extends Base {
 
 type SwapProtocol = 'BalancerV1' | 'BalancerV2' | 'UniswapV2' | 'UniswapV3';
 
-type LendingProtocol = 'CompoundV2' | 'AaveV2';
+type LendingProtocol = 'CompoundV2' | 'AaveV2' | 'AaveV3';
 
 type Protocol = SwapProtocol | LendingProtocol;
 
