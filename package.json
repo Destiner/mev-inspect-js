@@ -18,8 +18,8 @@
   "files": [
     "lib/"
   ],
-  "main": "./lib/src/index.js",
-  "exports": "./lib/src/index.js",
+  "main": "./lib/index.js",
+  "exports": "./lib/index.js",
   "scripts": {
     "lint": "npm run lint:eslint && npm run lint:prettier",
     "lint:eslint": "eslint \"{src,test}/**/*.ts\"",
