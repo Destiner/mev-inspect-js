@@ -1,15 +1,18 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import { describe, test, expect } from 'vitest';
 
+import { Pool, Transfer } from '../../src/classifier/base.js';
+import { ClassifiedEvent } from '../../src/classifier/index.js';
 import balancerV2Classifiers from '../../src/classifier/items/balancerV2.js';
 import uniswapClassifier from '../../src/classifier/items/uniswapV2.js';
+import { Swap } from '../../src/index.js';
 
 const swapClassifier = balancerV2Classifiers[0];
 const transferClassifier = balancerV2Classifiers[1];
 
 describe('Classfiers: Balancer V2', () => {
   test('parses a swap', () => {
-    const pool = {
+    const pool: Pool = {
       address: '0x5c6ee304399dbdb9c8ef030ab642b10820db8f56',
       assets: [
         '0xba100000625a3754423978a60c9317c58a424e3D',
@@ -17,7 +20,7 @@ describe('Classfiers: Balancer V2', () => {
       ],
       factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
     };
-    const event = {
+    const event: ClassifiedEvent = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
       transactionHash:
         '0x0beab997294942e83fa3f1328562fcf1ce8299470f5351a63d7f385c2becbf48',
@@ -34,7 +37,7 @@ describe('Classfiers: Balancer V2', () => {
         amountOut: BigNumber.from('3698791690807238453478'),
       },
     };
-    const transfers = [
+    const transfers: Transfer[] = [
       {
         transaction: {
           hash: '0x0beab997294942e83fa3f1328562fcf1ce8299470f5351a63d7f385c2becbf48',
@@ -116,7 +119,7 @@ describe('Classfiers: Balancer V2', () => {
       expect.fail();
     }
     const swap = swapClassifier.parse(pool, event, transfers, allEvents);
-    expect(swap).toEqual({
+    expect(swap).toEqual<Swap>({
       transaction: {
         hash: '0x0beab997294942e83fa3f1328562fcf1ce8299470f5351a63d7f385c2becbf48',
         gasUsed: 130598,
@@ -142,7 +145,7 @@ describe('Classfiers: Balancer V2', () => {
   });
 
   test('parses a swap with different from/to', () => {
-    const pool = {
+    const pool: Pool = {
       address: '0xe2469f47ab58cf9cf59f9822e3c5de4950a41c49',
       assets: [
         '0xa3bed4e1c75d00fa6f4e5e6922db7261b5e9acd2',
@@ -150,7 +153,7 @@ describe('Classfiers: Balancer V2', () => {
       ],
       factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
     };
-    const event = {
+    const event: ClassifiedEvent = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
       transactionHash:
         '0x49fb0fb07827b3e6fa425fbb7ef1f1fbe3dfedbf656519bfe6d4bf9391aea1d2',
@@ -167,7 +170,7 @@ describe('Classfiers: Balancer V2', () => {
         amountOut: BigNumber.from('6329353631552147493643'),
       },
     };
-    const transfers = [
+    const transfers: Transfer[] = [
       {
         transaction: {
           hash: '0x49fb0fb07827b3e6fa425fbb7ef1f1fbe3dfedbf656519bfe6d4bf9391aea1d2',
@@ -280,7 +283,7 @@ describe('Classfiers: Balancer V2', () => {
       expect.fail();
     }
     const swap = swapClassifier.parse(pool, event, transfers, allEvents);
-    expect(swap).toEqual({
+    expect(swap).toEqual<Swap>({
       transaction: {
         hash: '0x49fb0fb07827b3e6fa425fbb7ef1f1fbe3dfedbf656519bfe6d4bf9391aea1d2',
         gasUsed: 162269,
@@ -306,7 +309,7 @@ describe('Classfiers: Balancer V2', () => {
   });
 
   test('parses a eth -> token swap', () => {
-    const pool = {
+    const pool: Pool = {
       address: '0x0bf37157d30dfe6f56757dcadff01aed83b08cd6',
       assets: [
         '0x333a4823466879eef910a04d473505da62142069',
@@ -314,7 +317,7 @@ describe('Classfiers: Balancer V2', () => {
       ],
       factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
     };
-    const event = {
+    const event: ClassifiedEvent = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
       transactionHash:
         '0xc785c5713ef1d2e527559746004276f15aaedf62503b670bdf16e156b82aa39b',
@@ -331,7 +334,7 @@ describe('Classfiers: Balancer V2', () => {
         amountOut: BigNumber.from('0x260c600b5dd64e21'),
       },
     };
-    const transfers = [
+    const transfers: Transfer[] = [
       {
         asset: '0x333a4823466879eef910a04d473505da62142069',
         from: '0xed308a08b051da28d59606d9dd9a3dced7ad188c',
@@ -385,7 +388,7 @@ describe('Classfiers: Balancer V2', () => {
       expect.fail();
     }
     const swap = swapClassifier.parse(pool, event, transfers, allEvents);
-    expect(swap).toEqual({
+    expect(swap).toEqual<Swap>({
       amountIn: 2999965234102545687n,
       amountOut: 2741671875097021985n,
       assetIn: '0x333a4823466879eef910a04d473505da62142069',
@@ -411,7 +414,7 @@ describe('Classfiers: Balancer V2', () => {
   });
 
   test('parses a token -> eth swap', () => {
-    const pool = {
+    const pool: Pool = {
       address: '0x3ebf48cd7586d7a4521ce59e53d9a907ebf1480f',
       assets: [
         '0xba100000625a3754423978a60c9317c58a424e3d',
@@ -419,7 +422,7 @@ describe('Classfiers: Balancer V2', () => {
       ],
       factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
     };
-    const event = {
+    const event: ClassifiedEvent = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
       transactionHash:
         '0xa87d22940d3b93b491683de99d48cab79c171fe1535586862e0c0ace381928f0',
@@ -436,7 +439,7 @@ describe('Classfiers: Balancer V2', () => {
         amountOut: BigNumber.from('0x070b5240281ba628ab'),
       },
     };
-    const transfers = [
+    const transfers: Transfer[] = [
       {
         asset: '0xba100000625a3754423978a60c9317c58a424e3d',
         from: '0xba12222222228d8ba445958a75a0704d566bf2c8',
@@ -490,7 +493,7 @@ describe('Classfiers: Balancer V2', () => {
       expect.fail();
     }
     const swap = swapClassifier.parse(pool, event, transfers, allEvents);
-    expect(swap).toEqual({
+    expect(swap).toEqual<Swap>({
       amountIn: 600000000000000000n,
       amountOut: 129942993539481086123n,
       assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
@@ -520,7 +523,7 @@ describe('Classfiers: Balancer V2', () => {
       expect.fail();
     }
 
-    const transfers = [
+    const transfers: Transfer[] = [
       {
         asset: '0xba100000625a3754423978a60c9317c58a424e3d',
         from: '0x20eadfcaf91bd98674ff8fc341d148e1731576a4',
@@ -615,7 +618,7 @@ describe('Classfiers: Balancer V2', () => {
       },
     ];
 
-    const poolA = {
+    const poolA: Pool = {
       address: '0x5c6ee304399dbdb9c8ef030ab642b10820db8f56',
       assets: [
         '0xba100000625a3754423978a60c9317c58a424e3d',
@@ -623,7 +626,7 @@ describe('Classfiers: Balancer V2', () => {
       ],
       factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
     };
-    const eventA = {
+    const eventA: ClassifiedEvent = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
       transactionHash:
         '0x01cba79049f6506d01210608351d414ad11a800451b1d34b828531f454f041c3',
@@ -642,7 +645,7 @@ describe('Classfiers: Balancer V2', () => {
     };
     const swapA = swapClassifier.parse(poolA, eventA, transfers, allEvents);
 
-    const poolB = {
+    const poolB: Pool = {
       address: '0x0b09dea16768f0799065c475be02919503cb2a35',
       assets: [
         '0x6b175474e89094c44da98b954eedeac495271d0f',
@@ -650,7 +653,7 @@ describe('Classfiers: Balancer V2', () => {
       ],
       factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
     };
-    const eventB = {
+    const eventB: ClassifiedEvent = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
       transactionHash:
         '0x01cba79049f6506d01210608351d414ad11a800451b1d34b828531f454f041c3',
@@ -670,7 +673,7 @@ describe('Classfiers: Balancer V2', () => {
 
     const swapB = swapClassifier.parse(poolB, eventB, transfers, allEvents);
 
-    expect(swapA).toEqual({
+    expect(swapA).toEqual<Swap>({
       amountIn: 707320915873140540667n,
       amountOut: 3182646897577764252n,
       assetIn: '0xba100000625a3754423978a60c9317c58a424e3d',
@@ -693,7 +696,7 @@ describe('Classfiers: Balancer V2', () => {
         hash: '0x01cba79049f6506d01210608351d414ad11a800451b1d34b828531f454f041c3',
       },
     });
-    expect(swapB).toEqual({
+    expect(swapB).toEqual<Swap>({
       amountIn: 3182646897577764252n,
       amountOut: 8969838903747320318121n,
       assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
@@ -723,7 +726,7 @@ describe('Classfiers: Balancer V2', () => {
       expect.fail();
     }
 
-    const transfers = [
+    const transfers: Transfer[] = [
       {
         asset: '0x90b831fa3bebf58e9744a14d638e25b4ee06f9bc',
         from: '0x0b8f77dcedbb7d6cee0905b0ebc4af6d50b4a07d',
@@ -790,7 +793,7 @@ describe('Classfiers: Balancer V2', () => {
       },
     ];
 
-    const poolA = {
+    const poolA: Pool = {
       address: '0x5b1c06c4923dbba4b27cfa270ffb2e60aa286159',
       assets: [
         '0x68037790a0229e9ce6eaa8a99ea92964106c4703',
@@ -798,7 +801,7 @@ describe('Classfiers: Balancer V2', () => {
       ],
       factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
     };
-    const eventA = {
+    const eventA: ClassifiedEvent = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
       transactionHash:
         '0x336151dd41fe447f05d6ef0bde9b0fdf6d4455b39e08c93c4a7c94ba89ef4a3c',
@@ -816,7 +819,7 @@ describe('Classfiers: Balancer V2', () => {
       },
     };
 
-    const poolB = {
+    const poolB: Pool = {
       address: '0x29d7a7e0d781c957696697b94d4bc18c651e358e',
       assets: [
         '0x68037790a0229e9ce6eaa8a99ea92964106c4703',
@@ -824,7 +827,7 @@ describe('Classfiers: Balancer V2', () => {
       ],
       factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
     };
-    const eventB = {
+    const eventB: ClassifiedEvent = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
       transactionHash:
         '0x336151dd41fe447f05d6ef0bde9b0fdf6d4455b39e08c93c4a7c94ba89ef4a3c',
@@ -845,7 +848,7 @@ describe('Classfiers: Balancer V2', () => {
     const swapA = swapClassifier.parse(poolA, eventA, transfers, allEvents);
     const swapB = swapClassifier.parse(poolB, eventB, transfers, allEvents);
 
-    expect(swapA).toEqual({
+    expect(swapA).toEqual<Swap>({
       amountIn: 5555555555555556000000n,
       amountOut: 299405020376757441274n,
       assetIn: '0x90b831fa3bebf58e9744a14d638e25b4ee06f9bc',
@@ -868,7 +871,7 @@ describe('Classfiers: Balancer V2', () => {
         hash: '0x336151dd41fe447f05d6ef0bde9b0fdf6d4455b39e08c93c4a7c94ba89ef4a3c',
       },
     });
-    expect(swapB).toEqual({
+    expect(swapB).toEqual<Swap>({
       amountIn: 299405020376757441274n,
       amountOut: 110769549730538937n,
       assetIn: '0x68037790a0229e9ce6eaa8a99ea92964106c4703',
@@ -898,7 +901,7 @@ describe('Classfiers: Balancer V2', () => {
       expect.fail();
     }
 
-    const pool = {
+    const pool: Pool = {
       address: '0x0b09dea16768f0799065c475be02919503cb2a35',
       assets: [
         '0x6b175474e89094c44da98b954eedeac495271d0f',
@@ -906,7 +909,7 @@ describe('Classfiers: Balancer V2', () => {
       ],
       factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
     };
-    const event = {
+    const event: ClassifiedEvent = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
       transactionHash:
         '0x42e27e3bed9a2ab343880e8ab4c4de121fc337a7334170a9dc632a36fe757fb9',
@@ -923,7 +926,7 @@ describe('Classfiers: Balancer V2', () => {
         amountOut: BigNumber.from('0x030a1105d5ea33bdaddd'),
       },
     };
-    const transfers = [
+    const transfers: Transfer[] = [
       {
         asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
         from: '0x0000e0ca771e21bd00057f54a68c30d400000000',
@@ -1048,7 +1051,7 @@ describe('Classfiers: Balancer V2', () => {
 
     const swap = swapClassifier.parse(pool, event, transfers, allEvents);
 
-    expect(swap).toEqual({
+    expect(swap).toEqual<Swap>({
       amountIn: 7355372670797717877n,
       amountOut: 14352793511021426617821n,
       assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
@@ -1078,7 +1081,7 @@ describe('Classfiers: Balancer V2', () => {
       expect.fail();
     }
 
-    const pool = {
+    const pool: Pool = {
       address: '0x0b09dea16768f0799065c475be02919503cb2a35',
       assets: [
         '0x6b175474e89094c44da98b954eedeac495271d0f',
@@ -1086,7 +1089,7 @@ describe('Classfiers: Balancer V2', () => {
       ],
       factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
     };
-    const event = {
+    const event: ClassifiedEvent = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
       transactionHash:
         '0x11bdb8d6d7e0fdd9933ce9673db55524fe7d13f4e6401a40c03c04d1ba06055f',
@@ -1103,7 +1106,7 @@ describe('Classfiers: Balancer V2', () => {
         amountOut: BigNumber.from('0x01dafcabd86875e6579a'),
       },
     };
-    const transfers = [
+    const transfers: Transfer[] = [
       {
         asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
         from: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
@@ -1256,7 +1259,7 @@ describe('Classfiers: Balancer V2', () => {
 
     const swap = swapClassifier.parse(pool, event, transfers, allEvents);
 
-    expect(swap).toEqual({
+    expect(swap).toEqual<Swap>({
       amountIn: 4449336536062977526n,
       amountOut: 8761963574800069056410n,
       assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
@@ -1286,7 +1289,7 @@ describe('Classfiers: Balancer V2', () => {
       expect.fail();
     }
 
-    const transfers = [
+    const transfers: Transfer[] = [
       {
         asset: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
         from: '0xba12222222228d8ba445958a75a0704d566bf2c8',
@@ -1387,7 +1390,7 @@ describe('Classfiers: Balancer V2', () => {
       },
     ];
 
-    const poolA = {
+    const poolA: Pool = {
       address: '0x06df3b2bbb68adc8b0e302443692037ed9f91b42',
       assets: [
         '0x6b175474e89094c44da98b954eedeac495271d0f',
@@ -1396,7 +1399,7 @@ describe('Classfiers: Balancer V2', () => {
       ],
       factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
     };
-    const eventA = {
+    const eventA: ClassifiedEvent = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
       transactionHash:
         '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
@@ -1413,7 +1416,7 @@ describe('Classfiers: Balancer V2', () => {
         amountOut: BigNumber.from('0x852dfd1a83'),
       },
     };
-    const poolB = {
+    const poolB: Pool = {
       address: '0x2bbf681cc4eb09218bee85ea2a5d3d13fa40fc0c',
       assets: [
         '0x2bbf681cc4eb09218bee85ea2a5d3d13fa40fc0c',
@@ -1422,7 +1425,7 @@ describe('Classfiers: Balancer V2', () => {
       ],
       factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
     };
-    const eventB = {
+    const eventB: ClassifiedEvent = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
       transactionHash:
         '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
@@ -1439,7 +1442,7 @@ describe('Classfiers: Balancer V2', () => {
         amountOut: BigNumber.from('0x77f15faa70a5e5607ba2'),
       },
     };
-    const poolC = {
+    const poolC: Pool = {
       address: '0x7b50775383d3d6f0215a8f290f2c9e2eebbeceb2',
       assets: [
         '0x2bbf681cc4eb09218bee85ea2a5d3d13fa40fc0c',
@@ -1449,7 +1452,7 @@ describe('Classfiers: Balancer V2', () => {
       ],
       factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
     };
-    const eventC = {
+    const eventC: ClassifiedEvent = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
       transactionHash:
         '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
@@ -1466,7 +1469,7 @@ describe('Classfiers: Balancer V2', () => {
         amountOut: BigNumber.from('0x77bd95aa1a8fb342ec60'),
       },
     };
-    const poolD = {
+    const poolD: Pool = {
       address: '0x9210f1204b5a24742eba12f710636d76240df3d0',
       assets: [
         '0x9210f1204b5a24742eba12f710636d76240df3d0',
@@ -1475,7 +1478,7 @@ describe('Classfiers: Balancer V2', () => {
       ],
       factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
     };
-    const eventD = {
+    const eventD: ClassifiedEvent = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
       transactionHash:
         '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
@@ -1498,7 +1501,7 @@ describe('Classfiers: Balancer V2', () => {
     const swapC = swapClassifier.parse(poolC, eventC, transfers, allEvents);
     const swapD = swapClassifier.parse(poolD, eventD, transfers, allEvents);
 
-    expect(swapA).toEqual({
+    expect(swapA).toEqual<Swap>({
       amountIn: 570000000000n,
       amountOut: 572002212483n,
       assetIn: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
@@ -1521,7 +1524,7 @@ describe('Classfiers: Balancer V2', () => {
         hash: '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
       },
     });
-    expect(swapB).toEqual({
+    expect(swapB).toEqual<Swap>({
       amountIn: 572002212483n,
       amountOut: 566414170229289246555042n,
       assetIn: '0xdac17f958d2ee523a2206206994597c13d831ec7',
@@ -1544,7 +1547,7 @@ describe('Classfiers: Balancer V2', () => {
         hash: '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
       },
     });
-    expect(swapC).toEqual({
+    expect(swapC).toEqual<Swap>({
       amountIn: 566414170229289246555042n,
       amountOut: 565458830552881067912288n,
       assetIn: '0x2bbf681cc4eb09218bee85ea2a5d3d13fa40fc0c',
@@ -1567,7 +1570,7 @@ describe('Classfiers: Balancer V2', () => {
         hash: '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
       },
     });
-    expect(swapD).toEqual({
+    expect(swapD).toEqual<Swap>({
       amountIn: 565458830552881067912288n,
       amountOut: 570210527750n,
       assetIn: '0x9210f1204b5a24742eba12f710636d76240df3d0',
@@ -1597,7 +1600,7 @@ describe('Classfiers: Balancer V2', () => {
       expect.fail();
     }
 
-    const eventA = {
+    const eventA: ClassifiedEvent = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
       transactionHash:
         '0x42e27e3bed9a2ab343880e8ab4c4de121fc337a7334170a9dc632a36fe757fb9',
@@ -1613,7 +1616,7 @@ describe('Classfiers: Balancer V2', () => {
     };
     const transferA = transferClassifier.parse(eventA);
 
-    const eventB = {
+    const eventB: ClassifiedEvent = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
       transactionHash:
         '0x11bdb8d6d7e0fdd9933ce9673db55524fe7d13f4e6401a40c03c04d1ba06055f',
@@ -1629,7 +1632,7 @@ describe('Classfiers: Balancer V2', () => {
     };
     const transferB = transferClassifier.parse(eventB);
 
-    expect(transferA).toEqual({
+    expect(transferA).toEqual<Transfer>({
       asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       from: '0x0000e0ca771e21bd00057f54a68c30d400000000',
       to: '0xba12222222228d8ba445958a75a0704d566bf2c8',
@@ -1643,7 +1646,7 @@ describe('Classfiers: Balancer V2', () => {
         address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
       },
     });
-    expect(transferB).toEqual({
+    expect(transferB).toEqual<Transfer>({
       asset: '0x6b175474e89094c44da98b954eedeac495271d0f',
       from: '0xba12222222228d8ba445958a75a0704d566bf2c8',
       to: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',

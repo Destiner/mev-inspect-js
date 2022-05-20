@@ -1,7 +1,7 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import { describe, test, expect } from 'vitest';
 
-import { ClassifiedEvent } from '../../src/classifier/index.js';
+import { ClassifiedEvent, Transfer } from '../../src/classifier/index.js';
 import classifier from '../../src/classifier/items/erc20.js';
 
 describe('Classfiers: ERC20', () => {
@@ -34,7 +34,7 @@ describe('Classfiers: ERC20', () => {
     };
     const transfer = classifier.parse(log);
 
-    expect(transfer).toEqual({
+    expect(transfer).toEqual<Transfer>({
       asset: address.toLowerCase(),
       from: from.toLowerCase(),
       to: to.toLowerCase(),
@@ -120,6 +120,6 @@ describe('Classfiers: ERC20', () => {
         },
       };
     });
-    expect(transfers).toEqual(expectedTransfers);
+    expect(transfers).toEqual<Transfer[]>(expectedTransfers);
   });
 });

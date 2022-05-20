@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'vitest';
 
 import { Swap } from '../../src/index.js';
-import { getArbitrages } from '../../src/mev/arbitrage.js';
+import { Arbitrage, getArbitrages } from '../../src/mev/arbitrage.js';
 
 describe('MEV: arbitrage', () => {
   test('skips a simple swap', () => {
@@ -32,7 +32,7 @@ describe('MEV: arbitrage', () => {
     ];
     const arbitrages = getArbitrages(swaps);
 
-    expect(arbitrages).toEqual([]);
+    expect(arbitrages).toEqual<Arbitrage[]>([]);
   });
 
   test('skips a multipath swap', () => {
@@ -86,7 +86,7 @@ describe('MEV: arbitrage', () => {
     ];
     const arbitrages = getArbitrages(swaps);
 
-    expect(arbitrages).toEqual([]);
+    expect(arbitrages).toEqual<Arbitrage[]>([]);
   });
 
   test('skips a cross-protocol split swap', () => {
@@ -186,7 +186,7 @@ describe('MEV: arbitrage', () => {
     ];
     const arbitrages = getArbitrages(swaps);
 
-    expect(arbitrages).toEqual([]);
+    expect(arbitrages).toEqual<Arbitrage[]>([]);
   });
 
   test('finds 2-swap internal arbitrage', () => {
@@ -240,7 +240,7 @@ describe('MEV: arbitrage', () => {
     ];
     const arbitrages = getArbitrages(swaps);
 
-    expect(arbitrages).toEqual([
+    expect(arbitrages).toEqual<Arbitrage[]>([
       {
         swaps: [swaps[1], swaps[0]],
         startAmount: 238841017533640100000n,
@@ -347,7 +347,7 @@ describe('MEV: arbitrage', () => {
     ];
     const arbitrages = getArbitrages(swaps);
 
-    expect(arbitrages).toEqual([
+    expect(arbitrages).toEqual<Arbitrage[]>([
       {
         swaps,
         startAmount: 760000000000000000n,
@@ -408,7 +408,7 @@ describe('MEV: arbitrage', () => {
     ];
     const arbitragesA = getArbitrages(swapsA);
 
-    expect(arbitragesA).toEqual([
+    expect(arbitragesA).toEqual<Arbitrage[]>([
       {
         swaps: swapsA,
         startAmount: 69743953265453911n,
@@ -467,7 +467,7 @@ describe('MEV: arbitrage', () => {
     ];
     const arbitragesB = getArbitrages(swapsB);
 
-    expect(arbitragesB).toEqual([
+    expect(arbitragesB).toEqual<Arbitrage[]>([
       {
         swaps: swapsB,
         startAmount: 5137825921816247575n,
@@ -551,7 +551,7 @@ describe('MEV: arbitrage', () => {
     ];
     const arbitrages = getArbitrages(swaps);
 
-    expect(arbitrages).toEqual([
+    expect(arbitrages).toEqual<Arbitrage[]>([
       {
         swaps,
         startAmount: 1320898745109993396n,
@@ -635,7 +635,7 @@ describe('MEV: arbitrage', () => {
     ];
     const arbitrages = getArbitrages(swaps);
 
-    expect(arbitrages).toEqual([
+    expect(arbitrages).toEqual<Arbitrage[]>([
       {
         swaps,
         startAmount: 244490660460949241856n,
@@ -742,7 +742,7 @@ describe('MEV: arbitrage', () => {
     ];
     const arbitrages = getArbitrages(swaps);
 
-    expect(arbitrages).toEqual([
+    expect(arbitrages).toEqual<Arbitrage[]>([
       {
         swaps: [swaps[1], swaps[0]],
         startAmount: 50662506837650511n,
@@ -832,7 +832,7 @@ describe('MEV: arbitrage', () => {
     ];
     const arbitrages = getArbitrages(swaps);
 
-    expect(arbitrages).toEqual([
+    expect(arbitrages).toEqual<Arbitrage[]>([
       {
         swaps,
         startAmount: 414065221269164835n,
@@ -940,7 +940,7 @@ describe('MEV: arbitrage', () => {
 
     const arbitrages = getArbitrages(swaps);
 
-    expect(arbitrages).toEqual([
+    expect(arbitrages).toEqual<Arbitrage[]>([
       {
         swaps: [swaps[1], swaps[0], swaps[2], swaps[3]],
         startAmount: 8570994710n,
