@@ -32,11 +32,11 @@ function parseLiquidation(
 ): Liquidation | null {
   const { values, transactionHash: hash, gasUsed, logIndex, address } = event;
 
-  const assetSeized = (values.collateralAsset as string).toLowerCase();
-  const assetRepay = (values.debtAsset as string).toLowerCase();
+  const assetCollateral = (values.collateralAsset as string).toLowerCase();
+  const assetDebt = (values.debtAsset as string).toLowerCase();
   const borrower = (values.user as string).toLowerCase();
-  const amountRepay = (values.debtToCover as BigNumber).toBigInt();
-  const amountSeized = (
+  const amountDebt = (values.debtToCover as BigNumber).toBigInt();
+  const amountCollateral = (
     values.liquidatedCollateralAmount as BigNumber
   ).toBigInt();
   const liquidator = (values.liquidator as string).toLowerCase();
@@ -59,10 +59,10 @@ function parseLiquidation(
     },
     liquidator,
     borrower,
-    assetRepay,
-    amountRepay,
-    assetSeized,
-    amountSeized,
+    assetDebt,
+    amountDebt,
+    assetCollateral,
+    amountCollateral,
   };
 }
 

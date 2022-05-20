@@ -10,10 +10,10 @@ import {
 interface Liquidation {
   liquidator: string;
   borrower: string;
-  assetRepay: string;
-  amountRepay: bigint;
-  assetSeized: string;
-  amountSeized: bigint;
+  assetDebt: string;
+  amountDebt: bigint;
+  assetCollateral: string;
+  amountCollateral: bigint;
 }
 
 function getMarketAddress(log: ClassifiedEvent): string {
@@ -54,14 +54,14 @@ function getLiquidations(
       (liquidation: LiquidationEvent | null): liquidation is LiquidationEvent =>
         !!liquidation,
     )
-    .map((liquidation: Liquidation) => {
+    .map((liquidation: LiquidationEvent) => {
       return {
         liquidator: liquidation.liquidator,
         borrower: liquidation.borrower,
-        assetRepay: liquidation.assetRepay,
-        amountRepay: liquidation.amountRepay,
-        assetSeized: liquidation.assetSeized,
-        amountSeized: liquidation.amountSeized,
+        assetDebt: liquidation.assetDebt,
+        amountDebt: liquidation.amountDebt,
+        assetCollateral: liquidation.assetCollateral,
+        amountCollateral: liquidation.amountCollateral,
       };
     });
 }

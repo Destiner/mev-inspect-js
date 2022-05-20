@@ -62,10 +62,10 @@ interface Liquidation extends Base {
   };
   liquidator: string;
   borrower: string;
-  assetRepay: string;
-  amountRepay: bigint;
-  assetSeized: string;
-  amountSeized: bigint;
+  assetDebt: string;
+  amountDebt: bigint;
+  assetCollateral: string;
+  amountCollateral: bigint;
 }
 
 type SwapProtocol = 'BalancerV1' | 'BalancerV2' | 'UniswapV2' | 'UniswapV3';

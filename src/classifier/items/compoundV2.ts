@@ -47,11 +47,11 @@ function parseLiquidation(
 
   const liquidator = (values.liquidator as string).toLowerCase();
   const borrower = (values.borrower as string).toLowerCase();
-  const amountRepay = (values.repayAmount as BigNumber).toBigInt();
-  const assetSeized = (values.cTokenCollateral as string).toLowerCase();
-  const amountSeized = (values.seizeTokens as BigNumber).toBigInt();
+  const amountDebt = (values.repayAmount as BigNumber).toBigInt();
+  const assetCollateral = (values.cTokenCollateral as string).toLowerCase();
+  const amountCollateral = (values.seizeTokens as BigNumber).toBigInt();
 
-  const assetRepay = market.asset;
+  const assetDebt = market.asset;
 
   return {
     contract: {
@@ -71,10 +71,10 @@ function parseLiquidation(
     },
     liquidator,
     borrower,
-    assetRepay,
-    amountRepay,
-    assetSeized,
-    amountSeized,
+    assetDebt,
+    amountDebt,
+    assetCollateral,
+    amountCollateral,
   };
 }
 
