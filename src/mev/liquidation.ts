@@ -2,19 +2,10 @@ import {
   ChainId,
   ClassifiedEvent,
   LendingProtocol,
-  Liquidation as LiquidationEvent,
+  Liquidation,
   Market,
   lendingPools,
 } from '../classifier/index.js';
-
-interface Liquidation {
-  liquidator: string;
-  borrower: string;
-  assetDebt: string;
-  amountDebt: bigint;
-  assetCollateral: string;
-  amountCollateral: bigint;
-}
 
 function getMarketAddress(log: ClassifiedEvent): string {
   return log.address.toLowerCase();
@@ -51,19 +42,9 @@ function getLiquidations(
       return log.classifier.parse(market, log);
     })
     .filter(
-      (liquidation: LiquidationEvent | null): liquidation is LiquidationEvent =>
+      (liquidation: Liquidation | null): liquidation is Liquidation =>
         !!liquidation,
-    )
-    .map((liquidation: LiquidationEvent) => {
-      return {
-        liquidator: liquidation.liquidator,
-        borrower: liquidation.borrower,
-        assetDebt: liquidation.assetDebt,
-        amountDebt: liquidation.amountDebt,
-        assetCollateral: liquidation.assetCollateral,
-        amountCollateral: liquidation.amountCollateral,
-      };
-    });
+    );
 }
 
-export { Liquidation, getLiquidations };
+export default getLiquidations;
