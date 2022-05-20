@@ -1,10 +1,17 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import { Provider } from '@ethersproject/providers';
+import { Event } from 'abi-coder';
 
 import poolAbi from '../../abi/aaveV3Pool.js';
 import { Classifier, Liquidation, Market } from '../base.js';
-import { ChainId } from '../directory.js';
+import { ChainId, lendingPools } from '../directory.js';
 import { ClassifiedEvent } from '../index.js';
+
+function isValid(event: Event, address: string, chainId: ChainId): boolean {
+  const pools = lendingPools[chainId]['AaveV3'];
+  const validPool = pools.some((list) => list.includes(address));
+  return event.name === 'LiquidationCall' && validPool;
+}
 
 async function fetchMarket(
   _chainId: ChainId,
@@ -59,9 +66,9 @@ function parseLiquidation(
 
 const CLASSIFIERS: Classifier = {
   type: 'liquidation',
-  name: 'LiquidationCall',
   protocol: 'AaveV3',
   abi: poolAbi,
+  isValid,
   parse: parseLiquidation,
   fetchMarket,
 };

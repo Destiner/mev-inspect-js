@@ -2,6 +2,7 @@ import { BigNumber } from '@ethersproject/bignumber';
 import { AddressZero } from '@ethersproject/constants';
 import { Contract } from '@ethersproject/contracts';
 import { Provider } from '@ethersproject/providers';
+import { Event } from 'abi-coder';
 
 import poolAbi from '../../abi/balancerV2Pool.js';
 import vaultAbi from '../../abi/balancerV2Vault.js';
@@ -9,6 +10,14 @@ import { Classifier, Pool, Swap, Transfer } from '../base.js';
 import { ClassifiedEvent } from '../index.js';
 
 const VAULT = '0xba12222222228d8ba445958a75a0704d566bf2c8';
+
+function isValidSwap(event: Event): boolean {
+  return event.name === 'Swap';
+}
+
+function isValidTransfer(event: Event): boolean {
+  return event.name === 'InternalBalanceChanged';
+}
 
 async function fetchPool(provider: Provider, id: string): Promise<Pool> {
   const address = id.substring(0, 42);
@@ -239,16 +248,16 @@ function getSwapValues(swap: ClassifiedEvent): {
 const CLASSIFIERS: Classifier[] = [
   {
     type: 'swap',
-    name: 'Swap',
     protocol: 'BalancerV2',
     abi: vaultAbi,
+    isValid: isValidSwap,
     parse: parseSwap,
     fetchPool,
   },
   {
     type: 'transfer',
-    name: 'InternalBalanceChanged',
     abi: vaultAbi,
+    isValid: isValidTransfer,
     parse: parseTransfer,
   },
 ];

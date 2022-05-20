@@ -1,5 +1,6 @@
 import { JsonFragment } from '@ethersproject/abi';
 import { Provider } from '@ethersproject/providers';
+import { Event } from 'abi-coder';
 
 import { ChainId, ClassifiedEvent } from './index.js';
 
@@ -74,18 +75,19 @@ type LendingProtocol = 'CompoundV2' | 'AaveV2' | 'AaveV3';
 type Protocol = SwapProtocol | LendingProtocol;
 
 interface BaseClassifier {
-  name: string;
   abi: JsonFragment[];
 }
 
 interface TransferClassifier extends BaseClassifier {
   type: 'transfer';
+  isValid: (event: Event, address: string, chainId: ChainId) => boolean;
   parse: (event: ClassifiedEvent) => Transfer;
 }
 
 interface SwapClassifier extends BaseClassifier {
   protocol: Protocol;
   type: 'swap';
+  isValid: (event: Event, address: string, chainId: ChainId) => boolean;
   parse: (
     pool: Pool,
     event: ClassifiedEvent,
@@ -98,6 +100,7 @@ interface SwapClassifier extends BaseClassifier {
 interface LiquidationClassifier extends BaseClassifier {
   protocol: Protocol;
   type: 'liquidation';
+  isValid: (event: Event, address: string, chainId: ChainId) => boolean;
   parse: (market: Market, event: ClassifiedEvent) => Liquidation | null;
   fetchMarket: (
     chainId: ChainId,

@@ -1,6 +1,7 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import { Contract } from '@ethersproject/contracts';
 import { Provider } from '@ethersproject/providers';
+import { Event } from 'abi-coder';
 
 import poolAbi from '../../abi/uniswapV3Pool.js';
 import { equalWithTolerance } from '../../utils.js';
@@ -12,6 +13,10 @@ import {
   getLatestPoolTransfer,
 } from '../base.js';
 import { ClassifiedEvent } from '../index.js';
+
+function isValid(event: Event): boolean {
+  return event.name === 'Swap';
+}
 
 async function fetchPool(provider: Provider, address: string): Promise<Pool> {
   const poolContract = new Contract(address, poolAbi, provider);
@@ -83,9 +88,9 @@ function parse(
 
 const CLASSIFIER: Classifier = {
   type: 'swap',
-  name: 'Swap',
   protocol: 'UniswapV3',
   abi: poolAbi,
+  isValid,
   parse,
   fetchPool,
 };

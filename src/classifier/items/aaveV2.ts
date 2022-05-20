@@ -1,10 +1,17 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import { Provider } from '@ethersproject/providers';
+import { Event } from 'abi-coder';
 
 import poolAbi from '../../abi/aaveV2Pool.js';
 import { Classifier, Liquidation, Market } from '../base.js';
-import { ChainId } from '../directory.js';
+import { ChainId, lendingPools } from '../directory.js';
 import { ClassifiedEvent } from '../index.js';
+
+function isValid(event: Event, address: string, chainId: ChainId): boolean {
+  const pools = lendingPools[chainId]['AaveV2'];
+  const validPool = pools.some((list) => list.includes(address));
+  return event.name === 'LiquidationCall' && validPool;
+}
 
 async function fetchMarket(
   _chainId: ChainId,
@@ -27,9 +34,11 @@ function parseLiquidation(
 
   const assetSeized = (values.collateralAsset as string).toLowerCase();
   const assetRepay = (values.debtAsset as string).toLowerCase();
-  const borrower  = (values.user as string).toLowerCase();
+  const borrower = (values.user as string).toLowerCase();
   const amountRepay = (values.debtToCover as BigNumber).toBigInt();
-  const amountSeized = (values.liquidatedCollateralAmount as BigNumber).toBigInt();
+  const amountSeized = (
+    values.liquidatedCollateralAmount as BigNumber
+  ).toBigInt();
   const liquidator = (values.liquidator as string).toLowerCase();
 
   return {
@@ -59,9 +68,9 @@ function parseLiquidation(
 
 const CLASSIFIERS: Classifier = {
   type: 'liquidation',
-  name: 'LiquidationCall',
   protocol: 'AaveV2',
   abi: poolAbi,
+  isValid,
   parse: parseLiquidation,
   fetchMarket,
 };

@@ -35,19 +35,19 @@ interface ClassifiedEvent extends Event {
   classifier: Classifier;
 }
 
-function classify(logs: Log[]): ClassifiedEvent[] {
+function classify(chainId: ChainId, logs: Log[]): ClassifiedEvent[] {
   return logs
-    .map((log) => classifyLog(log))
+    .map((log) => classifyLog(chainId, log))
     .filter((log): log is ClassifiedEvent => !!log);
 }
 
-function classifyLog(log: Log): ClassifiedEvent | undefined {
+function classifyLog(chainId: ChainId, log: Log): ClassifiedEvent | undefined {
   const classifiers = getClassifiers();
   for (const classifier of classifiers) {
     const coder = new Coder(classifier.abi);
     try {
       const event = coder.decodeEvent(log.topics, log.data);
-      if (classifier.name !== event.name) {
+      if (!classifier.isValid(event, log.address, chainId)) {
         continue;
       }
       return {

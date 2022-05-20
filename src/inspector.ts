@@ -25,7 +25,7 @@ class Inspector {
 
   async tx(hash: string): Promise<TxMev[]> {
     const logs = await this.chain.getTransactionLogs(hash);
-    const classified = classify(logs);
+    const classified = classify(this.chainId, logs);
     const pools = await fetchPools(this.provider, classified);
     const markets = await fetchMarkets(this.chainId, this.provider, classified);
     const transfers = getTransfers(classified);
@@ -37,7 +37,7 @@ class Inspector {
 
   async block(number: number): Promise<BlockMev[]> {
     const logs = await this.chain.getBlockLogs(number);
-    const classified = classify(logs);
+    const classified = classify(this.chainId, logs);
     const pools = await fetchPools(this.provider, classified);
     const markets = await fetchMarkets(this.chainId, this.provider, classified);
     const transfers = getTransfers(classified);

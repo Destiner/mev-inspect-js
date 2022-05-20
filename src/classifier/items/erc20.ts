@@ -1,8 +1,13 @@
 import { BigNumber } from '@ethersproject/bignumber';
+import { Event } from 'abi-coder';
 
 import erc20Abi from '../../abi/erc20.js';
 import { Classifier, Transfer } from '../base.js';
 import { ClassifiedEvent } from '../index.js';
+
+function isValid(event: Event): boolean {
+  return event.name === 'Transfer';
+}
 
 function parse(event: ClassifiedEvent): Transfer {
   const { values, transactionHash: hash, gasUsed, logIndex, address } = event;
@@ -29,8 +34,8 @@ function parse(event: ClassifiedEvent): Transfer {
 
 const CLASSIFIER: Classifier = {
   type: 'transfer',
-  name: 'Transfer',
   abi: erc20Abi,
+  isValid,
   parse,
 };
 export default CLASSIFIER;

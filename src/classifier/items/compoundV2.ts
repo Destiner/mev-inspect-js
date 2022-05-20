@@ -1,6 +1,7 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import { Contract } from '@ethersproject/contracts';
 import { Provider } from '@ethersproject/providers';
+import { Event } from 'abi-coder';
 
 import marketAbi from '../../abi/compoundV2Market.js';
 import { Classifier, Liquidation, Market } from '../base.js';
@@ -11,6 +12,10 @@ const CETH_MARKET: Record<string, string> = {
   '0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b':
     '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
 };
+
+function isValid(event: Event): boolean {
+  return event.name === 'LiquidateBorrow';
+}
 
 async function fetchMarket(
   chainId: ChainId,
@@ -75,9 +80,9 @@ function parseLiquidation(
 
 const CLASSIFIERS: Classifier = {
   type: 'liquidation',
-  name: 'LiquidateBorrow',
   protocol: 'CompoundV2',
   abi: marketAbi,
+  isValid,
   parse: parseLiquidation,
   fetchMarket,
 };

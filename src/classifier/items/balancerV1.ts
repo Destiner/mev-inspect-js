@@ -1,6 +1,7 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import { Contract } from '@ethersproject/contracts';
 import { Provider } from '@ethersproject/providers';
+import { Event } from 'abi-coder';
 
 import factoryAbi from '../../abi/balancerV1Factory.js';
 import poolAbi from '../../abi/balancerV1Pool.js';
@@ -8,6 +9,10 @@ import { Classifier, Pool, Swap } from '../base.js';
 import { ClassifiedEvent } from '../index.js';
 
 const FACTORY_ADDRESS = '0x9424b1412450d0f8fc2255faf6046b98213b76bd';
+
+function isValid(event: Event): boolean {
+  return event.name === 'LOG_SWAP';
+}
 
 async function fetchPool(
   provider: Provider,
@@ -60,9 +65,9 @@ function parse(pool: Pool, event: ClassifiedEvent): Swap | null {
 
 const CLASSIFIER: Classifier = {
   type: 'swap',
-  name: 'LOG_SWAP',
   protocol: 'BalancerV1',
   abi: poolAbi,
+  isValid,
   parse,
   fetchPool,
 };
