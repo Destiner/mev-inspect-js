@@ -38,7 +38,7 @@ It starts by fetching all event logs for a given transaction or block. Then, it 
 
 ## Status
 
-The project is at the "proof of concept" stage. Currently, only arbitrage is detected on Balancer, Uniswap, and their forks.
+The project is experimental. Currently, arbitrage and liquidations are detected. Expect API to have breaking changes.
 
 ## TODO
 
