@@ -20,12 +20,12 @@ import {
   swapFactories,
 } from './directory.js';
 import aaveV2Classifier from './items/aaveV2.js';
-import { CLASSIFIER as balancerV1Classifier } from './items/balancerV1.js';
-import { CLASSIFIERS as balancerV2Classifiers } from './items/balancerV2.js';
+import balancerV1Classifier from './items/balancerV1.js';
+import balancerV2Classifiers from './items/balancerV2.js';
 import compoundV2Classifier from './items/compoundV2.js';
 import erc20Classifier from './items/erc20.js';
-import { CLASSIFIER as uniswapV2Classifier } from './items/uniswapV2.js';
-import { CLASSIFIER as uniswapV3Classifier } from './items/uniswapV3.js';
+import uniswapV2Classifier from './items/uniswapV2.js';
+import uniswapV3Classifier from './items/uniswapV3.js';
 
 interface ClassifiedEvent extends Event {
   address: string;

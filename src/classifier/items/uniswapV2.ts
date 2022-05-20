@@ -96,4 +96,4 @@ const CLASSIFIER: Classifier = {
   parse,
   fetchPool,
 };
-export { fetchPool, CLASSIFIER };
+export default CLASSIFIER;

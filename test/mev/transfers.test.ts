@@ -2,7 +2,7 @@ import { BigNumber } from '@ethersproject/bignumber';
 import { describe, test, expect } from 'vitest';
 
 import { ClassifiedEvent } from '../../src/classifier/index.js';
-import { CLASSIFIER as uniswapV2Classifiers } from '../../src/classifier/items/uniswapV2.js';
+import uniswapV2Classifiers from '../../src/classifier/items/uniswapV2.js';
 import getTransfers from '../../src/mev/transfers.js';
 
 describe('MEV: transfers', () => {

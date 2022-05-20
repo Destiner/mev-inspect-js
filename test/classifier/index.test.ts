@@ -4,11 +4,11 @@ import { Log } from '../../src/chain.js';
 import { Classifier } from '../../src/classifier/base.js';
 import classify from '../../src/classifier/index.js';
 import aaveV2Classifier from '../../src/classifier/items/aaveV2.js';
-import { CLASSIFIERS as balanceV2Classifiers } from '../../src/classifier/items/balancerV2.js';
+import balanceV2Classifiers from '../../src/classifier/items/balancerV2.js';
 import compoundV2Classifier from '../../src/classifier/items/compoundV2.js';
 import erc20Classifier from '../../src/classifier/items/erc20.js';
-import { CLASSIFIER as uniswapV2Classifier } from '../../src/classifier/items/uniswapV2.js';
-import { CLASSIFIER as uniswapV3Classifier } from '../../src/classifier/items/uniswapV3.js';
+import uniswapV2Classifier from '../../src/classifier/items/uniswapV2.js';
+import uniswapV3Classifier from '../../src/classifier/items/uniswapV3.js';
 
 const ETHEREUM = 1;
 

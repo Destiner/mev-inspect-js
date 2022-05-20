@@ -1,11 +1,11 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import { describe, test, expect } from 'vitest';
 
-import { CLASSIFIERS } from '../../src/classifier/items/balancerV2.js';
-import { CLASSIFIER as uniswapClassifier } from '../../src/classifier/items/uniswapV2.js';
+import balancerV2Classifiers from '../../src/classifier/items/balancerV2.js';
+import uniswapClassifier from '../../src/classifier/items/uniswapV2.js';
 
-const swapClassifier = CLASSIFIERS[0];
-const transferClassifier = CLASSIFIERS[1];
+const swapClassifier = balancerV2Classifiers[0];
+const transferClassifier = balancerV2Classifiers[1];
 
 describe('Classfiers: Balancer V2', () => {
   test('parses a swap', () => {

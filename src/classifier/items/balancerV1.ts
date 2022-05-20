@@ -72,4 +72,4 @@ const CLASSIFIER: Classifier = {
   fetchPool,
 };
 
-export { fetchPool, CLASSIFIER };
+export default CLASSIFIER;

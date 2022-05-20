@@ -1,7 +1,7 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import { describe, test, expect } from 'vitest';
 
-import { CLASSIFIER as swapClassifier } from '../../src/classifier/items/uniswapV2.js';
+import classifier from '../../src/classifier/items/uniswapV2.js';
 
 describe('Classfiers: Uniswap V2', () => {
   test('parses a swap', () => {
@@ -19,7 +19,7 @@ describe('Classfiers: Uniswap V2', () => {
         '0xad39a3e5109e2c146f85f5db53a72da9af886b861d4965aacafdb165c1aec35e',
       gasUsed: 106802,
       logIndex: 15,
-      classifier: swapClassifier,
+      classifier,
       name: 'Swap',
       values: {
         sender: '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D',
@@ -61,10 +61,10 @@ describe('Classfiers: Uniswap V2', () => {
       },
     ];
 
-    if (swapClassifier.type !== 'swap') {
+    if (classifier.type !== 'swap') {
       expect.fail();
     }
-    const swapA = swapClassifier.parse(poolA, eventA, transfersA, []);
+    const swapA = classifier.parse(poolA, eventA, transfersA, []);
     expect(swapA).toEqual({
       contract: {
         address: '0x9928e4046d7c6513326ccea028cd3e7a91c7590a',
@@ -103,7 +103,7 @@ describe('Classfiers: Uniswap V2', () => {
         '0x7e40615217492be1a58a41c73780475d415e920f4cd34d1bca8a2c246c0b51fa',
       gasUsed: 126307,
       logIndex: 90,
-      classifier: swapClassifier,
+      classifier,
       name: 'Swap',
       values: {
         sender: '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D',
@@ -145,10 +145,10 @@ describe('Classfiers: Uniswap V2', () => {
       },
     ];
 
-    if (swapClassifier.type !== 'swap') {
+    if (classifier.type !== 'swap') {
       expect.fail();
     }
-    const swapB = swapClassifier.parse(poolB, eventB, transfersB, []);
+    const swapB = classifier.parse(poolB, eventB, transfersB, []);
     expect(swapB).toEqual({
       contract: {
         address: '0xc5be99a02c6857f9eac67bbce58df5572498f40c',
@@ -189,7 +189,7 @@ describe('Classfiers: Uniswap V2', () => {
         '0x998259826863242dea35d228e2426747b04fbfc63522d6894a7cef29fd31b85a',
       gasUsed: 360303,
       logIndex: 293,
-      classifier: swapClassifier,
+      classifier,
       name: 'Swap',
       values: {
         sender: '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D',
@@ -207,7 +207,7 @@ describe('Classfiers: Uniswap V2', () => {
         '0x998259826863242dea35d228e2426747b04fbfc63522d6894a7cef29fd31b85a',
       gasUsed: 360303,
       logIndex: 301,
-      classifier: swapClassifier,
+      classifier,
       name: 'Swap',
       values: {
         sender: '0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45',
@@ -291,11 +291,11 @@ describe('Classfiers: Uniswap V2', () => {
       },
     ];
 
-    if (swapClassifier.type !== 'swap') {
+    if (classifier.type !== 'swap') {
       expect.fail();
     }
-    const swapA = swapClassifier.parse(pool, eventA, transfers, []);
-    const swapB = swapClassifier.parse(pool, eventB, transfers, []);
+    const swapA = classifier.parse(pool, eventA, transfers, []);
+    const swapB = classifier.parse(pool, eventB, transfers, []);
     expect(swapA).toEqual({
       contract: {
         address: '0x937e882083a0aaf58d7fcf566de8e5d990e882a9',
@@ -368,7 +368,7 @@ describe('Classfiers: Uniswap V2', () => {
         '0xd4ddb9ff1d8368dad9f3710d513021b093f303e02c7169467c0badcf6f44231b',
       gasUsed: 159041,
       logIndex: 448,
-      classifier: swapClassifier,
+      classifier,
       name: 'Swap',
       values: {
         sender: '0x11111112542D85B3EF69AE05771c2dCCff4fAa26',
@@ -385,7 +385,7 @@ describe('Classfiers: Uniswap V2', () => {
         '0xd4ddb9ff1d8368dad9f3710d513021b093f303e02c7169467c0badcf6f44231b',
       gasUsed: 159041,
       logIndex: 451,
-      classifier: swapClassifier,
+      classifier,
       name: 'Swap',
       values: {
         sender: '0x11111112542D85B3EF69AE05771c2dCCff4fAa26',
@@ -441,11 +441,11 @@ describe('Classfiers: Uniswap V2', () => {
       },
     ];
 
-    if (swapClassifier.type !== 'swap') {
+    if (classifier.type !== 'swap') {
       expect.fail();
     }
-    const swapA = swapClassifier.parse(poolA, eventA, transfers, []);
-    const swapB = swapClassifier.parse(poolB, eventB, transfers, []);
+    const swapA = classifier.parse(poolA, eventA, transfers, []);
+    const swapB = classifier.parse(poolB, eventB, transfers, []);
     expect(swapA).toEqual({
       contract: {
         address: '0xa2107fa5b38d9bbd2c461d6edf11b11a50f6b974',
@@ -525,7 +525,7 @@ describe('Classfiers: Uniswap V2', () => {
         '0x861d5aba1de00eb99af5f6130d67543c0c79df9471b8ba4a8fe3ff9da60af2dc',
       gasUsed: 187271,
       logIndex: 3,
-      classifier: swapClassifier,
+      classifier,
       name: 'Swap',
       values: {
         sender: '0x731Ea79A1B2B90683507Da2aaB498bd8fF8f7ff1',
@@ -542,7 +542,7 @@ describe('Classfiers: Uniswap V2', () => {
         '0x861d5aba1de00eb99af5f6130d67543c0c79df9471b8ba4a8fe3ff9da60af2dc',
       gasUsed: 187271,
       logIndex: 6,
-      classifier: swapClassifier,
+      classifier,
       name: 'Swap',
       values: {
         sender: '0x731Ea79A1B2B90683507Da2aaB498bd8fF8f7ff1',
@@ -559,7 +559,7 @@ describe('Classfiers: Uniswap V2', () => {
         '0x861d5aba1de00eb99af5f6130d67543c0c79df9471b8ba4a8fe3ff9da60af2dc',
       gasUsed: 187271,
       logIndex: 9,
-      classifier: swapClassifier,
+      classifier,
       name: 'Swap',
       values: {
         sender: '0x731Ea79A1B2B90683507Da2aaB498bd8fF8f7ff1',
@@ -629,12 +629,12 @@ describe('Classfiers: Uniswap V2', () => {
       },
     ];
 
-    if (swapClassifier.type !== 'swap') {
+    if (classifier.type !== 'swap') {
       expect.fail();
     }
-    const swapA = swapClassifier.parse(poolA, eventA, transfers, []);
-    const swapB = swapClassifier.parse(poolB, eventB, transfers, []);
-    const swapC = swapClassifier.parse(poolC, eventC, transfers, []);
+    const swapA = classifier.parse(poolA, eventA, transfers, []);
+    const swapB = classifier.parse(poolB, eventB, transfers, []);
+    const swapC = classifier.parse(poolC, eventC, transfers, []);
     expect(swapA).toEqual({
       contract: {
         address: '0xe2e998f6f498cf9acdeda38de77ca95d1d8288f6',
@@ -721,7 +721,7 @@ describe('Classfiers: Uniswap V2', () => {
         '0x88e99b372a7524a750bb846b91cd9433a22c7cce886edee4879b70cb47f0d0fe',
       gasUsed: 140950,
       logIndex: 10,
-      classifier: swapClassifier,
+      classifier,
       name: 'Swap',
       values: {
         sender: '0x58418d6c83EfAB01ed78b0AC42E55af01eE77DbA',
@@ -777,10 +777,10 @@ describe('Classfiers: Uniswap V2', () => {
       },
     ];
 
-    if (swapClassifier.type !== 'swap') {
+    if (classifier.type !== 'swap') {
       expect.fail();
     }
-    const swap = swapClassifier.parse(pool, event, transfers, []);
+    const swap = classifier.parse(pool, event, transfers, []);
     expect(swap).toEqual({
       contract: {
         address: '0x55d5c232d921b9eaa6b37b5845e439acd04b4dba',

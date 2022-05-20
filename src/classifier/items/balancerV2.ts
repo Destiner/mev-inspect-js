@@ -262,4 +262,4 @@ const CLASSIFIERS: Classifier[] = [
   },
 ];
 
-export { fetchPool, CLASSIFIERS };
+export default CLASSIFIERS;
