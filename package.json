@@ -25,7 +25,7 @@
     "lint:eslint": "eslint \"{src,test}/**/*.ts\"",
     "lint:prettier": "prettier -c \"{src,test}/**/*.{json,js,ts}\"",
     "test": "vitest run",
-    "build": "tsc",
+    "build": "tsc --p tsconfig.build.json",
     "prepack": "npm run build"
   },
   "dependencies": {
