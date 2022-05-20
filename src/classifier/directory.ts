@@ -39,9 +39,14 @@ const swapFactories: Record<ChainId, Record<SwapProtocol, string[]>> = {
 const lendingPools: Record<ChainId, Record<LendingProtocol, string[][]>> = {
   [ETHEREUM]: {
     CompoundV2: [['0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b']],
-    AaveV2: [['0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9', '0x7937d4799803fbbe595ed57278bc4ca21f3bffcb']],
+    AaveV2: [
+      [
+        '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
+        '0x7937d4799803fbbe595ed57278bc4ca21f3bffcb',
+      ],
+    ],
     AaveV3: [],
-  }
+  },
 };
 
 export { ChainId, nativeAsset, swapFactories, lendingPools };
