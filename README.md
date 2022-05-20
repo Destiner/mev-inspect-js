@@ -44,6 +44,5 @@ The project is at the "proof of concept" stage. Currently, only arbitrage is det
 
 - [ ] curve
 - [ ] 0x
-- [ ] liquidations
 - [ ] sandwitches
 - [ ] nfts
