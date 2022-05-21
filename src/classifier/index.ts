@@ -20,6 +20,7 @@ import {
   swapFactories,
 } from './directory.js';
 import aaveV2Classifier from './items/aaveV2.js';
+import aaveV3Classifier from './items/aaveV3.js';
 import balancerV1Classifier from './items/balancerV1.js';
 import balancerV2Classifiers from './items/balancerV2.js';
 import compoundV2Classifier from './items/compoundV2.js';
@@ -74,6 +75,7 @@ function getClassifiers(): Classifier[] {
     uniswapV3Classifier,
     compoundV2Classifier,
     aaveV2Classifier,
+    aaveV3Classifier,
   ];
 }
 
