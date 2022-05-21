@@ -2,12 +2,14 @@ import { SwapProtocol, LendingProtocol } from './base.js';
 
 const ETHEREUM = 1;
 const POLYGON = 137;
+const ARBITRUM = 42161;
 
-type ChainId = typeof ETHEREUM | typeof POLYGON;
+type ChainId = typeof ETHEREUM | typeof POLYGON | typeof ARBITRUM;
 
 const nativeAsset: Record<ChainId, string> = {
   [ETHEREUM]: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
   [POLYGON]: '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270',
+  [ARBITRUM]: '',
 };
 
 const swapFactories: Record<ChainId, Record<SwapProtocol, string[]>> = {
@@ -46,6 +48,15 @@ const swapFactories: Record<ChainId, Record<SwapProtocol, string[]>> = {
     UniswapV3: ['0x1f98431c8ad98523631ae4a59f267346ea31f984'],
     BalancerV1: [],
     BalancerV2: ['0xba12222222228d8ba445958a75a0704d566bf2c8'],
+  },
+  [ARBITRUM]: {
+    UniswapV2: [
+      // Sushiswap
+      '0xc35dadb65012ec5796536bd9864ed8773abc74c4',
+    ],
+    UniswapV3: ['0x1f98431c8ad98523631ae4a59f267346ea31f984'],
+    BalancerV1: [],
+    BalancerV2: ['0xba12222222228d8ba445958a75a0704d566bf2c8'],
   }
 };
 
@@ -65,6 +76,11 @@ const lendingPools: Record<ChainId, Record<LendingProtocol, string[][]>> = {
     AaveV2: [['0x8dff5e27ea6b7ac08ebfdf9eb090f32ee9a30fcf']],
     AaveV3: [['0x794a61358d6845594f94dc1db02a252b5b4814ad']],
   },
+  [ARBITRUM]: {
+    CompoundV2: [],
+    AaveV2: [],
+    AaveV3: [['0x794a61358d6845594f94dc1db02a252b5b4814ad']],
+  }
 };
 
 export { ChainId, nativeAsset, swapFactories, lendingPools };
