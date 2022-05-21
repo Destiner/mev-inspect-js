@@ -9,7 +9,7 @@ import { ClassifiedEvent } from '../index.js';
 
 function isValid(event: Event, address: string, chainId: ChainId): boolean {
   const pools = lendingPools[chainId]['AaveV2'];
-  const validPool = pools.some((list) => list.includes(address));
+  const validPool = pools.some((list) => list.includes(address.toLowerCase()));
   return event.name === 'LiquidationCall' && validPool;
 }
 
