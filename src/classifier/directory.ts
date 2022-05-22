@@ -57,7 +57,7 @@ const swapFactories: Record<ChainId, Record<SwapProtocol, string[]>> = {
     UniswapV3: ['0x1f98431c8ad98523631ae4a59f267346ea31f984'],
     BalancerV1: [],
     BalancerV2: ['0xba12222222228d8ba445958a75a0704d566bf2c8'],
-  }
+  },
 };
 
 const lendingPools: Record<ChainId, Record<LendingProtocol, string[][]>> = {
@@ -80,7 +80,7 @@ const lendingPools: Record<ChainId, Record<LendingProtocol, string[][]>> = {
     CompoundV2: [],
     AaveV2: [],
     AaveV3: [['0x794a61358d6845594f94dc1db02a252b5b4814ad']],
-  }
+  },
 };
 
 export { ChainId, nativeAsset, swapFactories, lendingPools };
