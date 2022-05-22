@@ -12,6 +12,14 @@ function getTransaction(mev: BlockMev): Transaction | null {
   return null;
 }
 
+function isArbitrage(mev: BlockMev): boolean {
+  return 'swaps' in mev;
+}
+
+function isLiquidation(mev: BlockMev): boolean {
+  return 'liquidator' in mev;
+}
+
 function equalWithTolerance(
   firstValue: bigint,
   secondValue: bigint,
@@ -47,4 +55,4 @@ function equalWithTolerance(
   return isWithinLowerBound && isWithinHigherBound;
 }
 
-export { equalWithTolerance, getTransaction };
+export { isArbitrage, isLiquidation, equalWithTolerance, getTransaction };
