@@ -1,6 +1,17 @@
 import { Swap, Transfer } from './classifier/index.js';
 import Inspector from './inspector.js';
-import { Arbitrage } from './mev/index.js';
-import { getTransaction } from './utils.js';
+import { Arbitrage, BlockMev, Liquidation, TxMev } from './mev/index.js';
+import { getTransaction, isArbitrage, isLiquidation } from './utils.js';
 
-export { Arbitrage, Inspector, Swap, Transfer, getTransaction };
+export {
+  Arbitrage,
+  BlockMev,
+  Inspector,
+  Liquidation,
+  Swap,
+  Transfer,
+  TxMev,
+  getTransaction,
+  isArbitrage,
+  isLiquidation,
+};
