@@ -56,10 +56,7 @@ class Chain {
         receipt = await this.provider.getTransactionReceipt(hash);
       } catch (e: unknown) {
         const errorCode = (e as Error).code;
-        if (
-          errorCode === ErrorCode.SERVER_ERROR ||
-          errorCode === ErrorCode.TIMEOUT
-        ) {
+        if (errorCode === ErrorCode.TIMEOUT) {
           console.log(
             `Failed to fetch receipts, reason: ${errorCode}, retrying`,
           );
@@ -78,10 +75,7 @@ class Chain {
         block = await this.provider.getBlockWithTransactions(number);
       } catch (e: unknown) {
         const errorCode = (e as Error).code;
-        if (
-          errorCode === ErrorCode.SERVER_ERROR ||
-          errorCode === ErrorCode.TIMEOUT
-        ) {
+        if (errorCode === ErrorCode.TIMEOUT) {
           console.log(
             `Failed to fetch the block, reason: ${errorCode}, retrying`,
           );
