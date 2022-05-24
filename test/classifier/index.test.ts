@@ -140,8 +140,12 @@ describe('Classfiers', () => {
     const logs = [compoundV2RepaymentLog, aaveV2RepaymentLog];
     const classifiedLogs = classify(ETHEREUM, logs);
 
-    const compoundV2RepaymentEvents = classifiedLogs.filter((log) => log.classifier === compoundV2Classifiers[0]);
-    const aaveV2RepaymentEvents = classifiedLogs.filter((log) => log.classifier === aaveV2Classifiers[0]);
+    const compoundV2RepaymentEvents = classifiedLogs.filter(
+      (log) => log.classifier === compoundV2Classifiers[0],
+    );
+    const aaveV2RepaymentEvents = classifiedLogs.filter(
+      (log) => log.classifier === aaveV2Classifiers[0],
+    );
 
     expect(compoundV2RepaymentEvents.length).toEqual(1);
     expect(aaveV2RepaymentEvents.length).toEqual(1);
@@ -178,8 +182,12 @@ describe('Classfiers', () => {
     const logs = [compoundV2SeizureLog, aaveV2SeizureLog];
     const classifiedLogs = classify(ETHEREUM, logs);
 
-    const compoundV2SeizureEvents = classifiedLogs.filter((log) => log.classifier === compoundV2Classifiers[1]);
-    const aaveV2SeizureEvents = classifiedLogs.filter((log) => log.classifier === aaveV2Classifiers[1]);
+    const compoundV2SeizureEvents = classifiedLogs.filter(
+      (log) => log.classifier === compoundV2Classifiers[1],
+    );
+    const aaveV2SeizureEvents = classifiedLogs.filter(
+      (log) => log.classifier === aaveV2Classifiers[1],
+    );
 
     expect(compoundV2SeizureEvents.length).toEqual(1);
     expect(aaveV2SeizureEvents.length).toEqual(1);
