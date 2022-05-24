@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'vitest';
 
-import { Liquidation } from '../src/classifier/index.js';
 import { Arbitrage } from '../src/mev/arbitrage.js';
+import { Liquidation } from '../src/mev/liquidations.js';
 import {
   isArbitrage,
   isLiquidation,
@@ -152,56 +152,98 @@ describe('Utilities', () => {
   test('isArbitrage: should be false for a non-arbitrage', () => {
     const liquidations: Liquidation[] = [
       {
-        contract: {
-          address: '0x041171993284df560249B57358F931D9eB7b925D',
-          protocol: {
-            abi: 'CompoundV2',
-            pool: '0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b',
+        repayment: {
+          contract: {
+            address: '0x041171993284df560249B57358F931D9eB7b925D',
+            protocol: {
+              abi: 'CompoundV2',
+              pool: '0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b',
+            },
           },
+          transaction: {
+            hash: '0xdf838db24228f280eba8a279266d1602b03b54507afdca3cb4b4ec640535642b',
+            gasUsed: 671221,
+          },
+          event: {
+            logIndex: 17,
+            address: '0x041171993284df560249b57358f931d9eb7b925d',
+          },
+          payer: '0xb5c7ad3cb6506c65da01f2fac2e667dcb9e66e9c',
+          borrower: '0xf7f6192e35d15a153105d4476a1b4d59ec2014dd',
+          asset: '0x8e870d67f660d95d5be530380d0ec0bd388289e1',
+          amount: 1257619793546196402568n,
         },
-        transaction: {
-          hash: '0xdf838db24228f280eba8a279266d1602b03b54507afdca3cb4b4ec640535642b',
-          gasUsed: 671221,
+        seizure: {
+          contract: {
+            address: '0x041171993284df560249B57358F931D9eB7b925D',
+            protocol: {
+              abi: 'CompoundV2',
+              pool: '0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b',
+            },
+          },
+          transaction: {
+            hash: '0xdf838db24228f280eba8a279266d1602b03b54507afdca3cb4b4ec640535642b',
+            gasUsed: 671221,
+          },
+          event: {
+            logIndex: 21,
+            address: '0x041171993284df560249b57358f931d9eb7b925d',
+          },
+          seizor: '0xb5c7ad3cb6506c65da01f2fac2e667dcb9e66e9c',
+          borrower: '0xf7f6192e35d15a153105d4476a1b4d59ec2014dd',
+          asset: '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
+          amount: 3402851288n,
         },
-        event: {
-          logIndex: 21,
-          address: '0x041171993284df560249b57358f931d9eb7b925d',
-        },
-        liquidator: '0xb5c7ad3cb6506c65da01f2fac2e667dcb9e66e9c',
-        borrower: '0xf7f6192e35d15a153105d4476a1b4d59ec2014dd',
-        assetDebt: '0x8e870d67f660d95d5be530380d0ec0bd388289e1',
-        amountDebt: 1257619793546196402568n,
-        assetCollateral: '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
-        amountCollateral: 3402851288n,
       },
       {
-        contract: {
-          address: '0x7d2768dE32b0b80b7a3454c06BdAc94A69DDc7A9',
-          protocol: {
-            abi: 'AaveV2',
-            pool: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
+        repayment: {
+          contract: {
+            address: '0x7d2768dE32b0b80b7a3454c06BdAc94A69DDc7A9',
+            protocol: {
+              abi: 'AaveV2',
+              pool: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
+            },
           },
+          transaction: {
+            hash: '0x580a2d8d142207a50636b74d41feca1774b106143c536078ca80de000f83f3d8',
+            gasUsed: 556582,
+          },
+          event: {
+            logIndex: 146,
+            address: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
+          },
+          payer: '0xd911560979b78821d7b045c79e36e9cbfc2f6c6f',
+          borrower: '0xa8556b50ab7781eeccf647eec1c0bf3bf9e5b3ad',
+          asset: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+          amount: 631587280n,
         },
-        transaction: {
-          hash: '0x580a2d8d142207a50636b74d41feca1774b106143c536078ca80de000f83f3d8',
-          gasUsed: 556582,
+        seizure: {
+          contract: {
+            address: '0x7d2768dE32b0b80b7a3454c06BdAc94A69DDc7A9',
+            protocol: {
+              abi: 'AaveV2',
+              pool: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
+            },
+          },
+          transaction: {
+            hash: '0x580a2d8d142207a50636b74d41feca1774b106143c536078ca80de000f83f3d8',
+            gasUsed: 556582,
+          },
+          event: {
+            logIndex: 146,
+            address: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
+          },
+          seizor: '0xd911560979b78821d7b045c79e36e9cbfc2f6c6f',
+          borrower: '0xa8556b50ab7781eeccf647eec1c0bf3bf9e5b3ad',
+          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          amount: 344839185141066670n,
         },
-        event: {
-          logIndex: 146,
-          address: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
-        },
-        liquidator: '0xd911560979b78821d7b045c79e36e9cbfc2f6c6f',
-        borrower: '0xa8556b50ab7781eeccf647eec1c0bf3bf9e5b3ad',
-        assetDebt: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
-        amountDebt: 631587280n,
-        assetCollateral: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-        amountCollateral: 344839185141066670n,
       },
     ];
 
     expect(
       liquidations
-        .map((arbitrage) => isArbitrage(arbitrage))
+        .map((liquidation) => isArbitrage(liquidation))
         .every((isArbitrage) => isArbitrage),
     ).toBeFalsy();
   });
@@ -209,50 +251,92 @@ describe('Utilities', () => {
   test('isLiquidation: should be true a valid liquidation', () => {
     const liquidations: Liquidation[] = [
       {
-        contract: {
-          address: '0x041171993284df560249B57358F931D9eB7b925D',
-          protocol: {
-            abi: 'CompoundV2',
-            pool: '0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b',
+        repayment: {
+          contract: {
+            address: '0x041171993284df560249B57358F931D9eB7b925D',
+            protocol: {
+              abi: 'CompoundV2',
+              pool: '0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b',
+            },
           },
+          transaction: {
+            hash: '0xdf838db24228f280eba8a279266d1602b03b54507afdca3cb4b4ec640535642b',
+            gasUsed: 671221,
+          },
+          event: {
+            logIndex: 17,
+            address: '0x041171993284df560249b57358f931d9eb7b925d',
+          },
+          payer: '0xb5c7ad3cb6506c65da01f2fac2e667dcb9e66e9c',
+          borrower: '0xf7f6192e35d15a153105d4476a1b4d59ec2014dd',
+          asset: '0x8e870d67f660d95d5be530380d0ec0bd388289e1',
+          amount: 1257619793546196402568n,
         },
-        transaction: {
-          hash: '0xdf838db24228f280eba8a279266d1602b03b54507afdca3cb4b4ec640535642b',
-          gasUsed: 671221,
+        seizure: {
+          contract: {
+            address: '0x041171993284df560249B57358F931D9eB7b925D',
+            protocol: {
+              abi: 'CompoundV2',
+              pool: '0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b',
+            },
+          },
+          transaction: {
+            hash: '0xdf838db24228f280eba8a279266d1602b03b54507afdca3cb4b4ec640535642b',
+            gasUsed: 671221,
+          },
+          event: {
+            logIndex: 21,
+            address: '0x041171993284df560249b57358f931d9eb7b925d',
+          },
+          seizor: '0xb5c7ad3cb6506c65da01f2fac2e667dcb9e66e9c',
+          borrower: '0xf7f6192e35d15a153105d4476a1b4d59ec2014dd',
+          asset: '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
+          amount: 3402851288n,
         },
-        event: {
-          logIndex: 21,
-          address: '0x041171993284df560249b57358f931d9eb7b925d',
-        },
-        liquidator: '0xb5c7ad3cb6506c65da01f2fac2e667dcb9e66e9c',
-        borrower: '0xf7f6192e35d15a153105d4476a1b4d59ec2014dd',
-        assetDebt: '0x8e870d67f660d95d5be530380d0ec0bd388289e1',
-        amountDebt: 1257619793546196402568n,
-        assetCollateral: '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
-        amountCollateral: 3402851288n,
       },
       {
-        contract: {
-          address: '0x7d2768dE32b0b80b7a3454c06BdAc94A69DDc7A9',
-          protocol: {
-            abi: 'AaveV2',
-            pool: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
+        repayment: {
+          contract: {
+            address: '0x7d2768dE32b0b80b7a3454c06BdAc94A69DDc7A9',
+            protocol: {
+              abi: 'AaveV2',
+              pool: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
+            },
           },
+          transaction: {
+            hash: '0x580a2d8d142207a50636b74d41feca1774b106143c536078ca80de000f83f3d8',
+            gasUsed: 556582,
+          },
+          event: {
+            logIndex: 146,
+            address: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
+          },
+          payer: '0xd911560979b78821d7b045c79e36e9cbfc2f6c6f',
+          borrower: '0xa8556b50ab7781eeccf647eec1c0bf3bf9e5b3ad',
+          asset: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+          amount: 631587280n,
         },
-        transaction: {
-          hash: '0x580a2d8d142207a50636b74d41feca1774b106143c536078ca80de000f83f3d8',
-          gasUsed: 556582,
+        seizure: {
+          contract: {
+            address: '0x7d2768dE32b0b80b7a3454c06BdAc94A69DDc7A9',
+            protocol: {
+              abi: 'AaveV2',
+              pool: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
+            },
+          },
+          transaction: {
+            hash: '0x580a2d8d142207a50636b74d41feca1774b106143c536078ca80de000f83f3d8',
+            gasUsed: 556582,
+          },
+          event: {
+            logIndex: 146,
+            address: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
+          },
+          seizor: '0xd911560979b78821d7b045c79e36e9cbfc2f6c6f',
+          borrower: '0xa8556b50ab7781eeccf647eec1c0bf3bf9e5b3ad',
+          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          amount: 344839185141066670n,
         },
-        event: {
-          logIndex: 146,
-          address: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
-        },
-        liquidator: '0xd911560979b78821d7b045c79e36e9cbfc2f6c6f',
-        borrower: '0xa8556b50ab7781eeccf647eec1c0bf3bf9e5b3ad',
-        assetDebt: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
-        amountDebt: 631587280n,
-        assetCollateral: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-        amountCollateral: 344839185141066670n,
       },
     ];
 

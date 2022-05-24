@@ -17,7 +17,7 @@ function isArbitrage(mev: BlockMev): boolean {
 }
 
 function isLiquidation(mev: BlockMev): boolean {
-  return 'liquidator' in mev;
+  return 'repayment' in mev;
 }
 
 function equalWithTolerance(
