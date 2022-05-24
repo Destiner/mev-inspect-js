@@ -5,7 +5,7 @@ import { Classifier } from '../../src/classifier/base.js';
 import classify from '../../src/classifier/index.js';
 import aaveV2Classifiers from '../../src/classifier/items/aaveV2.js';
 import balanceV2Classifiers from '../../src/classifier/items/balancerV2.js';
-import compoundV2Classifier from '../../src/classifier/items/compoundV2.js';
+import compoundV2Classifiers from '../../src/classifier/items/compoundV2.js';
 import erc20Classifier from '../../src/classifier/items/erc20.js';
 import uniswapV2Classifier from '../../src/classifier/items/uniswapV2.js';
 import uniswapV3Classifier from '../../src/classifier/items/uniswapV3.js';
@@ -122,28 +122,7 @@ describe('Classfiers', () => {
       data: '0x000000000000000000000000b5c7ad3cb6506c65da01f2fac2e667dcb9e66e9c000000000000000000000000f7f6192e35d15a153105d4476a1b4d59ec2014dd0000000000000000000000000000000000000000000000442cfb0b133521c18800000000000000000000000000000000000000000000004433f6aa1ae11ae570000000000000000000000000000000000000000000001177ef652bdd78e4fe7b',
     };
 
-    const logs = [compoundV2RepaymentLog];
-    const classifiedLogs = classify(ETHEREUM, logs);
-
-    expect(classifiedLogs[0].classifier).toEqual<Classifier>(
-      compoundV2Classifier[0],
-    );
-  });
-
-  test('liquidations', () => {
-    const compoundV2LiquidationLog: Log = {
-      transactionHash:
-        '0xdf838db24228f280eba8a279266d1602b03b54507afdca3cb4b4ec640535642b',
-      logIndex: 21,
-      gasUsed: 671221,
-      address: '0x041171993284df560249b57358f931d9eb7b925d',
-      topics: [
-        '0x298637f684da70674f26509b10f07ec2fbc77a335ab1e7d6215a4b2484d8bb52',
-      ],
-      data: '0x000000000000000000000000b5c7ad3cb6506c65da01f2fac2e667dcb9e66e9c000000000000000000000000f7f6192e35d15a153105d4476a1b4d59ec2014dd0000000000000000000000000000000000000000000000442cfb0b133521c1880000000000000000000000004ddc2d193948926d02f9b1fe9e1daa0718270ed500000000000000000000000000000000000000000000000000000000cad363d8',
-    };
-
-    const aaveV2LiquidationLog: Log = {
+    const aaveV2RepaymentLog: Log = {
       transactionHash:
         '0x580a2d8d142207a50636b74d41feca1774b106143c536078ca80de000f83f3d8',
       logIndex: 146,
@@ -158,17 +137,51 @@ describe('Classfiers', () => {
       data: '0x0000000000000000000000000000000000000000000000000000000025a541d000000000000000000000000000000000000000000000000004c91d696ef7ebae000000000000000000000000d911560979b78821d7b045c79e36e9cbfc2f6c6f0000000000000000000000000000000000000000000000000000000000000001',
     };
 
-    const logs = [compoundV2LiquidationLog, aaveV2LiquidationLog];
+    const logs = [compoundV2RepaymentLog, aaveV2RepaymentLog];
     const classifiedLogs = classify(ETHEREUM, logs);
 
-    expect(classifiedLogs[0].classifier).toEqual<Classifier>(
-      compoundV2Classifier[1],
-    );
-    expect(classifiedLogs[1].classifier).toEqual<Classifier>(
-      aaveV2Classifiers[0],
-    );
-    expect(classifiedLogs[2].classifier).toEqual<Classifier>(
-      aaveV2Classifiers[1],
-    );
+    const compoundV2RepaymentEvents = classifiedLogs.filter((log) => log.classifier === compoundV2Classifiers[0]);
+    const aaveV2RepaymentEvents = classifiedLogs.filter((log) => log.classifier === aaveV2Classifiers[0]);
+
+    expect(compoundV2RepaymentEvents.length).toEqual(1);
+    expect(aaveV2RepaymentEvents.length).toEqual(1);
+  });
+
+  test('seizures', () => {
+    const compoundV2SeizureLog: Log = {
+      transactionHash:
+        '0xdf838db24228f280eba8a279266d1602b03b54507afdca3cb4b4ec640535642b',
+      logIndex: 21,
+      gasUsed: 671221,
+      address: '0x041171993284df560249b57358f931d9eb7b925d',
+      topics: [
+        '0x298637f684da70674f26509b10f07ec2fbc77a335ab1e7d6215a4b2484d8bb52',
+      ],
+      data: '0x000000000000000000000000b5c7ad3cb6506c65da01f2fac2e667dcb9e66e9c000000000000000000000000f7f6192e35d15a153105d4476a1b4d59ec2014dd0000000000000000000000000000000000000000000000442cfb0b133521c1880000000000000000000000004ddc2d193948926d02f9b1fe9e1daa0718270ed500000000000000000000000000000000000000000000000000000000cad363d8',
+    };
+
+    const aaveV2SeizureLog: Log = {
+      transactionHash:
+        '0x580a2d8d142207a50636b74d41feca1774b106143c536078ca80de000f83f3d8',
+      logIndex: 146,
+      gasUsed: 556582,
+      address: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
+      topics: [
+        '0xe413a321e8681d831f4dbccbca790d2952b56f977908e45be37335533e005286',
+        '0x000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        '0x000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        '0x000000000000000000000000a8556b50ab7781eeccf647eec1c0bf3bf9e5b3ad',
+      ],
+      data: '0x0000000000000000000000000000000000000000000000000000000025a541d000000000000000000000000000000000000000000000000004c91d696ef7ebae000000000000000000000000d911560979b78821d7b045c79e36e9cbfc2f6c6f0000000000000000000000000000000000000000000000000000000000000001',
+    };
+
+    const logs = [compoundV2SeizureLog, aaveV2SeizureLog];
+    const classifiedLogs = classify(ETHEREUM, logs);
+
+    const compoundV2SeizureEvents = classifiedLogs.filter((log) => log.classifier === compoundV2Classifiers[1]);
+    const aaveV2SeizureEvents = classifiedLogs.filter((log) => log.classifier === aaveV2Classifiers[1]);
+
+    expect(compoundV2SeizureEvents.length).toEqual(1);
+    expect(aaveV2SeizureEvents.length).toEqual(1);
   });
 });
