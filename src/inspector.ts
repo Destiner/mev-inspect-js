@@ -1,11 +1,17 @@
 import { Provider } from '@ethersproject/providers';
 
 import Chain from './chain.js';
-import classify, { ChainId } from './classifier/index.js';
+import classify, {
+  ChainId,
+  ClassifiedEvent,
+  Swap,
+} from './classifier/index.js';
 import { fetchPools, fetchMarkets } from './fetch.js';
 import {
-  TxMev,
+  Arbitrage,
   BlockMev,
+  Liquidation,
+  TxMev,
   getSwaps,
   getArbitrages,
   getTransfers,
@@ -25,26 +31,31 @@ class Inspector {
 
   async tx(hash: string): Promise<TxMev[]> {
     const logs = await this.chain.getTransactionLogs(hash);
-    const classified = classify(this.chainId, logs);
-    const pools = await fetchPools(this.provider, classified);
-    const markets = await fetchMarkets(this.chainId, this.provider, classified);
-    const transfers = getTransfers(classified);
-    const swaps = getSwaps(this.chainId, pools, transfers, classified);
+    const events = classify(this.chainId, logs);
+    const swaps = await this.#getSwaps(events);
     const arbitrages = getArbitrages(swaps);
-    const liquidations = getLiquidations(this.chainId, markets, classified);
+    const liquidations = await this.#getLiquidations(events);
     return [...arbitrages, ...liquidations];
   }
 
   async block(number: number): Promise<BlockMev[]> {
     const logs = await this.chain.getBlockLogs(number);
-    const classified = classify(this.chainId, logs);
-    const pools = await fetchPools(this.provider, classified);
-    const markets = await fetchMarkets(this.chainId, this.provider, classified);
-    const transfers = getTransfers(classified);
-    const swaps = getSwaps(this.chainId, pools, transfers, classified);
+    const events = classify(this.chainId, logs);
+    const swaps = await this.#getSwaps(events);
     const arbitrages = getArbitrages(swaps);
-    const liquidations = getLiquidations(this.chainId, markets, classified);
+    const liquidations = await this.#getLiquidations(events);
     return [...arbitrages, ...liquidations];
+  }
+
+  async #getSwaps(events: ClassifiedEvent[]): Promise<Swap[]> {
+    const pools = await fetchPools(this.provider, events);
+    const transfers = getTransfers(events);
+    return getSwaps(this.chainId, pools, transfers, events);
+  }
+
+  async #getLiquidations(events: ClassifiedEvent[]): Promise<Liquidation[]> {
+    const markets = await fetchMarkets(this.chainId, this.provider, events);
+    return getLiquidations(this.chainId, markets, events);
   }
 }
 
