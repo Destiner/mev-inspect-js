@@ -4,7 +4,7 @@ import { Provider } from '@ethersproject/providers';
 import { Event } from 'abi-coder';
 
 import marketAbi from '../../abi/compoundV2Market.js';
-import { Classifier, Liquidation, Market, Repayment } from '../base.js';
+import { Classifier, Market, Repayment, Seizure } from '../base.js';
 import { ChainId, nativeAsset } from '../directory.js';
 import { ClassifiedEvent } from '../index.js';
 
@@ -17,7 +17,7 @@ function isValidRepayment(event: Event): boolean {
   return event.name === 'RepayBorrow';
 }
 
-function isValidLiquidation(event: Event): boolean {
+function isValidSeizure(event: Event): boolean {
   return event.name === 'LiquidateBorrow';
 }
 
@@ -43,8 +43,7 @@ async function fetchMarket(
   };
 }
 
-function parseRepayment(market: Market,
-  event: ClassifiedEvent,): Repayment {
+function parseRepayment(market: Market, event: ClassifiedEvent): Repayment {
   const { values, transactionHash: hash, gasUsed, logIndex, address } = event;
 
   const payer = (values.payer as string).toLowerCase();
@@ -76,19 +75,13 @@ function parseRepayment(market: Market,
   };
 }
 
-function parseLiquidation(
-  market: Market,
-  event: ClassifiedEvent,
-): Liquidation {
+function parseSeizure(market: Market, event: ClassifiedEvent): Seizure {
   const { values, transactionHash: hash, gasUsed, logIndex, address } = event;
 
-  const liquidator = (values.liquidator as string).toLowerCase();
+  const seizor = (values.liquidator as string).toLowerCase();
   const borrower = (values.borrower as string).toLowerCase();
-  const amountDebt = (values.repayAmount as BigNumber).toBigInt();
-  const assetCollateral = (values.cTokenCollateral as string).toLowerCase();
-  const amountCollateral = (values.seizeTokens as BigNumber).toBigInt();
-
-  const assetDebt = market.asset;
+  const asset = (values.cTokenCollateral as string).toLowerCase();
+  const amount = (values.seizeTokens as BigNumber).toBigInt();
 
   return {
     contract: {
@@ -106,29 +99,30 @@ function parseLiquidation(
       logIndex,
       address: address.toLowerCase(),
     },
-    liquidator,
+    seizor,
     borrower,
-    assetDebt,
-    amountDebt,
-    assetCollateral,
-    amountCollateral,
+    asset,
+    amount,
   };
 }
 
-const CLASSIFIERS: Classifier[] = [{
-  type: 'repayment',
-  protocol: 'CompoundV2',
-  abi: marketAbi,
-  isValid: isValidRepayment,
-  parse: parseRepayment,
-  fetchMarket,
-}, {
-  type: 'liquidation',
-  protocol: 'CompoundV2',
-  abi: marketAbi,
-  isValid: isValidLiquidation,
-  parse: parseLiquidation,
-  fetchMarket,
-}];
+const CLASSIFIERS: Classifier[] = [
+  {
+    type: 'repayment',
+    protocol: 'CompoundV2',
+    abi: marketAbi,
+    isValid: isValidRepayment,
+    parse: parseRepayment,
+    fetchMarket,
+  },
+  {
+    type: 'seizure',
+    protocol: 'CompoundV2',
+    abi: marketAbi,
+    isValid: isValidSeizure,
+    parse: parseSeizure,
+    fetchMarket,
+  },
+];
 
 export default CLASSIFIERS;

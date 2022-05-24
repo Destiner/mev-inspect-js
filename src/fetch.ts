@@ -28,7 +28,7 @@ async function fetchMarkets(
 ): Promise<Market[]> {
   const markets: Market[] = [];
   for (const log of logs) {
-    if (log.classifier.type !== 'liquidation') {
+    if (log.classifier.type !== 'repayment') {
       continue;
     }
     const address = getMarketAddress(log);

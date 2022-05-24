@@ -3,7 +3,7 @@ import { describe, test, expect } from 'vitest';
 import { Log } from '../../src/chain.js';
 import { Classifier } from '../../src/classifier/base.js';
 import classify from '../../src/classifier/index.js';
-import aaveV2Classifier from '../../src/classifier/items/aaveV2.js';
+import aaveV2Classifiers from '../../src/classifier/items/aaveV2.js';
 import balanceV2Classifiers from '../../src/classifier/items/balancerV2.js';
 import compoundV2Classifier from '../../src/classifier/items/compoundV2.js';
 import erc20Classifier from '../../src/classifier/items/erc20.js';
@@ -164,6 +164,11 @@ describe('Classfiers', () => {
     expect(classifiedLogs[0].classifier).toEqual<Classifier>(
       compoundV2Classifier[1],
     );
-    expect(classifiedLogs[1].classifier).toEqual<Classifier>(aaveV2Classifier);
+    expect(classifiedLogs[1].classifier).toEqual<Classifier>(
+      aaveV2Classifiers[0],
+    );
+    expect(classifiedLogs[2].classifier).toEqual<Classifier>(
+      aaveV2Classifiers[1],
+    );
   });
 });

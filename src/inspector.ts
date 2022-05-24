@@ -8,11 +8,11 @@ import classify, {
 } from './classifier/index.js';
 import { fetchPools, fetchMarkets } from './fetch.js';
 import {
-  Arbitrage,
   BlockMev,
   Liquidation,
   TxMev,
   getArbitrages,
+  getSeizures,
   getLiquidations,
   getRepayments,
   getSwaps,
@@ -57,7 +57,8 @@ class Inspector {
   async #getLiquidations(events: ClassifiedEvent[]): Promise<Liquidation[]> {
     const markets = await fetchMarkets(this.chainId, this.provider, events);
     const repayments = getRepayments(this.chainId, markets, events);
-    return getLiquidations(this.chainId, markets, events);
+    const seizures = getSeizures(this.chainId, markets, events);
+    return getLiquidations(repayments, seizures);
   }
 }
 

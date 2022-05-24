@@ -5,9 +5,10 @@ import { Log } from '../chain.js';
 import {
   Classifier,
   LendingProtocol,
-  Liquidation,
   Market,
   Pool,
+  Repayment,
+  Seizure,
   Swap,
   SwapProtocol,
   Transaction,
@@ -19,11 +20,11 @@ import {
   nativeAsset,
   swapFactories,
 } from './directory.js';
-import aaveV2Classifier from './items/aaveV2.js';
-import aaveV3Classifier from './items/aaveV3.js';
+import aaveV2Classifiers from './items/aaveV2.js';
+import aaveV3Classifiers from './items/aaveV3.js';
 import balancerV1Classifier from './items/balancerV1.js';
 import balancerV2Classifiers from './items/balancerV2.js';
-import compoundV2Classifier from './items/compoundV2.js';
+import compoundV2Classifiers from './items/compoundV2.js';
 import erc20Classifier from './items/erc20.js';
 import uniswapV2Classifier from './items/uniswapV2.js';
 import uniswapV3Classifier from './items/uniswapV3.js';
@@ -37,12 +38,11 @@ interface ClassifiedEvent extends Event {
 }
 
 function classify(chainId: ChainId, logs: Log[]): ClassifiedEvent[] {
-  return logs
-    .map((log) => classifyLog(chainId, log))
-    .filter((log): log is ClassifiedEvent => !!log);
+  return logs.map((log) => classifyLog(chainId, log)).flat();
 }
 
-function classifyLog(chainId: ChainId, log: Log): ClassifiedEvent | undefined {
+function classifyLog(chainId: ChainId, log: Log): ClassifiedEvent[] {
+  const events: ClassifiedEvent[] = [];
   const classifiers = getClassifiers();
   for (const classifier of classifiers) {
     const coder = new Coder(classifier.abi);
@@ -51,7 +51,7 @@ function classifyLog(chainId: ChainId, log: Log): ClassifiedEvent | undefined {
       if (!classifier.isValid(event, log.address, chainId)) {
         continue;
       }
-      return {
+      const classifiedEvent: ClassifiedEvent = {
         address: log.address,
         transactionHash: log.transactionHash,
         gasUsed: log.gasUsed,
@@ -59,11 +59,12 @@ function classifyLog(chainId: ChainId, log: Log): ClassifiedEvent | undefined {
         classifier,
         ...event,
       };
+      events.push(classifiedEvent);
     } catch {
       continue;
     }
   }
-  return;
+  return events;
 }
 
 function getClassifiers(): Classifier[] {
@@ -73,9 +74,9 @@ function getClassifiers(): Classifier[] {
     erc20Classifier,
     uniswapV2Classifier,
     uniswapV3Classifier,
-    ...compoundV2Classifier,
-    aaveV2Classifier,
-    aaveV3Classifier,
+    ...compoundV2Classifiers,
+    ...aaveV2Classifiers,
+    ...aaveV3Classifiers,
   ];
 }
 
@@ -85,9 +86,10 @@ export {
   ChainId,
   ClassifiedEvent,
   LendingProtocol,
-  Liquidation,
   Market,
   Pool,
+  Repayment,
+  Seizure,
   Swap,
   SwapProtocol,
   Transaction,

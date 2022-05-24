@@ -1,8 +1,8 @@
+import { Seizure } from '../classifier/base.js';
 import {
   ChainId,
   ClassifiedEvent,
   LendingProtocol,
-  Liquidation,
   Market,
   lendingPools,
 } from '../classifier/index.js';
@@ -11,14 +11,14 @@ function getMarketAddress(log: ClassifiedEvent): string {
   return log.address.toLowerCase();
 }
 
-function getLiquidations(
+function getSeizures(
   chainId: ChainId,
   markets: Market[],
   logs: ClassifiedEvent[],
-): Liquidation[] {
+): Seizure[] {
   return logs
     .map((log) => {
-      if (log.classifier.type !== 'liquidation') {
+      if (log.classifier.type !== 'seizure') {
         return null;
       }
       const marketAddress = getMarketAddress(log);
@@ -41,10 +41,7 @@ function getLiquidations(
       }
       return log.classifier.parse(market, log);
     })
-    .filter(
-      (liquidation: Liquidation | null): liquidation is Liquidation =>
-        !!liquidation,
-    );
+    .filter((seizure: Seizure | null): seizure is Seizure => !!seizure);
 }
 
-export default getLiquidations;
+export default getSeizures;

@@ -66,7 +66,7 @@ interface Repayment extends Base {
   asset: string;
 }
 
-interface Liquidation extends Base {
+interface Seizure extends Base {
   contract: {
     address: string;
     protocol: {
@@ -74,12 +74,10 @@ interface Liquidation extends Base {
       pool: string;
     };
   };
-  liquidator: string;
+  seizor: string;
   borrower: string;
-  assetDebt: string;
-  amountDebt: bigint;
-  assetCollateral: string;
-  amountCollateral: bigint;
+  asset: string;
+  amount: bigint;
 }
 
 type SwapProtocol = 'BalancerV1' | 'BalancerV2' | 'UniswapV2' | 'UniswapV3';
@@ -123,11 +121,11 @@ interface RepaymentClassifier extends BaseClassifier {
   ) => Promise<Market | null>;
 }
 
-interface LiquidationClassifier extends BaseClassifier {
+interface SeizureClassifier extends BaseClassifier {
   protocol: LendingProtocol;
-  type: 'liquidation';
+  type: 'seizure';
   isValid: (event: Event, address: string, chainId: ChainId) => boolean;
-  parse: (market: Market, event: ClassifiedEvent) => Liquidation | null;
+  parse: (market: Market, event: ClassifiedEvent) => Seizure | null;
   fetchMarket: (
     chainId: ChainId,
     provider: Provider,
@@ -135,7 +133,11 @@ interface LiquidationClassifier extends BaseClassifier {
   ) => Promise<Market | null>;
 }
 
-type Classifier = TransferClassifier | SwapClassifier | RepaymentClassifier | LiquidationClassifier;
+type Classifier =
+  | TransferClassifier
+  | SwapClassifier
+  | RepaymentClassifier
+  | SeizureClassifier;
 
 function getLatestPoolTransfer(
   pool: string,
@@ -155,11 +157,11 @@ function getLatestPoolTransfer(
 export {
   Classifier,
   LendingProtocol,
-  Liquidation,
   Market,
   Pool,
   Protocol,
   Repayment,
+  Seizure,
   Swap,
   SwapProtocol,
   Transaction,
