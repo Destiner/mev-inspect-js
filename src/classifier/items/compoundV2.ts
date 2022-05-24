@@ -4,7 +4,7 @@ import { Provider } from '@ethersproject/providers';
 import { Event } from 'abi-coder';
 
 import marketAbi from '../../abi/compoundV2Market.js';
-import { Classifier, Liquidation, Market } from '../base.js';
+import { Classifier, Liquidation, Market, Repayment } from '../base.js';
 import { ChainId, nativeAsset } from '../directory.js';
 import { ClassifiedEvent } from '../index.js';
 
@@ -13,7 +13,11 @@ const CETH_MARKET: Record<string, string> = {
     '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
 };
 
-function isValid(event: Event): boolean {
+function isValidRepayment(event: Event): boolean {
+  return event.name === 'RepayBorrow';
+}
+
+function isValidLiquidation(event: Event): boolean {
   return event.name === 'LiquidateBorrow';
 }
 
@@ -39,10 +43,43 @@ async function fetchMarket(
   };
 }
 
+function parseRepayment(market: Market,
+  event: ClassifiedEvent,): Repayment {
+  const { values, transactionHash: hash, gasUsed, logIndex, address } = event;
+
+  const payer = (values.payer as string).toLowerCase();
+  const borrower = (values.borrower as string).toLowerCase();
+  const amount = (values.repayAmount as BigNumber).toBigInt();
+
+  const asset = market.asset;
+
+  return {
+    contract: {
+      address,
+      protocol: {
+        abi: 'CompoundV2',
+        pool: market.pool,
+      },
+    },
+    transaction: {
+      hash,
+      gasUsed,
+    },
+    event: {
+      logIndex,
+      address: address.toLowerCase(),
+    },
+    payer,
+    borrower,
+    asset,
+    amount,
+  };
+}
+
 function parseLiquidation(
   market: Market,
   event: ClassifiedEvent,
-): Liquidation | null {
+): Liquidation {
   const { values, transactionHash: hash, gasUsed, logIndex, address } = event;
 
   const liquidator = (values.liquidator as string).toLowerCase();
@@ -78,13 +115,20 @@ function parseLiquidation(
   };
 }
 
-const CLASSIFIERS: Classifier = {
+const CLASSIFIERS: Classifier[] = [{
+  type: 'repayment',
+  protocol: 'CompoundV2',
+  abi: marketAbi,
+  isValid: isValidRepayment,
+  parse: parseRepayment,
+  fetchMarket,
+}, {
   type: 'liquidation',
   protocol: 'CompoundV2',
   abi: marketAbi,
-  isValid,
+  isValid: isValidLiquidation,
   parse: parseLiquidation,
   fetchMarket,
-};
+}];
 
 export default CLASSIFIERS;

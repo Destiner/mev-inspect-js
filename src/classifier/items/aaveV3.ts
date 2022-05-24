@@ -29,7 +29,7 @@ async function fetchMarket(
 function parseLiquidation(
   market: Market,
   event: ClassifiedEvent,
-): Liquidation | null {
+): Liquidation {
   const { values, transactionHash: hash, gasUsed, logIndex, address } = event;
 
   const assetCollateral = (values.collateralAsset as string).toLowerCase();

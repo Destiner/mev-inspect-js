@@ -73,7 +73,7 @@ function getClassifiers(): Classifier[] {
     erc20Classifier,
     uniswapV2Classifier,
     uniswapV3Classifier,
-    compoundV2Classifier,
+    ...compoundV2Classifier,
     aaveV2Classifier,
     aaveV3Classifier,
   ];

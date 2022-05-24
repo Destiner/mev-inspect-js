@@ -109,6 +109,27 @@ describe('Classfiers', () => {
     );
   });
 
+  test('repayments', () => {
+    const compoundV2RepaymentLog: Log = {
+      transactionHash:
+        '0xdf838db24228f280eba8a279266d1602b03b54507afdca3cb4b4ec640535642b',
+      logIndex: 17,
+      gasUsed: 671221,
+      address: '0x041171993284df560249b57358f931d9eb7b925d',
+      topics: [
+        '0x1a2a22cb034d26d1854bdc6666a5b91fe25efbbb5dcad3b0355478d6f5c362a1',
+      ],
+      data: '0x000000000000000000000000b5c7ad3cb6506c65da01f2fac2e667dcb9e66e9c000000000000000000000000f7f6192e35d15a153105d4476a1b4d59ec2014dd0000000000000000000000000000000000000000000000442cfb0b133521c18800000000000000000000000000000000000000000000004433f6aa1ae11ae570000000000000000000000000000000000000000000001177ef652bdd78e4fe7b',
+    };
+
+    const logs = [compoundV2RepaymentLog];
+    const classifiedLogs = classify(ETHEREUM, logs);
+
+    expect(classifiedLogs[0].classifier).toEqual<Classifier>(
+      compoundV2Classifier[0],
+    );
+  });
+
   test('liquidations', () => {
     const compoundV2LiquidationLog: Log = {
       transactionHash:
@@ -141,7 +162,7 @@ describe('Classfiers', () => {
     const classifiedLogs = classify(ETHEREUM, logs);
 
     expect(classifiedLogs[0].classifier).toEqual<Classifier>(
-      compoundV2Classifier,
+      compoundV2Classifier[1],
     );
     expect(classifiedLogs[1].classifier).toEqual<Classifier>(aaveV2Classifier);
   });

@@ -2,6 +2,7 @@ import { Liquidation } from '../classifier/index.js';
 
 import { Arbitrage, getArbitrages } from './arbitrage.js';
 import getLiquidations from './liquidation.js';
+import getRepayments from './repayments.js';
 import getSwaps from './swaps.js';
 import getTransfers from './transfers.js';
 
@@ -20,6 +21,7 @@ export {
   TxMev,
   getArbitrages,
   getLiquidations,
+  getRepayments,
   getSwaps,
   getTransfers,
 };

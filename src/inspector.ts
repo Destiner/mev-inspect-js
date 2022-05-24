@@ -12,10 +12,11 @@ import {
   BlockMev,
   Liquidation,
   TxMev,
-  getSwaps,
   getArbitrages,
-  getTransfers,
   getLiquidations,
+  getRepayments,
+  getSwaps,
+  getTransfers,
 } from './mev/index.js';
 
 class Inspector {
@@ -55,6 +56,7 @@ class Inspector {
 
   async #getLiquidations(events: ClassifiedEvent[]): Promise<Liquidation[]> {
     const markets = await fetchMarkets(this.chainId, this.provider, events);
+    const repayments = getRepayments(this.chainId, markets, events);
     return getLiquidations(this.chainId, markets, events);
   }
 }

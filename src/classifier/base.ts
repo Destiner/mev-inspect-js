@@ -52,6 +52,20 @@ interface Swap extends Base {
   amountOut: bigint;
 }
 
+interface Repayment extends Base {
+  contract: {
+    address: string;
+    protocol: {
+      abi: Protocol;
+      pool: string;
+    };
+  };
+  payer: string;
+  borrower: string;
+  amount: bigint;
+  asset: string;
+}
+
 interface Liquidation extends Base {
   contract: {
     address: string;
@@ -97,6 +111,18 @@ interface SwapClassifier extends BaseClassifier {
   fetchPool: (provider: Provider, id: string) => Promise<Pool | null>;
 }
 
+interface RepaymentClassifier extends BaseClassifier {
+  protocol: LendingProtocol;
+  type: 'repayment';
+  isValid: (event: Event, address: string, chainId: ChainId) => boolean;
+  parse: (market: Market, event: ClassifiedEvent) => Repayment | null;
+  fetchMarket: (
+    chainId: ChainId,
+    provider: Provider,
+    address: string,
+  ) => Promise<Market | null>;
+}
+
 interface LiquidationClassifier extends BaseClassifier {
   protocol: LendingProtocol;
   type: 'liquidation';
@@ -109,7 +135,7 @@ interface LiquidationClassifier extends BaseClassifier {
   ) => Promise<Market | null>;
 }
 
-type Classifier = TransferClassifier | SwapClassifier | LiquidationClassifier;
+type Classifier = TransferClassifier | SwapClassifier | RepaymentClassifier | LiquidationClassifier;
 
 function getLatestPoolTransfer(
   pool: string,
@@ -133,6 +159,7 @@ export {
   Market,
   Pool,
   Protocol,
+  Repayment,
   Swap,
   SwapProtocol,
   Transaction,
