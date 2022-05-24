@@ -85,7 +85,7 @@ interface TransferClassifier extends BaseClassifier {
 }
 
 interface SwapClassifier extends BaseClassifier {
-  protocol: Protocol;
+  protocol: SwapProtocol;
   type: 'swap';
   isValid: (event: Event, address: string, chainId: ChainId) => boolean;
   parse: (
@@ -98,7 +98,7 @@ interface SwapClassifier extends BaseClassifier {
 }
 
 interface LiquidationClassifier extends BaseClassifier {
-  protocol: Protocol;
+  protocol: LendingProtocol;
   type: 'liquidation';
   isValid: (event: Event, address: string, chainId: ChainId) => boolean;
   parse: (market: Market, event: ClassifiedEvent) => Liquidation | null;
