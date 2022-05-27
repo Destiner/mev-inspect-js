@@ -24,6 +24,9 @@ class Chain {
 
   async getTransactionLogs(hash: string): Promise<Log[]> {
     const receipt = await this.#getReceipt(hash);
+    if (!receipt) {
+      return [];
+    }
     const { logs, gasUsed } = receipt;
     return logs.map((log) => {
       const { transactionHash, logIndex, address, topics, data } = log;
@@ -49,9 +52,9 @@ class Chain {
     return logs.flat();
   }
 
-  async #getReceipt(hash: string): Promise<TransactionReceipt> {
-    let receipt: TransactionReceipt | null = null;
-    while (!receipt) {
+  async #getReceipt(hash: string): Promise<TransactionReceipt | null> {
+    let receipt: TransactionReceipt | null | undefined = undefined;
+    while (receipt === undefined) {
       try {
         receipt = await this.provider.getTransactionReceipt(hash);
       } catch (e: unknown) {
