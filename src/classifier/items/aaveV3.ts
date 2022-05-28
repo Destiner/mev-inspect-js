@@ -37,7 +37,7 @@ function parseRepayment(market: Market, event: ClassifiedEvent): Repayment {
 
   return {
     contract: {
-      address,
+      address: market.address,
       protocol: {
         abi: 'AaveV3',
         pool: market.pool,
@@ -68,7 +68,7 @@ function parseSeizure(market: Market, event: ClassifiedEvent): Seizure {
 
   return {
     contract: {
-      address,
+      address: market.address,
       protocol: {
         abi: 'AaveV3',
         pool: market.pool,
