@@ -11,7 +11,10 @@ describe('MEV: liquidations', () => {
           address: '0x041171993284df560249b57358f931d9eb7b925d',
           protocol: {
             abi: 'CompoundV2',
-            pool: '0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b',
+            pool: {
+              address: '0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b',
+              label: 'Compound V2',
+            },
           },
         },
         transaction: {
@@ -35,7 +38,10 @@ describe('MEV: liquidations', () => {
           address: '0x041171993284df560249b57358f931d9eb7b925d',
           protocol: {
             abi: 'CompoundV2',
-            pool: '0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b',
+            pool: {
+              address: '0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b',
+              label: 'Compound V2',
+            },
           },
         },
         transaction: {
@@ -59,7 +65,10 @@ describe('MEV: liquidations', () => {
           address: '0x39aa39c021dfbae8fac545936693ac917d5e7563',
           protocol: {
             abi: 'CompoundV2',
-            pool: '0x39aa39c021dfbae8fac545936693ac917d5e7563',
+            pool: {
+              address: '0x39aa39c021dfbae8fac545936693ac917d5e7563',
+              label: 'Compound V2',
+            },
           },
         },
         transaction: {
@@ -83,7 +92,10 @@ describe('MEV: liquidations', () => {
           address: '0x39aa39c021dfbae8fac545936693ac917d5e7563',
           protocol: {
             abi: 'CompoundV2',
-            pool: '0x39aa39c021dfbae8fac545936693ac917d5e7563',
+            pool: {
+              address: '0x39aa39c021dfbae8fac545936693ac917d5e7563',
+              label: 'Compound V2',
+            },
           },
         },
         transaction: {
@@ -125,7 +137,10 @@ describe('MEV: liquidations', () => {
           address: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
           protocol: {
             abi: 'AaveV2',
-            pool: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
+            pool: {
+              address: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
+              label: 'Aave V2',
+            },
           },
         },
         transaction: {
@@ -149,7 +164,10 @@ describe('MEV: liquidations', () => {
           address: '0x7d2768dE32b0b80b7a3454c06BdAc94A69DDc7A9',
           protocol: {
             abi: 'AaveV2',
-            pool: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
+            pool: {
+              address: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
+              label: 'Aave V2',
+            },
           },
         },
         transaction: {
@@ -173,7 +191,10 @@ describe('MEV: liquidations', () => {
           address: '0x7937D4799803FbBe595ed57278Bc4cA21f3bFfCB',
           protocol: {
             abi: 'AaveV2',
-            pool: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
+            pool: {
+              address: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
+              label: 'Aave V2',
+            },
           },
         },
         transaction: {
@@ -197,7 +218,10 @@ describe('MEV: liquidations', () => {
           address: '0x7937D4799803FbBe595ed57278Bc4cA21f3bFfCB',
           protocol: {
             abi: 'AaveV2',
-            pool: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
+            pool: {
+              address: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
+              label: 'Aave V2',
+            },
           },
         },
         transaction: {

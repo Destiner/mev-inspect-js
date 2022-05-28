@@ -3,13 +3,15 @@ import { Provider } from '@ethersproject/providers';
 import { Event } from 'abi-coder';
 
 import poolAbi from '../../abi/aaveV3Pool.js';
-import { Classifier, Market, Repayment, Seizure } from '../base.js';
+import { Classifier, Market, MarketData, Repayment, Seizure } from '../base.js';
 import { ChainId, lendingPools } from '../directory.js';
 import { ClassifiedEvent } from '../index.js';
 
 function isValid(event: Event, address: string, chainId: ChainId): boolean {
   const pools = lendingPools[chainId]['AaveV3'];
-  const validPool = pools.some((list) => list.includes(address.toLowerCase()));
+  const validPool = pools.some((list) =>
+    list.addresses.includes(address.toLowerCase()),
+  );
   return event.name === 'LiquidationCall' && validPool;
 }
 
@@ -17,11 +19,10 @@ async function fetchMarket(
   _chainId: ChainId,
   _provider: Provider,
   address: string,
-): Promise<Market> {
-  // TODO fix
+): Promise<MarketData> {
   return {
-    address: address.toLowerCase(),
-    pool: address.toLowerCase(),
+    poolAddress: address.toLowerCase(),
+    // TODO fix
     asset: '',
   };
 }

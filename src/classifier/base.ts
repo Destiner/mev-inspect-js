@@ -17,9 +17,17 @@ interface Pool {
   assets: string[];
 }
 
+interface MarketData {
+  poolAddress: string;
+  asset: string;
+}
+
 interface Market {
   address: string;
-  pool: string;
+  pool: {
+    address: string;
+    label: string;
+  };
   asset: string;
 }
 
@@ -64,7 +72,10 @@ interface Repayment extends Base {
     address: string;
     protocol: {
       abi: Protocol;
-      pool: string;
+      pool: {
+        address: string;
+        label: string;
+      };
     };
   };
   payer: string;
@@ -78,7 +89,10 @@ interface Seizure extends Base {
     address: string;
     protocol: {
       abi: Protocol;
-      pool: string;
+      pool: {
+        address: string;
+        label: string;
+      };
     };
   };
   seizor: string;
@@ -125,7 +139,7 @@ interface RepaymentClassifier extends BaseClassifier {
     chainId: ChainId,
     provider: Provider,
     address: string,
-  ) => Promise<Market | null>;
+  ) => Promise<MarketData | null>;
 }
 
 interface SeizureClassifier extends BaseClassifier {
@@ -137,7 +151,7 @@ interface SeizureClassifier extends BaseClassifier {
     chainId: ChainId,
     provider: Provider,
     address: string,
-  ) => Promise<Market | null>;
+  ) => Promise<MarketData | null>;
 }
 
 type Classifier =
@@ -165,6 +179,7 @@ export {
   Classifier,
   LendingProtocol,
   Market,
+  MarketData,
   Pool,
   PoolData,
   Protocol,

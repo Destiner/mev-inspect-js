@@ -172,7 +172,10 @@ describe('Utilities', () => {
             address: '0x041171993284df560249B57358F931D9eB7b925D',
             protocol: {
               abi: 'CompoundV2',
-              pool: '0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b',
+              pool: {
+                address: '0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b',
+                label: 'Compound V2',
+              },
             },
           },
           transaction: {
@@ -193,7 +196,10 @@ describe('Utilities', () => {
             address: '0x041171993284df560249B57358F931D9eB7b925D',
             protocol: {
               abi: 'CompoundV2',
-              pool: '0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b',
+              pool: {
+                address: '0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b',
+                label: 'Compound V2',
+              },
             },
           },
           transaction: {
@@ -216,7 +222,10 @@ describe('Utilities', () => {
             address: '0x7d2768dE32b0b80b7a3454c06BdAc94A69DDc7A9',
             protocol: {
               abi: 'AaveV2',
-              pool: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
+              pool: {
+                address: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
+                label: 'Aave V2',
+              },
             },
           },
           transaction: {
@@ -237,7 +246,10 @@ describe('Utilities', () => {
             address: '0x7d2768dE32b0b80b7a3454c06BdAc94A69DDc7A9',
             protocol: {
               abi: 'AaveV2',
-              pool: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
+              pool: {
+                address: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
+                label: 'Aave V2',
+              },
             },
           },
           transaction: {
@@ -271,7 +283,10 @@ describe('Utilities', () => {
             address: '0x041171993284df560249B57358F931D9eB7b925D',
             protocol: {
               abi: 'CompoundV2',
-              pool: '0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b',
+              pool: {
+                address: '0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b',
+                label: 'Compound V2',
+              },
             },
           },
           transaction: {
@@ -292,7 +307,10 @@ describe('Utilities', () => {
             address: '0x041171993284df560249B57358F931D9eB7b925D',
             protocol: {
               abi: 'CompoundV2',
-              pool: '0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b',
+              pool: {
+                address: '0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b',
+                label: 'Compound V2',
+              },
             },
           },
           transaction: {
@@ -315,7 +333,10 @@ describe('Utilities', () => {
             address: '0x7d2768dE32b0b80b7a3454c06BdAc94A69DDc7A9',
             protocol: {
               abi: 'AaveV2',
-              pool: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
+              pool: {
+                address: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
+                label: 'Aave V2',
+              },
             },
           },
           transaction: {
@@ -336,7 +357,10 @@ describe('Utilities', () => {
             address: '0x7d2768dE32b0b80b7a3454c06BdAc94A69DDc7A9',
             protocol: {
               abi: 'AaveV2',
-              pool: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
+              pool: {
+                address: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
+                label: 'Aave V2',
+              },
             },
           },
           transaction: {

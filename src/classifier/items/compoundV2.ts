@@ -4,7 +4,7 @@ import { Provider } from '@ethersproject/providers';
 import { Event } from 'abi-coder';
 
 import marketAbi from '../../abi/compoundV2Market.js';
-import { Classifier, Market, Repayment, Seizure } from '../base.js';
+import { Classifier, Market, MarketData, Repayment, Seizure } from '../base.js';
 import { ChainId, nativeAsset } from '../directory.js';
 import { ClassifiedEvent } from '../index.js';
 
@@ -25,7 +25,7 @@ async function fetchMarket(
   chainId: ChainId,
   provider: Provider,
   address: string,
-): Promise<Market> {
+): Promise<MarketData> {
   const marketContract = new Contract(address, marketAbi, provider);
   const comptroller = (
     (await marketContract.comptroller()) as string
@@ -37,8 +37,7 @@ async function fetchMarket(
       ? native
       : ((await marketContract.underlying()) as string).toLowerCase();
   return {
-    address: address.toLowerCase(),
-    pool: comptroller,
+    poolAddress: comptroller,
     asset: underlying,
   };
 }

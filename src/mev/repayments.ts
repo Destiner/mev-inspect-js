@@ -29,7 +29,9 @@ function getRepayments(
       if (!allowedPools) {
         return null;
       }
-      const allowed = allowedPools.some((pools) => pools.includes(market.pool));
+      const allowed = allowedPools.some((pools) =>
+        pools.addresses.includes(market.pool.address),
+      );
       if (!allowed) {
         return null;
       }

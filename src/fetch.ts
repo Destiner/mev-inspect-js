@@ -6,6 +6,7 @@ import {
   Market,
   Pool,
   getFactoryByAddress,
+  getPoolByAddress,
 } from './classifier/index.js';
 
 async function fetchPools(
@@ -49,10 +50,27 @@ async function fetchMarkets(
       continue;
     }
     const address = getMarketAddress(log);
-    const market = await log.classifier.fetchMarket(chainId, provider, address);
-    if (!market) {
+    const marketData = await log.classifier.fetchMarket(
+      chainId,
+      provider,
+      address,
+    );
+    if (!marketData) {
       continue;
     }
+    const pool = getPoolByAddress(
+      chainId,
+      log.classifier.protocol,
+      marketData.poolAddress,
+    );
+    const market = {
+      address: address.toLowerCase(),
+      asset: marketData.asset,
+      pool: {
+        label: pool.label,
+        address: marketData.poolAddress,
+      },
+    };
     markets.push(market);
   }
   return markets;

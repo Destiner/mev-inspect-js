@@ -20,6 +20,7 @@ import {
   nativeAsset,
   swapFactories,
   getFactoryByAddress,
+  getPoolByAddress,
 } from './directory.js';
 import aaveV2Classifiers from './items/aaveV2.js';
 import aaveV3Classifiers from './items/aaveV3.js';
@@ -96,6 +97,7 @@ export {
   Transaction,
   Transfer,
   getFactoryByAddress,
+  getPoolByAddress,
   lendingPools,
   nativeAsset,
   swapFactories,

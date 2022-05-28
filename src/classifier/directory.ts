@@ -11,6 +11,11 @@ interface Factory {
   address: string;
 }
 
+interface LendingPool {
+  label: string;
+  addresses: string[];
+}
+
 const nativeAsset: Record<ChainId, string> = {
   [ETHEREUM]: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
   [POLYGON]: '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270',
@@ -124,26 +129,49 @@ const swapFactories: Record<ChainId, Record<SwapProtocol, Factory[]>> = {
   },
 };
 
-const lendingPools: Record<ChainId, Record<LendingProtocol, string[][]>> = {
+const lendingPools: Record<ChainId, Record<LendingProtocol, LendingPool[]>> = {
   [ETHEREUM]: {
-    CompoundV2: [['0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b']],
+    CompoundV2: [
+      {
+        addresses: ['0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b'],
+        label: 'Compound V2',
+      },
+    ],
     AaveV2: [
-      [
-        '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
-        '0x7937d4799803fbbe595ed57278bc4ca21f3bffcb',
-      ],
+      {
+        addresses: [
+          '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
+          '0x7937d4799803fbbe595ed57278bc4ca21f3bffcb',
+        ],
+        label: 'Aave V2',
+      },
     ],
     AaveV3: [],
   },
   [POLYGON]: {
     CompoundV2: [],
-    AaveV2: [['0x8dff5e27ea6b7ac08ebfdf9eb090f32ee9a30fcf']],
-    AaveV3: [['0x794a61358d6845594f94dc1db02a252b5b4814ad']],
+    AaveV2: [
+      {
+        addresses: ['0x8dff5e27ea6b7ac08ebfdf9eb090f32ee9a30fcf'],
+        label: 'Aave V2',
+      },
+    ],
+    AaveV3: [
+      {
+        addresses: ['0x794a61358d6845594f94dc1db02a252b5b4814ad'],
+        label: 'Aave V3',
+      },
+    ],
   },
   [ARBITRUM]: {
     CompoundV2: [],
     AaveV2: [],
-    AaveV3: [['0x794a61358d6845594f94dc1db02a252b5b4814ad']],
+    AaveV3: [
+      {
+        addresses: ['0x794a61358d6845594f94dc1db02a252b5b4814ad'],
+        label: 'Aave V3',
+      },
+    ],
   },
 };
 
@@ -158,11 +186,24 @@ function getFactoryByAddress(
   ) as Factory;
 }
 
+function getPoolByAddress(
+  chainId: ChainId,
+  protocol: LendingProtocol,
+  address: string,
+): LendingPool {
+  const protocolPools = lendingPools[chainId][protocol];
+  return protocolPools.find((pool) =>
+    pool.addresses.includes(address),
+  ) as LendingPool;
+}
+
 export {
   ChainId,
   Factory,
+  LendingPool,
   nativeAsset,
   swapFactories,
   lendingPools,
   getFactoryByAddress,
+  getPoolByAddress,
 };
