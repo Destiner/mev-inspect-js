@@ -41,7 +41,12 @@ function parseSwap(
   const { assetIn, assetOut, amountIn, amountOut } = getSwapValues(event);
   const vault = event.address.toLowerCase();
 
-  const { from, to } = getClusterInputOutput(vault, logIndex, allEvents, transfers);
+  const { from, to } = getClusterInputOutput(
+    vault,
+    logIndex,
+    allEvents,
+    transfers,
+  );
   return {
     contract: {
       address: pool.address,
