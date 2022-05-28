@@ -1,8 +1,15 @@
 import { Provider } from '@ethersproject/providers';
 
-import { ChainId, ClassifiedEvent, Market, Pool } from './classifier/index.js';
+import {
+  ChainId,
+  ClassifiedEvent,
+  Market,
+  Pool,
+  getFactoryByAddress,
+} from './classifier/index.js';
 
 async function fetchPools(
+  chainId: ChainId,
   provider: Provider,
   logs: ClassifiedEvent[],
 ): Promise<Pool[]> {
@@ -12,10 +19,20 @@ async function fetchPools(
       continue;
     }
     const id = getPoolId(log);
-    const pool = await log.classifier.fetchPool(provider, id);
-    if (!pool) {
+    const poolData = await log.classifier.fetchPool(provider, id);
+    if (!poolData) {
       continue;
     }
+    const factory = getFactoryByAddress(
+      chainId,
+      log.classifier.protocol,
+      poolData.factoryAddress,
+    );
+    const pool = {
+      address: getPoolAddress(log).toLowerCase(),
+      assets: poolData.assets,
+      factory,
+    };
     pools.push(pool);
   }
   return pools;
@@ -47,6 +64,16 @@ function getPoolId(log: ClassifiedEvent): string {
   }
   if (log.classifier.protocol === 'BalancerV2') {
     return log.values.poolId as string;
+  }
+  return log.address;
+}
+
+function getPoolAddress(log: ClassifiedEvent): string {
+  if (log.classifier.type !== 'swap') {
+    return '';
+  }
+  if (log.classifier.protocol === 'BalancerV2') {
+    return getPoolId(log).substring(0, 42);
   }
   return log.address;
 }

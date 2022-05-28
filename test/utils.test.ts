@@ -18,7 +18,10 @@ describe('Utilities', () => {
               address: '0xcbcdf9626bc03e24f779434178a73a0b4bad62ed',
               protocol: {
                 abi: 'UniswapV3',
-                factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+                factory: {
+                  address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+                  label: 'Uniswap V3',
+                },
               },
             },
             from: '0x0000000000005117dd3a72e64a705198753fdd54',
@@ -41,7 +44,10 @@ describe('Utilities', () => {
               address: '0x4585fe77225b41b697c938b018e2ac67ac5a20c0',
               protocol: {
                 abi: 'UniswapV3',
-                factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+                factory: {
+                  address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+                  label: 'Uniswap V3',
+                },
               },
             },
             from: '0x0000000000005117dd3a72e64a705198753fdd54',
@@ -71,7 +77,10 @@ describe('Utilities', () => {
               address: '0x231b7589426ffe1b75405526fc32ac09d44364c4',
               protocol: {
                 abi: 'UniswapV2',
-                factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+                factory: {
+                  address: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+                  label: 'Uniswap V2',
+                },
               },
             },
             from: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
@@ -94,7 +103,10 @@ describe('Utilities', () => {
               address: '0xee51984781254ad1a0ee3ae0ca26c4d53dea6ecb',
               protocol: {
                 abi: 'UniswapV2',
-                factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+                factory: {
+                  address: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+                  label: 'Uniswap V2',
+                },
               },
             },
             from: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
@@ -117,7 +129,10 @@ describe('Utilities', () => {
               address: '0xf3933a6a82fba8a349a7124c8d8226d7c4d7b6cb',
               protocol: {
                 abi: 'UniswapV2',
-                factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+                factory: {
+                  address: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+                  label: 'Uniswap V2',
+                },
               },
             },
             from: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
@@ -356,7 +371,10 @@ describe('Utilities', () => {
               address: '0xcbcdf9626bc03e24f779434178a73a0b4bad62ed',
               protocol: {
                 abi: 'UniswapV3',
-                factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+                factory: {
+                  address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+                  label: 'Uniswap V3',
+                },
               },
             },
             from: '0x0000000000005117dd3a72e64a705198753fdd54',
@@ -379,7 +397,10 @@ describe('Utilities', () => {
               address: '0x4585fe77225b41b697c938b018e2ac67ac5a20c0',
               protocol: {
                 abi: 'UniswapV3',
-                factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+                factory: {
+                  address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+                  label: 'Uniswap V3',
+                },
               },
             },
             from: '0x0000000000005117dd3a72e64a705198753fdd54',
@@ -409,7 +430,10 @@ describe('Utilities', () => {
               address: '0x231b7589426ffe1b75405526fc32ac09d44364c4',
               protocol: {
                 abi: 'UniswapV2',
-                factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+                factory: {
+                  address: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+                  label: 'Uniswap V2',
+                },
               },
             },
             from: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
@@ -432,7 +456,10 @@ describe('Utilities', () => {
               address: '0xee51984781254ad1a0ee3ae0ca26c4d53dea6ecb',
               protocol: {
                 abi: 'UniswapV2',
-                factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+                factory: {
+                  address: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+                  label: 'Uniswap V2',
+                },
               },
             },
             from: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
@@ -455,7 +482,10 @@ describe('Utilities', () => {
               address: '0xf3933a6a82fba8a349a7124c8d8226d7c4d7b6cb',
               protocol: {
                 abi: 'UniswapV2',
-                factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+                factory: {
+                  address: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+                  label: 'Uniswap V2',
+                },
               },
             },
             from: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',

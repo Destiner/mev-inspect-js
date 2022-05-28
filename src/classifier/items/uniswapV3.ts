@@ -8,6 +8,7 @@ import { equalWithTolerance } from '../../utils.js';
 import {
   Classifier,
   Pool,
+  PoolData,
   Swap,
   Transfer,
   getLatestPoolTransfer,
@@ -18,15 +19,17 @@ function isValid(event: Event): boolean {
   return event.name === 'Swap';
 }
 
-async function fetchPool(provider: Provider, address: string): Promise<Pool> {
+async function fetchPool(
+  provider: Provider,
+  address: string,
+): Promise<PoolData> {
   const poolContract = new Contract(address, poolAbi, provider);
   const factory = (await poolContract.factory()) as string;
   const asset0 = (await poolContract.token0()) as string;
   const asset1 = (await poolContract.token1()) as string;
   return {
-    address: address.toLowerCase(),
     assets: [asset0.toLowerCase(), asset1.toLowerCase()],
-    factory: factory.toLowerCase(),
+    factoryAddress: factory.toLowerCase(),
   };
 }
 

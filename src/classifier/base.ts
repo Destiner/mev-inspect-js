@@ -2,11 +2,18 @@ import { JsonFragment } from '@ethersproject/abi';
 import { Provider } from '@ethersproject/providers';
 import { Event } from 'abi-coder';
 
+import { Factory } from './directory.js';
+
 import { ChainId, ClassifiedEvent } from './index.js';
+
+interface PoolData {
+  factoryAddress: string;
+  assets: string[];
+}
 
 interface Pool {
   address: string;
-  factory: string;
+  factory: Factory;
   assets: string[];
 }
 
@@ -41,7 +48,7 @@ interface Swap extends Base {
     address: string;
     protocol: {
       abi: Protocol;
-      factory: string;
+      factory: Factory;
     };
   };
   from: string;
@@ -106,7 +113,7 @@ interface SwapClassifier extends BaseClassifier {
     transfers: Transfer[],
     allEvents: ClassifiedEvent[],
   ) => Swap | null;
-  fetchPool: (provider: Provider, id: string) => Promise<Pool | null>;
+  fetchPool: (provider: Provider, id: string) => Promise<PoolData | null>;
 }
 
 interface RepaymentClassifier extends BaseClassifier {
@@ -159,6 +166,7 @@ export {
   LendingProtocol,
   Market,
   Pool,
+  PoolData,
   Protocol,
   Repayment,
   Seizure,

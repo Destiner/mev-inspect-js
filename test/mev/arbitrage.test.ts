@@ -11,7 +11,10 @@ describe('MEV: arbitrage', () => {
           address: '0x9928e4046d7c6513326ccea028cd3e7a91c7590a',
           protocol: {
             abi: 'UniswapV2',
-            factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+            factory: {
+              address: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+              label: 'Uniswap V2',
+            },
           },
         },
         from: '0x7a250d5630b4cf539739df2c5dacb4c659f2488d',
@@ -42,7 +45,10 @@ describe('MEV: arbitrage', () => {
           address: '0xa2107fa5b38d9bbd2c461d6edf11b11a50f6b974',
           protocol: {
             abi: 'UniswapV2',
-            factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+            factory: {
+              address: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+              label: 'Uniswap V2',
+            },
           },
         },
         from: '0x11111112542d85b3ef69ae05771c2dccff4faa26',
@@ -65,7 +71,10 @@ describe('MEV: arbitrage', () => {
           address: '0xce84867c3c02b05dc570d0135103d3fb9cc19433',
           protocol: {
             abi: 'UniswapV2',
-            factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+            factory: {
+              address: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+              label: 'Uniswap V2',
+            },
           },
         },
         from: '0x11111112542d85b3ef69ae05771c2dccff4faa26',
@@ -96,7 +105,10 @@ describe('MEV: arbitrage', () => {
           address: '0x8bd1661da98ebdd3bd080f0be4e6d9be8ce9858c',
           protocol: {
             abi: 'UniswapV2',
-            factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+            factory: {
+              address: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+              label: 'Uniswap V2',
+            },
           },
         },
         from: '0x220bda5c8994804ac96ebe4df184d25e5c2196d4',
@@ -119,7 +131,10 @@ describe('MEV: arbitrage', () => {
           address: '0x49ff149d649769033d43783e7456f626862cd160',
           protocol: {
             abi: 'BalancerV1',
-            factory: '0x9424b1412450d0f8fc2255faf6046b98213b76bd',
+            factory: {
+              address: '0x9424b1412450d0f8fc2255faf6046b98213b76bd',
+              label: 'Balancer V1',
+            },
           },
         },
         from: '0x220bda5c8994804ac96ebe4df184d25e5c2196d4',
@@ -142,7 +157,10 @@ describe('MEV: arbitrage', () => {
           address: '0xec60a5fef79a92c741cb74fdd6bfc340c0279b01',
           protocol: {
             abi: 'BalancerV2',
-            factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+            factory: {
+              address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+              label: 'Balancer V2',
+            },
           },
         },
         from: '0x220bda5c8994804ac96ebe4df184d25e5c2196d4',
@@ -165,7 +183,10 @@ describe('MEV: arbitrage', () => {
           address: '0x611cde65dea90918c0078ac0400a72b0d25b9bb1',
           protocol: {
             abi: 'UniswapV2',
-            factory: '0xc0aee478e3658e2610c5f7a4a2e1777ce9e4f2ac',
+            factory: {
+              address: '0xc0aee478e3658e2610c5f7a4a2e1777ce9e4f2ac',
+              label: 'Uniswap V2',
+            },
           },
         },
         from: '0x220bda5c8994804ac96ebe4df184d25e5c2196d4',
@@ -196,7 +217,10 @@ describe('MEV: arbitrage', () => {
           address: '0x4585fe77225b41b697c938b018e2ac67ac5a20c0',
           protocol: {
             abi: 'UniswapV3',
-            factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+            factory: {
+              address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+              label: 'Uniswap V3',
+            },
           },
         },
         from: '0x0000000000005117dd3a72e64a705198753fdd54',
@@ -219,7 +243,10 @@ describe('MEV: arbitrage', () => {
           address: '0xcbcdf9626bc03e24f779434178a73a0b4bad62ed',
           protocol: {
             abi: 'UniswapV3',
-            factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+            factory: {
+              address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+              label: 'Uniswap V3',
+            },
           },
         },
         from: '0x0000000000005117dd3a72e64a705198753fdd54',
@@ -257,7 +284,10 @@ describe('MEV: arbitrage', () => {
           address: '0x41b536722c014a577f06a4bb0dfa08bf0b8f5e87',
           protocol: {
             abi: 'UniswapV3',
-            factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+            factory: {
+              address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+              label: 'Uniswap V3',
+            },
           },
         },
         from: '0x5f62593c70069abb35dfe2b63db969e8906609d6',
@@ -280,7 +310,10 @@ describe('MEV: arbitrage', () => {
           address: '0x3ce42ef6b6617b5950c13d1c258ecfdcd30bb4de',
           protocol: {
             abi: 'UniswapV3',
-            factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+            factory: {
+              address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+              label: 'Uniswap V3',
+            },
           },
         },
         from: '0x5f62593c70069abb35dfe2b63db969e8906609d6',
@@ -303,7 +336,10 @@ describe('MEV: arbitrage', () => {
           address: '0xcc2bd4f3c00c37adb00864d9a0a8cfef8b6ff56a',
           protocol: {
             abi: 'UniswapV3',
-            factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+            factory: {
+              address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+              label: 'Uniswap V3',
+            },
           },
         },
         from: '0x5f62593c70069abb35dfe2b63db969e8906609d6',
@@ -326,7 +362,10 @@ describe('MEV: arbitrage', () => {
           address: '0x2519042aa735edb4688a8376d69d4bb69431206c',
           protocol: {
             abi: 'UniswapV3',
-            factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+            factory: {
+              address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+              label: 'Uniswap V3',
+            },
           },
         },
         from: '0x5f62593c70069abb35dfe2b63db969e8906609d6',
@@ -364,7 +403,10 @@ describe('MEV: arbitrage', () => {
           address: '0x1ec9b867b701c1e5ce9a6567ecc4b71838497c27',
           protocol: {
             abi: 'UniswapV2',
-            factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+            factory: {
+              address: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+              label: 'Uniswap V2',
+            },
           },
         },
         from: '0xab319a82803ea5f8f335dc373ce248008d4f2671',
@@ -387,7 +429,10 @@ describe('MEV: arbitrage', () => {
           address: '0x0bec54c89a7d9f15c4e7faa8d47adedf374462ed',
           protocol: {
             abi: 'UniswapV2',
-            factory: '0xc0aee478e3658e2610c5f7a4a2e1777ce9e4f2ac',
+            factory: {
+              address: '0xc0aee478e3658e2610c5f7a4a2e1777ce9e4f2ac',
+              label: 'Uniswap V2',
+            },
           },
         },
         from: '0xab319a82803ea5f8f335dc373ce248008d4f2671',
@@ -423,7 +468,10 @@ describe('MEV: arbitrage', () => {
           address: '0x69b81152c5a8d35a67b32a4d3772795d96cae4da',
           protocol: {
             abi: 'UniswapV2',
-            factory: '0xc0aee478e3658e2610c5f7a4a2e1777ce9e4f2ac',
+            factory: {
+              address: '0xc0aee478e3658e2610c5f7a4a2e1777ce9e4f2ac',
+              label: 'Uniswap V2',
+            },
           },
         },
         from: '0x5aa3393e361c2eb342408559309b3e873cd876d6',
@@ -446,7 +494,10 @@ describe('MEV: arbitrage', () => {
           address: '0x88051b0eea095007d3bef21ab287be961f3d8598',
           protocol: {
             abi: 'UniswapV3',
-            factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+            factory: {
+              address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+              label: 'Uniswap V3',
+            },
           },
         },
         from: '0x58418d6c83efab01ed78b0ac42e55af01ee77dba',
@@ -484,7 +535,10 @@ describe('MEV: arbitrage', () => {
           address: '0x30b705bfa64be9ae395bd9238efc63e9f5f8d1cc',
           protocol: {
             abi: 'BalancerV1',
-            factory: '0x9424b1412450d0f8fc2255faf6046b98213b76bd',
+            factory: {
+              address: '0x9424b1412450d0f8fc2255faf6046b98213b76bd',
+              label: 'Balancer V1',
+            },
           },
         },
         from: '0x563bdabaa8846ec445b25bfbed88d160890a02ed',
@@ -507,7 +561,10 @@ describe('MEV: arbitrage', () => {
           address: '0x7b28470032da06051f2e620531adbaeadb285408',
           protocol: {
             abi: 'UniswapV2',
-            factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+            factory: {
+              address: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+              label: 'Uniswap V2',
+            },
           },
         },
         from: '0x563bdabaa8846ec445b25bfbed88d160890a02ed',
@@ -530,7 +587,10 @@ describe('MEV: arbitrage', () => {
           address: '0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640',
           protocol: {
             abi: 'UniswapV3',
-            factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+            factory: {
+              address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+              label: 'Uniswap V3',
+            },
           },
         },
         from: '0x563bdabaa8846ec445b25bfbed88d160890a02ed',
@@ -568,7 +628,10 @@ describe('MEV: arbitrage', () => {
           address: '0x231b7589426ffe1b75405526fc32ac09d44364c4',
           protocol: {
             abi: 'UniswapV2',
-            factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+            factory: {
+              address: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+              label: 'Uniswap V2',
+            },
           },
         },
         from: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
@@ -591,7 +654,10 @@ describe('MEV: arbitrage', () => {
           address: '0xee51984781254ad1a0ee3ae0ca26c4d53dea6ecb',
           protocol: {
             abi: 'UniswapV2',
-            factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+            factory: {
+              address: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+              label: 'Uniswap V2',
+            },
           },
         },
         from: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
@@ -614,7 +680,10 @@ describe('MEV: arbitrage', () => {
           address: '0xf3933a6a82fba8a349a7124c8d8226d7c4d7b6cb',
           protocol: {
             abi: 'UniswapV2',
-            factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+            factory: {
+              address: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+              label: 'Uniswap V2',
+            },
           },
         },
         from: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
@@ -652,7 +721,10 @@ describe('MEV: arbitrage', () => {
           address: '0x7f46c12a7ac8343d11652fffdaed411d2d427eb0',
           protocol: {
             abi: 'UniswapV2',
-            factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+            factory: {
+              address: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+              label: 'Uniswap V2',
+            },
           },
         },
         from: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
@@ -675,7 +747,10 @@ describe('MEV: arbitrage', () => {
           address: '0x4efc9e2e3e77732ce2f9612b8f050082c01688bd',
           protocol: {
             abi: 'UniswapV3',
-            factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+            factory: {
+              address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+              label: 'Uniswap V3',
+            },
           },
         },
         from: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
@@ -698,7 +773,10 @@ describe('MEV: arbitrage', () => {
           address: '0x9c18a2f9545112ab2fcbdd228536562406a53232',
           protocol: {
             abi: 'UniswapV2',
-            factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+            factory: {
+              address: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+              label: 'Uniswap V2',
+            },
           },
         },
         from: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
@@ -721,7 +799,10 @@ describe('MEV: arbitrage', () => {
           address: '0x5399a36f54ca91a5db5c148eeb2b909bba81b82c',
           protocol: {
             abi: 'UniswapV2',
-            factory: '0xc0aee478e3658e2610c5f7a4a2e1777ce9e4f2ac',
+            factory: {
+              address: '0xc0aee478e3658e2610c5f7a4a2e1777ce9e4f2ac',
+              label: 'Uniswap V2',
+            },
           },
         },
         from: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
@@ -765,7 +846,10 @@ describe('MEV: arbitrage', () => {
           address: '0xc8ca3c0f011fe42c48258ecbbf5d94c51f141c17',
           protocol: {
             abi: 'UniswapV2',
-            factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+            factory: {
+              address: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+              label: 'Uniswap V2',
+            },
           },
         },
         from: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
@@ -788,7 +872,10 @@ describe('MEV: arbitrage', () => {
           address: '0x1374042f78fb0fc78658b17c053678940c008543',
           protocol: {
             abi: 'UniswapV3',
-            factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+            factory: {
+              address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+              label: 'Uniswap V3',
+            },
           },
         },
         from: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
@@ -811,7 +898,10 @@ describe('MEV: arbitrage', () => {
           address: '0x60594a405d53811d3bc4766596efd80fd545a270',
           protocol: {
             abi: 'UniswapV3',
-            factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+            factory: {
+              address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+              label: 'Uniswap V3',
+            },
           },
         },
         from: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
@@ -849,7 +939,10 @@ describe('MEV: arbitrage', () => {
           address: '0x25be6ce04a504d4bcecb6ba7f5967f7aae6af579',
           protocol: {
             abi: 'UniswapV2',
-            factory: '0x54f454d747e037da288db568d4121117eab34e79',
+            factory: {
+              address: '0x54f454d747e037da288db568d4121117eab34e79',
+              label: 'Uniswap V2',
+            },
           },
         },
         from: '0xeef86c2e49e11345f1a693675df9a38f7d880c8f',
@@ -872,7 +965,10 @@ describe('MEV: arbitrage', () => {
           address: '0x9a834b70c07c81a9fcd6f22e842bf002fbffbe4d',
           protocol: {
             abi: 'UniswapV3',
-            factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+            factory: {
+              address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+              label: 'Uniswap V3',
+            },
           },
         },
         from: '0xeef86c2e49e11345f1a693675df9a38f7d880c8f',
@@ -895,7 +991,10 @@ describe('MEV: arbitrage', () => {
           address: '0x8fe536c7dc019455cce34746755c64bbe2aa163b',
           protocol: {
             abi: 'UniswapV3',
-            factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+            factory: {
+              address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+              label: 'Uniswap V3',
+            },
           },
         },
         from: '0xeef86c2e49e11345f1a693675df9a38f7d880c8f',
@@ -918,7 +1017,10 @@ describe('MEV: arbitrage', () => {
           address: '0xc63b0708e2f7e69cb8a1df0e1389a98c35a76d52',
           protocol: {
             abi: 'UniswapV3',
-            factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+            factory: {
+              address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+              label: 'Uniswap V3',
+            },
           },
         },
         from: '0xeef86c2e49e11345f1a693675df9a38f7d880c8f',

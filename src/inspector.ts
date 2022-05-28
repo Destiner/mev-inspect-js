@@ -49,7 +49,7 @@ class Inspector {
   }
 
   async #getSwaps(events: ClassifiedEvent[]): Promise<Swap[]> {
-    const pools = await fetchPools(this.provider, events);
+    const pools = await fetchPools(this.chainId, this.provider, events);
     const transfers = getTransfers(events);
     return getSwaps(this.chainId, pools, transfers, events);
   }

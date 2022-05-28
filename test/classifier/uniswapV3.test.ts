@@ -14,7 +14,10 @@ describe('Classfiers: Uniswap V3', () => {
         '0xdac17f958d2ee523a2206206994597c13d831ec7',
         '0xfa14fa6958401314851a17d6c5360ca29f74b57b',
       ],
-      factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+      factory: {
+        address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+        label: 'Uniswap V3',
+      },
     };
     const eventA: ClassifiedEvent = {
       address: '0x19f83460e387F1b01F94b85c2532EBC15B0b712e',
@@ -74,7 +77,10 @@ describe('Classfiers: Uniswap V3', () => {
         address: '0x19f83460e387f1b01f94b85c2532ebc15b0b712e',
         protocol: {
           abi: 'UniswapV3',
-          factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+          factory: {
+            address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+            label: 'Uniswap V3',
+          },
         },
       },
       from: '0x6c309614d7efd5633ff34d4c455f0ca213271048',
@@ -99,7 +105,10 @@ describe('Classfiers: Uniswap V3', () => {
         '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
         '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       ],
-      factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+      factory: {
+        address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+        label: 'Uniswap V3',
+      },
     };
     const eventB: ClassifiedEvent = {
       address: '0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640',
@@ -173,7 +182,10 @@ describe('Classfiers: Uniswap V3', () => {
         address: '0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640',
         protocol: {
           abi: 'UniswapV3',
-          factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+          factory: {
+            address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+            label: 'Uniswap V3',
+          },
         },
       },
       from: '0xba12222222228d8ba445958a75a0704d566bf2c8',
@@ -200,7 +212,10 @@ describe('Classfiers: Uniswap V3', () => {
         '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
         '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       ],
-      factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+      factory: {
+        address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+        label: 'Uniswap V3',
+      },
     };
     const poolB: Pool = {
       address: '0xcbcdf9626bc03e24f779434178a73a0b4bad62ed',
@@ -208,7 +223,10 @@ describe('Classfiers: Uniswap V3', () => {
         '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
         '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       ],
-      factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+      factory: {
+        address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+        label: 'Uniswap V3',
+      },
     };
     const poolC: Pool = {
       address: '0x99ac8ca7087fa4a2a1fb6357269965a2014abc35',
@@ -216,7 +234,10 @@ describe('Classfiers: Uniswap V3', () => {
         '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
         '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
       ],
-      factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+      factory: {
+        address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+        label: 'Uniswap V3',
+      },
     };
     const eventA: ClassifiedEvent = {
       address: '0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640',
@@ -468,7 +489,10 @@ describe('Classfiers: Uniswap V3', () => {
         address: '0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640',
         protocol: {
           abi: 'UniswapV3',
-          factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+          factory: {
+            address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+            label: 'Uniswap V3',
+          },
         },
       },
       from: '0x22f9dcf4647084d6c31b2765f6910cd85c178c18',
@@ -491,7 +515,10 @@ describe('Classfiers: Uniswap V3', () => {
         address: '0xcbcdf9626bc03e24f779434178a73a0b4bad62ed',
         protocol: {
           abi: 'UniswapV3',
-          factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+          factory: {
+            address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+            label: 'Uniswap V3',
+          },
         },
       },
       from: '0x22f9dcf4647084d6c31b2765f6910cd85c178c18',
@@ -514,7 +541,10 @@ describe('Classfiers: Uniswap V3', () => {
         address: '0x99ac8ca7087fa4a2a1fb6357269965a2014abc35',
         protocol: {
           abi: 'UniswapV3',
-          factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+          factory: {
+            address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+            label: 'Uniswap V3',
+          },
         },
       },
       from: '0xe592427a0aece92de3edee1f18e0157c05861564',
@@ -541,7 +571,10 @@ describe('Classfiers: Uniswap V3', () => {
         '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
         '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       ],
-      factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+      factory: {
+        address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+        label: 'Uniswap V3',
+      },
     };
     const poolB: Pool = {
       address: '0x69d91b94f0aaf8e8a2586909fa77a5c2c89818d5',
@@ -549,7 +582,10 @@ describe('Classfiers: Uniswap V3', () => {
         '0x2b591e99afe9f32eaa6214f7b7629768c40eeb39',
         '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
       ],
-      factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+      factory: {
+        address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+        label: 'Uniswap V3',
+      },
     };
     const eventA: ClassifiedEvent = {
       address: '0x8ad599c3A0ff1De082011EFDDc58f1908eb6e6D8',
@@ -656,7 +692,10 @@ describe('Classfiers: Uniswap V3', () => {
         address: '0x8ad599c3a0ff1de082011efddc58f1908eb6e6d8',
         protocol: {
           abi: 'UniswapV3',
-          factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+          factory: {
+            address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+            label: 'Uniswap V3',
+          },
         },
       },
       from: '0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45',
@@ -679,7 +718,10 @@ describe('Classfiers: Uniswap V3', () => {
         address: '0x69d91b94f0aaf8e8a2586909fa77a5c2c89818d5',
         protocol: {
           abi: 'UniswapV3',
-          factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+          factory: {
+            address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+            label: 'Uniswap V3',
+          },
         },
       },
       from: '0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45',
@@ -706,7 +748,10 @@ describe('Classfiers: Uniswap V3', () => {
         '0x4fe83213d56308330ec302a8bd641f1d0113a4cc',
         '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       ],
-      factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+      factory: {
+        address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+        label: 'Uniswap V3',
+      },
     };
     const poolB: Pool = {
       address: '0x3ce42ef6b6617b5950c13d1c258ecfdcd30bb4de',
@@ -714,7 +759,10 @@ describe('Classfiers: Uniswap V3', () => {
         '0x3b94440c8c4f69d5c9f47bab9c5a93064df460f5',
         '0x4fe83213d56308330ec302a8bd641f1d0113a4cc',
       ],
-      factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+      factory: {
+        address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+        label: 'Uniswap V3',
+      },
     };
     const poolC: Pool = {
       address: '0xcc2bd4f3c00c37adb00864d9a0a8cfef8b6ff56a',
@@ -722,7 +770,10 @@ describe('Classfiers: Uniswap V3', () => {
         '0x3b94440c8c4f69d5c9f47bab9c5a93064df460f5',
         '0x58b6a8a3302369daec383334672404ee733ab239',
       ],
-      factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+      factory: {
+        address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+        label: 'Uniswap V3',
+      },
     };
     const poolD: Pool = {
       address: '0x2519042aa735edb4688a8376d69d4bb69431206c',
@@ -730,7 +781,10 @@ describe('Classfiers: Uniswap V3', () => {
         '0x58b6a8a3302369daec383334672404ee733ab239',
         '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       ],
-      factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+      factory: {
+        address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+        label: 'Uniswap V3',
+      },
     };
     const eventA: ClassifiedEvent = {
       address: '0x41B536722C014a577F06A4Bb0dFa08BF0b8F5E87',
@@ -889,7 +943,10 @@ describe('Classfiers: Uniswap V3', () => {
         address: '0x41b536722c014a577f06a4bb0dfa08bf0b8f5e87',
         protocol: {
           abi: 'UniswapV3',
-          factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+          factory: {
+            address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+            label: 'Uniswap V3',
+          },
         },
       },
       from: '0x5f62593c70069abb35dfe2b63db969e8906609d6',
@@ -912,7 +969,10 @@ describe('Classfiers: Uniswap V3', () => {
         address: '0x3ce42ef6b6617b5950c13d1c258ecfdcd30bb4de',
         protocol: {
           abi: 'UniswapV3',
-          factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+          factory: {
+            address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+            label: 'Uniswap V3',
+          },
         },
       },
       from: '0x41b536722c014a577f06a4bb0dfa08bf0b8f5e87',
@@ -935,7 +995,10 @@ describe('Classfiers: Uniswap V3', () => {
         address: '0xcc2bd4f3c00c37adb00864d9a0a8cfef8b6ff56a',
         protocol: {
           abi: 'UniswapV3',
-          factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+          factory: {
+            address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+            label: 'Uniswap V3',
+          },
         },
       },
       from: '0x3ce42ef6b6617b5950c13d1c258ecfdcd30bb4de',
@@ -958,7 +1021,10 @@ describe('Classfiers: Uniswap V3', () => {
         address: '0x2519042aa735edb4688a8376d69d4bb69431206c',
         protocol: {
           abi: 'UniswapV3',
-          factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+          factory: {
+            address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+            label: 'Uniswap V3',
+          },
         },
       },
       from: '0xcc2bd4f3c00c37adb00864d9a0a8cfef8b6ff56a',
@@ -985,7 +1051,10 @@ describe('Classfiers: Uniswap V3', () => {
         '0x2b591e99afe9f32eaa6214f7b7629768c40eeb39',
         '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       ],
-      factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+      factory: {
+        address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+        label: 'Uniswap V3',
+      },
     };
     const event: ClassifiedEvent = {
       address: '0x9e0905249CeEFfFB9605E034b534544684A58BE6',
@@ -1059,7 +1128,10 @@ describe('Classfiers: Uniswap V3', () => {
         address: '0x9e0905249ceefffb9605e034b534544684a58be6',
         protocol: {
           abi: 'UniswapV3',
-          factory: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+          factory: {
+            address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+            label: 'Uniswap V3',
+          },
         },
       },
       from: '0x5aa3393e361c2eb342408559309b3e873cd876d6',

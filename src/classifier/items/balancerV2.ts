@@ -6,7 +6,7 @@ import { Event } from 'abi-coder';
 
 import poolAbi from '../../abi/balancerV2Pool.js';
 import vaultAbi from '../../abi/balancerV2Vault.js';
-import { Classifier, Pool, Swap, Transfer } from '../base.js';
+import { Classifier, Pool, PoolData, Swap, Transfer } from '../base.js';
 import { ClassifiedEvent } from '../index.js';
 
 const VAULT = '0xba12222222228d8ba445958a75a0704d566bf2c8';
@@ -19,7 +19,7 @@ function isValidTransfer(event: Event): boolean {
   return event.name === 'InternalBalanceChanged';
 }
 
-async function fetchPool(provider: Provider, id: string): Promise<Pool> {
+async function fetchPool(provider: Provider, id: string): Promise<PoolData> {
   const address = id.substring(0, 42);
   const poolContract = new Contract(address, poolAbi, provider);
   const vault = (await poolContract.getVault()) as string;
@@ -27,7 +27,10 @@ async function fetchPool(provider: Provider, id: string): Promise<Pool> {
   const poolTokens = await vaultContract.getPoolTokens(id);
   const tokens = poolTokens.tokens as string[];
   const assets = tokens.map((token) => token.toLowerCase());
-  return { address, assets, factory: vault.toLowerCase() };
+  return {
+    assets,
+    factoryAddress: vault.toLowerCase(),
+  };
 }
 
 function parseSwap(

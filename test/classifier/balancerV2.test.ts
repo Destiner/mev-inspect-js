@@ -18,7 +18,10 @@ describe('Classfiers: Balancer V2', () => {
         '0xba100000625a3754423978a60c9317c58a424e3D',
         '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       ],
-      factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+      factory: {
+        address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        label: 'Balancer V2',
+      },
     };
     const event: ClassifiedEvent = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
@@ -132,7 +135,10 @@ describe('Classfiers: Balancer V2', () => {
         address: '0x5c6ee304399dbdb9c8ef030ab642b10820db8f56',
         protocol: {
           abi: 'BalancerV2',
-          factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+          factory: {
+            address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+            label: 'Balancer V2',
+          },
         },
       },
       from: '0x0000006daea1723962647b7e189d311d757fb793',
@@ -151,7 +157,10 @@ describe('Classfiers: Balancer V2', () => {
         '0xa3bed4e1c75d00fa6f4e5e6922db7261b5e9acd2',
         '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       ],
-      factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+      factory: {
+        address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        label: 'Balancer V2',
+      },
     };
     const event: ClassifiedEvent = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
@@ -296,7 +305,10 @@ describe('Classfiers: Balancer V2', () => {
         address: '0xe2469f47ab58cf9cf59f9822e3c5de4950a41c49',
         protocol: {
           abi: 'BalancerV2',
-          factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+          factory: {
+            address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+            label: 'Balancer V2',
+          },
         },
       },
       from: '0x45716d9eddbc332df1d42b9f540fbebed671b20f',
@@ -315,7 +327,10 @@ describe('Classfiers: Balancer V2', () => {
         '0x333a4823466879eef910a04d473505da62142069',
         '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       ],
-      factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+      factory: {
+        address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        label: 'Balancer V2',
+      },
     };
     const event: ClassifiedEvent = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
@@ -399,7 +414,10 @@ describe('Classfiers: Balancer V2', () => {
         address: '0x0bf37157d30dfe6f56757dcadff01aed83b08cd6',
         protocol: {
           abi: 'BalancerV2',
-          factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+          factory: {
+            address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+            label: 'Balancer V2',
+          },
         },
       },
       event: {
@@ -420,7 +438,10 @@ describe('Classfiers: Balancer V2', () => {
         '0xba100000625a3754423978a60c9317c58a424e3d',
         '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       ],
-      factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+      factory: {
+        address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        label: 'Balancer V2',
+      },
     };
     const event: ClassifiedEvent = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
@@ -504,7 +525,10 @@ describe('Classfiers: Balancer V2', () => {
         address: '0x3ebf48cd7586d7a4521ce59e53d9a907ebf1480f',
         protocol: {
           abi: 'BalancerV2',
-          factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+          factory: {
+            address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+            label: 'Balancer V2',
+          },
         },
       },
       event: {
@@ -624,7 +648,10 @@ describe('Classfiers: Balancer V2', () => {
         '0xba100000625a3754423978a60c9317c58a424e3d',
         '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       ],
-      factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+      factory: {
+        address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        label: 'Balancer V2',
+      },
     };
     const eventA: ClassifiedEvent = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
@@ -651,7 +678,10 @@ describe('Classfiers: Balancer V2', () => {
         '0x6b175474e89094c44da98b954eedeac495271d0f',
         '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       ],
-      factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+      factory: {
+        address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        label: 'Balancer V2',
+      },
     };
     const eventB: ClassifiedEvent = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
@@ -684,7 +714,10 @@ describe('Classfiers: Balancer V2', () => {
         address: '0x5c6ee304399dbdb9c8ef030ab642b10820db8f56',
         protocol: {
           abi: 'BalancerV2',
-          factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+          factory: {
+            address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+            label: 'Balancer V2',
+          },
         },
       },
       event: {
@@ -707,7 +740,10 @@ describe('Classfiers: Balancer V2', () => {
         address: '0x0b09dea16768f0799065c475be02919503cb2a35',
         protocol: {
           abi: 'BalancerV2',
-          factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+          factory: {
+            address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+            label: 'Balancer V2',
+          },
         },
       },
       event: {
@@ -799,7 +835,10 @@ describe('Classfiers: Balancer V2', () => {
         '0x68037790a0229e9ce6eaa8a99ea92964106c4703',
         '0x90b831fa3bebf58e9744a14d638e25b4ee06f9bc',
       ],
-      factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+      factory: {
+        address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        label: 'Balancer V2',
+      },
     };
     const eventA: ClassifiedEvent = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
@@ -825,7 +864,10 @@ describe('Classfiers: Balancer V2', () => {
         '0x68037790a0229e9ce6eaa8a99ea92964106c4703',
         '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       ],
-      factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+      factory: {
+        address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        label: 'Balancer V2',
+      },
     };
     const eventB: ClassifiedEvent = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
@@ -859,7 +901,10 @@ describe('Classfiers: Balancer V2', () => {
         address: '0x5b1c06c4923dbba4b27cfa270ffb2e60aa286159',
         protocol: {
           abi: 'BalancerV2',
-          factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+          factory: {
+            address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+            label: 'Balancer V2',
+          },
         },
       },
       event: {
@@ -882,7 +927,10 @@ describe('Classfiers: Balancer V2', () => {
         address: '0x29d7a7e0d781c957696697b94d4bc18c651e358e',
         protocol: {
           abi: 'BalancerV2',
-          factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+          factory: {
+            address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+            label: 'Balancer V2',
+          },
         },
       },
       event: {
@@ -907,7 +955,10 @@ describe('Classfiers: Balancer V2', () => {
         '0x6b175474e89094c44da98b954eedeac495271d0f',
         '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       ],
-      factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+      factory: {
+        address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        label: 'Balancer V2',
+      },
     };
     const event: ClassifiedEvent = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
@@ -1062,7 +1113,10 @@ describe('Classfiers: Balancer V2', () => {
         address: '0x0b09dea16768f0799065c475be02919503cb2a35',
         protocol: {
           abi: 'BalancerV2',
-          factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+          factory: {
+            address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+            label: 'Balancer V2',
+          },
         },
       },
       event: {
@@ -1087,7 +1141,10 @@ describe('Classfiers: Balancer V2', () => {
         '0x6b175474e89094c44da98b954eedeac495271d0f',
         '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       ],
-      factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+      factory: {
+        address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        label: 'Balancer V2',
+      },
     };
     const event: ClassifiedEvent = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
@@ -1270,7 +1327,10 @@ describe('Classfiers: Balancer V2', () => {
         address: '0x0b09dea16768f0799065c475be02919503cb2a35',
         protocol: {
           abi: 'BalancerV2',
-          factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+          factory: {
+            address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+            label: 'Balancer V2',
+          },
         },
       },
       event: {
@@ -1397,7 +1457,10 @@ describe('Classfiers: Balancer V2', () => {
         '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
         '0xdac17f958d2ee523a2206206994597c13d831ec7',
       ],
-      factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+      factory: {
+        address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        label: 'Balancer V2',
+      },
     };
     const eventA: ClassifiedEvent = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
@@ -1423,7 +1486,10 @@ describe('Classfiers: Balancer V2', () => {
         '0xdac17f958d2ee523a2206206994597c13d831ec7',
         '0xf8fd466f12e236f4c96f7cce6c79eadb819abf58',
       ],
-      factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+      factory: {
+        address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        label: 'Balancer V2',
+      },
     };
     const eventB: ClassifiedEvent = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
@@ -1450,7 +1516,10 @@ describe('Classfiers: Balancer V2', () => {
         '0x804cdb9116a10bb78768d3252355a1b18067bf8f',
         '0x9210f1204b5a24742eba12f710636d76240df3d0',
       ],
-      factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+      factory: {
+        address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        label: 'Balancer V2',
+      },
     };
     const eventC: ClassifiedEvent = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
@@ -1476,7 +1545,10 @@ describe('Classfiers: Balancer V2', () => {
         '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
         '0xd093fa4fb80d09bb30817fdcd442d4d02ed3e5de',
       ],
-      factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+      factory: {
+        address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        label: 'Balancer V2',
+      },
     };
     const eventD: ClassifiedEvent = {
       address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
@@ -1512,7 +1584,10 @@ describe('Classfiers: Balancer V2', () => {
         address: '0x06df3b2bbb68adc8b0e302443692037ed9f91b42',
         protocol: {
           abi: 'BalancerV2',
-          factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+          factory: {
+            address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+            label: 'Balancer V2',
+          },
         },
       },
       event: {
@@ -1535,7 +1610,10 @@ describe('Classfiers: Balancer V2', () => {
         address: '0x2bbf681cc4eb09218bee85ea2a5d3d13fa40fc0c',
         protocol: {
           abi: 'BalancerV2',
-          factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+          factory: {
+            address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+            label: 'Balancer V2',
+          },
         },
       },
       event: {
@@ -1558,7 +1636,10 @@ describe('Classfiers: Balancer V2', () => {
         address: '0x7b50775383d3d6f0215a8f290f2c9e2eebbeceb2',
         protocol: {
           abi: 'BalancerV2',
-          factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+          factory: {
+            address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+            label: 'Balancer V2',
+          },
         },
       },
       event: {
@@ -1581,7 +1662,10 @@ describe('Classfiers: Balancer V2', () => {
         address: '0x9210f1204b5a24742eba12f710636d76240df3d0',
         protocol: {
           abi: 'BalancerV2',
-          factory: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+          factory: {
+            address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+            label: 'Balancer V2',
+          },
         },
       },
       event: {
