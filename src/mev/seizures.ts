@@ -4,7 +4,7 @@ import {
   ClassifiedEvent,
   LendingProtocol,
   Market,
-  lendingPools,
+  isValidPool,
 } from '../classifier/index.js';
 
 function getMarketAddress(log: ClassifiedEvent): string {
@@ -31,14 +31,7 @@ function getSeizures(
         return null;
       }
       const lendingProtocol = protocol as LendingProtocol;
-      const allowedPools = lendingPools[chainId][lendingProtocol];
-      if (!allowedPools) {
-        return null;
-      }
-      const allowed = allowedPools.some((pools) =>
-        pools.addresses.includes(market.pool.address),
-      );
-      if (!allowed) {
+      if (!isValidPool(chainId, lendingProtocol, market.pool.address)) {
         return null;
       }
       return log.classifier.parse(market, log);

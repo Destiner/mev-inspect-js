@@ -16,11 +16,11 @@ import {
 } from './base.js';
 import {
   ChainId,
-  lendingPools,
   nativeAsset,
-  swapFactories,
   getFactoryByAddress,
   getPoolByAddress,
+  isValidFactory,
+  isValidPool,
 } from './directory.js';
 import aaveV2Classifiers from './items/aaveV2.js';
 import aaveV3Classifiers from './items/aaveV3.js';
@@ -98,7 +98,7 @@ export {
   Transfer,
   getFactoryByAddress,
   getPoolByAddress,
-  lendingPools,
+  isValidFactory,
+  isValidPool,
   nativeAsset,
-  swapFactories,
 };

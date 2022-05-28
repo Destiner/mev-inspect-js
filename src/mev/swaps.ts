@@ -5,7 +5,7 @@ import {
   Swap,
   SwapProtocol,
   Transfer,
-  swapFactories,
+  isValidFactory,
 } from '../classifier/index.js';
 
 function getPoolAddress(log: ClassifiedEvent): string {
@@ -40,11 +40,7 @@ function getSwaps(
         return null;
       }
       const swapProtocol = protocol as SwapProtocol;
-      const allowedFactories = swapFactories[chainId][swapProtocol];
-      if (!allowedFactories) {
-        return null;
-      }
-      if (!allowedFactories.includes(pool.factory)) {
+      if (!isValidFactory(chainId, swapProtocol, pool.factory)) {
         return null;
       }
       return log.classifier.parse(pool, log, transfers, logs);

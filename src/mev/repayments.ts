@@ -1,5 +1,5 @@
 import { LendingProtocol, Market, Repayment } from '../classifier/base.js';
-import { ChainId, ClassifiedEvent, lendingPools } from '../classifier/index.js';
+import { ChainId, ClassifiedEvent, isValidPool } from '../classifier/index.js';
 
 function getMarketAddress(log: ClassifiedEvent): string {
   return log.address.toLowerCase();
@@ -25,14 +25,7 @@ function getRepayments(
         return null;
       }
       const lendingProtocol = protocol as LendingProtocol;
-      const allowedPools = lendingPools[chainId][lendingProtocol];
-      if (!allowedPools) {
-        return null;
-      }
-      const allowed = allowedPools.some((pools) =>
-        pools.addresses.includes(market.pool.address),
-      );
-      if (!allowed) {
+      if (!isValidPool(chainId, lendingProtocol, market.pool.address)) {
         return null;
       }
       return log.classifier.parse(market, log);

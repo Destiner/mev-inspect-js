@@ -4,15 +4,13 @@ import { Event } from 'abi-coder';
 
 import poolAbi from '../../abi/aaveV2Pool.js';
 import { Classifier, Market, MarketData, Repayment, Seizure } from '../base.js';
-import { ChainId, lendingPools } from '../directory.js';
-import { ClassifiedEvent } from '../index.js';
+import { ChainId, ClassifiedEvent, isValidPool } from '../index.js';
 
 function isValid(event: Event, address: string, chainId: ChainId): boolean {
-  const pools = lendingPools[chainId]['AaveV2'];
-  const validPool = pools.some((list) =>
-    list.addresses.includes(address.toLowerCase()),
+  return (
+    event.name === 'LiquidationCall' &&
+    isValidPool(chainId, 'AaveV2', address.toLowerCase())
   );
-  return event.name === 'LiquidationCall' && validPool;
 }
 
 async function fetchMarket(

@@ -197,13 +197,40 @@ function getPoolByAddress(
   ) as LendingPool;
 }
 
+function isValidFactory(
+  chainId: ChainId,
+  protocol: SwapProtocol,
+  factory: Factory,
+): boolean {
+  const allowedFactories = swapFactories[chainId][protocol];
+  if (!allowedFactories) {
+    return false;
+  }
+  if (!allowedFactories.includes(factory)) {
+    return false;
+  }
+  return true;
+}
+
+function isValidPool(
+  chainId: ChainId,
+  protocol: LendingProtocol,
+  pool: string,
+): boolean {
+  const allowedPools = lendingPools[chainId][protocol];
+  if (!allowedPools) {
+    return false;
+  }
+  return allowedPools.some((list) => list.addresses.includes(pool));
+}
+
 export {
   ChainId,
   Factory,
   LendingPool,
   nativeAsset,
-  swapFactories,
-  lendingPools,
   getFactoryByAddress,
   getPoolByAddress,
+  isValidFactory,
+  isValidPool,
 };
