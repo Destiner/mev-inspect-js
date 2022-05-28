@@ -9,8 +9,6 @@ import vaultAbi from '../../abi/balancerV2Vault.js';
 import { Classifier, Pool, PoolData, Swap, Transfer } from '../base.js';
 import { ClassifiedEvent } from '../index.js';
 
-const VAULT = '0xba12222222228d8ba445958a75a0704d566bf2c8';
-
 function isValidSwap(event: Event): boolean {
   return event.name === 'Swap';
 }
@@ -23,7 +21,7 @@ async function fetchPool(provider: Provider, id: string): Promise<PoolData> {
   const address = id.substring(0, 42);
   const poolContract = new Contract(address, poolAbi, provider);
   const vault = (await poolContract.getVault()) as string;
-  const vaultContract = new Contract(VAULT, vaultAbi, provider);
+  const vaultContract = new Contract(vault, vaultAbi, provider);
   const poolTokens = await vaultContract.getPoolTokens(id);
   const tokens = poolTokens.tokens as string[];
   const assets = tokens.map((token) => token.toLowerCase());
@@ -41,8 +39,9 @@ function parseSwap(
 ): Swap | null {
   const { transactionHash: hash, gasUsed, logIndex, address } = event;
   const { assetIn, assetOut, amountIn, amountOut } = getSwapValues(event);
+  const vault = event.address.toLowerCase();
 
-  const { from, to } = getClusterInputOutput(logIndex, allEvents, transfers);
+  const { from, to } = getClusterInputOutput(vault, logIndex, allEvents, transfers);
   return {
     contract: {
       address: pool.address,
@@ -75,8 +74,10 @@ function parseTransfer(event: ClassifiedEvent): Transfer {
   const token = (values.token as string).toLowerCase();
   const delta = (values.delta as BigNumber).toBigInt();
 
-  const from = delta > 0 ? VAULT : user;
-  const to = delta > 0 ? user : VAULT;
+  const vault = event.address.toLowerCase();
+
+  const from = delta > 0 ? vault : user;
+  const to = delta > 0 ? user : vault;
   const value = delta > 0 ? delta : -delta;
 
   return {
@@ -96,6 +97,7 @@ function parseTransfer(event: ClassifiedEvent): Transfer {
 }
 
 function getClusterInputOutput(
+  vault: string,
   logIndex: number,
   allEvents: ClassifiedEvent[],
   transfers: Transfer[],
@@ -177,10 +179,10 @@ function getClusterInputOutput(
       transfer.event.logIndex <= endTransfer.logIndex,
   );
   const clusterInflows = clusterTransfers.filter(
-    (transfer) => transfer.to === VAULT,
+    (transfer) => transfer.to === vault,
   );
   const clusterOutflows = clusterTransfers.filter(
-    (transfer) => transfer.from === VAULT,
+    (transfer) => transfer.from === vault,
   );
   // Get first inflow, last outflow
   const firstInflow = clusterInflows[0];
@@ -190,8 +192,8 @@ function getClusterInputOutput(
     const { assetIn, amountIn } = getSwapValues(startSwap);
     if (
       firstInflow.asset !== assetIn ||
-      (firstInflow.value !== amountIn && firstInflow.event.address !== VAULT) ||
-      firstInflow.to !== VAULT
+      (firstInflow.value !== amountIn && firstInflow.event.address !== vault) ||
+      firstInflow.to !== vault
     ) {
       return emptyInputOutput;
     }
@@ -202,8 +204,8 @@ function getClusterInputOutput(
     if (
       lastOutflow.asset !== assetOut ||
       (lastOutflow.value !== amountOut &&
-        lastOutflow.event.address !== VAULT) ||
-      lastOutflow.from !== VAULT
+        lastOutflow.event.address !== vault) ||
+      lastOutflow.from !== vault
     ) {
       return emptyInputOutput;
     }
@@ -221,8 +223,8 @@ function getClusterInputOutput(
         ? AddressZero
         : firstInflow.from
       : lastOutflow.to;
-  const from = logIndex === startSwap.logIndex ? clusterFrom : VAULT;
-  const to = logIndex === endSwap.logIndex ? clusterTo : VAULT;
+  const from = logIndex === startSwap.logIndex ? clusterFrom : vault;
+  const to = logIndex === endSwap.logIndex ? clusterTo : vault;
   return {
     from,
     to,
