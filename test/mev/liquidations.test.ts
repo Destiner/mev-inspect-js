@@ -17,6 +17,10 @@ describe('MEV: liquidations', () => {
             },
           },
         },
+        block: {
+          hash: '0x2807e9aaf0406aa232f9d95aca53f38670501c8186d39feb673c0ea12905da33',
+          number: 14787423,
+        },
         transaction: {
           hash: '0xdf838db24228f280eba8a279266d1602b03b54507afdca3cb4b4ec640535642b',
           gasUsed: 671221,
@@ -43,6 +47,10 @@ describe('MEV: liquidations', () => {
               label: 'Compound V2',
             },
           },
+        },
+        block: {
+          hash: '0x2807e9aaf0406aa232f9d95aca53f38670501c8186d39feb673c0ea12905da33',
+          number: 14787423,
         },
         transaction: {
           hash: '0xdf838db24228f280eba8a279266d1602b03b54507afdca3cb4b4ec640535642b',
@@ -71,6 +79,10 @@ describe('MEV: liquidations', () => {
             },
           },
         },
+        block: {
+          hash: '0x9d180bbdcfe694f685b01967cc56b0177cf925e396a11b9f2b3554a3ad50e55f',
+          number: 14803328,
+        },
         transaction: {
           hash: '0x02a100bfcc45a40b1d4fda92d6c17acb420d4fee8bc2b5bac3fa4650bf7d5093',
           gasUsed: 676976,
@@ -97,6 +109,10 @@ describe('MEV: liquidations', () => {
               label: 'Compound V2',
             },
           },
+        },
+        block: {
+          hash: '0x9d180bbdcfe694f685b01967cc56b0177cf925e396a11b9f2b3554a3ad50e55f',
+          number: 14803328,
         },
         transaction: {
           hash: '0x02a100bfcc45a40b1d4fda92d6c17acb420d4fee8bc2b5bac3fa4650bf7d5093',
@@ -143,6 +159,10 @@ describe('MEV: liquidations', () => {
             },
           },
         },
+        block: {
+          hash: '0x4c462f472947289c04108125cfdc124b32db90e5db9851777f7502346ac3b1f0',
+          number: 14802369,
+        },
         transaction: {
           hash: '0x580a2d8d142207a50636b74d41feca1774b106143c536078ca80de000f83f3d8',
           gasUsed: 556582,
@@ -169,6 +189,10 @@ describe('MEV: liquidations', () => {
               label: 'Aave V2',
             },
           },
+        },
+        block: {
+          hash: '0x4c462f472947289c04108125cfdc124b32db90e5db9851777f7502346ac3b1f0',
+          number: 14802369,
         },
         transaction: {
           hash: '0x580a2d8d142207a50636b74d41feca1774b106143c536078ca80de000f83f3d8',
@@ -197,6 +221,10 @@ describe('MEV: liquidations', () => {
             },
           },
         },
+        block: {
+          hash: '0xe847c92d57176722ec3e045fffd3af3475a76c761adc6007d4ce5f1565ae6626',
+          number: 14769194,
+        },
         transaction: {
           hash: '0x9529b0332f51d586a1d30f9106558daf3dbc66c6bbbd32935f19fbc2601b7aa1',
           gasUsed: 529738,
@@ -223,6 +251,10 @@ describe('MEV: liquidations', () => {
               label: 'Aave V2',
             },
           },
+        },
+        block: {
+          hash: '0xe847c92d57176722ec3e045fffd3af3475a76c761adc6007d4ce5f1565ae6626',
+          number: 14769194,
         },
         transaction: {
           hash: '0x9529b0332f51d586a1d30f9106558daf3dbc66c6bbbd32935f19fbc2601b7aa1',

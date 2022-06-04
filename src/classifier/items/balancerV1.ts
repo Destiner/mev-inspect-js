@@ -30,7 +30,15 @@ async function fetchPool(
 }
 
 function parse(pool: Pool, event: ClassifiedEvent): Swap | null {
-  const { values, transactionHash: hash, gasUsed, logIndex, address } = event;
+  const {
+    values,
+    transactionHash: hash,
+    gasUsed,
+    logIndex,
+    address,
+    blockHash,
+    blockNumber,
+  } = event;
 
   const sender = (values.caller as string).toLowerCase();
   const assetIn = (values.tokenIn as string).toLowerCase();
@@ -46,12 +54,10 @@ function parse(pool: Pool, event: ClassifiedEvent): Swap | null {
         factory: pool.factory,
       },
     },
-    from: sender,
-    to: sender,
-    assetIn,
-    amountIn,
-    assetOut,
-    amountOut,
+    block: {
+      hash: blockHash,
+      number: blockNumber,
+    },
     transaction: {
       hash,
       gasUsed,
@@ -60,6 +66,12 @@ function parse(pool: Pool, event: ClassifiedEvent): Swap | null {
       logIndex,
       address: address.toLowerCase(),
     },
+    from: sender,
+    to: sender,
+    assetIn,
+    amountIn,
+    assetOut,
+    amountOut,
   };
 }
 

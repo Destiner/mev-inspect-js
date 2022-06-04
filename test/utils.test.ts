@@ -30,6 +30,10 @@ describe('Utilities', () => {
             amountIn: 238841017533640100000n,
             assetOut: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
             amountOut: 1750639111n,
+            block: {
+              hash: '0xef740f61a6a8a0d45114d57a9e9b9d5f4de852b9026b6c5b4d8cc18815819d00',
+              number: 14744280,
+            },
             transaction: {
               hash: '0xc158502a952c98c8fe282b5e2bbe56e46fd0a4221c527e7d045f25ccca6a77b2',
               gasUsed: 230198,
@@ -56,6 +60,10 @@ describe('Utilities', () => {
             amountIn: 1750639111n,
             assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
             amountOut: 239024634916096132545n,
+            block: {
+              hash: '0xef740f61a6a8a0d45114d57a9e9b9d5f4de852b9026b6c5b4d8cc18815819d00',
+              number: 14744280,
+            },
             transaction: {
               hash: '0xc158502a952c98c8fe282b5e2bbe56e46fd0a4221c527e7d045f25ccca6a77b2',
               gasUsed: 230198,
@@ -89,6 +97,10 @@ describe('Utilities', () => {
             amountIn: 244490660460949241856n,
             assetOut: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
             amountOut: 634888n,
+            block: {
+              hash: '0x0b598c9b3121baecd1db3ece3ff690bb1c91c8c46f9298517f58b6aaec982a8f',
+              number: 14703569,
+            },
             transaction: {
               hash: '0xe7cbe0629983e0673c4d971858d05874dbb938bf2b5f0ad4be2fa217ed78a547',
               gasUsed: 818860,
@@ -115,6 +127,10 @@ describe('Utilities', () => {
             amountIn: 634888n,
             assetOut: '0x697ef32b4a3f5a4c39de1cb7563f24ca7bfc5947',
             amountOut: 1275909030322046339158n,
+            block: {
+              hash: '0x0b598c9b3121baecd1db3ece3ff690bb1c91c8c46f9298517f58b6aaec982a8f',
+              number: 14703569,
+            },
             transaction: {
               hash: '0xe7cbe0629983e0673c4d971858d05874dbb938bf2b5f0ad4be2fa217ed78a547',
               gasUsed: 818860,
@@ -141,6 +157,10 @@ describe('Utilities', () => {
             amountIn: 1275909030322046339158n,
             assetOut: '0x6b175474e89094c44da98b954eedeac495271d0f',
             amountOut: 263265751127846220157n,
+            block: {
+              hash: '0x0b598c9b3121baecd1db3ece3ff690bb1c91c8c46f9298517f58b6aaec982a8f',
+              number: 14703569,
+            },
             transaction: {
               hash: '0xe7cbe0629983e0673c4d971858d05874dbb938bf2b5f0ad4be2fa217ed78a547',
               gasUsed: 818860,
@@ -178,6 +198,10 @@ describe('Utilities', () => {
               },
             },
           },
+          block: {
+            hash: '0x2807e9aaf0406aa232f9d95aca53f38670501c8186d39feb673c0ea12905da33',
+            number: 14787423,
+          },
           transaction: {
             hash: '0xdf838db24228f280eba8a279266d1602b03b54507afdca3cb4b4ec640535642b',
             gasUsed: 671221,
@@ -201,6 +225,10 @@ describe('Utilities', () => {
                 label: 'Compound V2',
               },
             },
+          },
+          block: {
+            hash: '0x2807e9aaf0406aa232f9d95aca53f38670501c8186d39feb673c0ea12905da33',
+            number: 14787423,
           },
           transaction: {
             hash: '0xdf838db24228f280eba8a279266d1602b03b54507afdca3cb4b4ec640535642b',
@@ -228,6 +256,10 @@ describe('Utilities', () => {
               },
             },
           },
+          block: {
+            hash: '0x4c462f472947289c04108125cfdc124b32db90e5db9851777f7502346ac3b1f0',
+            number: 14802369,
+          },
           transaction: {
             hash: '0x580a2d8d142207a50636b74d41feca1774b106143c536078ca80de000f83f3d8',
             gasUsed: 556582,
@@ -251,6 +283,10 @@ describe('Utilities', () => {
                 label: 'Aave V2',
               },
             },
+          },
+          block: {
+            hash: '0x4c462f472947289c04108125cfdc124b32db90e5db9851777f7502346ac3b1f0',
+            number: 14802369,
           },
           transaction: {
             hash: '0x580a2d8d142207a50636b74d41feca1774b106143c536078ca80de000f83f3d8',
@@ -289,6 +325,10 @@ describe('Utilities', () => {
               },
             },
           },
+          block: {
+            hash: '0x2807e9aaf0406aa232f9d95aca53f38670501c8186d39feb673c0ea12905da33',
+            number: 14787423,
+          },
           transaction: {
             hash: '0xdf838db24228f280eba8a279266d1602b03b54507afdca3cb4b4ec640535642b',
             gasUsed: 671221,
@@ -312,6 +352,10 @@ describe('Utilities', () => {
                 label: 'Compound V2',
               },
             },
+          },
+          block: {
+            hash: '0x2807e9aaf0406aa232f9d95aca53f38670501c8186d39feb673c0ea12905da33',
+            number: 14787423,
           },
           transaction: {
             hash: '0xdf838db24228f280eba8a279266d1602b03b54507afdca3cb4b4ec640535642b',
@@ -339,6 +383,10 @@ describe('Utilities', () => {
               },
             },
           },
+          block: {
+            hash: '0x4c462f472947289c04108125cfdc124b32db90e5db9851777f7502346ac3b1f0',
+            number: 14802369,
+          },
           transaction: {
             hash: '0x580a2d8d142207a50636b74d41feca1774b106143c536078ca80de000f83f3d8',
             gasUsed: 556582,
@@ -362,6 +410,10 @@ describe('Utilities', () => {
                 label: 'Aave V2',
               },
             },
+          },
+          block: {
+            hash: '0x4c462f472947289c04108125cfdc124b32db90e5db9851777f7502346ac3b1f0',
+            number: 14802369,
           },
           transaction: {
             hash: '0x580a2d8d142207a50636b74d41feca1774b106143c536078ca80de000f83f3d8',
@@ -407,6 +459,10 @@ describe('Utilities', () => {
             amountIn: 238841017533640100000n,
             assetOut: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
             amountOut: 1750639111n,
+            block: {
+              hash: '0xef740f61a6a8a0d45114d57a9e9b9d5f4de852b9026b6c5b4d8cc18815819d00',
+              number: 14744280,
+            },
             transaction: {
               hash: '0xc158502a952c98c8fe282b5e2bbe56e46fd0a4221c527e7d045f25ccca6a77b2',
               gasUsed: 230198,
@@ -433,6 +489,10 @@ describe('Utilities', () => {
             amountIn: 1750639111n,
             assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
             amountOut: 239024634916096132545n,
+            block: {
+              hash: '0xef740f61a6a8a0d45114d57a9e9b9d5f4de852b9026b6c5b4d8cc18815819d00',
+              number: 14744280,
+            },
             transaction: {
               hash: '0xc158502a952c98c8fe282b5e2bbe56e46fd0a4221c527e7d045f25ccca6a77b2',
               gasUsed: 230198,
@@ -466,6 +526,10 @@ describe('Utilities', () => {
             amountIn: 244490660460949241856n,
             assetOut: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
             amountOut: 634888n,
+            block: {
+              hash: '0x0b598c9b3121baecd1db3ece3ff690bb1c91c8c46f9298517f58b6aaec982a8f',
+              number: 14703569,
+            },
             transaction: {
               hash: '0xe7cbe0629983e0673c4d971858d05874dbb938bf2b5f0ad4be2fa217ed78a547',
               gasUsed: 818860,
@@ -492,6 +556,10 @@ describe('Utilities', () => {
             amountIn: 634888n,
             assetOut: '0x697ef32b4a3f5a4c39de1cb7563f24ca7bfc5947',
             amountOut: 1275909030322046339158n,
+            block: {
+              hash: '0x0b598c9b3121baecd1db3ece3ff690bb1c91c8c46f9298517f58b6aaec982a8f',
+              number: 14703569,
+            },
             transaction: {
               hash: '0xe7cbe0629983e0673c4d971858d05874dbb938bf2b5f0ad4be2fa217ed78a547',
               gasUsed: 818860,
@@ -518,6 +586,10 @@ describe('Utilities', () => {
             amountIn: 1275909030322046339158n,
             assetOut: '0x6b175474e89094c44da98b954eedeac495271d0f',
             amountOut: 263265751127846220157n,
+            block: {
+              hash: '0x0b598c9b3121baecd1db3ece3ff690bb1c91c8c46f9298517f58b6aaec982a8f',
+              number: 14703569,
+            },
             transaction: {
               hash: '0xe7cbe0629983e0673c4d971858d05874dbb938bf2b5f0ad4be2fa217ed78a547',
               gasUsed: 818860,

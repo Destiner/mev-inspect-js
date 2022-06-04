@@ -31,12 +31,18 @@ interface Market {
   asset: string;
 }
 
+interface Block {
+  hash: string;
+  number: number;
+}
+
 interface Transaction {
   hash: string;
   gasUsed: number;
 }
 
 interface Base {
+  block: Block;
   transaction: Transaction;
   event: {
     address: string;
@@ -176,6 +182,7 @@ function getLatestPoolTransfer(
 }
 
 export {
+  Block,
   Classifier,
   LendingProtocol,
   Market,

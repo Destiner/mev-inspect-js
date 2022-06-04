@@ -15,6 +15,8 @@ const ETHEREUM = 1;
 describe('Classfiers', () => {
   test('transfers', () => {
     const erc20TransferLog: Log = {
+      blockHash: '0x81c4fe77261262d47111f7cdc4752d627b7d4153802e5d629bbe05fd5b6fe1b0',
+      blockNumber: 14803804,
       transactionHash:
         '0x5d61baac521ccd94e193dc7e1e97e6f5f05df731b0305676f0e709671ca85637',
       logIndex: 472,
@@ -29,6 +31,8 @@ describe('Classfiers', () => {
     };
 
     const balancerV2TransferLog: Log = {
+      blockHash: '0x5927564872c886bcfcddb093fbcdcf732c94a86a8d7f87d872698590fb12a7ae',
+      blockNumber: 14802839,
       transactionHash:
         '0xf3105e2cdbd40c733460f6a0d25867e77cccb0776a9c83d5a24f08f98db42922',
       logIndex: 29,
@@ -53,6 +57,8 @@ describe('Classfiers', () => {
 
   test('swaps', () => {
     const uniswapV2SwapLog: Log = {
+      blockHash: '0x8ba06d42b983e83504399c641f72e8ee1cd73bc6c1417a66fbe79401a8702d80',
+      blockNumber: 14804038,
       transactionHash:
         '0x86aa33fdc8e87caddb52d404a3f1da08dd3a60df3a407a55edb5d91151dec2e0',
       logIndex: 198,
@@ -67,6 +73,8 @@ describe('Classfiers', () => {
     };
 
     const uniswapV3SwapLog: Log = {
+      blockHash: '0x67c82d2794211d3f150bdee7f659730db174b20082773b225e0dcaafd59ce74f',
+      blockNumber: 14803820,
       transactionHash:
         '0xbb33579bc3fc10acd908195756a7f1aa21f4383a9a101781ff81af4ba2c6a40e',
       logIndex: 22,
@@ -81,6 +89,8 @@ describe('Classfiers', () => {
     };
 
     const balancerV2SwapLog: Log = {
+      blockHash: '0x21303a078facfc9c4e687bfff11117810fa6d444394c15702445be7a5d5a6bc8',
+      blockNumber: 14804055,
       transactionHash:
         '0x14fb5d365886414c0693b6048f911ae3268777e8c236d965df06b7828ff16211',
       logIndex: 489,
@@ -111,6 +121,8 @@ describe('Classfiers', () => {
 
   test('repayments', () => {
     const compoundV2RepaymentLog: Log = {
+      blockHash: '0x2807e9aaf0406aa232f9d95aca53f38670501c8186d39feb673c0ea12905da33',
+      blockNumber: 14787423,
       transactionHash:
         '0xdf838db24228f280eba8a279266d1602b03b54507afdca3cb4b4ec640535642b',
       logIndex: 17,
@@ -123,6 +135,8 @@ describe('Classfiers', () => {
     };
 
     const aaveV2RepaymentLog: Log = {
+      blockHash: '0x4c462f472947289c04108125cfdc124b32db90e5db9851777f7502346ac3b1f0',
+      blockNumber: 14802369,
       transactionHash:
         '0x580a2d8d142207a50636b74d41feca1774b106143c536078ca80de000f83f3d8',
       logIndex: 146,
@@ -153,6 +167,8 @@ describe('Classfiers', () => {
 
   test('seizures', () => {
     const compoundV2SeizureLog: Log = {
+      blockHash: '0x2807e9aaf0406aa232f9d95aca53f38670501c8186d39feb673c0ea12905da33',
+      blockNumber: 14787423,
       transactionHash:
         '0xdf838db24228f280eba8a279266d1602b03b54507afdca3cb4b4ec640535642b',
       logIndex: 21,
@@ -165,6 +181,8 @@ describe('Classfiers', () => {
     };
 
     const aaveV2SeizureLog: Log = {
+      blockHash: '0x4c462f472947289c04108125cfdc124b32db90e5db9851777f7502346ac3b1f0',
+      blockNumber: 14802369,
       transactionHash:
         '0x580a2d8d142207a50636b74d41feca1774b106143c536078ca80de000f83f3d8',
       logIndex: 146,

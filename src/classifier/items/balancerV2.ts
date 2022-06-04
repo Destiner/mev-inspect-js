@@ -37,7 +37,14 @@ function parseSwap(
   transfers: Transfer[],
   allEvents: ClassifiedEvent[],
 ): Swap | null {
-  const { transactionHash: hash, gasUsed, logIndex, address } = event;
+  const {
+    transactionHash: hash,
+    gasUsed,
+    logIndex,
+    address,
+    blockHash,
+    blockNumber,
+  } = event;
   const { assetIn, assetOut, amountIn, amountOut } = getSwapValues(event);
   const vault = event.address.toLowerCase();
 
@@ -55,12 +62,10 @@ function parseSwap(
         factory: pool.factory,
       },
     },
-    from,
-    to,
-    assetIn,
-    amountIn,
-    assetOut,
-    amountOut,
+    block: {
+      hash: blockHash,
+      number: blockNumber,
+    },
     transaction: {
       hash,
       gasUsed,
@@ -69,11 +74,25 @@ function parseSwap(
       logIndex,
       address: address.toLowerCase(),
     },
+    from,
+    to,
+    assetIn,
+    amountIn,
+    assetOut,
+    amountOut,
   };
 }
 
 function parseTransfer(event: ClassifiedEvent): Transfer {
-  const { values, transactionHash: hash, gasUsed, logIndex, address } = event;
+  const {
+    values,
+    transactionHash: hash,
+    gasUsed,
+    logIndex,
+    address,
+    blockHash,
+    blockNumber,
+  } = event;
 
   const user = (values.user as string).toLowerCase();
   const token = (values.token as string).toLowerCase();
@@ -86,10 +105,10 @@ function parseTransfer(event: ClassifiedEvent): Transfer {
   const value = delta > 0 ? delta : -delta;
 
   return {
-    asset: token,
-    from,
-    to,
-    value,
+    block: {
+      hash: blockHash,
+      number: blockNumber,
+    },
     transaction: {
       hash,
       gasUsed,
@@ -98,6 +117,10 @@ function parseTransfer(event: ClassifiedEvent): Transfer {
       logIndex,
       address: address.toLowerCase(),
     },
+    asset: token,
+    from,
+    to,
+    value,
   };
 }
 

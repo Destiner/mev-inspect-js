@@ -10,7 +10,10 @@ describe('Classfiers: ERC20', () => {
       expect.fail();
     }
 
-    const hash =
+    const blockHash =
+      '0xfab1c160cddf469711028b6ad95f55c8105a549762e519d3651829a325d9401a';
+    const blockNumber = 14743890;
+    const transactionHash =
       '0xfbf98ea48bb2a1210ac1974b432c4604a9978e766c133f9543da3df9421b7e81';
     const gasUsed = 51818;
     const address = '0x6B175474E89094C44Da98b954EedeAC495271d0F';
@@ -21,7 +24,9 @@ describe('Classfiers: ERC20', () => {
 
     const log: ClassifiedEvent = {
       address,
-      transactionHash: hash,
+      blockHash,
+      blockNumber,
+      transactionHash,
       gasUsed,
       logIndex,
       classifier,
@@ -39,8 +44,12 @@ describe('Classfiers: ERC20', () => {
       from: from.toLowerCase(),
       to: to.toLowerCase(),
       value: value.toBigInt(),
+      block: {
+        hash: blockHash,
+        number: blockNumber,
+      },
       transaction: {
-        hash,
+        hash: transactionHash,
         gasUsed,
       },
       event: {
@@ -51,7 +60,13 @@ describe('Classfiers: ERC20', () => {
   });
 
   test('parses multiple transfers from logs', () => {
-    const hashes = [
+    const blockHashes = [
+      '0x20e8da414e1e2578cf0486e0fe1f3901446a1c5481bec488be5f37cfa9b81199',
+      '0x1071ba06c5f6c8c9c60653a5843e484e90eafe61a6c87ab0827793e7aa6cd79c',
+      '0xdbdc405f719fda7d4bed7fcb64d7a0d9cc276c5fc9e484d372926d5a8145c8cd',
+    ];
+    const blockNumbers = [14744012, 14744024, 14743996];
+    const transactionHashes = [
       '0xa8f12cec18cb0c66d9ed10e893b68b0d7d789e376a244b2d4ff4e6923ea633cd',
       '0xaf52e7b3b93974a933b23541bc38310cb879398c2da34d077a29df1b170e67d6',
       '0x1aa9e2ecd0efe3acd30d89654fb366ffee66995465cbaacc80bfb16467ce8219',
@@ -81,21 +96,25 @@ describe('Classfiers: ERC20', () => {
       BigNumber.from('7180000000000000000'),
     ];
 
-    const logs: ClassifiedEvent[] = hashes.map((hash, index) => {
-      return {
-        address: addresses[index],
-        transactionHash: hash,
-        gasUsed: gasUsedList[index],
-        logIndex: logIndices[index],
-        classifier,
-        name: 'Transfer',
-        values: {
-          from: fromList[index],
-          to: toList[index],
-          value: valueList[index],
-        },
-      };
-    });
+    const logs: ClassifiedEvent[] = transactionHashes.map(
+      (transactionHash, index) => {
+        return {
+          address: addresses[index],
+          blockHash: blockHashes[index],
+          blockNumber: blockNumbers[index],
+          transactionHash,
+          gasUsed: gasUsedList[index],
+          logIndex: logIndices[index],
+          classifier,
+          name: 'Transfer',
+          values: {
+            from: fromList[index],
+            to: toList[index],
+            value: valueList[index],
+          },
+        };
+      },
+    );
 
     const transfers = logs.map((log) => {
       if (classifier.type !== 'transfer') {
@@ -104,22 +123,28 @@ describe('Classfiers: ERC20', () => {
       return classifier.parse(log);
     });
 
-    const expectedTransfers = hashes.map((hash, index) => {
-      return {
-        asset: addresses[index].toLowerCase(),
-        from: fromList[index].toLowerCase(),
-        to: toList[index].toLowerCase(),
-        value: valueList[index].toBigInt(),
-        transaction: {
-          hash,
-          gasUsed: gasUsedList[index],
-        },
-        event: {
-          logIndex: logIndices[index],
-          address: addresses[index].toLowerCase(),
-        },
-      };
-    });
+    const expectedTransfers = transactionHashes.map(
+      (transactionHash, index) => {
+        return {
+          asset: addresses[index].toLowerCase(),
+          from: fromList[index].toLowerCase(),
+          to: toList[index].toLowerCase(),
+          value: valueList[index].toBigInt(),
+          block: {
+            hash: blockHashes[index],
+            number: blockNumbers[index],
+          },
+          transaction: {
+            hash: transactionHash,
+            gasUsed: gasUsedList[index],
+          },
+          event: {
+            logIndex: logIndices[index],
+            address: addresses[index].toLowerCase(),
+          },
+        };
+      },
+    );
     expect(transfers).toEqual<Transfer[]>(expectedTransfers);
   });
 });

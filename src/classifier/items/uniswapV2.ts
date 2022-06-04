@@ -38,7 +38,15 @@ function parse(
   event: ClassifiedEvent,
   transfers: Transfer[],
 ): Swap | null {
-  const { values, transactionHash: hash, gasUsed, logIndex, address } = event;
+  const {
+    values,
+    transactionHash: hash,
+    gasUsed,
+    logIndex,
+    address,
+    blockHash,
+    blockNumber,
+  } = event;
   const { assets } = pool;
 
   const poolTransfer = getLatestPoolTransfer(pool.address, logIndex, transfers);
@@ -74,12 +82,10 @@ function parse(
         factory: pool.factory,
       },
     },
-    from,
-    to,
-    assetIn,
-    amountIn,
-    assetOut,
-    amountOut,
+    block: {
+      hash: blockHash,
+      number: blockNumber,
+    },
     transaction: {
       hash,
       gasUsed,
@@ -88,6 +94,12 @@ function parse(
       address: address.toLowerCase(),
       logIndex,
     },
+    from,
+    to,
+    assetIn,
+    amountIn,
+    assetOut,
+    amountOut,
   };
 }
 

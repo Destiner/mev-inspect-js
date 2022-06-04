@@ -10,7 +10,15 @@ function isValid(event: Event): boolean {
 }
 
 function parse(event: ClassifiedEvent): Transfer {
-  const { values, transactionHash: hash, gasUsed, logIndex, address } = event;
+  const {
+    values,
+    transactionHash: hash,
+    gasUsed,
+    logIndex,
+    address,
+    blockHash,
+    blockNumber,
+  } = event;
 
   const from = (values.from as string).toLowerCase();
   const to = (values.to as string).toLowerCase();
@@ -18,9 +26,10 @@ function parse(event: ClassifiedEvent): Transfer {
 
   return {
     asset: address.toLowerCase(),
-    from,
-    to,
-    value,
+    block: {
+      hash: blockHash,
+      number: blockNumber,
+    },
     transaction: {
       hash,
       gasUsed,
@@ -29,6 +38,9 @@ function parse(event: ClassifiedEvent): Transfer {
       logIndex,
       address: address.toLowerCase(),
     },
+    from,
+    to,
+    value,
   };
 }
 

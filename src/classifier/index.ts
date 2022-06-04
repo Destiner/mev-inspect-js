@@ -3,6 +3,7 @@ import { Coder, Event } from 'abi-coder';
 import { Log } from '../chain.js';
 
 import {
+  Block,
   Classifier,
   LendingProtocol,
   Market,
@@ -33,6 +34,8 @@ import uniswapV3Classifier from './items/uniswapV3.js';
 
 interface ClassifiedEvent extends Event {
   address: string;
+  blockHash: string;
+  blockNumber: number;
   transactionHash: string;
   gasUsed: number;
   logIndex: number;
@@ -49,15 +52,18 @@ function classifyLog(chainId: ChainId, log: Log): ClassifiedEvent[] {
   for (const classifier of classifiers) {
     const coder = new Coder(classifier.abi);
     try {
-      const event = coder.decodeEvent(log.topics, log.data);
-      if (!classifier.isValid(event, log.address, chainId)) {
+      const { topics, data, address, transactionHash, gasUsed, logIndex, blockHash, blockNumber } = log;
+      const event = coder.decodeEvent(topics, data);
+      if (!classifier.isValid(event, address, chainId)) {
         continue;
       }
       const classifiedEvent: ClassifiedEvent = {
-        address: log.address,
-        transactionHash: log.transactionHash,
-        gasUsed: log.gasUsed,
-        logIndex: log.logIndex,
+        address,
+        blockHash,
+        blockNumber,
+        transactionHash,
+        gasUsed,
+        logIndex,
         classifier,
         ...event,
       };
@@ -85,6 +91,7 @@ function getClassifiers(): Classifier[] {
 export default classify;
 
 export {
+  Block,
   ChainId,
   ClassifiedEvent,
   LendingProtocol,

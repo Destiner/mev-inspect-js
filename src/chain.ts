@@ -3,6 +3,8 @@ import { ErrorCode } from '@ethersproject/logger';
 import { Provider, TransactionReceipt } from '@ethersproject/providers';
 
 interface Log {
+  blockHash: string;
+  blockNumber: number;
   transactionHash: string;
   logIndex: number;
   gasUsed: number;
@@ -29,8 +31,10 @@ class Chain {
     }
     const { logs, gasUsed } = receipt;
     return logs.map((log) => {
-      const { transactionHash, logIndex, address, topics, data } = log;
+      const { transactionHash, logIndex, address, topics, data, blockNumber, blockHash } = log;
       return {
+        blockHash,
+        blockNumber,
         transactionHash,
         logIndex,
         gasUsed: gasUsed.toNumber(),

@@ -21,6 +21,9 @@ describe('Classfiers: Uniswap V2', () => {
     };
     const eventA: ClassifiedEvent = {
       address: '0x9928e4046d7c6513326cCeA028cD3e7a91c7590A',
+      blockHash:
+        '0xed0883b6e3f80ff2f8263bbeb17717805ae54297dabc998da8384384f9f29fc5',
+      blockNumber: 14698911,
       transactionHash:
         '0xad39a3e5109e2c146f85f5db53a72da9af886b861d4965aacafdb165c1aec35e',
       gasUsed: 106802,
@@ -42,6 +45,10 @@ describe('Classfiers: Uniswap V2', () => {
         from: '0xef3375b491cff653eaf7c9955a5466f7ea06f37b',
         to: '0x9928e4046d7c6513326ccea028cd3e7a91c7590a',
         value: 76382000000000000000000n,
+        block: {
+          hash: '0xed0883b6e3f80ff2f8263bbeb17717805ae54297dabc998da8384384f9f29fc5',
+          number: 14698911,
+        },
         transaction: {
           hash: '0xad39a3e5109e2c146f85f5db53a72da9af886b861d4965aacafdb165c1aec35e',
           gasUsed: 106802,
@@ -56,6 +63,10 @@ describe('Classfiers: Uniswap V2', () => {
         from: '0x9928e4046d7c6513326ccea028cd3e7a91c7590a',
         to: '0xef3375b491cff653eaf7c9955a5466f7ea06f37b',
         value: 29934139188201577438792n,
+        block: {
+          hash: '0xed0883b6e3f80ff2f8263bbeb17717805ae54297dabc998da8384384f9f29fc5',
+          number: 14698911,
+        },
         transaction: {
           hash: '0xad39a3e5109e2c146f85f5db53a72da9af886b861d4965aacafdb165c1aec35e',
           gasUsed: 106802,
@@ -88,6 +99,10 @@ describe('Classfiers: Uniswap V2', () => {
       amountIn: 76382000000000000000000n,
       assetOut: '0x956f47f50a910163d8bf957cf5846d573e7f87ca',
       amountOut: 29934139188201577438792n,
+      block: {
+        hash: '0xed0883b6e3f80ff2f8263bbeb17717805ae54297dabc998da8384384f9f29fc5',
+        number: 14698911,
+      },
       transaction: {
         hash: '0xad39a3e5109e2c146f85f5db53a72da9af886b861d4965aacafdb165c1aec35e',
         gasUsed: 106802,
@@ -111,6 +126,9 @@ describe('Classfiers: Uniswap V2', () => {
     };
     const eventB: ClassifiedEvent = {
       address: '0xc5be99A02C6857f9Eac67BbCE58DF5572498F40c',
+      blockHash:
+        '0xed0883b6e3f80ff2f8263bbeb17717805ae54297dabc998da8384384f9f29fc5',
+      blockNumber: 14698911,
       transactionHash:
         '0x7e40615217492be1a58a41c73780475d415e920f4cd34d1bca8a2c246c0b51fa',
       gasUsed: 126307,
@@ -132,6 +150,10 @@ describe('Classfiers: Uniswap V2', () => {
         from: '0x6ba6c53c8757c99adc983e84ce7e87f240bf7531',
         to: '0xc5be99a02c6857f9eac67bbce58df5572498f40c',
         value: 793000000000n,
+        block: {
+          hash: '0xed0883b6e3f80ff2f8263bbeb17717805ae54297dabc998da8384384f9f29fc5',
+          number: 14698911,
+        },
         transaction: {
           hash: '0x7e40615217492be1a58a41c73780475d415e920f4cd34d1bca8a2c246c0b51fa',
           gasUsed: 126307,
@@ -146,6 +168,10 @@ describe('Classfiers: Uniswap V2', () => {
         from: '0xc5be99a02c6857f9eac67bbce58df5572498f40c',
         to: '0x7a250d5630b4cf539739df2c5dacb4c659f2488d',
         value: 361056661812569468n,
+        block: {
+          hash: '0xed0883b6e3f80ff2f8263bbeb17717805ae54297dabc998da8384384f9f29fc5',
+          number: 14698911,
+        },
         transaction: {
           hash: '0x7e40615217492be1a58a41c73780475d415e920f4cd34d1bca8a2c246c0b51fa',
           gasUsed: 126307,
@@ -178,6 +204,10 @@ describe('Classfiers: Uniswap V2', () => {
       amountIn: 793000000000n,
       assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       amountOut: 361056661812569468n,
+      block: {
+        hash: '0xed0883b6e3f80ff2f8263bbeb17717805ae54297dabc998da8384384f9f29fc5',
+        number: 14698911,
+      },
       transaction: {
         hash: '0x7e40615217492be1a58a41c73780475d415e920f4cd34d1bca8a2c246c0b51fa',
         gasUsed: 126307,
@@ -203,6 +233,9 @@ describe('Classfiers: Uniswap V2', () => {
     };
     const eventA: ClassifiedEvent = {
       address: '0x937e882083A0AAF58D7fcf566De8e5d990E882A9',
+      blockHash:
+        '0x862075e92411e281ceb88f12ce97422482fba3f4f9821441f8769332e35c3260',
+      blockNumber: 14756179,
       transactionHash:
         '0x998259826863242dea35d228e2426747b04fbfc63522d6894a7cef29fd31b85a',
       gasUsed: 360303,
@@ -221,6 +254,9 @@ describe('Classfiers: Uniswap V2', () => {
 
     const eventB: ClassifiedEvent = {
       address: '0x937e882083A0AAF58D7fcf566De8e5d990E882A9',
+      blockHash:
+        '0x862075e92411e281ceb88f12ce97422482fba3f4f9821441f8769332e35c3260',
+      blockNumber: 14756179,
       transactionHash:
         '0x998259826863242dea35d228e2426747b04fbfc63522d6894a7cef29fd31b85a',
       gasUsed: 360303,
@@ -242,6 +278,10 @@ describe('Classfiers: Uniswap V2', () => {
         from: '0x044727e50ff30db57fad06ff4f5846eab5ea52a2',
         to: '0x937e882083a0aaf58d7fcf566de8e5d990e882a9',
         value: 100000000000000000n,
+        block: {
+          hash: '0x862075e92411e281ceb88f12ce97422482fba3f4f9821441f8769332e35c3260',
+          number: 14756179,
+        },
         transaction: {
           hash: '0x998259826863242dea35d228e2426747b04fbfc63522d6894a7cef29fd31b85a',
           gasUsed: 360303,
@@ -256,6 +296,10 @@ describe('Classfiers: Uniswap V2', () => {
         from: '0x937e882083a0aaf58d7fcf566de8e5d990e882a9',
         to: '0x7a250d5630b4cf539739df2c5dacb4c659f2488d',
         value: 364189303982833736n,
+        block: {
+          hash: '0x862075e92411e281ceb88f12ce97422482fba3f4f9821441f8769332e35c3260',
+          number: 14756179,
+        },
         transaction: {
           hash: '0x998259826863242dea35d228e2426747b04fbfc63522d6894a7cef29fd31b85a',
           gasUsed: 360303,
@@ -270,6 +314,10 @@ describe('Classfiers: Uniswap V2', () => {
         from: '0x328ee1e1cb2af17ae0f8c05ceeb06ba8548dcb5a',
         to: '0x044727e50ff30db57fad06ff4f5846eab5ea52a2',
         value: 3922979121120592n,
+        block: {
+          hash: '0x862075e92411e281ceb88f12ce97422482fba3f4f9821441f8769332e35c3260',
+          number: 14756179,
+        },
         transaction: {
           hash: '0x998259826863242dea35d228e2426747b04fbfc63522d6894a7cef29fd31b85a',
           gasUsed: 360303,
@@ -284,6 +332,10 @@ describe('Classfiers: Uniswap V2', () => {
         from: '0x328ee1e1cb2af17ae0f8c05ceeb06ba8548dcb5a',
         to: '0x937e882083a0aaf58d7fcf566de8e5d990e882a9',
         value: 45114259892886817n,
+        block: {
+          hash: '0x862075e92411e281ceb88f12ce97422482fba3f4f9821441f8769332e35c3260',
+          number: 14756179,
+        },
         transaction: {
           hash: '0x998259826863242dea35d228e2426747b04fbfc63522d6894a7cef29fd31b85a',
           gasUsed: 360303,
@@ -298,6 +350,10 @@ describe('Classfiers: Uniswap V2', () => {
         from: '0x937e882083a0aaf58d7fcf566de8e5d990e882a9',
         to: '0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45',
         value: 163735299645864923n,
+        block: {
+          hash: '0x862075e92411e281ceb88f12ce97422482fba3f4f9821441f8769332e35c3260',
+          number: 14756179,
+        },
         transaction: {
           hash: '0x998259826863242dea35d228e2426747b04fbfc63522d6894a7cef29fd31b85a',
           gasUsed: 360303,
@@ -331,6 +387,10 @@ describe('Classfiers: Uniswap V2', () => {
       amountIn: 100000000000000000n,
       assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       amountOut: 364189303982833736n,
+      block: {
+        hash: '0x862075e92411e281ceb88f12ce97422482fba3f4f9821441f8769332e35c3260',
+        number: 14756179,
+      },
       transaction: {
         hash: '0x998259826863242dea35d228e2426747b04fbfc63522d6894a7cef29fd31b85a',
         gasUsed: 360303,
@@ -358,6 +418,10 @@ describe('Classfiers: Uniswap V2', () => {
       amountIn: 45114259892886817n,
       assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       amountOut: 163735299645864923n,
+      block: {
+        hash: '0x862075e92411e281ceb88f12ce97422482fba3f4f9821441f8769332e35c3260',
+        number: 14756179,
+      },
       transaction: {
         hash: '0x998259826863242dea35d228e2426747b04fbfc63522d6894a7cef29fd31b85a',
         gasUsed: 360303,
@@ -394,6 +458,9 @@ describe('Classfiers: Uniswap V2', () => {
     };
     const eventA: ClassifiedEvent = {
       address: '0xa2107FA5B38d9bbd2C461D6EDf11B11A50F6b974',
+      blockHash:
+        '0x693c6ec11898b2b82cd1c964e7dced504447b0e82da2e76ce4b3d29de6f655fe',
+      blockNumber: 14699184,
       transactionHash:
         '0xd4ddb9ff1d8368dad9f3710d513021b093f303e02c7169467c0badcf6f44231b',
       gasUsed: 159041,
@@ -411,6 +478,9 @@ describe('Classfiers: Uniswap V2', () => {
     };
     const eventB: ClassifiedEvent = {
       address: '0xCE84867c3c02B05dc570d0135103d3fB9CC19433',
+      blockHash:
+        '0x693c6ec11898b2b82cd1c964e7dced504447b0e82da2e76ce4b3d29de6f655fe',
+      blockNumber: 14699184,
       transactionHash:
         '0xd4ddb9ff1d8368dad9f3710d513021b093f303e02c7169467c0badcf6f44231b',
       gasUsed: 159041,
@@ -432,6 +502,10 @@ describe('Classfiers: Uniswap V2', () => {
         from: '0x416d1a4f718a8c3dda7fc3645435580e743d9249',
         to: '0xa2107fa5b38d9bbd2c461d6edf11b11a50f6b974',
         value: 2918704295536500000n,
+        block: {
+          hash: '0x693c6ec11898b2b82cd1c964e7dced504447b0e82da2e76ce4b3d29de6f655fe',
+          number: 14699184,
+        },
         transaction: {
           hash: '0xd4ddb9ff1d8368dad9f3710d513021b093f303e02c7169467c0badcf6f44231b',
           gasUsed: 159041,
@@ -446,6 +520,10 @@ describe('Classfiers: Uniswap V2', () => {
         from: '0xa2107fa5b38d9bbd2c461d6edf11b11a50f6b974',
         to: '0xce84867c3c02b05dc570d0135103d3fb9cc19433',
         value: 11499148166696888n,
+        block: {
+          hash: '0x693c6ec11898b2b82cd1c964e7dced504447b0e82da2e76ce4b3d29de6f655fe',
+          number: 14699184,
+        },
         transaction: {
           hash: '0xd4ddb9ff1d8368dad9f3710d513021b093f303e02c7169467c0badcf6f44231b',
           gasUsed: 159041,
@@ -460,6 +538,10 @@ describe('Classfiers: Uniswap V2', () => {
         from: '0xce84867c3c02b05dc570d0135103d3fb9cc19433',
         to: '0x416d1a4f718a8c3dda7fc3645435580e743d9249',
         value: 13787057162799104322n,
+        block: {
+          hash: '0x693c6ec11898b2b82cd1c964e7dced504447b0e82da2e76ce4b3d29de6f655fe',
+          number: 14699184,
+        },
         transaction: {
           hash: '0xd4ddb9ff1d8368dad9f3710d513021b093f303e02c7169467c0badcf6f44231b',
           gasUsed: 159041,
@@ -493,6 +575,10 @@ describe('Classfiers: Uniswap V2', () => {
       amountIn: 2918704295536500000n,
       assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       amountOut: 11499148166696888n,
+      block: {
+        hash: '0x693c6ec11898b2b82cd1c964e7dced504447b0e82da2e76ce4b3d29de6f655fe',
+        number: 14699184,
+      },
       transaction: {
         hash: '0xd4ddb9ff1d8368dad9f3710d513021b093f303e02c7169467c0badcf6f44231b',
         gasUsed: 159041,
@@ -519,6 +605,10 @@ describe('Classfiers: Uniswap V2', () => {
       amountIn: 11499148166696888n,
       assetOut: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
       amountOut: 13787057162799104322n,
+      block: {
+        hash: '0x693c6ec11898b2b82cd1c964e7dced504447b0e82da2e76ce4b3d29de6f655fe',
+        number: 14699184,
+      },
       transaction: {
         hash: '0xd4ddb9ff1d8368dad9f3710d513021b093f303e02c7169467c0badcf6f44231b',
         gasUsed: 159041,
@@ -566,6 +656,9 @@ describe('Classfiers: Uniswap V2', () => {
     };
     const eventA: ClassifiedEvent = {
       address: '0xE2E998f6f498cf9ACdeDa38de77Ca95d1d8288f6',
+      blockHash:
+        '0x297a3329b58600a2e192297a9b1dee94fbecbe80df2a141694ea3cbcc6ad19fe',
+      blockNumber: 14677367,
       transactionHash:
         '0x861d5aba1de00eb99af5f6130d67543c0c79df9471b8ba4a8fe3ff9da60af2dc',
       gasUsed: 187271,
@@ -583,6 +676,9 @@ describe('Classfiers: Uniswap V2', () => {
     };
     const eventB: ClassifiedEvent = {
       address: '0x6137A55b535B98e26C5cA5C9Cb329022bF1B9318',
+      blockHash:
+        '0x297a3329b58600a2e192297a9b1dee94fbecbe80df2a141694ea3cbcc6ad19fe',
+      blockNumber: 14677367,
       transactionHash:
         '0x861d5aba1de00eb99af5f6130d67543c0c79df9471b8ba4a8fe3ff9da60af2dc',
       gasUsed: 187271,
@@ -600,6 +696,9 @@ describe('Classfiers: Uniswap V2', () => {
     };
     const eventC: ClassifiedEvent = {
       address: '0x0D80F8A039cc61b659ff299bB132dE271c757325',
+      blockHash:
+        '0x297a3329b58600a2e192297a9b1dee94fbecbe80df2a141694ea3cbcc6ad19fe',
+      blockNumber: 14677367,
       transactionHash:
         '0x861d5aba1de00eb99af5f6130d67543c0c79df9471b8ba4a8fe3ff9da60af2dc',
       gasUsed: 187271,
@@ -621,6 +720,10 @@ describe('Classfiers: Uniswap V2', () => {
         from: '0x731ea79a1b2b90683507da2aab498bd8ff8f7ff1',
         to: '0xe2e998f6f498cf9acdeda38de77ca95d1d8288f6',
         value: 396025622087811072n,
+        block: {
+          hash: '0x297a3329b58600a2e192297a9b1dee94fbecbe80df2a141694ea3cbcc6ad19fe',
+          number: 14677367,
+        },
         transaction: {
           hash: '0x861d5aba1de00eb99af5f6130d67543c0c79df9471b8ba4a8fe3ff9da60af2dc',
           gasUsed: 187271,
@@ -635,6 +738,10 @@ describe('Classfiers: Uniswap V2', () => {
         from: '0xe2e998f6f498cf9acdeda38de77ca95d1d8288f6',
         to: '0x6137a55b535b98e26c5ca5c9cb329022bf1b9318',
         value: 9203736012517381854992n,
+        block: {
+          hash: '0x297a3329b58600a2e192297a9b1dee94fbecbe80df2a141694ea3cbcc6ad19fe',
+          number: 14677367,
+        },
         transaction: {
           hash: '0x861d5aba1de00eb99af5f6130d67543c0c79df9471b8ba4a8fe3ff9da60af2dc',
           gasUsed: 187271,
@@ -649,6 +756,10 @@ describe('Classfiers: Uniswap V2', () => {
         from: '0x6137a55b535b98e26c5ca5c9cb329022bf1b9318',
         to: '0x0d80f8a039cc61b659ff299bb132de271c757325',
         value: 9810940048285013383131n,
+        block: {
+          hash: '0x297a3329b58600a2e192297a9b1dee94fbecbe80df2a141694ea3cbcc6ad19fe',
+          number: 14677367,
+        },
         transaction: {
           hash: '0x861d5aba1de00eb99af5f6130d67543c0c79df9471b8ba4a8fe3ff9da60af2dc',
           gasUsed: 187271,
@@ -663,6 +774,10 @@ describe('Classfiers: Uniswap V2', () => {
         from: '0x0d80f8a039cc61b659ff299bb132de271c757325',
         to: '0x731ea79a1b2b90683507da2aab498bd8ff8f7ff1',
         value: 402011216481376330n,
+        block: {
+          hash: '0x297a3329b58600a2e192297a9b1dee94fbecbe80df2a141694ea3cbcc6ad19fe',
+          number: 14677367,
+        },
         transaction: {
           hash: '0x861d5aba1de00eb99af5f6130d67543c0c79df9471b8ba4a8fe3ff9da60af2dc',
           gasUsed: 187271,
@@ -697,6 +812,10 @@ describe('Classfiers: Uniswap V2', () => {
       amountIn: 396025622087811072n,
       assetOut: '0xb31ef9e52d94d4120eb44fe1ddfde5b4654a6515',
       amountOut: 9203736012517381854992n,
+      block: {
+        hash: '0x297a3329b58600a2e192297a9b1dee94fbecbe80df2a141694ea3cbcc6ad19fe',
+        number: 14677367,
+      },
       transaction: {
         hash: '0x861d5aba1de00eb99af5f6130d67543c0c79df9471b8ba4a8fe3ff9da60af2dc',
         gasUsed: 187271,
@@ -723,6 +842,10 @@ describe('Classfiers: Uniswap V2', () => {
       amountIn: 9203736012517381854992n,
       assetOut: '0x46e98ffe40e408ba6412beb670507e083c8b95ff',
       amountOut: 9810940048285013383131n,
+      block: {
+        hash: '0x297a3329b58600a2e192297a9b1dee94fbecbe80df2a141694ea3cbcc6ad19fe',
+        number: 14677367,
+      },
       transaction: {
         hash: '0x861d5aba1de00eb99af5f6130d67543c0c79df9471b8ba4a8fe3ff9da60af2dc',
         gasUsed: 187271,
@@ -749,6 +872,10 @@ describe('Classfiers: Uniswap V2', () => {
       amountIn: 9810940048285013383131n,
       assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       amountOut: 402011216481376330n,
+      block: {
+        hash: '0x297a3329b58600a2e192297a9b1dee94fbecbe80df2a141694ea3cbcc6ad19fe',
+        number: 14677367,
+      },
       transaction: {
         hash: '0x861d5aba1de00eb99af5f6130d67543c0c79df9471b8ba4a8fe3ff9da60af2dc',
         gasUsed: 187271,
@@ -774,6 +901,9 @@ describe('Classfiers: Uniswap V2', () => {
     };
     const event: ClassifiedEvent = {
       address: '0x55D5c232D921B9eAA6b37b5845E439aCD04b4DBa',
+      blockHash:
+        '0x699c148c52b18879a1bd5cf0e64e8e1c2dfad478a6bce1f576a75144b48b30e7',
+      blockNumber: 14703788,
       transactionHash:
         '0x88e99b372a7524a750bb846b91cd9433a22c7cce886edee4879b70cb47f0d0fe',
       gasUsed: 140950,
@@ -795,6 +925,10 @@ describe('Classfiers: Uniswap V2', () => {
         from: '0x9e0905249ceefffb9605e034b534544684a58be6',
         to: '0x55d5c232d921b9eaa6b37b5845e439acd04b4dba',
         value: 4426537110163n,
+        block: {
+          hash: '0x699c148c52b18879a1bd5cf0e64e8e1c2dfad478a6bce1f576a75144b48b30e7',
+          number: 14703788,
+        },
         transaction: {
           hash: '0x88e99b372a7524a750bb846b91cd9433a22c7cce886edee4879b70cb47f0d0fe',
           gasUsed: 140950,
@@ -809,6 +943,10 @@ describe('Classfiers: Uniswap V2', () => {
         from: '0x5aa3393e361c2eb342408559309b3e873cd876d6',
         to: '0x9e0905249ceefffb9605e034b534544684a58be6',
         value: 2749128322331574924n,
+        block: {
+          hash: '0x699c148c52b18879a1bd5cf0e64e8e1c2dfad478a6bce1f576a75144b48b30e7',
+          number: 14703788,
+        },
         transaction: {
           hash: '0x88e99b372a7524a750bb846b91cd9433a22c7cce886edee4879b70cb47f0d0fe',
           gasUsed: 140950,
@@ -823,6 +961,10 @@ describe('Classfiers: Uniswap V2', () => {
         from: '0x55d5c232d921b9eaa6b37b5845e439acd04b4dba',
         to: '0x5aa3393e361c2eb342408559309b3e873cd876d6',
         value: 2767561675144940562n,
+        block: {
+          hash: '0x699c148c52b18879a1bd5cf0e64e8e1c2dfad478a6bce1f576a75144b48b30e7',
+          number: 14703788,
+        },
         transaction: {
           hash: '0x88e99b372a7524a750bb846b91cd9433a22c7cce886edee4879b70cb47f0d0fe',
           gasUsed: 140950,
@@ -855,6 +997,10 @@ describe('Classfiers: Uniswap V2', () => {
       amountIn: 4426537110163n,
       assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       amountOut: 2767561675144940562n,
+      block: {
+        hash: '0x699c148c52b18879a1bd5cf0e64e8e1c2dfad478a6bce1f576a75144b48b30e7',
+        number: 14703788,
+      },
       transaction: {
         hash: '0x88e99b372a7524a750bb846b91cd9433a22c7cce886edee4879b70cb47f0d0fe',
         gasUsed: 140950,

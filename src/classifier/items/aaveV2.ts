@@ -26,7 +26,15 @@ async function fetchMarket(
 }
 
 function parseRepayment(market: Market, event: ClassifiedEvent): Repayment {
-  const { values, transactionHash: hash, gasUsed, logIndex, address } = event;
+  const {
+    values,
+    transactionHash: hash,
+    gasUsed,
+    logIndex,
+    address,
+    blockHash,
+    blockNumber,
+  } = event;
 
   const asset = (values.debtAsset as string).toLowerCase();
   const borrower = (values.user as string).toLowerCase();
@@ -40,6 +48,10 @@ function parseRepayment(market: Market, event: ClassifiedEvent): Repayment {
         abi: 'AaveV2',
         pool: market.pool,
       },
+    },
+    block: {
+      hash: blockHash,
+      number: blockNumber,
     },
     transaction: {
       hash,
@@ -57,7 +69,15 @@ function parseRepayment(market: Market, event: ClassifiedEvent): Repayment {
 }
 
 function parseSeizure(market: Market, event: ClassifiedEvent): Seizure {
-  const { values, transactionHash: hash, gasUsed, logIndex, address } = event;
+  const {
+    values,
+    transactionHash: hash,
+    gasUsed,
+    logIndex,
+    address,
+    blockHash,
+    blockNumber,
+  } = event;
 
   const asset = (values.collateralAsset as string).toLowerCase();
   const borrower = (values.user as string).toLowerCase();
@@ -71,6 +91,10 @@ function parseSeizure(market: Market, event: ClassifiedEvent): Seizure {
         abi: 'AaveV2',
         pool: market.pool,
       },
+    },
+    block: {
+      hash: blockHash,
+      number: blockNumber,
     },
     transaction: {
       hash,

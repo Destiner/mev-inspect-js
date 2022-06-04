@@ -1,4 +1,5 @@
 import {
+  Block,
   ChainId,
   Repayment,
   Seizure,
@@ -11,6 +12,7 @@ import { getTransaction, isArbitrage, isLiquidation } from './utils.js';
 
 export {
   Arbitrage,
+  Block,
   BlockMev,
   ChainId,
   Inspector,
