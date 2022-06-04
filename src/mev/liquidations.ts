@@ -6,13 +6,13 @@ interface Liquidation {
   liquidator: string;
   borrower: string;
   collateral: {
-    asset: string,
-    amount: bigint,
-  },
+    asset: string;
+    amount: bigint;
+  };
   debt: {
-    asset: string,
-    amount: bigint,
-  }
+    asset: string;
+    amount: bigint;
+  };
 }
 
 function getLiquidations(

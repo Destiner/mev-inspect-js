@@ -31,7 +31,15 @@ class Chain {
     }
     const { logs, gasUsed } = receipt;
     return logs.map((log) => {
-      const { transactionHash, logIndex, address, topics, data, blockNumber, blockHash } = log;
+      const {
+        transactionHash,
+        logIndex,
+        address,
+        topics,
+        data,
+        blockNumber,
+        blockHash,
+      } = log;
       return {
         blockHash,
         blockNumber,

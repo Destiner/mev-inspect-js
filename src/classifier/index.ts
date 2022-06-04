@@ -52,7 +52,16 @@ function classifyLog(chainId: ChainId, log: Log): ClassifiedEvent[] {
   for (const classifier of classifiers) {
     const coder = new Coder(classifier.abi);
     try {
-      const { topics, data, address, transactionHash, gasUsed, logIndex, blockHash, blockNumber } = log;
+      const {
+        topics,
+        data,
+        address,
+        transactionHash,
+        gasUsed,
+        logIndex,
+        blockHash,
+        blockNumber,
+      } = log;
       const event = coder.decodeEvent(topics, data);
       if (!classifier.isValid(event, address, chainId)) {
         continue;

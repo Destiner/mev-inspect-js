@@ -249,12 +249,12 @@ describe('Utilities', () => {
         borrower: '0xf7f6192e35d15a153105d4476a1b4d59ec2014dd',
         collateral: {
           asset: '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
-          amount: 3402851288n
+          amount: 3402851288n,
         },
         debt: {
           asset: '0x8e870d67f660d95d5be530380d0ec0bd388289e1',
           amount: 1257619793546196402568n,
-        }
+        },
       },
       {
         repayment: {
@@ -401,7 +401,7 @@ describe('Utilities', () => {
         debt: {
           asset: '0x8e870d67f660d95d5be530380d0ec0bd388289e1',
           amount: 1257619793546196402568n,
-        }
+        },
       },
       {
         repayment: {
@@ -469,7 +469,7 @@ describe('Utilities', () => {
         debt: {
           asset: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
           amount: 631587280n,
-        }
+        },
       },
     ];
 
