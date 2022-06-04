@@ -1,13 +1,17 @@
 import { Transaction } from './classifier/index.js';
-import { BlockMev } from './mev/index.js';
+import { Arbitrage, BlockMev, Liquidation } from './mev/index.js';
 
 function getTransaction(mev: BlockMev): Transaction | null {
-  if ('swaps' in mev) {
-    const swaps = mev.swaps;
-    if (swaps.length === 0) {
+  if (isArbitrage(mev)) {
+    const arbitrage = mev as Arbitrage;
+    if (arbitrage.swaps.length === 0) {
       return null;
     }
-    return swaps[0].transaction;
+    return arbitrage.swaps[0].transaction;
+  }
+  if (isLiquidation(mev)) {
+    const liquidation = mev as Liquidation;
+    return liquidation.repayment.transaction;
   }
   return null;
 }
