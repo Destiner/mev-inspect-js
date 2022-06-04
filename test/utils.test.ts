@@ -77,6 +77,7 @@ describe('Utilities', () => {
         startAmount: 238841017533640100000n,
         endAmount: 239024634916096132545n,
         profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        arbitrager: '0x0000000000005117dd3a72e64a705198753fdd54',
       },
       {
         swaps: [
@@ -174,6 +175,7 @@ describe('Utilities', () => {
         startAmount: 244490660460949241856n,
         endAmount: 263265751127846220157n,
         profitAsset: '0x6b175474e89094c44da98b954eedeac495271d0f',
+        arbitrager: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
       },
     ];
 
@@ -506,6 +508,7 @@ describe('Utilities', () => {
         startAmount: 238841017533640100000n,
         endAmount: 239024634916096132545n,
         profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        arbitrager: '0x0000000000005117dd3a72e64a705198753fdd54',
       },
       {
         swaps: [
@@ -603,6 +606,7 @@ describe('Utilities', () => {
         startAmount: 244490660460949241856n,
         endAmount: 263265751127846220157n,
         profitAsset: '0x6b175474e89094c44da98b954eedeac495271d0f',
+        arbitrager: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
       },
     ];
 

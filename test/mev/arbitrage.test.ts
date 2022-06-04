@@ -309,6 +309,7 @@ describe('MEV: arbitrage', () => {
         startAmount: 238841017533640100000n,
         endAmount: 239024634916096132545n,
         profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        arbitrager: '0x0000000000005117dd3a72e64a705198753fdd54',
       },
     ]);
   });
@@ -444,6 +445,7 @@ describe('MEV: arbitrage', () => {
         startAmount: 760000000000000000n,
         endAmount: 778733861336038399n,
         profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        arbitrager: '0x5f62593c70069abb35dfe2b63db969e8906609d6',
       },
     ]);
   });
@@ -519,6 +521,7 @@ describe('MEV: arbitrage', () => {
         startAmount: 69743953265453911n,
         endAmount: 74553296475971132n,
         profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        arbitrager: '0xab319a82803ea5f8f335dc373ce248008d4f2671',
       },
     ]);
 
@@ -592,6 +595,7 @@ describe('MEV: arbitrage', () => {
         startAmount: 5137825921816247575n,
         endAmount: 5187612076728941787n,
         profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        arbitrager: '0x5aa3393e361c2eb342408559309b3e873cd876d6',
       },
     ]);
   });
@@ -697,6 +701,7 @@ describe('MEV: arbitrage', () => {
         startAmount: 1320898745109993396n,
         endAmount: 1334971529092923524n,
         profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        arbitrager: '0x563bdabaa8846ec445b25bfbed88d160890a02ed',
       },
     ]);
   });
@@ -802,6 +807,7 @@ describe('MEV: arbitrage', () => {
         startAmount: 244490660460949241856n,
         endAmount: 263265751127846220157n,
         profitAsset: '0x6b175474e89094c44da98b954eedeac495271d0f',
+        arbitrager: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
       },
     ]);
   });
@@ -937,12 +943,14 @@ describe('MEV: arbitrage', () => {
         startAmount: 50662506837650511n,
         endAmount: 55589057873471949n,
         profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        arbitrager: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
       },
       {
         swaps: [swaps[2], swaps[3]],
         startAmount: 236177765391862272n,
         endAmount: 240392410078442798n,
         profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        arbitrager: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
       },
     ]);
   });
@@ -1048,6 +1056,7 @@ describe('MEV: arbitrage', () => {
         startAmount: 414065221269164835n,
         endAmount: 421189973521534385n,
         profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        arbitrager: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
       },
     ]);
   });
@@ -1184,6 +1193,7 @@ describe('MEV: arbitrage', () => {
         startAmount: 8570994710n,
         endAmount: 8667791350n,
         profitAsset: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        arbitrager: '0xeef86c2e49e11345f1a693675df9a38f7d880c8f',
       },
     ]);
   });

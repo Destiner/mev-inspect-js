@@ -6,6 +6,7 @@ interface Arbitrage {
   profitAsset: string;
   startAmount: bigint;
   endAmount: bigint;
+  arbitrager: string;
 }
 
 const MAX_TOKEN_AMOUNT_PERCENT_DIFFERENCE = 0.00001;
@@ -38,6 +39,7 @@ function getTransactionArbitrages(swaps: Swap[]): Arbitrage[] {
     const route = getShortestRoute(start, unusedEnds, swaps);
 
     if (route.length > 0) {
+      const arbitrager = route[0].from;
       const startAmount = route[0].amountIn;
       const endAmount = route[route.length - 1].amountOut;
       const profitAsset = route[0].assetIn;
@@ -47,6 +49,7 @@ function getTransactionArbitrages(swaps: Swap[]): Arbitrage[] {
         startAmount,
         endAmount,
         profitAsset,
+        arbitrager,
       };
       arbitrages.push(arbitrage);
       for (const swap of route) {
