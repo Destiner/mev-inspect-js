@@ -3,6 +3,16 @@ import { Repayment, Seizure } from '../classifier/index.js';
 interface Liquidation {
   seizure: Seizure;
   repayment: Repayment;
+  liquidator: string;
+  borrower: string;
+  collateral: {
+    asset: string,
+    amount: bigint,
+  },
+  debt: {
+    asset: string,
+    amount: bigint,
+  }
 }
 
 function getLiquidations(
@@ -18,6 +28,16 @@ function getLiquidations(
       return {
         repayment,
         seizure,
+        liquidator: seizure.seizor,
+        borrower: seizure.borrower,
+        collateral: {
+          asset: seizure.asset,
+          amount: seizure.amount,
+        },
+        debt: {
+          asset: repayment.asset,
+          amount: repayment.amount,
+        },
       };
     })
     .filter(

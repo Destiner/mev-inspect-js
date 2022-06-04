@@ -245,6 +245,16 @@ describe('Utilities', () => {
           asset: '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
           amount: 3402851288n,
         },
+        liquidator: '0xb5c7ad3cb6506c65da01f2fac2e667dcb9e66e9c',
+        borrower: '0xf7f6192e35d15a153105d4476a1b4d59ec2014dd',
+        collateral: {
+          asset: '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
+          amount: 3402851288n
+        },
+        debt: {
+          asset: '0x8e870d67f660d95d5be530380d0ec0bd388289e1',
+          amount: 1257619793546196402568n,
+        }
       },
       {
         repayment: {
@@ -302,6 +312,16 @@ describe('Utilities', () => {
           borrower: '0xa8556b50ab7781eeccf647eec1c0bf3bf9e5b3ad',
           asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
           amount: 344839185141066670n,
+        },
+        liquidator: '0xd911560979b78821d7b045c79e36e9cbfc2f6c6f',
+        borrower: '0xa8556b50ab7781eeccf647eec1c0bf3bf9e5b3ad',
+        collateral: {
+          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          amount: 344839185141066670n,
+        },
+        debt: {
+          asset: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+          amount: 631587280n,
         },
       },
     ];
@@ -372,6 +392,16 @@ describe('Utilities', () => {
           asset: '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
           amount: 3402851288n,
         },
+        liquidator: '0xb5c7ad3cb6506c65da01f2fac2e667dcb9e66e9c',
+        borrower: '0xf7f6192e35d15a153105d4476a1b4d59ec2014dd',
+        collateral: {
+          asset: '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
+          amount: 3402851288n,
+        },
+        debt: {
+          asset: '0x8e870d67f660d95d5be530380d0ec0bd388289e1',
+          amount: 1257619793546196402568n,
+        }
       },
       {
         repayment: {
@@ -430,6 +460,16 @@ describe('Utilities', () => {
           asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
           amount: 344839185141066670n,
         },
+        liquidator: '0xd911560979b78821d7b045c79e36e9cbfc2f6c6f',
+        borrower: '0xa8556b50ab7781eeccf647eec1c0bf3bf9e5b3ad',
+        collateral: {
+          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          amount: 344839185141066670n,
+        },
+        debt: {
+          asset: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+          amount: 631587280n,
+        }
       },
     ];
 
