@@ -6,6 +6,7 @@ import {
   isArbitrage,
   isLiquidation,
   equalWithTolerance,
+  minByAbs,
 } from '../src/utils.js';
 
 describe('Utilities', () => {
@@ -715,5 +716,14 @@ describe('Utilities', () => {
     for (const value of values) {
       expect(equalWithTolerance(...value)).toEqual(false);
     }
+  });
+
+  test('minByAbs', () => {
+    expect(minByAbs(1n, 2n)).toEqual(1n);
+    expect(minByAbs(0n, 2n)).toEqual(0n);
+    expect(minByAbs(-1n, -2n)).toEqual(-1n);
+    expect(minByAbs(-1n, 2n)).toEqual(-1n);
+    expect(minByAbs(-2n, 1n)).toEqual(1n);
+    expect(minByAbs(-2n, 0n)).toEqual(0n);
   });
 });

@@ -1,4 +1,5 @@
 import { ChainId, Swap, isKnownRouter } from '../classifier/index.js';
+import { minByAbs } from '../utils.js';
 
 interface Sandwich {
   sandwicher: string;
@@ -61,7 +62,7 @@ function getSandwich(
             backSwap: otherSwap,
             sandwichedSwaps,
             profitAsset: frontSwap.assetIn,
-            profitAmount: otherSwap.amountOut - frontSwap.amountIn,
+            profitAmount: getProfit(frontSwap, otherSwap),
           };
         }
       }
@@ -69,6 +70,22 @@ function getSandwich(
   }
 
   return null;
+}
+
+function getProfit(frontSwap: Swap, backSwap: Swap): bigint {
+  const multiplier = 1_000_000_000_000_000_000_000_000_000_000_000_000n;
+  const profitFrontrun =
+    (frontSwap.amountOut *
+      ((multiplier * backSwap.amountOut) / backSwap.amountIn)) /
+      multiplier -
+    frontSwap.amountIn;
+  const profitBackrun =
+    backSwap.amountOut -
+    (backSwap.amountIn *
+      ((multiplier * frontSwap.amountIn) / frontSwap.amountOut)) /
+      multiplier;
+  console.log(profitFrontrun, profitBackrun);
+  return minByAbs(profitFrontrun, profitBackrun);
 }
 
 export { Sandwich, getSandwiches };

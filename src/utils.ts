@@ -67,10 +67,17 @@ function equalWithTolerance(
   return isWithinLowerBound && isWithinHigherBound;
 }
 
+function minByAbs(a: bigint, b: bigint): bigint {
+  const absA = a > 0 ? a : -a;
+  const absB = b > 0 ? b : -b;
+  return absA < absB ? a : b;
+}
+
 export {
   isArbitrage,
   isLiquidation,
   isSandwich,
   equalWithTolerance,
   getTransaction,
+  minByAbs,
 };
