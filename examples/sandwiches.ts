@@ -27,7 +27,7 @@ const transactions: Transaction[] = [
   label: 'Sushiswap sandwich',
 }, {
   block: 13699765,
-  label: 'Sandwich with partial fromswap buy',
+  label: 'Sandwich with partial frontswap buy',
 }, {
   block: 14899088,
   label: 'Sandwich with partial backswap sell',
