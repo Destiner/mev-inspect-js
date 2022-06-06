@@ -84,7 +84,6 @@ function getProfit(frontSwap: Swap, backSwap: Swap): bigint {
     (backSwap.amountIn *
       ((multiplier * frontSwap.amountIn) / frontSwap.amountOut)) /
       multiplier;
-  console.log(profitFrontrun, profitBackrun);
   return minByAbs(profitFrontrun, profitBackrun);
 }
 
