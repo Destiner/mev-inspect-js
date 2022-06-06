@@ -22,6 +22,7 @@ import {
   getPoolByAddress,
   isValidFactory,
   isValidPool,
+  isKnownRouter,
 } from './directory.js';
 import aaveV2Classifiers from './items/aaveV2.js';
 import aaveV3Classifiers from './items/aaveV3.js';
@@ -116,5 +117,6 @@ export {
   getPoolByAddress,
   isValidFactory,
   isValidPool,
+  isKnownRouter,
   nativeAsset,
 };

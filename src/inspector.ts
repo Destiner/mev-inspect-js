@@ -15,6 +15,7 @@ import {
   getSeizures,
   getLiquidations,
   getRepayments,
+  getSandwiches,
   getSwaps,
   getTransfers,
 } from './mev/index.js';
@@ -45,7 +46,8 @@ class Inspector {
     const swaps = await this.#getSwaps(events);
     const arbitrages = getArbitrages(swaps);
     const liquidations = await this.#getLiquidations(events);
-    return [...arbitrages, ...liquidations];
+    const sandwiches = getSandwiches(this.chainId, swaps);
+    return [...arbitrages, ...liquidations, ...sandwiches];
   }
 
   async #getSwaps(events: ClassifiedEvent[]): Promise<Swap[]> {

@@ -175,6 +175,27 @@ const lendingPools: Record<ChainId, Record<LendingProtocol, LendingPool[]>> = {
   },
 };
 
+const routers: Record<ChainId, Record<SwapProtocol, string[]>> = {
+  [ETHEREUM]: {
+    UniswapV2: ['0xf164fc0ec4e93095b804a4795bbe1e041497b92a', '0x7a250d5630b4cf539739df2c5dacb4c659f2488d'],
+    UniswapV3: ['0xe592427a0aece92de3edee1f18e0157c05861564', '0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45'],
+    BalancerV1: [],
+    BalancerV2: ['0xba12222222228d8ba445958a75a0704d566bf2c8'],
+  },
+  [POLYGON]: {
+    UniswapV2: [],
+    UniswapV3: ['0xe592427a0aece92de3edee1f18e0157c05861564', '0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45'],
+    BalancerV1: [],
+    BalancerV2: ['0xba12222222228d8ba445958a75a0704d566bf2c8'],
+  },
+  [ARBITRUM]: {
+    UniswapV2: [],
+    UniswapV3: ['0xe592427a0aece92de3edee1f18e0157c05861564', '0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45'],
+    BalancerV1: [],
+    BalancerV2: ['0xba12222222228d8ba445958a75a0704d566bf2c8'],
+  },
+};
+
 function getFactoryByAddress(
   chainId: ChainId,
   protocol: SwapProtocol,
@@ -224,6 +245,12 @@ function isValidPool(
   return allowedPools.some((list) => list.addresses.includes(pool));
 }
 
+function isKnownRouter(chainId: ChainId, address: string): boolean {
+  return Object.values(routers[chainId]).some((protocolRouters) =>
+    protocolRouters.includes(address),
+  );
+}
+
 export {
   ChainId,
   Factory,
@@ -233,4 +260,5 @@ export {
   getPoolByAddress,
   isValidFactory,
   isValidPool,
+  isKnownRouter,
 };

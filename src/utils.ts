@@ -1,5 +1,5 @@
 import { Transaction } from './classifier/index.js';
-import { Arbitrage, BlockMev, Liquidation } from './mev/index.js';
+import { Arbitrage, BlockMev, Liquidation, Sandwich } from './mev/index.js';
 
 function getTransaction(mev: BlockMev): Transaction | null {
   if (isArbitrage(mev)) {
@@ -13,15 +13,23 @@ function getTransaction(mev: BlockMev): Transaction | null {
     const liquidation = mev as Liquidation;
     return liquidation.repayment.transaction;
   }
+  if (isSandwich(mev)) {
+    const sandwich = mev as Sandwich;
+    return sandwich.frontSwap.transaction;
+  }
   return null;
 }
 
 function isArbitrage(mev: BlockMev): boolean {
-  return 'swaps' in mev;
+  return 'arbitrager' in mev;
 }
 
 function isLiquidation(mev: BlockMev): boolean {
-  return 'repayment' in mev;
+  return 'liquidator' in mev;
+}
+
+function isSandwich(mev: BlockMev): boolean {
+  return 'sandwicher' in mev;
 }
 
 function equalWithTolerance(
@@ -59,4 +67,10 @@ function equalWithTolerance(
   return isWithinLowerBound && isWithinHigherBound;
 }
 
-export { isArbitrage, isLiquidation, equalWithTolerance, getTransaction };
+export {
+  isArbitrage,
+  isLiquidation,
+  isSandwich,
+  equalWithTolerance,
+  getTransaction,
+};
