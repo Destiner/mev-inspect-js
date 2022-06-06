@@ -177,19 +177,19 @@ const lendingPools: Record<ChainId, Record<LendingProtocol, LendingPool[]>> = {
 
 const routers: Record<ChainId, Record<SwapProtocol, string[]>> = {
   [ETHEREUM]: {
-    UniswapV2: ['0xf164fc0ec4e93095b804a4795bbe1e041497b92a', '0x7a250d5630b4cf539739df2c5dacb4c659f2488d'],
+    UniswapV2: ['0xf164fc0ec4e93095b804a4795bbe1e041497b92a', '0x7a250d5630b4cf539739df2c5dacb4c659f2488d', '0xd9e1ce17f2641f24ae83637ab66a2cca9c378b9f'],
     UniswapV3: ['0xe592427a0aece92de3edee1f18e0157c05861564', '0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45'],
     BalancerV1: [],
     BalancerV2: ['0xba12222222228d8ba445958a75a0704d566bf2c8'],
   },
   [POLYGON]: {
-    UniswapV2: [],
+    UniswapV2: ['0x1b02da8cb0d097eb8d57a175b88c7d8b47997506'],
     UniswapV3: ['0xe592427a0aece92de3edee1f18e0157c05861564', '0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45'],
     BalancerV1: [],
     BalancerV2: ['0xba12222222228d8ba445958a75a0704d566bf2c8'],
   },
   [ARBITRUM]: {
-    UniswapV2: [],
+    UniswapV2: ['0x1b02da8cb0d097eb8d57a175b88c7d8b47997506'],
     UniswapV3: ['0xe592427a0aece92de3edee1f18e0157c05861564', '0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45'],
     BalancerV1: [],
     BalancerV2: ['0xba12222222228d8ba445958a75a0704d566bf2c8'],
