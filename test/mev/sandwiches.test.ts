@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'vitest';
 
 import { Swap } from '../../src/index.js';
-import { Sandwich, getSandwiches } from '../../src/mev/sandwich.js';
+import { Sandwich, getSandwiches } from '../../src/mev/sandwiches.js';
 
 const ETHEREUM = 1;
 
