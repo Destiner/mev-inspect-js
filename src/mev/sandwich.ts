@@ -25,7 +25,11 @@ function getSandwiches(chainId: ChainId, swaps: Swap[]): Sandwich[] {
   return sandwiches;
 }
 
-function getSandwich(chainId: ChainId, frontSwap: Swap, restSwaps: Swap[]): Sandwich | null {
+function getSandwich(
+  chainId: ChainId,
+  frontSwap: Swap,
+  restSwaps: Swap[],
+): Sandwich | null {
   const sandwicher = frontSwap.to;
   const sandwichedSwaps: Swap[] = [];
 
@@ -39,9 +43,17 @@ function getSandwich(chainId: ChainId, frontSwap: Swap, restSwaps: Swap[]): Sand
     }
 
     if (otherSwap.contract.address === frontSwap.contract.address) {
-      if (otherSwap.assetIn === frontSwap.assetIn && otherSwap.assetOut === frontSwap.assetOut && otherSwap.from !== sandwicher) {
+      if (
+        otherSwap.assetIn === frontSwap.assetIn &&
+        otherSwap.assetOut === frontSwap.assetOut &&
+        otherSwap.from !== sandwicher
+      ) {
         sandwichedSwaps.push(otherSwap);
-      } else if (otherSwap.assetOut === frontSwap.assetIn && otherSwap.assetIn === frontSwap.assetOut && otherSwap.from === sandwicher) {
+      } else if (
+        otherSwap.assetOut === frontSwap.assetIn &&
+        otherSwap.assetIn === frontSwap.assetOut &&
+        otherSwap.from === sandwicher
+      ) {
         if (sandwichedSwaps.length > 0) {
           return {
             sandwicher,
