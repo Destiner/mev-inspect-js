@@ -38,11 +38,10 @@ It starts by fetching all event logs for a given transaction or block. Then, it 
 
 ## Status
 
-The project is experimental. Currently, arbitrage and liquidations are detected. Expect API to have breaking changes.
+The project is experimental. Currently, arbitrage, liquidations, and sandwiches are detected. Expect API to have breaking changes.
 
 ## TODO
 
 - [ ] curve
 - [ ] 0x
-- [ ] sandwitches
 - [ ] nfts
