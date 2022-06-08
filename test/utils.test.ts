@@ -7,6 +7,7 @@ import {
   isLiquidation,
   equalWithTolerance,
   minByAbs,
+  groupBy,
 } from '../src/utils.js';
 
 describe('Utilities', () => {
@@ -725,5 +726,42 @@ describe('Utilities', () => {
     expect(minByAbs(-1n, 2n)).toEqual(-1n);
     expect(minByAbs(-2n, 1n)).toEqual(1n);
     expect(minByAbs(-2n, 0n)).toEqual(0n);
+  });
+
+  test('groupBy', () => {
+    expect(groupBy([1, 2, 3], (item) => item.toString())).toEqual({
+      '1': [1],
+      '2': [2],
+      '3': [3],
+    });
+
+    expect(
+      groupBy(['apple', 'pear', 'orange', 'lemon'], (item) =>
+        item.length.toString(),
+      ),
+    ).toEqual({
+      '4': ['pear'],
+      '5': ['apple', 'lemon'],
+      '6': ['orange'],
+    });
+
+    const personA = {
+      name: 'Lily',
+      age: 14,
+    };
+    const personB = {
+      name: 'Anton',
+      age: 15,
+    };
+    const personC = {
+      name: 'Jack',
+      age: 14,
+    };
+    expect(
+      groupBy([personA, personB, personC], (item) => item.age.toString()),
+    ).toEqual({
+      '14': [personA, personC],
+      '15': [personB],
+    });
   });
 });

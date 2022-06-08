@@ -1,4 +1,4 @@
-import { Provider } from '@ethersproject/providers';
+import { Provider, TransactionReceipt } from '@ethersproject/providers';
 
 import Chain from './chain.js';
 import classify, {
@@ -19,6 +19,7 @@ import {
   getSwaps,
   getTransfers,
 } from './mev/index.js';
+import { groupBy } from './utils.js';
 
 class Inspector {
   chainId: ChainId;
@@ -48,6 +49,25 @@ class Inspector {
     const liquidations = await this.#getLiquidations(events);
     const sandwiches = getSandwiches(this.chainId, swaps);
     return [...arbitrages, ...liquidations, ...sandwiches];
+  }
+
+  async receipts(receipts: TransactionReceipt[]): Promise<BlockMev[]> {
+    const logs = this.chain.parseReceipts(receipts);
+    const logsByBlock = groupBy(logs, (log) => log.blockNumber.toString());
+    const mev: BlockMev[] = [];
+    for (const block in logsByBlock) {
+      const blockLogs = logsByBlock[block];
+      const events = classify(this.chainId, blockLogs);
+      const swaps = await this.#getSwaps(events);
+      const arbitrages = getArbitrages(swaps);
+      const liquidations = await this.#getLiquidations(events);
+      const sandwiches = getSandwiches(this.chainId, swaps);
+      const blockMev = [...arbitrages, ...liquidations, ...sandwiches];
+      for (const mevItem of blockMev) {
+        mev.push(mevItem);
+      }
+    }
+    return mev;
   }
 
   async #getSwaps(events: ClassifiedEvent[]): Promise<Swap[]> {

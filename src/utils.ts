@@ -73,6 +73,21 @@ function minByAbs(a: bigint, b: bigint): bigint {
   return absA < absB ? a : b;
 }
 
+function groupBy<T>(
+  arr: T[],
+  filter: (item: T) => string,
+): Record<string, T[]> {
+  const grouped: Record<string, T[]> = {};
+  for (const item of arr) {
+    const key = filter(item);
+    if (!grouped[key]) {
+      grouped[key] = [];
+    }
+    grouped[key].push(item);
+  }
+  return grouped;
+}
+
 export {
   isArbitrage,
   isLiquidation,
@@ -80,4 +95,5 @@ export {
   equalWithTolerance,
   getTransaction,
   minByAbs,
+  groupBy,
 };

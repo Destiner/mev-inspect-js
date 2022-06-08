@@ -29,28 +29,7 @@ class Chain {
     if (!receipt) {
       return [];
     }
-    const { logs, gasUsed } = receipt;
-    return logs.map((log) => {
-      const {
-        transactionHash,
-        logIndex,
-        address,
-        topics,
-        data,
-        blockNumber,
-        blockHash,
-      } = log;
-      return {
-        blockHash,
-        blockNumber,
-        transactionHash,
-        logIndex,
-        gasUsed: gasUsed.toNumber(),
-        address,
-        topics,
-        data,
-      };
-    });
+    return this.#getLogs(receipt);
   }
 
   async getBlockLogs(number: number): Promise<Log[]> {
@@ -62,6 +41,10 @@ class Chain {
       logs.push(txLogs);
     }
     return logs.flat();
+  }
+
+  parseReceipts(receipts: TransactionReceipt[]): Log[] {
+    return receipts.map((receipt) => this.#getLogs(receipt)).flat();
   }
 
   async #getReceipt(hash: string): Promise<TransactionReceipt | null> {
@@ -100,6 +83,31 @@ class Chain {
       }
     }
     return block;
+  }
+
+  #getLogs(receipt: TransactionReceipt): Log[] {
+    const { logs, gasUsed } = receipt;
+    return logs.map((log) => {
+      const {
+        transactionHash,
+        logIndex,
+        address,
+        topics,
+        data,
+        blockNumber,
+        blockHash,
+      } = log;
+      return {
+        blockHash,
+        blockNumber,
+        transactionHash,
+        logIndex,
+        gasUsed: gasUsed.toNumber(),
+        address,
+        topics,
+        data,
+      };
+    });
   }
 }
 
