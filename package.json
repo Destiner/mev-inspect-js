@@ -37,7 +37,8 @@
     "@ethersproject/contracts": "^5.6.0",
     "@ethersproject/logger": "^5.6.0",
     "@ethersproject/providers": "^5.6.4",
-    "abi-coder": "^4.0.0"
+    "abi-coder": "^4.0.0",
+    "ethcall": "^4.7.2"
   },
   "devDependencies": {
     "@types/node": "^17.0.30",
