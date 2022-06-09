@@ -16,12 +16,17 @@ async function fetchPools(
   logs: ClassifiedEvent[],
 ): Promise<Pool[]> {
   const pools: Pool[] = [];
+  const poolIds = new Set<string>();
   const callMap: Record<number, Call[]> = {};
   for (const log of logs) {
     if (log.classifier.type !== 'swap') {
       continue;
     }
     const id = getPoolId(log);
+    if (poolIds.has(id)) {
+      continue;
+    }
+    poolIds.add(id);
     const logCalls = log.classifier.pool.getCalls(id);
     callMap[log.logIndex] = logCalls;
   }
@@ -35,6 +40,9 @@ async function fetchPools(
       continue;
     }
     const logCalls = callMap[log.logIndex];
+    if (!logCalls) {
+      continue;
+    }
     const result = [];
     for (let j = 0; j < logCalls.length; j++) {
       result.push(results[i + j]);
@@ -65,12 +73,17 @@ async function fetchMarkets(
   logs: ClassifiedEvent[],
 ): Promise<Market[]> {
   const markets: Market[] = [];
+  const marketAddresses = new Set<string>();
   const callMap: Record<number, Call[]> = {};
   for (const log of logs) {
     if (log.classifier.type !== 'repayment') {
       continue;
     }
     const address = getMarketAddress(log);
+    if (marketAddresses.has(address)) {
+      continue;
+    }
+    marketAddresses.add(address);
     const logCalls = log.classifier.market.getCalls(address);
     callMap[log.logIndex] = logCalls;
   }
