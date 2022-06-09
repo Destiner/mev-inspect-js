@@ -1,13 +1,15 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import { AddressZero } from '@ethersproject/constants';
-import { Contract } from '@ethersproject/contracts';
-import { Provider } from '@ethersproject/providers';
 import { Event } from 'abi-coder';
+import { Call, Contract } from 'ethcall';
 
-import poolAbi from '../../abi/balancerV2Pool.js';
 import vaultAbi from '../../abi/balancerV2Vault.js';
 import { Classifier, Pool, PoolData, Swap, Transfer } from '../base.js';
 import { ClassifiedEvent } from '../index.js';
+
+interface PoolTokens {
+  tokens: string[];
+}
 
 function isValidSwap(event: Event): boolean {
   return event.name === 'Swap';
@@ -17,17 +19,23 @@ function isValidTransfer(event: Event): boolean {
   return event.name === 'InternalBalanceChanged';
 }
 
-async function fetchPool(provider: Provider, id: string): Promise<PoolData> {
-  const address = id.substring(0, 42);
-  const poolContract = new Contract(address, poolAbi, provider);
-  const vault = (await poolContract.getVault()) as string;
-  const vaultContract = new Contract(vault, vaultAbi, provider);
-  const poolTokens = await vaultContract.getPoolTokens(id);
-  const tokens = poolTokens.tokens as string[];
+const VAULT_ADDRESS = '0xba12222222228d8ba445958a75a0704d566bf2c8';
+
+function getPoolCalls(id: string): Call[] {
+  const contract = new Contract(VAULT_ADDRESS, vaultAbi);
+  return [contract.getPoolTokens(id)];
+}
+
+function processPoolCalls(result: unknown[]): PoolData | null {
+  const [poolTokens] = result as [PoolTokens | null];
+  if (!poolTokens) {
+    return null;
+  }
+  const tokens = poolTokens.tokens;
   const assets = tokens.map((token) => token.toLowerCase());
   return {
     assets,
-    factoryAddress: vault.toLowerCase(),
+    factoryAddress: VAULT_ADDRESS,
   };
 }
 
@@ -285,7 +293,10 @@ const CLASSIFIERS: Classifier[] = [
     abi: vaultAbi,
     isValid: isValidSwap,
     parse: parseSwap,
-    fetchPool,
+    pool: {
+      getCalls: getPoolCalls,
+      processCalls: processPoolCalls,
+    },
   },
   {
     type: 'transfer',

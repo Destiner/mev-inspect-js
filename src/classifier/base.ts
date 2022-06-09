@@ -1,6 +1,7 @@
 import { JsonFragment } from '@ethersproject/abi';
 import { Provider } from '@ethersproject/providers';
 import { Event } from 'abi-coder';
+import { Call } from 'ethcall';
 
 import { Factory } from './directory.js';
 
@@ -133,7 +134,11 @@ interface SwapClassifier extends BaseClassifier {
     transfers: Transfer[],
     allEvents: ClassifiedEvent[],
   ) => Swap | null;
-  fetchPool: (provider: Provider, id: string) => Promise<PoolData | null>;
+  pool: {
+    getCalls: (id: string) => Call[];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    processCalls: (result: unknown[]) => PoolData | null;
+  };
 }
 
 interface RepaymentClassifier extends BaseClassifier {

@@ -1,7 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber';
-import { Contract } from '@ethersproject/contracts';
-import { Provider } from '@ethersproject/providers';
 import { Event } from 'abi-coder';
+import { Call, Contract } from 'ethcall';
 
 import factoryAbi from '../../abi/balancerV1Factory.js';
 import poolAbi from '../../abi/balancerV1Pool.js';
@@ -14,19 +13,24 @@ function isValid(event: Event): boolean {
   return event.name === 'LOG_SWAP';
 }
 
-async function fetchPool(
-  provider: Provider,
-  address: string,
-): Promise<PoolData | null> {
-  const factoryContract = new Contract(FACTORY_ADDRESS, factoryAbi, provider);
-  const isPool = await factoryContract.isBPool(address);
-  const factoryAddress = isPool ? FACTORY_ADDRESS : null;
-  if (!factoryAddress) {
+function getPoolCalls(address: string): Call[] {
+  const factoryContract = new Contract(FACTORY_ADDRESS, factoryAbi);
+  const isPoolCall = factoryContract.isBPool(address);
+  const poolContract = new Contract(address, poolAbi);
+  const assetsCall = poolContract.getCurrentTokens();
+  return [isPoolCall, assetsCall];
+}
+
+function processPoolCalls(result: unknown[]): PoolData | null {
+  const [isPool, tokens] = result;
+  if (!isPool || !tokens) {
     return null;
   }
-  const poolContract = new Contract(address, poolAbi, provider);
-  const assets = await poolContract.getCurrentTokens();
-  return { factoryAddress, assets };
+  const assets = (tokens as string[]).map((token) => token.toLowerCase());
+  return {
+    factoryAddress: FACTORY_ADDRESS,
+    assets,
+  };
 }
 
 function parse(pool: Pool, event: ClassifiedEvent): Swap | null {
@@ -81,7 +85,10 @@ const CLASSIFIER: Classifier = {
   abi: poolAbi,
   isValid,
   parse,
-  fetchPool,
+  pool: {
+    getCalls: getPoolCalls,
+    processCalls: processPoolCalls,
+  },
 };
 
 export default CLASSIFIER;

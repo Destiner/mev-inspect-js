@@ -1,7 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber';
-import { Contract } from '@ethersproject/contracts';
-import { Provider } from '@ethersproject/providers';
 import { Event } from 'abi-coder';
+import { Call, Contract } from 'ethcall';
 
 import pairAbi from '../../abi/uniswapV2Pair.js';
 import { equalWithTolerance } from '../../utils.js';
@@ -19,17 +18,25 @@ function isValid(event: Event): boolean {
   return event.name === 'Swap';
 }
 
-async function fetchPool(
-  provider: Provider,
-  address: string,
-): Promise<PoolData> {
-  const pairContract = new Contract(address, pairAbi, provider);
-  const factory = (await pairContract.factory()) as string;
-  const asset0 = (await pairContract.token0()) as string;
-  const asset1 = (await pairContract.token1()) as string;
+function getPoolCalls(address: string): Call[] {
+  const pairContract = new Contract(address, pairAbi);
+  const factoryCall = pairContract.factory();
+  const asset0Call = pairContract.token0();
+  const asset1Call = pairContract.token1();
+  return [factoryCall, asset0Call, asset1Call];
+}
+
+function processPoolCalls(result: unknown[]): PoolData | null {
+  const factory = result[0] as string | null;
+  const asset0 = result[1] as string | null;
+  const asset1 = result[2] as string | null;
+  if (!factory || !asset0 || !asset1) {
+    return null;
+  }
+  const assets = [asset0.toLowerCase(), asset1.toLowerCase()];
   return {
-    assets: [asset0.toLowerCase(), asset1.toLowerCase()],
     factoryAddress: factory.toLowerCase(),
+    assets,
   };
 }
 
@@ -109,6 +116,9 @@ const CLASSIFIER: Classifier = {
   abi: pairAbi,
   isValid,
   parse,
-  fetchPool,
+  pool: {
+    getCalls: getPoolCalls,
+    processCalls: processPoolCalls,
+  },
 };
 export default CLASSIFIER;

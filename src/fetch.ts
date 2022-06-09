@@ -1,4 +1,5 @@
 import { Provider } from '@ethersproject/providers';
+import { Call, Provider as EthcallProvider } from 'ethcall';
 
 import {
   ChainId,
@@ -15,12 +16,31 @@ async function fetchPools(
   logs: ClassifiedEvent[],
 ): Promise<Pool[]> {
   const pools: Pool[] = [];
+  const callMap: Record<number, Call[]> = {};
   for (const log of logs) {
     if (log.classifier.type !== 'swap') {
       continue;
     }
     const id = getPoolId(log);
-    const poolData = await log.classifier.fetchPool(provider, id);
+    const logCalls = log.classifier.pool.getCalls(id);
+    callMap[log.logIndex] = logCalls;
+  }
+  const ethcallProvider = new EthcallProvider();
+  await ethcallProvider.init(provider);
+  const calls = Object.values(callMap).flat();
+  const results = await ethcallProvider.all(calls);
+  let i = 0;
+  for (const log of logs) {
+    if (log.classifier.type !== 'swap') {
+      continue;
+    }
+    const logCalls = callMap[log.logIndex];
+    const result = [];
+    for (let j = 0; j < logCalls.length; j++) {
+      result.push(results[i + j]);
+    }
+    i += logCalls.length;
+    const poolData = log.classifier.pool.processCalls(result);
     if (!poolData) {
       continue;
     }
