@@ -65,15 +65,35 @@ async function fetchMarkets(
   logs: ClassifiedEvent[],
 ): Promise<Market[]> {
   const markets: Market[] = [];
+  const callMap: Record<number, Call[]> = {};
   for (const log of logs) {
     if (log.classifier.type !== 'repayment') {
       continue;
     }
     const address = getMarketAddress(log);
-    const marketData = await log.classifier.fetchMarket(
+    const logCalls = log.classifier.market.getCalls(address);
+    callMap[log.logIndex] = logCalls;
+  }
+  const ethcallProvider = new EthcallProvider();
+  await ethcallProvider.init(provider);
+  const calls = Object.values(callMap).flat();
+  const results = await ethcallProvider.all(calls);
+  let i = 0;
+  for (const log of logs) {
+    if (log.classifier.type !== 'repayment') {
+      continue;
+    }
+    const logCalls = callMap[log.logIndex];
+    const result = [];
+    for (let j = 0; j < logCalls.length; j++) {
+      result.push(results[i + j]);
+    }
+    i += logCalls.length;
+    const address = getMarketAddress(log);
+    const marketData = log.classifier.market.processCalls(
       chainId,
-      provider,
       address,
+      result,
     );
     if (!marketData) {
       continue;
@@ -85,7 +105,7 @@ async function fetchMarkets(
     );
     const market = {
       address: address.toLowerCase(),
-      asset: marketData.asset,
+      asset: marketData.asset || address,
       pool: {
         label: pool.label,
         address: marketData.poolAddress,

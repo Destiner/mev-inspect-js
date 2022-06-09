@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber';
-import { Provider } from '@ethersproject/providers';
 import { Event } from 'abi-coder';
+import { Call } from 'ethcall';
 
 import poolAbi from '../../abi/aaveV2Pool.js';
 import { Classifier, Market, MarketData, Repayment, Seizure } from '../base.js';
@@ -13,15 +13,13 @@ function isValid(event: Event, address: string, chainId: ChainId): boolean {
   );
 }
 
-async function fetchMarket(
-  _chainId: ChainId,
-  _provider: Provider,
-  address: string,
-): Promise<MarketData> {
+function getMarketCalls(): Call[] {
+  return [];
+}
+
+function processMarketCalls(_chainId: ChainId, address: string): MarketData {
   return {
     poolAddress: address.toLowerCase(),
-    // TODO fix
-    asset: '',
   };
 }
 
@@ -118,7 +116,10 @@ const CLASSIFIERS: Classifier[] = [
     abi: poolAbi,
     isValid,
     parse: parseRepayment,
-    fetchMarket,
+    market: {
+      getCalls: getMarketCalls,
+      processCalls: processMarketCalls,
+    },
   },
   {
     type: 'seizure',
@@ -126,7 +127,10 @@ const CLASSIFIERS: Classifier[] = [
     abi: poolAbi,
     isValid,
     parse: parseSeizure,
-    fetchMarket,
+    market: {
+      getCalls: getMarketCalls,
+      processCalls: processMarketCalls,
+    },
   },
 ];
 

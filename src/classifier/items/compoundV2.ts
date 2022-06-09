@@ -1,7 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber';
-import { Contract } from '@ethersproject/contracts';
-import { Provider } from '@ethersproject/providers';
 import { Event } from 'abi-coder';
+import { Call, Contract } from 'ethcall';
 
 import marketAbi from '../../abi/compoundV2Market.js';
 import { Classifier, Market, MarketData, Repayment, Seizure } from '../base.js';
@@ -21,24 +20,26 @@ function isValidSeizure(event: Event): boolean {
   return event.name === 'LiquidateBorrow';
 }
 
-async function fetchMarket(
+function getMarketCalls(address: string): Call[] {
+  const marketContract = new Contract(address, marketAbi);
+  const comptrollerCall = marketContract.comptroller();
+  const underlyingCall = marketContract.underlying();
+  return [comptrollerCall, underlyingCall];
+}
+
+function processMarketCalls(
   chainId: ChainId,
-  provider: Provider,
   address: string,
-): Promise<MarketData> {
-  const marketContract = new Contract(address, marketAbi, provider);
-  const comptroller = (
-    (await marketContract.comptroller()) as string
-  ).toLowerCase();
+  result: unknown[],
+): MarketData {
+  const comptroller = result[0] as string;
+  const underlying = result[1] as string;
   const cethMarket = CETH_MARKET[comptroller];
   const native = nativeAsset[chainId];
-  const underlying =
-    address === cethMarket
-      ? native
-      : ((await marketContract.underlying()) as string).toLowerCase();
+  const asset = address === cethMarket ? native : underlying.toLowerCase();
   return {
-    poolAddress: comptroller,
-    asset: underlying,
+    poolAddress: comptroller.toLowerCase(),
+    asset,
   };
 }
 
@@ -136,7 +137,10 @@ const CLASSIFIERS: Classifier[] = [
     abi: marketAbi,
     isValid: isValidRepayment,
     parse: parseRepayment,
-    fetchMarket,
+    market: {
+      getCalls: getMarketCalls,
+      processCalls: processMarketCalls,
+    },
   },
   {
     type: 'seizure',
@@ -144,7 +148,10 @@ const CLASSIFIERS: Classifier[] = [
     abi: marketAbi,
     isValid: isValidSeizure,
     parse: parseSeizure,
-    fetchMarket,
+    market: {
+      getCalls: getMarketCalls,
+      processCalls: processMarketCalls,
+    },
   },
 ];
 

@@ -1,5 +1,4 @@
 import { JsonFragment } from '@ethersproject/abi';
-import { Provider } from '@ethersproject/providers';
 import { Event } from 'abi-coder';
 import { Call } from 'ethcall';
 
@@ -20,7 +19,7 @@ interface Pool {
 
 interface MarketData {
   poolAddress: string;
-  asset: string;
+  asset?: string;
 }
 
 interface Market {
@@ -146,11 +145,15 @@ interface RepaymentClassifier extends BaseClassifier {
   type: 'repayment';
   isValid: (event: Event, address: string, chainId: ChainId) => boolean;
   parse: (market: Market, event: ClassifiedEvent) => Repayment | null;
-  fetchMarket: (
-    chainId: ChainId,
-    provider: Provider,
-    address: string,
-  ) => Promise<MarketData | null>;
+  market: {
+    getCalls: (address: string) => Call[];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    processCalls: (
+      chainId: ChainId,
+      address: string,
+      result: unknown[],
+    ) => MarketData | null;
+  };
 }
 
 interface SeizureClassifier extends BaseClassifier {
@@ -158,11 +161,15 @@ interface SeizureClassifier extends BaseClassifier {
   type: 'seizure';
   isValid: (event: Event, address: string, chainId: ChainId) => boolean;
   parse: (market: Market, event: ClassifiedEvent) => Seizure | null;
-  fetchMarket: (
-    chainId: ChainId,
-    provider: Provider,
-    address: string,
-  ) => Promise<MarketData | null>;
+  market: {
+    getCalls: (address: string) => Call[];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    processCalls: (
+      chainId: ChainId,
+      address: string,
+      result: unknown[],
+    ) => MarketData | null;
+  };
 }
 
 type Classifier =
