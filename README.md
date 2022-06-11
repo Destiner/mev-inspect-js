@@ -14,7 +14,7 @@ While mev-inspect-py is a great resource, I think that there are a few changes c
 
 ## Usage
 
-> This package uses [BigInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt). If you use a bundler, you may want to set target to `es2020`.
+> This package uses [BigInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt). If you use a bundler, you may want to set the build target to `es2020`.
 
 > This package is a pure ESM package. Follow [this guide](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c) for more info.
 
