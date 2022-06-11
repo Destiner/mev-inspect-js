@@ -26,6 +26,8 @@ npm i mev-inspect
 
 TODO. For usage examlples, see [`examples`](./examples/).
 
+Also, see [demo](https://metablock.dev/tools/mev/).
+
 You can run examples using `ts-node`, for example:
 
 ```bash
