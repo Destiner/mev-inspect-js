@@ -1,5 +1,24 @@
-import { Transaction } from './classifier/index.js';
+import { Block, Transaction } from './classifier/index.js';
 import { Arbitrage, BlockMev, Liquidation, Sandwich } from './mev/index.js';
+
+function getBlock(mev: BlockMev): Block | null {
+  if (isArbitrage(mev)) {
+    const arbitrage = mev as Arbitrage;
+    if (arbitrage.swaps.length === 0) {
+      return null;
+    }
+    return arbitrage.swaps[0].block;
+  }
+  if (isLiquidation(mev)) {
+    const liquidation = mev as Liquidation;
+    return liquidation.repayment.block;
+  }
+  if (isSandwich(mev)) {
+    const sandwich = mev as Sandwich;
+    return sandwich.frontSwap.block;
+  }
+  return null;
+}
 
 function getTransaction(mev: BlockMev): Transaction | null {
   if (isArbitrage(mev)) {
@@ -93,6 +112,7 @@ export {
   isLiquidation,
   isSandwich,
   equalWithTolerance,
+  getBlock,
   getTransaction,
   minByAbs,
   groupBy,

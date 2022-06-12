@@ -15,6 +15,7 @@ import {
   TxMev,
 } from './mev/index.js';
 import {
+  getBlock,
   getTransaction,
   isArbitrage,
   isLiquidation,
@@ -34,6 +35,7 @@ export {
   Swap,
   Transfer,
   TxMev,
+  getBlock,
   getTransaction,
   isArbitrage,
   isLiquidation,
