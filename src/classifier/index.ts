@@ -3,6 +3,7 @@ import { Coder, Event } from 'abi-coder';
 import { Log } from '../chain.js';
 
 import {
+  Base,
   Block,
   Classifier,
   LendingProtocol,
@@ -101,6 +102,7 @@ function getClassifiers(): Classifier[] {
 export default classify;
 
 export {
+  Base,
   Block,
   ChainId,
   ClassifiedEvent,

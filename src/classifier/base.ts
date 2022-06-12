@@ -194,6 +194,7 @@ function getLatestPoolTransfer(
 }
 
 export {
+  Base,
   Block,
   Classifier,
   LendingProtocol,

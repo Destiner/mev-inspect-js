@@ -1,40 +1,29 @@
-import { Block, Transaction } from './classifier/index.js';
+import { Base as BaseEvent, Block, Transaction } from './classifier/index.js';
 import { Arbitrage, BlockMev, Liquidation, Sandwich } from './mev/index.js';
 
 function getBlock(mev: BlockMev): Block | null {
-  if (isArbitrage(mev)) {
-    const arbitrage = mev as Arbitrage;
-    if (arbitrage.swaps.length === 0) {
-      return null;
-    }
-    return arbitrage.swaps[0].block;
-  }
-  if (isLiquidation(mev)) {
-    const liquidation = mev as Liquidation;
-    return liquidation.repayment.block;
-  }
-  if (isSandwich(mev)) {
-    const sandwich = mev as Sandwich;
-    return sandwich.frontSwap.block;
-  }
-  return null;
+  return getEvent(mev)?.block || null;
 }
 
 function getTransaction(mev: BlockMev): Transaction | null {
+  return getEvent(mev)?.transaction || null;
+}
+
+function getEvent(mev: BlockMev): BaseEvent | null {
   if (isArbitrage(mev)) {
     const arbitrage = mev as Arbitrage;
     if (arbitrage.swaps.length === 0) {
       return null;
     }
-    return arbitrage.swaps[0].transaction;
+    return arbitrage.swaps[0];
   }
   if (isLiquidation(mev)) {
     const liquidation = mev as Liquidation;
-    return liquidation.repayment.transaction;
+    return liquidation.repayment;
   }
   if (isSandwich(mev)) {
     const sandwich = mev as Sandwich;
-    return sandwich.frontSwap.transaction;
+    return sandwich.frontSwap;
   }
   return null;
 }
