@@ -1,15 +1,15 @@
 import { Base as BaseEvent, Block, Transaction } from './classifier/index.js';
-import { Arbitrage, BlockMev, Liquidation, Sandwich } from './mev/index.js';
+import { Arbitrage, Mev, Liquidation, Sandwich } from './mev/index.js';
 
-function getBlock(mev: BlockMev): Block | null {
+function getBlock(mev: Mev): Block | null {
   return getEvent(mev)?.block || null;
 }
 
-function getTransaction(mev: BlockMev): Transaction | null {
+function getTransaction(mev: Mev): Transaction | null {
   return getEvent(mev)?.transaction || null;
 }
 
-function getEvent(mev: BlockMev): BaseEvent | null {
+function getEvent(mev: Mev): BaseEvent | null {
   if (isArbitrage(mev)) {
     const arbitrage = mev as Arbitrage;
     if (arbitrage.swaps.length === 0) {
@@ -28,15 +28,15 @@ function getEvent(mev: BlockMev): BaseEvent | null {
   return null;
 }
 
-function isArbitrage(mev: BlockMev): boolean {
+function isArbitrage(mev: Mev): boolean {
   return 'arbitrager' in mev;
 }
 
-function isLiquidation(mev: BlockMev): boolean {
+function isLiquidation(mev: Mev): boolean {
   return 'liquidator' in mev;
 }
 
-function isSandwich(mev: BlockMev): boolean {
+function isSandwich(mev: Mev): boolean {
   return 'sandwicher' in mev;
 }
 

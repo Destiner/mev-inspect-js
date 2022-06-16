@@ -8,9 +8,8 @@ import classify, {
 } from './classifier/index.js';
 import { fetchPools, fetchMarkets } from './fetch.js';
 import {
-  BlockMev,
   Liquidation,
-  TxMev,
+  Mev,
   getArbitrages,
   getSeizures,
   getLiquidations,
@@ -32,7 +31,7 @@ class Inspector {
     this.chain = new Chain(provider);
   }
 
-  async tx(hash: string): Promise<TxMev[]> {
+  async tx(hash: string): Promise<Mev[]> {
     const logs = await this.chain.getTransactionLogs(hash);
     const events = classify(this.chainId, logs);
     const swaps = await this.#getSwaps(events);
@@ -41,7 +40,7 @@ class Inspector {
     return [...arbitrages, ...liquidations];
   }
 
-  async block(number: number): Promise<BlockMev[]> {
+  async block(number: number): Promise<Mev[]> {
     const logs = await this.chain.getBlockLogs(number);
     const events = classify(this.chainId, logs);
     const swaps = await this.#getSwaps(events);
@@ -51,10 +50,10 @@ class Inspector {
     return [...arbitrages, ...liquidations, ...sandwiches];
   }
 
-  async receipts(receipts: TransactionReceipt[]): Promise<BlockMev[]> {
+  async receipts(receipts: TransactionReceipt[]): Promise<Mev[]> {
     const logs = this.chain.parseReceipts(receipts);
     const logsByBlock = groupBy(logs, (log) => log.blockNumber.toString());
-    const mev: BlockMev[] = [];
+    const mev: Mev[] = [];
     for (const block in logsByBlock) {
       const blockLogs = logsByBlock[block];
       const events = classify(this.chainId, blockLogs);

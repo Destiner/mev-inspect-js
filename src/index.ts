@@ -7,13 +7,7 @@ import {
   Transfer,
 } from './classifier/index.js';
 import Inspector from './inspector.js';
-import {
-  Arbitrage,
-  BlockMev,
-  Liquidation,
-  Sandwich,
-  TxMev,
-} from './mev/index.js';
+import { Arbitrage, Liquidation, Mev, Sandwich } from './mev/index.js';
 import {
   getBlock,
   getTransaction,
@@ -25,16 +19,15 @@ import {
 export {
   Arbitrage,
   Block,
-  BlockMev,
   ChainId,
   Inspector,
   Liquidation,
+  Mev,
   Repayment,
   Sandwich,
   Seizure,
   Swap,
   Transfer,
-  TxMev,
   getBlock,
   getTransaction,
   isArbitrage,

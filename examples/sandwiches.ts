@@ -1,4 +1,4 @@
-import { BlockMev, Inspector, Sandwich, isSandwich } from '../src/index.js';
+import { Mev, Inspector, Sandwich, isSandwich } from '../src/index.js';
 
 import getProvider from './utils.js';
 
@@ -43,7 +43,7 @@ async function run(): Promise<void> {
   for (const transaction of transactions) {
     const { block, label } = transaction;
     const blockMev = await inspector.block(block);
-    const sandwichMev = blockMev.filter((mev: BlockMev): mev is Sandwich => isSandwich(mev))
+    const sandwichMev = blockMev.filter((mev: Mev): mev is Sandwich => isSandwich(mev))
     console.log(
       `Block { block = ${block}, label = ${label}, mev found = ${sandwichMev.length} }`,
     );

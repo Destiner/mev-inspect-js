@@ -6,16 +6,13 @@ import getSeizures from './seizures.js';
 import getSwaps from './swaps.js';
 import getTransfers from './transfers.js';
 
-type TxMev = Arbitrage | Liquidation;
-
-type BlockMev = TxMev | Sandwich;
+type Mev = Arbitrage | Liquidation | Sandwich;
 
 export {
   Arbitrage,
-  BlockMev,
   Liquidation,
+  Mev,
   Sandwich,
-  TxMev,
   getArbitrages,
   getLiquidations,
   getRepayments,
