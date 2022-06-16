@@ -97,6 +97,9 @@ async function fetchMarkets(
       continue;
     }
     const logCalls = callMap[log.logIndex];
+    if (!logCalls) {
+      continue;
+    }
     const result = [];
     for (let j = 0; j < logCalls.length; j++) {
       result.push(results[i + j]);
