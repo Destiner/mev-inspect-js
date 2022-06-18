@@ -136,6 +136,10 @@ const lendingPools: Record<ChainId, Record<LendingProtocol, LendingPool[]>> = {
         addresses: ['0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b'],
         label: 'Compound V2',
       },
+      {
+        addresses: ['0x3d5bc3c8d13dcb8bf317092d84783c2697ae9258'],
+        label: 'Cream',
+      },
     ],
     AaveV2: [
       {
@@ -149,7 +153,12 @@ const lendingPools: Record<ChainId, Record<LendingProtocol, LendingPool[]>> = {
     AaveV3: [],
   },
   [POLYGON]: {
-    CompoundV2: [],
+    CompoundV2: [
+      {
+        addresses: ['0x20ca53e2395fa571798623f1cfbd11fe2c114c24'],
+        label: 'Cream',
+      },
+    ],
     AaveV2: [
       {
         addresses: ['0x8dff5e27ea6b7ac08ebfdf9eb090f32ee9a30fcf'],
@@ -164,7 +173,12 @@ const lendingPools: Record<ChainId, Record<LendingProtocol, LendingPool[]>> = {
     ],
   },
   [ARBITRUM]: {
-    CompoundV2: [],
+    CompoundV2: [
+      {
+        addresses: ['0xbadac56c9aca307079e8b8fc699987aac89813ee'],
+        label: 'Cream',
+      },
+    ],
     AaveV2: [],
     AaveV3: [
       {

@@ -26,6 +26,10 @@ const transactions: Transaction[] = [
     label: 'Aave V3 liquidation',
     hash: '0x2eae1162064c0560ed72d5bb7b375cee0e22886796a240533c9589fc77dec67b',
   },
+  {
+    label: 'Cream liquidation',
+    hash: '0xe452500d18f4da21d591a8122ad022059d53ec8ce076166d9bd9576791720784',
+  }
 ];
 
 async function run(): Promise<void> {
