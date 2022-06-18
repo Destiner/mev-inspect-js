@@ -30,6 +30,7 @@ import aaveV3Classifiers from './items/aaveV3.js';
 import balancerV1Classifier from './items/balancerV1.js';
 import balancerV2Classifiers from './items/balancerV2.js';
 import compoundV2Classifiers from './items/compoundV2.js';
+import curveV1Classifier from './items/curveV1.js';
 import erc20Classifier from './items/erc20.js';
 import uniswapV2Classifier from './items/uniswapV2.js';
 import uniswapV3Classifier from './items/uniswapV3.js';
@@ -92,6 +93,7 @@ function getClassifiers(): Classifier[] {
   return [
     balancerV1Classifier,
     ...balancerV2Classifiers,
+    curveV1Classifier,
     erc20Classifier,
     uniswapV2Classifier,
     uniswapV3Classifier,

@@ -92,6 +92,12 @@ const swapFactories: Record<ChainId, Record<SwapProtocol, Factory[]>> = {
         label: '0x V4',
       },
     ],
+    CurveV1: [
+      {
+        address: '0xb9fc157394af804a3578134a6585c0dc9cc990d4',
+        label: 'Curve V1',
+      },
+    ],
   },
   [POLYGON]: {
     UniswapV2: [
@@ -124,6 +130,12 @@ const swapFactories: Record<ChainId, Record<SwapProtocol, Factory[]>> = {
         label: '0x V4',
       },
     ],
+    CurveV1: [
+      {
+        address: '0x722272d36ef0da72ff51c5a65db7b870e2e8d4ee',
+        label: 'Curve V1',
+      },
+    ],
   },
   [ARBITRUM]: {
     UniswapV2: [
@@ -147,6 +159,12 @@ const swapFactories: Record<ChainId, Record<SwapProtocol, Factory[]>> = {
     ],
     ZeroExV3: [],
     ZeroExV4: [],
+    CurveV1: [
+      {
+        address: '0xb17b674d9c5cb2e441f8e196a2f048a81355d031',
+        label: 'Curve V1',
+      },
+    ],
   },
 };
 
@@ -225,6 +243,7 @@ const routers: Record<ChainId, Record<SwapProtocol, string[]>> = {
     BalancerV2: ['0xba12222222228d8ba445958a75a0704d566bf2c8'],
     ZeroExV3: [],
     ZeroExV4: [],
+    CurveV1: [],
   },
   [POLYGON]: {
     UniswapV2: ['0x1b02da8cb0d097eb8d57a175b88c7d8b47997506'],
@@ -236,6 +255,7 @@ const routers: Record<ChainId, Record<SwapProtocol, string[]>> = {
     BalancerV2: ['0xba12222222228d8ba445958a75a0704d566bf2c8'],
     ZeroExV3: [],
     ZeroExV4: [],
+    CurveV1: [],
   },
   [ARBITRUM]: {
     UniswapV2: ['0x1b02da8cb0d097eb8d57a175b88c7d8b47997506'],
@@ -247,8 +267,13 @@ const routers: Record<ChainId, Record<SwapProtocol, string[]>> = {
     BalancerV2: ['0xba12222222228d8ba445958a75a0704d566bf2c8'],
     ZeroExV3: [],
     ZeroExV4: [],
+    CurveV1: [],
   },
 };
+
+function getFactories(chainId: ChainId, protocol: SwapProtocol): Factory[] {
+  return swapFactories[chainId][protocol];
+}
 
 function getFactoryByAddress(
   chainId: ChainId,
@@ -310,6 +335,7 @@ export {
   Factory,
   LendingPool,
   nativeAsset,
+  getFactories,
   getFactoryByAddress,
   getPoolByAddress,
   isValidFactory,

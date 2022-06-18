@@ -113,7 +113,8 @@ type SwapProtocol =
   | 'UniswapV2'
   | 'UniswapV3'
   | 'ZeroExV3'
-  | 'ZeroExV4';
+  | 'ZeroExV4'
+  | 'CurveV1';
 
 type LendingProtocol = 'CompoundV2' | 'AaveV2' | 'AaveV3';
 
