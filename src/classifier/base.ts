@@ -135,7 +135,6 @@ interface SwapClassifier extends BaseClassifier {
   ) => Swap | null;
   pool: {
     getCalls: (id: string) => Call[];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     processCalls: (result: unknown[]) => PoolData | null;
   };
 }
@@ -147,7 +146,6 @@ interface RepaymentClassifier extends BaseClassifier {
   parse: (market: Market, event: ClassifiedEvent) => Repayment | null;
   market: {
     getCalls: (address: string) => Call[];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     processCalls: (
       chainId: ChainId,
       address: string,
@@ -163,7 +161,6 @@ interface SeizureClassifier extends BaseClassifier {
   parse: (market: Market, event: ClassifiedEvent) => Seizure | null;
   market: {
     getCalls: (address: string) => Call[];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     processCalls: (
       chainId: ChainId,
       address: string,
