@@ -25,6 +25,7 @@ import {
   isValidPool,
   isKnownRouter,
 } from './directory.js';
+import aaveV1Classifiers from './items/aaveV1.js';
 import aaveV2Classifiers from './items/aaveV2.js';
 import aaveV3Classifiers from './items/aaveV3.js';
 import balancerV1Classifier from './items/balancerV1.js';
@@ -102,6 +103,7 @@ function getClassifiers(): Classifier[] {
     zeroExV3Classifier,
     zeroExV4Classifier,
     ...compoundV2Classifiers,
+    ...aaveV1Classifiers,
     ...aaveV2Classifiers,
     ...aaveV3Classifiers,
   ];

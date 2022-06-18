@@ -117,7 +117,7 @@ type SwapProtocol =
   | 'CurveV1'
   | 'CurveV2';
 
-type LendingProtocol = 'CompoundV2' | 'AaveV2' | 'AaveV3';
+type LendingProtocol = 'CompoundV2' | 'AaveV1' | 'AaveV2' | 'AaveV3';
 
 type Protocol = SwapProtocol | LendingProtocol;
 

@@ -198,6 +198,14 @@ const lendingPools: Record<ChainId, Record<LendingProtocol, LendingPool[]>> = {
         label: 'Cream',
       },
     ],
+    AaveV1: [
+      {
+        addresses: [
+          '0x398ec7346dcd622edc5ae82352f02be94c62d119',
+        ],
+        label: 'Aave V1',
+      },
+    ],
     AaveV2: [
       {
         addresses: [
@@ -216,6 +224,7 @@ const lendingPools: Record<ChainId, Record<LendingProtocol, LendingPool[]>> = {
         label: 'Cream',
       },
     ],
+    AaveV1: [],
     AaveV2: [
       {
         addresses: ['0x8dff5e27ea6b7ac08ebfdf9eb090f32ee9a30fcf'],
@@ -236,6 +245,7 @@ const lendingPools: Record<ChainId, Record<LendingProtocol, LendingPool[]>> = {
         label: 'Cream',
       },
     ],
+    AaveV1: [],
     AaveV2: [],
     AaveV3: [
       {
