@@ -2,7 +2,7 @@ import { BigNumber } from '@ethersproject/bignumber';
 import { Event } from 'abi-coder';
 import { Call } from 'ethcall';
 
-import exchangeAbi from '../../abi/zeroExV3.js';
+import poolAbi from '../../abi/curveV1.js';
 import { Classifier, Pool, PoolData, Swap } from '../base.js';
 import { ChainId, getFactories } from '../directory.js';
 import { ClassifiedEvent } from '../index.js';
@@ -677,7 +677,7 @@ const pools: CurvePool[] = [
 const CLASSIFIER: Classifier = {
   type: 'swap',
   protocol: 'CurveV1',
-  abi: exchangeAbi,
+  abi: poolAbi,
   isValid,
   parse,
   pool: {
