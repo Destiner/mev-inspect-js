@@ -19,6 +19,10 @@ const transactions: Transaction[] = [
     hash: '0x02a100bfcc45a40b1d4fda92d6c17acb420d4fee8bc2b5bac3fa4650bf7d5093',
   },
   {
+    label: 'Aave V1',
+    hash: '0xc49cb9f67aa4fa39149cb938b3cd3c95bcffebb3adabfd1db7a60b66317474cf',
+  },
+  {
     label: 'Aave V2',
     hash: '0x580a2d8d142207a50636b74d41feca1774b106143c536078ca80de000f83f3d8',
   },
