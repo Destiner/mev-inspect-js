@@ -62,6 +62,14 @@ const transactions: Transaction[] = [
     label: 'Balancer V1 X Balancer V2 arbitrage',
     hash: '0x486bc5218470355cbb40bed89a7df8283d08e95034fa6788c4c406b7e1ec2125',
   },
+  {
+    label: '0x V3 x Uniswap V2 arbitrage',
+    hash: '0xa6305bc0474f57c06e8e9b90c8847703ef65a4e2ffcbe8ad6089fdd914788d9a',
+  },
+  {
+    label: '0x V4 x Uniswap V2 arbitrage',
+    hash: '0x95eca1930c031a682277ad13ab3822cc02903779d2cf5c38622d50cd30094eee',
+  },
   // {
   //   label: 'CoW trade, TBD',
   //   hash: '0x7f3217772fe64386dc7c3fbd1e809660c669969405a3b6fca1dcfd6b1dc55fe7',
