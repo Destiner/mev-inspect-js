@@ -19,6 +19,10 @@ const transactions: Transaction[] = [
     hash: '0x0beab997294942e83fa3f1328562fcf1ce8299470f5351a63d7f385c2becbf48',
   },
   {
+    label: 'Curve V2: simple swap',
+    hash: '0xabeb95a11ae16f5a2b953d68e690ae218d6b90e06e3f1a134378c5aeeb8c1483',
+  },
+  {
     label: 'Uniswap V2: multipath',
     hash: '0xd4ddb9ff1d8368dad9f3710d513021b093f303e02c7169467c0badcf6f44231b',
   },
@@ -69,6 +73,10 @@ const transactions: Transaction[] = [
   {
     label: '0x V4 x Uniswap V2 arbitrage',
     hash: '0x95eca1930c031a682277ad13ab3822cc02903779d2cf5c38622d50cd30094eee',
+  },
+  {
+    label: 'Uniswap V3 x Curve V1 arbitrage',
+    hash: '0x3b5eedd170e871df9b2d3cd01098178088946a642074f0bc6ff49c21fd25eeb6',
   },
   // {
   //   label: 'CoW trade, TBD',
