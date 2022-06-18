@@ -48,7 +48,7 @@ async function fetchPools(
       result.push(results[i + j]);
     }
     i += logCalls.length;
-    const poolData = log.classifier.pool.processCalls(result);
+    const poolData = log.classifier.pool.processCalls(result, log.address);
     if (!poolData) {
       continue;
     }

@@ -80,6 +80,12 @@ const swapFactories: Record<ChainId, Record<SwapProtocol, Factory[]>> = {
         label: 'Balancer V2',
       },
     ],
+    ZeroExV3: [
+      {
+        address: '0x61935cbdd02287b511119ddb11aeb42f1593b7ef',
+        label: '0x V3',
+      },
+    ],
   },
   [POLYGON]: {
     UniswapV2: [
@@ -105,6 +111,7 @@ const swapFactories: Record<ChainId, Record<SwapProtocol, Factory[]>> = {
         label: 'Balancer V2',
       },
     ],
+    ZeroExV3: [],
   },
   [ARBITRUM]: {
     UniswapV2: [
@@ -126,6 +133,7 @@ const swapFactories: Record<ChainId, Record<SwapProtocol, Factory[]>> = {
         label: 'Balancer V2',
       },
     ],
+    ZeroExV3: [],
   },
 };
 
@@ -202,6 +210,7 @@ const routers: Record<ChainId, Record<SwapProtocol, string[]>> = {
     ],
     BalancerV1: [],
     BalancerV2: ['0xba12222222228d8ba445958a75a0704d566bf2c8'],
+    ZeroExV3: [],
   },
   [POLYGON]: {
     UniswapV2: ['0x1b02da8cb0d097eb8d57a175b88c7d8b47997506'],
@@ -211,6 +220,7 @@ const routers: Record<ChainId, Record<SwapProtocol, string[]>> = {
     ],
     BalancerV1: [],
     BalancerV2: ['0xba12222222228d8ba445958a75a0704d566bf2c8'],
+    ZeroExV3: [],
   },
   [ARBITRUM]: {
     UniswapV2: ['0x1b02da8cb0d097eb8d57a175b88c7d8b47997506'],
@@ -220,6 +230,7 @@ const routers: Record<ChainId, Record<SwapProtocol, string[]>> = {
     ],
     BalancerV1: [],
     BalancerV2: ['0xba12222222228d8ba445958a75a0704d566bf2c8'],
+    ZeroExV3: [],
   },
 };
 

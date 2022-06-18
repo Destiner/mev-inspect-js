@@ -33,6 +33,7 @@ import compoundV2Classifiers from './items/compoundV2.js';
 import erc20Classifier from './items/erc20.js';
 import uniswapV2Classifier from './items/uniswapV2.js';
 import uniswapV3Classifier from './items/uniswapV3.js';
+import zeroExV3Classifier from './items/zeroExV3.js';
 
 interface ClassifiedEvent extends Event {
   address: string;
@@ -93,6 +94,7 @@ function getClassifiers(): Classifier[] {
     erc20Classifier,
     uniswapV2Classifier,
     uniswapV3Classifier,
+    zeroExV3Classifier,
     ...compoundV2Classifiers,
     ...aaveV2Classifiers,
     ...aaveV3Classifiers,

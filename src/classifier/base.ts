@@ -107,7 +107,12 @@ interface Seizure extends Base {
   amount: bigint;
 }
 
-type SwapProtocol = 'BalancerV1' | 'BalancerV2' | 'UniswapV2' | 'UniswapV3';
+type SwapProtocol =
+  | 'BalancerV1'
+  | 'BalancerV2'
+  | 'UniswapV2'
+  | 'UniswapV3'
+  | 'ZeroExV3';
 
 type LendingProtocol = 'CompoundV2' | 'AaveV2' | 'AaveV3';
 
@@ -135,7 +140,7 @@ interface SwapClassifier extends BaseClassifier {
   ) => Swap | null;
   pool: {
     getCalls: (id: string) => Call[];
-    processCalls: (result: unknown[]) => PoolData | null;
+    processCalls: (result: unknown[], address: string) => PoolData | null;
   };
 }
 
