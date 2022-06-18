@@ -144,7 +144,6 @@ const abi = [
     name: 'A',
     inputs: [],
     outputs: [{ name: '', type: 'uint256' }],
-    gas: 10374,
   },
   {
     stateMutability: 'view',
@@ -152,7 +151,6 @@ const abi = [
     name: 'A_precise',
     inputs: [],
     outputs: [{ name: '', type: 'uint256' }],
-    gas: 10336,
   },
   {
     stateMutability: 'view',
@@ -160,7 +158,6 @@ const abi = [
     name: 'get_virtual_price',
     inputs: [],
     outputs: [{ name: '', type: 'uint256' }],
-    gas: 2070135,
   },
   {
     stateMutability: 'view',
@@ -168,7 +165,6 @@ const abi = [
     name: 'get_virtual_price_2',
     inputs: [],
     outputs: [{ name: '', type: 'uint256' }],
-    gas: 2295357,
   },
   {
     stateMutability: 'view',
@@ -179,7 +175,6 @@ const abi = [
       { name: '_is_deposit', type: 'bool' },
     ],
     outputs: [{ name: '', type: 'uint256' }],
-    gas: 4038330,
   },
   {
     stateMutability: 'nonpayable',
@@ -190,7 +185,6 @@ const abi = [
       { name: '_min_mint_amount', type: 'uint256' },
     ],
     outputs: [{ name: '', type: 'uint256' }],
-    gas: 6231201,
   },
   {
     stateMutability: 'view',
@@ -202,7 +196,6 @@ const abi = [
       { name: '_dx', type: 'uint256' },
     ],
     outputs: [{ name: '', type: 'uint256' }],
-    gas: 2483148,
   },
   {
     stateMutability: 'view',
@@ -214,7 +207,6 @@ const abi = [
       { name: '_dx', type: 'uint256' },
     ],
     outputs: [{ name: '', type: 'uint256' }],
-    gas: 2494262,
   },
   {
     stateMutability: 'nonpayable',
@@ -227,7 +219,6 @@ const abi = [
       { name: '_min_dy', type: 'uint256' },
     ],
     outputs: [{ name: '', type: 'uint256' }],
-    gas: 2723828,
   },
   {
     stateMutability: 'nonpayable',
@@ -240,7 +231,6 @@ const abi = [
       { name: '_min_dy', type: 'uint256' },
     ],
     outputs: [{ name: '', type: 'uint256' }],
-    gas: 2754318,
   },
   {
     stateMutability: 'nonpayable',
@@ -251,7 +241,6 @@ const abi = [
       { name: '_min_amounts', type: 'uint256[2]' },
     ],
     outputs: [{ name: '', type: 'uint256[2]' }],
-    gas: 174423,
   },
   {
     stateMutability: 'nonpayable',
@@ -262,7 +251,6 @@ const abi = [
       { name: '_max_burn_amount', type: 'uint256' },
     ],
     outputs: [{ name: '', type: 'uint256' }],
-    gas: 6216452,
   },
   {
     stateMutability: 'view',
@@ -273,7 +261,6 @@ const abi = [
       { name: 'i', type: 'int128' },
     ],
     outputs: [{ name: '', type: 'uint256' }],
-    gas: 8658,
   },
   {
     stateMutability: 'nonpayable',
@@ -285,7 +272,6 @@ const abi = [
       { name: '_min_amount', type: 'uint256' },
     ],
     outputs: [{ name: '', type: 'uint256' }],
-    gas: 4009643,
   },
   {
     stateMutability: 'nonpayable',
@@ -296,7 +282,6 @@ const abi = [
       { name: '_future_time', type: 'uint256' },
     ],
     outputs: [],
-    gas: 159429,
   },
   {
     stateMutability: 'nonpayable',
@@ -304,7 +289,6 @@ const abi = [
     name: 'stop_ramp_A',
     inputs: [],
     outputs: [],
-    gas: 154890,
   },
   {
     stateMutability: 'nonpayable',
@@ -315,7 +299,6 @@ const abi = [
       { name: '_new_admin_fee', type: 'uint256' },
     ],
     outputs: [],
-    gas: 112848,
   },
   {
     stateMutability: 'nonpayable',
@@ -323,7 +306,6 @@ const abi = [
     name: 'apply_new_fee',
     inputs: [],
     outputs: [],
-    gas: 103529,
   },
   {
     stateMutability: 'nonpayable',
@@ -331,7 +313,6 @@ const abi = [
     name: 'revert_new_parameters',
     inputs: [],
     outputs: [],
-    gas: 22982,
   },
   {
     stateMutability: 'nonpayable',
@@ -339,7 +320,6 @@ const abi = [
     name: 'commit_transfer_ownership',
     inputs: [{ name: '_owner', type: 'address' }],
     outputs: [],
-    gas: 77020,
   },
   {
     stateMutability: 'nonpayable',
@@ -347,7 +327,6 @@ const abi = [
     name: 'apply_transfer_ownership',
     inputs: [],
     outputs: [],
-    gas: 65697,
   },
   {
     stateMutability: 'nonpayable',
@@ -355,7 +334,6 @@ const abi = [
     name: 'revert_transfer_ownership',
     inputs: [],
     outputs: [],
-    gas: 23072,
   },
   {
     stateMutability: 'view',
@@ -363,7 +341,6 @@ const abi = [
     name: 'admin_balances',
     inputs: [{ name: 'i', type: 'uint256' }],
     outputs: [{ name: '', type: 'uint256' }],
-    gas: 7928,
   },
   {
     stateMutability: 'nonpayable',
@@ -371,7 +348,6 @@ const abi = [
     name: 'withdraw_admin_fees',
     inputs: [],
     outputs: [],
-    gas: 22177,
   },
   {
     stateMutability: 'nonpayable',
@@ -379,7 +355,6 @@ const abi = [
     name: 'kill_me',
     inputs: [],
     outputs: [],
-    gas: 40355,
   },
   {
     stateMutability: 'nonpayable',
@@ -387,7 +362,6 @@ const abi = [
     name: 'unkill_me',
     inputs: [],
     outputs: [],
-    gas: 23192,
   },
   {
     stateMutability: 'view',
@@ -395,7 +369,6 @@ const abi = [
     name: 'coins',
     inputs: [{ name: 'arg0', type: 'uint256' }],
     outputs: [{ name: '', type: 'address' }],
-    gas: 3277,
   },
   {
     stateMutability: 'view',
@@ -403,7 +376,6 @@ const abi = [
     name: 'balances',
     inputs: [{ name: 'arg0', type: 'uint256' }],
     outputs: [{ name: '', type: 'uint256' }],
-    gas: 3307,
   },
   {
     stateMutability: 'view',
@@ -411,7 +383,6 @@ const abi = [
     name: 'fee',
     inputs: [],
     outputs: [{ name: '', type: 'uint256' }],
-    gas: 3228,
   },
   {
     stateMutability: 'view',
@@ -419,7 +390,6 @@ const abi = [
     name: 'admin_fee',
     inputs: [],
     outputs: [{ name: '', type: 'uint256' }],
-    gas: 3258,
   },
   {
     stateMutability: 'view',
@@ -427,7 +397,6 @@ const abi = [
     name: 'owner',
     inputs: [],
     outputs: [{ name: '', type: 'address' }],
-    gas: 3288,
   },
   {
     stateMutability: 'view',
@@ -435,7 +404,6 @@ const abi = [
     name: 'lp_token',
     inputs: [],
     outputs: [{ name: '', type: 'address' }],
-    gas: 3318,
   },
   {
     stateMutability: 'view',
@@ -443,7 +411,6 @@ const abi = [
     name: 'redemption_price_snap',
     inputs: [],
     outputs: [{ name: '', type: 'address' }],
-    gas: 3348,
   },
   {
     stateMutability: 'view',
@@ -451,7 +418,6 @@ const abi = [
     name: 'base_pool',
     inputs: [],
     outputs: [{ name: '', type: 'address' }],
-    gas: 3378,
   },
   {
     stateMutability: 'view',
@@ -459,7 +425,6 @@ const abi = [
     name: 'base_virtual_price',
     inputs: [],
     outputs: [{ name: '', type: 'uint256' }],
-    gas: 3408,
   },
   {
     stateMutability: 'view',
@@ -467,7 +432,6 @@ const abi = [
     name: 'base_cache_updated',
     inputs: [],
     outputs: [{ name: '', type: 'uint256' }],
-    gas: 3438,
   },
   {
     stateMutability: 'view',
@@ -475,7 +439,6 @@ const abi = [
     name: 'base_coins',
     inputs: [{ name: 'arg0', type: 'uint256' }],
     outputs: [{ name: '', type: 'address' }],
-    gas: 3577,
   },
   {
     stateMutability: 'view',
@@ -483,7 +446,6 @@ const abi = [
     name: 'initial_A',
     inputs: [],
     outputs: [{ name: '', type: 'uint256' }],
-    gas: 3498,
   },
   {
     stateMutability: 'view',
@@ -491,7 +453,6 @@ const abi = [
     name: 'future_A',
     inputs: [],
     outputs: [{ name: '', type: 'uint256' }],
-    gas: 3528,
   },
   {
     stateMutability: 'view',
@@ -499,7 +460,6 @@ const abi = [
     name: 'initial_A_time',
     inputs: [],
     outputs: [{ name: '', type: 'uint256' }],
-    gas: 3558,
   },
   {
     stateMutability: 'view',
@@ -507,7 +467,6 @@ const abi = [
     name: 'future_A_time',
     inputs: [],
     outputs: [{ name: '', type: 'uint256' }],
-    gas: 3588,
   },
   {
     stateMutability: 'view',
@@ -515,7 +474,6 @@ const abi = [
     name: 'admin_actions_deadline',
     inputs: [],
     outputs: [{ name: '', type: 'uint256' }],
-    gas: 3618,
   },
   {
     stateMutability: 'view',
@@ -523,7 +481,6 @@ const abi = [
     name: 'transfer_ownership_deadline',
     inputs: [],
     outputs: [{ name: '', type: 'uint256' }],
-    gas: 3648,
   },
   {
     stateMutability: 'view',
@@ -531,7 +488,6 @@ const abi = [
     name: 'future_fee',
     inputs: [],
     outputs: [{ name: '', type: 'uint256' }],
-    gas: 3678,
   },
   {
     stateMutability: 'view',
@@ -539,7 +495,6 @@ const abi = [
     name: 'future_admin_fee',
     inputs: [],
     outputs: [{ name: '', type: 'uint256' }],
-    gas: 3708,
   },
   {
     stateMutability: 'view',
@@ -547,7 +502,6 @@ const abi = [
     name: 'future_owner',
     inputs: [],
     outputs: [{ name: '', type: 'address' }],
-    gas: 3738,
   },
 ];
 
