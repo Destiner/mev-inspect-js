@@ -98,6 +98,12 @@ const swapFactories: Record<ChainId, Record<SwapProtocol, Factory[]>> = {
         label: 'Curve V1',
       },
     ],
+    CurveV2: [
+      {
+        address: '0xb9fc157394af804a3578134a6585c0dc9cc990d4',
+        label: 'Curve V2',
+      },
+    ],
   },
   [POLYGON]: {
     UniswapV2: [
@@ -136,6 +142,12 @@ const swapFactories: Record<ChainId, Record<SwapProtocol, Factory[]>> = {
         label: 'Curve V1',
       },
     ],
+    CurveV2: [
+      {
+        address: '0x722272d36ef0da72ff51c5a65db7b870e2e8d4ee',
+        label: 'Curve V2',
+      },
+    ],
   },
   [ARBITRUM]: {
     UniswapV2: [
@@ -163,6 +175,12 @@ const swapFactories: Record<ChainId, Record<SwapProtocol, Factory[]>> = {
       {
         address: '0xb17b674d9c5cb2e441f8e196a2f048a81355d031',
         label: 'Curve V1',
+      },
+    ],
+    CurveV2: [
+      {
+        address: '0xb17b674d9c5cb2e441f8e196a2f048a81355d031',
+        label: 'Curve V2',
       },
     ],
   },
@@ -244,6 +262,7 @@ const routers: Record<ChainId, Record<SwapProtocol, string[]>> = {
     ZeroExV3: [],
     ZeroExV4: [],
     CurveV1: [],
+    CurveV2: [],
   },
   [POLYGON]: {
     UniswapV2: ['0x1b02da8cb0d097eb8d57a175b88c7d8b47997506'],
@@ -256,6 +275,7 @@ const routers: Record<ChainId, Record<SwapProtocol, string[]>> = {
     ZeroExV3: [],
     ZeroExV4: [],
     CurveV1: [],
+    CurveV2: [],
   },
   [ARBITRUM]: {
     UniswapV2: ['0x1b02da8cb0d097eb8d57a175b88c7d8b47997506'],
@@ -268,6 +288,7 @@ const routers: Record<ChainId, Record<SwapProtocol, string[]>> = {
     ZeroExV3: [],
     ZeroExV4: [],
     CurveV1: [],
+    CurveV2: [],
   },
 };
 
