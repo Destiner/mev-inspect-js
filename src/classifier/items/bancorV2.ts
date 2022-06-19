@@ -35,8 +35,8 @@ function parse(pool: Pool, event: ClassifiedEvent): Swap | null {
     blockNumber,
   } = event;
 
-  const fromToken = (values.fromToken as string).toLowerCase();
-  const toToken = (values.toToken as string).toLowerCase();
+  const fromToken = normalizeAsset((values.fromToken as string).toLowerCase());
+  const toToken = normalizeAsset((values.toToken as string).toLowerCase());
   const fromAmount = (values.fromAmount as BigNumber).toBigInt();
   const toAmount = (values.toAmount as BigNumber).toBigInt();
   const trader = (values.trader as string).toLowerCase();
@@ -76,6 +76,13 @@ function parse(pool: Pool, event: ClassifiedEvent): Swap | null {
     assetOut,
     amountOut,
   };
+}
+
+function normalizeAsset(asset: string): string {
+  if (asset == '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee') {
+    return '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2';
+  }
+  return asset;
 }
 
 const CLASSIFIER: Classifier = {
