@@ -1,10 +1,11 @@
 import { SwapProtocol, LendingProtocol } from './base.js';
 
 const ETHEREUM = 1;
+const OPTIMISM = 10;
 const POLYGON = 137;
 const ARBITRUM = 42161;
 
-type ChainId = typeof ETHEREUM | typeof POLYGON | typeof ARBITRUM;
+type ChainId = typeof ETHEREUM | typeof OPTIMISM | typeof POLYGON | typeof ARBITRUM;
 
 interface Factory {
   label: string;
@@ -18,6 +19,7 @@ interface LendingPool {
 
 const nativeAsset: Record<ChainId, string> = {
   [ETHEREUM]: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+  [OPTIMISM]: '0x4200000000000000000000000000000000000006',
   [POLYGON]: '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270',
   [ARBITRUM]: '0x82af49447d8a07e3bd95bd0d56f35241523fbab1',
 };
@@ -116,6 +118,30 @@ const swapFactories: Record<ChainId, Record<SwapProtocol, Factory[]>> = {
         label: 'Bancor V3',
       },
     ],
+  },
+  [OPTIMISM]: {
+    UniswapV2: [{
+      address: '0x8bcedd62dd46f1a76f8a1633d4f5b76e0cda521e',
+      label: 'ZipSwap',
+    }],
+    UniswapV3: [{
+      address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+      label: 'Uniswap V3',
+    }],
+    BalancerV1: [],
+    BalancerV2: [{
+      address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+      label: 'Beethoven',
+    }],
+    ZeroExV3: [],
+    ZeroExV4: [{
+      address: '0xdef1abe32c034e558cdd535791643c58a13acc10',
+      label: '0x V4',
+    }],
+    CurveV1: [], // TODO
+    CurveV2: [], // TODO
+    BancorV2: [],
+    BancorV3: [],
   },
   [POLYGON]: {
     UniswapV2: [
@@ -231,6 +257,15 @@ const lendingPools: Record<ChainId, Record<LendingProtocol, LendingPool[]>> = {
     ],
     AaveV3: [],
   },
+  [OPTIMISM]: {
+    CompoundV2: [],
+    AaveV1: [],
+    AaveV2: [],
+    AaveV3: [{
+      addresses: ['0x794a61358d6845594f94dc1db02a252b5b4814ad'],
+      label: 'Aave V3',
+    }],
+  },
   [POLYGON]: {
     CompoundV2: [
       {
@@ -277,6 +312,21 @@ const routers: Record<ChainId, Record<SwapProtocol, string[]>> = {
       '0x7a250d5630b4cf539739df2c5dacb4c659f2488d',
       '0xd9e1ce17f2641f24ae83637ab66a2cca9c378b9f',
     ],
+    UniswapV3: [
+      '0xe592427a0aece92de3edee1f18e0157c05861564',
+      '0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45',
+    ],
+    BalancerV1: [],
+    BalancerV2: ['0xba12222222228d8ba445958a75a0704d566bf2c8'],
+    ZeroExV3: [],
+    ZeroExV4: [],
+    CurveV1: [],
+    CurveV2: [],
+    BancorV2: [],
+    BancorV3: [],
+  },
+  [OPTIMISM]: {
+    UniswapV2: [],
     UniswapV3: [
       '0xe592427a0aece92de3edee1f18e0157c05861564',
       '0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45',
