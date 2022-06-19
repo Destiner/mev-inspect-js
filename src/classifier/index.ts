@@ -31,6 +31,7 @@ import aaveV3Classifiers from './items/aaveV3.js';
 import balancerV1Classifier from './items/balancerV1.js';
 import balancerV2Classifiers from './items/balancerV2.js';
 import bancorV2Classifier from './items/bancorV2.js';
+import bancorV3Classifier from './items/bancorV3.js';
 import compoundV2Classifiers from './items/compoundV2.js';
 import curveV1Classifier from './items/curveV1.js';
 import curveV2Classifier from './items/curveV2.js';
@@ -97,6 +98,7 @@ function getClassifiers(): Classifier[] {
     balancerV1Classifier,
     ...balancerV2Classifiers,
     bancorV2Classifier,
+    bancorV3Classifier,
     curveV1Classifier,
     curveV2Classifier,
     erc20Classifier,

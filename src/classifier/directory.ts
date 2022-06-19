@@ -110,6 +110,12 @@ const swapFactories: Record<ChainId, Record<SwapProtocol, Factory[]>> = {
         label: 'Bancor V2',
       },
     ],
+    BancorV3: [
+      {
+        address: '0xeef417e1d5cc832e619ae18d2f140de2999dd4fb',
+        label: 'Bancor V3',
+      },
+    ],
   },
   [POLYGON]: {
     UniswapV2: [
@@ -155,6 +161,7 @@ const swapFactories: Record<ChainId, Record<SwapProtocol, Factory[]>> = {
       },
     ],
     BancorV2: [],
+    BancorV3: [],
   },
   [ARBITRUM]: {
     UniswapV2: [
@@ -191,6 +198,7 @@ const swapFactories: Record<ChainId, Record<SwapProtocol, Factory[]>> = {
       },
     ],
     BancorV2: [],
+    BancorV3: [],
   },
 };
 
@@ -280,6 +288,7 @@ const routers: Record<ChainId, Record<SwapProtocol, string[]>> = {
     CurveV1: [],
     CurveV2: [],
     BancorV2: [],
+    BancorV3: [],
   },
   [POLYGON]: {
     UniswapV2: ['0x1b02da8cb0d097eb8d57a175b88c7d8b47997506'],
@@ -294,6 +303,7 @@ const routers: Record<ChainId, Record<SwapProtocol, string[]>> = {
     CurveV1: [],
     CurveV2: [],
     BancorV2: [],
+    BancorV3: [],
   },
   [ARBITRUM]: {
     UniswapV2: ['0x1b02da8cb0d097eb8d57a175b88c7d8b47997506'],
@@ -308,6 +318,7 @@ const routers: Record<ChainId, Record<SwapProtocol, string[]>> = {
     CurveV1: [],
     CurveV2: [],
     BancorV2: [],
+    BancorV3: [],
   },
 };
 

@@ -116,7 +116,8 @@ type SwapProtocol =
   | 'ZeroExV4'
   | 'CurveV1'
   | 'CurveV2'
-  | 'BancorV2';
+  | 'BancorV2'
+  | 'BancorV3';
 
 type LendingProtocol = 'CompoundV2' | 'AaveV1' | 'AaveV2' | 'AaveV3';
 
