@@ -35,8 +35,12 @@ function parse(pool: Pool, event: ClassifiedEvent): Swap | null {
     blockNumber,
   } = event;
 
-  const sourceToken = normalizeAsset((values.sourceToken as string).toLowerCase());
-  const targetToken = normalizeAsset((values.targetToken as string).toLowerCase());
+  const sourceToken = normalizeAsset(
+    (values.sourceToken as string).toLowerCase(),
+  );
+  const targetToken = normalizeAsset(
+    (values.targetToken as string).toLowerCase(),
+  );
   const sourceAmount = (values.sourceAmount as BigNumber).toBigInt();
   const targetAmount = (values.targetAmount as BigNumber).toBigInt();
   const trader = (values.trader as string).toLowerCase();
