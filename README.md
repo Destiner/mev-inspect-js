@@ -37,8 +37,3 @@ npx ts-node --esm examples/arbitrage.ts
 ## How it works
 
 It starts by fetching all event logs for a given transaction or block. Then, it "sorts" logs based on their source and type. From those logs, it extracts swap data. It then analyzes the swaps to find arbitrage.
-
-## Status
-
-The project is experimental. Currently, arbitrage, liquidations, and sandwiches are detected. Expect API to have breaking changes.
-
