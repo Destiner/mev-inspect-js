@@ -4,8 +4,14 @@ const ETHEREUM = 1;
 const OPTIMISM = 10;
 const POLYGON = 137;
 const ARBITRUM = 42161;
+const AVALANCHE = 43114;
 
-type ChainId = typeof ETHEREUM | typeof OPTIMISM | typeof POLYGON | typeof ARBITRUM;
+type ChainId =
+  | typeof ETHEREUM
+  | typeof OPTIMISM
+  | typeof POLYGON
+  | typeof ARBITRUM
+  | typeof AVALANCHE;
 
 interface Factory {
   label: string;
@@ -22,6 +28,7 @@ const nativeAsset: Record<ChainId, string> = {
   [OPTIMISM]: '0x4200000000000000000000000000000000000006',
   [POLYGON]: '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270',
   [ARBITRUM]: '0x82af49447d8a07e3bd95bd0d56f35241523fbab1',
+  [AVALANCHE]: '0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7',
 };
 
 const swapFactories: Record<ChainId, Record<SwapProtocol, Factory[]>> = {
@@ -120,24 +127,32 @@ const swapFactories: Record<ChainId, Record<SwapProtocol, Factory[]>> = {
     ],
   },
   [OPTIMISM]: {
-    UniswapV2: [{
-      address: '0x8bcedd62dd46f1a76f8a1633d4f5b76e0cda521e',
-      label: 'ZipSwap',
-    }],
-    UniswapV3: [{
-      address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
-      label: 'Uniswap V3',
-    }],
+    UniswapV2: [
+      {
+        address: '0x8bcedd62dd46f1a76f8a1633d4f5b76e0cda521e',
+        label: 'ZipSwap',
+      },
+    ],
+    UniswapV3: [
+      {
+        address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+        label: 'Uniswap V3',
+      },
+    ],
     BalancerV1: [],
-    BalancerV2: [{
-      address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
-      label: 'Beethoven',
-    }],
+    BalancerV2: [
+      {
+        address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        label: 'Beethoven',
+      },
+    ],
     ZeroExV3: [],
-    ZeroExV4: [{
-      address: '0xdef1abe32c034e558cdd535791643c58a13acc10',
-      label: '0x V4',
-    }],
+    ZeroExV4: [
+      {
+        address: '0xdef1abe32c034e558cdd535791643c58a13acc10',
+        label: '0x V4',
+      },
+    ],
     CurveV1: [], // TODO
     CurveV2: [], // TODO
     BancorV2: [],
@@ -226,6 +241,32 @@ const swapFactories: Record<ChainId, Record<SwapProtocol, Factory[]>> = {
     BancorV2: [],
     BancorV3: [],
   },
+  [AVALANCHE]: {
+    UniswapV2: [
+      {
+        address: '0x9ad6c38be94206ca50bb0d90783181662f0cfa10',
+        label: 'Trader Joe',
+      },
+      {
+        address: '0xc0aee478e3658e2610c5f7a4a2e1777ce9e4f2ac',
+        label: 'Sushiswap',
+      },
+    ],
+    UniswapV3: [],
+    BalancerV1: [],
+    BalancerV2: [],
+    ZeroExV3: [],
+    ZeroExV4: [
+      {
+        address: '0xdef1abe32c034e558cdd535791643c58a13acc10',
+        label: '0x V4',
+      },
+    ],
+    CurveV1: [], // TODO
+    CurveV2: [], // TODO
+    BancorV2: [],
+    BancorV3: [],
+  },
 };
 
 const lendingPools: Record<ChainId, Record<LendingProtocol, LendingPool[]>> = {
@@ -261,10 +302,12 @@ const lendingPools: Record<ChainId, Record<LendingProtocol, LendingPool[]>> = {
     CompoundV2: [],
     AaveV1: [],
     AaveV2: [],
-    AaveV3: [{
-      addresses: ['0x794a61358d6845594f94dc1db02a252b5b4814ad'],
-      label: 'Aave V3',
-    }],
+    AaveV3: [
+      {
+        addresses: ['0x794a61358d6845594f94dc1db02a252b5b4814ad'],
+        label: 'Aave V3',
+      },
+    ],
   },
   [POLYGON]: {
     CompoundV2: [
@@ -296,6 +339,22 @@ const lendingPools: Record<ChainId, Record<LendingProtocol, LendingPool[]>> = {
     ],
     AaveV1: [],
     AaveV2: [],
+    AaveV3: [
+      {
+        addresses: ['0x794a61358d6845594f94dc1db02a252b5b4814ad'],
+        label: 'Aave V3',
+      },
+    ],
+  },
+  [AVALANCHE]: {
+    CompoundV2: [],
+    AaveV1: [],
+    AaveV2: [
+      {
+        addresses: ['0x4f01aed16d97e3ab5ab2b501154dc9bb0f1a5a2c'],
+        label: 'Aave V2',
+      },
+    ],
     AaveV3: [
       {
         addresses: ['0x794a61358d6845594f94dc1db02a252b5b4814ad'],
@@ -363,6 +422,21 @@ const routers: Record<ChainId, Record<SwapProtocol, string[]>> = {
     ],
     BalancerV1: [],
     BalancerV2: ['0xba12222222228d8ba445958a75a0704d566bf2c8'],
+    ZeroExV3: [],
+    ZeroExV4: [],
+    CurveV1: [],
+    CurveV2: [],
+    BancorV2: [],
+    BancorV3: [],
+  },
+  [AVALANCHE]: {
+    UniswapV2: [
+      '0x60ae616a2155ee3d9a68541ba4544862310933d4',
+      '0xd9e1ce17f2641f24ae83637ab66a2cca9c378b9f',
+    ],
+    UniswapV3: [],
+    BalancerV1: [],
+    BalancerV2: [],
     ZeroExV3: [],
     ZeroExV4: [],
     CurveV1: [],
