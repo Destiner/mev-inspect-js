@@ -42,8 +42,3 @@ It starts by fetching all event logs for a given transaction or block. Then, it 
 
 The project is experimental. Currently, arbitrage, liquidations, and sandwiches are detected. Expect API to have breaking changes.
 
-## TODO
-
-- [ ] curve
-- [ ] 0x
-- [ ] nfts
