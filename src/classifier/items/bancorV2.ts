@@ -1,0 +1,93 @@
+import { BigNumber } from '@ethersproject/bignumber';
+import { Event } from 'abi-coder';
+import { Call } from 'ethcall';
+
+import exchangeAbi from '../../abi/bancorV2.js';
+import { Classifier, Pool, PoolData, Swap } from '../base.js';
+import { ClassifiedEvent } from '../index.js';
+
+function isValid(event: Event): boolean {
+  return event.name === 'Conversion';
+}
+
+function getPoolCalls(): Call[] {
+  return [];
+}
+
+function processPoolCalls(
+  _results: unknown[],
+  address: string,
+): PoolData | null {
+  return {
+    factoryAddress: address.toLowerCase(),
+    assets: [],
+  };
+}
+
+function parse(pool: Pool, event: ClassifiedEvent): Swap | null {
+  const {
+    values,
+    transactionHash: hash,
+    gasUsed,
+    logIndex,
+    address,
+    blockHash,
+    blockNumber,
+  } = event;
+
+  const fromToken = (values.fromToken as string).toLowerCase();
+  const toToken = (values.toToken as string).toLowerCase();
+  const fromAmount = (values.fromAmount as BigNumber).toBigInt();
+  const toAmount = (values.toAmount as BigNumber).toBigInt();
+  const trader = (values.trader as string).toLowerCase();
+
+  const from = trader;
+  const to = trader;
+
+  const assetIn = fromToken;
+  const assetOut = toToken;
+  const amountIn = fromAmount;
+  const amountOut = toAmount;
+
+  return {
+    contract: {
+      address,
+      protocol: {
+        abi: 'BancorV2',
+        factory: pool.factory,
+      },
+    },
+    block: {
+      hash: blockHash,
+      number: blockNumber,
+    },
+    transaction: {
+      hash,
+      gasUsed,
+    },
+    event: {
+      address: address.toLowerCase(),
+      logIndex,
+    },
+    from,
+    to,
+    assetIn,
+    amountIn,
+    assetOut,
+    amountOut,
+  };
+}
+
+const CLASSIFIER: Classifier = {
+  type: 'swap',
+  protocol: 'BancorV2',
+  abi: exchangeAbi,
+  isValid,
+  parse,
+  pool: {
+    getCalls: getPoolCalls,
+    processCalls: processPoolCalls,
+  },
+};
+
+export default CLASSIFIER;
