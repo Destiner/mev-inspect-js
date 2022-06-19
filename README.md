@@ -22,6 +22,27 @@ While mev-inspect-py is a great resource, I think that there are a few changes c
 npm i mev-inspect
 ```
 
+## Support
+
+### MEV type
+
+* Arbitrage
+* Liquidations
+* Sandwiches
+
+### Chains
+
+* Ethereum
+* Polygon
+* Arbitrum
+* Optimism
+* Avalanche
+
+### Protocols
+
+* Swaps: Uniswap V2/V3 (+ forks), Balancer V1/V2, Curve V1/V2, 0x V3/V4, Bancor V2/V3
+* Lending: Compound V2 (+ forks), Aave V1/V2/V3
+
 ## Docs
 
 TODO. For usage examlples, see [`examples`](./examples/).
