@@ -19,8 +19,12 @@ const transactions: Transaction[] = [
     hash: '0x0beab997294942e83fa3f1328562fcf1ce8299470f5351a63d7f385c2becbf48',
   },
   {
-    label: 'Curve V2: simple swap',
+    label: 'Curve V2: single swap',
     hash: '0xabeb95a11ae16f5a2b953d68e690ae218d6b90e06e3f1a134378c5aeeb8c1483',
+  },
+  {
+    label: 'Bancor V2: single swap',
+    hash: '0x0a7baae42804053333ef69700807ab6ee39ecfc1f8ea205c037238cf824f5841',
   },
   {
     label: 'Uniswap V2: multipath',
@@ -78,6 +82,10 @@ const transactions: Transaction[] = [
     label: 'Uniswap V3 x Curve V1 arbitrage',
     hash: '0x3b5eedd170e871df9b2d3cd01098178088946a642074f0bc6ff49c21fd25eeb6',
   },
+  {
+    label: 'Bancor V2 x Bancor V3 arbitrage',
+    hash: '0x40b495144e2fa851faf7d433bbaf6062ffba65a6cb290e34c5d1a68ebc97ec06',
+  },
   // {
   //   label: 'CoW trade, TBD',
   //   hash: '0x7f3217772fe64386dc7c3fbd1e809660c669969405a3b6fca1dcfd6b1dc55fe7',
@@ -89,6 +97,10 @@ const transactions: Transaction[] = [
   {
     label: '3 arbitrages 1 transaction',
     hash: '0xa99c50336025abfaf8fa7df3e3617f77c4c99319d1173ce4cc86e730d3eb283a',
+  },
+  {
+    label: 'Mega arbitrage',
+    hash: '0xf1daf4bc6891235d645f31219baef71b63671a506e58f56afe319989591d73d9',
   },
   {
     label: 'DAI profit arbitrage',
