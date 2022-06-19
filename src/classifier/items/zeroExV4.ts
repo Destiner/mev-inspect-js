@@ -3,12 +3,7 @@ import { Event } from 'abi-coder';
 import { Call } from 'ethcall';
 
 import exchangeAbi from '../../abi/zeroExV4.js';
-import {
-  Classifier,
-  Pool,
-  PoolData,
-  Swap,
-} from '../base.js';
+import { Classifier, Pool, PoolData, Swap } from '../base.js';
 import { ClassifiedEvent } from '../index.js';
 
 function isValid(event: Event): boolean {
@@ -19,18 +14,17 @@ function getPoolCalls(): Call[] {
   return [];
 }
 
-function processPoolCalls(_results: unknown[], address: string): PoolData | null {
+function processPoolCalls(
+  _results: unknown[],
+  address: string,
+): PoolData | null {
   return {
     factoryAddress: address.toLowerCase(),
     assets: [],
   };
 }
 
-function parse(
-  pool: Pool,
-  event: ClassifiedEvent,
-): Swap | null {
-
+function parse(pool: Pool, event: ClassifiedEvent): Swap | null {
   const {
     values,
     transactionHash: hash,
@@ -44,8 +38,12 @@ function parse(
   const makerToken = (values.makerToken as string).toLowerCase();
   const takerToken = (values.takerToken as string).toLowerCase();
   const taker = (values.taker as string).toLowerCase();
-  const makerTokenFilledAmount = (values.makerTokenFilledAmount as BigNumber).toBigInt();
-  const takerTokenFilledAmount = (values.takerTokenFilledAmount as BigNumber).toBigInt();
+  const makerTokenFilledAmount = (
+    values.makerTokenFilledAmount as BigNumber
+  ).toBigInt();
+  const takerTokenFilledAmount = (
+    values.takerTokenFilledAmount as BigNumber
+  ).toBigInt();
 
   const from = taker;
   const to = taker;
