@@ -40,6 +40,18 @@ function isSandwich(mev: Mev): boolean {
   return 'sandwicher' in mev;
 }
 
+function getArbitrages(mevList: Mev[]): Arbitrage[] {
+  return mevList.filter((mev): mev is Arbitrage => isArbitrage(mev));
+}
+
+function getLiquidations(mevList: Mev[]): Liquidation[] {
+  return mevList.filter((mev): mev is Liquidation => isLiquidation(mev));
+}
+
+function getSandwiches(mevList: Mev[]): Sandwich[] {
+  return mevList.filter((mev): mev is Sandwich => isSandwich(mev));
+}
+
 function equalWithTolerance(
   firstValue: bigint,
   secondValue: bigint,
@@ -100,6 +112,9 @@ export {
   isArbitrage,
   isLiquidation,
   isSandwich,
+  getArbitrages,
+  getLiquidations,
+  getSandwiches,
   equalWithTolerance,
   getBlock,
   getTransaction,

@@ -11,9 +11,9 @@ import { Arbitrage, Liquidation, Mev, Sandwich } from './mev/index.js';
 import {
   getBlock,
   getTransaction,
-  isArbitrage,
-  isLiquidation,
-  isSandwich,
+  getArbitrages,
+  getLiquidations,
+  getSandwiches,
 } from './utils.js';
 
 export {
@@ -30,7 +30,7 @@ export {
   Transfer,
   getBlock,
   getTransaction,
-  isArbitrage,
-  isLiquidation,
-  isSandwich,
+  getArbitrages,
+  getLiquidations,
+  getSandwiches,
 };
