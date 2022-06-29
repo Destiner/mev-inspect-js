@@ -1,6 +1,7 @@
 import {
   Block,
   ChainId,
+  Protocol,
   Repayment,
   Seizure,
   Swap,
@@ -23,6 +24,7 @@ export {
   Inspector,
   Liquidation,
   Mev,
+  Protocol,
   Repayment,
   Sandwich,
   Seizure,
