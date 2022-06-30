@@ -33,7 +33,7 @@ async function fetchPools(
   const ethcallProvider = new EthcallProvider();
   await ethcallProvider.init(provider);
   const calls = Object.values(callMap).flat();
-  const results = await ethcallProvider.all(calls);
+  const results = await ethcallProvider.tryAll(calls);
   let i = 0;
   for (const log of logs) {
     if (log.classifier.type !== 'swap') {
@@ -93,7 +93,7 @@ async function fetchMarkets(
   const ethcallProvider = new EthcallProvider();
   await ethcallProvider.init(provider);
   const calls = Object.values(callMap).flat();
-  const results = await ethcallProvider.all(calls);
+  const results = await ethcallProvider.tryAll(calls);
   let i = 0;
   for (const log of logs) {
     if (log.classifier.type !== 'repayment') {
