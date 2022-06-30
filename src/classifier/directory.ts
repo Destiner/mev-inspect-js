@@ -454,22 +454,22 @@ function getFactoryByAddress(
   chainId: ChainId,
   protocol: SwapProtocol,
   address: string,
-): Factory {
+): Factory | undefined {
   const protocolFactories = swapFactories[chainId][protocol];
   return protocolFactories.find(
     (factory) => factory.address === address,
-  ) as Factory;
+  );
 }
 
 function getPoolByAddress(
   chainId: ChainId,
   protocol: LendingProtocol,
   address: string,
-): LendingPool {
+): LendingPool | undefined {
   const protocolPools = lendingPools[chainId][protocol];
   return protocolPools.find((pool) =>
     pool.addresses.includes(address),
-  ) as LendingPool;
+  );
 }
 
 function isValidFactory(

@@ -57,6 +57,9 @@ async function fetchPools(
       log.classifier.protocol,
       poolData.factoryAddress,
     );
+    if (!factory) {
+      continue;
+    }
     const pool = {
       address: getPoolAddress(log).toLowerCase(),
       assets: poolData.assets,
@@ -119,6 +122,9 @@ async function fetchMarkets(
       log.classifier.protocol,
       marketData.poolAddress,
     );
+    if (!pool) {
+      continue;
+    }
     const market = {
       address: address.toLowerCase(),
       asset: marketData.asset || address,
