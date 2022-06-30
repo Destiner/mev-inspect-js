@@ -456,9 +456,7 @@ function getFactoryByAddress(
   address: string,
 ): Factory | undefined {
   const protocolFactories = swapFactories[chainId][protocol];
-  return protocolFactories.find(
-    (factory) => factory.address === address,
-  );
+  return protocolFactories.find((factory) => factory.address === address);
 }
 
 function getPoolByAddress(
@@ -467,9 +465,7 @@ function getPoolByAddress(
   address: string,
 ): LendingPool | undefined {
   const protocolPools = lendingPools[chainId][protocol];
-  return protocolPools.find((pool) =>
-    pool.addresses.includes(address),
-  );
+  return protocolPools.find((pool) => pool.addresses.includes(address));
 }
 
 function isValidFactory(
