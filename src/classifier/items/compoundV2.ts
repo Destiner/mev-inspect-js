@@ -31,9 +31,12 @@ function processMarketCalls(
   chainId: ChainId,
   address: string,
   result: unknown[],
-): MarketData {
-  const comptroller = result[0] as string;
-  const underlying = result[1] as string;
+): MarketData | null {
+  const comptroller = result[0] as string | undefined;
+  const underlying = result[1] as string | undefined;
+  if (!comptroller || !underlying) {
+    return null;
+  }
   const cethMarket = CETH_MARKET[comptroller];
   const native = nativeAsset[chainId];
   const asset = address === cethMarket ? native : underlying.toLowerCase();
