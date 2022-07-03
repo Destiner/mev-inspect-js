@@ -1,14 +1,9 @@
 import { Provider, TransactionReceipt } from '@ethersproject/providers';
 
-import Chain from './chain.js';
-import classify, {
-  ChainId,
-  ClassifiedEvent,
-  Swap,
-} from './classifier/index.js';
+import Chain, { Log } from './chain.js';
+import classify, { ChainId } from './classifier/index.js';
 import { fetchPools, fetchMarkets } from './fetch.js';
 import {
-  Liquidation,
   Mev,
   getArbitrages,
   getSeizures,
@@ -33,21 +28,12 @@ class Inspector {
 
   async tx(hash: string): Promise<Mev[]> {
     const logs = await this.chain.getTransactionLogs(hash);
-    const events = classify(this.chainId, logs);
-    const swaps = await this.#getSwaps(events);
-    const arbitrages = getArbitrages(swaps);
-    const liquidations = await this.#getLiquidations(events);
-    return [...arbitrages, ...liquidations];
+    return await this.#getMev(logs);
   }
 
   async block(number: number): Promise<Mev[]> {
     const logs = await this.chain.getBlockLogs(number);
-    const events = classify(this.chainId, logs);
-    const swaps = await this.#getSwaps(events);
-    const arbitrages = getArbitrages(swaps);
-    const liquidations = await this.#getLiquidations(events);
-    const sandwiches = getSandwiches(this.chainId, swaps);
-    return [...arbitrages, ...liquidations, ...sandwiches];
+    return await this.#getMev(logs);
   }
 
   async receipts(receipts: TransactionReceipt[]): Promise<Mev[]> {
@@ -56,12 +42,7 @@ class Inspector {
     const mev: Mev[] = [];
     for (const block in logsByBlock) {
       const blockLogs = logsByBlock[block];
-      const events = classify(this.chainId, blockLogs);
-      const swaps = await this.#getSwaps(events);
-      const arbitrages = getArbitrages(swaps);
-      const liquidations = await this.#getLiquidations(events);
-      const sandwiches = getSandwiches(this.chainId, swaps);
-      const blockMev = [...arbitrages, ...liquidations, ...sandwiches];
+      const blockMev = await this.#getMev(blockLogs);
       for (const mevItem of blockMev) {
         mev.push(mevItem);
       }
@@ -69,17 +50,18 @@ class Inspector {
     return mev;
   }
 
-  async #getSwaps(events: ClassifiedEvent[]): Promise<Swap[]> {
+  async #getMev(logs: Log[]): Promise<Mev[]> {
+    const events = classify(this.chainId, logs);
     const pools = await fetchPools(this.chainId, this.provider, events);
     const transfers = getTransfers(events);
-    return getSwaps(this.chainId, pools, transfers, events);
-  }
-
-  async #getLiquidations(events: ClassifiedEvent[]): Promise<Liquidation[]> {
+    const swaps = getSwaps(this.chainId, pools, transfers, events);
+    const arbitrages = getArbitrages(swaps);
     const markets = await fetchMarkets(this.chainId, this.provider, events);
     const repayments = getRepayments(this.chainId, markets, events);
     const seizures = getSeizures(this.chainId, markets, events);
-    return getLiquidations(repayments, seizures);
+    const liquidations = getLiquidations(repayments, seizures);
+    const sandwiches = getSandwiches(this.chainId, swaps);
+    return [...arbitrages, ...liquidations, ...sandwiches];
   }
 }
 
