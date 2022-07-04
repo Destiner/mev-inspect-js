@@ -4,8 +4,7 @@ import { equalWithTolerance } from '../utils.js';
 interface Arbitrage {
   swaps: Swap[];
   profitAsset: string;
-  startAmount: bigint;
-  endAmount: bigint;
+  profitAmount: bigint;
   arbitrager: string;
 }
 
@@ -40,14 +39,13 @@ function getTransactionArbitrages(swaps: Swap[]): Arbitrage[] {
 
     if (route.length > 0) {
       const arbitrager = route[0].from;
-      const startAmount = route[0].amountIn;
-      const endAmount = route[route.length - 1].amountOut;
+      const profitAmount =
+        route[route.length - 1].amountOut - route[0].amountIn;
       const profitAsset = route[0].assetIn;
 
       const arbitrage = {
         swaps: route,
-        startAmount,
-        endAmount,
+        profitAmount,
         profitAsset,
         arbitrager,
       };
