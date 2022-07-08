@@ -531,6 +531,12 @@ const pools: CurvePool[] = [
       '0xbc6da0fe9ad5f3b0d58160288917aa56653660e9',
       '0x6c3f90f043a72fa612cbac8115ee7e52bde6e490',
     ],
+    metapoolAssets: [
+      '0xbc6da0fe9ad5f3b0d58160288917aa56653660e9',
+      '0x6b175474e89094c44da98b954eedeac495271d0f',
+      '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+      '0xdac17f958d2ee523a2206206994597c13d831ec7',
+    ],
   },
   {
     chainId: 1,
@@ -538,6 +544,12 @@ const pools: CurvePool[] = [
     assets: [
       '0x853d955acef822db058eb8505911ed77f175b99e',
       '0x6c3f90f043a72fa612cbac8115ee7e52bde6e490',
+    ],
+    metapoolAssets: [
+      '0x853d955acef822db058eb8505911ed77f175b99e',
+      '0x6b175474e89094c44da98b954eedeac495271d0f',
+      '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+      '0xdac17f958d2ee523a2206206994597c13d831ec7',
     ],
   },
   {
@@ -547,6 +559,12 @@ const pools: CurvePool[] = [
       '0x0000000000085d4780b73119b644ae5ecd22b376',
       '0x6c3f90f043a72fa612cbac8115ee7e52bde6e490',
     ],
+    metapoolAssets: [
+      '0x0000000000085d4780b73119b644ae5ecd22b376',
+      '0x6b175474e89094c44da98b954eedeac495271d0f',
+      '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+      '0xdac17f958d2ee523a2206206994597c13d831ec7',
+    ],
   },
   {
     chainId: 1,
@@ -555,6 +573,12 @@ const pools: CurvePool[] = [
       '0x5f98805a4e8be255a32880fdec7f6728c6568ba0',
       '0x6c3f90f043a72fa612cbac8115ee7e52bde6e490',
     ],
+    metapoolAssets: [
+      '0x5f98805a4e8be255a32880fdec7f6728c6568ba0',
+      '0x6b175474e89094c44da98b954eedeac495271d0f',
+      '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+      '0xdac17f958d2ee523a2206206994597c13d831ec7',
+    ],
   },
   {
     chainId: 1,
@@ -562,6 +586,12 @@ const pools: CurvePool[] = [
     assets: [
       '0x4fabb145d64652a948d72533023f6e7a623c7c53',
       '0x6c3f90f043a72fa612cbac8115ee7e52bde6e490',
+    ],
+    metapoolAssets: [
+      '0x4fabb145d64652a948d72533023f6e7a623c7c53',
+      '0x6b175474e89094c44da98b954eedeac495271d0f',
+      '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+      '0xdac17f958d2ee523a2206206994597c13d831ec7',
     ],
   },
   {
@@ -578,6 +608,12 @@ const pools: CurvePool[] = [
     assets: [
       '0x99d8a9c45b2eca8864373a26d1459e3dff1e17f3',
       '0x6c3f90f043a72fa612cbac8115ee7e52bde6e490',
+    ],
+    metapoolAssets: [
+      '0x99d8a9c45b2eca8864373a26d1459e3dff1e17f3',
+      '0x6b175474e89094c44da98b954eedeac495271d0f',
+      '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+      '0xdac17f958d2ee523a2206206994597c13d831ec7',
     ],
   },
   {
