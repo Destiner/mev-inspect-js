@@ -306,8 +306,10 @@ describe('MEV: arbitrage', () => {
     expect(arbitrages).toEqual<Arbitrage[]>([
       {
         swaps: [swaps[1], swaps[0]],
-        profitAmount: 183617382456032545n,
-        profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        profit: {
+          amount: 183617382456032545n,
+          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         arbitrager: '0x0000000000005117dd3a72e64a705198753fdd54',
       },
     ]);
@@ -441,8 +443,10 @@ describe('MEV: arbitrage', () => {
     expect(arbitrages).toEqual<Arbitrage[]>([
       {
         swaps,
-        profitAmount: 18733861336038399n,
-        profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        profit: {
+          amount: 18733861336038399n,
+          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         arbitrager: '0x5f62593c70069abb35dfe2b63db969e8906609d6',
       },
     ]);
@@ -516,8 +520,10 @@ describe('MEV: arbitrage', () => {
     expect(arbitragesA).toEqual<Arbitrage[]>([
       {
         swaps: swapsA,
-        profitAmount: 4809343210517221n,
-        profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        profit: {
+          amount: 4809343210517221n,
+          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         arbitrager: '0xab319a82803ea5f8f335dc373ce248008d4f2671',
       },
     ]);
@@ -589,8 +595,10 @@ describe('MEV: arbitrage', () => {
     expect(arbitragesB).toEqual<Arbitrage[]>([
       {
         swaps: swapsB,
-        profitAmount: 49786154912694212n,
-        profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        profit: {
+          amount: 49786154912694212n,
+          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         arbitrager: '0x5aa3393e361c2eb342408559309b3e873cd876d6',
       },
     ]);
@@ -694,8 +702,10 @@ describe('MEV: arbitrage', () => {
     expect(arbitrages).toEqual<Arbitrage[]>([
       {
         swaps,
-        profitAmount: 14072783982930128n,
-        profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        profit: {
+          amount: 14072783982930128n,
+          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         arbitrager: '0x563bdabaa8846ec445b25bfbed88d160890a02ed',
       },
     ]);
@@ -799,8 +809,10 @@ describe('MEV: arbitrage', () => {
     expect(arbitrages).toEqual<Arbitrage[]>([
       {
         swaps,
-        profitAmount: 18775090666896978301n,
-        profitAsset: '0x6b175474e89094c44da98b954eedeac495271d0f',
+        profit: {
+          amount: 18775090666896978301n,
+          asset: '0x6b175474e89094c44da98b954eedeac495271d0f',
+        },
         arbitrager: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
       },
     ]);
@@ -934,14 +946,18 @@ describe('MEV: arbitrage', () => {
     expect(arbitrages).toEqual<Arbitrage[]>([
       {
         swaps: [swaps[1], swaps[0]],
-        profitAmount: 4926551035821438n,
-        profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        profit: {
+          amount: 4926551035821438n,
+          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         arbitrager: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
       },
       {
         swaps: [swaps[2], swaps[3]],
-        profitAmount: 4214644686580526n,
-        profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        profit: {
+          amount: 4214644686580526n,
+          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         arbitrager: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
       },
     ]);
@@ -1045,8 +1061,10 @@ describe('MEV: arbitrage', () => {
     expect(arbitrages).toEqual<Arbitrage[]>([
       {
         swaps,
-        profitAmount: 7124752252369550n,
-        profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        profit: {
+          amount: 7124752252369550n,
+          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         arbitrager: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
       },
     ]);
@@ -1181,8 +1199,10 @@ describe('MEV: arbitrage', () => {
     expect(arbitrages).toEqual<Arbitrage[]>([
       {
         swaps: [swaps[1], swaps[0], swaps[2], swaps[3]],
-        profitAmount: 96796640n,
-        profitAsset: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        profit: {
+          amount: 96796640n,
+          asset: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        },
         arbitrager: '0xeef86c2e49e11345f1a693675df9a38f7d880c8f',
       },
     ]);

@@ -6,8 +6,10 @@ interface Sandwich {
   frontSwap: Swap;
   backSwap: Swap;
   sandwichedSwaps: Swap[];
-  profitAsset: string;
-  profitAmount: bigint;
+  profit: {
+    asset: string;
+    amount: bigint;
+  };
 }
 
 function getSandwiches(chainId: ChainId, swaps: Swap[]): Sandwich[] {
@@ -61,8 +63,10 @@ function getSandwich(
             frontSwap,
             backSwap: otherSwap,
             sandwichedSwaps,
-            profitAsset: frontSwap.assetIn,
-            profitAmount: getProfit(frontSwap, otherSwap),
+            profit: {
+              asset: frontSwap.assetIn,
+              amount: getProfit(frontSwap, otherSwap),
+            },
           };
         }
       }

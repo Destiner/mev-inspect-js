@@ -696,8 +696,10 @@ describe('MEV: arbitrage', () => {
         frontSwap: swapsA[0],
         backSwap: swapsA[1],
         sandwichedSwaps: [swapsA[2]],
-        profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-        profitAmount: 462274893505888255n,
+        profit: {
+          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          amount: 462274893505888255n,
+        },
       },
     ]);
     expect(sandwichesB).toEqual<Sandwich[]>([
@@ -706,8 +708,10 @@ describe('MEV: arbitrage', () => {
         frontSwap: swapsB[0],
         backSwap: swapsB[2],
         sandwichedSwaps: [swapsB[1]],
-        profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-        profitAmount: 7274721688291086400n,
+        profit: {
+          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          amount: 7274721688291086400n,
+        },
       },
     ]);
   });
@@ -814,8 +818,10 @@ describe('MEV: arbitrage', () => {
         frontSwap: swaps[0],
         backSwap: swaps[2],
         sandwichedSwaps: [swaps[1]],
-        profitAsset: '0x16eccfdbb4ee1a85a33f3a9b21175cd7ae753db4',
-        profitAmount: 30737653819415594500n,
+        profit: {
+          asset: '0x16eccfdbb4ee1a85a33f3a9b21175cd7ae753db4',
+          amount: 30737653819415594500n,
+        },
       },
     ]);
   });
@@ -1395,8 +1401,10 @@ describe('MEV: arbitrage', () => {
         frontSwap: swapsA[0],
         backSwap: swapsA[2],
         sandwichedSwaps: [swapsA[1]],
-        profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-        profitAmount: -435805264121293550n,
+        profit: {
+          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          amount: -435805264121293550n,
+        },
       },
     ]);
     expect(sandwichesB).toEqual<Sandwich[]>([
@@ -1405,8 +1413,10 @@ describe('MEV: arbitrage', () => {
         frontSwap: swapsB[0],
         backSwap: swapsB[2],
         sandwichedSwaps: [swapsB[1]],
-        profitAsset: '0x679a0b65a14b06b44a0cc879d92b8bb46a818633',
-        profitAmount: 18596879361898n,
+        profit: {
+          asset: '0x679a0b65a14b06b44a0cc879d92b8bb46a818633',
+          amount: 18596879361898n,
+        },
       },
     ]);
     expect(sandwichesC).toEqual<Sandwich[]>([
@@ -1415,8 +1425,10 @@ describe('MEV: arbitrage', () => {
         frontSwap: swapsC[0],
         backSwap: swapsC[2],
         sandwichedSwaps: [swapsC[1]],
-        profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-        profitAmount: 926384344901922834n,
+        profit: {
+          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          amount: 926384344901922834n,
+        },
       },
     ]);
   });

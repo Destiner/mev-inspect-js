@@ -76,8 +76,10 @@ describe('Utilities', () => {
             },
           },
         ],
-        profitAmount: 183617382456032545n,
-        profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        profit: {
+          amount: 183617382456032545n,
+          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         arbitrager: '0x0000000000005117dd3a72e64a705198753fdd54',
       },
       {
@@ -173,8 +175,10 @@ describe('Utilities', () => {
             },
           },
         ],
-        profitAmount: 18775090666896978301n,
-        profitAsset: '0x6b175474e89094c44da98b954eedeac495271d0f',
+        profit: {
+          amount: 18775090666896978301n,
+          asset: '0x6b175474e89094c44da98b954eedeac495271d0f',
+        },
         arbitrager: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
       },
     ];
@@ -545,8 +549,10 @@ describe('Utilities', () => {
             },
           },
         ],
-        profitAmount: 183617382456032545n,
-        profitAsset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        profit: {
+          amount: 183617382456032545n,
+          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         arbitrager: '0x0000000000005117dd3a72e64a705198753fdd54',
       },
       {
@@ -642,8 +648,10 @@ describe('Utilities', () => {
             },
           },
         ],
-        profitAmount: 18775090666896978301n,
-        profitAsset: '0x6b175474e89094c44da98b954eedeac495271d0f',
+        profit: {
+          amount: 18775090666896978301n,
+          asset: '0x6b175474e89094c44da98b954eedeac495271d0f',
+        },
         arbitrager: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
       },
     ];
