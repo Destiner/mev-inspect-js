@@ -248,6 +248,16 @@ const pools: CurvePool[] = [
       '0x7f90122bf0700f9e7e1f688fe926940e8839f353',
     ],
   },
+  // Avalanche
+  {
+    chainId: 43114,
+    address: '0xb755b949c126c04e0348dd881a5cf55d424742b2',
+    assets: [
+      '0x1337bedc9d22ecbe766df105c9623922a27963ec',
+      '0x686bef2417b6dc32c50a3cbfbcc3bb60e1e9a15d',
+      '0x53f7c5869a859f0aec3d334ee8b4cf01e3492f21',
+    ],
+  },
 ];
 
 const CLASSIFIER: Classifier = {

@@ -664,6 +664,16 @@ const pools: CurvePool[] = [
       '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
     ],
   },
+  // Optimism
+  {
+    chainId: 10,
+    address: '0x1337bedc9d22ecbe766df105c9623922a27963ec',
+    assets: [
+      '0xda10009cbd5d07dd0cecc66161fc93d7c9000da1',
+      '0x7f5c764cbc14f9669b88837ca1490cca17c31607',
+      '0x94b008aa00579c1307b0ef2c499ad98a8ce58e58',
+    ],
+  },
   // Polygon
   {
     chainId: 137,
@@ -706,6 +716,47 @@ const pools: CurvePool[] = [
     assets: [
       '0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f',
       '0xdbf31df14b66535af65aac99c32e9ea844e14501',
+    ],
+  },
+  // Avalanche
+  {
+    chainId: 43114,
+    address: '0x7f90122bf0700f9e7e1f688fe926940e8839f353',
+    assets: [
+      '0x47afa96cdc9fab46904a55a6ad4bf6660b53c38a',
+      '0x46a51127c3ce23fb7ab1de06226147f446e4a857',
+      '0x532e6537fea298397212f09a61e03311686f548e',
+    ],
+    underlyingAssets: [
+      '0xd586e7f844cea2f87f50152665bcbc2c279d8d70',
+      '0xa7d7079b0fead91f3e65f86e8915cb59c1a4c664',
+      '0xc7198437980c041c805a1edcba50c1ce5db95118',
+    ],
+  },
+  {
+    chainId: 43114,
+    address: '0x16a7da911a4dd1d83f3ff066fe28f3c792c50d90',
+    assets: [
+      '0x686bef2417b6dc32c50a3cbfbcc3bb60e1e9a15d',
+      '0xdbf31df14b66535af65aac99c32e9ea844e14501',
+    ],
+    underlyingAssets: [
+      '0x50b7545627a5162f82a992c33b87adc75187b218',
+      '0xdbf31df14b66535af65aac99c32e9ea844e14501',
+    ],
+  },
+  {
+    chainId: 43114,
+    address: '0xd2acae14ae2ee0f6557ac6c6d0e407a92c36214b',
+    assets: [
+      '0x82e64f49ed5ec1bc6e43dad4fc8af9bb3a2312ee',
+      '0x625e7708f30ca75bfd92586e17077590c60eb4cd',
+      '0x6ab707aca953edaefbc4fd23ba73294241490620',
+    ],
+    underlyingAssets: [
+      '0xd586e7f844cea2f87f50152665bcbc2c279d8d70',
+      '0xb97ef9ef8734c71904d8002f8b6bc66dd9c48a6e',
+      '0x9702230a8ea53601f5cd2dc00fdbc13d4df4a8c7',
     ],
   },
 ];
