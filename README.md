@@ -6,17 +6,32 @@ A JS port of `mev-inspect-py` optimised for ease of use.
 
 While mev-inspect-py is great, I believe that there are a few changes can be made to make historical MEV data more accessible. Here are some defining decisions for this port:
 
-* Written in Typescript: easier to run in browser/node, while keeping the code type-safe
-* Infra layer decoupling: message query, caching, and persistence layers can be added independenty when/if needed
-* Pricing data decoupling: to calculate profit and cost in USD, a pricing provider of your choice can be used
-* Single transaction inspection: while missing some types of MEV, this is helpful for quick transaction review
-* Using logs instead of call traces: any historical node would work
+- Written in Typescript: easier to run in browser/node, while keeping the code type-safe
+- Infra layer decoupling: message query, caching, and persistence layers can be added independenty when/if needed
+- Pricing data decoupling: to calculate profit and cost in USD, a pricing provider of your choice can be used
+- Single transaction inspection: while missing some types of MEV, this is helpful for quick transaction review
+- Using logs instead of call traces: any historical node would work
 
 Other, less fundamental, changes include:
 
-* Fork support (e.g. Sushiswap)
-* Multichain support
-* "Bring your own transaction receipts"
+- Fork support (e.g. Sushiswap)
+- Multichain support
+- "Bring your own transaction receipts"
+
+## API
+
+- Inspector
+  - constructor(chainId, provider)
+  - tx(hash): processes a single transaction given hash
+  - block(number): processes a single block given number
+  - receipts(receipts): processes an arbitrary amount of transaction receipts
+- getBlock(mev): get MEV block number
+- getTransaction(mev): get MEV transaction hash
+- getArbitrages(mevList): filter out non-arbitrage MEV
+- getLiquidations(mevList): filter out non-liquidation MEV
+- getSandwiches(mevList): filter out non-sandwich MEV
+
+A common data flow is to first fetch all the MEV using any of the Inspector method, then filter it by type using `getArbitrages`, etc, and finally process each type of MEV separately
 
 ## Usage
 
@@ -28,38 +43,41 @@ Other, less fundamental, changes include:
 npm i mev-inspect
 ```
 
+```ts
+import { ethers } from 'ethers';
+import { Inspector } from 'mev-inspect';
+
+const arbitrageTx =
+  '0x06387618ee3752bed447f192802895921a7d45a60875927adfedc93a68bcbe05';
+const key = process.env.PROVIDER_KEY;
+const provider = new ethers.providers.AlchemyProvider(1, key);
+const inspector = new Inspector(1, provider);
+const txMev = await inspector.tx(arbitrageTx);
+console.log(txMev);
+```
+
+For more examlples, see [`examples`](./examples/).
+
 ## Support
 
 ### MEV type
 
-* Arbitrage
-* Liquidations
-* Sandwiches
+- Arbitrage
+- Liquidations
+- Sandwiches
 
 ### Chains
 
-* Ethereum
-* Polygon
-* Arbitrum
-* Optimism
-* Avalanche
+- Ethereum
+- Polygon
+- Arbitrum
+- Optimism
+- Avalanche
 
 ### Protocols
 
-* Swaps: Uniswap V2/V3 (+ forks), Balancer V1/V2, Curve V1/V2, 0x V3/V4, Bancor V2/V3
-* Lending: Compound V2 (+ forks), Aave V1/V2/V3
-
-## Docs
-
-TODO. For usage examlples, see [`examples`](./examples/).
-
-Also, see [demo](https://metablock.dev/tools/mev/).
-
-You can run examples using `ts-node`, for example:
-
-```bash
-npx ts-node --esm examples/arbitrage.ts
-```
+- Swaps: Uniswap V2/V3 (+ forks), Balancer V1/V2, Curve V1/V2, 0x V3/V4, Bancor V2/V3
+- Lending: Compound V2 (+ forks), Aave V1/V2/V3
 
 ## How it works
 
