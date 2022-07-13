@@ -16,7 +16,7 @@ Other, less fundamental, changes include:
 
 - Fork support (e.g. Sushiswap)
 - Multichain support
-- "Bring your own transaction receipts"
+- Abilitiy to "bring your own transaction receipts" (e.g. via Alchemy)
 
 ## API
 
