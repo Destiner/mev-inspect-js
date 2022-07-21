@@ -78,6 +78,9 @@ function getSandwich(
 
 function getProfit(frontSwap: Swap, backSwap: Swap): bigint {
   const multiplier = 1_000_000_000_000_000_000_000_000_000_000_000_000n;
+  if (backSwap.amountIn === 0n || frontSwap.amountOut === 0n) {
+    return 0n;
+  }
   const profitFrontrun =
     (frontSwap.amountOut *
       ((multiplier * backSwap.amountOut) / backSwap.amountIn)) /
