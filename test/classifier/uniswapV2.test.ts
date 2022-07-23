@@ -111,6 +111,7 @@ describe('Classfiers: Uniswap V2', () => {
         address: '0x9928e4046d7c6513326ccea028cd3e7a91c7590a',
         logIndex: 15,
       },
+      metadata: {},
     });
 
     const poolB: Pool = {
@@ -216,6 +217,7 @@ describe('Classfiers: Uniswap V2', () => {
         address: '0xc5be99a02c6857f9eac67bbce58df5572498f40c',
         logIndex: 90,
       },
+      metadata: {},
     });
   });
 
@@ -399,6 +401,7 @@ describe('Classfiers: Uniswap V2', () => {
         address: '0x937e882083a0aaf58d7fcf566de8e5d990e882a9',
         logIndex: 293,
       },
+      metadata: {},
     });
 
     expect(swapB).toEqual<Swap>({
@@ -430,6 +433,7 @@ describe('Classfiers: Uniswap V2', () => {
         address: '0x937e882083a0aaf58d7fcf566de8e5d990e882a9',
         logIndex: 301,
       },
+      metadata: {},
     });
   });
 
@@ -587,6 +591,7 @@ describe('Classfiers: Uniswap V2', () => {
         address: '0xa2107fa5b38d9bbd2c461d6edf11b11a50f6b974',
         logIndex: 448,
       },
+      metadata: {},
     });
     expect(swapB).toEqual<Swap>({
       contract: {
@@ -617,6 +622,7 @@ describe('Classfiers: Uniswap V2', () => {
         address: '0xce84867c3c02b05dc570d0135103d3fb9cc19433',
         logIndex: 451,
       },
+      metadata: {},
     });
   });
 
@@ -824,6 +830,7 @@ describe('Classfiers: Uniswap V2', () => {
         address: '0xe2e998f6f498cf9acdeda38de77ca95d1d8288f6',
         logIndex: 3,
       },
+      metadata: {},
     });
     expect(swapB).toEqual<Swap>({
       contract: {
@@ -854,6 +861,7 @@ describe('Classfiers: Uniswap V2', () => {
         address: '0x6137a55b535b98e26c5ca5c9cb329022bf1b9318',
         logIndex: 6,
       },
+      metadata: {},
     });
     expect(swapC).toEqual<Swap>({
       contract: {
@@ -884,6 +892,7 @@ describe('Classfiers: Uniswap V2', () => {
         address: '0x0d80f8a039cc61b659ff299bb132de271c757325',
         logIndex: 9,
       },
+      metadata: {},
     });
   });
 
@@ -1009,6 +1018,7 @@ describe('Classfiers: Uniswap V2', () => {
         address: '0x55d5c232d921b9eaa6b37b5845e439acd04b4dba',
         logIndex: 10,
       },
+      metadata: {},
     });
   });
 });

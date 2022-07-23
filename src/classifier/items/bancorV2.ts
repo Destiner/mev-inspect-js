@@ -75,6 +75,7 @@ function parse(pool: Pool, event: ClassifiedEvent): Swap | null {
     amountIn,
     assetOut,
     amountOut,
+    metadata: {},
   };
 }
 

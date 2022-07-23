@@ -71,6 +71,35 @@ interface Swap extends Base {
   amountIn: bigint;
   assetOut: string;
   amountOut: bigint;
+  metadata: Record<string, unknown>;
+}
+
+interface LiquidityAddition extends Base {
+  contract: {
+    address: string;
+    protocol: {
+      abi: Protocol;
+      factory: Factory;
+    };
+  };
+  owner: string;
+  assets: string[];
+  amounts: bigint[];
+  metadata: Record<string, unknown>;
+}
+
+interface LiquidityRemoval extends Base {
+  contract: {
+    address: string;
+    protocol: {
+      abi: Protocol;
+      factory: Factory;
+    };
+  };
+  owner: string;
+  assets: string[];
+  amounts: bigint[];
+  metadata: Record<string, unknown>;
 }
 
 interface Repayment extends Base {
@@ -149,6 +178,28 @@ interface SwapClassifier extends BaseClassifier {
   };
 }
 
+interface LiquidityAdditionClassifier extends BaseClassifier {
+  protocol: SwapProtocol;
+  type: 'liquidity_addition';
+  isValid: (event: Event, address: string, chainId: ChainId) => boolean;
+  parse: (pool: Pool, event: ClassifiedEvent) => LiquidityAddition | null;
+  pool: {
+    getCalls: (id: string) => Call[];
+    processCalls: (result: unknown[], address: string) => PoolData | null;
+  };
+}
+
+interface LiquidityRemovalClassifier extends BaseClassifier {
+  protocol: SwapProtocol;
+  type: 'liquidity_removal';
+  isValid: (event: Event, address: string, chainId: ChainId) => boolean;
+  parse: (pool: Pool, event: ClassifiedEvent) => LiquidityRemoval | null;
+  pool: {
+    getCalls: (id: string) => Call[];
+    processCalls: (result: unknown[], address: string) => PoolData | null;
+  };
+}
+
 interface RepaymentClassifier extends BaseClassifier {
   protocol: LendingProtocol;
   type: 'repayment';
@@ -182,6 +233,8 @@ interface SeizureClassifier extends BaseClassifier {
 type Classifier =
   | TransferClassifier
   | SwapClassifier
+  | LiquidityAdditionClassifier
+  | LiquidityRemovalClassifier
   | RepaymentClassifier
   | SeizureClassifier;
 
@@ -205,6 +258,8 @@ export {
   Block,
   Classifier,
   LendingProtocol,
+  LiquidityAddition,
+  LiquidityRemoval,
   Market,
   MarketData,
   Pool,

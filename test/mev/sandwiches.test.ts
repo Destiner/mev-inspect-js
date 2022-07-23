@@ -37,6 +37,7 @@ describe('MEV: arbitrage', () => {
           address: '0x9928e4046d7c6513326ccea028cd3e7a91c7590a',
           logIndex: 15,
         },
+        metadata: {},
       },
     ];
 
@@ -76,6 +77,7 @@ describe('MEV: arbitrage', () => {
           address: '0xa2107fa5b38d9bbd2c461d6edf11b11a50f6b974',
           logIndex: 448,
         },
+        metadata: {},
       },
       {
         contract: {
@@ -106,6 +108,7 @@ describe('MEV: arbitrage', () => {
           address: '0xce84867c3c02b05dc570d0135103d3fb9cc19433',
           logIndex: 451,
         },
+        metadata: {},
       },
     ];
 
@@ -145,6 +148,7 @@ describe('MEV: arbitrage', () => {
           address: '0x8bd1661da98ebdd3bd080f0be4e6d9be8ce9858c',
           logIndex: 74,
         },
+        metadata: {},
       },
       {
         contract: {
@@ -175,6 +179,7 @@ describe('MEV: arbitrage', () => {
           logIndex: 77,
           address: '0x49ff149d649769033d43783e7456f626862cd160',
         },
+        metadata: {},
       },
       {
         contract: {
@@ -205,6 +210,7 @@ describe('MEV: arbitrage', () => {
           logIndex: 81,
           address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
         },
+        metadata: {},
       },
       {
         contract: {
@@ -235,6 +241,7 @@ describe('MEV: arbitrage', () => {
           address: '0x611cde65dea90918c0078ac0400a72b0d25b9bb1',
           logIndex: 87,
         },
+        metadata: {},
       },
     ];
 
@@ -274,6 +281,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 100390000000000000n,
         assetOut: '0xb2089a7069861c8d90c8da3aacab8e9188c0c531',
         amountOut: 2175552445891n,
+        metadata: {},
       },
       {
         contract: {
@@ -304,6 +312,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 79500000000000000n,
         assetOut: '0xb2089a7069861c8d90c8da3aacab8e9188c0c531',
         amountOut: 1461079497665n,
+        metadata: {},
       },
       {
         contract: {
@@ -334,6 +343,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 2175552445891n,
         assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
         amountOut: 113987923265421470n,
+        metadata: {},
       },
     ];
 
@@ -373,6 +383,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 100390000000000000n,
         assetOut: '0xb2089a7069861c8d90c8da3aacab8e9188c0c531',
         amountOut: 2175552445891n,
+        metadata: {},
       },
       {
         contract: {
@@ -403,6 +414,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 79500000000000000n,
         assetOut: '0xb2089a7069861c8d90c8da3aacab8e9188c0c531',
         amountOut: 1461079497665n,
+        metadata: {},
       },
       {
         contract: {
@@ -433,6 +445,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 2175552445891n,
         assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
         amountOut: 113987923265421470n,
+        metadata: {},
       },
       {
         contract: {
@@ -463,6 +476,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 3944016072n,
         assetOut: '0x34f0915a5f15a66eba86f6a58be1a471fb7836a7',
         amountOut: 890898789379244n,
+        metadata: {},
       },
       {
         contract: {
@@ -493,6 +507,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 1000000000000000000000000n,
         assetOut: '0x853d955acef822db058eb8505911ed77f175b99e',
         amountOut: 5916990875407944698111n,
+        metadata: {},
       },
     ];
 
@@ -532,6 +547,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 5031464130389737472n,
         assetOut: '0x5218e472cfcfe0b64a064f055b43b4cdc9efd3a6',
         amountOut: 902667126245596674849461n,
+        metadata: {},
       },
       {
         contract: {
@@ -562,6 +578,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 902667126245596674849461n,
         assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
         amountOut: 5493739023895625728n,
+        metadata: {},
       },
       {
         contract: {
@@ -592,6 +609,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 4404454063785307031n,
         assetOut: '0x5218e472cfcfe0b64a064f055b43b4cdc9efd3a6',
         amountOut: 710561079139015205500459n,
+        metadata: {},
       },
     ];
     const swapsB: Swap[] = [
@@ -624,6 +642,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 872930824134687059036n,
         assetOut: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
         amountOut: 1531020331978n,
+        metadata: {},
       },
       {
         contract: {
@@ -654,6 +673,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 1267500000000000000000n,
         assetOut: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
         amountOut: 2205742148531n,
+        metadata: {},
       },
       {
         contract: {
@@ -684,6 +704,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 1531020331977n,
         assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
         amountOut: 880205545822407982645n,
+        metadata: {},
       },
     ];
 
@@ -747,6 +768,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 754870400637081426352n,
         assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
         amountOut: 888975983124675556n,
+        metadata: {},
       },
       {
         contract: {
@@ -777,6 +799,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 1156542056074766355140n,
         assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
         amountOut: 1310637046268747172n,
+        metadata: {},
       },
       {
         contract: {
@@ -807,6 +830,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 888975983124675556n,
         assetOut: '0x16eccfdbb4ee1a85a33f3a9b21175cd7ae753db4',
         amountOut: 785608054456497020853n,
+        metadata: {},
       },
     ];
 
@@ -857,6 +881,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 371799344156197203112n,
         assetOut: '0xdac17f958d2ee523a2206206994597c13d831ec7',
         amountOut: 665443087704n,
+        metadata: {},
       },
       {
         contract: {
@@ -887,6 +912,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 1348393399625477503394n,
         assetOut: '0x579cea1889991f68acc35ff5c3dd0621ff29b0c9',
         amountOut: 230453025469403490313684n,
+        metadata: {},
       },
       {
         contract: {
@@ -917,6 +943,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 1000000000000000000000000n,
         assetOut: '0x853d955acef822db058eb8505911ed77f175b99e',
         amountOut: 5916990875407944698111n,
+        metadata: {},
       },
       {
         contract: {
@@ -947,6 +974,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 6162525112n,
         assetOut: '0x34f0915a5f15a66eba86f6a58be1a471fb7836a7',
         amountOut: 1424388937876910n,
+        metadata: {},
       },
       {
         contract: {
@@ -977,6 +1005,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 38494283323n,
         assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
         amountOut: 21212822316154327650n,
+        metadata: {},
       },
       {
         contract: {
@@ -1007,6 +1036,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 665071849728n,
         assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
         amountOut: 371799344156197203112n,
+        metadata: {},
       },
       {
         contract: {
@@ -1037,6 +1067,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 1424388937876909n,
         assetOut: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
         amountOut: 6235166265n,
+        metadata: {},
       },
       {
         contract: {
@@ -1067,6 +1098,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 3944016072n,
         assetOut: '0x34f0915a5f15a66eba86f6a58be1a471fb7836a7',
         amountOut: 890898789379244n,
+        metadata: {},
       },
       {
         contract: {
@@ -1097,6 +1129,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 221756037403248456355362n,
         assetOut: '0x853d955acef822db058eb8505911ed77f175b99e',
         amountOut: 1348393399625477503394n,
+        metadata: {},
       },
     ];
 
@@ -1144,6 +1177,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 188147969924812013568n,
         assetOut: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
         amountOut: 751864283801n,
+        metadata: {},
       },
       {
         contract: {
@@ -1174,6 +1208,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 149756129874032907361n,
         assetOut: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
         amountOut: 598633542409n,
+        metadata: {},
       },
       {
         contract: {
@@ -1204,6 +1239,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 1957841600000n,
         assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
         amountOut: 488799232410434891247n,
+        metadata: {},
       },
     ];
     const swapsB: Swap[] = [
@@ -1236,6 +1272,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 154432147817494n,
         assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
         amountOut: 868168255688738693n,
+        metadata: {},
       },
       {
         contract: {
@@ -1266,6 +1303,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 1050947713761736n,
         assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
         amountOut: 5470495451854143593n,
+        metadata: {},
       },
       {
         contract: {
@@ -1296,6 +1334,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 763622534185514711n,
         assetOut: '0x679a0b65a14b06b44a0cc879d92b8bb46a818633',
         amountOut: 154432147817494n,
+        metadata: {},
       },
     ];
     const swapsC: Swap[] = [
@@ -1328,6 +1367,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 7500000000000000000n,
         assetOut: '0x6755f01e2a13962ee79e17d6f36cf6a2153f3aae',
         amountOut: 858778153585277734039328n,
+        metadata: {},
       },
       {
         contract: {
@@ -1358,6 +1398,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 5000000000000000000n,
         assetOut: '0x6755f01e2a13962ee79e17d6f36cf6a2153f3aae',
         amountOut: 479388447128725732767064n,
+        metadata: {},
       },
       {
         contract: {
@@ -1388,6 +1429,7 @@ describe('MEV: arbitrage', () => {
         amountIn: 775159068789820746529043n,
         assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
         amountOut: 7696110602669783813n,
+        metadata: {},
       },
     ];
 

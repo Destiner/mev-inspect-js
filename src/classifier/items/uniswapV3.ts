@@ -6,6 +6,8 @@ import poolAbi from '../../abi/uniswapV3Pool.js';
 import { equalWithTolerance } from '../../utils.js';
 import {
   Classifier,
+  LiquidityAddition,
+  LiquidityRemoval,
   Pool,
   PoolData,
   Swap,
@@ -14,8 +16,16 @@ import {
 } from '../base.js';
 import { ClassifiedEvent } from '../index.js';
 
-function isValid(event: Event): boolean {
+function isSwapValid(event: Event): boolean {
   return event.name === 'Swap';
+}
+
+function isLiquidityAdditionValid(event: Event): boolean {
+  return event.name === 'Mint';
+}
+
+function isLiquidityRemovalValid(event: Event): boolean {
+  return event.name === 'Burn';
 }
 
 function getPoolCalls(address: string): Call[] {
@@ -40,7 +50,7 @@ function processPoolCalls(result: unknown[]): PoolData | null {
   };
 }
 
-function parse(
+function parseSwap(
   pool: Pool,
   event: ClassifiedEvent,
   transfers: Transfer[],
@@ -65,6 +75,7 @@ function parse(
   const to = (values.recipient as string).toLowerCase();
   const amount0 = (values.amount0 as BigNumber).toBigInt();
   const amount1 = (values.amount1 as BigNumber).toBigInt();
+  const tick = values.tick as number;
 
   const assetOut = amount0 < 0 ? assets[0] : assets[1];
   const amountOut = amount0 < 0 ? amount0 * -1n : amount1 * -1n;
@@ -105,18 +116,151 @@ function parse(
     amountIn,
     assetOut,
     amountOut,
+    metadata: {
+      tick,
+    },
   };
 }
 
-const CLASSIFIER: Classifier = {
-  type: 'swap',
-  protocol: 'UniswapV3',
-  abi: poolAbi,
-  isValid,
-  parse,
-  pool: {
-    getCalls: getPoolCalls,
-    processCalls: processPoolCalls,
+function parseLiquidityAddition(
+  pool: Pool,
+  event: ClassifiedEvent,
+): LiquidityAddition {
+  const {
+    values,
+    transactionHash: hash,
+    gasUsed,
+    logIndex,
+    address,
+    blockHash,
+    blockNumber,
+  } = event;
+  const { assets } = pool;
+
+  const owner = (values.owner as string).toLowerCase();
+  const amount0 = (values.amount0 as BigNumber).toBigInt();
+  const amount1 = (values.amount1 as BigNumber).toBigInt();
+  const tickLower = values.tickLower;
+  const tickUpper = values.tickUpper;
+
+  const amounts = [amount0, amount1];
+
+  return {
+    contract: {
+      address: pool.address,
+      protocol: {
+        abi: 'UniswapV3',
+        factory: pool.factory,
+      },
+    },
+    block: {
+      hash: blockHash,
+      number: blockNumber,
+    },
+    transaction: {
+      hash,
+      gasUsed,
+    },
+    event: {
+      address: address.toLowerCase(),
+      logIndex,
+    },
+    owner,
+    assets,
+    amounts,
+    metadata: {
+      tickLower,
+      tickUpper,
+    },
+  };
+}
+
+function parseLiquidityRemoval(
+  pool: Pool,
+  event: ClassifiedEvent,
+): LiquidityRemoval {
+  const {
+    values,
+    transactionHash: hash,
+    gasUsed,
+    logIndex,
+    address,
+    blockHash,
+    blockNumber,
+  } = event;
+  const { assets } = pool;
+
+  const owner = (values.owner as string).toLowerCase();
+  const amount0 = (values.amount0 as BigNumber).toBigInt();
+  const amount1 = (values.amount1 as BigNumber).toBigInt();
+  const tickLower = values.tickLower as number;
+  const tickUpper = values.tickUpper as number;
+
+  const amounts = [amount0, amount1];
+
+  return {
+    contract: {
+      address: pool.address,
+      protocol: {
+        abi: 'UniswapV3',
+        factory: pool.factory,
+      },
+    },
+    block: {
+      hash: blockHash,
+      number: blockNumber,
+    },
+    transaction: {
+      hash,
+      gasUsed,
+    },
+    event: {
+      address: address.toLowerCase(),
+      logIndex,
+    },
+    owner,
+    assets,
+    amounts,
+    metadata: {
+      tickLower,
+      tickUpper,
+    },
+  };
+}
+
+const CLASSIFIER: Classifier[] = [
+  {
+    type: 'swap',
+    protocol: 'UniswapV3',
+    abi: poolAbi,
+    isValid: isSwapValid,
+    parse: parseSwap,
+    pool: {
+      getCalls: getPoolCalls,
+      processCalls: processPoolCalls,
+    },
   },
-};
+  {
+    type: 'liquidity_addition',
+    protocol: 'UniswapV3',
+    abi: poolAbi,
+    isValid: isLiquidityAdditionValid,
+    parse: parseLiquidityAddition,
+    pool: {
+      getCalls: getPoolCalls,
+      processCalls: processPoolCalls,
+    },
+  },
+  {
+    type: 'liquidity_removal',
+    protocol: 'UniswapV3',
+    abi: poolAbi,
+    isValid: isLiquidityRemovalValid,
+    parse: parseLiquidityRemoval,
+    pool: {
+      getCalls: getPoolCalls,
+      processCalls: processPoolCalls,
+    },
+  },
+];
 export default CLASSIFIER;

@@ -88,6 +88,7 @@ function parseSwap(
     amountIn,
     assetOut,
     amountOut,
+    metadata: {},
   };
 }
 

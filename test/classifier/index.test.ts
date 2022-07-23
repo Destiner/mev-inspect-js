@@ -117,7 +117,7 @@ describe('Classfiers', () => {
       uniswapV2Classifier,
     );
     expect(classifiedLogs[1].classifier).toEqual<Classifier>(
-      uniswapV3Classifier,
+      uniswapV3Classifier[0],
     );
     expect(classifiedLogs[2].classifier).toEqual<Classifier>(
       balanceV2Classifiers[0],

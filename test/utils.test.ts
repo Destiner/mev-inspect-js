@@ -44,6 +44,7 @@ describe('Utilities', () => {
               address: '0xcbcdf9626bc03e24f779434178a73a0b4bad62ed',
               logIndex: 35,
             },
+            metadata: {},
           },
           {
             contract: {
@@ -74,6 +75,7 @@ describe('Utilities', () => {
               address: '0x4585fe77225b41b697c938b018e2ac67ac5a20c0',
               logIndex: 33,
             },
+            metadata: {},
           },
         ],
         profit: {
@@ -113,6 +115,7 @@ describe('Utilities', () => {
               address: '0x231b7589426ffe1b75405526fc32ac09d44364c4',
               logIndex: 98,
             },
+            metadata: {},
           },
           {
             contract: {
@@ -143,6 +146,7 @@ describe('Utilities', () => {
               address: '0xee51984781254ad1a0ee3ae0ca26c4d53dea6ecb',
               logIndex: 101,
             },
+            metadata: {},
           },
           {
             contract: {
@@ -173,6 +177,7 @@ describe('Utilities', () => {
               address: '0xf3933a6a82fba8a349a7124c8d8226d7c4d7b6cb',
               logIndex: 104,
             },
+            metadata: {},
           },
         ],
         profit: {
@@ -517,6 +522,7 @@ describe('Utilities', () => {
               address: '0xcbcdf9626bc03e24f779434178a73a0b4bad62ed',
               logIndex: 35,
             },
+            metadata: {},
           },
           {
             contract: {
@@ -547,6 +553,7 @@ describe('Utilities', () => {
               address: '0x4585fe77225b41b697c938b018e2ac67ac5a20c0',
               logIndex: 33,
             },
+            metadata: {},
           },
         ],
         profit: {
@@ -586,6 +593,7 @@ describe('Utilities', () => {
               address: '0x231b7589426ffe1b75405526fc32ac09d44364c4',
               logIndex: 98,
             },
+            metadata: {},
           },
           {
             contract: {
@@ -616,6 +624,7 @@ describe('Utilities', () => {
               address: '0xee51984781254ad1a0ee3ae0ca26c4d53dea6ecb',
               logIndex: 101,
             },
+            metadata: {},
           },
           {
             contract: {
@@ -646,6 +655,7 @@ describe('Utilities', () => {
               address: '0xf3933a6a82fba8a349a7124c8d8226d7c4d7b6cb',
               logIndex: 104,
             },
+            metadata: {},
           },
         ],
         profit: {

@@ -6,8 +6,11 @@ import { fetchPools, fetchMarkets } from './fetch.js';
 import {
   Mev,
   getArbitrages,
+  getJitLiquiditySandwiches,
   getSeizures,
   getLiquidations,
+  getLiquidityAdditions,
+  getLiquidityRemovals,
   getRepayments,
   getSandwiches,
   getSwaps,
@@ -61,7 +64,29 @@ class Inspector {
     const seizures = getSeizures(this.chainId, markets, events);
     const liquidations = getLiquidations(repayments, seizures);
     const sandwiches = getSandwiches(this.chainId, swaps);
-    return [...arbitrages, ...liquidations, ...sandwiches];
+    const liquidityAdditions = getLiquidityAdditions(
+      this.chainId,
+      pools,
+      transfers,
+      events,
+    );
+    const liquidityRemovals = getLiquidityRemovals(
+      this.chainId,
+      pools,
+      transfers,
+      events,
+    );
+    const jitLiquiditySandwiches = getJitLiquiditySandwiches(
+      swaps,
+      liquidityAdditions,
+      liquidityRemovals,
+    );
+    return [
+      ...arbitrages,
+      ...liquidations,
+      ...sandwiches,
+      ...jitLiquiditySandwiches,
+    ];
   }
 }
 

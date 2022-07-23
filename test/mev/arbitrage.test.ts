@@ -35,6 +35,7 @@ describe('MEV: arbitrage', () => {
           address: '0x9928e4046d7c6513326ccea028cd3e7a91c7590a',
           logIndex: 15,
         },
+        metadata: {},
       },
     ];
     const arbitrages = getArbitrages(swaps);
@@ -73,6 +74,7 @@ describe('MEV: arbitrage', () => {
           address: '0xa2107fa5b38d9bbd2c461d6edf11b11a50f6b974',
           logIndex: 448,
         },
+        metadata: {},
       },
       {
         contract: {
@@ -103,6 +105,7 @@ describe('MEV: arbitrage', () => {
           address: '0xce84867c3c02b05dc570d0135103d3fb9cc19433',
           logIndex: 451,
         },
+        metadata: {},
       },
     ];
     const arbitrages = getArbitrages(swaps);
@@ -141,6 +144,7 @@ describe('MEV: arbitrage', () => {
           address: '0x8bd1661da98ebdd3bd080f0be4e6d9be8ce9858c',
           logIndex: 74,
         },
+        metadata: {},
       },
       {
         contract: {
@@ -171,6 +175,7 @@ describe('MEV: arbitrage', () => {
           logIndex: 77,
           address: '0x49ff149d649769033d43783e7456f626862cd160',
         },
+        metadata: {},
       },
       {
         contract: {
@@ -201,6 +206,7 @@ describe('MEV: arbitrage', () => {
           logIndex: 81,
           address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
         },
+        metadata: {},
       },
       {
         contract: {
@@ -231,6 +237,7 @@ describe('MEV: arbitrage', () => {
           address: '0x611cde65dea90918c0078ac0400a72b0d25b9bb1',
           logIndex: 87,
         },
+        metadata: {},
       },
     ];
     const arbitrages = getArbitrages(swaps);
@@ -269,6 +276,7 @@ describe('MEV: arbitrage', () => {
           address: '0x4585fe77225b41b697c938b018e2ac67ac5a20c0',
           logIndex: 33,
         },
+        metadata: {},
       },
       {
         contract: {
@@ -299,6 +307,7 @@ describe('MEV: arbitrage', () => {
           address: '0xcbcdf9626bc03e24f779434178a73a0b4bad62ed',
           logIndex: 35,
         },
+        metadata: {},
       },
     ];
     const arbitrages = getArbitrages(swaps);
@@ -346,6 +355,7 @@ describe('MEV: arbitrage', () => {
           address: '0x41b536722c014a577f06a4bb0dfa08bf0b8f5e87',
           logIndex: 5,
         },
+        metadata: {},
       },
       {
         contract: {
@@ -376,6 +386,7 @@ describe('MEV: arbitrage', () => {
           address: '0x3ce42ef6b6617b5950c13d1c258ecfdcd30bb4de',
           logIndex: 6,
         },
+        metadata: {},
       },
       {
         contract: {
@@ -406,6 +417,7 @@ describe('MEV: arbitrage', () => {
           address: '0xcc2bd4f3c00c37adb00864d9a0a8cfef8b6ff56a',
           logIndex: 7,
         },
+        metadata: {},
       },
       {
         contract: {
@@ -436,6 +448,7 @@ describe('MEV: arbitrage', () => {
           address: '0x2519042aa735edb4688a8376d69d4bb69431206c',
           logIndex: 8,
         },
+        metadata: {},
       },
     ];
     const arbitrages = getArbitrages(swaps);
@@ -483,6 +496,7 @@ describe('MEV: arbitrage', () => {
           address: '0x1ec9b867b701c1e5ce9a6567ecc4b71838497c27',
           logIndex: 3,
         },
+        metadata: {},
       },
       {
         contract: {
@@ -513,6 +527,7 @@ describe('MEV: arbitrage', () => {
           address: '0x0bec54c89a7d9f15c4e7faa8d47adedf374462ed',
           logIndex: 6,
         },
+        metadata: {},
       },
     ];
     const arbitragesA = getArbitrages(swapsA);
@@ -558,6 +573,7 @@ describe('MEV: arbitrage', () => {
           address: '0x69b81152c5a8d35a67b32a4d3772795d96cae4da',
           logIndex: 10,
         },
+        metadata: {},
       },
       {
         contract: {
@@ -588,6 +604,7 @@ describe('MEV: arbitrage', () => {
           address: '0x88051b0eea095007d3bef21ab287be961f3d8598',
           logIndex: 13,
         },
+        metadata: {},
       },
     ];
     const arbitragesB = getArbitrages(swapsB);
@@ -635,6 +652,7 @@ describe('MEV: arbitrage', () => {
           logIndex: 12,
           address: '0x30b705bfa64be9ae395bd9238efc63e9f5f8d1cc',
         },
+        metadata: {},
       },
       {
         contract: {
@@ -665,6 +683,7 @@ describe('MEV: arbitrage', () => {
           address: '0x7b28470032da06051f2e620531adbaeadb285408',
           logIndex: 22,
         },
+        metadata: {},
       },
       {
         contract: {
@@ -695,6 +714,7 @@ describe('MEV: arbitrage', () => {
           address: '0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640',
           logIndex: 23,
         },
+        metadata: {},
       },
     ];
     const arbitrages = getArbitrages(swaps);
@@ -742,6 +762,7 @@ describe('MEV: arbitrage', () => {
           address: '0x231b7589426ffe1b75405526fc32ac09d44364c4',
           logIndex: 98,
         },
+        metadata: {},
       },
       {
         contract: {
@@ -772,6 +793,7 @@ describe('MEV: arbitrage', () => {
           address: '0xee51984781254ad1a0ee3ae0ca26c4d53dea6ecb',
           logIndex: 101,
         },
+        metadata: {},
       },
       {
         contract: {
@@ -802,6 +824,7 @@ describe('MEV: arbitrage', () => {
           address: '0xf3933a6a82fba8a349a7124c8d8226d7c4d7b6cb',
           logIndex: 104,
         },
+        metadata: {},
       },
     ];
     const arbitrages = getArbitrages(swaps);
@@ -849,6 +872,7 @@ describe('MEV: arbitrage', () => {
           address: '0x7f46c12a7ac8343d11652fffdaed411d2d427eb0',
           logIndex: 26,
         },
+        metadata: {},
       },
       {
         contract: {
@@ -879,6 +903,7 @@ describe('MEV: arbitrage', () => {
           address: '0x4efc9e2e3e77732ce2f9612b8f050082c01688bd',
           logIndex: 28,
         },
+        metadata: {},
       },
       {
         contract: {
@@ -909,6 +934,7 @@ describe('MEV: arbitrage', () => {
           address: '0x9c18a2f9545112ab2fcbdd228536562406a53232',
           logIndex: 32,
         },
+        metadata: {},
       },
       {
         contract: {
@@ -939,6 +965,7 @@ describe('MEV: arbitrage', () => {
           address: '0x5399a36f54ca91a5db5c148eeb2b909bba81b82c',
           logIndex: 35,
         },
+        metadata: {},
       },
     ];
     const arbitrages = getArbitrages(swaps);
@@ -994,6 +1021,7 @@ describe('MEV: arbitrage', () => {
           address: '0xc8ca3c0f011fe42c48258ecbbf5d94c51f141c17',
           logIndex: 41,
         },
+        metadata: {},
       },
       {
         contract: {
@@ -1024,6 +1052,7 @@ describe('MEV: arbitrage', () => {
           address: '0x1374042f78fb0fc78658b17c053678940c008543',
           logIndex: 42,
         },
+        metadata: {},
       },
       {
         contract: {
@@ -1054,6 +1083,7 @@ describe('MEV: arbitrage', () => {
           address: '0x60594a405d53811d3bc4766596efd80fd545a270',
           logIndex: 43,
         },
+        metadata: {},
       },
     ];
     const arbitrages = getArbitrages(swaps);
@@ -1101,6 +1131,7 @@ describe('MEV: arbitrage', () => {
           address: '0x25be6ce04a504d4bcecb6ba7f5967f7aae6af579',
           logIndex: 44,
         },
+        metadata: {},
       },
       {
         contract: {
@@ -1131,6 +1162,7 @@ describe('MEV: arbitrage', () => {
           address: '0x9a834b70c07c81a9fcd6f22e842bf002fbffbe4d',
           logIndex: 46,
         },
+        metadata: {},
       },
       {
         contract: {
@@ -1161,6 +1193,7 @@ describe('MEV: arbitrage', () => {
           address: '0x8fe536c7dc019455cce34746755c64bbe2aa163b',
           logIndex: 47,
         },
+        metadata: {},
       },
       {
         contract: {
@@ -1191,6 +1224,7 @@ describe('MEV: arbitrage', () => {
           address: '0xc63b0708e2f7e69cb8a1df0e1389a98c35a76d52',
           logIndex: 48,
         },
+        metadata: {},
       },
     ];
 

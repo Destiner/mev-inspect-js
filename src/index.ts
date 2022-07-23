@@ -1,6 +1,8 @@
 import {
   Block,
   ChainId,
+  LiquidityAddition,
+  LiquidityRemoval,
   Protocol,
   Repayment,
   Seizure,
@@ -10,11 +12,12 @@ import {
 import Inspector from './inspector.js';
 import { Arbitrage, Liquidation, Mev, Sandwich } from './mev/index.js';
 import {
-  getBlock,
-  getTransaction,
   getArbitrages,
+  getBlock,
+  getJitLiquiditySandwiches,
   getLiquidations,
   getSandwiches,
+  getTransaction,
 } from './utils.js';
 
 export {
@@ -23,6 +26,8 @@ export {
   ChainId,
   Inspector,
   Liquidation,
+  LiquidityAddition,
+  LiquidityRemoval,
   Mev,
   Protocol,
   Repayment,
@@ -30,9 +35,10 @@ export {
   Seizure,
   Swap,
   Transfer,
-  getBlock,
-  getTransaction,
   getArbitrages,
+  getBlock,
+  getJitLiquiditySandwiches,
   getLiquidations,
   getSandwiches,
+  getTransaction,
 };

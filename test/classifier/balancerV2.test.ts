@@ -171,6 +171,7 @@ describe('Classfiers: Balancer V2', () => {
       amountOut: 3698791690807238453478n,
       assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       amountIn: 17608500000000000000n,
+      metadata: {},
     });
   });
 
@@ -371,6 +372,7 @@ describe('Classfiers: Balancer V2', () => {
       amountOut: 6329353631552147493643n,
       assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       amountIn: 728566000000000000n,
+      metadata: {},
     });
   });
 
@@ -499,6 +501,7 @@ describe('Classfiers: Balancer V2', () => {
         gasUsed: 97449,
         hash: '0xc785c5713ef1d2e527559746004276f15aaedf62503b670bdf16e156b82aa39b',
       },
+      metadata: {},
     });
   });
 
@@ -627,6 +630,7 @@ describe('Classfiers: Balancer V2', () => {
         gasUsed: 132494,
         hash: '0xa87d22940d3b93b491683de99d48cab79c171fe1535586862e0c0ace381928f0',
       },
+      metadata: {},
     });
   });
 
@@ -846,6 +850,7 @@ describe('Classfiers: Balancer V2', () => {
         gasUsed: 168611,
         hash: '0x01cba79049f6506d01210608351d414ad11a800451b1d34b828531f454f041c3',
       },
+      metadata: {},
     });
     expect(swapB).toEqual<Swap>({
       amountIn: 3182646897577764252n,
@@ -876,6 +881,7 @@ describe('Classfiers: Balancer V2', () => {
         gasUsed: 168611,
         hash: '0x01cba79049f6506d01210608351d414ad11a800451b1d34b828531f454f041c3',
       },
+      metadata: {},
     });
   });
 
@@ -1060,6 +1066,7 @@ describe('Classfiers: Balancer V2', () => {
         gasUsed: 173471,
         hash: '0x336151dd41fe447f05d6ef0bde9b0fdf6d4455b39e08c93c4a7c94ba89ef4a3c',
       },
+      metadata: {},
     });
     expect(swapB).toEqual<Swap>({
       amountIn: 299405020376757441274n,
@@ -1090,6 +1097,7 @@ describe('Classfiers: Balancer V2', () => {
         gasUsed: 173471,
         hash: '0x336151dd41fe447f05d6ef0bde9b0fdf6d4455b39e08c93c4a7c94ba89ef4a3c',
       },
+      metadata: {},
     });
   });
 
@@ -1310,6 +1318,7 @@ describe('Classfiers: Balancer V2', () => {
         gasUsed: 157031,
         hash: '0x42e27e3bed9a2ab343880e8ab4c4de121fc337a7334170a9dc632a36fe757fb9',
       },
+      metadata: {},
     });
   });
 
@@ -1565,6 +1574,7 @@ describe('Classfiers: Balancer V2', () => {
         gasUsed: 129388,
         hash: '0x11bdb8d6d7e0fdd9933ce9673db55524fe7d13f4e6401a40c03c04d1ba06055f',
       },
+      metadata: {},
     });
   });
 
@@ -1857,6 +1867,7 @@ describe('Classfiers: Balancer V2', () => {
         gasUsed: 335297,
         hash: '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
       },
+      metadata: {},
     });
     expect(swapB).toEqual<Swap>({
       amountIn: 572002212483n,
@@ -1887,6 +1898,7 @@ describe('Classfiers: Balancer V2', () => {
         gasUsed: 335297,
         hash: '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
       },
+      metadata: {},
     });
     expect(swapC).toEqual<Swap>({
       amountIn: 566414170229289246555042n,
@@ -1917,6 +1929,7 @@ describe('Classfiers: Balancer V2', () => {
         gasUsed: 335297,
         hash: '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
       },
+      metadata: {},
     });
     expect(swapD).toEqual<Swap>({
       amountIn: 565458830552881067912288n,
@@ -1947,6 +1960,7 @@ describe('Classfiers: Balancer V2', () => {
         gasUsed: 335297,
         hash: '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
       },
+      metadata: {},
     });
   });
 

@@ -1,5 +1,11 @@
 import { Base as BaseEvent, Block, Transaction } from './classifier/index.js';
-import { Arbitrage, Mev, Liquidation, Sandwich } from './mev/index.js';
+import {
+  Arbitrage,
+  JitLiquiditySandwich,
+  Liquidation,
+  Mev,
+  Sandwich,
+} from './mev/index.js';
 
 function getBlock(mev: Mev): Block | null {
   return getEvent(mev)?.block || null;
@@ -37,7 +43,11 @@ function isLiquidation(mev: Mev): boolean {
 }
 
 function isSandwich(mev: Mev): boolean {
-  return 'sandwicher' in mev;
+  return 'frontSwap' in mev;
+}
+
+function isJitLiquiditySandwich(mev: Mev): boolean {
+  return 'addition' in mev;
 }
 
 function getArbitrages(mevList: Mev[]): Arbitrage[] {
@@ -50,6 +60,12 @@ function getLiquidations(mevList: Mev[]): Liquidation[] {
 
 function getSandwiches(mevList: Mev[]): Sandwich[] {
   return mevList.filter((mev): mev is Sandwich => isSandwich(mev));
+}
+
+function getJitLiquiditySandwiches(mevList: Mev[]): JitLiquiditySandwich[] {
+  return mevList.filter((mev): mev is JitLiquiditySandwich =>
+    isJitLiquiditySandwich(mev),
+  );
 }
 
 function equalWithTolerance(
@@ -109,15 +125,16 @@ function groupBy<T>(
 }
 
 export {
+  equalWithTolerance,
+  getArbitrages,
+  getBlock,
+  getJitLiquiditySandwiches,
+  getLiquidations,
+  getSandwiches,
+  getTransaction,
+  groupBy,
   isArbitrage,
   isLiquidation,
   isSandwich,
-  getArbitrages,
-  getLiquidations,
-  getSandwiches,
-  equalWithTolerance,
-  getBlock,
-  getTransaction,
   minByAbs,
-  groupBy,
 };

@@ -107,6 +107,7 @@ function parse(
     amountIn,
     assetOut,
     amountOut,
+    metadata: {},
   };
 }
 
