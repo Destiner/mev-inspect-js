@@ -65,6 +65,7 @@ For more examlples, see [`examples`](./examples/).
 - Arbitrage
 - Liquidations
 - Sandwiches
+- JIT liquidity sandwiches
 
 ### Chains
 
