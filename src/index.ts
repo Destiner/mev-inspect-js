@@ -10,7 +10,13 @@ import {
   Transfer,
 } from './classifier/index.js';
 import Inspector from './inspector.js';
-import { Arbitrage, Liquidation, Mev, Sandwich } from './mev/index.js';
+import {
+  Arbitrage,
+  JitLiquiditySandwich,
+  Liquidation,
+  Mev,
+  Sandwich,
+} from './mev/index.js';
 import {
   getArbitrages,
   getBlock,
@@ -25,6 +31,7 @@ export {
   Block,
   ChainId,
   Inspector,
+  JitLiquiditySandwich,
   Liquidation,
   LiquidityAddition,
   LiquidityRemoval,
