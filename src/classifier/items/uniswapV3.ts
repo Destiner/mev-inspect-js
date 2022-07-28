@@ -25,7 +25,7 @@ function isLiquidityAdditionValid(event: Event): boolean {
 }
 
 function isLiquidityRemovalValid(event: Event): boolean {
-  return event.name === 'Burn';
+  return event.name === 'Collect';
 }
 
 function getPoolCalls(address: string): Call[] {
