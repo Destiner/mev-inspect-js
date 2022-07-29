@@ -153,8 +153,18 @@ const swapFactories: Record<ChainId, Record<SwapProtocol, Factory[]>> = {
         label: '0x V4',
       },
     ],
-    CurveV1: [], // TODO
-    CurveV2: [], // TODO
+    CurveV1: [
+      {
+        address: '0x2db0e83599a91b508ac268a6197b8b14f5e72840',
+        label: 'Curve V1',
+      },
+    ],
+    CurveV2: [
+      {
+        address: '0x2db0e83599a91b508ac268a6197b8b14f5e72840',
+        label: 'Curve V2',
+      },
+    ],
     BancorV2: [],
     BancorV3: [],
   },
@@ -262,8 +272,18 @@ const swapFactories: Record<ChainId, Record<SwapProtocol, Factory[]>> = {
         label: '0x V4',
       },
     ],
-    CurveV1: [], // TODO
-    CurveV2: [], // TODO
+    CurveV1: [
+      {
+        address: '0xb17b674d9c5cb2e441f8e196a2f048a81355d031',
+        label: 'Curve V1',
+      },
+    ],
+    CurveV2: [
+      {
+        address: '0xb17b674d9c5cb2e441f8e196a2f048a81355d031',
+        label: 'Curve V2',
+      },
+    ],
     BancorV2: [],
     BancorV3: [],
   },
