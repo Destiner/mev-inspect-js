@@ -1,4 +1,4 @@
-import { SwapProtocol, LendingProtocol } from './base.js';
+import { SwapProtocol, LendingProtocol, NftSwapProtocol } from './base.js';
 
 const ETHEREUM = 1;
 const OPTIMISM = 10;
@@ -289,6 +289,39 @@ const swapFactories: Record<ChainId, Record<SwapProtocol, Factory[]>> = {
   },
 };
 
+const nftSwapFactories: Record<ChainId, Record<NftSwapProtocol, Factory[]>> = {
+  [ETHEREUM]: {
+    LooksRareV1: [
+      {
+        address: '0x59728544b08ab483533076417fbbb2fd0b17ce3a',
+        label: 'LooksRare',
+      },
+    ],
+    OpenSeaSeaport: [
+      {
+        address: '0x00000000006c3852cbef3e08e8df289169ede581',
+        label: 'OpenSea: Seaport V1.1',
+      },
+    ],
+  },
+  [OPTIMISM]: {
+    LooksRareV1: [], // TODO
+    OpenSeaSeaport: [], // TODO
+  },
+  [POLYGON]: {
+    LooksRareV1: [], // TODO
+    OpenSeaSeaport: [], // TODO
+  },
+  [ARBITRUM]: {
+    LooksRareV1: [], // TODO
+    OpenSeaSeaport: [], // TODO
+  },
+  [AVALANCHE]: {
+    LooksRareV1: [], // TODO
+    OpenSeaSeaport: [], // TODO
+  },
+};
+
 const lendingPools: Record<ChainId, Record<LendingProtocol, LendingPool[]>> = {
   [ETHEREUM]: {
     CompoundV2: [
@@ -503,6 +536,21 @@ function isValidFactory(
   return true;
 }
 
+function isValidNftFactory(
+  chainId: ChainId,
+  protocol: NftSwapProtocol,
+  factory: Factory,
+): boolean {
+  const allowedFactories = nftSwapFactories[chainId][protocol];
+  if (!allowedFactories) {
+    return false;
+  }
+  if (!allowedFactories.includes(factory)) {
+    return false;
+  }
+  return true;
+}
+
 function isValidPool(
   chainId: ChainId,
   protocol: LendingProtocol,
@@ -530,6 +578,7 @@ export {
   getFactoryByAddress,
   getPoolByAddress,
   isValidFactory,
+  isValidNftFactory,
   isValidPool,
   isKnownRouter,
 };

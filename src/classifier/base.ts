@@ -31,6 +31,19 @@ interface Market {
   asset: string;
 }
 
+interface Erc20Asset {
+  type: 'erc20';
+  address: string;
+}
+
+interface Erc721Asset {
+  type: 'erc721';
+  collection: string;
+  id: bigint;
+}
+
+type Asset = Erc20Asset | Erc721Asset;
+
 interface Block {
   hash: string;
   number: number;
@@ -102,6 +115,22 @@ interface LiquidityRemoval extends Base {
   metadata: Record<string, unknown>;
 }
 
+interface NftSwap extends Base {
+  contract: {
+    address: string;
+    protocol: {
+      abi: Protocol;
+      factory: Factory;
+    };
+  };
+  from: string;
+  to: string;
+  assetIn: Asset;
+  amountIn: bigint;
+  assetOut: Asset;
+  amountOut: bigint;
+}
+
 interface Repayment extends Base {
   contract: {
     address: string;
@@ -148,9 +177,11 @@ type SwapProtocol =
   | 'BancorV2'
   | 'BancorV3';
 
+type NftSwapProtocol = 'LooksRareV1' | 'OpenSeaSeaport';
+
 type LendingProtocol = 'CompoundV2' | 'AaveV1' | 'AaveV2' | 'AaveV3';
 
-type Protocol = SwapProtocol | LendingProtocol;
+type Protocol = SwapProtocol | NftSwapProtocol | LendingProtocol;
 
 interface BaseClassifier {
   abi: JsonFragment[];
@@ -200,6 +231,21 @@ interface LiquidityRemovalClassifier extends BaseClassifier {
   };
 }
 
+interface NftSwapClassifier extends BaseClassifier {
+  protocol: NftSwapProtocol;
+  type: 'nft_swap';
+  isValid: (event: Event, address: string, chainId: ChainId) => boolean;
+  parse: (
+    pool: Pool,
+    event: ClassifiedEvent,
+    chainId: ChainId,
+  ) => NftSwap | null;
+  pool: {
+    getCalls: (id: string) => Call[];
+    processCalls: (result: unknown[], address: string) => PoolData | null;
+  };
+}
+
 interface RepaymentClassifier extends BaseClassifier {
   protocol: LendingProtocol;
   type: 'repayment';
@@ -235,6 +281,7 @@ type Classifier =
   | SwapClassifier
   | LiquidityAdditionClassifier
   | LiquidityRemovalClassifier
+  | NftSwapClassifier
   | RepaymentClassifier
   | SeizureClassifier;
 
@@ -262,6 +309,8 @@ export {
   LiquidityRemoval,
   Market,
   MarketData,
+  NftSwap,
+  NftSwapProtocol,
   Pool,
   PoolData,
   Protocol,
