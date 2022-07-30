@@ -4,7 +4,6 @@ import {
   NftSwap,
   NftSwapProtocol,
   Pool,
-  Transfer,
   isValidNftFactory,
 } from '../classifier/index.js';
 
