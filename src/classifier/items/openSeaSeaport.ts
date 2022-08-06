@@ -2,7 +2,7 @@ import { BigNumber } from '@ethersproject/bignumber';
 import { Event } from 'abi-coder';
 import { Call } from 'ethcall';
 
-import exchangeAbi from '../../abi/looksRareV1.js';
+import exchangeAbi from '../../abi/looksRareV1.json' assert { type: 'json' };
 import { Classifier, NftSwap, Pool, PoolData } from '../base.js';
 import { ChainId, ClassifiedEvent, nativeAsset } from '../index.js';
 

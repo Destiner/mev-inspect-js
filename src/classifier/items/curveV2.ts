@@ -2,7 +2,7 @@ import { BigNumber } from '@ethersproject/bignumber';
 import { Event } from 'abi-coder';
 import { Call } from 'ethcall';
 
-import poolAbi from '../../abi/curveV2.js';
+import poolAbi from '../../abi/curveV2.json' assert { type: 'json' };
 import { Classifier, Pool, PoolData, Swap } from '../base.js';
 import { ChainId, getFactories } from '../directory.js';
 import { ClassifiedEvent } from '../index.js';

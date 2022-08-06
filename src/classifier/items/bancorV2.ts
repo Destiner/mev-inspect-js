@@ -2,7 +2,7 @@ import { BigNumber } from '@ethersproject/bignumber';
 import { Event } from 'abi-coder';
 import { Call } from 'ethcall';
 
-import exchangeAbi from '../../abi/bancorV2.js';
+import exchangeAbi from '../../abi/bancorV2.json' assert { type: 'json' };
 import { Classifier, Pool, PoolData, Swap } from '../base.js';
 import { ClassifiedEvent } from '../index.js';
 

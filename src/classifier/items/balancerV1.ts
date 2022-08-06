@@ -2,8 +2,8 @@ import { BigNumber } from '@ethersproject/bignumber';
 import { Event } from 'abi-coder';
 import { Call, Contract } from 'ethcall';
 
-import factoryAbi from '../../abi/balancerV1Factory.js';
-import poolAbi from '../../abi/balancerV1Pool.js';
+import factoryAbi from '../../abi/balancerV1Factory.json' assert { type: 'json' };
+import poolAbi from '../../abi/balancerV1Pool.json' assert { type: 'json' };
 import { Classifier, Pool, PoolData, Swap } from '../base.js';
 import { ClassifiedEvent } from '../index.js';
 
