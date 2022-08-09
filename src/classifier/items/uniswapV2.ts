@@ -2,7 +2,7 @@ import { BigNumber } from '@ethersproject/bignumber';
 import { Event } from 'abi-coder';
 import { Call, Contract } from 'ethcall';
 
-import pairAbi from '../../abi/uniswapV2Pair.json' assert { type: 'json' };
+import pairAbi from '../../abi/uniswapV2Pair.js';
 import { equalWithTolerance } from '../../utils.js';
 import {
   Classifier,

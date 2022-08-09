@@ -2,7 +2,7 @@ import { BigNumber } from '@ethersproject/bignumber';
 import { Event } from 'abi-coder';
 import { Call, Contract } from 'ethcall';
 
-import poolAbi from '../../abi/uniswapV3Pool.json' assert { type: 'json' };
+import poolAbi from '../../abi/uniswapV3Pool.js';
 import { equalWithTolerance } from '../../utils.js';
 import {
   Classifier,

@@ -1,7 +1,7 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import { Event } from 'abi-coder';
 
-import erc20Abi from '../../abi/erc20.json' assert { type: 'json' };
+import erc20Abi from '../../abi/erc20.js';
 import { Classifier, Transfer } from '../base.js';
 import { ClassifiedEvent } from '../index.js';
 

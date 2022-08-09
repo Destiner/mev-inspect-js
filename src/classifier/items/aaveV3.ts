@@ -2,7 +2,7 @@ import { BigNumber } from '@ethersproject/bignumber';
 import { Event } from 'abi-coder';
 import { Call } from 'ethcall';
 
-import poolAbi from '../../abi/aaveV3Pool.json' assert { type: 'json' };
+import poolAbi from '../../abi/aaveV3Pool.js';
 import { Classifier, Market, MarketData, Repayment, Seizure } from '../base.js';
 import { ChainId, ClassifiedEvent, isValidPool } from '../index.js';
 

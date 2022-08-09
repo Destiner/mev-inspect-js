@@ -2,7 +2,7 @@ import { BigNumber } from '@ethersproject/bignumber';
 import { Event } from 'abi-coder';
 import { Call, Contract } from 'ethcall';
 
-import marketAbi from '../../abi/compoundV2Market.json' assert { type: 'json' };
+import marketAbi from '../../abi/compoundV2Market.js';
 import { Classifier, Market, MarketData, Repayment, Seizure } from '../base.js';
 import { ChainId, nativeAsset } from '../directory.js';
 import { ClassifiedEvent } from '../index.js';

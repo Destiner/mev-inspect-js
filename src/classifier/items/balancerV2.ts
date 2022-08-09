@@ -3,7 +3,7 @@ import { AddressZero } from '@ethersproject/constants';
 import { Event } from 'abi-coder';
 import { Call, Contract } from 'ethcall';
 
-import vaultAbi from '../../abi/balancerV2Vault.json' assert { type: 'json' };
+import vaultAbi from '../../abi/balancerV2Vault.js';
 import { Classifier, Pool, PoolData, Swap, Transfer } from '../base.js';
 import { ClassifiedEvent } from '../index.js';
 
