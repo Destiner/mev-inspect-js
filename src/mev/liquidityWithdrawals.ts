@@ -1,7 +1,7 @@
 import {
   ChainId,
   ClassifiedEvent,
-  LiquidityAddition,
+  LiquidityWithdrawal,
   Pool,
   SwapProtocol,
   Transfer,
@@ -9,7 +9,7 @@ import {
 } from '../classifier/index.js';
 
 function getPoolAddress(log: ClassifiedEvent): string {
-  if (log.classifier.type !== 'liquidity_addition') {
+  if (log.classifier.type !== 'liquidity_withdrawal') {
     return '';
   }
   if (log.classifier.protocol === 'BalancerV2') {
@@ -19,15 +19,15 @@ function getPoolAddress(log: ClassifiedEvent): string {
   return log.address.toLowerCase();
 }
 
-function getLiquidityAdditions(
+function getLiquidityWithdrawals(
   chainId: ChainId,
   pools: Pool[],
   transfers: Transfer[],
   logs: ClassifiedEvent[],
-): LiquidityAddition[] {
+): LiquidityWithdrawal[] {
   return logs
     .map((log) => {
-      if (log.classifier.type !== 'liquidity_addition') {
+      if (log.classifier.type !== 'liquidity_withdrawal') {
         return null;
       }
       const poolAddress = getPoolAddress(log);
@@ -46,9 +46,10 @@ function getLiquidityAdditions(
       return log.classifier.parse(pool, log);
     })
     .filter(
-      (addition: LiquidityAddition | null): addition is LiquidityAddition =>
-        !!addition,
+      (
+        withdrawal: LiquidityWithdrawal | null,
+      ): withdrawal is LiquidityWithdrawal => !!withdrawal,
     );
 }
 
-export default getLiquidityAdditions;
+export default getLiquidityWithdrawals;

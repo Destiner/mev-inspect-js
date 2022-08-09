@@ -6,8 +6,8 @@ import poolAbi from '../../abi/uniswapV3Pool.js';
 import { equalWithTolerance } from '../../utils.js';
 import {
   Classifier,
-  LiquidityAddition,
-  LiquidityRemoval,
+  LiquidityDeposit,
+  LiquidityWithdrawal,
   Pool,
   PoolData,
   Swap,
@@ -20,11 +20,11 @@ function isSwapValid(event: Event): boolean {
   return event.name === 'Swap';
 }
 
-function isLiquidityAdditionValid(event: Event): boolean {
+function isLiquidityDepositValid(event: Event): boolean {
   return event.name === 'Mint';
 }
 
-function isLiquidityRemovalValid(event: Event): boolean {
+function isLiquidityWithdrawalValid(event: Event): boolean {
   return event.name === 'Collect';
 }
 
@@ -122,10 +122,10 @@ function parseSwap(
   };
 }
 
-function parseLiquidityAddition(
+function parseLiquidityDeposit(
   pool: Pool,
   event: ClassifiedEvent,
-): LiquidityAddition {
+): LiquidityDeposit {
   const {
     values,
     transactionHash: hash,
@@ -175,10 +175,10 @@ function parseLiquidityAddition(
   };
 }
 
-function parseLiquidityRemoval(
+function parseLiquidityWithdrawal(
   pool: Pool,
   event: ClassifiedEvent,
-): LiquidityRemoval {
+): LiquidityWithdrawal {
   const {
     values,
     transactionHash: hash,
@@ -241,22 +241,22 @@ const CLASSIFIER: Classifier[] = [
     },
   },
   {
-    type: 'liquidity_addition',
+    type: 'liquidity_deposit',
     protocol: 'UniswapV3',
     abi: poolAbi,
-    isValid: isLiquidityAdditionValid,
-    parse: parseLiquidityAddition,
+    isValid: isLiquidityDepositValid,
+    parse: parseLiquidityDeposit,
     pool: {
       getCalls: getPoolCalls,
       processCalls: processPoolCalls,
     },
   },
   {
-    type: 'liquidity_removal',
+    type: 'liquidity_withdrawal',
     protocol: 'UniswapV3',
     abi: poolAbi,
-    isValid: isLiquidityRemovalValid,
-    parse: parseLiquidityRemoval,
+    isValid: isLiquidityWithdrawalValid,
+    parse: parseLiquidityWithdrawal,
     pool: {
       getCalls: getPoolCalls,
       processCalls: processPoolCalls,

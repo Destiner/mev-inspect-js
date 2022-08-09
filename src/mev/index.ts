@@ -4,8 +4,8 @@ import {
   getJitLiquiditySandwiches,
 } from './jitLiquiditySandwiches.js';
 import { Liquidation, getLiquidations } from './liquidations.js';
-import getLiquidityAdditions from './liquidityAdditions.js';
-import getLiquidityRemovals from './liquidityRemovals.js';
+import getLiquidityDeposits from './liquidityDeposits.js';
+import getLiquidityWithdrawals from './liquidityWithdrawals.js';
 import getRepayments from './repayments.js';
 import { Sandwich, getSandwiches } from './sandwiches.js';
 import getSeizures from './seizures.js';
@@ -23,8 +23,8 @@ export {
   getArbitrages,
   getJitLiquiditySandwiches,
   getLiquidations,
-  getLiquidityAdditions,
-  getLiquidityRemovals,
+  getLiquidityDeposits,
+  getLiquidityWithdrawals,
   getRepayments,
   getSandwiches,
   getSeizures,

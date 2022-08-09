@@ -47,7 +47,7 @@ function isSandwich(mev: Mev): boolean {
 }
 
 function isJitLiquiditySandwich(mev: Mev): boolean {
-  return 'addition' in mev;
+  return 'deposit' in mev;
 }
 
 function getArbitrages(mevList: Mev[]): Arbitrage[] {

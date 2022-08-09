@@ -9,8 +9,8 @@ import {
   getJitLiquiditySandwiches,
   getSeizures,
   getLiquidations,
-  getLiquidityAdditions,
-  getLiquidityRemovals,
+  getLiquidityDeposits,
+  getLiquidityWithdrawals,
   getRepayments,
   getSandwiches,
   getSwaps,
@@ -64,13 +64,13 @@ class Inspector {
     const seizures = getSeizures(this.chainId, markets, events);
     const liquidations = getLiquidations(repayments, seizures);
     const sandwiches = getSandwiches(this.chainId, swaps);
-    const liquidityAdditions = getLiquidityAdditions(
+    const liquidityDeposits = getLiquidityDeposits(
       this.chainId,
       pools,
       transfers,
       events,
     );
-    const liquidityRemovals = getLiquidityRemovals(
+    const liquidityWithdrawals = getLiquidityWithdrawals(
       this.chainId,
       pools,
       transfers,
@@ -78,8 +78,8 @@ class Inspector {
     );
     const jitLiquiditySandwiches = getJitLiquiditySandwiches(
       swaps,
-      liquidityAdditions,
-      liquidityRemovals,
+      liquidityDeposits,
+      liquidityWithdrawals,
     );
     return [
       ...arbitrages,

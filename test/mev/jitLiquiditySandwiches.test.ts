@@ -1,6 +1,10 @@
 import { describe, test, expect } from 'vitest';
 
-import { LiquidityAddition, LiquidityRemoval, Swap } from '../../src/index.js';
+import {
+  LiquidityDeposit,
+  LiquidityWithdrawal,
+  Swap,
+} from '../../src/index.js';
 import {
   JitLiquiditySandwich,
   getJitLiquiditySandwiches,
@@ -9,7 +13,7 @@ import {
 describe('MEV: JIT liquidity sandwich', () => {
   test('skips an empty list of swaps', () => {
     const swaps: Swap[] = [];
-    const additions: LiquidityAddition[] = [
+    const deposits: LiquidityDeposit[] = [
       {
         contract: {
           address: '0x4e68ccd3e89f51c3074ca5072bbac773960dfa36',
@@ -42,7 +46,7 @@ describe('MEV: JIT liquidity sandwich', () => {
         metadata: { tickLower: -202860, tickUpper: -202800 },
       },
     ];
-    const removals: LiquidityRemoval[] = [
+    const withdrawals: LiquidityWithdrawal[] = [
       {
         contract: {
           address: '0x4e68ccd3e89f51c3074ca5072bbac773960dfa36',
@@ -76,7 +80,7 @@ describe('MEV: JIT liquidity sandwich', () => {
       },
     ];
 
-    const sandwiches = getJitLiquiditySandwiches(swaps, additions, removals);
+    const sandwiches = getJitLiquiditySandwiches(swaps, deposits, withdrawals);
 
     expect(sandwiches).toEqual<JitLiquiditySandwich[]>([]);
   });
@@ -88,7 +92,7 @@ describe('MEV: JIT liquidity sandwich', () => {
     // outside the range
 
     const swaps: Swap[] = [];
-    const additions: LiquidityAddition[] = [
+    const deposits: LiquidityDeposit[] = [
       {
         contract: {
           address: '0x99ac8ca7087fa4a2a1fb6357269965a2014abc35',
@@ -121,7 +125,7 @@ describe('MEV: JIT liquidity sandwich', () => {
         metadata: { tickLower: 54180, tickUpper: 54240 },
       },
     ];
-    const removals: LiquidityRemoval[] = [
+    const withdrawals: LiquidityWithdrawal[] = [
       {
         contract: {
           address: '0x99ac8ca7087fa4a2a1fb6357269965a2014abc35',
@@ -155,7 +159,7 @@ describe('MEV: JIT liquidity sandwich', () => {
       },
     ];
 
-    const sandwiches = getJitLiquiditySandwiches(swaps, additions, removals);
+    const sandwiches = getJitLiquiditySandwiches(swaps, deposits, withdrawals);
 
     expect(sandwiches).toEqual<JitLiquiditySandwich[]>([]);
   });
@@ -194,7 +198,7 @@ describe('MEV: JIT liquidity sandwich', () => {
         metadata: { tick: -54875 },
       },
     ];
-    const additions: LiquidityAddition[] = [
+    const deposits: LiquidityDeposit[] = [
       {
         contract: {
           address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
@@ -227,7 +231,7 @@ describe('MEV: JIT liquidity sandwich', () => {
         metadata: { tickLower: -54900, tickUpper: -54840 },
       },
     ];
-    const removals: LiquidityRemoval[] = [
+    const withdrawals: LiquidityWithdrawal[] = [
       {
         contract: {
           address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
@@ -261,12 +265,12 @@ describe('MEV: JIT liquidity sandwich', () => {
       },
     ];
 
-    const sandwiches = getJitLiquiditySandwiches(swaps, additions, removals);
+    const sandwiches = getJitLiquiditySandwiches(swaps, deposits, withdrawals);
 
     expect(sandwiches).toEqual<JitLiquiditySandwich[]>([
       {
         sandwicher: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
-        addition: {
+        deposit: {
           contract: {
             address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
             protocol: {
@@ -297,7 +301,7 @@ describe('MEV: JIT liquidity sandwich', () => {
           amounts: [129735801701915403613047n, 458679217156579091198n],
           metadata: { tickLower: -54900, tickUpper: -54840 },
         },
-        removal: {
+        withdrawal: {
           contract: {
             address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
             protocol: {

@@ -2,8 +2,8 @@ import { BigNumber } from '@ethersproject/bignumber';
 import { describe, test, expect } from 'vitest';
 
 import {
-  LiquidityAddition,
-  LiquidityRemoval,
+  LiquidityDeposit,
+  LiquidityWithdrawal,
   Pool,
   Transfer,
 } from '../../src/classifier/base.js';
@@ -12,8 +12,8 @@ import classifiers from '../../src/classifier/items/uniswapV3.js';
 import { Swap } from '../../src/index.js';
 
 const swapClassifier = classifiers[0];
-const liquidityAdditionClassifier = classifiers[1];
-const liquidityRemovalClassifier = classifiers[2];
+const liquidityDepositClassifier = classifiers[1];
+const liquidityWithdrawalClassifier = classifiers[2];
 
 describe('Classfiers: Uniswap V3', () => {
   test('parses a swap', () => {
@@ -1400,7 +1400,7 @@ describe('Classfiers: Uniswap V3', () => {
     });
   });
 
-  test('parses liquidity addition', () => {
+  test('parses liquidity deposit', () => {
     const pool: Pool = {
       address: '0x4e68ccd3e89f51c3074ca5072bbac773960dfa36',
       assets: [
@@ -1421,7 +1421,7 @@ describe('Classfiers: Uniswap V3', () => {
         '0xf618862404eaa9a2d6e1d95b8a4ec74627e4e44fb0dd520e743359b7721a7778',
       gasUsed: 500595,
       logIndex: 10,
-      classifier: liquidityAdditionClassifier,
+      classifier: liquidityDepositClassifier,
       name: 'Mint',
       values: {
         sender: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
@@ -1434,11 +1434,11 @@ describe('Classfiers: Uniswap V3', () => {
       },
     };
 
-    if (liquidityAdditionClassifier.type !== 'liquidity_addition') {
+    if (liquidityDepositClassifier.type !== 'liquidity_deposit') {
       expect.fail();
     }
-    const addition = liquidityAdditionClassifier.parse(pool, event);
-    expect(addition).toEqual<LiquidityAddition>({
+    const deposit = liquidityDepositClassifier.parse(pool, event);
+    expect(deposit).toEqual<LiquidityDeposit>({
       contract: {
         address: '0x4e68ccd3e89f51c3074ca5072bbac773960dfa36',
         protocol: {
@@ -1474,7 +1474,7 @@ describe('Classfiers: Uniswap V3', () => {
     });
   });
 
-  test('parses liquidity removal', () => {
+  test('parses liquidity withdrawal', () => {
     const pool: Pool = {
       address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
       assets: [
@@ -1495,7 +1495,7 @@ describe('Classfiers: Uniswap V3', () => {
         '0x0e93b0006f66e5efd9e5b26c090f7dab202bea6151bb6f942e636601034567eb',
       gasUsed: 253098,
       logIndex: 35,
-      classifier: liquidityRemovalClassifier,
+      classifier: liquidityWithdrawalClassifier,
       name: 'Burn',
       values: {
         owner: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
@@ -1507,11 +1507,11 @@ describe('Classfiers: Uniswap V3', () => {
       },
     };
 
-    if (liquidityRemovalClassifier.type !== 'liquidity_removal') {
+    if (liquidityWithdrawalClassifier.type !== 'liquidity_withdrawal') {
       expect.fail();
     }
-    const removal = liquidityRemovalClassifier.parse(pool, event);
-    expect(removal).toEqual<LiquidityRemoval>({
+    const withdrawal = liquidityWithdrawalClassifier.parse(pool, event);
+    expect(withdrawal).toEqual<LiquidityWithdrawal>({
       contract: {
         address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
         protocol: {

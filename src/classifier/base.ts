@@ -87,7 +87,7 @@ interface Swap extends Base {
   metadata: Record<string, unknown>;
 }
 
-interface LiquidityAddition extends Base {
+interface LiquidityDeposit extends Base {
   contract: {
     address: string;
     protocol: {
@@ -101,7 +101,7 @@ interface LiquidityAddition extends Base {
   metadata: Record<string, unknown>;
 }
 
-interface LiquidityRemoval extends Base {
+interface LiquidityWithdrawal extends Base {
   contract: {
     address: string;
     protocol: {
@@ -209,22 +209,22 @@ interface SwapClassifier extends BaseClassifier {
   };
 }
 
-interface LiquidityAdditionClassifier extends BaseClassifier {
+interface LiquidityDepositClassifier extends BaseClassifier {
   protocol: SwapProtocol;
-  type: 'liquidity_addition';
+  type: 'liquidity_deposit';
   isValid: (event: Event, address: string, chainId: ChainId) => boolean;
-  parse: (pool: Pool, event: ClassifiedEvent) => LiquidityAddition | null;
+  parse: (pool: Pool, event: ClassifiedEvent) => LiquidityDeposit | null;
   pool: {
     getCalls: (id: string) => Call[];
     processCalls: (result: unknown[], address: string) => PoolData | null;
   };
 }
 
-interface LiquidityRemovalClassifier extends BaseClassifier {
+interface LiquidityWithdrawalClassifier extends BaseClassifier {
   protocol: SwapProtocol;
-  type: 'liquidity_removal';
+  type: 'liquidity_withdrawal';
   isValid: (event: Event, address: string, chainId: ChainId) => boolean;
-  parse: (pool: Pool, event: ClassifiedEvent) => LiquidityRemoval | null;
+  parse: (pool: Pool, event: ClassifiedEvent) => LiquidityWithdrawal | null;
   pool: {
     getCalls: (id: string) => Call[];
     processCalls: (result: unknown[], address: string) => PoolData | null;
@@ -279,8 +279,8 @@ interface SeizureClassifier extends BaseClassifier {
 type Classifier =
   | TransferClassifier
   | SwapClassifier
-  | LiquidityAdditionClassifier
-  | LiquidityRemovalClassifier
+  | LiquidityDepositClassifier
+  | LiquidityWithdrawalClassifier
   | NftSwapClassifier
   | RepaymentClassifier
   | SeizureClassifier;
@@ -305,8 +305,8 @@ export {
   Block,
   Classifier,
   LendingProtocol,
-  LiquidityAddition,
-  LiquidityRemoval,
+  LiquidityDeposit,
+  LiquidityWithdrawal,
   Market,
   MarketData,
   NftSwap,
