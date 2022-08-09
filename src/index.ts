@@ -12,7 +12,7 @@ import {
 import Inspector from './inspector.js';
 import {
   Arbitrage,
-  JitLiquiditySandwich,
+  JitSandwich,
   Liquidation,
   Mev,
   Sandwich,
@@ -20,7 +20,7 @@ import {
 import {
   getArbitrages,
   getBlock,
-  getJitLiquiditySandwiches,
+  getJitSandwiches,
   getLiquidations,
   getSandwiches,
   getTransaction,
@@ -31,7 +31,7 @@ export {
   Block,
   ChainId,
   Inspector,
-  JitLiquiditySandwich,
+  JitSandwich,
   Liquidation,
   LiquidityDeposit,
   LiquidityWithdrawal,
@@ -44,7 +44,7 @@ export {
   Transfer,
   getArbitrages,
   getBlock,
-  getJitLiquiditySandwiches,
+  getJitSandwiches,
   getLiquidations,
   getSandwiches,
   getTransaction,

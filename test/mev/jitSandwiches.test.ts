@@ -5,10 +5,7 @@ import {
   LiquidityWithdrawal,
   Swap,
 } from '../../src/index.js';
-import {
-  JitLiquiditySandwich,
-  getJitLiquiditySandwiches,
-} from '../../src/mev/jitLiquiditySandwiches.js';
+import { JitSandwich, getJitSandwiches } from '../../src/mev/jitSandwiches.js';
 
 describe('MEV: JIT liquidity sandwich', () => {
   test('skips an empty list of swaps', () => {
@@ -80,9 +77,9 @@ describe('MEV: JIT liquidity sandwich', () => {
       },
     ];
 
-    const sandwiches = getJitLiquiditySandwiches(swaps, deposits, withdrawals);
+    const sandwiches = getJitSandwiches(swaps, deposits, withdrawals);
 
-    expect(sandwiches).toEqual<JitLiquiditySandwich[]>([]);
+    expect(sandwiches).toEqual<JitSandwich[]>([]);
   });
 
   test.todo('skips irrelevant swaps', () => {
@@ -159,9 +156,9 @@ describe('MEV: JIT liquidity sandwich', () => {
       },
     ];
 
-    const sandwiches = getJitLiquiditySandwiches(swaps, deposits, withdrawals);
+    const sandwiches = getJitSandwiches(swaps, deposits, withdrawals);
 
-    expect(sandwiches).toEqual<JitLiquiditySandwich[]>([]);
+    expect(sandwiches).toEqual<JitSandwich[]>([]);
   });
 
   test('finds Uniswap V3 sandwich', () => {
@@ -265,9 +262,9 @@ describe('MEV: JIT liquidity sandwich', () => {
       },
     ];
 
-    const sandwiches = getJitLiquiditySandwiches(swaps, deposits, withdrawals);
+    const sandwiches = getJitSandwiches(swaps, deposits, withdrawals);
 
-    expect(sandwiches).toEqual<JitLiquiditySandwich[]>([
+    expect(sandwiches).toEqual<JitSandwich[]>([
       {
         sandwicher: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
         deposit: {

@@ -1,8 +1,5 @@
 import { Arbitrage, getArbitrages } from './arbitrage.js';
-import {
-  JitLiquiditySandwich,
-  getJitLiquiditySandwiches,
-} from './jitLiquiditySandwiches.js';
+import { JitSandwich, getJitSandwiches } from './jitSandwiches.js';
 import { Liquidation, getLiquidations } from './liquidations.js';
 import getLiquidityDeposits from './liquidityDeposits.js';
 import getLiquidityWithdrawals from './liquidityWithdrawals.js';
@@ -12,16 +9,16 @@ import getSeizures from './seizures.js';
 import getSwaps from './swaps.js';
 import getTransfers from './transfers.js';
 
-type Mev = Arbitrage | Liquidation | Sandwich | JitLiquiditySandwich;
+type Mev = Arbitrage | Liquidation | Sandwich | JitSandwich;
 
 export {
   Arbitrage,
-  JitLiquiditySandwich,
+  JitSandwich,
   Liquidation,
   Mev,
   Sandwich,
   getArbitrages,
-  getJitLiquiditySandwiches,
+  getJitSandwiches,
   getLiquidations,
   getLiquidityDeposits,
   getLiquidityWithdrawals,

@@ -6,7 +6,7 @@ import { fetchPools, fetchMarkets } from './fetch.js';
 import {
   Mev,
   getArbitrages,
-  getJitLiquiditySandwiches,
+  getJitSandwiches,
   getSeizures,
   getLiquidations,
   getLiquidityDeposits,
@@ -76,17 +76,12 @@ class Inspector {
       transfers,
       events,
     );
-    const jitLiquiditySandwiches = getJitLiquiditySandwiches(
+    const jitSandwiches = getJitSandwiches(
       swaps,
       liquidityDeposits,
       liquidityWithdrawals,
     );
-    return [
-      ...arbitrages,
-      ...liquidations,
-      ...sandwiches,
-      ...jitLiquiditySandwiches,
-    ];
+    return [...arbitrages, ...liquidations, ...sandwiches, ...jitSandwiches];
   }
 }
 

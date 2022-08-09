@@ -4,7 +4,7 @@ import {
   Swap,
 } from '../classifier/index.js';
 
-interface JitLiquiditySandwich {
+interface JitSandwich {
   sandwicher: string;
   deposit: LiquidityDeposit;
   withdrawal: LiquidityWithdrawal;
@@ -15,11 +15,11 @@ interface JitLiquiditySandwich {
   }[];
 }
 
-function getJitLiquiditySandwiches(
+function getJitSandwiches(
   swaps: Swap[],
   deposits: LiquidityDeposit[],
   withdrawals: LiquidityWithdrawal[],
-): JitLiquiditySandwich[] {
+): JitSandwich[] {
   const orderedSwaps = [...swaps];
   orderedSwaps.sort((a, b) => a.event.logIndex - b.event.logIndex);
   const orderedDeposits = [...deposits];
@@ -46,8 +46,8 @@ function getUniswapV3Sandwiches(
   swaps: Swap[],
   deposits: LiquidityDeposit[],
   withdrawals: LiquidityWithdrawal[],
-): JitLiquiditySandwich[] {
-  const sandwiches: JitLiquiditySandwich[] = [];
+): JitSandwich[] {
+  const sandwiches: JitSandwich[] = [];
   for (const deposit of deposits) {
     for (const withdrawal of withdrawals) {
       if (deposit.event.logIndex > withdrawal.event.logIndex) {
@@ -102,4 +102,4 @@ function getUniswapV3Sandwiches(
   return sandwiches;
 }
 
-export { JitLiquiditySandwich, getJitLiquiditySandwiches };
+export { JitSandwich, getJitSandwiches };

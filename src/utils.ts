@@ -1,7 +1,7 @@
 import { Base as BaseEvent, Block, Transaction } from './classifier/index.js';
 import {
   Arbitrage,
-  JitLiquiditySandwich,
+  JitSandwich,
   Liquidation,
   Mev,
   Sandwich,
@@ -46,7 +46,7 @@ function isSandwich(mev: Mev): boolean {
   return 'frontSwap' in mev;
 }
 
-function isJitLiquiditySandwich(mev: Mev): boolean {
+function isJitSandwich(mev: Mev): boolean {
   return 'deposit' in mev;
 }
 
@@ -62,10 +62,8 @@ function getSandwiches(mevList: Mev[]): Sandwich[] {
   return mevList.filter((mev): mev is Sandwich => isSandwich(mev));
 }
 
-function getJitLiquiditySandwiches(mevList: Mev[]): JitLiquiditySandwich[] {
-  return mevList.filter((mev): mev is JitLiquiditySandwich =>
-    isJitLiquiditySandwich(mev),
-  );
+function getJitSandwiches(mevList: Mev[]): JitSandwich[] {
+  return mevList.filter((mev): mev is JitSandwich => isJitSandwich(mev));
 }
 
 function equalWithTolerance(
@@ -128,7 +126,7 @@ export {
   equalWithTolerance,
   getArbitrages,
   getBlock,
-  getJitLiquiditySandwiches,
+  getJitSandwiches,
   getLiquidations,
   getSandwiches,
   getTransaction,
