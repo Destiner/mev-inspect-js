@@ -16,7 +16,7 @@ const liquidityDepositClassifier = classifiers[1];
 const liquidityWithdrawalClassifier = classifiers[2];
 
 describe('Classfiers: Uniswap V3', () => {
-  test('parses a swap', () => {
+  test('swap', () => {
     const poolA: Pool = {
       address: '0x19f83460e387f1b01f94b85c2532ebc15b0b712e',
       assets: [
@@ -254,7 +254,7 @@ describe('Classfiers: Uniswap V3', () => {
     });
   });
 
-  test('parses split swaps', () => {
+  test('split swaps', () => {
     const poolA: Pool = {
       address: '0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640',
       assets: [
@@ -695,7 +695,7 @@ describe('Classfiers: Uniswap V3', () => {
     });
   });
 
-  test('parses multi-hop swaps', () => {
+  test('multi-hop swaps', () => {
     const poolA: Pool = {
       address: '0x8ad599c3a0ff1de082011efddc58f1908eb6e6d8',
       assets: [
@@ -908,7 +908,7 @@ describe('Classfiers: Uniswap V3', () => {
     });
   });
 
-  test('parses arbitrage swaps', () => {
+  test('arbitrage swaps', () => {
     const poolA: Pool = {
       address: '0x41b536722c014a577f06a4bb0dfa08bf0b8f5e87',
       assets: [
@@ -1271,7 +1271,7 @@ describe('Classfiers: Uniswap V3', () => {
     });
   });
 
-  test('parses cross-protocol arbitrage swaps', () => {
+  test('cross-protocol arbitrage swaps', () => {
     const pool: Pool = {
       address: '0x9e0905249ceefffb9605e034b534544684a58be6',
       assets: [
@@ -1400,7 +1400,7 @@ describe('Classfiers: Uniswap V3', () => {
     });
   });
 
-  test('parses liquidity deposit', () => {
+  test('liquidity deposit', () => {
     const pool: Pool = {
       address: '0x4e68ccd3e89f51c3074ca5072bbac773960dfa36',
       assets: [
@@ -1474,7 +1474,7 @@ describe('Classfiers: Uniswap V3', () => {
     });
   });
 
-  test('parses liquidity withdrawal', () => {
+  test('liquidity withdrawal', () => {
     const pool: Pool = {
       address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
       assets: [

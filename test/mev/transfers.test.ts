@@ -6,7 +6,7 @@ import uniswapV2Classifiers from '../../src/classifier/items/uniswapV2.js';
 import getTransfers from '../../src/mev/transfers.js';
 
 describe('MEV: transfers', () => {
-  test('skips irrelevant logs', () => {
+  test('skip irrelevant logs', () => {
     const swapLog: ClassifiedEvent = {
       address: '0xa478c2975ab1ea89e8196811f51a7b7ade33eb11',
       blockHash:

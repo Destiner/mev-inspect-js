@@ -8,7 +8,7 @@ import {
 import { JitSandwich, getJitSandwiches } from '../../src/mev/jitSandwiches.js';
 
 describe('MEV: JIT liquidity sandwich', () => {
-  test('skips an empty list of swaps', () => {
+  test('skip an empty list of swaps', () => {
     const swaps: Swap[] = [];
     const deposits: LiquidityDeposit[] = [
       {
@@ -82,7 +82,7 @@ describe('MEV: JIT liquidity sandwich', () => {
     expect(sandwiches).toEqual<JitSandwich[]>([]);
   });
 
-  test.todo('skips irrelevant swaps', () => {
+  test.todo('skip irrelevant swaps', () => {
     // same user
     // different pool
     // different protocol
@@ -161,7 +161,7 @@ describe('MEV: JIT liquidity sandwich', () => {
     expect(sandwiches).toEqual<JitSandwich[]>([]);
   });
 
-  test('finds Uniswap V3 sandwich', () => {
+  test('Uniswap V3 sandwich', () => {
     const swaps: Swap[] = [
       {
         contract: {

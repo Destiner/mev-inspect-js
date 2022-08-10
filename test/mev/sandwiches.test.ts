@@ -6,7 +6,7 @@ import { Sandwich, getSandwiches } from '../../src/mev/sandwiches.js';
 const ETHEREUM = 1;
 
 describe('MEV: arbitrage', () => {
-  test('skips a simple swap', () => {
+  test('simple swap', () => {
     const swaps: Swap[] = [
       {
         contract: {
@@ -46,7 +46,7 @@ describe('MEV: arbitrage', () => {
     expect(sandwiches).toEqual([]);
   });
 
-  test('skips a multipath swap', () => {
+  test('multipath swap', () => {
     const swaps: Swap[] = [
       {
         contract: {
@@ -117,7 +117,7 @@ describe('MEV: arbitrage', () => {
     expect(sandwiches).toEqual([]);
   });
 
-  test('skips a cross-protocol split swap', () => {
+  test('cross-protocol split swap', () => {
     const swaps: Swap[] = [
       {
         contract: {
@@ -250,7 +250,7 @@ describe('MEV: arbitrage', () => {
     expect(sandwiches).toEqual([]);
   });
 
-  test('skips a sandwich inside a single transaction', () => {
+  test('skip sandwich inside a single transaction', () => {
     const swaps: Swap[] = [
       {
         contract: {
@@ -352,7 +352,7 @@ describe('MEV: arbitrage', () => {
     expect(sandwiches).toEqual([]);
   });
 
-  test('skips irrelevant swaps detecting a sandwich', () => {
+  test('skip irrelevant swaps detecting a sandwich', () => {
     const swaps: Swap[] = [
       {
         contract: {
@@ -516,7 +516,7 @@ describe('MEV: arbitrage', () => {
     expect(sandwiches[0].sandwiched.length).toEqual(1);
   });
 
-  test('finds a sandwich', () => {
+  test('sandwich', () => {
     const swapsA: Swap[] = [
       {
         contract: {
@@ -737,7 +737,7 @@ describe('MEV: arbitrage', () => {
     ]);
   });
 
-  test('finds a sandwich with non-ether profit asset', () => {
+  test('sandwich with non-ether profit asset', () => {
     const swaps: Swap[] = [
       {
         contract: {
@@ -850,7 +850,7 @@ describe('MEV: arbitrage', () => {
     ]);
   });
 
-  test('finds a multiple sandwiches in a single block', () => {
+  test('multiple sandwiches in a single block', () => {
     const swaps: Swap[] = [
       {
         contract: {
@@ -1138,15 +1138,15 @@ describe('MEV: arbitrage', () => {
     expect(sandwiches.length).toEqual(3);
   });
 
-  test('finds a sandwiches with multiple sandwiched swaps', () => {
+  test('sandwiches with multiple sandwiched swaps', () => {
     // TODO
   });
 
-  test('finds a Balancer V2 sandwich', () => {
+  test('Balancer V2 sandwich', () => {
     // TODO
   });
 
-  test('correctly calculates profit for imbalanced sandwiches', () => {
+  test('correct profit calculation for imbalanced sandwiches', () => {
     const swapsA: Swap[] = [
       {
         contract: {

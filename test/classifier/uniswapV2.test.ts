@@ -7,7 +7,7 @@ import classifier from '../../src/classifier/items/uniswapV2.js';
 import { Swap } from '../../src/index.js';
 
 describe('Classfiers: Uniswap V2', () => {
-  test('parses a swap', () => {
+  test('swap', () => {
     const poolA: Pool = {
       address: '0x9928e4046d7c6513326ccea028cd3e7a91c7590a',
       assets: [
@@ -221,7 +221,7 @@ describe('Classfiers: Uniswap V2', () => {
     });
   });
 
-  test('parses split swaps', () => {
+  test('split swaps', () => {
     const pool: Pool = {
       address: '0x937e882083a0aaf58d7fcf566de8e5d990e882a9',
       assets: [
@@ -437,7 +437,7 @@ describe('Classfiers: Uniswap V2', () => {
     });
   });
 
-  test('parses multi-hop swaps', () => {
+  test('multi-hop swaps', () => {
     const poolA: Pool = {
       address: '0xa2107fa5b38d9bbd2c461d6edf11b11a50f6b974',
       assets: [
@@ -626,7 +626,7 @@ describe('Classfiers: Uniswap V2', () => {
     });
   });
 
-  test('parses arbitrage swaps', () => {
+  test('arbitrage swaps', () => {
     const poolA: Pool = {
       address: '0xe2e998f6f498cf9acdeda38de77ca95d1d8288f6',
       assets: [
@@ -896,7 +896,7 @@ describe('Classfiers: Uniswap V2', () => {
     });
   });
 
-  test('parses cross-protocol arbitrage swaps', () => {
+  test('cross-protocol arbitrage swaps', () => {
     const pool: Pool = {
       address: '0x55d5c232d921b9eaa6b37b5845e439acd04b4dba',
       assets: [

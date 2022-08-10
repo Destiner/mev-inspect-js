@@ -4,7 +4,7 @@ import { Repayment, Seizure } from '../../src/index.js';
 import { Liquidation, getLiquidations } from '../../src/mev/liquidations.js';
 
 describe('MEV: liquidations', () => {
-  test('detects a Compound V2 liquidation', () => {
+  test('Compound V2 liquidation', () => {
     const repaymentsA: Repayment[] = [
       {
         contract: {
@@ -166,7 +166,7 @@ describe('MEV: liquidations', () => {
     ]);
   });
 
-  test('detects a Aave V2 liquidation', () => {
+  test('Aave V2 liquidation', () => {
     const repaymentsA: Repayment[] = [
       {
         contract: {

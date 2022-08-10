@@ -11,7 +11,7 @@ const swapClassifier = balancerV2Classifiers[0];
 const transferClassifier = balancerV2Classifiers[3];
 
 describe('Classfiers: Balancer V2', () => {
-  test('parses a swap', () => {
+  test('swap', () => {
     const pool: Pool = {
       address: '0x5c6ee304399dbdb9c8ef030ab642b10820db8f56',
       assets: [
@@ -175,7 +175,7 @@ describe('Classfiers: Balancer V2', () => {
     });
   });
 
-  test('parses a swap with different from/to', () => {
+  test('swap with different from/to', () => {
     const pool: Pool = {
       address: '0xe2469f47ab58cf9cf59f9822e3c5de4950a41c49',
       assets: [
@@ -376,7 +376,7 @@ describe('Classfiers: Balancer V2', () => {
     });
   });
 
-  test('parses a eth -> token swap', () => {
+  test('eth -> token swap', () => {
     const pool: Pool = {
       address: '0x0bf37157d30dfe6f56757dcadff01aed83b08cd6',
       assets: [
@@ -505,7 +505,7 @@ describe('Classfiers: Balancer V2', () => {
     });
   });
 
-  test('parses a token -> eth swap', () => {
+  test('token -> eth swap', () => {
     const pool: Pool = {
       address: '0x3ebf48cd7586d7a4521ce59e53d9a907ebf1480f',
       assets: [
@@ -634,7 +634,7 @@ describe('Classfiers: Balancer V2', () => {
     });
   });
 
-  test('parses a swap with an approval', () => {
+  test('swap with an approval', () => {
     if (swapClassifier.type !== 'swap') {
       expect.fail();
     }
@@ -885,7 +885,7 @@ describe('Classfiers: Balancer V2', () => {
     });
   });
 
-  test('parses a multi-path swap', () => {
+  test('multi-path swap', () => {
     if (swapClassifier.type !== 'swap') {
       expect.fail();
     }
@@ -1101,7 +1101,7 @@ describe('Classfiers: Balancer V2', () => {
     });
   });
 
-  test('parses a swap with internal "from" transfer', () => {
+  test('swap with internal "from" transfer', () => {
     if (swapClassifier.type !== 'swap') {
       expect.fail();
     }
@@ -1322,7 +1322,7 @@ describe('Classfiers: Balancer V2', () => {
     });
   });
 
-  test('parses a swap with internal "to" transfer', () => {
+  test('swap with internal "to" transfer', () => {
     if (swapClassifier.type !== 'swap') {
       expect.fail();
     }
@@ -1578,7 +1578,7 @@ describe('Classfiers: Balancer V2', () => {
     });
   });
 
-  test('parses a batch swap', () => {
+  test('batch swap', () => {
     if (swapClassifier.type !== 'swap') {
       expect.fail();
     }
@@ -1964,7 +1964,7 @@ describe('Classfiers: Balancer V2', () => {
     });
   });
 
-  test('parses an internal transfer', () => {
+  test('internal transfer', () => {
     if (transferClassifier.type !== 'transfer') {
       expect.fail();
     }

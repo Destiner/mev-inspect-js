@@ -4,7 +4,7 @@ import { Swap } from '../../src/index.js';
 import { Arbitrage, getArbitrages } from '../../src/mev/arbitrage.js';
 
 describe('MEV: arbitrage', () => {
-  test('skips a simple swap', () => {
+  test('skip simple swaps', () => {
     const swaps: Swap[] = [
       {
         contract: {
@@ -43,7 +43,7 @@ describe('MEV: arbitrage', () => {
     expect(arbitrages).toEqual<Arbitrage[]>([]);
   });
 
-  test('skips a multipath swap', () => {
+  test('skip multipath swaps', () => {
     const swaps: Swap[] = [
       {
         contract: {
@@ -113,7 +113,7 @@ describe('MEV: arbitrage', () => {
     expect(arbitrages).toEqual<Arbitrage[]>([]);
   });
 
-  test('skips a cross-protocol split swap', () => {
+  test('skip cross-protocol split swaps', () => {
     const swaps: Swap[] = [
       {
         contract: {
@@ -245,7 +245,7 @@ describe('MEV: arbitrage', () => {
     expect(arbitrages).toEqual<Arbitrage[]>([]);
   });
 
-  test('finds 2-swap internal arbitrage', () => {
+  test('2-swap internal arbitrage', () => {
     const swaps: Swap[] = [
       {
         contract: {
@@ -324,7 +324,7 @@ describe('MEV: arbitrage', () => {
     ]);
   });
 
-  test('finds multistep internal arbitrage', () => {
+  test('multistep internal arbitrage', () => {
     const swaps: Swap[] = [
       {
         contract: {
@@ -465,7 +465,7 @@ describe('MEV: arbitrage', () => {
     ]);
   });
 
-  test('finds 2-swap cross-protocol arbitrage', () => {
+  test('2-swap cross-protocol arbitrage', () => {
     const swapsA: Swap[] = [
       {
         contract: {
@@ -621,7 +621,7 @@ describe('MEV: arbitrage', () => {
     ]);
   });
 
-  test('finds 3-swap cross-protocol arbitrage', () => {
+  test('3-swap cross-protocol arbitrage', () => {
     const swaps: Swap[] = [
       {
         contract: {
@@ -731,7 +731,7 @@ describe('MEV: arbitrage', () => {
     ]);
   });
 
-  test('finds a USD profit arbitrage', () => {
+  test('arbitrage with profit in USD token', () => {
     const swaps: Swap[] = [
       {
         contract: {
@@ -841,7 +841,7 @@ describe('MEV: arbitrage', () => {
     ]);
   });
 
-  test('finds multiple mev in one transaction', () => {
+  test('multiple arbitrage in one transaction', () => {
     const swaps: Swap[] = [
       {
         contract: {
@@ -990,7 +990,7 @@ describe('MEV: arbitrage', () => {
     ]);
   });
 
-  test('finds arbitrage of swaps with different amounts', () => {
+  test('arbitrage of swaps with different amounts', () => {
     const swaps: Swap[] = [
       {
         contract: {
@@ -1100,7 +1100,7 @@ describe('MEV: arbitrage', () => {
     ]);
   });
 
-  test('counts russian doll arbitrage as a single item', () => {
+  test('russian doll arbitrage', () => {
     const swaps: Swap[] = [
       {
         contract: {

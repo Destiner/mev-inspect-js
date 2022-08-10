@@ -5,7 +5,7 @@ import { ClassifiedEvent, Transfer } from '../../src/classifier/index.js';
 import classifier from '../../src/classifier/items/erc20.js';
 
 describe('Classfiers: ERC20', () => {
-  test('parses a transfer from a log', () => {
+  test('transfer', () => {
     if (classifier.type !== 'transfer') {
       expect.fail();
     }
@@ -59,7 +59,7 @@ describe('Classfiers: ERC20', () => {
     });
   });
 
-  test('parses multiple transfers from logs', () => {
+  test('multiple transfers', () => {
     const blockHashes = [
       '0x20e8da414e1e2578cf0486e0fe1f3901446a1c5481bec488be5f37cfa9b81199',
       '0x1071ba06c5f6c8c9c60653a5843e484e90eafe61a6c87ab0827793e7aa6cd79c',
