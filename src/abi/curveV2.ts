@@ -1,738 +1,1310 @@
 const abi = [
   {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        name: 'buyer',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        name: 'sold_id',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        name: 'tokens_sold',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        name: 'bought_id',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        name: 'tokens_bought',
+        type: 'uint256',
+      },
+    ],
     name: 'TokenExchange',
-    inputs: [
-      { name: 'buyer', type: 'address', indexed: true },
-      { name: 'sold_id', type: 'uint256', indexed: false },
-      { name: 'tokens_sold', type: 'uint256', indexed: false },
-      { name: 'bought_id', type: 'uint256', indexed: false },
-      { name: 'tokens_bought', type: 'uint256', indexed: false },
-    ],
-    anonymous: false,
     type: 'event',
   },
   {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        name: 'provider',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        name: 'token_amounts',
+        type: 'uint256[2]',
+      },
+      {
+        indexed: false,
+        name: 'fee',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        name: 'token_supply',
+        type: 'uint256',
+      },
+    ],
     name: 'AddLiquidity',
-    inputs: [
-      { name: 'provider', type: 'address', indexed: true },
-      { name: 'token_amounts', type: 'uint256[2]', indexed: false },
-      { name: 'fee', type: 'uint256', indexed: false },
-      { name: 'token_supply', type: 'uint256', indexed: false },
-    ],
-    anonymous: false,
     type: 'event',
   },
   {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        name: 'provider',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        name: 'token_amounts',
+        type: 'uint256[3]',
+      },
+      {
+        indexed: false,
+        name: 'fee',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        name: 'token_supply',
+        type: 'uint256',
+      },
+    ],
+    name: 'AddLiquidity',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        name: 'provider',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        name: 'token_amounts',
+        type: 'uint256[4]',
+      },
+      {
+        indexed: false,
+        name: 'fee',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        name: 'token_supply',
+        type: 'uint256',
+      },
+    ],
+    name: 'AddLiquidity',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        name: 'provider',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        name: 'token_amounts',
+        type: 'uint256[2]',
+      },
+      {
+        indexed: false,
+        name: 'token_supply',
+        type: 'uint256',
+      },
+    ],
     name: 'RemoveLiquidity',
-    inputs: [
-      { name: 'provider', type: 'address', indexed: true },
-      { name: 'token_amounts', type: 'uint256[2]', indexed: false },
-      { name: 'token_supply', type: 'uint256', indexed: false },
-    ],
-    anonymous: false,
     type: 'event',
   },
   {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        name: 'provider',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        name: 'token_amounts',
+        type: 'uint256[3]',
+      },
+      {
+        indexed: false,
+        name: 'token_supply',
+        type: 'uint256',
+      },
+    ],
+    name: 'RemoveLiquidity',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        name: 'provider',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        name: 'token_amounts',
+        type: 'uint256[4]',
+      },
+      {
+        indexed: false,
+        name: 'token_supply',
+        type: 'uint256',
+      },
+    ],
+    name: 'RemoveLiquidity',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        name: 'provider',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        name: 'token_amount',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        name: 'coin_index',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        name: 'coin_amount',
+        type: 'uint256',
+      },
+    ],
     name: 'RemoveLiquidityOne',
-    inputs: [
-      { name: 'provider', type: 'address', indexed: true },
-      { name: 'token_amount', type: 'uint256', indexed: false },
-      { name: 'coin_index', type: 'uint256', indexed: false },
-      { name: 'coin_amount', type: 'uint256', indexed: false },
-    ],
-    anonymous: false,
     type: 'event',
   },
   {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        name: 'deadline',
+        type: 'uint256',
+      },
+      {
+        indexed: true,
+        name: 'admin',
+        type: 'address',
+      },
+    ],
     name: 'CommitNewAdmin',
-    inputs: [
-      { name: 'deadline', type: 'uint256', indexed: true },
-      { name: 'admin', type: 'address', indexed: true },
-    ],
-    anonymous: false,
     type: 'event',
   },
   {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        name: 'admin',
+        type: 'address',
+      },
+    ],
     name: 'NewAdmin',
-    inputs: [{ name: 'admin', type: 'address', indexed: true }],
-    anonymous: false,
     type: 'event',
   },
   {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        name: 'deadline',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        name: 'admin_fee',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        name: 'mid_fee',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        name: 'out_fee',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        name: 'fee_gamma',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        name: 'price_threshold',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        name: 'adjustment_step',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        name: 'ma_half_time',
+        type: 'uint256',
+      },
+    ],
     name: 'CommitNewParameters',
-    inputs: [
-      { name: 'deadline', type: 'uint256', indexed: true },
-      { name: 'admin_fee', type: 'uint256', indexed: false },
-      { name: 'mid_fee', type: 'uint256', indexed: false },
-      { name: 'out_fee', type: 'uint256', indexed: false },
-      { name: 'fee_gamma', type: 'uint256', indexed: false },
-      { name: 'allowed_extra_profit', type: 'uint256', indexed: false },
-      { name: 'adjustment_step', type: 'uint256', indexed: false },
-      { name: 'ma_half_time', type: 'uint256', indexed: false },
-    ],
-    anonymous: false,
     type: 'event',
   },
   {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        name: 'admin_fee',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        name: 'mid_fee',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        name: 'out_fee',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        name: 'fee_gamma',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        name: 'price_threshold',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        name: 'adjustment_step',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        name: 'ma_half_time',
+        type: 'uint256',
+      },
+    ],
     name: 'NewParameters',
-    inputs: [
-      { name: 'admin_fee', type: 'uint256', indexed: false },
-      { name: 'mid_fee', type: 'uint256', indexed: false },
-      { name: 'out_fee', type: 'uint256', indexed: false },
-      { name: 'fee_gamma', type: 'uint256', indexed: false },
-      { name: 'allowed_extra_profit', type: 'uint256', indexed: false },
-      { name: 'adjustment_step', type: 'uint256', indexed: false },
-      { name: 'ma_half_time', type: 'uint256', indexed: false },
-    ],
-    anonymous: false,
     type: 'event',
   },
   {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        name: 'initial_A',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        name: 'future_A',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        name: 'initial_time',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        name: 'future_time',
+        type: 'uint256',
+      },
+    ],
     name: 'RampAgamma',
-    inputs: [
-      { name: 'initial_A', type: 'uint256', indexed: false },
-      { name: 'future_A', type: 'uint256', indexed: false },
-      { name: 'initial_gamma', type: 'uint256', indexed: false },
-      { name: 'future_gamma', type: 'uint256', indexed: false },
-      { name: 'initial_time', type: 'uint256', indexed: false },
-      { name: 'future_time', type: 'uint256', indexed: false },
-    ],
-    anonymous: false,
     type: 'event',
   },
   {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        name: 'current_A',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        name: 'current_gamma',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        name: 'time',
+        type: 'uint256',
+      },
+    ],
     name: 'StopRampA',
-    inputs: [
-      { name: 'current_A', type: 'uint256', indexed: false },
-      { name: 'current_gamma', type: 'uint256', indexed: false },
-      { name: 'time', type: 'uint256', indexed: false },
-    ],
-    anonymous: false,
     type: 'event',
   },
   {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        name: 'admin',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        name: 'tokens',
+        type: 'uint256',
+      },
+    ],
     name: 'ClaimAdminFee',
-    inputs: [
-      { name: 'admin', type: 'address', indexed: true },
-      { name: 'tokens', type: 'uint256', indexed: false },
-    ],
-    anonymous: false,
     type: 'event',
   },
   {
+    inputs: [
+      {
+        name: 'owner',
+        type: 'address',
+      },
+      {
+        name: 'A',
+        type: 'uint256',
+      },
+      {
+        name: 'gamma',
+        type: 'uint256',
+      },
+      {
+        name: 'mid_fee',
+        type: 'uint256',
+      },
+      {
+        name: 'out_fee',
+        type: 'uint256',
+      },
+      {
+        name: 'price_threshold',
+        type: 'uint256',
+      },
+      {
+        name: 'fee_gamma',
+        type: 'uint256',
+      },
+      {
+        name: 'adjustment_step',
+        type: 'uint256',
+      },
+      {
+        name: 'admin_fee',
+        type: 'uint256',
+      },
+      {
+        name: 'ma_half_time',
+        type: 'uint256',
+      },
+      {
+        name: 'initial_prices',
+        type: 'uint256[2]',
+      },
+    ],
+    outputs: [],
     stateMutability: 'nonpayable',
     type: 'constructor',
+  },
+  {
+    stateMutability: 'payable',
+    type: 'fallback',
+  },
+  {
     inputs: [
-      { name: 'owner', type: 'address' },
-      { name: 'admin_fee_receiver', type: 'address' },
-      { name: 'A', type: 'uint256' },
-      { name: 'gamma', type: 'uint256' },
-      { name: 'mid_fee', type: 'uint256' },
-      { name: 'out_fee', type: 'uint256' },
-      { name: 'allowed_extra_profit', type: 'uint256' },
-      { name: 'fee_gamma', type: 'uint256' },
-      { name: 'adjustment_step', type: 'uint256' },
-      { name: 'admin_fee', type: 'uint256' },
-      { name: 'ma_half_time', type: 'uint256' },
-      { name: 'initial_price', type: 'uint256' },
-      { name: '_token', type: 'address' },
-      { name: '_coins', type: 'address[2]' },
+      {
+        name: 'k',
+        type: 'uint256',
+      },
     ],
-    outputs: [],
-  },
-  { stateMutability: 'payable', type: 'fallback' },
-  {
-    stateMutability: 'view',
-    type: 'function',
-    name: 'token',
-    inputs: [],
-    outputs: [{ name: '', type: 'address' }],
-  },
-  {
-    stateMutability: 'view',
-    type: 'function',
-    name: 'coins',
-    inputs: [{ name: 'i', type: 'uint256' }],
-    outputs: [{ name: '', type: 'address' }],
-  },
-  {
-    stateMutability: 'view',
-    type: 'function',
-    name: 'A',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
-    stateMutability: 'view',
-    type: 'function',
-    name: 'gamma',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
-    stateMutability: 'view',
-    type: 'function',
-    name: 'fee',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
-    stateMutability: 'view',
-    type: 'function',
-    name: 'get_virtual_price',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
-    stateMutability: 'view',
-    type: 'function',
     name: 'price_oracle',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
-    stateMutability: 'payable',
-    type: 'function',
-    name: 'exchange',
-    inputs: [
-      { name: 'i', type: 'uint256' },
-      { name: 'j', type: 'uint256' },
-      { name: 'dx', type: 'uint256' },
-      { name: 'min_dy', type: 'uint256' },
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
     ],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
-    stateMutability: 'payable',
-    type: 'function',
-    name: 'exchange',
-    inputs: [
-      { name: 'i', type: 'uint256' },
-      { name: 'j', type: 'uint256' },
-      { name: 'dx', type: 'uint256' },
-      { name: 'min_dy', type: 'uint256' },
-      { name: 'use_eth', type: 'bool' },
-    ],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
-    stateMutability: 'payable',
-    type: 'function',
-    name: 'exchange',
-    inputs: [
-      { name: 'i', type: 'uint256' },
-      { name: 'j', type: 'uint256' },
-      { name: 'dx', type: 'uint256' },
-      { name: 'min_dy', type: 'uint256' },
-      { name: 'use_eth', type: 'bool' },
-      { name: 'receiver', type: 'address' },
-    ],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
-    stateMutability: 'payable',
-    type: 'function',
-    name: 'exchange_underlying',
-    inputs: [
-      { name: 'i', type: 'uint256' },
-      { name: 'j', type: 'uint256' },
-      { name: 'dx', type: 'uint256' },
-      { name: 'min_dy', type: 'uint256' },
-    ],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
-    stateMutability: 'payable',
-    type: 'function',
-    name: 'exchange_underlying',
-    inputs: [
-      { name: 'i', type: 'uint256' },
-      { name: 'j', type: 'uint256' },
-      { name: 'dx', type: 'uint256' },
-      { name: 'min_dy', type: 'uint256' },
-      { name: 'receiver', type: 'address' },
-    ],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
-    stateMutability: 'payable',
-    type: 'function',
-    name: 'exchange_extended',
-    inputs: [
-      { name: 'i', type: 'uint256' },
-      { name: 'j', type: 'uint256' },
-      { name: 'dx', type: 'uint256' },
-      { name: 'min_dy', type: 'uint256' },
-      { name: 'use_eth', type: 'bool' },
-      { name: 'sender', type: 'address' },
-      { name: 'receiver', type: 'address' },
-      { name: 'cb', type: 'bytes' },
-    ],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
     stateMutability: 'view',
     type: 'function',
-    name: 'get_dy',
+  },
+  {
     inputs: [
-      { name: 'i', type: 'uint256' },
-      { name: 'j', type: 'uint256' },
-      { name: 'dx', type: 'uint256' },
+      {
+        name: 'k',
+        type: 'uint256',
+      },
     ],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
-    stateMutability: 'payable',
-    type: 'function',
-    name: 'add_liquidity',
-    inputs: [
-      { name: 'amounts', type: 'uint256[2]' },
-      { name: 'min_mint_amount', type: 'uint256' },
-    ],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
-    stateMutability: 'payable',
-    type: 'function',
-    name: 'add_liquidity',
-    inputs: [
-      { name: 'amounts', type: 'uint256[2]' },
-      { name: 'min_mint_amount', type: 'uint256' },
-      { name: 'use_eth', type: 'bool' },
-    ],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
-    stateMutability: 'payable',
-    type: 'function',
-    name: 'add_liquidity',
-    inputs: [
-      { name: 'amounts', type: 'uint256[2]' },
-      { name: 'min_mint_amount', type: 'uint256' },
-      { name: 'use_eth', type: 'bool' },
-      { name: 'receiver', type: 'address' },
-    ],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
-    stateMutability: 'nonpayable',
-    type: 'function',
-    name: 'remove_liquidity',
-    inputs: [
-      { name: '_amount', type: 'uint256' },
-      { name: 'min_amounts', type: 'uint256[2]' },
-    ],
-    outputs: [],
-  },
-  {
-    stateMutability: 'nonpayable',
-    type: 'function',
-    name: 'remove_liquidity',
-    inputs: [
-      { name: '_amount', type: 'uint256' },
-      { name: 'min_amounts', type: 'uint256[2]' },
-      { name: 'use_eth', type: 'bool' },
-    ],
-    outputs: [],
-  },
-  {
-    stateMutability: 'nonpayable',
-    type: 'function',
-    name: 'remove_liquidity',
-    inputs: [
-      { name: '_amount', type: 'uint256' },
-      { name: 'min_amounts', type: 'uint256[2]' },
-      { name: 'use_eth', type: 'bool' },
-      { name: 'receiver', type: 'address' },
-    ],
-    outputs: [],
-  },
-  {
-    stateMutability: 'view',
-    type: 'function',
-    name: 'calc_token_amount',
-    inputs: [{ name: 'amounts', type: 'uint256[2]' }],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
-    stateMutability: 'view',
-    type: 'function',
-    name: 'calc_withdraw_one_coin',
-    inputs: [
-      { name: 'token_amount', type: 'uint256' },
-      { name: 'i', type: 'uint256' },
-    ],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
-    stateMutability: 'nonpayable',
-    type: 'function',
-    name: 'remove_liquidity_one_coin',
-    inputs: [
-      { name: 'token_amount', type: 'uint256' },
-      { name: 'i', type: 'uint256' },
-      { name: 'min_amount', type: 'uint256' },
-    ],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
-    stateMutability: 'nonpayable',
-    type: 'function',
-    name: 'remove_liquidity_one_coin',
-    inputs: [
-      { name: 'token_amount', type: 'uint256' },
-      { name: 'i', type: 'uint256' },
-      { name: 'min_amount', type: 'uint256' },
-      { name: 'use_eth', type: 'bool' },
-    ],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
-    stateMutability: 'nonpayable',
-    type: 'function',
-    name: 'remove_liquidity_one_coin',
-    inputs: [
-      { name: 'token_amount', type: 'uint256' },
-      { name: 'i', type: 'uint256' },
-      { name: 'min_amount', type: 'uint256' },
-      { name: 'use_eth', type: 'bool' },
-      { name: 'receiver', type: 'address' },
-    ],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
-    stateMutability: 'nonpayable',
-    type: 'function',
-    name: 'claim_admin_fees',
-    inputs: [],
-    outputs: [],
-  },
-  {
-    stateMutability: 'nonpayable',
-    type: 'function',
-    name: 'ramp_A_gamma',
-    inputs: [
-      { name: 'future_A', type: 'uint256' },
-      { name: 'future_gamma', type: 'uint256' },
-      { name: 'future_time', type: 'uint256' },
-    ],
-    outputs: [],
-  },
-  {
-    stateMutability: 'nonpayable',
-    type: 'function',
-    name: 'stop_ramp_A_gamma',
-    inputs: [],
-    outputs: [],
-  },
-  {
-    stateMutability: 'nonpayable',
-    type: 'function',
-    name: 'commit_new_parameters',
-    inputs: [
-      { name: '_new_mid_fee', type: 'uint256' },
-      { name: '_new_out_fee', type: 'uint256' },
-      { name: '_new_admin_fee', type: 'uint256' },
-      { name: '_new_fee_gamma', type: 'uint256' },
-      { name: '_new_allowed_extra_profit', type: 'uint256' },
-      { name: '_new_adjustment_step', type: 'uint256' },
-      { name: '_new_ma_half_time', type: 'uint256' },
-    ],
-    outputs: [],
-  },
-  {
-    stateMutability: 'nonpayable',
-    type: 'function',
-    name: 'apply_new_parameters',
-    inputs: [],
-    outputs: [],
-  },
-  {
-    stateMutability: 'nonpayable',
-    type: 'function',
-    name: 'revert_new_parameters',
-    inputs: [],
-    outputs: [],
-  },
-  {
-    stateMutability: 'nonpayable',
-    type: 'function',
-    name: 'commit_transfer_ownership',
-    inputs: [{ name: '_owner', type: 'address' }],
-    outputs: [],
-  },
-  {
-    stateMutability: 'nonpayable',
-    type: 'function',
-    name: 'apply_transfer_ownership',
-    inputs: [],
-    outputs: [],
-  },
-  {
-    stateMutability: 'nonpayable',
-    type: 'function',
-    name: 'revert_transfer_ownership',
-    inputs: [],
-    outputs: [],
-  },
-  {
-    stateMutability: 'nonpayable',
-    type: 'function',
-    name: 'kill_me',
-    inputs: [],
-    outputs: [],
-  },
-  {
-    stateMutability: 'nonpayable',
-    type: 'function',
-    name: 'unkill_me',
-    inputs: [],
-    outputs: [],
-  },
-  {
-    stateMutability: 'nonpayable',
-    type: 'function',
-    name: 'set_admin_fee_receiver',
-    inputs: [{ name: '_admin_fee_receiver', type: 'address' }],
-    outputs: [],
-  },
-  {
-    stateMutability: 'view',
-    type: 'function',
-    name: 'lp_price',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
-    stateMutability: 'view',
-    type: 'function',
     name: 'price_scale',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
+    inputs: [
+      {
+        name: 'k',
+        type: 'uint256',
+      },
+    ],
     name: 'last_prices',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'token',
+    outputs: [
+      {
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        name: 'i',
+        type: 'uint256',
+      },
+    ],
+    name: 'coins',
+    outputs: [
+      {
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'A',
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'gamma',
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'A_precise',
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'fee',
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        name: 'xp',
+        type: 'uint256[3]',
+      },
+    ],
+    name: 'fee_calc',
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'get_virtual_price',
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        name: 'i',
+        type: 'uint256',
+      },
+      {
+        name: 'j',
+        type: 'uint256',
+      },
+      {
+        name: 'dx',
+        type: 'uint256',
+      },
+      {
+        name: 'min_dy',
+        type: 'uint256',
+      },
+    ],
+    name: 'exchange',
+    outputs: [],
+    stateMutability: 'payable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        name: 'i',
+        type: 'uint256',
+      },
+      {
+        name: 'j',
+        type: 'uint256',
+      },
+      {
+        name: 'dx',
+        type: 'uint256',
+      },
+      {
+        name: 'min_dy',
+        type: 'uint256',
+      },
+      {
+        name: 'use_eth',
+        type: 'bool',
+      },
+    ],
+    name: 'exchange',
+    outputs: [],
+    stateMutability: 'payable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        name: 'i',
+        type: 'uint256',
+      },
+      {
+        name: 'j',
+        type: 'uint256',
+      },
+      {
+        name: 'dx',
+        type: 'uint256',
+      },
+    ],
+    name: 'get_dy',
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        name: 'amounts',
+        type: 'uint256[3]',
+      },
+      {
+        name: 'xp',
+        type: 'uint256[3]',
+      },
+    ],
+    name: 'calc_token_fee',
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        name: 'amounts',
+        type: 'uint256[3]',
+      },
+      {
+        name: 'min_mint_amount',
+        type: 'uint256',
+      },
+    ],
+    name: 'add_liquidity',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        name: '_amount',
+        type: 'uint256',
+      },
+      {
+        name: 'min_amounts',
+        type: 'uint256[3]',
+      },
+    ],
+    name: 'remove_liquidity',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        name: 'amounts',
+        type: 'uint256[3]',
+      },
+      {
+        name: 'deposit',
+        type: 'bool',
+      },
+    ],
+    name: 'calc_token_amount',
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        name: 'token_amount',
+        type: 'uint256',
+      },
+      {
+        name: 'i',
+        type: 'uint256',
+      },
+    ],
+    name: 'calc_withdraw_one_coin',
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        name: 'token_amount',
+        type: 'uint256',
+      },
+      {
+        name: 'i',
+        type: 'uint256',
+      },
+      {
+        name: 'min_amount',
+        type: 'uint256',
+      },
+    ],
+    name: 'remove_liquidity_one_coin',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'claim_admin_fees',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        name: 'future_A',
+        type: 'uint256',
+      },
+      {
+        name: 'future_gamma',
+        type: 'uint256',
+      },
+      {
+        name: 'future_time',
+        type: 'uint256',
+      },
+    ],
+    name: 'ramp_A_gamma',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'stop_ramp_A_gamma',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        name: '_new_mid_fee',
+        type: 'uint256',
+      },
+      {
+        name: '_new_out_fee',
+        type: 'uint256',
+      },
+      {
+        name: '_new_admin_fee',
+        type: 'uint256',
+      },
+      {
+        name: '_new_fee_gamma',
+        type: 'uint256',
+      },
+      {
+        name: '_new_price_threshold',
+        type: 'uint256',
+      },
+      {
+        name: '_new_adjustment_step',
+        type: 'uint256',
+      },
+      {
+        name: '_new_ma_half_time',
+        type: 'uint256',
+      },
+    ],
+    name: 'commit_new_parameters',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'apply_new_parameters',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'revert_new_parameters',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        name: '_owner',
+        type: 'address',
+      },
+    ],
+    name: 'commit_transfer_ownership',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'apply_transfer_ownership',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'revert_transfer_ownership',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'kill_me',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'unkill_me',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        name: '_admin_fee_receiver',
+        type: 'address',
+      },
+    ],
+    name: 'set_admin_fee_receiver',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [],
     name: 'last_prices_timestamp',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
+    inputs: [],
     name: 'initial_A_gamma',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
+    inputs: [],
     name: 'future_A_gamma',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
+    inputs: [],
     name: 'initial_A_gamma_time',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
+    inputs: [],
     name: 'future_A_gamma_time',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
-    name: 'allowed_extra_profit',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
   },
   {
+    inputs: [],
+    name: 'price_threshold',
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
-    name: 'future_allowed_extra_profit',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
   },
   {
+    inputs: [],
+    name: 'future_price_threshoold',
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
+    inputs: [],
     name: 'fee_gamma',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
+    inputs: [],
     name: 'future_fee_gamma',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
+    inputs: [],
     name: 'adjustment_step',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
+    inputs: [],
     name: 'future_adjustment_step',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
+    inputs: [],
     name: 'ma_half_time',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
+    inputs: [],
     name: 'future_ma_half_time',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
+    inputs: [],
     name: 'mid_fee',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
+    inputs: [],
     name: 'out_fee',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
+    inputs: [],
     name: 'admin_fee',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
+    inputs: [],
     name: 'future_mid_fee',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
+    inputs: [],
     name: 'future_out_fee',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
+    inputs: [],
     name: 'future_admin_fee',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
+    inputs: [
+      {
+        name: 'arg0',
+        type: 'uint256',
+      },
+    ],
     name: 'balances',
-    inputs: [{ name: 'arg0', type: 'uint256' }],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
+    inputs: [],
     name: 'D',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
+    inputs: [],
     name: 'owner',
-    inputs: [],
-    outputs: [{ name: '', type: 'address' }],
-  },
-  {
+    outputs: [
+      {
+        name: '',
+        type: 'address',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
+    inputs: [],
     name: 'future_owner',
-    inputs: [],
-    outputs: [{ name: '', type: 'address' }],
-  },
-  {
+    outputs: [
+      {
+        name: '',
+        type: 'address',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
+    inputs: [],
     name: 'xcp_profit',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
+    inputs: [],
     name: 'xcp_profit_a',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
+    inputs: [],
     name: 'virtual_price',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
+    inputs: [],
     name: 'is_killed',
-    inputs: [],
-    outputs: [{ name: '', type: 'bool' }],
-  },
-  {
+    outputs: [
+      {
+        name: '',
+        type: 'bool',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
+    inputs: [],
     name: 'kill_deadline',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
+    inputs: [],
     name: 'transfer_ownership_deadline',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
+    inputs: [],
     name: 'admin_actions_deadline',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
-    name: 'admin_fee_receiver',
+  },
+  {
     inputs: [],
-    outputs: [{ name: '', type: 'address' }],
+    name: 'admin_fee_receiver',
+    outputs: [
+      {
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
   },
 ];
 
