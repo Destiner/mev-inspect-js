@@ -41,7 +41,7 @@ describe('MEV: arbitrage', () => {
       },
     ];
 
-    const sandwiches: Sandwich[] = getSandwiches(ETHEREUM, swaps);
+    const sandwiches: Sandwich[] = getSandwiches(ETHEREUM, swaps, [], []);
 
     expect(sandwiches).toEqual([]);
   });
@@ -112,7 +112,7 @@ describe('MEV: arbitrage', () => {
       },
     ];
 
-    const sandwiches: Sandwich[] = getSandwiches(ETHEREUM, swaps);
+    const sandwiches: Sandwich[] = getSandwiches(ETHEREUM, swaps, [], []);
 
     expect(sandwiches).toEqual([]);
   });
@@ -245,7 +245,7 @@ describe('MEV: arbitrage', () => {
       },
     ];
 
-    const sandwiches: Sandwich[] = getSandwiches(ETHEREUM, swaps);
+    const sandwiches: Sandwich[] = getSandwiches(ETHEREUM, swaps, [], []);
 
     expect(sandwiches).toEqual([]);
   });
@@ -347,7 +347,7 @@ describe('MEV: arbitrage', () => {
       },
     ];
 
-    const sandwiches: Sandwich[] = getSandwiches(ETHEREUM, swaps);
+    const sandwiches: Sandwich[] = getSandwiches(ETHEREUM, swaps, [], []);
 
     expect(sandwiches).toEqual([]);
   });
@@ -511,9 +511,9 @@ describe('MEV: arbitrage', () => {
       },
     ];
 
-    const sandwiches: Sandwich[] = getSandwiches(ETHEREUM, swaps);
+    const sandwiches: Sandwich[] = getSandwiches(ETHEREUM, swaps, [], []);
 
-    expect(sandwiches[0].sandwichedSwaps.length).toEqual(1);
+    expect(sandwiches[0].sandwiched.length).toEqual(1);
   });
 
   test('finds a sandwich', () => {
@@ -708,15 +708,15 @@ describe('MEV: arbitrage', () => {
       },
     ];
 
-    const sandwichesA: Sandwich[] = getSandwiches(ETHEREUM, swapsA);
-    const sandwichesB: Sandwich[] = getSandwiches(ETHEREUM, swapsB);
+    const sandwichesA: Sandwich[] = getSandwiches(ETHEREUM, swapsA, [], []);
+    const sandwichesB: Sandwich[] = getSandwiches(ETHEREUM, swapsB, [], []);
 
     expect(sandwichesA).toEqual<Sandwich[]>([
       {
         sandwicher: '0x0000000000d9455cc7eb92d06e00582a982f68fe',
         frontSwap: swapsA[0],
         backSwap: swapsA[1],
-        sandwichedSwaps: [swapsA[2]],
+        sandwiched: [swapsA[2]],
         profit: {
           asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
           amount: 462274893505888255n,
@@ -728,7 +728,7 @@ describe('MEV: arbitrage', () => {
         sandwicher: '0x000000000035b5e5ad9019092c665357240f594e',
         frontSwap: swapsB[0],
         backSwap: swapsB[2],
-        sandwichedSwaps: [swapsB[1]],
+        sandwiched: [swapsB[1]],
         profit: {
           asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
           amount: 7274721688291086400n,
@@ -834,14 +834,14 @@ describe('MEV: arbitrage', () => {
       },
     ];
 
-    const sandwiches: Sandwich[] = getSandwiches(ETHEREUM, swaps);
+    const sandwiches: Sandwich[] = getSandwiches(ETHEREUM, swaps, [], []);
 
     expect(sandwiches).toEqual<Sandwich[]>([
       {
         sandwicher: '0x00000000008c4fb1c916e0c88fd4cc402d935e7d',
         frontSwap: swaps[0],
         backSwap: swaps[2],
-        sandwichedSwaps: [swaps[1]],
+        sandwiched: [swaps[1]],
         profit: {
           asset: '0x16eccfdbb4ee1a85a33f3a9b21175cd7ae753db4',
           amount: 30737653819415594500n,
@@ -1133,7 +1133,7 @@ describe('MEV: arbitrage', () => {
       },
     ];
 
-    const sandwiches: Sandwich[] = getSandwiches(ETHEREUM, swaps);
+    const sandwiches: Sandwich[] = getSandwiches(ETHEREUM, swaps, [], []);
 
     expect(sandwiches.length).toEqual(3);
   });
@@ -1433,16 +1433,16 @@ describe('MEV: arbitrage', () => {
       },
     ];
 
-    const sandwichesA: Sandwich[] = getSandwiches(ETHEREUM, swapsA);
-    const sandwichesB: Sandwich[] = getSandwiches(ETHEREUM, swapsB);
-    const sandwichesC: Sandwich[] = getSandwiches(ETHEREUM, swapsC);
+    const sandwichesA: Sandwich[] = getSandwiches(ETHEREUM, swapsA, [], []);
+    const sandwichesB: Sandwich[] = getSandwiches(ETHEREUM, swapsB, [], []);
+    const sandwichesC: Sandwich[] = getSandwiches(ETHEREUM, swapsC, [], []);
 
     expect(sandwichesA).toEqual<Sandwich[]>([
       {
         sandwicher: '0x51399b32cd0186bb32230e24167489f3b2f47870',
         frontSwap: swapsA[0],
         backSwap: swapsA[2],
-        sandwichedSwaps: [swapsA[1]],
+        sandwiched: [swapsA[1]],
         profit: {
           asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
           amount: -435805264121293550n,
@@ -1454,7 +1454,7 @@ describe('MEV: arbitrage', () => {
         sandwicher: '0xdeadad06b9cfcce57d0e9118d7e2cfda52ccdead',
         frontSwap: swapsB[0],
         backSwap: swapsB[2],
-        sandwichedSwaps: [swapsB[1]],
+        sandwiched: [swapsB[1]],
         profit: {
           asset: '0x679a0b65a14b06b44a0cc879d92b8bb46a818633',
           amount: 18596879361898n,
@@ -1466,7 +1466,7 @@ describe('MEV: arbitrage', () => {
         sandwicher: '0x000000000000084e91743124a982076c59f10084',
         frontSwap: swapsC[0],
         backSwap: swapsC[2],
-        sandwichedSwaps: [swapsC[1]],
+        sandwiched: [swapsC[1]],
         profit: {
           asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
           amount: 926384344901922834n,

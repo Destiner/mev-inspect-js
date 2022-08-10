@@ -63,7 +63,6 @@ class Inspector {
     const repayments = getRepayments(this.chainId, markets, events);
     const seizures = getSeizures(this.chainId, markets, events);
     const liquidations = getLiquidations(repayments, seizures);
-    const sandwiches = getSandwiches(this.chainId, swaps);
     const liquidityDeposits = getLiquidityDeposits(
       this.chainId,
       pools,
@@ -75,6 +74,12 @@ class Inspector {
       pools,
       transfers,
       events,
+    );
+    const sandwiches = getSandwiches(
+      this.chainId,
+      swaps,
+      liquidityDeposits,
+      liquidityWithdrawals,
     );
     const jitSandwiches = getJitSandwiches(
       swaps,
