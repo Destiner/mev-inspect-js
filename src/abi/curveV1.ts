@@ -2,11 +2,31 @@ const abi = [
   {
     name: 'TokenExchange',
     inputs: [
-      { name: 'buyer', type: 'address', indexed: true },
-      { name: 'sold_id', type: 'int128', indexed: false },
-      { name: 'tokens_sold', type: 'uint256', indexed: false },
-      { name: 'bought_id', type: 'int128', indexed: false },
-      { name: 'tokens_bought', type: 'uint256', indexed: false },
+      {
+        type: 'address',
+        name: 'buyer',
+        indexed: true,
+      },
+      {
+        type: 'int128',
+        name: 'sold_id',
+        indexed: false,
+      },
+      {
+        type: 'uint256',
+        name: 'tokens_sold',
+        indexed: false,
+      },
+      {
+        type: 'int128',
+        name: 'bought_id',
+        indexed: false,
+      },
+      {
+        type: 'uint256',
+        name: 'tokens_bought',
+        indexed: false,
+      },
     ],
     anonymous: false,
     type: 'event',
@@ -14,11 +34,31 @@ const abi = [
   {
     name: 'TokenExchangeUnderlying',
     inputs: [
-      { name: 'buyer', type: 'address', indexed: true },
-      { name: 'sold_id', type: 'int128', indexed: false },
-      { name: 'tokens_sold', type: 'uint256', indexed: false },
-      { name: 'bought_id', type: 'int128', indexed: false },
-      { name: 'tokens_bought', type: 'uint256', indexed: false },
+      {
+        type: 'address',
+        name: 'buyer',
+        indexed: true,
+      },
+      {
+        type: 'int128',
+        name: 'sold_id',
+        indexed: false,
+      },
+      {
+        type: 'uint256',
+        name: 'tokens_sold',
+        indexed: false,
+      },
+      {
+        type: 'int128',
+        name: 'bought_id',
+        indexed: false,
+      },
+      {
+        type: 'uint256',
+        name: 'tokens_bought',
+        indexed: false,
+      },
     ],
     anonymous: false,
     type: 'event',
@@ -26,11 +66,95 @@ const abi = [
   {
     name: 'AddLiquidity',
     inputs: [
-      { name: 'provider', type: 'address', indexed: true },
-      { name: 'token_amounts', type: 'uint256[2]', indexed: false },
-      { name: 'fees', type: 'uint256[2]', indexed: false },
-      { name: 'invariant', type: 'uint256', indexed: false },
-      { name: 'token_supply', type: 'uint256', indexed: false },
+      {
+        type: 'address',
+        name: 'provider',
+        indexed: true,
+      },
+      {
+        type: 'uint256[2]',
+        name: 'token_amounts',
+        indexed: false,
+      },
+      {
+        type: 'uint256[2]',
+        name: 'fees',
+        indexed: false,
+      },
+      {
+        type: 'uint256',
+        name: 'invariant',
+        indexed: false,
+      },
+      {
+        type: 'uint256',
+        name: 'token_supply',
+        indexed: false,
+      },
+    ],
+    anonymous: false,
+    type: 'event',
+  },
+  {
+    name: 'AddLiquidity',
+    inputs: [
+      {
+        type: 'address',
+        name: 'provider',
+        indexed: true,
+      },
+      {
+        type: 'uint256[3]',
+        name: 'token_amounts',
+        indexed: false,
+      },
+      {
+        type: 'uint256[3]',
+        name: 'fees',
+        indexed: false,
+      },
+      {
+        type: 'uint256',
+        name: 'invariant',
+        indexed: false,
+      },
+      {
+        type: 'uint256',
+        name: 'token_supply',
+        indexed: false,
+      },
+    ],
+    anonymous: false,
+    type: 'event',
+  },
+  {
+    name: 'AddLiquidity',
+    inputs: [
+      {
+        type: 'address',
+        name: 'provider',
+        indexed: true,
+      },
+      {
+        type: 'uint256[4]',
+        name: 'token_amounts',
+        indexed: false,
+      },
+      {
+        type: 'uint256[4]',
+        name: 'fees',
+        indexed: false,
+      },
+      {
+        type: 'uint256',
+        name: 'invariant',
+        indexed: false,
+      },
+      {
+        type: 'uint256',
+        name: 'token_supply',
+        indexed: false,
+      },
     ],
     anonymous: false,
     type: 'event',
@@ -38,21 +162,80 @@ const abi = [
   {
     name: 'RemoveLiquidity',
     inputs: [
-      { name: 'provider', type: 'address', indexed: true },
-      { name: 'token_amounts', type: 'uint256[2]', indexed: false },
-      { name: 'fees', type: 'uint256[2]', indexed: false },
-      { name: 'token_supply', type: 'uint256', indexed: false },
+      {
+        type: 'address',
+        name: 'provider',
+        indexed: true,
+      },
+      {
+        type: 'uint256[2]',
+        name: 'token_amounts',
+        indexed: false,
+      },
+      {
+        type: 'uint256[2]',
+        name: 'fees',
+        indexed: false,
+      },
+      {
+        type: 'uint256',
+        name: 'token_supply',
+        indexed: false,
+      },
     ],
     anonymous: false,
     type: 'event',
   },
   {
-    name: 'RemoveLiquidityOne',
+    name: 'RemoveLiquidity',
     inputs: [
-      { name: 'provider', type: 'address', indexed: true },
-      { name: 'token_amount', type: 'uint256', indexed: false },
-      { name: 'coin_amount', type: 'uint256', indexed: false },
-      { name: 'token_supply', type: 'uint256', indexed: false },
+      {
+        type: 'address',
+        name: 'provider',
+        indexed: true,
+      },
+      {
+        type: 'uint256[3]',
+        name: 'token_amounts',
+        indexed: false,
+      },
+      {
+        type: 'uint256[3]',
+        name: 'fees',
+        indexed: false,
+      },
+      {
+        type: 'uint256',
+        name: 'token_supply',
+        indexed: false,
+      },
+    ],
+    anonymous: false,
+    type: 'event',
+  },
+  {
+    name: 'RemoveLiquidity',
+    inputs: [
+      {
+        type: 'address',
+        name: 'provider',
+        indexed: true,
+      },
+      {
+        type: 'uint256[4]',
+        name: 'token_amounts',
+        indexed: false,
+      },
+      {
+        type: 'uint256[4]',
+        name: 'fees',
+        indexed: false,
+      },
+      {
+        type: 'uint256',
+        name: 'token_supply',
+        indexed: false,
+      },
     ],
     anonymous: false,
     type: 'event',
@@ -60,11 +243,95 @@ const abi = [
   {
     name: 'RemoveLiquidityImbalance',
     inputs: [
-      { name: 'provider', type: 'address', indexed: true },
-      { name: 'token_amounts', type: 'uint256[2]', indexed: false },
-      { name: 'fees', type: 'uint256[2]', indexed: false },
-      { name: 'invariant', type: 'uint256', indexed: false },
-      { name: 'token_supply', type: 'uint256', indexed: false },
+      {
+        type: 'address',
+        name: 'provider',
+        indexed: true,
+      },
+      {
+        type: 'uint256[2]',
+        name: 'token_amounts',
+        indexed: false,
+      },
+      {
+        type: 'uint256[2]',
+        name: 'fees',
+        indexed: false,
+      },
+      {
+        type: 'uint256',
+        name: 'invariant',
+        indexed: false,
+      },
+      {
+        type: 'uint256',
+        name: 'token_supply',
+        indexed: false,
+      },
+    ],
+    anonymous: false,
+    type: 'event',
+  },
+  {
+    name: 'RemoveLiquidityImbalance',
+    inputs: [
+      {
+        type: 'address',
+        name: 'provider',
+        indexed: true,
+      },
+      {
+        type: 'uint256[3]',
+        name: 'token_amounts',
+        indexed: false,
+      },
+      {
+        type: 'uint256[3]',
+        name: 'fees',
+        indexed: false,
+      },
+      {
+        type: 'uint256',
+        name: 'invariant',
+        indexed: false,
+      },
+      {
+        type: 'uint256',
+        name: 'token_supply',
+        indexed: false,
+      },
+    ],
+    anonymous: false,
+    type: 'event',
+  },
+  {
+    name: 'RemoveLiquidityImbalance',
+    inputs: [
+      {
+        type: 'address',
+        name: 'provider',
+        indexed: true,
+      },
+      {
+        type: 'uint256[4]',
+        name: 'token_amounts',
+        indexed: false,
+      },
+      {
+        type: 'uint256[4]',
+        name: 'fees',
+        indexed: false,
+      },
+      {
+        type: 'uint256',
+        name: 'invariant',
+        indexed: false,
+      },
+      {
+        type: 'uint256',
+        name: 'token_supply',
+        indexed: false,
+      },
     ],
     anonymous: false,
     type: 'event',
@@ -72,24 +339,50 @@ const abi = [
   {
     name: 'CommitNewAdmin',
     inputs: [
-      { name: 'deadline', type: 'uint256', indexed: true },
-      { name: 'admin', type: 'address', indexed: true },
+      {
+        type: 'uint256',
+        name: 'deadline',
+        indexed: true,
+      },
+      {
+        type: 'address',
+        name: 'admin',
+        indexed: true,
+      },
     ],
     anonymous: false,
     type: 'event',
   },
   {
     name: 'NewAdmin',
-    inputs: [{ name: 'admin', type: 'address', indexed: true }],
+    inputs: [
+      {
+        type: 'address',
+        name: 'admin',
+        indexed: true,
+      },
+    ],
     anonymous: false,
     type: 'event',
   },
   {
     name: 'CommitNewFee',
     inputs: [
-      { name: 'deadline', type: 'uint256', indexed: true },
-      { name: 'fee', type: 'uint256', indexed: false },
-      { name: 'admin_fee', type: 'uint256', indexed: false },
+      {
+        type: 'uint256',
+        name: 'deadline',
+        indexed: true,
+      },
+      {
+        type: 'uint256',
+        name: 'fee',
+        indexed: false,
+      },
+      {
+        type: 'uint256',
+        name: 'admin_fee',
+        indexed: false,
+      },
     ],
     anonymous: false,
     type: 'event',
@@ -97,8 +390,16 @@ const abi = [
   {
     name: 'NewFee',
     inputs: [
-      { name: 'fee', type: 'uint256', indexed: false },
-      { name: 'admin_fee', type: 'uint256', indexed: false },
+      {
+        type: 'uint256',
+        name: 'fee',
+        indexed: false,
+      },
+      {
+        type: 'uint256',
+        name: 'admin_fee',
+        indexed: false,
+      },
     ],
     anonymous: false,
     type: 'event',
@@ -106,10 +407,26 @@ const abi = [
   {
     name: 'RampA',
     inputs: [
-      { name: 'old_A', type: 'uint256', indexed: false },
-      { name: 'new_A', type: 'uint256', indexed: false },
-      { name: 'initial_time', type: 'uint256', indexed: false },
-      { name: 'future_time', type: 'uint256', indexed: false },
+      {
+        type: 'uint256',
+        name: 'old_A',
+        indexed: false,
+      },
+      {
+        type: 'uint256',
+        name: 'new_A',
+        indexed: false,
+      },
+      {
+        type: 'uint256',
+        name: 'initial_time',
+        indexed: false,
+      },
+      {
+        type: 'uint256',
+        name: 'future_time',
+        indexed: false,
+      },
     ],
     anonymous: false,
     type: 'event',
@@ -117,391 +434,560 @@ const abi = [
   {
     name: 'StopRampA',
     inputs: [
-      { name: 'A', type: 'uint256', indexed: false },
-      { name: 't', type: 'uint256', indexed: false },
+      {
+        type: 'uint256',
+        name: 'A',
+        indexed: false,
+      },
+      {
+        type: 'uint256',
+        name: 't',
+        indexed: false,
+      },
     ],
     anonymous: false,
     type: 'event',
   },
   {
+    outputs: [],
+    inputs: [
+      {
+        type: 'address',
+        name: '_owner',
+      },
+      {
+        type: 'address[2]',
+        name: '_coins',
+      },
+      {
+        type: 'address',
+        name: '_pool_token',
+      },
+      {
+        type: 'uint256',
+        name: '_A',
+      },
+      {
+        type: 'uint256',
+        name: '_fee',
+      },
+      {
+        type: 'uint256',
+        name: '_admin_fee',
+      },
+    ],
     stateMutability: 'nonpayable',
     type: 'constructor',
-    inputs: [
-      { name: '_owner', type: 'address' },
-      { name: '_coins', type: 'address[2]' },
-      { name: '_pool_token', type: 'address' },
-      { name: '_base_pool', type: 'address' },
-      { name: '_redemption_price_snap', type: 'address' },
-      { name: '_A', type: 'uint256' },
-      { name: '_fee', type: 'uint256' },
-      { name: '_admin_fee', type: 'uint256' },
-    ],
-    outputs: [],
   },
   {
-    stateMutability: 'view',
-    type: 'function',
     name: 'A',
+    outputs: [
+      {
+        type: 'uint256',
+        name: '',
+      },
+    ],
     inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
     stateMutability: 'view',
     type: 'function',
-    name: 'A_precise',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
   },
   {
-    stateMutability: 'view',
-    type: 'function',
     name: 'get_virtual_price',
+    outputs: [
+      {
+        type: 'uint256',
+        name: '',
+      },
+    ],
     inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
     stateMutability: 'view',
     type: 'function',
-    name: 'get_virtual_price_2',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
   },
   {
-    stateMutability: 'view',
-    type: 'function',
     name: 'calc_token_amount',
-    inputs: [
-      { name: '_amounts', type: 'uint256[2]' },
-      { name: '_is_deposit', type: 'bool' },
+    outputs: [
+      {
+        type: 'uint256',
+        name: '',
+      },
     ],
-    outputs: [{ name: '', type: 'uint256' }],
+    inputs: [
+      {
+        type: 'uint256[2]',
+        name: 'amounts',
+      },
+      {
+        type: 'bool',
+        name: 'deposit',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    stateMutability: 'nonpayable',
-    type: 'function',
     name: 'add_liquidity',
+    outputs: [],
     inputs: [
-      { name: '_amounts', type: 'uint256[2]' },
-      { name: '_min_mint_amount', type: 'uint256' },
+      {
+        type: 'uint256[2]',
+        name: 'amounts',
+      },
+      {
+        type: 'uint256',
+        name: 'min_mint_amount',
+      },
     ],
-    outputs: [{ name: '', type: 'uint256' }],
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
-    stateMutability: 'view',
-    type: 'function',
     name: 'get_dy',
-    inputs: [
-      { name: 'i', type: 'int128' },
-      { name: 'j', type: 'int128' },
-      { name: '_dx', type: 'uint256' },
+    outputs: [
+      {
+        type: 'uint256',
+        name: '',
+      },
     ],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
+    inputs: [
+      {
+        type: 'int128',
+        name: 'i',
+      },
+      {
+        type: 'int128',
+        name: 'j',
+      },
+      {
+        type: 'uint256',
+        name: 'dx',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
     name: 'get_dy_underlying',
-    inputs: [
-      { name: 'i', type: 'int128' },
-      { name: 'j', type: 'int128' },
-      { name: '_dx', type: 'uint256' },
+    outputs: [
+      {
+        type: 'uint256',
+        name: '',
+      },
     ],
-    outputs: [{ name: '', type: 'uint256' }],
+    inputs: [
+      {
+        type: 'int128',
+        name: 'i',
+      },
+      {
+        type: 'int128',
+        name: 'j',
+      },
+      {
+        type: 'uint256',
+        name: 'dx',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    stateMutability: 'nonpayable',
-    type: 'function',
     name: 'exchange',
+    outputs: [],
     inputs: [
-      { name: 'i', type: 'int128' },
-      { name: 'j', type: 'int128' },
-      { name: '_dx', type: 'uint256' },
-      { name: '_min_dy', type: 'uint256' },
+      {
+        type: 'int128',
+        name: 'i',
+      },
+      {
+        type: 'int128',
+        name: 'j',
+      },
+      {
+        type: 'uint256',
+        name: 'dx',
+      },
+      {
+        type: 'uint256',
+        name: 'min_dy',
+      },
     ],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
     stateMutability: 'nonpayable',
     type: 'function',
-    name: 'exchange_underlying',
-    inputs: [
-      { name: 'i', type: 'int128' },
-      { name: 'j', type: 'int128' },
-      { name: '_dx', type: 'uint256' },
-      { name: '_min_dy', type: 'uint256' },
-    ],
-    outputs: [{ name: '', type: 'uint256' }],
   },
   {
-    stateMutability: 'nonpayable',
-    type: 'function',
     name: 'remove_liquidity',
+    outputs: [],
     inputs: [
-      { name: '_amount', type: 'uint256' },
-      { name: '_min_amounts', type: 'uint256[2]' },
+      {
+        type: 'uint256',
+        name: '_amount',
+      },
+      {
+        type: 'uint256[2]',
+        name: 'min_amounts',
+      },
     ],
-    outputs: [{ name: '', type: 'uint256[2]' }],
-  },
-  {
     stateMutability: 'nonpayable',
     type: 'function',
+  },
+  {
     name: 'remove_liquidity_imbalance',
+    outputs: [],
     inputs: [
-      { name: '_amounts', type: 'uint256[2]' },
-      { name: '_max_burn_amount', type: 'uint256' },
+      {
+        type: 'uint256[2]',
+        name: 'amounts',
+      },
+      {
+        type: 'uint256',
+        name: 'max_burn_amount',
+      },
     ],
-    outputs: [{ name: '', type: 'uint256' }],
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
-    stateMutability: 'view',
-    type: 'function',
     name: 'calc_withdraw_one_coin',
-    inputs: [
-      { name: '_token_amount', type: 'uint256' },
-      { name: 'i', type: 'int128' },
+    outputs: [
+      {
+        type: 'uint256',
+        name: '',
+      },
     ],
-    outputs: [{ name: '', type: 'uint256' }],
+    inputs: [
+      {
+        type: 'uint256',
+        name: '_token_amount',
+      },
+      {
+        type: 'int128',
+        name: 'i',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    stateMutability: 'nonpayable',
-    type: 'function',
     name: 'remove_liquidity_one_coin',
+    outputs: [],
     inputs: [
-      { name: '_token_amount', type: 'uint256' },
-      { name: 'i', type: 'int128' },
-      { name: '_min_amount', type: 'uint256' },
+      {
+        type: 'uint256',
+        name: '_token_amount',
+      },
+      {
+        type: 'int128',
+        name: 'i',
+      },
+      {
+        type: 'uint256',
+        name: 'min_amount',
+      },
     ],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
     stateMutability: 'nonpayable',
     type: 'function',
+  },
+  {
     name: 'ramp_A',
-    inputs: [
-      { name: '_future_A', type: 'uint256' },
-      { name: '_future_time', type: 'uint256' },
-    ],
     outputs: [],
-  },
-  {
+    inputs: [
+      {
+        type: 'uint256',
+        name: '_future_A',
+      },
+      {
+        type: 'uint256',
+        name: '_future_time',
+      },
+    ],
     stateMutability: 'nonpayable',
     type: 'function',
+  },
+  {
     name: 'stop_ramp_A',
-    inputs: [],
     outputs: [],
-  },
-  {
+    inputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
+  },
+  {
     name: 'commit_new_fee',
+    outputs: [],
     inputs: [
-      { name: '_new_fee', type: 'uint256' },
-      { name: '_new_admin_fee', type: 'uint256' },
+      {
+        type: 'uint256',
+        name: 'new_fee',
+      },
+      {
+        type: 'uint256',
+        name: 'new_admin_fee',
+      },
     ],
-    outputs: [],
-  },
-  {
     stateMutability: 'nonpayable',
     type: 'function',
+  },
+  {
     name: 'apply_new_fee',
-    inputs: [],
     outputs: [],
-  },
-  {
+    inputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
+  },
+  {
     name: 'revert_new_parameters',
-    inputs: [],
     outputs: [],
-  },
-  {
+    inputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
+  },
+  {
     name: 'commit_transfer_ownership',
-    inputs: [{ name: '_owner', type: 'address' }],
     outputs: [],
-  },
-  {
+    inputs: [
+      {
+        type: 'address',
+        name: '_owner',
+      },
+    ],
     stateMutability: 'nonpayable',
     type: 'function',
+  },
+  {
     name: 'apply_transfer_ownership',
-    inputs: [],
     outputs: [],
-  },
-  {
+    inputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
+  },
+  {
     name: 'revert_transfer_ownership',
-    inputs: [],
     outputs: [],
+    inputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
-    stateMutability: 'view',
-    type: 'function',
     name: 'admin_balances',
-    inputs: [{ name: 'i', type: 'uint256' }],
-    outputs: [{ name: '', type: 'uint256' }],
+    outputs: [
+      {
+        type: 'uint256',
+        name: '',
+      },
+    ],
+    inputs: [
+      {
+        type: 'uint256',
+        name: 'i',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
   },
   {
-    stateMutability: 'nonpayable',
-    type: 'function',
     name: 'withdraw_admin_fees',
-    inputs: [],
     outputs: [],
-  },
-  {
+    inputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
+  },
+  {
+    name: 'donate_admin_fees',
+    outputs: [],
+    inputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
     name: 'kill_me',
-    inputs: [],
     outputs: [],
-  },
-  {
+    inputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
+  },
+  {
     name: 'unkill_me',
-    inputs: [],
     outputs: [],
+    inputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
-    stateMutability: 'view',
-    type: 'function',
     name: 'coins',
-    inputs: [{ name: 'arg0', type: 'uint256' }],
-    outputs: [{ name: '', type: 'address' }],
-  },
-  {
+    outputs: [
+      {
+        type: 'address',
+        name: '',
+      },
+    ],
+    inputs: [
+      {
+        type: 'uint256',
+        name: 'arg0',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
     name: 'balances',
-    inputs: [{ name: 'arg0', type: 'uint256' }],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
+    outputs: [
+      {
+        type: 'uint256',
+        name: '',
+      },
+    ],
+    inputs: [
+      {
+        type: 'uint256',
+        name: 'arg0',
+      },
+    ],
     stateMutability: 'view',
     type: 'function',
+  },
+  {
     name: 'fee',
+    outputs: [
+      {
+        type: 'uint256',
+        name: '',
+      },
+    ],
     inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
     stateMutability: 'view',
     type: 'function',
+  },
+  {
     name: 'admin_fee',
+    outputs: [
+      {
+        type: 'uint256',
+        name: '',
+      },
+    ],
     inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
     stateMutability: 'view',
     type: 'function',
+  },
+  {
     name: 'owner',
+    outputs: [
+      {
+        type: 'address',
+        name: '',
+      },
+    ],
     inputs: [],
-    outputs: [{ name: '', type: 'address' }],
-  },
-  {
     stateMutability: 'view',
     type: 'function',
-    name: 'lp_token',
-    inputs: [],
-    outputs: [{ name: '', type: 'address' }],
   },
   {
-    stateMutability: 'view',
-    type: 'function',
-    name: 'redemption_price_snap',
-    inputs: [],
-    outputs: [{ name: '', type: 'address' }],
-  },
-  {
-    stateMutability: 'view',
-    type: 'function',
-    name: 'base_pool',
-    inputs: [],
-    outputs: [{ name: '', type: 'address' }],
-  },
-  {
-    stateMutability: 'view',
-    type: 'function',
-    name: 'base_virtual_price',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
-    stateMutability: 'view',
-    type: 'function',
-    name: 'base_cache_updated',
-    inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
-    stateMutability: 'view',
-    type: 'function',
-    name: 'base_coins',
-    inputs: [{ name: 'arg0', type: 'uint256' }],
-    outputs: [{ name: '', type: 'address' }],
-  },
-  {
-    stateMutability: 'view',
-    type: 'function',
     name: 'initial_A',
+    outputs: [
+      {
+        type: 'uint256',
+        name: '',
+      },
+    ],
     inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
     stateMutability: 'view',
     type: 'function',
+  },
+  {
     name: 'future_A',
+    outputs: [
+      {
+        type: 'uint256',
+        name: '',
+      },
+    ],
     inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
     stateMutability: 'view',
     type: 'function',
+  },
+  {
     name: 'initial_A_time',
+    outputs: [
+      {
+        type: 'uint256',
+        name: '',
+      },
+    ],
     inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
     stateMutability: 'view',
     type: 'function',
+  },
+  {
     name: 'future_A_time',
+    outputs: [
+      {
+        type: 'uint256',
+        name: '',
+      },
+    ],
     inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
     stateMutability: 'view',
     type: 'function',
+  },
+  {
     name: 'admin_actions_deadline',
+    outputs: [
+      {
+        type: 'uint256',
+        name: '',
+      },
+    ],
     inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
     stateMutability: 'view',
     type: 'function',
+  },
+  {
     name: 'transfer_ownership_deadline',
+    outputs: [
+      {
+        type: 'uint256',
+        name: '',
+      },
+    ],
     inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
     stateMutability: 'view',
     type: 'function',
+  },
+  {
     name: 'future_fee',
+    outputs: [
+      {
+        type: 'uint256',
+        name: '',
+      },
+    ],
     inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
     stateMutability: 'view',
     type: 'function',
+  },
+  {
     name: 'future_admin_fee',
+    outputs: [
+      {
+        type: 'uint256',
+        name: '',
+      },
+    ],
     inputs: [],
-    outputs: [{ name: '', type: 'uint256' }],
-  },
-  {
     stateMutability: 'view',
     type: 'function',
+  },
+  {
     name: 'future_owner',
+    outputs: [
+      {
+        type: 'address',
+        name: '',
+      },
+    ],
     inputs: [],
-    outputs: [{ name: '', type: 'address' }],
+    stateMutability: 'view',
+    type: 'function',
   },
 ];
 
