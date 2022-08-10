@@ -95,7 +95,7 @@ interface LiquidityDeposit extends Base {
       factory: Factory;
     };
   };
-  owner: string;
+  depositor: string;
   assets: string[];
   amounts: bigint[];
   metadata: Record<string, unknown>;
@@ -109,7 +109,7 @@ interface LiquidityWithdrawal extends Base {
       factory: Factory;
     };
   };
-  owner: string;
+  withdrawer: string;
   assets: string[];
   amounts: bigint[];
   metadata: Record<string, unknown>;

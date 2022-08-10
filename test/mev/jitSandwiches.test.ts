@@ -34,7 +34,7 @@ describe('MEV: JIT liquidity sandwich', () => {
           address: '0x4e68ccd3e89f51c3074ca5072bbac773960dfa36',
           logIndex: 10,
         },
-        owner: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+        depositor: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
         assets: [
           '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
           '0xdac17f958d2ee523a2206206994597c13d831ec7',
@@ -67,7 +67,7 @@ describe('MEV: JIT liquidity sandwich', () => {
           address: '0x4e68ccd3e89f51c3074ca5072bbac773960dfa36',
           logIndex: 27,
         },
-        owner: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+        withdrawer: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
         assets: [
           '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
           '0xdac17f958d2ee523a2206206994597c13d831ec7',
@@ -113,7 +113,7 @@ describe('MEV: JIT liquidity sandwich', () => {
           address: '0x99ac8ca7087fa4a2a1fb6357269965a2014abc35',
           logIndex: 66,
         },
-        owner: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+        depositor: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
         assets: [
           '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
           '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
@@ -146,7 +146,7 @@ describe('MEV: JIT liquidity sandwich', () => {
           address: '0x99ac8ca7087fa4a2a1fb6357269965a2014abc35',
           logIndex: 79,
         },
-        owner: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+        withdrawer: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
         assets: [
           '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
           '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
@@ -219,7 +219,7 @@ describe('MEV: JIT liquidity sandwich', () => {
           address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
           logIndex: 24,
         },
-        owner: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+        depositor: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
         assets: [
           '0x4d224452801aced8b2f0aebe155379bb5d594381',
           '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
@@ -252,7 +252,7 @@ describe('MEV: JIT liquidity sandwich', () => {
           address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
           logIndex: 35,
         },
-        owner: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+        withdrawer: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
         assets: [
           '0x4d224452801aced8b2f0aebe155379bb5d594381',
           '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
@@ -290,7 +290,7 @@ describe('MEV: JIT liquidity sandwich', () => {
             address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
             logIndex: 24,
           },
-          owner: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+          depositor: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
           assets: [
             '0x4d224452801aced8b2f0aebe155379bb5d594381',
             '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
@@ -321,7 +321,7 @@ describe('MEV: JIT liquidity sandwich', () => {
             address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
             logIndex: 35,
           },
-          owner: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+          withdrawer: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
           assets: [
             '0x4d224452801aced8b2f0aebe155379bb5d594381',
             '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',

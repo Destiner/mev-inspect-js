@@ -56,7 +56,7 @@ function getUniswapV3Sandwiches(
       if (deposit.event.address !== withdrawal.event.address) {
         continue;
       }
-      if (deposit.owner !== withdrawal.owner) {
+      if (deposit.depositor !== withdrawal.withdrawer) {
         continue;
       }
       if (deposit.metadata.tickLower !== withdrawal.metadata.tickLower) {
@@ -71,8 +71,8 @@ function getUniswapV3Sandwiches(
         const tick = swap.metadata.tick as number;
         return (
           swap.event.address === deposit.event.address &&
-          swap.from !== deposit.owner &&
-          swap.to !== deposit.owner &&
+          swap.from !== deposit.depositor &&
+          swap.to !== deposit.depositor &&
           tick >= tickLower &&
           tick <= tickUpper
         );
@@ -89,7 +89,7 @@ function getUniswapV3Sandwiches(
           };
         });
         sandwiches.push({
-          sandwicher: deposit.owner,
+          sandwicher: deposit.depositor,
           deposit,
           withdrawal,
           sandwichedSwaps,

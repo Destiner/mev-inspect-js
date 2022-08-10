@@ -137,7 +137,7 @@ function parseLiquidityDeposit(
   } = event;
   const { assets } = pool;
 
-  const owner = (values.owner as string).toLowerCase();
+  const depositor = (values.owner as string).toLowerCase();
   const amount0 = (values.amount0 as BigNumber).toBigInt();
   const amount1 = (values.amount1 as BigNumber).toBigInt();
   const tickLower = values.tickLower;
@@ -165,7 +165,7 @@ function parseLiquidityDeposit(
       address: address.toLowerCase(),
       logIndex,
     },
-    owner,
+    depositor,
     assets,
     amounts,
     metadata: {
@@ -190,7 +190,7 @@ function parseLiquidityWithdrawal(
   } = event;
   const { assets } = pool;
 
-  const owner = (values.owner as string).toLowerCase();
+  const withdrawer = (values.owner as string).toLowerCase();
   const amount0 = (values.amount0 as BigNumber).toBigInt();
   const amount1 = (values.amount1 as BigNumber).toBigInt();
   const tickLower = values.tickLower as number;
@@ -218,7 +218,7 @@ function parseLiquidityWithdrawal(
       address: address.toLowerCase(),
       logIndex,
     },
-    owner,
+    withdrawer,
     assets,
     amounts,
     metadata: {

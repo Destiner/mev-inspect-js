@@ -1449,7 +1449,7 @@ describe('Classfiers: Uniswap V3', () => {
           },
         },
       },
-      owner: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+      depositor: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
       assets: [
         '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
         '0xdac17f958d2ee523a2206206994597c13d831ec7',
@@ -1522,7 +1522,7 @@ describe('Classfiers: Uniswap V3', () => {
           },
         },
       },
-      owner: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+      withdrawer: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
       assets: [
         '0x4d224452801aced8b2f0aebe155379bb5d594381',
         '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
