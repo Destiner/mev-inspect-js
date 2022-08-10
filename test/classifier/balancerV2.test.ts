@@ -1,13 +1,20 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import { describe, test, expect } from 'vitest';
 
-import { Pool, Transfer } from '../../src/classifier/base.js';
+import {
+  LiquidityDeposit,
+  LiquidityWithdrawal,
+  Pool,
+  Transfer,
+} from '../../src/classifier/base.js';
 import { ClassifiedEvent } from '../../src/classifier/index.js';
 import balancerV2Classifiers from '../../src/classifier/items/balancerV2.js';
 import uniswapClassifier from '../../src/classifier/items/uniswapV2.js';
 import { Swap } from '../../src/index.js';
 
 const swapClassifier = balancerV2Classifiers[0];
+const depositClassifier = balancerV2Classifiers[1];
+const withdrawalClassifier = balancerV2Classifiers[2];
 const transferClassifier = balancerV2Classifiers[3];
 
 describe('Classfiers: Balancer V2', () => {
@@ -2042,6 +2049,309 @@ describe('Classfiers: Balancer V2', () => {
         logIndex: 65,
         address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
       },
+    });
+  });
+
+  test('liquidity deposit', () => {
+    if (depositClassifier.type !== 'liquidity_deposit') {
+      expect.fail();
+    }
+
+    // single asset
+    const pool: Pool = {
+      address: '0x06df3b2bbb68adc8b0e302443692037ed9f91b42',
+      assets: [
+        '0x6b175474e89094c44da98b954eedeac495271d0f',
+        '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        '0xdac17f958d2ee523a2206206994597c13d831ec7',
+      ],
+      factory: {
+        address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        label: 'Balancer V2',
+      },
+    };
+    const eventA: ClassifiedEvent = {
+      address: '0x06df3b2bbb68adc8b0e302443692037ed9f91b42',
+      blockHash:
+        '0x93a40cc2bb48ebe9109272403b805133a8cc1e61c987680b66b8e248ecbf0c65',
+      blockNumber: 15308213,
+      transactionHash:
+        '0x5cf54ebf58961e5bd23aebc12232943be699d4bcabd6cd9e18136162addcce08',
+      gasUsed: 240736,
+      logIndex: 323,
+      classifier: depositClassifier,
+      name: 'PoolBalanceChanged',
+      values: {
+        poolId:
+          '0x06df3b2bbb68adc8b0e302443692037ed9f91b42000000000000000000000063',
+        liquidityProvider: '0xa2815c834e7aa4ac010aec8b213b71e1f84de3e8',
+        tokens: [
+          '0x6b175474e89094c44da98b954eedeac495271d0f',
+          '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+          '0xdac17f958d2ee523a2206206994597c13d831ec7',
+        ],
+        deltas: [
+          BigNumber.from('10735659260273910803893'),
+          BigNumber.from('0'),
+          BigNumber.from('0'),
+        ],
+        protocolFeeAmounts: [
+          BigNumber.from('0'),
+          BigNumber.from('47871145'),
+          BigNumber.from('0'),
+        ],
+      },
+    };
+    const depositA = depositClassifier.parse(pool, eventA);
+    expect(depositA).toEqual<LiquidityDeposit>({
+      block: {
+        hash: '0x93a40cc2bb48ebe9109272403b805133a8cc1e61c987680b66b8e248ecbf0c65',
+        number: 15308213,
+      },
+      transaction: {
+        hash: '0x5cf54ebf58961e5bd23aebc12232943be699d4bcabd6cd9e18136162addcce08',
+        gasUsed: 240736,
+      },
+      event: {
+        address: '0x06df3b2bbb68adc8b0e302443692037ed9f91b42',
+        logIndex: 323,
+      },
+      contract: {
+        address: '0x06df3b2bbb68adc8b0e302443692037ed9f91b42',
+        protocol: {
+          abi: 'BalancerV2',
+          factory: {
+            address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+            label: 'Balancer V2',
+          },
+        },
+      },
+      depositor: '0xa2815c834e7aa4ac010aec8b213b71e1f84de3e8',
+      assets: [
+        '0x6b175474e89094c44da98b954eedeac495271d0f',
+        '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        '0xdac17f958d2ee523a2206206994597c13d831ec7',
+      ],
+      amounts: [10735659260273910803893n, 0n, 0n],
+      metadata: {},
+    });
+
+    // multi-asset
+    const eventB: ClassifiedEvent = {
+      address: '0x06df3b2bbb68adc8b0e302443692037ed9f91b42',
+      blockHash:
+        '0x868732ce7ebc03309855c29b28cfb275ae3762d4afe26d7b50c9ae4bfb02c4a2',
+      blockNumber: 15287953,
+      transactionHash:
+        '0xc8fcc65f77ca451fbdc6d233db9a5e6602138e4804acf8fe45b175e7bfb31b99',
+      gasUsed: 278635,
+      logIndex: 180,
+      classifier: depositClassifier,
+      name: 'PoolBalanceChanged',
+      values: {
+        poolId:
+          '0x06df3b2bbb68adc8b0e302443692037ed9f91b42000000000000000000000063',
+        liquidityProvider: '0x305e5d785eb274832a68745fda66a70b1ad2c635',
+        tokens: [
+          '0x6b175474e89094c44da98b954eedeac495271d0f',
+          '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+          '0xdac17f958d2ee523a2206206994597c13d831ec7',
+        ],
+        deltas: [
+          BigNumber.from('2076650615254415750034'),
+          BigNumber.from('1857499347'),
+          BigNumber.from('1702213659'),
+        ],
+        protocolFeeAmounts: [
+          BigNumber.from('73711198765601586943'),
+          BigNumber.from('0'),
+          BigNumber.from('0'),
+        ],
+      },
+    };
+    const depositB = depositClassifier.parse(pool, eventB);
+    expect(depositB).toEqual<LiquidityDeposit>({
+      block: {
+        hash: '0x868732ce7ebc03309855c29b28cfb275ae3762d4afe26d7b50c9ae4bfb02c4a2',
+        number: 15287953,
+      },
+      transaction: {
+        hash: '0xc8fcc65f77ca451fbdc6d233db9a5e6602138e4804acf8fe45b175e7bfb31b99',
+        gasUsed: 278635,
+      },
+      event: {
+        address: '0x06df3b2bbb68adc8b0e302443692037ed9f91b42',
+        logIndex: 180,
+      },
+      contract: {
+        address: '0x06df3b2bbb68adc8b0e302443692037ed9f91b42',
+        protocol: {
+          abi: 'BalancerV2',
+          factory: {
+            address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+            label: 'Balancer V2',
+          },
+        },
+      },
+      depositor: '0x305e5d785eb274832a68745fda66a70b1ad2c635',
+      assets: [
+        '0x6b175474e89094c44da98b954eedeac495271d0f',
+        '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        '0xdac17f958d2ee523a2206206994597c13d831ec7',
+      ],
+      amounts: [2076650615254415750034n, 1857499347n, 1702213659n],
+      metadata: {},
+    });
+  });
+
+  test('liquidity withdrawal', () => {
+    if (withdrawalClassifier.type !== 'liquidity_withdrawal') {
+      expect.fail();
+    }
+
+    // single-asset
+    const pool: Pool = {
+      address: '0x06df3b2bbb68adc8b0e302443692037ed9f91b42',
+      assets: [
+        '0x6b175474e89094c44da98b954eedeac495271d0f',
+        '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        '0xdac17f958d2ee523a2206206994597c13d831ec7',
+      ],
+      factory: {
+        address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+        label: 'Balancer V2',
+      },
+    };
+    const eventA: ClassifiedEvent = {
+      address: '0x06df3b2bbb68adc8b0e302443692037ed9f91b42',
+      blockHash:
+        '0x303487ad9d5187579e24741c12bf7449ef0e347cba0ddde0b21a2fa82dcf6f2d',
+      blockNumber: 15292701,
+      transactionHash:
+        '0x1e0dd4352121942d10edf4df46d9f4200005a61f260d8ed2318c758f816e0459',
+      gasUsed: 210217,
+      logIndex: 25,
+      classifier: withdrawalClassifier,
+      name: 'RemoveLiquidity',
+      values: {
+        poolId:
+          '0x06df3b2bbb68adc8b0e302443692037ed9f91b42000000000000000000000063',
+        liquidityProvider: '0xf5ec0e5ca12f9b247c7a016ff897b2de469db702',
+        tokens: [
+          '0x6b175474e89094c44da98b954eedeac495271d0f',
+          '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+          '0xdac17f958d2ee523a2206206994597c13d831ec7',
+        ],
+        deltas: [
+          BigNumber.from('-45228883925675247840'),
+          BigNumber.from('0'),
+          BigNumber.from('0'),
+        ],
+        protocolFeeAmounts: [
+          BigNumber.from('16416769003776781498'),
+          BigNumber.from('0'),
+          BigNumber.from('0'),
+        ],
+      },
+    };
+    const withdrawalA = withdrawalClassifier.parse(pool, eventA);
+    expect(withdrawalA).toEqual<LiquidityWithdrawal>({
+      block: {
+        hash: '0x303487ad9d5187579e24741c12bf7449ef0e347cba0ddde0b21a2fa82dcf6f2d',
+        number: 15292701,
+      },
+      transaction: {
+        hash: '0x1e0dd4352121942d10edf4df46d9f4200005a61f260d8ed2318c758f816e0459',
+        gasUsed: 210217,
+      },
+      event: {
+        address: '0x06df3b2bbb68adc8b0e302443692037ed9f91b42',
+        logIndex: 25,
+      },
+      contract: {
+        address: '0x06df3b2bbb68adc8b0e302443692037ed9f91b42',
+        protocol: {
+          abi: 'BalancerV2',
+          factory: {
+            address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+            label: 'Balancer V2',
+          },
+        },
+      },
+      withdrawer: '0xf5ec0e5ca12f9b247c7a016ff897b2de469db702',
+      assets: [
+        '0x6b175474e89094c44da98b954eedeac495271d0f',
+        '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        '0xdac17f958d2ee523a2206206994597c13d831ec7',
+      ],
+      amounts: [45228883925675247840n, 0n, 0n],
+      metadata: {},
+    });
+
+    const eventB: ClassifiedEvent = {
+      address: '0x06df3b2bbb68adc8b0e302443692037ed9f91b42',
+      blockHash:
+        '0x55963fb8b65553f7a0e8cf80283735968d461d9ae992706c7de8a1eda5f83204',
+      blockNumber: 15287979,
+      transactionHash:
+        '0x374d34757bda76935d5b35d1ff7be06125de3e3f3a337ba85573cf389c8ee25e',
+      gasUsed: 266738,
+      logIndex: 120,
+      classifier: withdrawalClassifier,
+      name: 'RemoveLiquidity',
+      values: {
+        poolId:
+          '0x06df3b2bbb68adc8b0e302443692037ed9f91b42000000000000000000000063',
+        liquidityProvider: '0x305e5d785eb274832a68745fda66a70b1ad2c635',
+        tokens: [
+          '0x6b175474e89094c44da98b954eedeac495271d0f',
+          '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+          '0xdac17f958d2ee523a2206206994597c13d831ec7',
+        ],
+        deltas: [
+          BigNumber.from('-1968345382253628458677'),
+          BigNumber.from('-1952758253'),
+          BigNumber.from('-1715252717'),
+        ],
+        protocolFeeAmounts: [
+          BigNumber.from('0'),
+          BigNumber.from('0'),
+          BigNumber.from('0'),
+        ],
+      },
+    };
+    const withdrawalB = withdrawalClassifier.parse(pool, eventB);
+    expect(withdrawalB).toEqual<LiquidityWithdrawal>({
+      block: {
+        hash: '0x55963fb8b65553f7a0e8cf80283735968d461d9ae992706c7de8a1eda5f83204',
+        number: 15287979,
+      },
+      transaction: {
+        hash: '0x374d34757bda76935d5b35d1ff7be06125de3e3f3a337ba85573cf389c8ee25e',
+        gasUsed: 266738,
+      },
+      event: {
+        address: '0x06df3b2bbb68adc8b0e302443692037ed9f91b42',
+        logIndex: 120,
+      },
+      contract: {
+        address: '0x06df3b2bbb68adc8b0e302443692037ed9f91b42',
+        protocol: {
+          abi: 'BalancerV2',
+          factory: {
+            address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+            label: 'Balancer V2',
+          },
+        },
+      },
+      withdrawer: '0x305e5d785eb274832a68745fda66a70b1ad2c635',
+      assets: [
+        '0x6b175474e89094c44da98b954eedeac495271d0f',
+        '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        '0xdac17f958d2ee523a2206206994597c13d831ec7',
+      ],
+      amounts: [1968345382253628458677n, 1952758253n, 1715252717n],
+      metadata: {},
     });
   });
 });
