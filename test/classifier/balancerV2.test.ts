@@ -8,7 +8,7 @@ import uniswapClassifier from '../../src/classifier/items/uniswapV2.js';
 import { Swap } from '../../src/index.js';
 
 const swapClassifier = balancerV2Classifiers[0];
-const transferClassifier = balancerV2Classifiers[1];
+const transferClassifier = balancerV2Classifiers[3];
 
 describe('Classfiers: Balancer V2', () => {
   test('parses a swap', () => {

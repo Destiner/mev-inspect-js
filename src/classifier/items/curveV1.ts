@@ -3,7 +3,14 @@ import { Event } from 'abi-coder';
 import { Call } from 'ethcall';
 
 import poolAbi from '../../abi/curveV1.js';
-import { Classifier, Pool, PoolData, Swap } from '../base.js';
+import {
+  Classifier,
+  LiquidityDeposit,
+  LiquidityWithdrawal,
+  Pool,
+  PoolData,
+  Swap,
+} from '../base.js';
 import { ChainId, getFactories } from '../directory.js';
 import { ClassifiedEvent } from '../index.js';
 
@@ -15,9 +22,20 @@ interface CurvePool {
   chainId: ChainId;
 }
 
-function isValid(event: Event): boolean {
+function isValidSwap(event: Event): boolean {
   return (
     event.name === 'TokenExchange' || event.name === 'TokenExchangeUnderlying'
+  );
+}
+
+function isValidDeposit(event: Event): boolean {
+  return event.name === 'AddLiquidity';
+}
+
+function isValidWithdrawal(event: Event): boolean {
+  return (
+    event.name === 'RemoveLiquidity' ||
+    event.name === 'RemoveLiquidityImbalance'
   );
 }
 
@@ -43,7 +61,7 @@ function processPoolCalls(
   };
 }
 
-function parse(pool: Pool, event: ClassifiedEvent): Swap | null {
+function parseSwap(pool: Pool, event: ClassifiedEvent): Swap | null {
   const {
     values,
     transactionHash: hash,
@@ -107,6 +125,100 @@ function parse(pool: Pool, event: ClassifiedEvent): Swap | null {
     amountIn,
     assetOut,
     amountOut,
+    metadata: {},
+  };
+}
+
+function parseDeposit(
+  pool: Pool,
+  event: ClassifiedEvent,
+): LiquidityDeposit | null {
+  const {
+    values,
+    transactionHash: hash,
+    gasUsed,
+    logIndex,
+    address,
+    blockHash,
+    blockNumber,
+  } = event;
+  const { assets } = pool;
+
+  const depositor = (values.provider as string).toLowerCase();
+  const amounts = (values.token_amounts as BigNumber[]).map((value) =>
+    value.toBigInt(),
+  );
+
+  return {
+    contract: {
+      address: pool.address,
+      protocol: {
+        abi: 'CurveV1',
+        factory: pool.factory,
+      },
+    },
+    block: {
+      hash: blockHash,
+      number: blockNumber,
+    },
+    transaction: {
+      hash,
+      gasUsed,
+    },
+    event: {
+      address: address.toLowerCase(),
+      logIndex,
+    },
+    depositor,
+    assets,
+    amounts,
+    metadata: {},
+  };
+}
+
+function parseWithdrawal(
+  pool: Pool,
+  event: ClassifiedEvent,
+): LiquidityWithdrawal | null {
+  const {
+    values,
+    transactionHash: hash,
+    gasUsed,
+    logIndex,
+    address,
+    blockHash,
+    blockNumber,
+  } = event;
+  const { assets } = pool;
+
+  const withdrawer = (values.provider as string).toLowerCase();
+  const amounts = (values.token_amounts as BigNumber[]).map((value) =>
+    value.toBigInt(),
+  );
+
+  return {
+    contract: {
+      address: pool.address,
+      protocol: {
+        abi: 'CurveV1',
+        factory: pool.factory,
+      },
+    },
+    block: {
+      hash: blockHash,
+      number: blockNumber,
+    },
+    transaction: {
+      hash,
+      gasUsed,
+    },
+    event: {
+      address: address.toLowerCase(),
+      logIndex,
+    },
+    withdrawer,
+    assets,
+    amounts,
     metadata: {},
   };
 }
@@ -762,16 +874,40 @@ const pools: CurvePool[] = [
   },
 ];
 
-const CLASSIFIER: Classifier = {
-  type: 'swap',
-  protocol: 'CurveV1',
-  abi: poolAbi,
-  isValid,
-  parse,
-  pool: {
-    getCalls: getPoolCalls,
-    processCalls: processPoolCalls,
+const CLASSIFIER: Classifier[] = [
+  {
+    type: 'swap',
+    protocol: 'CurveV1',
+    abi: poolAbi,
+    isValid: isValidSwap,
+    parse: parseSwap,
+    pool: {
+      getCalls: getPoolCalls,
+      processCalls: processPoolCalls,
+    },
   },
-};
+  {
+    type: 'liquidity_deposit',
+    protocol: 'CurveV1',
+    abi: poolAbi,
+    isValid: isValidDeposit,
+    parse: parseDeposit,
+    pool: {
+      getCalls: getPoolCalls,
+      processCalls: processPoolCalls,
+    },
+  },
+  {
+    type: 'liquidity_withdrawal',
+    protocol: 'CurveV1',
+    abi: poolAbi,
+    isValid: isValidWithdrawal,
+    parse: parseWithdrawal,
+    pool: {
+      getCalls: getPoolCalls,
+      processCalls: processPoolCalls,
+    },
+  },
+];
 
 export default CLASSIFIER;

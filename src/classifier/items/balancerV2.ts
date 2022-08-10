@@ -4,7 +4,15 @@ import { Event } from 'abi-coder';
 import { Call, Contract } from 'ethcall';
 
 import vaultAbi from '../../abi/balancerV2Vault.js';
-import { Classifier, Pool, PoolData, Swap, Transfer } from '../base.js';
+import {
+  Classifier,
+  LiquidityDeposit,
+  LiquidityWithdrawal,
+  Pool,
+  PoolData,
+  Swap,
+  Transfer,
+} from '../base.js';
 import { ClassifiedEvent } from '../index.js';
 
 interface PoolTokens {
@@ -13,6 +21,28 @@ interface PoolTokens {
 
 function isValidSwap(event: Event): boolean {
   return event.name === 'Swap';
+}
+
+function isValidDeposit(event: Event): boolean {
+  const deltaValues = event.values.deltas as BigNumber[] | null;
+  if (!deltaValues) {
+    return false;
+  }
+  const deltas = deltaValues.map((value) => value.toBigInt());
+  return (
+    event.name === 'PoolBalanceChanged' && deltas.every((delta) => delta >= 0)
+  );
+}
+
+function isValidWithdrawal(event: Event): boolean {
+  const deltaValues = event.values.deltas as BigNumber[] | null;
+  if (!deltaValues) {
+    return false;
+  }
+  const deltas = deltaValues.map((value) => value.toBigInt());
+  return (
+    event.name === 'PoolBalanceChanged' && deltas.every((delta) => delta <= 0)
+  );
 }
 
 function isValidTransfer(event: Event): boolean {
@@ -88,6 +118,102 @@ function parseSwap(
     amountIn,
     assetOut,
     amountOut,
+    metadata: {},
+  };
+}
+
+function parseDeposit(
+  pool: Pool,
+  event: ClassifiedEvent,
+): LiquidityDeposit | null {
+  const {
+    values,
+    transactionHash: hash,
+    gasUsed,
+    logIndex,
+    address,
+    blockHash,
+    blockNumber,
+  } = event;
+  const depositor = (values.liquidityProvider as string).toLowerCase();
+  const assets = (values.tokens as string[]).map((token) =>
+    token.toLowerCase(),
+  );
+  const amounts = (values.deltas as BigNumber[]).map((value) =>
+    value.toBigInt(),
+  );
+
+  return {
+    contract: {
+      address: pool.address,
+      protocol: {
+        abi: 'BalancerV2',
+        factory: pool.factory,
+      },
+    },
+    block: {
+      hash: blockHash,
+      number: blockNumber,
+    },
+    transaction: {
+      hash,
+      gasUsed,
+    },
+    event: {
+      address: address.toLowerCase(),
+      logIndex,
+    },
+    depositor,
+    assets,
+    amounts,
+    metadata: {},
+  };
+}
+
+function parseWithdrawal(
+  pool: Pool,
+  event: ClassifiedEvent,
+): LiquidityWithdrawal | null {
+  const {
+    values,
+    transactionHash: hash,
+    gasUsed,
+    logIndex,
+    address,
+    blockHash,
+    blockNumber,
+  } = event;
+  const withdrawer = (values.liquidityProvider as string).toLowerCase();
+  const assets = (values.tokens as string[]).map((token) =>
+    token.toLowerCase(),
+  );
+  const amounts = (values.deltas as BigNumber[]).map(
+    (value) => -value.toBigInt(),
+  );
+
+  return {
+    contract: {
+      address: pool.address,
+      protocol: {
+        abi: 'BalancerV2',
+        factory: pool.factory,
+      },
+    },
+    block: {
+      hash: blockHash,
+      number: blockNumber,
+    },
+    transaction: {
+      hash,
+      gasUsed,
+    },
+    event: {
+      address: address.toLowerCase(),
+      logIndex,
+    },
+    withdrawer,
+    assets,
+    amounts,
     metadata: {},
   };
 }
@@ -294,6 +420,28 @@ const CLASSIFIERS: Classifier[] = [
     abi: vaultAbi,
     isValid: isValidSwap,
     parse: parseSwap,
+    pool: {
+      getCalls: getPoolCalls,
+      processCalls: processPoolCalls,
+    },
+  },
+  {
+    type: 'liquidity_deposit',
+    protocol: 'BalancerV2',
+    abi: vaultAbi,
+    isValid: isValidDeposit,
+    parse: parseDeposit,
+    pool: {
+      getCalls: getPoolCalls,
+      processCalls: processPoolCalls,
+    },
+  },
+  {
+    type: 'liquidity_withdrawal',
+    protocol: 'BalancerV2',
+    abi: vaultAbi,
+    isValid: isValidWithdrawal,
+    parse: parseWithdrawal,
     pool: {
       getCalls: getPoolCalls,
       processCalls: processPoolCalls,

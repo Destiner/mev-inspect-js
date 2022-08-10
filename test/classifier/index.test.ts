@@ -4,7 +4,7 @@ import { Log } from '../../src/chain.js';
 import { Classifier } from '../../src/classifier/base.js';
 import classify from '../../src/classifier/index.js';
 import aaveV2Classifiers from '../../src/classifier/items/aaveV2.js';
-import balanceV2Classifiers from '../../src/classifier/items/balancerV2.js';
+import balancerV2Classifiers from '../../src/classifier/items/balancerV2.js';
 import compoundV2Classifiers from '../../src/classifier/items/compoundV2.js';
 import erc20Classifier from '../../src/classifier/items/erc20.js';
 import uniswapV2Classifier from '../../src/classifier/items/uniswapV2.js';
@@ -53,7 +53,7 @@ describe('Classfiers', () => {
 
     expect(classifiedLogs[0].classifier).toEqual<Classifier>(erc20Classifier);
     expect(classifiedLogs[1].classifier).toEqual<Classifier>(
-      balanceV2Classifiers[1],
+      balancerV2Classifiers[3],
     );
   });
 
@@ -120,7 +120,7 @@ describe('Classfiers', () => {
       uniswapV3Classifier[0],
     );
     expect(classifiedLogs[2].classifier).toEqual<Classifier>(
-      balanceV2Classifiers[0],
+      balancerV2Classifiers[0],
     );
   });
 

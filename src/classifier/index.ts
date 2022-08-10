@@ -34,13 +34,13 @@ import {
 import aaveV1Classifiers from './items/aaveV1.js';
 import aaveV2Classifiers from './items/aaveV2.js';
 import aaveV3Classifiers from './items/aaveV3.js';
-import balancerV1Classifier from './items/balancerV1.js';
+import balancerV1Classifiers from './items/balancerV1.js';
 import balancerV2Classifiers from './items/balancerV2.js';
 import bancorV2Classifier from './items/bancorV2.js';
 import bancorV3Classifier from './items/bancorV3.js';
 import compoundV2Classifiers from './items/compoundV2.js';
-import curveV1Classifier from './items/curveV1.js';
-import curveV2Classifier from './items/curveV2.js';
+import curveV1Classifiers from './items/curveV1.js';
+import curveV2Classifiers from './items/curveV2.js';
 import erc20Classifier from './items/erc20.js';
 import uniswapV2Classifier from './items/uniswapV2.js';
 import uniswapV3Classifier from './items/uniswapV3.js';
@@ -101,12 +101,12 @@ function classifyLog(chainId: ChainId, log: Log): ClassifiedEvent[] {
 
 function getClassifiers(): Classifier[] {
   return [
-    balancerV1Classifier,
+    ...balancerV1Classifiers,
     ...balancerV2Classifiers,
     bancorV2Classifier,
     bancorV3Classifier,
-    curveV1Classifier,
-    curveV2Classifier,
+    ...curveV1Classifiers,
+    ...curveV2Classifiers,
     erc20Classifier,
     uniswapV2Classifier,
     ...uniswapV3Classifier,

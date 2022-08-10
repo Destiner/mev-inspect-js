@@ -4,13 +4,28 @@ import { Call, Contract } from 'ethcall';
 
 import factoryAbi from '../../abi/balancerV1Factory.js';
 import poolAbi from '../../abi/balancerV1Pool.js';
-import { Classifier, Pool, PoolData, Swap } from '../base.js';
+import {
+  Classifier,
+  LiquidityDeposit,
+  LiquidityWithdrawal,
+  Pool,
+  PoolData,
+  Swap,
+} from '../base.js';
 import { ClassifiedEvent } from '../index.js';
 
 const FACTORY_ADDRESS = '0x9424b1412450d0f8fc2255faf6046b98213b76bd';
 
-function isValid(event: Event): boolean {
+function isValidSwap(event: Event): boolean {
   return event.name === 'LOG_SWAP';
+}
+
+function isValidDeposit(event: Event): boolean {
+  return event.name === 'LOG_JOIN';
+}
+
+function isValidWithdrawal(event: Event): boolean {
+  return event.name === 'LOG_EXIT';
 }
 
 function getPoolCalls(address: string): Call[] {
@@ -33,7 +48,7 @@ function processPoolCalls(result: unknown[]): PoolData | null {
   };
 }
 
-function parse(pool: Pool, event: ClassifiedEvent): Swap | null {
+function parseSwap(pool: Pool, event: ClassifiedEvent): Swap | null {
   const {
     values,
     transactionHash: hash,
@@ -80,16 +95,128 @@ function parse(pool: Pool, event: ClassifiedEvent): Swap | null {
   };
 }
 
-const CLASSIFIER: Classifier = {
-  type: 'swap',
-  protocol: 'BalancerV1',
-  abi: poolAbi,
-  isValid,
-  parse,
-  pool: {
-    getCalls: getPoolCalls,
-    processCalls: processPoolCalls,
+function parseDeposit(
+  pool: Pool,
+  event: ClassifiedEvent,
+): LiquidityDeposit | null {
+  const {
+    values,
+    transactionHash: hash,
+    gasUsed,
+    logIndex,
+    address,
+    blockHash,
+    blockNumber,
+  } = event;
+  const depositor = (values.caller as string).toLowerCase();
+  const asset = (values.tokenIn as string).toLowerCase();
+  const amount = (values.tokenAmountIn as BigNumber).toBigInt();
+
+  return {
+    contract: {
+      address: pool.address,
+      protocol: {
+        abi: 'BalancerV1',
+        factory: pool.factory,
+      },
+    },
+    block: {
+      hash: blockHash,
+      number: blockNumber,
+    },
+    transaction: {
+      hash,
+      gasUsed,
+    },
+    event: {
+      address: address.toLowerCase(),
+      logIndex,
+    },
+    depositor,
+    assets: [asset],
+    amounts: [amount],
+    metadata: {},
+  };
+}
+
+function parseWithdrawal(
+  pool: Pool,
+  event: ClassifiedEvent,
+): LiquidityWithdrawal | null {
+  const {
+    values,
+    transactionHash: hash,
+    gasUsed,
+    logIndex,
+    address,
+    blockHash,
+    blockNumber,
+  } = event;
+  const withdrawer = (values.caller as string).toLowerCase();
+  const asset = (values.tokenOut as string).toLowerCase();
+  const amount = (values.tokenAmountOut as BigNumber).toBigInt();
+
+  return {
+    contract: {
+      address: pool.address,
+      protocol: {
+        abi: 'BalancerV1',
+        factory: pool.factory,
+      },
+    },
+    block: {
+      hash: blockHash,
+      number: blockNumber,
+    },
+    transaction: {
+      hash,
+      gasUsed,
+    },
+    event: {
+      address: address.toLowerCase(),
+      logIndex,
+    },
+    withdrawer,
+    assets: [asset],
+    amounts: [amount],
+    metadata: {},
+  };
+}
+
+const CLASSIFIER: Classifier[] = [
+  {
+    type: 'swap',
+    protocol: 'BalancerV1',
+    abi: poolAbi,
+    isValid: isValidSwap,
+    parse: parseSwap,
+    pool: {
+      getCalls: getPoolCalls,
+      processCalls: processPoolCalls,
+    },
   },
-};
+  {
+    type: 'liquidity_deposit',
+    protocol: 'BalancerV1',
+    abi: poolAbi,
+    isValid: isValidDeposit,
+    parse: parseDeposit,
+    pool: {
+      getCalls: getPoolCalls,
+      processCalls: processPoolCalls,
+    },
+  },
+  {
+    type: 'liquidity_withdrawal',
+    protocol: 'BalancerV1',
+    abi: poolAbi,
+    isValid: isValidWithdrawal,
+    parse: parseWithdrawal,
+    pool: {
+      getCalls: getPoolCalls,
+      processCalls: processPoolCalls,
+    },
+  },
+];
 
 export default CLASSIFIER;
