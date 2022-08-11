@@ -30,6 +30,7 @@ Other, less fundamental, changes include:
 - getArbitrages(mevList): filter out non-arbitrage MEV
 - getLiquidations(mevList): filter out non-liquidation MEV
 - getSandwiches(mevList): filter out non-sandwich MEV
+- getJitSandwiches(mevList): filter out non-JIT liquidity sandwich MEV
 
 A common data flow is to first fetch all the MEV using any of the Inspector method, then filter it by type using `getArbitrages`, etc, and finally process each type of MEV separately
 
