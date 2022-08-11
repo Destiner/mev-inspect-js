@@ -8,7 +8,7 @@ interface JitSandwich {
   sandwicher: string;
   deposit: LiquidityDeposit;
   withdrawal: LiquidityWithdrawal;
-  sandwichedSwaps: Swap[];
+  sandwiched: Swap[];
   deltas: {
     asset: string;
     amount: bigint;
@@ -67,7 +67,7 @@ function getUniswapV3Sandwiches(
       }
       const tickLower = deposit.metadata.tickLower as number;
       const tickUpper = deposit.metadata.tickUpper as number;
-      const sandwichedSwaps = swaps.filter((swap) => {
+      const sandwiched = swaps.filter((swap) => {
         const tick = swap.metadata.tick as number;
         return (
           swap.event.address === deposit.event.address &&
@@ -77,7 +77,7 @@ function getUniswapV3Sandwiches(
           tick <= tickUpper
         );
       });
-      if (sandwichedSwaps.length === 0) {
+      if (sandwiched.length === 0) {
         continue;
       } else {
         const deltas = deposit.assets.map((asset, index) => {
@@ -92,7 +92,7 @@ function getUniswapV3Sandwiches(
           sandwicher: deposit.depositor,
           deposit,
           withdrawal,
-          sandwichedSwaps,
+          sandwiched,
           deltas,
         });
         break;

@@ -329,7 +329,7 @@ describe('MEV: JIT liquidity sandwiches', () => {
           amounts: [138200019333940881352647n, 423637645189105331266n],
           metadata: { tickLower: -54900, tickUpper: -54840 },
         },
-        sandwichedSwaps: [
+        sandwiched: [
           {
             contract: {
               address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
