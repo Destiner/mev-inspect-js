@@ -5,7 +5,7 @@ import { Sandwich, getSandwiches } from '../../src/mev/sandwiches.js';
 
 const ETHEREUM = 1;
 
-describe('MEV: arbitrage', () => {
+describe('MEV: sandwiches', () => {
   test('simple swap', () => {
     const swaps: Swap[] = [
       {

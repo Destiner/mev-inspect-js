@@ -7,7 +7,7 @@ import {
 } from '../../src/index.js';
 import { JitSandwich, getJitSandwiches } from '../../src/mev/jitSandwiches.js';
 
-describe('MEV: JIT liquidity sandwich', () => {
+describe('MEV: JIT liquidity sandwiches', () => {
   test('skip an empty list of swaps', () => {
     const swaps: Swap[] = [];
     const deposits: LiquidityDeposit[] = [
