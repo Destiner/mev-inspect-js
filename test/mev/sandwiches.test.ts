@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest';
 
-import { Swap } from '../../src/index.js';
+import { LiquidityDeposit, Swap } from '../../src/index.js';
 import { Sandwich, getSandwiches } from '../../src/mev/sandwiches.js';
 
 const ETHEREUM = 1;
@@ -1470,6 +1470,123 @@ describe('MEV: sandwiches', () => {
         profit: {
           asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
           amount: 926384344901922834n,
+        },
+      },
+    ]);
+  });
+
+  test('imbalanced liquidity sandwich', () => {
+    const swaps: Swap[] = [
+      {
+        contract: {
+          address: '0xd51a44d3fae010294c616388b506acda1bfaae46',
+          protocol: {
+            abi: 'CurveV2',
+            factory: {
+              label: 'Curve V2',
+              address: '0xb9fc157394af804a3578134a6585c0dc9cc990d4',
+            },
+          },
+        },
+        block: {
+          hash: '0x34057bae81d5322ee709fd8e4390603e9c4e0df14efd39521038d5ec7e9e3817',
+          number: 15175481,
+        },
+        transaction: {
+          hash: '0x494ff5ab76e94d6b8e2610af1c7c50aea8dcafcb344236a430d0fa764db6d12b',
+          gasUsed: 348339,
+        },
+        event: {
+          address: '0xd51a44d3fae010294c616388b506acda1bfaae46',
+          logIndex: 7,
+        },
+        from: '0xe8c060f8052e07423f71d445277c61ac5138a2e5',
+        to: '0xe8c060f8052e07423f71d445277c61ac5138a2e5',
+        assetIn: '0xdac17f958d2ee523a2206206994597c13d831ec7',
+        amountIn: 853117383751n,
+        assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        amountOut: 536882756779800724303n,
+        metadata: {},
+      },
+      {
+        contract: {
+          address: '0xd51a44d3fae010294c616388b506acda1bfaae46',
+          protocol: {
+            abi: 'CurveV2',
+            factory: {
+              label: 'Curve V2',
+              address: '0xb9fc157394af804a3578134a6585c0dc9cc990d4',
+            },
+          },
+        },
+        block: {
+          hash: '0x34057bae81d5322ee709fd8e4390603e9c4e0df14efd39521038d5ec7e9e3817',
+          number: 15175481,
+        },
+        transaction: {
+          hash: '0xdf2aff5d20b9bffb9ec507da4af66cfb6f437ec1c0d8da3a7c62a126a598187d',
+          gasUsed: 336993,
+        },
+        event: {
+          address: '0xd51a44d3fae010294c616388b506acda1bfaae46',
+          logIndex: 17,
+        },
+        from: '0xe8c060f8052e07423f71d445277c61ac5138a2e5',
+        to: '0xe8c060f8052e07423f71d445277c61ac5138a2e5',
+        assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        amountIn: 624380905015738368000n,
+        assetOut: '0xdac17f958d2ee523a2206206994597c13d831ec7',
+        amountOut: 1011416590749n,
+        metadata: {},
+      },
+    ];
+
+    const deposits: LiquidityDeposit[] = [
+      {
+        contract: {
+          address: '0xd51a44d3fae010294c616388b506acda1bfaae46',
+          protocol: {
+            abi: 'CurveV2',
+            factory: {
+              label: 'Curve V2',
+              address: '0xb9fc157394af804a3578134a6585c0dc9cc990d4',
+            },
+          },
+        },
+        block: {
+          hash: '0x34057bae81d5322ee709fd8e4390603e9c4e0df14efd39521038d5ec7e9e3817',
+          number: 15175481,
+        },
+        transaction: {
+          hash: '0xb170187a424eced74476156e7113bdd90978bd5c053e5520068e921cfc447c0a',
+          gasUsed: 273304,
+        },
+        event: {
+          address: '0xd51a44d3fae010294c616388b506acda1bfaae46',
+          logIndex: 12,
+        },
+        depositor: '0x3993d34e7e99abf6b6f367309975d1360222d446',
+        assets: [
+          '0xdac17f958d2ee523a2206206994597c13d831ec7',
+          '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+          '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        ],
+        amounts: [2023937497942n, 0n, 0n],
+        metadata: {},
+      },
+    ];
+
+    const sandwiches: Sandwich[] = getSandwiches(ETHEREUM, swaps, deposits, []);
+
+    expect(sandwiches).toEqual<Sandwich[]>([
+      {
+        sandwicher: '0xe8c060f8052e07423f71d445277c61ac5138a2e5',
+        frontSwap: swaps[0],
+        backSwap: swaps[1],
+        sandwiched: [deposits[0]],
+        profit: {
+          asset: '0xdac17f958d2ee523a2206206994597c13d831ec7',
+          amount: 16563484340n,
         },
       },
     ]);
