@@ -42,6 +42,10 @@ const transactions: Transaction[] = [
     block: 14899837,
     label: 'Uniswap V2 sandwich with backswap split',
   },
+  {
+    block: 15175481,
+    label: 'Curve V2 imbalanced liquidity sandwich',
+  },
 ];
 
 async function run(): Promise<void> {
