@@ -297,6 +297,12 @@ const nftSwapFactories: Record<ChainId, Record<NftSwapProtocol, Factory[]>> = {
         label: 'LooksRare V1',
       },
     ],
+    X2Y2V1: [
+      {
+        address: '0x74312363e45dcaba76c59ec49a7aa8a65a67eed3',
+        label: 'X2Y2 V1',
+      },
+    ],
     OpenseaSeaport: [
       {
         address: '0x00000000006c3852cbef3e08e8df289169ede581',
@@ -306,18 +312,22 @@ const nftSwapFactories: Record<ChainId, Record<NftSwapProtocol, Factory[]>> = {
   },
   [OPTIMISM]: {
     LooksRareV1: [], // TODO
+    X2Y2V1: [], // TODO
     OpenseaSeaport: [], // TODO
   },
   [POLYGON]: {
     LooksRareV1: [], // TODO
+    X2Y2V1: [], // TODO
     OpenseaSeaport: [], // TODO
   },
   [ARBITRUM]: {
     LooksRareV1: [], // TODO
+    X2Y2V1: [], // TODO
     OpenseaSeaport: [], // TODO
   },
   [AVALANCHE]: {
     LooksRareV1: [], // TODO
+    X2Y2V1: [], // TODO
     OpenseaSeaport: [], // TODO
   },
 };
