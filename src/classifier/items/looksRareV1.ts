@@ -7,7 +7,7 @@ import { Classifier, NftSwap, Pool, PoolData } from '../base.js';
 import { ClassifiedEvent } from '../index.js';
 
 function isValid(event: Event): boolean {
-  return event.name === 'TakerBid';
+  return event.name === 'TakerAsk' || event.name === 'TakerBid';
 }
 
 function getPoolCalls(): Call[] {
@@ -26,6 +26,7 @@ function processPoolCalls(
 
 function parse(pool: Pool, event: ClassifiedEvent): NftSwap | null {
   const {
+    name,
     values,
     transactionHash: hash,
     gasUsed,
@@ -68,17 +69,30 @@ function parse(pool: Pool, event: ClassifiedEvent): NftSwap | null {
     },
     from,
     to,
-    assetIn: {
-      type: 'erc20',
-      address: currency,
-    },
-    amountIn: price,
-    assetOut: {
-      type: 'erc721',
-      collection,
-      id: tokenId,
-    },
-    amountOut: 1n,
+    assetIn:
+      name === 'TakerAsk'
+        ? {
+            type: 'erc721',
+            collection,
+            id: tokenId,
+          }
+        : {
+            type: 'erc20',
+            address: currency,
+          },
+    amountIn: name === 'TakerAsk' ? 1n : price,
+    assetOut:
+      name === 'TakerAsk'
+        ? {
+            type: 'erc20',
+            address: currency,
+          }
+        : {
+            type: 'erc721',
+            collection,
+            id: tokenId,
+          },
+    amountOut: name === 'TakerAsk' ? price : 1n,
   };
 }
 
