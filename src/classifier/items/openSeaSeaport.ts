@@ -2,7 +2,7 @@ import { BigNumber } from '@ethersproject/bignumber';
 import { Event } from 'abi-coder';
 import { Call } from 'ethcall';
 
-import exchangeAbi from '../../abi/looksRareV1.js';
+import exchangeAbi from '../../abi/openseaSeaport.js';
 import { Classifier, NftSwap, Pool, PoolData } from '../base.js';
 import { ChainId, ClassifiedEvent, nativeAsset } from '../index.js';
 
@@ -84,7 +84,7 @@ function parse(
     contract: {
       address: pool.address,
       protocol: {
-        abi: 'OpenSeaSeaport',
+        abi: 'OpenseaSeaport',
         factory: pool.factory,
       },
     },
@@ -141,7 +141,7 @@ function parse(
 
 const CLASSIFIER: Classifier = {
   type: 'nft_swap',
-  protocol: 'OpenSeaSeaport',
+  protocol: 'OpenseaSeaport',
   abi: exchangeAbi,
   isValid,
   parse,

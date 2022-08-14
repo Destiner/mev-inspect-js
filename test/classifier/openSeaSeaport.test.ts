@@ -3,7 +3,7 @@ import { describe, test, expect } from 'vitest';
 
 import { Pool, NftSwap } from '../../src/classifier/base.js';
 import { ClassifiedEvent } from '../../src/classifier/index.js';
-import classifier from '../../src/classifier/items/openSeaSeaport.js';
+import classifier from '../../src/classifier/items/openseaSeaport.js';
 
 describe('Classfiers: Opensea Seaport', () => {
   test('nft swap', () => {
@@ -87,7 +87,7 @@ describe('Classfiers: Opensea Seaport', () => {
       contract: {
         address: '0x00000000006c3852cbef3e08e8df289169ede581',
         protocol: {
-          abi: 'OpenSeaSeaport',
+          abi: 'OpenseaSeaport',
           factory: {
             address: '0x00000000006c3852cbef3e08e8df289169ede581',
             label: 'OpenSea: Seaport V1.1',
