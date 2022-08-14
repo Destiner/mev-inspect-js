@@ -294,7 +294,7 @@ const nftSwapFactories: Record<ChainId, Record<NftSwapProtocol, Factory[]>> = {
     LooksRareV1: [
       {
         address: '0x59728544b08ab483533076417fbbb2fd0b17ce3a',
-        label: 'LooksRare',
+        label: 'LooksRare V1',
       },
     ],
     OpenseaSeaport: [
