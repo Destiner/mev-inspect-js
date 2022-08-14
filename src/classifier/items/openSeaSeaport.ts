@@ -57,7 +57,7 @@ function parse(
 
   // Filter out fee, royalty, and other payments
   const recipientConsideration = consideration.filter(
-    (item) => item.recipient === offerer,
+    (item) => item.recipient.toLowerCase() === offerer,
   );
 
   if (offer.length !== 1 || recipientConsideration.length !== 1) {
@@ -67,6 +67,10 @@ function parse(
 
   const spentItem = offer[0];
   const receivedItem = recipientConsideration[0];
+  const considerationAmount = consideration.reduce(
+    (total, item) => total + item.amount.toBigInt(),
+    0n,
+  );
 
   if (spentItem.itemType > 2 || receivedItem.itemType > 2) {
     // Only ERC20/ERC721 supported
@@ -74,7 +78,7 @@ function parse(
   }
 
   const from = recipient;
-  const to = receivedItem.recipient;
+  const to = recipient;
 
   return {
     contract: {
@@ -107,31 +111,31 @@ function parse(
         : receivedItem.itemType === 1
         ? {
             type: 'erc20',
-            address: spentItem.token,
+            address: spentItem.token.toLowerCase(),
           }
         : {
             type: 'erc721',
-            collection: spentItem.token,
+            collection: spentItem.token.toLowerCase(),
             id: spentItem.identifier.toBigInt(),
           },
-    amountIn: spentItem.amount.toBigInt(),
+    amountIn: considerationAmount,
     assetOut:
-      receivedItem.itemType < 2
+      spentItem.itemType === 0
         ? {
             type: 'erc20',
             address: nativeAsset[chainId],
           }
-        : receivedItem.itemType === 1
+        : spentItem.itemType === 1
         ? {
             type: 'erc20',
-            address: receivedItem.token,
+            address: spentItem.token.toLowerCase(),
           }
         : {
             type: 'erc721',
-            collection: receivedItem.token,
-            id: receivedItem.identifier.toBigInt(),
+            collection: spentItem.token.toLowerCase(),
+            id: spentItem.identifier.toBigInt(),
           },
-    amountOut: receivedItem.amount.toBigInt(),
+    amountOut: spentItem.amount.toBigInt(),
   };
 }
 
