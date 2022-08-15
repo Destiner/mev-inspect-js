@@ -4,7 +4,7 @@ import { Event } from 'abi-coder';
 import { Call } from 'ethcall';
 
 import exchangeAbi from '../../abi/x2y2V1.js';
-import { Classifier, NftSwap, Pool, PoolData } from '../base.js';
+import { Classifier, NftPool, NftPoolData, NftSwap } from '../base.js';
 import { ChainId, ClassifiedEvent, nativeAsset } from '../index.js';
 
 interface Item {
@@ -23,15 +23,17 @@ function getPoolCalls(): Call[] {
 function processPoolCalls(
   _results: unknown[],
   address: string,
-): PoolData | null {
+): NftPoolData | null {
   return {
     factoryAddress: address.toLowerCase(),
-    assets: [],
+    asset: '',
+    collection: '',
+    metadata: {},
   };
 }
 
 function parse(
-  pool: Pool,
+  pool: NftPool,
   event: ClassifiedEvent,
   chainId: ChainId,
 ): NftSwap | null {

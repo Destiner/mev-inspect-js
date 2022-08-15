@@ -522,6 +522,15 @@ function getFactoryByAddress(
   return protocolFactories.find((factory) => factory.address === address);
 }
 
+function getNftFactoryByAddress(
+  chainId: ChainId,
+  protocol: NftSwapProtocol,
+  address: string,
+): Factory | undefined {
+  const protocolFactories = nftSwapFactories[chainId][protocol];
+  return protocolFactories.find((factory) => factory.address === address);
+}
+
 function getPoolByAddress(
   chainId: ChainId,
   protocol: LendingProtocol,
@@ -586,6 +595,7 @@ export {
   nativeAsset,
   getFactories,
   getFactoryByAddress,
+  getNftFactoryByAddress,
   getPoolByAddress,
   isValidFactory,
   isValidNftFactory,

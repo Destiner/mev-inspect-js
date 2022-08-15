@@ -10,6 +10,7 @@ import {
   LiquidityDeposit,
   LiquidityWithdrawal,
   Market,
+  NftPool,
   NftSwap,
   NftSwapProtocol,
   Pool,
@@ -23,13 +24,14 @@ import {
 } from './base.js';
 import {
   ChainId,
-  nativeAsset,
   getFactoryByAddress,
+  getNftFactoryByAddress,
   getPoolByAddress,
+  isKnownRouter,
   isValidFactory,
   isValidNftFactory,
   isValidPool,
-  isKnownRouter,
+  nativeAsset,
 } from './directory.js';
 import aaveV1Classifiers from './items/aaveV1.js';
 import aaveV2Classifiers from './items/aaveV2.js';
@@ -130,6 +132,7 @@ export {
   LiquidityDeposit,
   LiquidityWithdrawal,
   Market,
+  NftPool,
   NftSwap,
   NftSwapProtocol,
   Pool,
@@ -141,6 +144,7 @@ export {
   Transaction,
   Transfer,
   getFactoryByAddress,
+  getNftFactoryByAddress,
   getPoolByAddress,
   isValidFactory,
   isValidNftFactory,

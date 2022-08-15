@@ -3,7 +3,7 @@ import {
   ClassifiedEvent,
   NftSwap,
   NftSwapProtocol,
-  Pool,
+  NftPool,
   isValidNftFactory,
 } from '../classifier/index.js';
 
@@ -16,7 +16,7 @@ function getPoolAddress(log: ClassifiedEvent): string {
 
 function getSwaps(
   chainId: ChainId,
-  pools: Pool[],
+  pools: NftPool[],
   logs: ClassifiedEvent[],
 ): NftSwap[] {
   return logs

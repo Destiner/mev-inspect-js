@@ -3,7 +3,7 @@ import { Event } from 'abi-coder';
 import { Call } from 'ethcall';
 
 import exchangeAbi from '../../abi/looksRareV1.js';
-import { Classifier, NftSwap, Pool, PoolData } from '../base.js';
+import { Classifier, NftPool, NftPoolData, NftSwap } from '../base.js';
 import { ClassifiedEvent } from '../index.js';
 
 function isValid(event: Event): boolean {
@@ -17,14 +17,16 @@ function getPoolCalls(): Call[] {
 function processPoolCalls(
   _results: unknown[],
   address: string,
-): PoolData | null {
+): NftPoolData | null {
   return {
     factoryAddress: address.toLowerCase(),
-    assets: [],
+    asset: '',
+    collection: '',
+    metadata: {},
   };
 }
 
-function parse(pool: Pool, event: ClassifiedEvent): NftSwap | null {
+function parse(pool: NftPool, event: ClassifiedEvent): NftSwap | null {
   const {
     name,
     values,

@@ -3,7 +3,7 @@ import { Event } from 'abi-coder';
 import { Call } from 'ethcall';
 
 import exchangeAbi from '../../abi/openseaSeaport.js';
-import { Classifier, NftSwap, Pool, PoolData } from '../base.js';
+import { Classifier, NftPool, NftPoolData, NftSwap } from '../base.js';
 import { ChainId, ClassifiedEvent, nativeAsset } from '../index.js';
 
 interface SpentItem {
@@ -28,15 +28,17 @@ function getPoolCalls(): Call[] {
 function processPoolCalls(
   _results: unknown[],
   address: string,
-): PoolData | null {
+): NftPoolData | null {
   return {
     factoryAddress: address.toLowerCase(),
-    assets: [],
+    asset: '',
+    collection: '',
+    metadata: {},
   };
 }
 
 function parse(
-  pool: Pool,
+  pool: NftPool,
   event: ClassifiedEvent,
   chainId: ChainId,
 ): NftSwap | null {

@@ -31,6 +31,21 @@ interface Market {
   asset: string;
 }
 
+interface NftPoolData {
+  factoryAddress: string;
+  asset: string;
+  collection: string;
+  metadata: Record<string, unknown>;
+}
+
+interface NftPool {
+  address: string;
+  factory: Factory;
+  asset: string;
+  collection: string;
+  metadata: Record<string, unknown>;
+}
+
 interface Erc20Asset {
   type: 'erc20';
   address: string;
@@ -236,13 +251,13 @@ interface NftSwapClassifier extends BaseClassifier {
   type: 'nft_swap';
   isValid: (event: Event, address: string, chainId: ChainId) => boolean;
   parse: (
-    pool: Pool,
+    pool: NftPool,
     event: ClassifiedEvent,
     chainId: ChainId,
   ) => NftSwap | null;
   pool: {
     getCalls: (id: string) => Call[];
-    processCalls: (result: unknown[], address: string) => PoolData | null;
+    processCalls: (result: unknown[], address: string) => NftPoolData | null;
   };
 }
 
@@ -309,6 +324,8 @@ export {
   LiquidityWithdrawal,
   Market,
   MarketData,
+  NftPool,
+  NftPoolData,
   NftSwap,
   NftSwapProtocol,
   Pool,

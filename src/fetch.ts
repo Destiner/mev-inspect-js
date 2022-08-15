@@ -5,8 +5,10 @@ import {
   ChainId,
   ClassifiedEvent,
   Market,
+  NftPool,
   Pool,
   getFactoryByAddress,
+  getNftFactoryByAddress,
   getPoolByAddress,
 } from './classifier/index.js';
 
@@ -64,6 +66,68 @@ async function fetchPools(
       address: getPoolAddress(log).toLowerCase(),
       assets: poolData.assets,
       factory,
+    };
+    pools.push(pool);
+  }
+  return pools;
+}
+
+async function fetchNftPools(
+  chainId: ChainId,
+  provider: Provider,
+  logs: ClassifiedEvent[],
+): Promise<NftPool[]> {
+  const pools: NftPool[] = [];
+  const poolIds = new Set<string>();
+  const callMap: Record<number, Call[]> = {};
+  for (const log of logs) {
+    if (log.classifier.type !== 'nft_swap') {
+      continue;
+    }
+    const id = getPoolId(log);
+    if (poolIds.has(id)) {
+      continue;
+    }
+    poolIds.add(id);
+    const logCalls = log.classifier.pool.getCalls(id);
+    callMap[log.logIndex] = logCalls;
+  }
+  const ethcallProvider = new EthcallProvider();
+  await ethcallProvider.init(provider);
+  const calls = Object.values(callMap).flat();
+  const results = await ethcallProvider.tryAll(calls);
+  let i = 0;
+  for (const log of logs) {
+    if (log.classifier.type !== 'nft_swap') {
+      continue;
+    }
+    const logCalls = callMap[log.logIndex];
+    if (!logCalls) {
+      continue;
+    }
+    const result = [];
+    for (let j = 0; j < logCalls.length; j++) {
+      result.push(results[i + j]);
+    }
+    i += logCalls.length;
+    const poolData = log.classifier.pool.processCalls(result, log.address);
+    if (!poolData) {
+      continue;
+    }
+    const factory = getNftFactoryByAddress(
+      chainId,
+      log.classifier.protocol,
+      poolData.factoryAddress,
+    );
+    if (!factory) {
+      continue;
+    }
+    const pool = {
+      address: getPoolAddress(log).toLowerCase(),
+      factory,
+      asset: poolData.asset,
+      collection: poolData.collection,
+      metadata: poolData.metadata,
     };
     pools.push(pool);
   }
@@ -162,4 +226,4 @@ function getMarketAddress(log: ClassifiedEvent): string {
   return log.address;
 }
 
-export { fetchPools, fetchMarkets };
+export { fetchPools, fetchNftPools, fetchMarkets };
