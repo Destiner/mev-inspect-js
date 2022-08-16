@@ -73,11 +73,7 @@ function parse(
     (total, item) => total + item.amount.toBigInt(),
     0n,
   );
-
-  if (spentItem.itemType > 2 || receivedItem.itemType > 2) {
-    // Only ERC20/ERC721 supported
-    return null;
-  }
+  const feeAmount = considerationAmount - receivedItem.amount.toBigInt();
 
   const from = recipient;
   const to = recipient;
@@ -117,10 +113,13 @@ function parse(
           }
         : {
             type: 'erc721',
-            collection: spentItem.token.toLowerCase(),
-            id: spentItem.identifier.toBigInt(),
+            collection: receivedItem.token.toLowerCase(),
+            id: receivedItem.identifier.toBigInt(),
           },
-    amountIn: considerationAmount,
+    amountIn:
+      receivedItem.itemType < 2
+        ? considerationAmount
+        : considerationAmount - feeAmount,
     assetOut:
       spentItem.itemType === 0
         ? {
@@ -137,7 +136,10 @@ function parse(
             collection: spentItem.token.toLowerCase(),
             id: spentItem.identifier.toBigInt(),
           },
-    amountOut: spentItem.amount.toBigInt(),
+    amountOut:
+      receivedItem.itemType < 2
+        ? spentItem.amount.toBigInt()
+        : spentItem.amount.toBigInt() - feeAmount,
   };
 }
 
