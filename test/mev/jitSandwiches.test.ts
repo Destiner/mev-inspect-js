@@ -82,7 +82,7 @@ describe('MEV: JIT liquidity sandwiches', () => {
     expect(sandwiches).toEqual<JitSandwich[]>([]);
   });
 
-  test.todo('skip irrelevant swaps', () => {
+  test('skip irrelevant swaps', () => {
     // same user
     // different pool
     // different protocol
