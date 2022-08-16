@@ -91,11 +91,10 @@ function parse(
     transactionHash: hash,
     gasUsed,
     logIndex,
-    address,
     blockHash,
     blockNumber,
   } = event;
-  const { asset, collection, metadata } = pool;
+  const { address, asset, collection, metadata } = pool;
 
   const fee = metadata.fee as bigint;
   const delta = metadata.delta as bigint;
@@ -131,7 +130,7 @@ function parse(
 
   return {
     contract: {
-      address: pool.address,
+      address,
       protocol: {
         abi: 'SudoswapV1',
         factory: pool.factory,
@@ -146,7 +145,7 @@ function parse(
       gasUsed,
     },
     event: {
-      address: address.toLowerCase(),
+      address,
       logIndex,
     },
     from,
@@ -239,8 +238,8 @@ function getEffectivePrice(
         ? nextSpotPrice + delta
         : nextSpotPrice - delta
       : swapIn
-      ? (nextSpotPrice * (precisionMultiplier + delta)) / precisionMultiplier
-      : (nextSpotPrice * precisionMultiplier) / (precisionMultiplier + delta);
+      ? (nextSpotPrice * delta) / precisionMultiplier
+      : (nextSpotPrice * precisionMultiplier) / delta;
   return type === 'linear'
     ? swapIn
       ? (spotPrice * (precisionMultiplier - fee - PROTOCOL_FEE)) /
@@ -250,9 +249,7 @@ function getEffectivePrice(
     : swapIn
     ? (spotPrice * (precisionMultiplier - fee - PROTOCOL_FEE)) /
       precisionMultiplier
-    : (spotPrice *
-        (precisionMultiplier + fee + PROTOCOL_FEE) *
-        (precisionMultiplier + delta)) /
+    : (spotPrice * (precisionMultiplier + fee + PROTOCOL_FEE) * delta) /
       precisionMultiplier /
       precisionMultiplier;
 }

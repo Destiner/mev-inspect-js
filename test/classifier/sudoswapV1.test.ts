@@ -24,7 +24,7 @@ describe('Classfiers: Sudoswap V1', () => {
       collection: '0x42069abfe407c60cf4ae4112bedead391dba1cdb',
       metadata: {
         fee: 25_000_000_000_000_000n,
-        delta: 80_000_000_000_000_000n,
+        delta: 1_080_000_000_000_000_000n,
         type: 'exponential',
       },
     };
@@ -164,7 +164,7 @@ describe('Classfiers: Sudoswap V1', () => {
       collection: '0x42069abfe407c60cf4ae4112bedead391dba1cdb',
       metadata: {
         fee: 25_000_000_000_000_000n,
-        delta: 80_000_000_000_000_000n,
+        delta: 1_080_000_000_000_000_000n,
         type: 'exponential',
       },
     };
@@ -290,7 +290,7 @@ describe('Classfiers: Sudoswap V1', () => {
 
   test('getEffectivePrice', () => {
     const FEE_A = 25_000_000_000_000_000n;
-    const DELTA_A = 7_500_000_000_000_000n;
+    const DELTA_A = 1_007_500_000_000_000_000n;
     expect(
       getEffectivePrice(
         'exponential',
@@ -311,7 +311,7 @@ describe('Classfiers: Sudoswap V1', () => {
     ).toEqual<bigint>(340821244696616090n);
 
     const FEE_B = 25_000_000_000_000_000n;
-    const DELTA_B = 80_000_000_000_000_000n;
+    const DELTA_B = 1_080_000_000_000_000_000n;
     expect(
       getEffectivePrice(
         'exponential',
@@ -332,7 +332,7 @@ describe('Classfiers: Sudoswap V1', () => {
     ).toEqual<bigint>(3266032235939642947n);
 
     const FEE_C = 200_000_000_000_000_000n;
-    const DELTA_C = 100_000_000_000_000_000n;
+    const DELTA_C = 1_100_000_000_000_000_000n;
     expect(
       getEffectivePrice(
         'exponential',
