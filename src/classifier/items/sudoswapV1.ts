@@ -181,7 +181,9 @@ function getNewSpotPrice(
   poolAddress: string,
   allLogs: Log[],
 ): NewSpotPriceEvent | null {
-  const poolLogs = allLogs.filter((log) => log.address === poolAddress);
+  const poolLogs = allLogs.filter(
+    (log) => log.address.toLowerCase() === poolAddress,
+  );
   poolLogs.reverse();
   const log = poolLogs.find((log) => log.logIndex < swapLogIndex);
   if (!log) {
@@ -204,7 +206,7 @@ function getNftTransfers(
 ): NftTransfer[] {
   const logs = allLogs.filter(
     (log) =>
-      log.address === collection &&
+      log.address.toLowerCase() === collection &&
       log.logIndex > newSpotPriceLogIndex &&
       log.logIndex < swapLogIndex,
   );
