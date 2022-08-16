@@ -11,6 +11,18 @@ interface Transaction {
 
 const transactions: Transaction[] = [
   {
+    label: 'Opensea swap',
+    hash: '0xc1f2b19cc4e11f6588e98379da11971a0966067239d2772c40857e92210a762d',
+  },
+  {
+    label: 'Opensea X Opensea arbitrage',
+    hash: '0x21dc6fba36e9ea446d5997f7e4030f3fc9c1eb4a65aad89d4904cf39b7642ba3',
+  },
+  {
+    label: 'Opensea X Opensea arbitrage',
+    hash: '0xe82e8db26891d4fab3b5f46f0326e1f374de0ca7b171ef69a4e98ad209f37834',
+  },
+  {
     label: 'Opensea X LooksRare arbitrage',
     hash: '0xce93e804cdaa9e2d1c781c5eeba4cf47a898987ce4dc20752dfb5d9980f3f6ad',
   },
@@ -29,14 +41,6 @@ const transactions: Transaction[] = [
   {
     label: 'Opensea X X2Y2 arbitrage',
     hash: '0xe4ab98644cf93f3c5112b64eb1986f3cef88f58a52301b90f878df7438a8192d',
-  },
-  {
-    label: 'Opensea X Opensea arbitrage',
-    hash: '0x21dc6fba36e9ea446d5997f7e4030f3fc9c1eb4a65aad89d4904cf39b7642ba3',
-  },
-  {
-    label: 'Opensea X Opensea arbitrage',
-    hash: '0xe82e8db26891d4fab3b5f46f0326e1f374de0ca7b171ef69a4e98ad209f37834',
   },
   {
     label: 'Opensea X Opensea arbitrage',
