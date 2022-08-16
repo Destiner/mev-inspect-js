@@ -1,10 +1,12 @@
 import { BigNumber } from '@ethersproject/bignumber';
-import { Event } from 'abi-coder';
+import { Coder, Event } from 'abi-coder';
 import { Call } from 'ethcall';
 
+import erc20Abi from '../../abi/erc20.js';
 import exchangeAbi from '../../abi/looksRareV1.js';
+import { Log } from '../../chain.js';
 import { Classifier, NftPool, NftPoolData, NftSwap } from '../base.js';
-import { ClassifiedEvent } from '../index.js';
+import { ChainId, ClassifiedEvent } from '../index.js';
 
 function isValid(event: Event): boolean {
   return event.name === 'TakerAsk' || event.name === 'TakerBid';
@@ -26,7 +28,12 @@ function processPoolCalls(
   };
 }
 
-function parse(pool: NftPool, event: ClassifiedEvent): NftSwap | null {
+function parse(
+  pool: NftPool,
+  event: ClassifiedEvent,
+  _chainId: ChainId,
+  allLogs: Log[],
+): NftSwap | null {
   const {
     name,
     values,
@@ -37,17 +44,25 @@ function parse(pool: NftPool, event: ClassifiedEvent): NftSwap | null {
     blockHash,
     blockNumber,
   } = event;
-  const from = (values.taker as string).toLowerCase();
-  const to = (values.taker as string).toLowerCase();
+  const maker = (values.maker as string).toLowerCase();
+  const taker = (values.taker as string).toLowerCase();
   const currency = (values.currency as string).toLowerCase();
   const collection = (values.collection as string).toLowerCase();
   const tokenId = (values.tokenId as BigNumber).toBigInt();
   const amount = (values.amount as BigNumber).toBigInt();
   const price = (values.price as BigNumber).toBigInt();
 
+  const erc20Amount =
+    name === 'TakerAsk'
+      ? getAmount(logIndex, maker, taker, currency, allLogs)
+      : price;
+
   if (amount > 1) {
     return null;
   }
+
+  const from = taker;
+  const to = taker;
 
   return {
     contract: {
@@ -82,7 +97,7 @@ function parse(pool: NftPool, event: ClassifiedEvent): NftSwap | null {
             type: 'erc20',
             address: currency,
           },
-    amountIn: name === 'TakerAsk' ? 1n : price,
+    amountIn: name === 'TakerAsk' ? 1n : erc20Amount,
     assetOut:
       name === 'TakerAsk'
         ? {
@@ -94,8 +109,38 @@ function parse(pool: NftPool, event: ClassifiedEvent): NftSwap | null {
             collection,
             id: tokenId,
           },
-    amountOut: name === 'TakerAsk' ? price : 1n,
+    amountOut: name === 'TakerAsk' ? erc20Amount : 1n,
   };
+}
+
+function getAmount(
+  swapLogIndex: number,
+  maker: string,
+  taker: string,
+  currency: string,
+  allLogs: Log[],
+): bigint {
+  const logs = allLogs.filter(
+    (log) =>
+      log.address.toLowerCase() === currency && log.logIndex < swapLogIndex,
+  );
+  logs.reverse();
+  const nftCoder = new Coder(erc20Abi);
+
+  for (const log of logs) {
+    const event = nftCoder.decodeEvent(log.topics, log.data);
+    if (event.name !== 'Transfer') {
+      continue;
+    }
+    const from = (event.values.from as string).toLowerCase();
+    const to = (event.values.to as string).toLowerCase();
+    const value = (event.values.value as BigNumber).toBigInt();
+    if (maker !== from || taker !== to) {
+      continue;
+    }
+    return value;
+  }
+  return 0n;
 }
 
 const CLASSIFIER: Classifier = {
