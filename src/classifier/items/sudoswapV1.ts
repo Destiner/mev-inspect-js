@@ -100,7 +100,8 @@ function parse(
   const delta = metadata.delta as bigint;
   const poolType = metadata.type as PoolType;
 
-  const newSpotPriceEvent = getNewSpotPrice(logIndex, address, allLogs);
+  const txLogs = allLogs.filter((log) => log.transactionHash === hash);
+  const newSpotPriceEvent = getNewSpotPrice(logIndex, address, txLogs);
   if (!newSpotPriceEvent) {
     return null;
   }
@@ -108,7 +109,7 @@ function parse(
     logIndex,
     newSpotPriceEvent.logIndex,
     collection,
-    allLogs,
+    txLogs,
   );
   if (nftTransfers.length !== 1) {
     return null;
@@ -178,9 +179,9 @@ function parse(
 function getNewSpotPrice(
   swapLogIndex: number,
   poolAddress: string,
-  allLogs: Log[],
+  logs: Log[],
 ): NewSpotPriceEvent | null {
-  const poolLogs = allLogs.filter(
+  const poolLogs = logs.filter(
     (log) => log.address.toLowerCase() === poolAddress,
   );
   poolLogs.reverse();
@@ -201,16 +202,16 @@ function getNftTransfers(
   swapLogIndex: number,
   newSpotPriceLogIndex: number,
   collection: string,
-  allLogs: Log[],
+  logs: Log[],
 ): NftTransfer[] {
-  const logs = allLogs.filter(
+  const collectionLogs = logs.filter(
     (log) =>
       log.address.toLowerCase() === collection &&
       log.logIndex > newSpotPriceLogIndex &&
       log.logIndex < swapLogIndex,
   );
   const nftCoder = new Coder(erc721Abi);
-  return logs
+  return collectionLogs
     .map((log) => {
       const event = nftCoder.decodeEvent(log.topics, log.data);
       return event.name === 'Transfer'
