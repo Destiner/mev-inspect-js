@@ -8,13 +8,6 @@ import {
   isValidNftFactory,
 } from '../classifier/index.js';
 
-function getPoolAddress(log: ClassifiedEvent): string {
-  if (log.classifier.type !== 'nft_swap') {
-    return '';
-  }
-  return log.address.toLowerCase();
-}
-
 function getSwaps(
   chainId: ChainId,
   pools: NftPool[],
@@ -26,7 +19,7 @@ function getSwaps(
       if (log.classifier.type !== 'nft_swap') {
         return null;
       }
-      const poolAddress = getPoolAddress(log);
+      const poolAddress = log.address.toLowerCase();
       const pool = pools.find((pool) => pool.address === poolAddress);
       if (!pool) {
         return null;

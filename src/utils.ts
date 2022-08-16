@@ -4,6 +4,7 @@ import {
   JitSandwich,
   Liquidation,
   Mev,
+  NftArbitrage,
   Sandwich,
 } from './mev/index.js';
 
@@ -35,7 +36,7 @@ function getEvent(mev: Mev): BaseEvent | null {
 }
 
 function isArbitrage(mev: Mev): boolean {
-  return 'arbitrager' in mev;
+  return 'arbitrager' in mev && typeof mev.swaps[0].assetIn === 'string';
 }
 
 function isLiquidation(mev: Mev): boolean {
@@ -48,6 +49,10 @@ function isSandwich(mev: Mev): boolean {
 
 function isJitSandwich(mev: Mev): boolean {
   return 'deposit' in mev;
+}
+
+function isNftArbitrage(mev: Mev): boolean {
+  return 'arbitrager' in mev && typeof mev.swaps[0].assetIn !== 'string';
 }
 
 function getArbitrages(mevList: Mev[]): Arbitrage[] {
@@ -64,6 +69,10 @@ function getSandwiches(mevList: Mev[]): Sandwich[] {
 
 function getJitSandwiches(mevList: Mev[]): JitSandwich[] {
   return mevList.filter((mev): mev is JitSandwich => isJitSandwich(mev));
+}
+
+function getNftArbitrages(mevList: Mev[]): NftArbitrage[] {
+  return mevList.filter((mev): mev is NftArbitrage => isNftArbitrage(mev));
 }
 
 function equalWithTolerance(
@@ -128,6 +137,7 @@ export {
   getBlock,
   getJitSandwiches,
   getLiquidations,
+  getNftArbitrages,
   getSandwiches,
   getTransaction,
   groupBy,

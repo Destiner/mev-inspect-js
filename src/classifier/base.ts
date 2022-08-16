@@ -327,6 +327,7 @@ function getLatestPoolTransfer(
 }
 
 export {
+  Asset,
   Base,
   Block,
   Classifier,

@@ -2,7 +2,7 @@ import { Provider, TransactionReceipt } from '@ethersproject/providers';
 
 import Chain, { Log } from './chain.js';
 import classify, { ChainId } from './classifier/index.js';
-import { fetchPools, fetchMarkets } from './fetch.js';
+import { fetchPools, fetchNftPools, fetchMarkets } from './fetch.js';
 import {
   Mev,
   getArbitrages,
@@ -14,6 +14,8 @@ import {
   getRepayments,
   getSandwiches,
   getSwaps,
+  getNftSwaps,
+  getNftArbitrages,
   getTransfers,
 } from './mev/index.js';
 import { groupBy } from './utils.js';
@@ -54,6 +56,10 @@ class Inspector {
   }
 
   async #getMev(logs: Log[]): Promise<Mev[]> {
+    if (logs.length === 0) {
+      return [];
+    }
+    const block = logs[0].blockNumber;
     const events = classify(this.chainId, logs);
     const pools = await fetchPools(this.chainId, this.provider, events);
     const transfers = getTransfers(events);
@@ -86,7 +92,21 @@ class Inspector {
       liquidityDeposits,
       liquidityWithdrawals,
     );
-    return [...arbitrages, ...liquidations, ...sandwiches, ...jitSandwiches];
+    const nftPools = await fetchNftPools(
+      this.chainId,
+      this.provider,
+      events,
+      block,
+    );
+    const nftSwaps = getNftSwaps(this.chainId, nftPools, events, logs);
+    const nftArbitrages = getNftArbitrages(nftSwaps);
+    return [
+      ...arbitrages,
+      ...liquidations,
+      ...sandwiches,
+      ...jitSandwiches,
+      ...nftArbitrages,
+    ];
   }
 }
 

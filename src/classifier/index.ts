@@ -3,6 +3,7 @@ import { Coder, Event } from 'abi-coder';
 import { Log } from '../chain.js';
 
 import {
+  Asset,
   Base,
   Block,
   Classifier,
@@ -44,8 +45,12 @@ import compoundV2Classifiers from './items/compoundV2.js';
 import curveV1Classifiers from './items/curveV1.js';
 import curveV2Classifiers from './items/curveV2.js';
 import erc20Classifier from './items/erc20.js';
+import looksRareV1Classifier from './items/looksRareV1.js';
+import openseaSeaportClassifier from './items/openseaSeaport.js';
+import sudoswapV1Classifier from './items/sudoswapV1.js';
 import uniswapV2Classifier from './items/uniswapV2.js';
 import uniswapV3Classifier from './items/uniswapV3.js';
+import x2y2V1Classifier from './items/x2y2V1.js';
 import zeroExV3Classifier from './items/zeroExV3.js';
 import zeroExV4Classifier from './items/zeroExV4.js';
 
@@ -110,8 +115,12 @@ function getClassifiers(): Classifier[] {
     ...curveV1Classifiers,
     ...curveV2Classifiers,
     erc20Classifier,
+    looksRareV1Classifier,
+    openseaSeaportClassifier,
+    sudoswapV1Classifier,
     uniswapV2Classifier,
     ...uniswapV3Classifier,
+    x2y2V1Classifier,
     zeroExV3Classifier,
     zeroExV4Classifier,
     ...compoundV2Classifiers,
@@ -124,6 +133,7 @@ function getClassifiers(): Classifier[] {
 export default classify;
 
 export {
+  Asset,
   Base,
   Block,
   ChainId,

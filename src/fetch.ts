@@ -76,26 +76,27 @@ async function fetchNftPools(
   chainId: ChainId,
   provider: Provider,
   logs: ClassifiedEvent[],
+  block: number,
 ): Promise<NftPool[]> {
   const pools: NftPool[] = [];
-  const poolIds = new Set<string>();
+  const poolAddresses = new Set<string>();
   const callMap: Record<number, Call[]> = {};
   for (const log of logs) {
     if (log.classifier.type !== 'nft_swap') {
       continue;
     }
-    const id = getPoolId(log);
-    if (poolIds.has(id)) {
+    const address = log.address;
+    if (poolAddresses.has(address)) {
       continue;
     }
-    poolIds.add(id);
-    const logCalls = log.classifier.pool.getCalls(id);
+    poolAddresses.add(address);
+    const logCalls = log.classifier.pool.getCalls(address);
     callMap[log.logIndex] = logCalls;
   }
   const ethcallProvider = new EthcallProvider();
   await ethcallProvider.init(provider);
   const calls = Object.values(callMap).flat();
-  const results = await ethcallProvider.tryAll(calls);
+  const results = await ethcallProvider.tryAll(calls, block);
   let i = 0;
   for (const log of logs) {
     if (log.classifier.type !== 'nft_swap') {
@@ -127,7 +128,7 @@ async function fetchNftPools(
       continue;
     }
     const pool = {
-      address: getPoolAddress(log).toLowerCase(),
+      address: log.address.toLowerCase(),
       factory,
       asset: poolData.asset,
       collection: poolData.collection,

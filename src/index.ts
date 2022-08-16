@@ -3,6 +3,7 @@ import {
   ChainId,
   LiquidityDeposit,
   LiquidityWithdrawal,
+  NftSwap,
   Protocol,
   Repayment,
   Seizure,
@@ -15,6 +16,7 @@ import {
   JitSandwich,
   Liquidation,
   Mev,
+  NftArbitrage,
   Sandwich,
 } from './mev/index.js';
 import {
@@ -22,6 +24,7 @@ import {
   getBlock,
   getJitSandwiches,
   getLiquidations,
+  getNftArbitrages,
   getSandwiches,
   getTransaction,
 } from './utils.js';
@@ -36,6 +39,8 @@ export {
   LiquidityDeposit,
   LiquidityWithdrawal,
   Mev,
+  NftArbitrage,
+  NftSwap,
   Protocol,
   Repayment,
   Sandwich,
@@ -46,6 +51,7 @@ export {
   getBlock,
   getJitSandwiches,
   getLiquidations,
+  getNftArbitrages,
   getSandwiches,
   getTransaction,
 };
