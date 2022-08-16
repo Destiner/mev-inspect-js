@@ -206,7 +206,7 @@ describe('Classfiers: LooksRare V1', () => {
     });
   });
 
-  test.todo('nft buy', () => {
+  test('nft buy', () => {
     if (classifier.type !== 'nft_swap') {
       expect.fail();
     }
@@ -277,7 +277,7 @@ describe('Classfiers: LooksRare V1', () => {
         type: 'erc20',
         address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       },
-      amountIn: 250000000000000000n,
+      amountIn: 31000000000000000n,
       assetOut: {
         type: 'erc721',
         collection: '0xec0a7a26456b8451aefc4b00393ce1beff5eb3e9',
