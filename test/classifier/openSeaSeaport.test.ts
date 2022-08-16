@@ -1,7 +1,7 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import { describe, test, expect } from 'vitest';
 
-import { Pool, NftSwap } from '../../src/classifier/base.js';
+import { NftPool, NftSwap } from '../../src/classifier/base.js';
 import { ClassifiedEvent } from '../../src/classifier/index.js';
 import classifier from '../../src/classifier/items/openseaSeaport.js';
 
@@ -11,13 +11,15 @@ describe('Classfiers: Opensea Seaport', () => {
       expect.fail();
     }
 
-    const pool: Pool = {
+    const pool: NftPool = {
       address: '0x00000000006c3852cbef3e08e8df289169ede581',
       factory: {
         label: 'OpenSea: Seaport V1.1',
         address: '0x00000000006c3852cbef3e08e8df289169ede581',
       },
-      assets: [],
+      asset: '',
+      collection: '',
+      metadata: {},
     };
     const event: ClassifiedEvent = {
       address: '0x00000000006c3852cbef3e08e8df289169ede581',
@@ -69,7 +71,7 @@ describe('Classfiers: Opensea Seaport', () => {
         ],
       },
     };
-    const swap = classifier.parse(pool, event, 1);
+    const swap = classifier.parse(pool, event, 1, []);
 
     expect(swap).toEqual<NftSwap>({
       block: {

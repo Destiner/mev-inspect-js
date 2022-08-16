@@ -1,3 +1,4 @@
+import { Log } from '../chain.js';
 import {
   ChainId,
   ClassifiedEvent,
@@ -17,9 +18,10 @@ function getPoolAddress(log: ClassifiedEvent): string {
 function getSwaps(
   chainId: ChainId,
   pools: NftPool[],
-  logs: ClassifiedEvent[],
+  events: ClassifiedEvent[],
+  logs: Log[],
 ): NftSwap[] {
-  return logs
+  return events
     .map((log) => {
       if (log.classifier.type !== 'nft_swap') {
         return null;
@@ -37,7 +39,7 @@ function getSwaps(
       if (!isValidNftFactory(chainId, nftSwapProtocol, pool.factory)) {
         return null;
       }
-      return log.classifier.parse(pool, log, chainId);
+      return log.classifier.parse(pool, log, chainId, logs);
     })
     .filter((swap: NftSwap | null): swap is NftSwap => !!swap);
 }

@@ -2,6 +2,8 @@ import { JsonFragment } from '@ethersproject/abi';
 import { Event } from 'abi-coder';
 import { Call } from 'ethcall';
 
+import { Log } from '../chain.js';
+
 import { Factory } from './directory.js';
 
 import { ChainId, ClassifiedEvent } from './index.js';
@@ -254,10 +256,15 @@ interface NftSwapClassifier extends BaseClassifier {
     pool: NftPool,
     event: ClassifiedEvent,
     chainId: ChainId,
+    allLogs: Log[],
   ) => NftSwap | null;
   pool: {
     getCalls: (id: string) => Call[];
-    processCalls: (result: unknown[], address: string) => NftPoolData | null;
+    processCalls: (
+      result: unknown[],
+      address: string,
+      chainId: ChainId,
+    ) => NftPoolData | null;
   };
 }
 

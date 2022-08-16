@@ -1,7 +1,7 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import { describe, test, expect } from 'vitest';
 
-import { Pool, NftSwap } from '../../src/classifier/base.js';
+import { NftPool, NftSwap } from '../../src/classifier/base.js';
 import { ClassifiedEvent } from '../../src/classifier/index.js';
 import classifier from '../../src/classifier/items/looksRareV1.js';
 
@@ -11,13 +11,15 @@ describe('Classfiers: LooksRare V1', () => {
       expect.fail();
     }
 
-    const pool: Pool = {
+    const pool: NftPool = {
       address: '0x59728544b08ab483533076417fbbb2fd0b17ce3a',
       factory: {
         label: 'LooksRare V1',
         address: '0x59728544b08ab483533076417fbbb2fd0b17ce3a',
       },
-      assets: [],
+      asset: '',
+      collection: '',
+      metadata: {},
     };
     const event: ClassifiedEvent = {
       address: '0x59728544b08ab483533076417fbbb2fd0b17ce3a',
@@ -44,7 +46,7 @@ describe('Classfiers: LooksRare V1', () => {
         price: BigNumber.from('25000000000000000'),
       },
     };
-    const swap = classifier.parse(pool, event, 1);
+    const swap = classifier.parse(pool, event, 1, []);
 
     expect(swap).toEqual<NftSwap>({
       block: {
@@ -90,13 +92,15 @@ describe('Classfiers: LooksRare V1', () => {
       expect.fail();
     }
 
-    const pool: Pool = {
+    const pool: NftPool = {
       address: '0x59728544b08ab483533076417fbbb2fd0b17ce3a',
       factory: {
         label: 'LooksRare V1',
         address: '0x59728544b08ab483533076417fbbb2fd0b17ce3a',
       },
-      assets: [],
+      asset: '',
+      collection: '',
+      metadata: {},
     };
     const event: ClassifiedEvent = {
       address: '0x59728544b08ab483533076417fbbb2fd0b17ce3a',
@@ -123,7 +127,7 @@ describe('Classfiers: LooksRare V1', () => {
         price: BigNumber.from('31000000000000000'),
       },
     };
-    const swap = classifier.parse(pool, event, 1);
+    const swap = classifier.parse(pool, event, 1, []);
 
     expect(swap).toEqual<NftSwap>({
       block: {

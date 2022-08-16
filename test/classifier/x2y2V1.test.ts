@@ -1,7 +1,7 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import { describe, test, expect } from 'vitest';
 
-import { Pool, NftSwap } from '../../src/classifier/base.js';
+import { NftPool, NftSwap } from '../../src/classifier/base.js';
 import { ClassifiedEvent } from '../../src/classifier/index.js';
 import classifier from '../../src/classifier/items/x2y2V1.js';
 
@@ -11,13 +11,15 @@ describe('Classfiers: X2Y2 V1', () => {
       expect.fail();
     }
 
-    const pool: Pool = {
+    const pool: NftPool = {
       address: '0x74312363e45dcaba76c59ec49a7aa8a65a67eed3',
       factory: {
         label: 'X2Y2 V1',
         address: '0x74312363e45dcaba76c59ec49a7aa8a65a67eed3',
       },
-      assets: [],
+      asset: '',
+      collection: '',
+      metadata: {},
     };
     const event: ClassifiedEvent = {
       address: '0x74312363e45dcaba76c59ec49a7aa8a65a67eed3',
@@ -62,7 +64,7 @@ describe('Classfiers: X2Y2 V1', () => {
         },
       },
     };
-    const swap = classifier.parse(pool, event, 1);
+    const swap = classifier.parse(pool, event, 1, []);
 
     expect(swap).toEqual<NftSwap>({
       block: {

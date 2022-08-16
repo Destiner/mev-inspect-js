@@ -110,7 +110,11 @@ async function fetchNftPools(
       result.push(results[i + j]);
     }
     i += logCalls.length;
-    const poolData = log.classifier.pool.processCalls(result, log.address);
+    const poolData = log.classifier.pool.processCalls(
+      result,
+      log.address,
+      chainId,
+    );
     if (!poolData) {
       continue;
     }
