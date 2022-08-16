@@ -194,7 +194,11 @@ type SwapProtocol =
   | 'BancorV2'
   | 'BancorV3';
 
-type NftSwapProtocol = 'LooksRareV1' | 'X2Y2V1' | 'OpenseaSeaport';
+type NftSwapProtocol =
+  | 'LooksRareV1'
+  | 'X2Y2V1'
+  | 'SudoswapV1'
+  | 'OpenseaSeaport';
 
 type LendingProtocol = 'CompoundV2' | 'AaveV1' | 'AaveV2' | 'AaveV3';
 
