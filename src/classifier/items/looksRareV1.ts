@@ -52,9 +52,10 @@ function parse(
   const amount = (values.amount as BigNumber).toBigInt();
   const price = (values.price as BigNumber).toBigInt();
 
+  const txLogs = allLogs.filter((log) => log.transactionHash === hash);
   const erc20Amount =
     name === 'TakerAsk'
-      ? getAmount(logIndex, maker, taker, currency, allLogs)
+      ? getAmount(logIndex, maker, taker, currency, txLogs)
       : price;
 
   if (amount > 1) {
@@ -118,16 +119,16 @@ function getAmount(
   maker: string,
   taker: string,
   currency: string,
-  allLogs: Log[],
+  logs: Log[],
 ): bigint {
-  const logs = allLogs.filter(
+  const currencyLogs = logs.filter(
     (log) =>
       log.address.toLowerCase() === currency && log.logIndex < swapLogIndex,
   );
-  logs.reverse();
+  currencyLogs.reverse();
   const nftCoder = new Coder(erc20Abi);
 
-  for (const log of logs) {
+  for (const log of currencyLogs) {
     const event = nftCoder.decodeEvent(log.topics, log.data);
     if (event.name !== 'Transfer') {
       continue;
