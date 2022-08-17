@@ -82,13 +82,153 @@ describe('MEV: JIT liquidity sandwiches', () => {
     expect(sandwiches).toEqual<JitSandwich[]>([]);
   });
 
-  test('skip irrelevant swaps', () => {
-    // same user
-    // different pool
-    // different protocol
-    // outside the range
+  test('skip same-block sandwich', () => {
+    const swaps: Swap[] = [
+      {
+        contract: {
+          address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
+          protocol: {
+            abi: 'UniswapV3',
+            factory: {
+              address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+              label: 'Uniswap V3',
+            },
+          },
+        },
+        block: {
+          hash: '0x46242a1e6f84eadb3cb4d6a1074115b2e2c63a647d999985ea71078fbab2f6ec',
+          number: 15194488,
+        },
+        transaction: {
+          hash: '0x5ffe23a52fd695160fc5eef15678576574e7c42cb7203568031f33ce09d30c49',
+          gasUsed: 591690,
+        },
+        event: {
+          address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
+          logIndex: 31,
+        },
+        from: '0x53fe3edb7604fec209157a5318aa696308bf0dea',
+        to: '0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45',
+        assetIn: '0x4d224452801aced8b2f0aebe155379bb5d594381',
+        amountIn: 8917981510557040846754n,
+        assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        amountOut: 36809378513050823801n,
+        metadata: { tick: -54875 },
+      },
+    ];
+    const deposits: LiquidityDeposit[] = [
+      {
+        contract: {
+          address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
+          protocol: {
+            abi: 'UniswapV3',
+            factory: {
+              address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+              label: 'Uniswap V3',
+            },
+          },
+        },
+        block: {
+          hash: '0x46242a1e6f84eadb3cb4d6a1074115b2e2c63a647d999985ea71078fbab2f6ec',
+          number: 15194488,
+        },
+        transaction: {
+          hash: '0x5ffe23a52fd695160fc5eef15678576574e7c42cb7203568031f33ce09d30c49',
+          gasUsed: 591690,
+        },
+        event: {
+          address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
+          logIndex: 24,
+        },
+        depositor: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+        assets: [
+          '0x4d224452801aced8b2f0aebe155379bb5d594381',
+          '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        ],
+        amounts: [129735801701915403613047n, 458679217156579091198n],
+        metadata: { tickLower: -54900, tickUpper: -54840 },
+      },
+    ];
+    const withdrawals: LiquidityWithdrawal[] = [
+      {
+        contract: {
+          address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
+          protocol: {
+            abi: 'UniswapV3',
+            factory: {
+              address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+              label: 'Uniswap V3',
+            },
+          },
+        },
+        block: {
+          hash: '0x46242a1e6f84eadb3cb4d6a1074115b2e2c63a647d999985ea71078fbab2f6ec',
+          number: 15194488,
+        },
+        transaction: {
+          hash: '0x5ffe23a52fd695160fc5eef15678576574e7c42cb7203568031f33ce09d30c49',
+          gasUsed: 591690,
+        },
+        event: {
+          address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
+          logIndex: 35,
+        },
+        withdrawer: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+        assets: [
+          '0x4d224452801aced8b2f0aebe155379bb5d594381',
+          '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        ],
+        amounts: [138200019333940881352647n, 423637645189105331266n],
+        metadata: { tickLower: -54900, tickUpper: -54840 },
+      },
+    ];
 
-    const swaps: Swap[] = [];
+    const sandwiches = getJitSandwiches(swaps, deposits, withdrawals);
+
+    expect(sandwiches).toEqual<JitSandwich[]>([]);
+  });
+
+  test('skip irrelevant swaps', () => {
+    const swaps: Swap[] = [
+      // outside the deposit-withdrawal range
+      {
+        from: '0x53fe3edb7604fec209157a5318aa696308bf0dea',
+        to: '0x53fe3edb7604fec209157a5318aa696308bf0dea',
+        assetIn: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        assetOut: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+        amountIn: 15846670964n,
+        amountOut: 67683683n,
+        contract: {
+          address: '0x99ac8ca7087fa4a2a1fb6357269965a2014abc35',
+          protocol: {
+            abi: 'UniswapV3',
+            factory: {
+              address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+              label: 'Uniswap V3',
+            },
+          },
+        },
+        block: {
+          hash: '0x8c4a948fcc65455e582f331e51551a0ec4c789b67252244e3ea4afe48de384d1',
+          number: 15194684,
+        },
+        transaction: {
+          hash: '0x07c06542c2fa73d4ccb005ce23b4ef2b34c8ddfa987008b7eb5e81ec8b73cef7',
+          gasUsed: 559946,
+        },
+        event: {
+          address: '0x99ac8ca7087fa4a2a1fb6357269965a2014abc35',
+          logIndex: 50,
+        },
+        metadata: {
+          tick: 54220,
+        },
+      },
+      // same user
+      // different pool
+      // different protocol
+      // outside the tick range
+    ];
     const deposits: LiquidityDeposit[] = [
       {
         contract: {
@@ -329,39 +469,7 @@ describe('MEV: JIT liquidity sandwiches', () => {
           amounts: [138200019333940881352647n, 423637645189105331266n],
           metadata: { tickLower: -54900, tickUpper: -54840 },
         },
-        sandwiched: [
-          {
-            contract: {
-              address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
-              protocol: {
-                abi: 'UniswapV3',
-                factory: {
-                  address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
-                  label: 'Uniswap V3',
-                },
-              },
-            },
-            block: {
-              hash: '0x46242a1e6f84eadb3cb4d6a1074115b2e2c63a647d999985ea71078fbab2f6ec',
-              number: 15194488,
-            },
-            transaction: {
-              hash: '0xe533410ec2eb24a443e8b209ce293424e01997f55b84c6b76c9bfb478393dd4c',
-              gasUsed: 207310,
-            },
-            event: {
-              address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
-              logIndex: 31,
-            },
-            from: '0x53fe3edb7604fec209157a5318aa696308bf0dea',
-            to: '0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45',
-            assetIn: '0x4d224452801aced8b2f0aebe155379bb5d594381',
-            amountIn: 8917981510557040846754n,
-            assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-            amountOut: 36809378513050823801n,
-            metadata: { tick: -54875 },
-          },
-        ],
+        sandwiched: [swaps[0]],
         deltas: [
           {
             asset: '0x4d224452801aced8b2f0aebe155379bb5d594381',

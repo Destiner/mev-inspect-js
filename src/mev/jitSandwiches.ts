@@ -50,6 +50,9 @@ function getUniswapV3Sandwiches(
   const sandwiches: JitSandwich[] = [];
   for (const deposit of deposits) {
     for (const withdrawal of withdrawals) {
+      if (deposit.transaction.hash === withdrawal.transaction.hash) {
+        continue;
+      }
       if (deposit.event.logIndex > withdrawal.event.logIndex) {
         continue;
       }
@@ -70,6 +73,10 @@ function getUniswapV3Sandwiches(
       const sandwiched = swaps.filter((swap) => {
         const tick = swap.metadata.tick as number;
         return (
+          swap.event.logIndex > deposit.event.logIndex &&
+          swap.event.logIndex < withdrawal.event.logIndex &&
+          swap.transaction.hash !== deposit.transaction.hash &&
+          swap.transaction.hash !== withdrawal.transaction.hash &&
           swap.event.address === deposit.event.address &&
           swap.from !== deposit.depositor &&
           swap.to !== deposit.depositor &&
