@@ -1,4 +1,5 @@
 import {
+  Asset,
   Block,
   ChainId,
   LiquidityDeposit,
@@ -31,6 +32,7 @@ import {
 
 export {
   Arbitrage,
+  Asset,
   Block,
   ChainId,
   Inspector,
