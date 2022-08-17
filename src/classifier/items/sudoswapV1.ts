@@ -213,14 +213,18 @@ function getNftTransfers(
   const nftCoder = new Coder(erc721Abi);
   return collectionLogs
     .map((log) => {
-      const event = nftCoder.decodeEvent(log.topics, log.data);
-      return event.name === 'Transfer'
-        ? {
-            from: (event.values.from as string).toLowerCase(),
-            to: (event.values.to as string).toLowerCase(),
-            id: (event.values.tokenId as BigNumber).toBigInt(),
-          }
-        : null;
+      try {
+        const event = nftCoder.decodeEvent(log.topics, log.data);
+        return event.name === 'Transfer'
+          ? {
+              from: (event.values.from as string).toLowerCase(),
+              to: (event.values.to as string).toLowerCase(),
+              id: (event.values.tokenId as BigNumber).toBigInt(),
+            }
+          : null;
+      } catch (e) {
+        return null;
+      }
     })
     .filter((item): item is NftTransfer => item !== null);
 }

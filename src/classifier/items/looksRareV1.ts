@@ -129,17 +129,21 @@ function getAmount(
   const nftCoder = new Coder(erc20Abi);
 
   for (const log of currencyLogs) {
-    const event = nftCoder.decodeEvent(log.topics, log.data);
-    if (event.name !== 'Transfer') {
+    try {
+      const event = nftCoder.decodeEvent(log.topics, log.data);
+      if (event.name !== 'Transfer') {
+        continue;
+      }
+      const from = (event.values.from as string).toLowerCase();
+      const to = (event.values.to as string).toLowerCase();
+      const value = (event.values.value as BigNumber).toBigInt();
+      if (maker !== from || taker !== to) {
+        continue;
+      }
+      return value;
+    } catch (e) {
       continue;
     }
-    const from = (event.values.from as string).toLowerCase();
-    const to = (event.values.to as string).toLowerCase();
-    const value = (event.values.value as BigNumber).toBigInt();
-    if (maker !== from || taker !== to) {
-      continue;
-    }
-    return value;
   }
   return 0n;
 }
