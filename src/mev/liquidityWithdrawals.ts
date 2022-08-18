@@ -22,7 +22,7 @@ function getPoolAddress(log: ClassifiedEvent): string {
 function getLiquidityWithdrawals(
   chainId: ChainId,
   pools: Pool[],
-  transfers: Transfer[],
+  _transfers: Transfer[],
   logs: ClassifiedEvent[],
 ): LiquidityWithdrawal[] {
   return logs

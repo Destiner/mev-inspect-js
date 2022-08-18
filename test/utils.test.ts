@@ -38,6 +38,7 @@ describe('Utilities', () => {
             },
             transaction: {
               hash: '0xc158502a952c98c8fe282b5e2bbe56e46fd0a4221c527e7d045f25ccca6a77b2',
+              index: 6,
               gasUsed: 230198,
             },
             event: {
@@ -69,6 +70,7 @@ describe('Utilities', () => {
             },
             transaction: {
               hash: '0xc158502a952c98c8fe282b5e2bbe56e46fd0a4221c527e7d045f25ccca6a77b2',
+              index: 6,
               gasUsed: 230198,
             },
             event: {
@@ -109,6 +111,7 @@ describe('Utilities', () => {
             },
             transaction: {
               hash: '0xe7cbe0629983e0673c4d971858d05874dbb938bf2b5f0ad4be2fa217ed78a547',
+              index: 7,
               gasUsed: 818860,
             },
             event: {
@@ -140,6 +143,7 @@ describe('Utilities', () => {
             },
             transaction: {
               hash: '0xe7cbe0629983e0673c4d971858d05874dbb938bf2b5f0ad4be2fa217ed78a547',
+              index: 7,
               gasUsed: 818860,
             },
             event: {
@@ -171,6 +175,7 @@ describe('Utilities', () => {
             },
             transaction: {
               hash: '0xe7cbe0629983e0673c4d971858d05874dbb938bf2b5f0ad4be2fa217ed78a547',
+              index: 7,
               gasUsed: 818860,
             },
             event: {
@@ -215,6 +220,7 @@ describe('Utilities', () => {
           },
           transaction: {
             hash: '0xdf838db24228f280eba8a279266d1602b03b54507afdca3cb4b4ec640535642b',
+            index: 3,
             gasUsed: 671221,
           },
           event: {
@@ -243,6 +249,7 @@ describe('Utilities', () => {
           },
           transaction: {
             hash: '0xdf838db24228f280eba8a279266d1602b03b54507afdca3cb4b4ec640535642b',
+            index: 3,
             gasUsed: 671221,
           },
           event: {
@@ -283,6 +290,7 @@ describe('Utilities', () => {
           },
           transaction: {
             hash: '0x580a2d8d142207a50636b74d41feca1774b106143c536078ca80de000f83f3d8',
+            index: 26,
             gasUsed: 556582,
           },
           event: {
@@ -311,6 +319,7 @@ describe('Utilities', () => {
           },
           transaction: {
             hash: '0x580a2d8d142207a50636b74d41feca1774b106143c536078ca80de000f83f3d8',
+            index: 26,
             gasUsed: 556582,
           },
           event: {
@@ -362,6 +371,7 @@ describe('Utilities', () => {
           },
           transaction: {
             hash: '0xdf838db24228f280eba8a279266d1602b03b54507afdca3cb4b4ec640535642b',
+            index: 3,
             gasUsed: 671221,
           },
           event: {
@@ -390,6 +400,7 @@ describe('Utilities', () => {
           },
           transaction: {
             hash: '0xdf838db24228f280eba8a279266d1602b03b54507afdca3cb4b4ec640535642b',
+            index: 3,
             gasUsed: 671221,
           },
           event: {
@@ -430,6 +441,7 @@ describe('Utilities', () => {
           },
           transaction: {
             hash: '0x580a2d8d142207a50636b74d41feca1774b106143c536078ca80de000f83f3d8',
+            index: 26,
             gasUsed: 556582,
           },
           event: {
@@ -458,6 +470,7 @@ describe('Utilities', () => {
           },
           transaction: {
             hash: '0x580a2d8d142207a50636b74d41feca1774b106143c536078ca80de000f83f3d8',
+            index: 26,
             gasUsed: 556582,
           },
           event: {
@@ -516,6 +529,7 @@ describe('Utilities', () => {
             },
             transaction: {
               hash: '0xc158502a952c98c8fe282b5e2bbe56e46fd0a4221c527e7d045f25ccca6a77b2',
+              index: 6,
               gasUsed: 230198,
             },
             event: {
@@ -547,6 +561,7 @@ describe('Utilities', () => {
             },
             transaction: {
               hash: '0xc158502a952c98c8fe282b5e2bbe56e46fd0a4221c527e7d045f25ccca6a77b2',
+              index: 6,
               gasUsed: 230198,
             },
             event: {
@@ -587,6 +602,7 @@ describe('Utilities', () => {
             },
             transaction: {
               hash: '0xe7cbe0629983e0673c4d971858d05874dbb938bf2b5f0ad4be2fa217ed78a547',
+              index: 7,
               gasUsed: 818860,
             },
             event: {
@@ -618,6 +634,7 @@ describe('Utilities', () => {
             },
             transaction: {
               hash: '0xe7cbe0629983e0673c4d971858d05874dbb938bf2b5f0ad4be2fa217ed78a547',
+              index: 7,
               gasUsed: 818860,
             },
             event: {
@@ -649,6 +666,7 @@ describe('Utilities', () => {
             },
             transaction: {
               hash: '0xe7cbe0629983e0673c4d971858d05874dbb938bf2b5f0ad4be2fa217ed78a547',
+              index: 7,
               gasUsed: 818860,
             },
             event: {

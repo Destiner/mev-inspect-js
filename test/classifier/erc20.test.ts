@@ -15,6 +15,7 @@ describe('Classfiers: ERC20', () => {
     const blockNumber = 14743890;
     const transactionHash =
       '0xfbf98ea48bb2a1210ac1974b432c4604a9978e766c133f9543da3df9421b7e81';
+    const transactionIndex = 41;
     const gasUsed = 51818;
     const address = '0x6B175474E89094C44Da98b954EedeAC495271d0F';
     const logIndex = 49;
@@ -27,6 +28,7 @@ describe('Classfiers: ERC20', () => {
       blockHash,
       blockNumber,
       transactionHash,
+      transactionIndex,
       gasUsed,
       logIndex,
       classifier,
@@ -50,6 +52,7 @@ describe('Classfiers: ERC20', () => {
       },
       transaction: {
         hash: transactionHash,
+        index: transactionIndex,
         gasUsed,
       },
       event: {
@@ -71,6 +74,7 @@ describe('Classfiers: ERC20', () => {
       '0xaf52e7b3b93974a933b23541bc38310cb879398c2da34d077a29df1b170e67d6',
       '0x1aa9e2ecd0efe3acd30d89654fb366ffee66995465cbaacc80bfb16467ce8219',
     ];
+    const transactionIndices = [316, 145, 34];
     const addresses = [
       '0x6B175474E89094C44Da98b954EedeAC495271d0F',
       '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
@@ -103,6 +107,7 @@ describe('Classfiers: ERC20', () => {
           blockHash: blockHashes[index],
           blockNumber: blockNumbers[index],
           transactionHash,
+          transactionIndex: transactionIndices[index],
           gasUsed: gasUsedList[index],
           logIndex: logIndices[index],
           classifier,
@@ -136,6 +141,7 @@ describe('Classfiers: ERC20', () => {
           },
           transaction: {
             hash: transactionHash,
+            index: transactionIndices[index],
             gasUsed: gasUsedList[index],
           },
           event: {

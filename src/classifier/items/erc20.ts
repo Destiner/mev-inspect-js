@@ -13,6 +13,7 @@ function parse(event: ClassifiedEvent): Transfer {
   const {
     values,
     transactionHash: hash,
+    transactionIndex,
     gasUsed,
     logIndex,
     address,
@@ -32,6 +33,7 @@ function parse(event: ClassifiedEvent): Transfer {
     },
     transaction: {
       hash,
+      index: transactionIndex,
       gasUsed,
     },
     event: {

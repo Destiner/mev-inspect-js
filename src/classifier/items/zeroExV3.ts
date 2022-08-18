@@ -28,6 +28,7 @@ function parse(pool: Pool, event: ClassifiedEvent): Swap | null {
   const {
     values,
     transactionHash: hash,
+    transactionIndex,
     gasUsed,
     logIndex,
     address,
@@ -71,6 +72,7 @@ function parse(pool: Pool, event: ClassifiedEvent): Swap | null {
     },
     transaction: {
       hash,
+      index: transactionIndex,
       gasUsed,
     },
     event: {

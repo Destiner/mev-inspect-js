@@ -23,6 +23,7 @@ describe('MEV: liquidations', () => {
         },
         transaction: {
           hash: '0xdf838db24228f280eba8a279266d1602b03b54507afdca3cb4b4ec640535642b',
+          index: 3,
           gasUsed: 671221,
         },
         event: {
@@ -54,6 +55,7 @@ describe('MEV: liquidations', () => {
         },
         transaction: {
           hash: '0xdf838db24228f280eba8a279266d1602b03b54507afdca3cb4b4ec640535642b',
+          index: 3,
           gasUsed: 671221,
         },
         event: {
@@ -85,6 +87,7 @@ describe('MEV: liquidations', () => {
         },
         transaction: {
           hash: '0x02a100bfcc45a40b1d4fda92d6c17acb420d4fee8bc2b5bac3fa4650bf7d5093',
+          index: 11,
           gasUsed: 676976,
         },
         event: {
@@ -116,6 +119,7 @@ describe('MEV: liquidations', () => {
         },
         transaction: {
           hash: '0x02a100bfcc45a40b1d4fda92d6c17acb420d4fee8bc2b5bac3fa4650bf7d5093',
+          index: 11,
           gasUsed: 676976,
         },
         event: {
@@ -185,6 +189,7 @@ describe('MEV: liquidations', () => {
         },
         transaction: {
           hash: '0x580a2d8d142207a50636b74d41feca1774b106143c536078ca80de000f83f3d8',
+          index: 26,
           gasUsed: 556582,
         },
         event: {
@@ -216,6 +221,7 @@ describe('MEV: liquidations', () => {
         },
         transaction: {
           hash: '0x580a2d8d142207a50636b74d41feca1774b106143c536078ca80de000f83f3d8',
+          index: 26,
           gasUsed: 556582,
         },
         event: {
@@ -247,6 +253,7 @@ describe('MEV: liquidations', () => {
         },
         transaction: {
           hash: '0x9529b0332f51d586a1d30f9106558daf3dbc66c6bbbd32935f19fbc2601b7aa1',
+          index: 25,
           gasUsed: 529738,
         },
         event: {
@@ -278,6 +285,7 @@ describe('MEV: liquidations', () => {
         },
         transaction: {
           hash: '0x9529b0332f51d586a1d30f9106558daf3dbc66c6bbbd32935f19fbc2601b7aa1',
+          index: 25,
           gasUsed: 529738,
         },
         event: {

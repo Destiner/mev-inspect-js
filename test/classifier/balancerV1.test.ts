@@ -39,6 +39,7 @@ describe('Classfiers: Balancer V1', () => {
       blockNumber: 11629352,
       transactionHash:
         '0x553057d36511dd5973ca18897acd1a2649ebde5685ec4d7634f77f7a98ffcce3',
+      transactionIndex: 27,
       gasUsed: 359084,
       logIndex: 60,
       classifier: depositClassifier,
@@ -57,6 +58,7 @@ describe('Classfiers: Balancer V1', () => {
       },
       transaction: {
         hash: '0x553057d36511dd5973ca18897acd1a2649ebde5685ec4d7634f77f7a98ffcce3',
+        index: 27,
         gasUsed: 359084,
       },
       event: {
@@ -104,6 +106,7 @@ describe('Classfiers: Balancer V1', () => {
       blockNumber: 12545754,
       transactionHash:
         '0xce840596e5f76ed514a39676b7d824ea6686231dd4bb335ce8f346fac8abda90',
+      transactionIndex: 27,
       gasUsed: 139935,
       logIndex: 286,
       classifier: withdrawalClassifier,
@@ -122,6 +125,7 @@ describe('Classfiers: Balancer V1', () => {
       },
       transaction: {
         hash: '0xce840596e5f76ed514a39676b7d824ea6686231dd4bb335ce8f346fac8abda90',
+        index: 27,
         gasUsed: 139935,
       },
       event: {

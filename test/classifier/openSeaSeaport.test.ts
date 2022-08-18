@@ -28,6 +28,7 @@ describe('Classfiers: Opensea Seaport', () => {
       blockNumber: 15321851,
       transactionHash:
         '0xce93e804cdaa9e2d1c781c5eeba4cf47a898987ce4dc20752dfb5d9980f3f6ad',
+      transactionIndex: 82,
       gasUsed: 339555,
       logIndex: 161,
       classifier,
@@ -80,6 +81,7 @@ describe('Classfiers: Opensea Seaport', () => {
       },
       transaction: {
         hash: '0xce93e804cdaa9e2d1c781c5eeba4cf47a898987ce4dc20752dfb5d9980f3f6ad',
+        index: 82,
         gasUsed: 339555,
       },
       event: {

@@ -35,6 +35,7 @@ describe('Classfiers: Sudoswap V1', () => {
       blockNumber: 15329509,
       transactionHash:
         '0xc9788be0bde38c9cfdda3530fc3c113273a73ddcf5be05b380190c3de70259d0',
+      transactionIndex: 119,
       gasUsed: 170731,
       logIndex: 292,
       classifier,
@@ -46,6 +47,7 @@ describe('Classfiers: Sudoswap V1', () => {
         blockNumber: 15329509,
         transactionHash:
           '0xc9788be0bde38c9cfdda3530fc3c113273a73ddcf5be05b380190c3de70259d0',
+        transactionIndex: 119,
         address: '0xaBe510775aC71bBfB4308A9Bdf54C9e8DbD6cE50',
         topics: [
           '0xf06180fdbe95e5193df4dcd1352726b1f04cb58599ce58552cc952447af2ffbb',
@@ -60,6 +62,7 @@ describe('Classfiers: Sudoswap V1', () => {
         blockNumber: 15329509,
         transactionHash:
           '0xc9788be0bde38c9cfdda3530fc3c113273a73ddcf5be05b380190c3de70259d0',
+        transactionIndex: 119,
         address: '0x42069ABFE407C60cf4ae4112bEDEaD391dBa1cdB',
         topics: [
           '0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925',
@@ -77,6 +80,7 @@ describe('Classfiers: Sudoswap V1', () => {
         blockNumber: 15329509,
         transactionHash:
           '0xc9788be0bde38c9cfdda3530fc3c113273a73ddcf5be05b380190c3de70259d0',
+        transactionIndex: 119,
         address: '0x42069ABFE407C60cf4ae4112bEDEaD391dBa1cdB',
         topics: [
           '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef',
@@ -94,6 +98,7 @@ describe('Classfiers: Sudoswap V1', () => {
         blockNumber: 15329509,
         transactionHash:
           '0xc9788be0bde38c9cfdda3530fc3c113273a73ddcf5be05b380190c3de70259d0',
+        transactionIndex: 119,
         address: '0xaBe510775aC71bBfB4308A9Bdf54C9e8DbD6cE50',
         topics: [
           '0xbc479dfc6cb9c1a9d880f987ee4b30fa43dd7f06aec121db685b67d587c93c93',
@@ -114,6 +119,7 @@ describe('Classfiers: Sudoswap V1', () => {
       },
       transaction: {
         hash: '0xc9788be0bde38c9cfdda3530fc3c113273a73ddcf5be05b380190c3de70259d0',
+        index: 119,
         gasUsed: 170731,
       },
       event: {
@@ -175,6 +181,7 @@ describe('Classfiers: Sudoswap V1', () => {
       blockNumber: 15334408,
       transactionHash:
         '0x047addccc95ea21b623a042e255d90216fa6de28e6ccd336e657f310babc2411',
+      transactionIndex: 45,
       gasUsed: 156230,
       logIndex: 62,
       classifier,
@@ -186,6 +193,7 @@ describe('Classfiers: Sudoswap V1', () => {
         blockNumber: 15334408,
         transactionHash:
           '0x047addccc95ea21b623a042e255d90216fa6de28e6ccd336e657f310babc2411',
+        transactionIndex: 45,
         address: '0xaBe510775aC71bBfB4308A9Bdf54C9e8DbD6cE50',
         topics: [
           '0xf06180fdbe95e5193df4dcd1352726b1f04cb58599ce58552cc952447af2ffbb',
@@ -200,6 +208,7 @@ describe('Classfiers: Sudoswap V1', () => {
         blockNumber: 15334408,
         transactionHash:
           '0x047addccc95ea21b623a042e255d90216fa6de28e6ccd336e657f310babc2411',
+        transactionIndex: 45,
         address: '0x42069ABFE407C60cf4ae4112bEDEaD391dBa1cdB',
         topics: [
           '0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925',
@@ -217,6 +226,7 @@ describe('Classfiers: Sudoswap V1', () => {
         blockNumber: 15334408,
         transactionHash:
           '0x047addccc95ea21b623a042e255d90216fa6de28e6ccd336e657f310babc2411',
+        transactionIndex: 45,
         address: '0x42069ABFE407C60cf4ae4112bEDEaD391dBa1cdB',
         topics: [
           '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef',
@@ -234,6 +244,7 @@ describe('Classfiers: Sudoswap V1', () => {
         blockNumber: 15334408,
         transactionHash:
           '0x047addccc95ea21b623a042e255d90216fa6de28e6ccd336e657f310babc2411',
+        transactionIndex: 45,
         address: '0xaBe510775aC71bBfB4308A9Bdf54C9e8DbD6cE50',
         topics: [
           '0x3614eb567740a0ee3897c0e2b11ad6a5720d2e4438f9c8accf6c95c24af3a470',
@@ -254,6 +265,7 @@ describe('Classfiers: Sudoswap V1', () => {
       },
       transaction: {
         hash: '0x047addccc95ea21b623a042e255d90216fa6de28e6ccd336e657f310babc2411',
+        index: 45,
         gasUsed: 156230,
       },
       event: {

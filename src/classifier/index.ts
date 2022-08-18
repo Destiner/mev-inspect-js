@@ -59,6 +59,7 @@ interface ClassifiedEvent extends Event {
   blockHash: string;
   blockNumber: number;
   transactionHash: string;
+  transactionIndex: number;
   gasUsed: number;
   logIndex: number;
   classifier: Classifier;
@@ -79,6 +80,7 @@ function classifyLog(chainId: ChainId, log: Log): ClassifiedEvent[] {
         data,
         address,
         transactionHash,
+        transactionIndex,
         gasUsed,
         logIndex,
         blockHash,
@@ -93,6 +95,7 @@ function classifyLog(chainId: ChainId, log: Log): ClassifiedEvent[] {
         blockHash,
         blockNumber,
         transactionHash,
+        transactionIndex,
         gasUsed,
         logIndex,
         classifier,

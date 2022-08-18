@@ -40,6 +40,7 @@ function parse(
   const {
     values,
     transactionHash: hash,
+    transactionIndex,
     gasUsed,
     logIndex,
     address,
@@ -50,11 +51,6 @@ function parse(
   const currency = (values.currency as string).toLowerCase();
   const price = (values.item as Item).price.toBigInt();
   const data = (values.item as Item).data.toLowerCase();
-  // const currency = (values.currency as string).toLowerCase();
-  // const collection = (values.collection as string).toLowerCase();
-  // const tokenId = (values.tokenId as BigNumber).toBigInt();
-  // const amount = (values.amount as BigNumber).toBigInt();
-  // const price = (values.price as BigNumber).toBigInt();
 
   const from = taker;
   const to = taker;
@@ -73,6 +69,7 @@ function parse(
     },
     transaction: {
       hash,
+      index: transactionIndex,
       gasUsed,
     },
     event: {

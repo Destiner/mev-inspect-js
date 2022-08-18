@@ -68,6 +68,7 @@ interface Block {
 
 interface Transaction {
   hash: string;
+  index: number;
   gasUsed: number;
 }
 

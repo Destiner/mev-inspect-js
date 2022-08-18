@@ -37,6 +37,7 @@ describe('Classfiers: Balancer V2', () => {
       blockNumber: 14710009,
       transactionHash:
         '0x0beab997294942e83fa3f1328562fcf1ce8299470f5351a63d7f385c2becbf48',
+      transactionIndex: 5,
       gasUsed: 130598,
       logIndex: 10,
       classifier: swapClassifier,
@@ -58,6 +59,7 @@ describe('Classfiers: Balancer V2', () => {
         },
         transaction: {
           hash: '0x0beab997294942e83fa3f1328562fcf1ce8299470f5351a63d7f385c2becbf48',
+          index: 5,
           gasUsed: 130598,
         },
         event: {
@@ -76,6 +78,7 @@ describe('Classfiers: Balancer V2', () => {
         },
         transaction: {
           hash: '0x0beab997294942e83fa3f1328562fcf1ce8299470f5351a63d7f385c2becbf48',
+          index: 5,
           gasUsed: 130598,
         },
         event: {
@@ -88,7 +91,7 @@ describe('Classfiers: Balancer V2', () => {
         value: 3698791690807238453478n,
       },
     ];
-    const allEvents = [
+    const allEvents: ClassifiedEvent[] = [
       {
         address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
         blockHash:
@@ -96,6 +99,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14710009,
         transactionHash:
           '0x0beab997294942e83fa3f1328562fcf1ce8299470f5351a63d7f385c2becbf48',
+        transactionIndex: 5,
         gasUsed: 130598,
         logIndex: 10,
         classifier: swapClassifier,
@@ -116,6 +120,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14710009,
         transactionHash:
           '0x0beab997294942e83fa3f1328562fcf1ce8299470f5351a63d7f385c2becbf48',
+        transactionIndex: 5,
         gasUsed: 130598,
         logIndex: 11,
         classifier: transferClassifier,
@@ -133,6 +138,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14710009,
         transactionHash:
           '0x0beab997294942e83fa3f1328562fcf1ce8299470f5351a63d7f385c2becbf48',
+        transactionIndex: 5,
         gasUsed: 130598,
         logIndex: 12,
         classifier: transferClassifier,
@@ -156,6 +162,7 @@ describe('Classfiers: Balancer V2', () => {
       },
       transaction: {
         hash: '0x0beab997294942e83fa3f1328562fcf1ce8299470f5351a63d7f385c2becbf48',
+        index: 5,
         gasUsed: 130598,
       },
       event: {
@@ -201,6 +208,7 @@ describe('Classfiers: Balancer V2', () => {
       blockNumber: 14708581,
       transactionHash:
         '0x49fb0fb07827b3e6fa425fbb7ef1f1fbe3dfedbf656519bfe6d4bf9391aea1d2',
+      transactionIndex: 4,
       gasUsed: 162269,
       logIndex: 14,
       classifier: swapClassifier,
@@ -222,6 +230,7 @@ describe('Classfiers: Balancer V2', () => {
         },
         transaction: {
           hash: '0x49fb0fb07827b3e6fa425fbb7ef1f1fbe3dfedbf656519bfe6d4bf9391aea1d2',
+          index: 4,
           gasUsed: 162269,
         },
         event: {
@@ -240,6 +249,7 @@ describe('Classfiers: Balancer V2', () => {
         },
         transaction: {
           hash: '0x49fb0fb07827b3e6fa425fbb7ef1f1fbe3dfedbf656519bfe6d4bf9391aea1d2',
+          index: 4,
           gasUsed: 162269,
         },
         event: {
@@ -252,7 +262,7 @@ describe('Classfiers: Balancer V2', () => {
         value: 6329353631552147493643n,
       },
     ];
-    const allEvents = [
+    const allEvents: ClassifiedEvent[] = [
       {
         address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
         blockHash:
@@ -260,6 +270,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14708581,
         transactionHash:
           '0x49fb0fb07827b3e6fa425fbb7ef1f1fbe3dfedbf656519bfe6d4bf9391aea1d2',
+        transactionIndex: 4,
         gasUsed: 162269,
         logIndex: 14,
         classifier: swapClassifier,
@@ -280,6 +291,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14708581,
         transactionHash:
           '0x49fb0fb07827b3e6fa425fbb7ef1f1fbe3dfedbf656519bfe6d4bf9391aea1d2',
+        transactionIndex: 4,
         gasUsed: 162269,
         logIndex: 15,
         classifier: transferClassifier,
@@ -297,6 +309,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14708581,
         transactionHash:
           '0x49fb0fb07827b3e6fa425fbb7ef1f1fbe3dfedbf656519bfe6d4bf9391aea1d2',
+        transactionIndex: 4,
         gasUsed: 162269,
         logIndex: 16,
         classifier: transferClassifier,
@@ -314,6 +327,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14708581,
         transactionHash:
           '0x49fb0fb07827b3e6fa425fbb7ef1f1fbe3dfedbf656519bfe6d4bf9391aea1d2',
+        transactionIndex: 4,
         gasUsed: 162269,
         logIndex: 17,
         classifier: transferClassifier,
@@ -331,6 +345,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14708581,
         transactionHash:
           '0x49fb0fb07827b3e6fa425fbb7ef1f1fbe3dfedbf656519bfe6d4bf9391aea1d2',
+        transactionIndex: 4,
         gasUsed: 162269,
         logIndex: 19,
         classifier: uniswapClassifier,
@@ -357,6 +372,7 @@ describe('Classfiers: Balancer V2', () => {
       },
       transaction: {
         hash: '0x49fb0fb07827b3e6fa425fbb7ef1f1fbe3dfedbf656519bfe6d4bf9391aea1d2',
+        index: 4,
         gasUsed: 162269,
       },
       event: {
@@ -402,6 +418,7 @@ describe('Classfiers: Balancer V2', () => {
       blockNumber: 14708553,
       transactionHash:
         '0xc785c5713ef1d2e527559746004276f15aaedf62503b670bdf16e156b82aa39b',
+      transactionIndex: 322,
       gasUsed: 97449,
       logIndex: 686,
       classifier: swapClassifier,
@@ -427,6 +444,7 @@ describe('Classfiers: Balancer V2', () => {
         },
         transaction: {
           hash: '0xc785c5713ef1d2e527559746004276f15aaedf62503b670bdf16e156b82aa39b',
+          index: 322,
           gasUsed: 97449,
         },
         event: {
@@ -435,7 +453,7 @@ describe('Classfiers: Balancer V2', () => {
         },
       },
     ];
-    const allEvents = [
+    const allEvents: ClassifiedEvent[] = [
       {
         address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
         blockHash:
@@ -443,6 +461,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14708553,
         transactionHash:
           '0xc785c5713ef1d2e527559746004276f15aaedf62503b670bdf16e156b82aa39b',
+        transactionIndex: 322,
         gasUsed: 97449,
         logIndex: 686,
         classifier: swapClassifier,
@@ -463,6 +482,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14708553,
         transactionHash:
           '0xc785c5713ef1d2e527559746004276f15aaedf62503b670bdf16e156b82aa39b',
+        transactionIndex: 322,
         gasUsed: 97449,
         logIndex: 687,
         classifier: transferClassifier,
@@ -507,6 +527,7 @@ describe('Classfiers: Balancer V2', () => {
       transaction: {
         gasUsed: 97449,
         hash: '0xc785c5713ef1d2e527559746004276f15aaedf62503b670bdf16e156b82aa39b',
+        index: 322,
       },
       metadata: {},
     });
@@ -531,6 +552,7 @@ describe('Classfiers: Balancer V2', () => {
       blockNumber: 14708460,
       transactionHash:
         '0xa87d22940d3b93b491683de99d48cab79c171fe1535586862e0c0ace381928f0',
+      transactionIndex: 172,
       gasUsed: 132494,
       logIndex: 298,
       classifier: swapClassifier,
@@ -556,6 +578,7 @@ describe('Classfiers: Balancer V2', () => {
         },
         transaction: {
           hash: '0xa87d22940d3b93b491683de99d48cab79c171fe1535586862e0c0ace381928f0',
+          index: 172,
           gasUsed: 132494,
         },
         event: {
@@ -564,7 +587,7 @@ describe('Classfiers: Balancer V2', () => {
         },
       },
     ];
-    const allEvents = [
+    const allEvents: ClassifiedEvent[] = [
       {
         address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
         blockHash:
@@ -572,6 +595,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14708460,
         transactionHash:
           '0xa87d22940d3b93b491683de99d48cab79c171fe1535586862e0c0ace381928f0',
+        transactionIndex: 172,
         gasUsed: 132494,
         logIndex: 298,
         classifier: swapClassifier,
@@ -592,6 +616,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14708460,
         transactionHash:
           '0xa87d22940d3b93b491683de99d48cab79c171fe1535586862e0c0ace381928f0',
+        transactionIndex: 172,
         gasUsed: 132494,
         logIndex: 300,
         classifier: transferClassifier,
@@ -636,6 +661,7 @@ describe('Classfiers: Balancer V2', () => {
       transaction: {
         gasUsed: 132494,
         hash: '0xa87d22940d3b93b491683de99d48cab79c171fe1535586862e0c0ace381928f0',
+        index: 172,
       },
       metadata: {},
     });
@@ -658,6 +684,7 @@ describe('Classfiers: Balancer V2', () => {
         },
         transaction: {
           hash: '0x01cba79049f6506d01210608351d414ad11a800451b1d34b828531f454f041c3',
+          index: 123,
           gasUsed: 168611,
         },
         event: {
@@ -676,6 +703,7 @@ describe('Classfiers: Balancer V2', () => {
         },
         transaction: {
           hash: '0x01cba79049f6506d01210608351d414ad11a800451b1d34b828531f454f041c3',
+          index: 123,
           gasUsed: 168611,
         },
         event: {
@@ -684,7 +712,7 @@ describe('Classfiers: Balancer V2', () => {
         },
       },
     ];
-    const allEvents = [
+    const allEvents: ClassifiedEvent[] = [
       {
         address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
         blockHash:
@@ -692,6 +720,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14705283,
         transactionHash:
           '0x01cba79049f6506d01210608351d414ad11a800451b1d34b828531f454f041c3',
+        transactionIndex: 123,
         gasUsed: 168611,
         logIndex: 193,
         classifier: swapClassifier,
@@ -712,6 +741,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14705283,
         transactionHash:
           '0x01cba79049f6506d01210608351d414ad11a800451b1d34b828531f454f041c3',
+        transactionIndex: 123,
         gasUsed: 168611,
         logIndex: 194,
         classifier: swapClassifier,
@@ -732,6 +762,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14705283,
         transactionHash:
           '0x01cba79049f6506d01210608351d414ad11a800451b1d34b828531f454f041c3',
+        transactionIndex: 123,
         gasUsed: 168611,
         logIndex: 195,
         classifier: transferClassifier,
@@ -749,6 +780,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14705283,
         transactionHash:
           '0x01cba79049f6506d01210608351d414ad11a800451b1d34b828531f454f041c3',
+        transactionIndex: 123,
         gasUsed: 168611,
         logIndex: 197,
         classifier: transferClassifier,
@@ -779,6 +811,7 @@ describe('Classfiers: Balancer V2', () => {
       blockNumber: 14705283,
       transactionHash:
         '0x01cba79049f6506d01210608351d414ad11a800451b1d34b828531f454f041c3',
+      transactionIndex: 123,
       gasUsed: 168611,
       logIndex: 193,
       classifier: swapClassifier,
@@ -812,6 +845,7 @@ describe('Classfiers: Balancer V2', () => {
       blockNumber: 14705283,
       transactionHash:
         '0x01cba79049f6506d01210608351d414ad11a800451b1d34b828531f454f041c3',
+      transactionIndex: 123,
       gasUsed: 168611,
       logIndex: 194,
       classifier: swapClassifier,
@@ -856,6 +890,7 @@ describe('Classfiers: Balancer V2', () => {
       transaction: {
         gasUsed: 168611,
         hash: '0x01cba79049f6506d01210608351d414ad11a800451b1d34b828531f454f041c3',
+        index: 123,
       },
       metadata: {},
     });
@@ -887,6 +922,7 @@ describe('Classfiers: Balancer V2', () => {
       transaction: {
         gasUsed: 168611,
         hash: '0x01cba79049f6506d01210608351d414ad11a800451b1d34b828531f454f041c3',
+        index: 123,
       },
       metadata: {},
     });
@@ -909,6 +945,7 @@ describe('Classfiers: Balancer V2', () => {
         },
         transaction: {
           hash: '0x336151dd41fe447f05d6ef0bde9b0fdf6d4455b39e08c93c4a7c94ba89ef4a3c',
+          index: 177,
           gasUsed: 173471,
         },
         event: {
@@ -917,7 +954,7 @@ describe('Classfiers: Balancer V2', () => {
         },
       },
     ];
-    const allEvents = [
+    const allEvents: ClassifiedEvent[] = [
       {
         address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
         blockHash:
@@ -925,6 +962,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14708547,
         transactionHash:
           '0x336151dd41fe447f05d6ef0bde9b0fdf6d4455b39e08c93c4a7c94ba89ef4a3c',
+        transactionIndex: 177,
         gasUsed: 173471,
         logIndex: 243,
         classifier: swapClassifier,
@@ -945,6 +983,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14708547,
         transactionHash:
           '0x336151dd41fe447f05d6ef0bde9b0fdf6d4455b39e08c93c4a7c94ba89ef4a3c',
+        transactionIndex: 177,
         gasUsed: 173471,
         logIndex: 244,
         classifier: swapClassifier,
@@ -965,6 +1004,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14708547,
         transactionHash:
           '0x336151dd41fe447f05d6ef0bde9b0fdf6d4455b39e08c93c4a7c94ba89ef4a3c',
+        transactionIndex: 177,
         gasUsed: 173471,
         logIndex: 245,
         classifier: transferClassifier,
@@ -995,6 +1035,7 @@ describe('Classfiers: Balancer V2', () => {
       blockNumber: 14708547,
       transactionHash:
         '0x336151dd41fe447f05d6ef0bde9b0fdf6d4455b39e08c93c4a7c94ba89ef4a3c',
+      transactionIndex: 177,
       gasUsed: 173471,
       logIndex: 243,
       classifier: swapClassifier,
@@ -1027,6 +1068,7 @@ describe('Classfiers: Balancer V2', () => {
       blockNumber: 14708547,
       transactionHash:
         '0x336151dd41fe447f05d6ef0bde9b0fdf6d4455b39e08c93c4a7c94ba89ef4a3c',
+      transactionIndex: 177,
       gasUsed: 173471,
       logIndex: 244,
       classifier: swapClassifier,
@@ -1072,6 +1114,7 @@ describe('Classfiers: Balancer V2', () => {
       transaction: {
         gasUsed: 173471,
         hash: '0x336151dd41fe447f05d6ef0bde9b0fdf6d4455b39e08c93c4a7c94ba89ef4a3c',
+        index: 177,
       },
       metadata: {},
     });
@@ -1103,6 +1146,7 @@ describe('Classfiers: Balancer V2', () => {
       transaction: {
         gasUsed: 173471,
         hash: '0x336151dd41fe447f05d6ef0bde9b0fdf6d4455b39e08c93c4a7c94ba89ef4a3c',
+        index: 177,
       },
       metadata: {},
     });
@@ -1131,6 +1175,7 @@ describe('Classfiers: Balancer V2', () => {
       blockNumber: 14764238,
       transactionHash:
         '0x42e27e3bed9a2ab343880e8ab4c4de121fc337a7334170a9dc632a36fe757fb9',
+      transactionIndex: 3,
       gasUsed: 157031,
       logIndex: 32,
       classifier: swapClassifier,
@@ -1156,6 +1201,7 @@ describe('Classfiers: Balancer V2', () => {
         },
         transaction: {
           hash: '0x42e27e3bed9a2ab343880e8ab4c4de121fc337a7334170a9dc632a36fe757fb9',
+          index: 3,
           gasUsed: 157031,
         },
         event: {
@@ -1174,6 +1220,7 @@ describe('Classfiers: Balancer V2', () => {
         },
         transaction: {
           hash: '0x42e27e3bed9a2ab343880e8ab4c4de121fc337a7334170a9dc632a36fe757fb9',
+          index: 3,
           gasUsed: 157031,
         },
         event: {
@@ -1192,6 +1239,7 @@ describe('Classfiers: Balancer V2', () => {
         },
         transaction: {
           hash: '0x42e27e3bed9a2ab343880e8ab4c4de121fc337a7334170a9dc632a36fe757fb9',
+          index: 3,
           gasUsed: 157031,
         },
         event: {
@@ -1200,7 +1248,7 @@ describe('Classfiers: Balancer V2', () => {
         },
       },
     ];
-    const allEvents = [
+    const allEvents: ClassifiedEvent[] = [
       {
         address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
         blockHash:
@@ -1208,6 +1256,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14764238,
         transactionHash:
           '0x42e27e3bed9a2ab343880e8ab4c4de121fc337a7334170a9dc632a36fe757fb9',
+        transactionIndex: 3,
         gasUsed: 157031,
         logIndex: 32,
         classifier: swapClassifier,
@@ -1228,6 +1277,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14764238,
         transactionHash:
           '0x42e27e3bed9a2ab343880e8ab4c4de121fc337a7334170a9dc632a36fe757fb9',
+        transactionIndex: 3,
         gasUsed: 157031,
         logIndex: 33,
         classifier: transferClassifier,
@@ -1245,6 +1295,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14764238,
         transactionHash:
           '0x42e27e3bed9a2ab343880e8ab4c4de121fc337a7334170a9dc632a36fe757fb9',
+        transactionIndex: 3,
         gasUsed: 157031,
         logIndex: 34,
         classifier: transferClassifier,
@@ -1262,6 +1313,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14764238,
         transactionHash:
           '0x42e27e3bed9a2ab343880e8ab4c4de121fc337a7334170a9dc632a36fe757fb9',
+        transactionIndex: 3,
         gasUsed: 157031,
         logIndex: 35,
         classifier: transferClassifier,
@@ -1279,6 +1331,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14764238,
         transactionHash:
           '0x42e27e3bed9a2ab343880e8ab4c4de121fc337a7334170a9dc632a36fe757fb9',
+        transactionIndex: 3,
         gasUsed: 157031,
         logIndex: 37,
         classifier: uniswapClassifier,
@@ -1324,6 +1377,7 @@ describe('Classfiers: Balancer V2', () => {
       transaction: {
         gasUsed: 157031,
         hash: '0x42e27e3bed9a2ab343880e8ab4c4de121fc337a7334170a9dc632a36fe757fb9',
+        index: 3,
       },
       metadata: {},
     });
@@ -1352,6 +1406,7 @@ describe('Classfiers: Balancer V2', () => {
       blockNumber: 14764014,
       transactionHash:
         '0x11bdb8d6d7e0fdd9933ce9673db55524fe7d13f4e6401a40c03c04d1ba06055f',
+      transactionIndex: 11,
       gasUsed: 129388,
       logIndex: 63,
       classifier: swapClassifier,
@@ -1377,6 +1432,7 @@ describe('Classfiers: Balancer V2', () => {
         },
         transaction: {
           hash: '0x11bdb8d6d7e0fdd9933ce9673db55524fe7d13f4e6401a40c03c04d1ba06055f',
+          index: 11,
           gasUsed: 129388,
         },
         event: {
@@ -1395,6 +1451,7 @@ describe('Classfiers: Balancer V2', () => {
         },
         transaction: {
           hash: '0x11bdb8d6d7e0fdd9933ce9673db55524fe7d13f4e6401a40c03c04d1ba06055f',
+          index: 11,
           gasUsed: 129388,
         },
         event: {
@@ -1413,6 +1470,7 @@ describe('Classfiers: Balancer V2', () => {
         },
         transaction: {
           hash: '0x11bdb8d6d7e0fdd9933ce9673db55524fe7d13f4e6401a40c03c04d1ba06055f',
+          index: 11,
           gasUsed: 129388,
         },
         event: {
@@ -1431,6 +1489,7 @@ describe('Classfiers: Balancer V2', () => {
         },
         transaction: {
           hash: '0x11bdb8d6d7e0fdd9933ce9673db55524fe7d13f4e6401a40c03c04d1ba06055f',
+          index: 11,
           gasUsed: 129388,
         },
         event: {
@@ -1439,7 +1498,7 @@ describe('Classfiers: Balancer V2', () => {
         },
       },
     ];
-    const allEvents = [
+    const allEvents: ClassifiedEvent[] = [
       {
         address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
         blockHash:
@@ -1447,6 +1506,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14764014,
         transactionHash:
           '0x11bdb8d6d7e0fdd9933ce9673db55524fe7d13f4e6401a40c03c04d1ba06055f',
+        transactionIndex: 11,
         gasUsed: 129388,
         logIndex: 63,
         classifier: swapClassifier,
@@ -1467,6 +1527,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14764014,
         transactionHash:
           '0x11bdb8d6d7e0fdd9933ce9673db55524fe7d13f4e6401a40c03c04d1ba06055f',
+        transactionIndex: 11,
         gasUsed: 129388,
         logIndex: 64,
         classifier: transferClassifier,
@@ -1484,6 +1545,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14764014,
         transactionHash:
           '0x11bdb8d6d7e0fdd9933ce9673db55524fe7d13f4e6401a40c03c04d1ba06055f',
+        transactionIndex: 11,
         gasUsed: 129388,
         logIndex: 65,
         classifier: transferClassifier,
@@ -1501,6 +1563,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14764014,
         transactionHash:
           '0x11bdb8d6d7e0fdd9933ce9673db55524fe7d13f4e6401a40c03c04d1ba06055f',
+        transactionIndex: 11,
         gasUsed: 129388,
         logIndex: 66,
         classifier: swapClassifier,
@@ -1521,6 +1584,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14764014,
         transactionHash:
           '0x11bdb8d6d7e0fdd9933ce9673db55524fe7d13f4e6401a40c03c04d1ba06055f',
+        transactionIndex: 11,
         gasUsed: 129388,
         logIndex: 67,
         classifier: transferClassifier,
@@ -1538,6 +1602,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14764014,
         transactionHash:
           '0x11bdb8d6d7e0fdd9933ce9673db55524fe7d13f4e6401a40c03c04d1ba06055f',
+        transactionIndex: 11,
         gasUsed: 129388,
         logIndex: 68,
         classifier: transferClassifier,
@@ -1580,6 +1645,7 @@ describe('Classfiers: Balancer V2', () => {
       transaction: {
         gasUsed: 129388,
         hash: '0x11bdb8d6d7e0fdd9933ce9673db55524fe7d13f4e6401a40c03c04d1ba06055f',
+        index: 11,
       },
       metadata: {},
     });
@@ -1602,6 +1668,7 @@ describe('Classfiers: Balancer V2', () => {
         },
         transaction: {
           hash: '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
+          index: 13,
           gasUsed: 335297,
         },
         event: {
@@ -1610,7 +1677,7 @@ describe('Classfiers: Balancer V2', () => {
         },
       },
     ];
-    const allEvents = [
+    const allEvents: ClassifiedEvent[] = [
       {
         address: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
         blockHash:
@@ -1618,6 +1685,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14764099,
         transactionHash:
           '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
+        transactionIndex: 13,
         gasUsed: 335297,
         logIndex: 17,
         classifier: swapClassifier,
@@ -1638,6 +1706,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14764099,
         transactionHash:
           '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
+        transactionIndex: 13,
         gasUsed: 335297,
         logIndex: 18,
         classifier: swapClassifier,
@@ -1658,6 +1727,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14764099,
         transactionHash:
           '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
+        transactionIndex: 13,
         gasUsed: 335297,
         logIndex: 20,
         classifier: swapClassifier,
@@ -1678,6 +1748,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14764099,
         transactionHash:
           '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
+        transactionIndex: 13,
         gasUsed: 335297,
         logIndex: 21,
         classifier: swapClassifier,
@@ -1698,6 +1769,7 @@ describe('Classfiers: Balancer V2', () => {
         blockNumber: 14764099,
         transactionHash:
           '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
+        transactionIndex: 13,
         gasUsed: 335297,
         logIndex: 22,
         classifier: transferClassifier,
@@ -1729,6 +1801,7 @@ describe('Classfiers: Balancer V2', () => {
       blockNumber: 14764099,
       transactionHash:
         '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
+      transactionIndex: 13,
       gasUsed: 335297,
       logIndex: 17,
       classifier: swapClassifier,
@@ -1761,6 +1834,7 @@ describe('Classfiers: Balancer V2', () => {
       blockNumber: 14764099,
       transactionHash:
         '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
+      transactionIndex: 13,
       gasUsed: 335297,
       logIndex: 18,
       classifier: swapClassifier,
@@ -1794,6 +1868,7 @@ describe('Classfiers: Balancer V2', () => {
       blockNumber: 14764099,
       transactionHash:
         '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
+      transactionIndex: 13,
       gasUsed: 335297,
       logIndex: 20,
       classifier: swapClassifier,
@@ -1826,6 +1901,7 @@ describe('Classfiers: Balancer V2', () => {
       blockNumber: 14764099,
       transactionHash:
         '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
+      transactionIndex: 13,
       gasUsed: 335297,
       logIndex: 21,
       classifier: swapClassifier,
@@ -1873,6 +1949,7 @@ describe('Classfiers: Balancer V2', () => {
       transaction: {
         gasUsed: 335297,
         hash: '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
+        index: 13,
       },
       metadata: {},
     });
@@ -1904,6 +1981,7 @@ describe('Classfiers: Balancer V2', () => {
       transaction: {
         gasUsed: 335297,
         hash: '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
+        index: 13,
       },
       metadata: {},
     });
@@ -1935,6 +2013,7 @@ describe('Classfiers: Balancer V2', () => {
       transaction: {
         gasUsed: 335297,
         hash: '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
+        index: 13,
       },
       metadata: {},
     });
@@ -1966,6 +2045,7 @@ describe('Classfiers: Balancer V2', () => {
       transaction: {
         gasUsed: 335297,
         hash: '0xc8df7215fcaabde383620a1e73a96aabeef7465822f9cea9db4dfc4e60d9d77b',
+        index: 13,
       },
       metadata: {},
     });
@@ -1983,6 +2063,7 @@ describe('Classfiers: Balancer V2', () => {
       blockNumber: 14764238,
       transactionHash:
         '0x42e27e3bed9a2ab343880e8ab4c4de121fc337a7334170a9dc632a36fe757fb9',
+      transactionIndex: 3,
       gasUsed: 157031,
       logIndex: 33,
       classifier: transferClassifier,
@@ -2002,6 +2083,7 @@ describe('Classfiers: Balancer V2', () => {
       blockNumber: 14764238,
       transactionHash:
         '0x11bdb8d6d7e0fdd9933ce9673db55524fe7d13f4e6401a40c03c04d1ba06055f',
+      transactionIndex: 11,
       gasUsed: 129388,
       logIndex: 65,
       classifier: transferClassifier,
@@ -2025,6 +2107,7 @@ describe('Classfiers: Balancer V2', () => {
       },
       transaction: {
         hash: '0x42e27e3bed9a2ab343880e8ab4c4de121fc337a7334170a9dc632a36fe757fb9',
+        index: 3,
         gasUsed: 157031,
       },
       event: {
@@ -2043,6 +2126,7 @@ describe('Classfiers: Balancer V2', () => {
       },
       transaction: {
         hash: '0x11bdb8d6d7e0fdd9933ce9673db55524fe7d13f4e6401a40c03c04d1ba06055f',
+        index: 11,
         gasUsed: 129388,
       },
       event: {
@@ -2077,6 +2161,7 @@ describe('Classfiers: Balancer V2', () => {
       blockNumber: 15308213,
       transactionHash:
         '0x5cf54ebf58961e5bd23aebc12232943be699d4bcabd6cd9e18136162addcce08',
+      transactionIndex: 185,
       gasUsed: 240736,
       logIndex: 323,
       classifier: depositClassifier,
@@ -2110,6 +2195,7 @@ describe('Classfiers: Balancer V2', () => {
       },
       transaction: {
         hash: '0x5cf54ebf58961e5bd23aebc12232943be699d4bcabd6cd9e18136162addcce08',
+        index: 185,
         gasUsed: 240736,
       },
       event: {
@@ -2144,6 +2230,7 @@ describe('Classfiers: Balancer V2', () => {
       blockNumber: 15287953,
       transactionHash:
         '0xc8fcc65f77ca451fbdc6d233db9a5e6602138e4804acf8fe45b175e7bfb31b99',
+      transactionIndex: 106,
       gasUsed: 278635,
       logIndex: 180,
       classifier: depositClassifier,
@@ -2177,6 +2264,7 @@ describe('Classfiers: Balancer V2', () => {
       },
       transaction: {
         hash: '0xc8fcc65f77ca451fbdc6d233db9a5e6602138e4804acf8fe45b175e7bfb31b99',
+        index: 106,
         gasUsed: 278635,
       },
       event: {
@@ -2229,6 +2317,7 @@ describe('Classfiers: Balancer V2', () => {
       blockNumber: 15292701,
       transactionHash:
         '0x1e0dd4352121942d10edf4df46d9f4200005a61f260d8ed2318c758f816e0459',
+      transactionIndex: 16,
       gasUsed: 210217,
       logIndex: 25,
       classifier: withdrawalClassifier,
@@ -2262,6 +2351,7 @@ describe('Classfiers: Balancer V2', () => {
       },
       transaction: {
         hash: '0x1e0dd4352121942d10edf4df46d9f4200005a61f260d8ed2318c758f816e0459',
+        index: 16,
         gasUsed: 210217,
       },
       event: {
@@ -2295,6 +2385,7 @@ describe('Classfiers: Balancer V2', () => {
       blockNumber: 15287979,
       transactionHash:
         '0x374d34757bda76935d5b35d1ff7be06125de3e3f3a337ba85573cf389c8ee25e',
+      transactionIndex: 74,
       gasUsed: 266738,
       logIndex: 120,
       classifier: withdrawalClassifier,
@@ -2328,6 +2419,7 @@ describe('Classfiers: Balancer V2', () => {
       },
       transaction: {
         hash: '0x374d34757bda76935d5b35d1ff7be06125de3e3f3a337ba85573cf389c8ee25e',
+        index: 74,
         gasUsed: 266738,
       },
       event: {

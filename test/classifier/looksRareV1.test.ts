@@ -29,6 +29,7 @@ describe('Classfiers: LooksRare V1', () => {
       blockNumber: 15338596,
       transactionHash:
         '0xee9615157b2c3da9607ce811f16c57256a3b487816ba46ea4c78c68ac48d7269',
+      transactionIndex: 35,
       gasUsed: 208730,
       logIndex: 90,
       classifier,
@@ -52,6 +53,7 @@ describe('Classfiers: LooksRare V1', () => {
         blockNumber: 15338596,
         transactionHash:
           '0xee9615157b2c3da9607ce811f16c57256a3b487816ba46ea4c78c68ac48d7269',
+        transactionIndex: 35,
         address: '0x19cB5b009BdAD0Dad0404DD860b0beA75465E678',
         topics: [
           '0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925',
@@ -69,6 +71,7 @@ describe('Classfiers: LooksRare V1', () => {
         blockNumber: 15338596,
         transactionHash:
           '0xee9615157b2c3da9607ce811f16c57256a3b487816ba46ea4c78c68ac48d7269',
+        transactionIndex: 35,
         address: '0x19cB5b009BdAD0Dad0404DD860b0beA75465E678',
         topics: [
           '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef',
@@ -86,6 +89,7 @@ describe('Classfiers: LooksRare V1', () => {
         blockNumber: 15338596,
         transactionHash:
           '0xee9615157b2c3da9607ce811f16c57256a3b487816ba46ea4c78c68ac48d7269',
+        transactionIndex: 35,
         address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
         topics: [
           '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef',
@@ -102,6 +106,7 @@ describe('Classfiers: LooksRare V1', () => {
         blockNumber: 15338596,
         transactionHash:
           '0xee9615157b2c3da9607ce811f16c57256a3b487816ba46ea4c78c68ac48d7269',
+        transactionIndex: 35,
         address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
         topics: [
           '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef',
@@ -118,6 +123,7 @@ describe('Classfiers: LooksRare V1', () => {
         blockNumber: 15338596,
         transactionHash:
           '0xee9615157b2c3da9607ce811f16c57256a3b487816ba46ea4c78c68ac48d7269',
+        transactionIndex: 35,
         address: '0x59728544B08AB483533076417FbBB2fD0B17CE3a',
         topics: [
           '0x27c4f0403323142b599832f26acd21c74a9e5b809f2215726e244a4ac588cd7d',
@@ -135,6 +141,7 @@ describe('Classfiers: LooksRare V1', () => {
         blockNumber: 15338596,
         transactionHash:
           '0xee9615157b2c3da9607ce811f16c57256a3b487816ba46ea4c78c68ac48d7269',
+        transactionIndex: 35,
         address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
         topics: [
           '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef',
@@ -151,6 +158,7 @@ describe('Classfiers: LooksRare V1', () => {
         blockNumber: 15338596,
         transactionHash:
           '0xee9615157b2c3da9607ce811f16c57256a3b487816ba46ea4c78c68ac48d7269',
+        transactionIndex: 35,
         address: '0x59728544B08AB483533076417FbBB2fD0B17CE3a',
         topics: [
           '0x68cd251d4d267c6e2034ff0088b990352b97b2002c0476587d0c4da889c11330',
@@ -174,6 +182,7 @@ describe('Classfiers: LooksRare V1', () => {
       },
       transaction: {
         hash: '0xee9615157b2c3da9607ce811f16c57256a3b487816ba46ea4c78c68ac48d7269',
+        index: 35,
         gasUsed: 208730,
       },
       event: {
@@ -228,6 +237,7 @@ describe('Classfiers: LooksRare V1', () => {
       blockNumber: 15338550,
       transactionHash:
         '0x85ee55e365efeb8c64d4ccecb0d07cdae0779b27bd854d78f5fdf33104f56bee',
+      transactionIndex: 114,
       gasUsed: 261116,
       logIndex: 323,
       classifier,
@@ -255,6 +265,7 @@ describe('Classfiers: LooksRare V1', () => {
       },
       transaction: {
         hash: '0x85ee55e365efeb8c64d4ccecb0d07cdae0779b27bd854d78f5fdf33104f56bee',
+        index: 114,
         gasUsed: 261116,
       },
       event: {

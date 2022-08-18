@@ -20,6 +20,7 @@ describe('Classfiers', () => {
       blockNumber: 14803804,
       transactionHash:
         '0x5d61baac521ccd94e193dc7e1e97e6f5f05df731b0305676f0e709671ca85637',
+      transactionIndex: 194,
       logIndex: 472,
       gasUsed: 47030,
       address: '0x6b175474e89094c44da98b954eedeac495271d0f',
@@ -37,6 +38,7 @@ describe('Classfiers', () => {
       blockNumber: 14802839,
       transactionHash:
         '0xf3105e2cdbd40c733460f6a0d25867e77cccb0776a9c83d5a24f08f98db42922',
+      transactionIndex: 5,
       logIndex: 29,
       gasUsed: 154341,
       address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
@@ -64,6 +66,7 @@ describe('Classfiers', () => {
       blockNumber: 14804038,
       transactionHash:
         '0x86aa33fdc8e87caddb52d404a3f1da08dd3a60df3a407a55edb5d91151dec2e0',
+      transactionIndex: 96,
       logIndex: 198,
       gasUsed: 190050,
       address: '0x0d4a11d5eeaac28ec3f61d100daf4d40471f1852',
@@ -81,6 +84,7 @@ describe('Classfiers', () => {
       blockNumber: 14803820,
       transactionHash:
         '0xbb33579bc3fc10acd908195756a7f1aa21f4383a9a101781ff81af4ba2c6a40e',
+      transactionIndex: 1,
       logIndex: 22,
       gasUsed: 663325,
       address: '0x99ac8ca7087fa4a2a1fb6357269965a2014abc35',
@@ -98,6 +102,7 @@ describe('Classfiers', () => {
       blockNumber: 14804055,
       transactionHash:
         '0x14fb5d365886414c0693b6048f911ae3268777e8c236d965df06b7828ff16211',
+      transactionIndex: 258,
       logIndex: 489,
       gasUsed: 0,
       address: '0xba12222222228d8ba445958a75a0704d566bf2c8',
@@ -131,6 +136,7 @@ describe('Classfiers', () => {
       blockNumber: 14787423,
       transactionHash:
         '0xdf838db24228f280eba8a279266d1602b03b54507afdca3cb4b4ec640535642b',
+      transactionIndex: 3,
       logIndex: 17,
       gasUsed: 671221,
       address: '0x041171993284df560249b57358f931d9eb7b925d',
@@ -146,6 +152,7 @@ describe('Classfiers', () => {
       blockNumber: 14802369,
       transactionHash:
         '0x580a2d8d142207a50636b74d41feca1774b106143c536078ca80de000f83f3d8',
+      transactionIndex: 26,
       logIndex: 146,
       gasUsed: 556582,
       address: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
@@ -179,6 +186,7 @@ describe('Classfiers', () => {
       blockNumber: 14787423,
       transactionHash:
         '0xdf838db24228f280eba8a279266d1602b03b54507afdca3cb4b4ec640535642b',
+      transactionIndex: 3,
       logIndex: 21,
       gasUsed: 671221,
       address: '0x041171993284df560249b57358f931d9eb7b925d',
@@ -194,6 +202,7 @@ describe('Classfiers', () => {
       blockNumber: 14802369,
       transactionHash:
         '0x580a2d8d142207a50636b74d41feca1774b106143c536078ca80de000f83f3d8',
+      transactionIndex: 26,
       logIndex: 146,
       gasUsed: 556582,
       address: '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',

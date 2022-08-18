@@ -65,6 +65,7 @@ function parseSwap(pool: Pool, event: ClassifiedEvent): Swap | null {
   const {
     values,
     transactionHash: hash,
+    transactionIndex,
     gasUsed,
     logIndex,
     address,
@@ -113,6 +114,7 @@ function parseSwap(pool: Pool, event: ClassifiedEvent): Swap | null {
     },
     transaction: {
       hash,
+      index: transactionIndex,
       gasUsed,
     },
     event: {
@@ -136,6 +138,7 @@ function parseDeposit(
   const {
     values,
     transactionHash: hash,
+    transactionIndex,
     gasUsed,
     logIndex,
     address,
@@ -163,6 +166,7 @@ function parseDeposit(
     },
     transaction: {
       hash,
+      index: transactionIndex,
       gasUsed,
     },
     event: {
@@ -183,6 +187,7 @@ function parseWithdrawal(
   const {
     values,
     transactionHash: hash,
+    transactionIndex,
     gasUsed,
     logIndex,
     address,
@@ -210,6 +215,7 @@ function parseWithdrawal(
     },
     transaction: {
       hash,
+      index: transactionIndex,
       gasUsed,
     },
     event: {

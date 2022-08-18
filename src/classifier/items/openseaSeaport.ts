@@ -45,6 +45,7 @@ function parse(
   const {
     values,
     transactionHash: hash,
+    transactionIndex,
     gasUsed,
     logIndex,
     address,
@@ -92,6 +93,7 @@ function parse(
     },
     transaction: {
       hash,
+      index: transactionIndex,
       gasUsed,
     },
     event: {

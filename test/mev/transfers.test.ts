@@ -14,6 +14,7 @@ describe('MEV: transfers', () => {
       blockNumber: 14744037,
       transactionHash:
         '0xa04871a6008a2a97b73abbcfc1297a4a921dfdc17583b4bb66097d4b4b7c8a81',
+      transactionIndex: 141,
       gasUsed: 98948,
       logIndex: 141,
       classifier: uniswapV2Classifiers,

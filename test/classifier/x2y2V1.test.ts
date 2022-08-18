@@ -28,6 +28,7 @@ describe('Classfiers: X2Y2 V1', () => {
       blockNumber: 15339028,
       transactionHash:
         '0x21ef9c1011b96a94a2a76ce03697d1db1d2d718d72c58107cd69df5a91732811',
+      transactionIndex: 118,
       gasUsed: 190476,
       logIndex: 201,
       classifier,
@@ -73,6 +74,7 @@ describe('Classfiers: X2Y2 V1', () => {
       },
       transaction: {
         hash: '0x21ef9c1011b96a94a2a76ce03697d1db1d2d718d72c58107cd69df5a91732811',
+        index: 118,
         gasUsed: 190476,
       },
       event: {

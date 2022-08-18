@@ -31,6 +31,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0xad39a3e5109e2c146f85f5db53a72da9af886b861d4965aacafdb165c1aec35e',
+          index: 9,
           gasUsed: 106802,
         },
         event: {
@@ -71,6 +72,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0xd4ddb9ff1d8368dad9f3710d513021b093f303e02c7169467c0badcf6f44231b',
+          index: 241,
           gasUsed: 159041,
         },
         event: {
@@ -102,6 +104,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0xd4ddb9ff1d8368dad9f3710d513021b093f303e02c7169467c0badcf6f44231b',
+          index: 241,
           gasUsed: 159041,
         },
         event: {
@@ -142,6 +145,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0x93812ac129372837e1cee00bd09e9404fe604983181a457f8aaac41a645d0af8',
+          index: 83,
           gasUsed: 421973,
         },
         event: {
@@ -173,6 +177,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0x93812ac129372837e1cee00bd09e9404fe604983181a457f8aaac41a645d0af8',
+          index: 83,
           gasUsed: 421973,
         },
         event: {
@@ -204,6 +209,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0x93812ac129372837e1cee00bd09e9404fe604983181a457f8aaac41a645d0af8',
+          index: 83,
           gasUsed: 421973,
         },
         event: {
@@ -235,6 +241,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0x93812ac129372837e1cee00bd09e9404fe604983181a457f8aaac41a645d0af8',
+          index: 83,
           gasUsed: 421973,
         },
         event: {
@@ -269,6 +276,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0xcd3e3f5db2c39d40dda5ee378fa53c9c6330ea7ee5bdd7ff29b410cf15a2cefa',
+          index: 4,
           gasUsed: 85892,
         },
         event: {
@@ -300,6 +308,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0xcd3e3f5db2c39d40dda5ee378fa53c9c6330ea7ee5bdd7ff29b410cf15a2cefa',
+          index: 4,
           gasUsed: 85892,
         },
         event: {
@@ -331,6 +340,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0xcd3e3f5db2c39d40dda5ee378fa53c9c6330ea7ee5bdd7ff29b410cf15a2cefa',
+          index: 4,
           gasUsed: 85892,
         },
         event: {
@@ -371,6 +381,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0xcd3e3f5db2c39d40dda5ee378fa53c9c6330ea7ee5bdd7ff29b410cf15a2cefa',
+          index: 4,
           gasUsed: 85892,
         },
         event: {
@@ -402,6 +413,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0x10a5aa7d57954532b6a0fd871bbb430527532845ed115ca8eaeabe4b7e87931a',
+          index: 5,
           gasUsed: 305443,
         },
         event: {
@@ -433,6 +445,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0xfa079727c03a36a2f59dba1428d551825bff066a6ebc73717d330888b21272bf',
+          index: 6,
           gasUsed: 77304,
         },
         event: {
@@ -464,6 +477,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0x3650e96b7ff8821a5c72dfdada4812d1ec8bc0b28613402b0b2559189e69d5e7',
+          index: 4,
           gasUsed: 212970,
         },
         event: {
@@ -495,6 +509,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0x269bfab026bfd08441d02d6396b2c5bb78efd428ff7e89c4e81029213696e1d1',
+          index: 9,
           gasUsed: 87259,
         },
         event: {
@@ -535,6 +550,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0x91f7b9e4502210a8309be3ed2a3bcd4cf6bc1dfd46eac5730604cb4dd6a0fae9',
+          index: 27,
           gasUsed: 104945,
         },
         event: {
@@ -566,6 +582,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0xdf4764ee8cfe94ddc8e14f864d2da77a76c7d1323ae62750d13fe2842b8d0014',
+          index: 29,
           gasUsed: 94852,
         },
         event: {
@@ -597,6 +614,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0xd79a73e06f04d5f5af5a4c4609c7644b5f7e695db0f69242fabd4825d7e1e66a',
+          index: 28,
           gasUsed: 295151,
         },
         event: {
@@ -630,6 +648,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0xb25e12df177b1d9f02a31ba79e9a7cb00df21b17632876cc87363a7d17c44d14',
+          index: 0,
           gasUsed: 212183,
         },
         event: {
@@ -661,6 +680,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0x347c7cda6fa444959696dfac1afe1f3ebd1d7101b0859d0cc4638299587d0c51',
+          index: 1,
           gasUsed: 1020947,
         },
         event: {
@@ -692,6 +712,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0x1bdff71a08a003bdb01a2b82327da325de71a71518094d948419a177a0e86fa6',
+          index: 2,
           gasUsed: 292354,
         },
         event: {
@@ -756,6 +777,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0xcbd3612d384509dfcc9a86d68088299133cfe42232f44e9efe01bf8de924b6c2',
+          index: 0,
           gasUsed: 157847,
         },
         event: {
@@ -787,6 +809,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0x9db5f6ebcfbabf07f894fb2b027f48d8a1fbc3cd8822ef77a2b5f1e36a0aa3c0',
+          index: 1,
           gasUsed: 231597,
         },
         event: {
@@ -818,6 +841,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0xa72e8b6e0bc5cd637dabf895fd5d5872db2346fbb6460b18e3084f8f679fde95',
+          index: 2,
           gasUsed: 140483,
         },
         event: {
@@ -869,6 +893,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0x45a00f29144e088b9fd8f617665e183234ddbd6f969bfe623ebfa84b042666b8',
+          index: 2,
           gasUsed: 183728,
         },
         event: {
@@ -900,6 +925,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0xca9a36487222c905052a96c18fec93ecf771d9e9ebb8d66920b8366282bf8ace',
+          index: 10,
           gasUsed: 117924,
         },
         event: {
@@ -931,6 +957,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0x269bfab026bfd08441d02d6396b2c5bb78efd428ff7e89c4e81029213696e1d1',
+          index: 9,
           gasUsed: 87259,
         },
         event: {
@@ -962,6 +989,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0x9a27b384c6ba32cbecfd37d558f8f723cba3575fb0ce050a083f415c222a2005',
+          index: 3,
           gasUsed: 113243,
         },
         event: {
@@ -993,6 +1021,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0xf2ca28c11be0644e75dac5bd8274bfa35aab1861bdd5c9f01377debf1fdb318c',
+          index: 1,
           gasUsed: 494111,
         },
         event: {
@@ -1024,6 +1053,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0xb060d2790cd8e9f08e6dd058ec0d084f0f06d3c8abfed9396686c4315962fb05',
+          index: 0,
           gasUsed: 187077,
         },
         event: {
@@ -1055,6 +1085,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0x0b14d5b512d8ab905757aee56373abc72ea5df266334e2d444807df1afe017a7',
+          index: 5,
           gasUsed: 108943,
         },
         event: {
@@ -1086,6 +1117,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0x3650e96b7ff8821a5c72dfdada4812d1ec8bc0b28613402b0b2559189e69d5e7',
+          index: 4,
           gasUsed: 212970,
         },
         event: {
@@ -1117,6 +1149,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0x5b1d1fce971a42e715cc63bf8b34f2e8036f1feb80fd741595fb3a81a34edf8a',
+          index: 8,
           gasUsed: 136600,
         },
         event: {
@@ -1165,6 +1198,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0x59211262bbc5b8260d4d7ea6311ac81d358a09a99a7422f9a27e3b3fbe92b549',
+          index: 0,
           gasUsed: 164752,
         },
         event: {
@@ -1196,6 +1230,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0x72ba7c267abeea2eb5a5e888feab3d523e0beb8c721be48b096df3d1d6c62b95',
+          index: 11,
           gasUsed: 178674,
         },
         event: {
@@ -1227,6 +1262,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0x87fda6ee1f2c74e106aab959beca197a8749f988c692aedf10c8499ad5805a81',
+          index: 12,
           gasUsed: 176497,
         },
         event: {
@@ -1260,6 +1296,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0xba48efd95fc97d37e12b2c00454fafa8cfe90680b8a8d1b4725674fbd3236bec',
+          index: 13,
           gasUsed: 96098,
         },
         event: {
@@ -1291,6 +1328,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0x67bb6aa570c63bafbaadc6f62cba5d64b55e6ad4fffd37f3a8d5f84a61abc942',
+          index: 24,
           gasUsed: 115684,
         },
         event: {
@@ -1322,6 +1360,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0xa4921f9a4cbaea4322304eff83bfa9d8f68a8576ae0f8ec08a2c72cfd17878b6',
+          index: 25,
           gasUsed: 87885,
         },
         event: {
@@ -1355,6 +1394,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0xb145267690fd8d87f1d218314b27af21bd88d2172edfcf3add108dc52cb26fc0',
+          index: 4,
           gasUsed: 226772,
         },
         event: {
@@ -1386,6 +1426,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0xc0c53a725e9e4d9277612fa732ca40af5ca8b75682a5d9f070e97540c0b964fa',
+          index: 5,
           gasUsed: 221515,
         },
         event: {
@@ -1417,6 +1458,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0x1c16ee272fd48520efdc4b9c703ecbdf8d46af790aa063791a90a8957bb7a875',
+          index: 6,
           gasUsed: 297103,
         },
         event: {
@@ -1494,6 +1536,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0x494ff5ab76e94d6b8e2610af1c7c50aea8dcafcb344236a430d0fa764db6d12b',
+          index: 0,
           gasUsed: 348339,
         },
         event: {
@@ -1525,6 +1568,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0xdf2aff5d20b9bffb9ec507da4af66cfb6f437ec1c0d8da3a7c62a126a598187d',
+          index: 2,
           gasUsed: 336993,
         },
         event: {
@@ -1559,6 +1603,7 @@ describe('MEV: sandwiches', () => {
         },
         transaction: {
           hash: '0xb170187a424eced74476156e7113bdd90978bd5c053e5520068e921cfc447c0a',
+          index: 1,
           gasUsed: 273304,
         },
         event: {

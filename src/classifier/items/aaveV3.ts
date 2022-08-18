@@ -27,6 +27,7 @@ function parseRepayment(market: Market, event: ClassifiedEvent): Repayment {
   const {
     values,
     transactionHash: hash,
+    transactionIndex,
     gasUsed,
     logIndex,
     address,
@@ -53,6 +54,7 @@ function parseRepayment(market: Market, event: ClassifiedEvent): Repayment {
     },
     transaction: {
       hash,
+      index: transactionIndex,
       gasUsed,
     },
     event: {
@@ -70,6 +72,7 @@ function parseSeizure(market: Market, event: ClassifiedEvent): Seizure {
   const {
     values,
     transactionHash: hash,
+    transactionIndex,
     gasUsed,
     logIndex,
     address,
@@ -96,6 +99,7 @@ function parseSeizure(market: Market, event: ClassifiedEvent): Seizure {
     },
     transaction: {
       hash,
+      index: transactionIndex,
       gasUsed,
     },
     event: {

@@ -6,6 +6,7 @@ interface Log {
   blockHash: string;
   blockNumber: number;
   transactionHash: string;
+  transactionIndex: number;
   logIndex: number;
   gasUsed: number;
   address: string;
@@ -90,6 +91,7 @@ class Chain {
     return logs.map((log) => {
       const {
         transactionHash,
+        transactionIndex,
         logIndex,
         address,
         topics,
@@ -101,6 +103,7 @@ class Chain {
         blockHash,
         blockNumber,
         transactionHash,
+        transactionIndex,
         logIndex,
         gasUsed: gasUsed.toNumber(),
         address,

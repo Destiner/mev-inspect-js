@@ -41,6 +41,7 @@ describe('Classfiers: Curve V1', () => {
       blockNumber: 15316758,
       transactionHash:
         '0xb34ea17eeaca412e3d9c42f9271d0c93e4622b51db63c82789e6d8f366824b7e',
+      transactionIndex: 150,
       gasUsed: 862958,
       logIndex: 369,
       classifier: depositClassifier,
@@ -69,6 +70,7 @@ describe('Classfiers: Curve V1', () => {
       },
       transaction: {
         hash: '0xb34ea17eeaca412e3d9c42f9271d0c93e4622b51db63c82789e6d8f366824b7e',
+        index: 150,
         gasUsed: 862958,
       },
       event: {
@@ -123,6 +125,7 @@ describe('Classfiers: Curve V1', () => {
       blockNumber: 15316631,
       transactionHash:
         '0xc4e32fde23685d586bef5e48a75dcd34f9b81346386892d9d7735815d4c8ce93',
+      transactionIndex: 262,
       gasUsed: 330640,
       logIndex: 410,
       classifier: depositClassifier,
@@ -146,6 +149,7 @@ describe('Classfiers: Curve V1', () => {
       },
       transaction: {
         hash: '0xc4e32fde23685d586bef5e48a75dcd34f9b81346386892d9d7735815d4c8ce93',
+        index: 262,
         gasUsed: 330640,
       },
       event: {

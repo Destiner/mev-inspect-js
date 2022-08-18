@@ -89,6 +89,7 @@ function parse(
   const {
     name,
     transactionHash: hash,
+    transactionIndex,
     gasUsed,
     logIndex,
     blockHash,
@@ -143,6 +144,7 @@ function parse(
     },
     transaction: {
       hash,
+      index: transactionIndex,
       gasUsed,
     },
     event: {
