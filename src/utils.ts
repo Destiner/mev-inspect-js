@@ -39,7 +39,7 @@ function isArbitrage(mev: Mev): boolean {
   return (
     'arbitrager' in mev &&
     mev.swaps.every(
-      (swap) => swap.assetIn.type === 'erc20' || swap.assetOut.type === 'erc20',
+      (swap) => swap.assetIn.type === 'erc20' && swap.assetOut.type === 'erc20',
     )
   );
 }
