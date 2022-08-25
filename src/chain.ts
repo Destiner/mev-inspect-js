@@ -5,6 +5,7 @@ import { Provider, TransactionReceipt } from '@ethersproject/providers';
 interface Log {
   blockHash: string;
   blockNumber: number;
+  transactionFrom: string;
   transactionHash: string;
   transactionIndex: number;
   logIndex: number;
@@ -87,7 +88,7 @@ class Chain {
   }
 
   #getLogs(receipt: TransactionReceipt): Log[] {
-    const { logs, gasUsed } = receipt;
+    const { from, logs, gasUsed } = receipt;
     return logs.map((log) => {
       const {
         transactionHash,
@@ -102,6 +103,7 @@ class Chain {
       return {
         blockHash,
         blockNumber,
+        transactionFrom: from,
         transactionHash,
         transactionIndex,
         logIndex,

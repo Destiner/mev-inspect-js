@@ -13,6 +13,7 @@ describe('Classfiers: ERC20', () => {
     const blockHash =
       '0xfab1c160cddf469711028b6ad95f55c8105a549762e519d3651829a325d9401a';
     const blockNumber = 14743890;
+    const transactionFrom = '0xbe6356e4d92ecbd321c83ccdd79b3fd6f2d4f0e7';
     const transactionHash =
       '0xfbf98ea48bb2a1210ac1974b432c4604a9978e766c133f9543da3df9421b7e81';
     const transactionIndex = 41;
@@ -27,6 +28,7 @@ describe('Classfiers: ERC20', () => {
       address,
       blockHash,
       blockNumber,
+      transactionFrom,
       transactionHash,
       transactionIndex,
       gasUsed,
@@ -51,6 +53,7 @@ describe('Classfiers: ERC20', () => {
         number: blockNumber,
       },
       transaction: {
+        from: transactionFrom,
         hash: transactionHash,
         index: transactionIndex,
         gasUsed,
@@ -69,6 +72,11 @@ describe('Classfiers: ERC20', () => {
       '0xdbdc405f719fda7d4bed7fcb64d7a0d9cc276c5fc9e484d372926d5a8145c8cd',
     ];
     const blockNumbers = [14744012, 14744024, 14743996];
+    const transactionFroms = [
+      '0x0d46f66d13c630d3f554e74c3eff711452d2c180',
+      '0xcbe300403ec18503bb2b93574fa738dc8f629f63',
+      '0x95a9bd206ae52c4ba8eecfc93d18eacdd41c88cc',
+    ];
     const transactionHashes = [
       '0xa8f12cec18cb0c66d9ed10e893b68b0d7d789e376a244b2d4ff4e6923ea633cd',
       '0xaf52e7b3b93974a933b23541bc38310cb879398c2da34d077a29df1b170e67d6',
@@ -106,6 +114,7 @@ describe('Classfiers: ERC20', () => {
           address: addresses[index],
           blockHash: blockHashes[index],
           blockNumber: blockNumbers[index],
+          transactionFrom: transactionFroms[index],
           transactionHash,
           transactionIndex: transactionIndices[index],
           gasUsed: gasUsedList[index],
@@ -140,6 +149,7 @@ describe('Classfiers: ERC20', () => {
             number: blockNumbers[index],
           },
           transaction: {
+            from: transactionFroms[index],
             hash: transactionHash,
             index: transactionIndices[index],
             gasUsed: gasUsedList[index],

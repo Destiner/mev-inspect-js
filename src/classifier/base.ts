@@ -8,6 +8,11 @@ import { Factory } from './directory.js';
 
 import { ChainId, ClassifiedEvent } from './index.js';
 
+interface Searcher {
+  sender: string;
+  beneficiary: string;
+}
+
 interface PoolData {
   factoryAddress: string;
   assets: string[];
@@ -67,6 +72,7 @@ interface Block {
 }
 
 interface Transaction {
+  from: string;
   hash: string;
   index: number;
   gasUsed: number;
@@ -346,6 +352,7 @@ export {
   PoolData,
   Protocol,
   Repayment,
+  Searcher,
   Seizure,
   Swap,
   SwapProtocol,

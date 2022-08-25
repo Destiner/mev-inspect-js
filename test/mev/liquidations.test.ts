@@ -22,6 +22,7 @@ describe('MEV: liquidations', () => {
           number: 14787423,
         },
         transaction: {
+          from: '0xf4bb585ab3bcb7ce3b817ab2abd1c8ea2e691687',
           hash: '0xdf838db24228f280eba8a279266d1602b03b54507afdca3cb4b4ec640535642b',
           index: 3,
           gasUsed: 671221,
@@ -57,6 +58,7 @@ describe('MEV: liquidations', () => {
           number: 14787423,
         },
         transaction: {
+          from: '0xf4bb585ab3bcb7ce3b817ab2abd1c8ea2e691687',
           hash: '0xdf838db24228f280eba8a279266d1602b03b54507afdca3cb4b4ec640535642b',
           index: 3,
           gasUsed: 671221,
@@ -92,6 +94,7 @@ describe('MEV: liquidations', () => {
           number: 14803328,
         },
         transaction: {
+          from: '0x0177ffdf6b5c00ff8eab1a498ea10191ebc965db',
           hash: '0x02a100bfcc45a40b1d4fda92d6c17acb420d4fee8bc2b5bac3fa4650bf7d5093',
           index: 11,
           gasUsed: 676976,
@@ -127,6 +130,7 @@ describe('MEV: liquidations', () => {
           number: 14803328,
         },
         transaction: {
+          from: '0x0177ffdf6b5c00ff8eab1a498ea10191ebc965db',
           hash: '0x02a100bfcc45a40b1d4fda92d6c17acb420d4fee8bc2b5bac3fa4650bf7d5093',
           index: 11,
           gasUsed: 676976,
@@ -212,6 +216,7 @@ describe('MEV: liquidations', () => {
           number: 14802369,
         },
         transaction: {
+          from: '0x01a5677183bd82e97be53ad6900bbcff50ca6743',
           hash: '0x580a2d8d142207a50636b74d41feca1774b106143c536078ca80de000f83f3d8',
           index: 26,
           gasUsed: 556582,
@@ -247,6 +252,7 @@ describe('MEV: liquidations', () => {
           number: 14802369,
         },
         transaction: {
+          from: '0x01a5677183bd82e97be53ad6900bbcff50ca6743',
           hash: '0x580a2d8d142207a50636b74d41feca1774b106143c536078ca80de000f83f3d8',
           index: 26,
           gasUsed: 556582,
@@ -282,6 +288,7 @@ describe('MEV: liquidations', () => {
           number: 14769194,
         },
         transaction: {
+          from: '0x5368b4d517645749e9e7f8ba10d81ae609c40beb',
           hash: '0x9529b0332f51d586a1d30f9106558daf3dbc66c6bbbd32935f19fbc2601b7aa1',
           index: 25,
           gasUsed: 529738,
@@ -317,6 +324,7 @@ describe('MEV: liquidations', () => {
           number: 14769194,
         },
         transaction: {
+          from: '0x5368b4d517645749e9e7f8ba10d81ae609c40beb',
           hash: '0x9529b0332f51d586a1d30f9106558daf3dbc66c6bbbd32935f19fbc2601b7aa1',
           index: 25,
           gasUsed: 529738,

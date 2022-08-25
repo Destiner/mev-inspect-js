@@ -33,6 +33,7 @@ describe('Classfiers: Sudoswap V1', () => {
       blockHash:
         '0xac533604be05e12eb5c0927b96eb37dfb8c73b23967c57ba65e5d0e5fa60f347',
       blockNumber: 15329509,
+      transactionFrom: '0x147ef3a8a05ef25ff4d8d605b43e9322c3d43a7a',
       transactionHash:
         '0xc9788be0bde38c9cfdda3530fc3c113273a73ddcf5be05b380190c3de70259d0',
       transactionIndex: 119,
@@ -45,6 +46,7 @@ describe('Classfiers: Sudoswap V1', () => {
     const logsA: Log[] = [
       {
         blockNumber: 15329509,
+        transactionFrom: '0x147ef3a8a05ef25ff4d8d605b43e9322c3d43a7a',
         transactionHash:
           '0xc9788be0bde38c9cfdda3530fc3c113273a73ddcf5be05b380190c3de70259d0',
         transactionIndex: 119,
@@ -60,6 +62,7 @@ describe('Classfiers: Sudoswap V1', () => {
       },
       {
         blockNumber: 15329509,
+        transactionFrom: '0x147ef3a8a05ef25ff4d8d605b43e9322c3d43a7a',
         transactionHash:
           '0xc9788be0bde38c9cfdda3530fc3c113273a73ddcf5be05b380190c3de70259d0',
         transactionIndex: 119,
@@ -78,6 +81,7 @@ describe('Classfiers: Sudoswap V1', () => {
       },
       {
         blockNumber: 15329509,
+        transactionFrom: '0x147ef3a8a05ef25ff4d8d605b43e9322c3d43a7a',
         transactionHash:
           '0xc9788be0bde38c9cfdda3530fc3c113273a73ddcf5be05b380190c3de70259d0',
         transactionIndex: 119,
@@ -96,6 +100,7 @@ describe('Classfiers: Sudoswap V1', () => {
       },
       {
         blockNumber: 15329509,
+        transactionFrom: '0x147ef3a8a05ef25ff4d8d605b43e9322c3d43a7a',
         transactionHash:
           '0xc9788be0bde38c9cfdda3530fc3c113273a73ddcf5be05b380190c3de70259d0',
         transactionIndex: 119,
@@ -118,6 +123,7 @@ describe('Classfiers: Sudoswap V1', () => {
         hash: '0xac533604be05e12eb5c0927b96eb37dfb8c73b23967c57ba65e5d0e5fa60f347',
       },
       transaction: {
+        from: '0x147ef3a8a05ef25ff4d8d605b43e9322c3d43a7a',
         hash: '0xc9788be0bde38c9cfdda3530fc3c113273a73ddcf5be05b380190c3de70259d0',
         index: 119,
         gasUsed: 170731,
@@ -179,6 +185,7 @@ describe('Classfiers: Sudoswap V1', () => {
       blockHash:
         '0xfa338cadbfd2d2158bc1d6f08cd9e513c4c5d4ba2ca65c29c897f600b8e4eb16',
       blockNumber: 15334408,
+      transactionFrom: '0x7fa247daa39dc2389ef4c3cd39f6f71ac415d911',
       transactionHash:
         '0x047addccc95ea21b623a042e255d90216fa6de28e6ccd336e657f310babc2411',
       transactionIndex: 45,
@@ -191,6 +198,7 @@ describe('Classfiers: Sudoswap V1', () => {
     const logsA: Log[] = [
       {
         blockNumber: 15334408,
+        transactionFrom: '0x7fa247daa39dc2389ef4c3cd39f6f71ac415d911',
         transactionHash:
           '0x047addccc95ea21b623a042e255d90216fa6de28e6ccd336e657f310babc2411',
         transactionIndex: 45,
@@ -206,6 +214,7 @@ describe('Classfiers: Sudoswap V1', () => {
       },
       {
         blockNumber: 15334408,
+        transactionFrom: '0x7fa247daa39dc2389ef4c3cd39f6f71ac415d911',
         transactionHash:
           '0x047addccc95ea21b623a042e255d90216fa6de28e6ccd336e657f310babc2411',
         transactionIndex: 45,
@@ -224,6 +233,7 @@ describe('Classfiers: Sudoswap V1', () => {
       },
       {
         blockNumber: 15334408,
+        transactionFrom: '0x7fa247daa39dc2389ef4c3cd39f6f71ac415d911',
         transactionHash:
           '0x047addccc95ea21b623a042e255d90216fa6de28e6ccd336e657f310babc2411',
         transactionIndex: 45,
@@ -242,6 +252,7 @@ describe('Classfiers: Sudoswap V1', () => {
       },
       {
         blockNumber: 15334408,
+        transactionFrom: '0x7fa247daa39dc2389ef4c3cd39f6f71ac415d911',
         transactionHash:
           '0x047addccc95ea21b623a042e255d90216fa6de28e6ccd336e657f310babc2411',
         transactionIndex: 45,
@@ -264,6 +275,7 @@ describe('Classfiers: Sudoswap V1', () => {
         hash: '0xfa338cadbfd2d2158bc1d6f08cd9e513c4c5d4ba2ca65c29c897f600b8e4eb16',
       },
       transaction: {
+        from: '0x7fa247daa39dc2389ef4c3cd39f6f71ac415d911',
         hash: '0x047addccc95ea21b623a042e255d90216fa6de28e6ccd336e657f310babc2411',
         index: 45,
         gasUsed: 156230,

@@ -39,6 +39,7 @@ describe('Classfiers: Curve V2', () => {
       blockHash:
         '0x008ae3b3592025bdaadaed34e95ae5d74b8a107409d730a03cab1a4ff5f017e5',
       blockNumber: 15316854,
+      transactionFrom: '0x260b46708eccb4cfe3c27584dcae6b5ec6115e7d',
       transactionHash:
         '0x9a311fb6494f08e50fd503234022dd3c2838d1a3360f1b4eff30bf6893a9a4f8',
       transactionIndex: 121,
@@ -64,6 +65,7 @@ describe('Classfiers: Curve V2', () => {
         number: 15316854,
       },
       transaction: {
+        from: '0x260b46708eccb4cfe3c27584dcae6b5ec6115e7d',
         hash: '0x9a311fb6494f08e50fd503234022dd3c2838d1a3360f1b4eff30bf6893a9a4f8',
         index: 121,
         gasUsed: 289690,
@@ -127,6 +129,7 @@ describe('Classfiers: Curve V2', () => {
       blockHash:
         '0x18a5a6867177867f6ea2e6ef4b5e68af85f81bf88618186259fd702dc3f92607',
       blockNumber: 15314284,
+      transactionFrom: '0x8c73d39b2da2dd1a10cc16502bc7c8d768ec74c9',
       transactionHash:
         '0x5e33623c748205175515ff3377d38b018859c535bdb481cdaffab9289a806259',
       transactionIndex: 203,
@@ -151,6 +154,7 @@ describe('Classfiers: Curve V2', () => {
         number: 15314284,
       },
       transaction: {
+        from: '0x8c73d39b2da2dd1a10cc16502bc7c8d768ec74c9',
         hash: '0x5e33623c748205175515ff3377d38b018859c535bdb481cdaffab9289a806259',
         index: 203,
         gasUsed: 3641563,
@@ -211,6 +215,7 @@ describe('Classfiers: Curve V2', () => {
       blockHash:
         '0x6d14a027ac20e50a065867a14d1828983c7fe730c94bcf750da1ea0c42eea487',
       blockNumber: 15314636,
+      transactionFrom: '0x3e03e274eb8c770d95b849230cb8087e192ee311',
       transactionHash:
         '0xa4b5e4e54bd3aaeeb893a931dbb6b77ad9a6fd5f87845ce9fb28c714cd7e92cb',
       transactionIndex: 231,
@@ -232,6 +237,7 @@ describe('Classfiers: Curve V2', () => {
         number: 15314636,
       },
       transaction: {
+        from: '0x3e03e274eb8c770d95b849230cb8087e192ee311',
         hash: '0xa4b5e4e54bd3aaeeb893a931dbb6b77ad9a6fd5f87845ce9fb28c714cd7e92cb',
         index: 231,
         gasUsed: 318727,

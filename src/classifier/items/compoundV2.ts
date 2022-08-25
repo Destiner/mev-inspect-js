@@ -49,6 +49,7 @@ function processMarketCalls(
 function parseRepayment(market: Market, event: ClassifiedEvent): Repayment {
   const {
     values,
+    transactionFrom: from,
     transactionHash: hash,
     transactionIndex,
     gasUsed,
@@ -77,6 +78,7 @@ function parseRepayment(market: Market, event: ClassifiedEvent): Repayment {
       number: blockNumber,
     },
     transaction: {
+      from,
       hash,
       index: transactionIndex,
       gasUsed,
@@ -98,6 +100,7 @@ function parseRepayment(market: Market, event: ClassifiedEvent): Repayment {
 function parseSeizure(market: Market, event: ClassifiedEvent): Seizure {
   const {
     values,
+    transactionFrom: from,
     transactionHash: hash,
     transactionIndex,
     gasUsed,
@@ -125,6 +128,7 @@ function parseSeizure(market: Market, event: ClassifiedEvent): Seizure {
       number: blockNumber,
     },
     transaction: {
+      from,
       hash,
       index: transactionIndex,
       gasUsed,

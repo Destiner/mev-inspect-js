@@ -12,6 +12,7 @@ function isValid(event: Event): boolean {
 function parse(event: ClassifiedEvent): Transfer {
   const {
     values,
+    transactionFrom,
     transactionHash: hash,
     transactionIndex,
     gasUsed,
@@ -32,6 +33,7 @@ function parse(event: ClassifiedEvent): Transfer {
       number: blockNumber,
     },
     transaction: {
+      from: transactionFrom,
       hash,
       index: transactionIndex,
       gasUsed,

@@ -27,6 +27,7 @@ describe('MEV: JIT liquidity sandwiches', () => {
           number: 15196081,
         },
         transaction: {
+          from: '0xfb9779477e5b4834bf2bc02dd29b97b344d0f700',
           hash: '0xf618862404eaa9a2d6e1d95b8a4ec74627e4e44fb0dd520e743359b7721a7778',
           index: 2,
           gasUsed: 500595,
@@ -67,6 +68,7 @@ describe('MEV: JIT liquidity sandwiches', () => {
           number: 15196081,
         },
         transaction: {
+          from: '0xfb9779477e5b4834bf2bc02dd29b97b344d0f700',
           hash: '0xafde1f9e82c1641578186cab977a26b849a917076c4556be912f0a10feb28453',
           index: 4,
           gasUsed: 248807,
@@ -114,6 +116,7 @@ describe('MEV: JIT liquidity sandwiches', () => {
           number: 15194488,
         },
         transaction: {
+          from: '0x4603180bbb8221157880afaa84638e0fc467738d',
           hash: '0x5ffe23a52fd695160fc5eef15678576574e7c42cb7203568031f33ce09d30c49',
           index: 4,
           gasUsed: 591690,
@@ -154,6 +157,7 @@ describe('MEV: JIT liquidity sandwiches', () => {
           number: 15194488,
         },
         transaction: {
+          from: '0x4603180bbb8221157880afaa84638e0fc467738d',
           hash: '0x5ffe23a52fd695160fc5eef15678576574e7c42cb7203568031f33ce09d30c49',
           index: 4,
           gasUsed: 591690,
@@ -194,6 +198,7 @@ describe('MEV: JIT liquidity sandwiches', () => {
           number: 15194488,
         },
         transaction: {
+          from: '0x4603180bbb8221157880afaa84638e0fc467738d',
           hash: '0x5ffe23a52fd695160fc5eef15678576574e7c42cb7203568031f33ce09d30c49',
           index: 4,
           gasUsed: 591690,
@@ -254,6 +259,7 @@ describe('MEV: JIT liquidity sandwiches', () => {
           number: 15194684,
         },
         transaction: {
+          from: '0xe58e5ed4544f58831a84c18178b911a5957ada08',
           hash: '0x07c06542c2fa73d4ccb005ce23b4ef2b34c8ddfa987008b7eb5e81ec8b73cef7',
           index: 11,
           gasUsed: 559946,
@@ -288,6 +294,7 @@ describe('MEV: JIT liquidity sandwiches', () => {
           number: 15194684,
         },
         transaction: {
+          from: '0xe58e5ed4544f58831a84c18178b911a5957ada08',
           hash: '0x07c06542c2fa73d4ccb005ce23b4ef2b34c8ddfa987008b7eb5e81ec8b73cef7',
           index: 11,
           gasUsed: 559946,
@@ -328,6 +335,7 @@ describe('MEV: JIT liquidity sandwiches', () => {
           number: 15194684,
         },
         transaction: {
+          from: '0xe58e5ed4544f58831a84c18178b911a5957ada08',
           hash: '0x83b15feb99e0cb393bb9846465db6b547ac3a171e976875db52c5e432d5209ff',
           index: 13,
           gasUsed: 253248,
@@ -375,6 +383,7 @@ describe('MEV: JIT liquidity sandwiches', () => {
           number: 15194488,
         },
         transaction: {
+          from: '0x53fe3edb7604fec209157a5318aa696308bf0dea',
           hash: '0xe533410ec2eb24a443e8b209ce293424e01997f55b84c6b76c9bfb478393dd4c',
           index: 5,
           gasUsed: 207310,
@@ -415,6 +424,7 @@ describe('MEV: JIT liquidity sandwiches', () => {
           number: 15194488,
         },
         transaction: {
+          from: '0x4603180bbb8221157880afaa84638e0fc467738d',
           hash: '0x5ffe23a52fd695160fc5eef15678576574e7c42cb7203568031f33ce09d30c49',
           index: 4,
           gasUsed: 591690,
@@ -455,6 +465,7 @@ describe('MEV: JIT liquidity sandwiches', () => {
           number: 15194488,
         },
         transaction: {
+          from: '0x4603180bbb8221157880afaa84638e0fc467738d',
           hash: '0x0e93b0006f66e5efd9e5b26c090f7dab202bea6151bb6f942e636601034567eb',
           index: 6,
           gasUsed: 253098,
@@ -500,6 +511,7 @@ describe('MEV: JIT liquidity sandwiches', () => {
             number: 15194488,
           },
           transaction: {
+            from: '0x4603180bbb8221157880afaa84638e0fc467738d',
             hash: '0x5ffe23a52fd695160fc5eef15678576574e7c42cb7203568031f33ce09d30c49',
             index: 4,
             gasUsed: 591690,
@@ -538,6 +550,7 @@ describe('MEV: JIT liquidity sandwiches', () => {
             number: 15194488,
           },
           transaction: {
+            from: '0x4603180bbb8221157880afaa84638e0fc467738d',
             hash: '0x0e93b0006f66e5efd9e5b26c090f7dab202bea6151bb6f942e636601034567eb',
             index: 6,
             gasUsed: 253098,

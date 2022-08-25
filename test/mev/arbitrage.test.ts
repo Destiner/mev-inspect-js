@@ -34,6 +34,7 @@ describe('MEV: arbitrage', () => {
           number: 14698911,
         },
         transaction: {
+          from: '0xef3375b491cff653eaf7c9955a5466f7ea06f37b',
           hash: '0xad39a3e5109e2c146f85f5db53a72da9af886b861d4965aacafdb165c1aec35e',
           index: 9,
           gasUsed: 106802,
@@ -80,6 +81,7 @@ describe('MEV: arbitrage', () => {
           number: 14699184,
         },
         transaction: {
+          from: '0x416d1a4f718a8c3dda7fc3645435580e743d9249',
           hash: '0xd4ddb9ff1d8368dad9f3710d513021b093f303e02c7169467c0badcf6f44231b',
           index: 241,
           gasUsed: 159041,
@@ -118,6 +120,7 @@ describe('MEV: arbitrage', () => {
           number: 14699184,
         },
         transaction: {
+          from: '0x416d1a4f718a8c3dda7fc3645435580e743d9249',
           hash: '0xd4ddb9ff1d8368dad9f3710d513021b093f303e02c7169467c0badcf6f44231b',
           index: 241,
           gasUsed: 159041,
@@ -164,6 +167,7 @@ describe('MEV: arbitrage', () => {
           number: 14698978,
         },
         transaction: {
+          from: '0xf40b3d16ae26262db9b19e0ec80d8a490c40bdcb',
           hash: '0x93812ac129372837e1cee00bd09e9404fe604983181a457f8aaac41a645d0af8',
           index: 83,
           gasUsed: 421973,
@@ -202,6 +206,7 @@ describe('MEV: arbitrage', () => {
           number: 14698978,
         },
         transaction: {
+          from: '0xf40b3d16ae26262db9b19e0ec80d8a490c40bdcb',
           hash: '0x93812ac129372837e1cee00bd09e9404fe604983181a457f8aaac41a645d0af8',
           index: 83,
           gasUsed: 421973,
@@ -240,6 +245,7 @@ describe('MEV: arbitrage', () => {
           number: 14698978,
         },
         transaction: {
+          from: '0xf40b3d16ae26262db9b19e0ec80d8a490c40bdcb',
           hash: '0x93812ac129372837e1cee00bd09e9404fe604983181a457f8aaac41a645d0af8',
           index: 83,
           gasUsed: 421973,
@@ -278,6 +284,7 @@ describe('MEV: arbitrage', () => {
           number: 14698978,
         },
         transaction: {
+          from: '0xf40b3d16ae26262db9b19e0ec80d8a490c40bdcb',
           hash: '0x93812ac129372837e1cee00bd09e9404fe604983181a457f8aaac41a645d0af8',
           index: 83,
           gasUsed: 421973,
@@ -324,6 +331,7 @@ describe('MEV: arbitrage', () => {
           number: 14744280,
         },
         transaction: {
+          from: '0x0000000a9dbf8af9fe5ea03ff1272d8242ed3ab1',
           hash: '0xc158502a952c98c8fe282b5e2bbe56e46fd0a4221c527e7d045f25ccca6a77b2',
           index: 6,
           gasUsed: 230198,
@@ -362,6 +370,7 @@ describe('MEV: arbitrage', () => {
           number: 14744280,
         },
         transaction: {
+          from: '0x0000000a9dbf8af9fe5ea03ff1272d8242ed3ab1',
           hash: '0xc158502a952c98c8fe282b5e2bbe56e46fd0a4221c527e7d045f25ccca6a77b2',
           index: 6,
           gasUsed: 230198,
@@ -420,6 +429,7 @@ describe('MEV: arbitrage', () => {
           number: 14703765,
         },
         transaction: {
+          from: '0xd7e1236c08731c3632519dcd1a581bfe6876a3b2',
           hash: '0x06387618ee3752bed447f192802895921a7d45a60875927adfedc93a68bcbe05',
           index: 0,
           gasUsed: 277422,
@@ -458,6 +468,7 @@ describe('MEV: arbitrage', () => {
           number: 14703765,
         },
         transaction: {
+          from: '0xd7e1236c08731c3632519dcd1a581bfe6876a3b2',
           hash: '0x06387618ee3752bed447f192802895921a7d45a60875927adfedc93a68bcbe05',
           index: 0,
           gasUsed: 277422,
@@ -496,6 +507,7 @@ describe('MEV: arbitrage', () => {
           number: 14703765,
         },
         transaction: {
+          from: '0xd7e1236c08731c3632519dcd1a581bfe6876a3b2',
           hash: '0x06387618ee3752bed447f192802895921a7d45a60875927adfedc93a68bcbe05',
           index: 0,
           gasUsed: 277422,
@@ -534,6 +546,7 @@ describe('MEV: arbitrage', () => {
           number: 14703765,
         },
         transaction: {
+          from: '0xd7e1236c08731c3632519dcd1a581bfe6876a3b2',
           hash: '0x06387618ee3752bed447f192802895921a7d45a60875927adfedc93a68bcbe05',
           index: 0,
           gasUsed: 277422,
@@ -592,6 +605,7 @@ describe('MEV: arbitrage', () => {
           number: 14677379,
         },
         transaction: {
+          from: '0x5cf8face6064e435b97e6dc3cc1ad1f8dddc3905',
           hash: '0x8baefcf7a8b848bdf8be594d55cb84ed26bf6ea6191dafaf33eedf09198453c6',
           index: 0,
           gasUsed: 130574,
@@ -630,6 +644,7 @@ describe('MEV: arbitrage', () => {
           number: 14677379,
         },
         transaction: {
+          from: '0x5cf8face6064e435b97e6dc3cc1ad1f8dddc3905',
           hash: '0x8baefcf7a8b848bdf8be594d55cb84ed26bf6ea6191dafaf33eedf09198453c6',
           index: 0,
           gasUsed: 130574,
@@ -686,6 +701,7 @@ describe('MEV: arbitrage', () => {
           number: 14703898,
         },
         transaction: {
+          from: '0x5cf8face6064e435b97e6dc3cc1ad1f8dddc3905',
           hash: '0xd53808dc31c908b7acad610d5efa726afe67e7c9739083be9c1b4cb6d2cdaeac',
           index: 61,
           gasUsed: 152180,
@@ -724,6 +740,7 @@ describe('MEV: arbitrage', () => {
           number: 14703898,
         },
         transaction: {
+          from: '0x5cf8face6064e435b97e6dc3cc1ad1f8dddc3905',
           hash: '0xd53808dc31c908b7acad610d5efa726afe67e7c9739083be9c1b4cb6d2cdaeac',
           index: 61,
           gasUsed: 152180,
@@ -782,6 +799,7 @@ describe('MEV: arbitrage', () => {
           number: 14703794,
         },
         transaction: {
+          from: '0x82836c765a5096e8635637459dd77076ad54cd08',
           hash: '0x0ec1a4297b198c61598307ed92aa254a234abe8a6ee9415713f8f35a491e9d01',
           index: 2,
           gasUsed: 249345,
@@ -820,6 +838,7 @@ describe('MEV: arbitrage', () => {
           number: 14703794,
         },
         transaction: {
+          from: '0x82836c765a5096e8635637459dd77076ad54cd08',
           hash: '0x0ec1a4297b198c61598307ed92aa254a234abe8a6ee9415713f8f35a491e9d01',
           index: 2,
           gasUsed: 249345,
@@ -858,6 +877,7 @@ describe('MEV: arbitrage', () => {
           number: 14703794,
         },
         transaction: {
+          from: '0x82836c765a5096e8635637459dd77076ad54cd08',
           hash: '0x0ec1a4297b198c61598307ed92aa254a234abe8a6ee9415713f8f35a491e9d01',
           index: 2,
           gasUsed: 249345,
@@ -916,6 +936,7 @@ describe('MEV: arbitrage', () => {
           number: 14703569,
         },
         transaction: {
+          from: '0x38accdeb1c62dade625bcabdca85701d5f6c8618',
           hash: '0xe7cbe0629983e0673c4d971858d05874dbb938bf2b5f0ad4be2fa217ed78a547',
           index: 7,
           gasUsed: 818860,
@@ -954,6 +975,7 @@ describe('MEV: arbitrage', () => {
           number: 14703569,
         },
         transaction: {
+          from: '0x38accdeb1c62dade625bcabdca85701d5f6c8618',
           hash: '0xe7cbe0629983e0673c4d971858d05874dbb938bf2b5f0ad4be2fa217ed78a547',
           index: 7,
           gasUsed: 818860,
@@ -992,6 +1014,7 @@ describe('MEV: arbitrage', () => {
           number: 14703569,
         },
         transaction: {
+          from: '0x38accdeb1c62dade625bcabdca85701d5f6c8618',
           hash: '0xe7cbe0629983e0673c4d971858d05874dbb938bf2b5f0ad4be2fa217ed78a547',
           index: 7,
           gasUsed: 818860,
@@ -1050,6 +1073,7 @@ describe('MEV: arbitrage', () => {
           number: 14704280,
         },
         transaction: {
+          from: '0x74067744295a1b9d440e900e1af660c90150d510',
           hash: '0xa99c50336025abfaf8fa7df3e3617f77c4c99319d1173ce4cc86e730d3eb283a',
           index: 6,
           gasUsed: 424142,
@@ -1088,6 +1112,7 @@ describe('MEV: arbitrage', () => {
           number: 14704280,
         },
         transaction: {
+          from: '0x74067744295a1b9d440e900e1af660c90150d510',
           hash: '0xa99c50336025abfaf8fa7df3e3617f77c4c99319d1173ce4cc86e730d3eb283a',
           index: 6,
           gasUsed: 424142,
@@ -1126,6 +1151,7 @@ describe('MEV: arbitrage', () => {
           number: 14704280,
         },
         transaction: {
+          from: '0x74067744295a1b9d440e900e1af660c90150d510',
           hash: '0xa99c50336025abfaf8fa7df3e3617f77c4c99319d1173ce4cc86e730d3eb283a',
           index: 6,
           gasUsed: 424142,
@@ -1164,6 +1190,7 @@ describe('MEV: arbitrage', () => {
           number: 14704280,
         },
         transaction: {
+          from: '0x74067744295a1b9d440e900e1af660c90150d510',
           hash: '0xa99c50336025abfaf8fa7df3e3617f77c4c99319d1173ce4cc86e730d3eb283a',
           index: 6,
           gasUsed: 424142,
@@ -1233,6 +1260,7 @@ describe('MEV: arbitrage', () => {
           number: 14704280,
         },
         transaction: {
+          from: '0x74067744295a1b9d440e900e1af660c90150d510',
           hash: '0xa99c50336025abfaf8fa7df3e3617f77c4c99319d1173ce4cc86e730d3eb283a',
           index: 6,
           gasUsed: 424142,
@@ -1271,6 +1299,7 @@ describe('MEV: arbitrage', () => {
           number: 14704280,
         },
         transaction: {
+          from: '0x74067744295a1b9d440e900e1af660c90150d510',
           hash: '0xa99c50336025abfaf8fa7df3e3617f77c4c99319d1173ce4cc86e730d3eb283a',
           index: 6,
           gasUsed: 424142,
@@ -1309,6 +1338,7 @@ describe('MEV: arbitrage', () => {
           number: 14704280,
         },
         transaction: {
+          from: '0x74067744295a1b9d440e900e1af660c90150d510',
           hash: '0xa99c50336025abfaf8fa7df3e3617f77c4c99319d1173ce4cc86e730d3eb283a',
           index: 6,
           gasUsed: 424142,
@@ -1367,6 +1397,7 @@ describe('MEV: arbitrage', () => {
           number: 14713415,
         },
         transaction: {
+          from: '0xb691ce1def24a1cb0d7aaffd6340aea33f886503',
           hash: '0x08b606f3c528907688cdcab26a70cea2b9dd409850838662eb4b98a30ac33900',
           index: 4,
           gasUsed: 485584,
@@ -1405,6 +1436,7 @@ describe('MEV: arbitrage', () => {
           number: 14713415,
         },
         transaction: {
+          from: '0xb691ce1def24a1cb0d7aaffd6340aea33f886503',
           hash: '0x08b606f3c528907688cdcab26a70cea2b9dd409850838662eb4b98a30ac33900',
           index: 4,
           gasUsed: 485584,
@@ -1443,6 +1475,7 @@ describe('MEV: arbitrage', () => {
           number: 14713415,
         },
         transaction: {
+          from: '0xb691ce1def24a1cb0d7aaffd6340aea33f886503',
           hash: '0x08b606f3c528907688cdcab26a70cea2b9dd409850838662eb4b98a30ac33900',
           index: 4,
           gasUsed: 485584,
@@ -1481,6 +1514,7 @@ describe('MEV: arbitrage', () => {
           number: 14713415,
         },
         transaction: {
+          from: '0xb691ce1def24a1cb0d7aaffd6340aea33f886503',
           hash: '0x08b606f3c528907688cdcab26a70cea2b9dd409850838662eb4b98a30ac33900',
           index: 4,
           gasUsed: 485584,

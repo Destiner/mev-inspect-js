@@ -26,6 +26,7 @@ describe('Classfiers: Opensea Seaport', () => {
       blockHash:
         '0x84ac28aa33ee37a517a28af4781e70a992c62646066c763b029b611916f66fec',
       blockNumber: 15321851,
+      transactionFrom: '0xc5320d697fd3b4aeab6c2c7da5e5c7effbd9fc34',
       transactionHash:
         '0xce93e804cdaa9e2d1c781c5eeba4cf47a898987ce4dc20752dfb5d9980f3f6ad',
       transactionIndex: 82,
@@ -80,6 +81,7 @@ describe('Classfiers: Opensea Seaport', () => {
         hash: '0x84ac28aa33ee37a517a28af4781e70a992c62646066c763b029b611916f66fec',
       },
       transaction: {
+        from: '0xc5320d697fd3b4aeab6c2c7da5e5c7effbd9fc34',
         hash: '0xce93e804cdaa9e2d1c781c5eeba4cf47a898987ce4dc20752dfb5d9980f3f6ad',
         index: 82,
         gasUsed: 339555,

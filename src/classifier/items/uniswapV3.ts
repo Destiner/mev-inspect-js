@@ -57,6 +57,7 @@ function parseSwap(
 ): Swap | null {
   const {
     values,
+    transactionFrom,
     transactionHash: hash,
     transactionIndex,
     gasUsed,
@@ -104,6 +105,7 @@ function parseSwap(
       number: blockNumber,
     },
     transaction: {
+      from: transactionFrom,
       hash,
       index: transactionIndex,
       gasUsed,
@@ -136,6 +138,7 @@ function parseLiquidityDeposit(
 ): LiquidityDeposit {
   const {
     values,
+    transactionFrom,
     transactionHash: hash,
     transactionIndex,
     gasUsed,
@@ -167,6 +170,7 @@ function parseLiquidityDeposit(
       number: blockNumber,
     },
     transaction: {
+      from: transactionFrom,
       hash,
       index: transactionIndex,
       gasUsed,
@@ -196,6 +200,7 @@ function parseLiquidityWithdrawal(
 ): LiquidityWithdrawal {
   const {
     values,
+    transactionFrom,
     transactionHash: hash,
     transactionIndex,
     gasUsed,
@@ -227,6 +232,7 @@ function parseLiquidityWithdrawal(
       number: blockNumber,
     },
     transaction: {
+      from: transactionFrom,
       hash,
       index: transactionIndex,
       gasUsed,

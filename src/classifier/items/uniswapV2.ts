@@ -47,6 +47,7 @@ function parse(
 ): Swap | null {
   const {
     values,
+    transactionFrom,
     transactionHash: hash,
     transactionIndex,
     gasUsed,
@@ -95,6 +96,7 @@ function parse(
       number: blockNumber,
     },
     transaction: {
+      from: transactionFrom,
       hash,
       index: transactionIndex,
       gasUsed,

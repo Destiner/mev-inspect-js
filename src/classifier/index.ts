@@ -18,6 +18,7 @@ import {
   Pool,
   Protocol,
   Repayment,
+  Searcher,
   Seizure,
   Swap,
   SwapProtocol,
@@ -59,6 +60,7 @@ interface ClassifiedEvent extends Event {
   address: string;
   blockHash: string;
   blockNumber: number;
+  transactionFrom: string;
   transactionHash: string;
   transactionIndex: number;
   gasUsed: number;
@@ -80,6 +82,7 @@ function classifyLog(chainId: ChainId, log: Log): ClassifiedEvent[] {
         topics,
         data,
         address,
+        transactionFrom,
         transactionHash,
         transactionIndex,
         gasUsed,
@@ -95,6 +98,7 @@ function classifyLog(chainId: ChainId, log: Log): ClassifiedEvent[] {
         address,
         blockHash,
         blockNumber,
+        transactionFrom,
         transactionHash,
         transactionIndex,
         gasUsed,
@@ -153,6 +157,7 @@ export {
   Pool,
   Protocol,
   Repayment,
+  Searcher,
   Seizure,
   Swap,
   SwapProtocol,

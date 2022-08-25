@@ -26,6 +26,7 @@ describe('Classfiers: X2Y2 V1', () => {
       blockHash:
         '0x80d42c532fc7e676efd40c5017790d12a78fb8e9efd3ac3d293e5a1003d01b38',
       blockNumber: 15339028,
+      transactionFrom: '0x9bc79bf9ec3dff0fd812f442ec9575f82c6832e6',
       transactionHash:
         '0x21ef9c1011b96a94a2a76ce03697d1db1d2d718d72c58107cd69df5a91732811',
       transactionIndex: 118,
@@ -73,6 +74,7 @@ describe('Classfiers: X2Y2 V1', () => {
         hash: '0x80d42c532fc7e676efd40c5017790d12a78fb8e9efd3ac3d293e5a1003d01b38',
       },
       transaction: {
+        from: '0x9bc79bf9ec3dff0fd812f442ec9575f82c6832e6',
         hash: '0x21ef9c1011b96a94a2a76ce03697d1db1d2d718d72c58107cd69df5a91732811',
         index: 118,
         gasUsed: 190476,

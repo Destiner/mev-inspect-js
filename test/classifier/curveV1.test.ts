@@ -39,6 +39,7 @@ describe('Classfiers: Curve V1', () => {
       blockHash:
         '0x8f355d242b4acfc89ab660543078cf96134c201570b20b7ca5e70e508fdc2ccb',
       blockNumber: 15316758,
+      transactionFrom: '0x0cb406933cf62172f9bd564a8346fd2ce5e32775',
       transactionHash:
         '0xb34ea17eeaca412e3d9c42f9271d0c93e4622b51db63c82789e6d8f366824b7e',
       transactionIndex: 150,
@@ -69,6 +70,7 @@ describe('Classfiers: Curve V1', () => {
         number: 15316758,
       },
       transaction: {
+        from: '0x0cb406933cf62172f9bd564a8346fd2ce5e32775',
         hash: '0xb34ea17eeaca412e3d9c42f9271d0c93e4622b51db63c82789e6d8f366824b7e',
         index: 150,
         gasUsed: 862958,
@@ -132,6 +134,7 @@ describe('Classfiers: Curve V1', () => {
       blockHash:
         '0x461a16fa0eb3d0170f26409044498e759a6c3cdcfacc04c5267287536aa464a0',
       blockNumber: 15316631,
+      transactionFrom: '0xa2026e62bfd1f1a2d8b89a19f3fa0ba42b52f0bf',
       transactionHash:
         '0xc4e32fde23685d586bef5e48a75dcd34f9b81346386892d9d7735815d4c8ce93',
       transactionIndex: 262,
@@ -157,6 +160,7 @@ describe('Classfiers: Curve V1', () => {
         number: 15316631,
       },
       transaction: {
+        from: '0xa2026e62bfd1f1a2d8b89a19f3fa0ba42b52f0bf',
         hash: '0xc4e32fde23685d586bef5e48a75dcd34f9b81346386892d9d7735815d4c8ce93',
         index: 262,
         gasUsed: 330640,

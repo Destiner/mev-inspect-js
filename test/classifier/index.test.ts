@@ -18,6 +18,7 @@ describe('Classfiers', () => {
       blockHash:
         '0x81c4fe77261262d47111f7cdc4752d627b7d4153802e5d629bbe05fd5b6fe1b0',
       blockNumber: 14803804,
+      transactionFrom: '0xb8eaafa0502a16068ea82dfde38e1a08cd6034a6',
       transactionHash:
         '0x5d61baac521ccd94e193dc7e1e97e6f5f05df731b0305676f0e709671ca85637',
       transactionIndex: 194,
@@ -36,6 +37,7 @@ describe('Classfiers', () => {
       blockHash:
         '0x5927564872c886bcfcddb093fbcdcf732c94a86a8d7f87d872698590fb12a7ae',
       blockNumber: 14802839,
+      transactionFrom: '0x000000007cb2bd00ae5eb839930bb7847ae5b039',
       transactionHash:
         '0xf3105e2cdbd40c733460f6a0d25867e77cccb0776a9c83d5a24f08f98db42922',
       transactionIndex: 5,
@@ -64,6 +66,7 @@ describe('Classfiers', () => {
       blockHash:
         '0x8ba06d42b983e83504399c641f72e8ee1cd73bc6c1417a66fbe79401a8702d80',
       blockNumber: 14804038,
+      transactionFrom: '0x774171beaeba8c2c3e5ddafecee60b28e51c8fbd',
       transactionHash:
         '0x86aa33fdc8e87caddb52d404a3f1da08dd3a60df3a407a55edb5d91151dec2e0',
       transactionIndex: 96,
@@ -82,6 +85,7 @@ describe('Classfiers', () => {
       blockHash:
         '0x67c82d2794211d3f150bdee7f659730db174b20082773b225e0dcaafd59ce74f',
       blockNumber: 14803820,
+      transactionFrom: '0xcfeae868182aaff31799a72b92e5153cf46926f7',
       transactionHash:
         '0xbb33579bc3fc10acd908195756a7f1aa21f4383a9a101781ff81af4ba2c6a40e',
       transactionIndex: 1,
@@ -100,6 +104,7 @@ describe('Classfiers', () => {
       blockHash:
         '0x21303a078facfc9c4e687bfff11117810fa6d444394c15702445be7a5d5a6bc8',
       blockNumber: 14804055,
+      transactionFrom: '0x368dec1eb6e533119f8740c15613144bf5a668ca',
       transactionHash:
         '0x14fb5d365886414c0693b6048f911ae3268777e8c236d965df06b7828ff16211',
       transactionIndex: 258,
@@ -134,6 +139,7 @@ describe('Classfiers', () => {
       blockHash:
         '0x2807e9aaf0406aa232f9d95aca53f38670501c8186d39feb673c0ea12905da33',
       blockNumber: 14787423,
+      transactionFrom: '0xf4bb585ab3bcb7ce3b817ab2abd1c8ea2e691687',
       transactionHash:
         '0xdf838db24228f280eba8a279266d1602b03b54507afdca3cb4b4ec640535642b',
       transactionIndex: 3,
@@ -150,6 +156,7 @@ describe('Classfiers', () => {
       blockHash:
         '0x4c462f472947289c04108125cfdc124b32db90e5db9851777f7502346ac3b1f0',
       blockNumber: 14802369,
+      transactionFrom: '0x01a5677183bd82e97be53ad6900bbcff50ca6743',
       transactionHash:
         '0x580a2d8d142207a50636b74d41feca1774b106143c536078ca80de000f83f3d8',
       transactionIndex: 26,
@@ -184,6 +191,7 @@ describe('Classfiers', () => {
       blockHash:
         '0x2807e9aaf0406aa232f9d95aca53f38670501c8186d39feb673c0ea12905da33',
       blockNumber: 14787423,
+      transactionFrom: '0xf4bb585ab3bcb7ce3b817ab2abd1c8ea2e691687',
       transactionHash:
         '0xdf838db24228f280eba8a279266d1602b03b54507afdca3cb4b4ec640535642b',
       transactionIndex: 3,
@@ -200,6 +208,7 @@ describe('Classfiers', () => {
       blockHash:
         '0x4c462f472947289c04108125cfdc124b32db90e5db9851777f7502346ac3b1f0',
       blockNumber: 14802369,
+      transactionFrom: '0x01a5677183bd82e97be53ad6900bbcff50ca6743',
       transactionHash:
         '0x580a2d8d142207a50636b74d41feca1774b106143c536078ca80de000f83f3d8',
       transactionIndex: 26,
