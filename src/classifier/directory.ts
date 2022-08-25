@@ -319,25 +319,45 @@ const nftSwapFactories: Record<ChainId, Record<NftSwapProtocol, Factory[]>> = {
   [OPTIMISM]: {
     LooksRareV1: [], // TODO
     X2Y2V1: [], // TODO
-    OpenseaSeaport: [], // TODO
+    OpenseaSeaport: [
+      {
+        address: '0x00000000006c3852cbef3e08e8df289169ede581',
+        label: 'OpenSea: Seaport V1.1',
+      },
+    ],
     SudoswapV1: [], // TODO
   },
   [POLYGON]: {
     LooksRareV1: [], // TODO
     X2Y2V1: [], // TODO
-    OpenseaSeaport: [], // TODO
+    OpenseaSeaport: [
+      {
+        address: '0x00000000006c3852cbef3e08e8df289169ede581',
+        label: 'OpenSea: Seaport V1.1',
+      },
+    ],
     SudoswapV1: [], // TODO
   },
   [ARBITRUM]: {
     LooksRareV1: [], // TODO
     X2Y2V1: [], // TODO
-    OpenseaSeaport: [], // TODO
+    OpenseaSeaport: [
+      {
+        address: '0x00000000006c3852cbef3e08e8df289169ede581',
+        label: 'OpenSea: Seaport V1.1',
+      },
+    ],
     SudoswapV1: [], // TODO
   },
   [AVALANCHE]: {
     LooksRareV1: [], // TODO
     X2Y2V1: [], // TODO
-    OpenseaSeaport: [], // TODO
+    OpenseaSeaport: [
+      {
+        address: '0x00000000006c3852cbef3e08e8df289169ede581',
+        label: 'OpenSea: Seaport V1.1',
+      },
+    ],
     SudoswapV1: [], // TODO
   },
 };
