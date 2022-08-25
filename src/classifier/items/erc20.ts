@@ -33,7 +33,7 @@ function parse(event: ClassifiedEvent): Transfer {
       number: blockNumber,
     },
     transaction: {
-      from: transactionFrom,
+      from: transactionFrom.toLowerCase(),
       hash,
       index: transactionIndex,
       gasUsed,

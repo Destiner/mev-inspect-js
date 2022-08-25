@@ -105,7 +105,7 @@ function parseSwap(
       number: blockNumber,
     },
     transaction: {
-      from: transactionFrom,
+      from: transactionFrom.toLowerCase(),
       hash,
       index: transactionIndex,
       gasUsed,
@@ -170,7 +170,7 @@ function parseLiquidityDeposit(
       number: blockNumber,
     },
     transaction: {
-      from: transactionFrom,
+      from: transactionFrom.toLowerCase(),
       hash,
       index: transactionIndex,
       gasUsed,
@@ -232,7 +232,7 @@ function parseLiquidityWithdrawal(
       number: blockNumber,
     },
     transaction: {
-      from: transactionFrom,
+      from: transactionFrom.toLowerCase(),
       hash,
       index: transactionIndex,
       gasUsed,

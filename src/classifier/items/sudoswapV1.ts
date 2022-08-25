@@ -144,7 +144,7 @@ function parse(
       number: blockNumber,
     },
     transaction: {
-      from: transactionFrom,
+      from: transactionFrom.toLowerCase(),
       hash,
       index: transactionIndex,
       gasUsed,

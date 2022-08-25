@@ -68,7 +68,7 @@ function parse(pool: Pool, event: ClassifiedEvent): Swap | null {
       number: blockNumber,
     },
     transaction: {
-      from: transactionFrom,
+      from: transactionFrom.toLowerCase(),
       hash,
       index: transactionIndex,
       gasUsed,

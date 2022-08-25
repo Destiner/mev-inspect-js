@@ -53,7 +53,7 @@ describe('Classfiers: ERC20', () => {
         number: blockNumber,
       },
       transaction: {
-        from: transactionFrom,
+        from: transactionFrom.toLowerCase(),
         hash: transactionHash,
         index: transactionIndex,
         gasUsed,

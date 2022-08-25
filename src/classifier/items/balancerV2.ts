@@ -107,7 +107,7 @@ function parseSwap(
       number: blockNumber,
     },
     transaction: {
-      from: transactionFrom,
+      from: transactionFrom.toLowerCase(),
       hash,
       index: transactionIndex,
       gasUsed,
@@ -138,7 +138,7 @@ function parseDeposit(
 ): LiquidityDeposit | null {
   const {
     values,
-    transactionFrom: from,
+    transactionFrom,
     transactionHash: hash,
     transactionIndex,
     gasUsed,
@@ -168,7 +168,7 @@ function parseDeposit(
       number: blockNumber,
     },
     transaction: {
-      from,
+      from: transactionFrom.toLowerCase(),
       hash,
       index: transactionIndex,
       gasUsed,
@@ -195,7 +195,7 @@ function parseWithdrawal(
 ): LiquidityWithdrawal | null {
   const {
     values,
-    transactionFrom: from,
+    transactionFrom,
     transactionHash: hash,
     transactionIndex,
     gasUsed,
@@ -225,7 +225,7 @@ function parseWithdrawal(
       number: blockNumber,
     },
     transaction: {
-      from,
+      from: transactionFrom.toLowerCase(),
       hash,
       index: transactionIndex,
       gasUsed,
@@ -275,7 +275,7 @@ function parseTransfer(event: ClassifiedEvent): Transfer {
       number: blockNumber,
     },
     transaction: {
-      from: transactionFrom,
+      from: transactionFrom.toLowerCase(),
       hash,
       index: transactionIndex,
       gasUsed,

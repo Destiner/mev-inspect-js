@@ -51,7 +51,7 @@ function processPoolCalls(result: unknown[]): PoolData | null {
 function parseSwap(pool: Pool, event: ClassifiedEvent): Swap | null {
   const {
     values,
-    transactionFrom: from,
+    transactionFrom,
     transactionHash: hash,
     transactionIndex,
     gasUsed,
@@ -80,7 +80,7 @@ function parseSwap(pool: Pool, event: ClassifiedEvent): Swap | null {
       number: blockNumber,
     },
     transaction: {
-      from,
+      from: transactionFrom.toLowerCase(),
       hash,
       index: transactionIndex,
       gasUsed,
@@ -111,7 +111,7 @@ function parseDeposit(
 ): LiquidityDeposit | null {
   const {
     values,
-    transactionFrom: from,
+    transactionFrom,
     transactionHash: hash,
     transactionIndex,
     gasUsed,
@@ -137,7 +137,7 @@ function parseDeposit(
       number: blockNumber,
     },
     transaction: {
-      from,
+      from: transactionFrom.toLowerCase(),
       hash,
       index: transactionIndex,
       gasUsed,
@@ -164,7 +164,7 @@ function parseWithdrawal(
 ): LiquidityWithdrawal | null {
   const {
     values,
-    transactionFrom: from,
+    transactionFrom,
     transactionHash: hash,
     transactionIndex,
     gasUsed,
@@ -190,7 +190,7 @@ function parseWithdrawal(
       number: blockNumber,
     },
     transaction: {
-      from,
+      from: transactionFrom.toLowerCase(),
       hash,
       index: transactionIndex,
       gasUsed,
