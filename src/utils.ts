@@ -36,7 +36,12 @@ function getEvent(mev: Mev): BaseEvent | null {
 }
 
 function isArbitrage(mev: Mev): boolean {
-  return 'arbitrager' in mev && typeof mev.swaps[0].assetIn === 'string';
+  return (
+    'arbitrager' in mev &&
+    mev.swaps.every(
+      (swap) => swap.assetIn.type === 'erc20' || swap.assetOut.type === 'erc20',
+    )
+  );
 }
 
 function isLiquidation(mev: Mev): boolean {
@@ -52,7 +57,13 @@ function isJitSandwich(mev: Mev): boolean {
 }
 
 function isNftArbitrage(mev: Mev): boolean {
-  return 'arbitrager' in mev && typeof mev.swaps[0].assetIn !== 'string';
+  return (
+    'arbitrager' in mev &&
+    mev.swaps.some(
+      (swap) =>
+        swap.assetIn.type === 'erc721' || swap.assetOut.type === 'erc721',
+    )
+  );
 }
 
 function getArbitrages(mevList: Mev[]): Arbitrage[] {

@@ -1,4 +1,5 @@
 import {
+  Erc20Asset,
   LiquidityDeposit,
   LiquidityWithdrawal,
   Swap,
@@ -10,7 +11,7 @@ interface JitSandwich {
   withdrawal: LiquidityWithdrawal;
   sandwiched: Swap[];
   deltas: {
-    asset: string;
+    asset: Erc20Asset;
     amount: bigint;
   }[];
 }

@@ -105,9 +105,15 @@ function parse(
     },
     from,
     to,
-    assetIn,
+    assetIn: {
+      type: 'erc20',
+      address: assetIn,
+    },
     amountIn,
-    assetOut,
+    assetOut: {
+      type: 'erc20',
+      address: assetOut,
+    },
     amountOut,
     metadata: {},
   };

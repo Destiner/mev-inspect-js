@@ -1,5 +1,6 @@
 import {
   ChainId,
+  Erc20Asset,
   LiquidityDeposit,
   LiquidityWithdrawal,
   Swap,
@@ -13,7 +14,7 @@ interface Sandwich {
   backSwap: Swap;
   sandwiched: (Swap | LiquidityDeposit | LiquidityWithdrawal)[];
   profit: {
-    asset: string;
+    asset: Erc20Asset;
     amount: bigint;
   };
 }
@@ -81,8 +82,8 @@ function getSandwich(
     if (event.contract.address === frontSwap.contract.address) {
       if (
         isSwap(event) &&
-        event.assetIn === frontSwap.assetIn &&
-        event.assetOut === frontSwap.assetOut &&
+        event.assetIn.address === frontSwap.assetIn.address &&
+        event.assetOut.address === frontSwap.assetOut.address &&
         event.from !== sandwicher
       ) {
         sandwiched.push(event);
@@ -93,7 +94,8 @@ function getSandwich(
         isDeposit(event) &&
         event.assets
           .filter((_asset, index) => event.amounts[index] > 0)
-          .includes(frontSwap.assetIn) &&
+          .map((asset) => asset.address)
+          .includes(frontSwap.assetIn.address) &&
         event.depositor !== sandwicher
       ) {
         sandwiched.push(event);
@@ -102,14 +104,15 @@ function getSandwich(
         isWithdrawal(event) &&
         event.assets
           .filter((_asset, index) => event.amounts[index] > 0)
-          .includes(frontSwap.assetOut) &&
+          .map((asset) => asset.address)
+          .includes(frontSwap.assetOut.address) &&
         event.withdrawer !== sandwicher
       ) {
         sandwiched.push(event);
       } else if (
         isSwap(event) &&
-        event.assetOut === frontSwap.assetIn &&
-        event.assetIn === frontSwap.assetOut &&
+        event.assetOut.address === frontSwap.assetIn.address &&
+        event.assetIn.address === frontSwap.assetOut.address &&
         event.from === sandwicher
       ) {
         if (sandwiched.length > 0) {

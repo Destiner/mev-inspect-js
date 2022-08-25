@@ -136,7 +136,10 @@ describe('MEV: arbitrage', () => {
         swaps,
         profit: {
           amount: 363250000000000000n,
-          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          asset: {
+            type: 'erc20',
+            address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          },
         },
         arbitrager: '0x00000007d259e6b322766529ac387b53a1584724',
       },
@@ -229,7 +232,10 @@ describe('MEV: arbitrage', () => {
         swaps: swapsA,
         profit: {
           amount: 16220000000000000n,
-          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          asset: {
+            type: 'erc20',
+            address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          },
         },
         arbitrager: '0x8f44e22ac221cc25a46289d1c307d4f34a4dd6c2',
       },
@@ -320,7 +326,10 @@ describe('MEV: arbitrage', () => {
         swaps: swapsB,
         profit: {
           amount: 44810189573459708n,
-          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          asset: {
+            type: 'erc20',
+            address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          },
         },
         arbitrager: '0x0000007370af0000ad00be0efd2f1eb6e6e9d700',
       },

@@ -89,9 +89,15 @@ function parseSwap(pool: Pool, event: ClassifiedEvent): Swap | null {
     },
     from: sender,
     to: sender,
-    assetIn,
+    assetIn: {
+      type: 'erc20',
+      address: assetIn,
+    },
     amountIn,
-    assetOut,
+    assetOut: {
+      type: 'erc20',
+      address: assetOut,
+    },
     amountOut,
     metadata: {},
   };
@@ -137,7 +143,12 @@ function parseDeposit(
       logIndex,
     },
     depositor,
-    assets: [asset],
+    assets: [
+      {
+        type: 'erc20',
+        address: asset,
+      },
+    ],
     amounts: [amount],
     metadata: {},
   };
@@ -183,7 +194,12 @@ function parseWithdrawal(
       logIndex,
     },
     withdrawer,
-    assets: [asset],
+    assets: [
+      {
+        type: 'erc20',
+        address: asset,
+      },
+    ],
     amounts: [amount],
     metadata: {},
   };

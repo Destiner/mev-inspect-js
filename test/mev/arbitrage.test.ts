@@ -19,9 +19,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0x7a250d5630b4cf539739df2c5dacb4c659f2488d',
         to: '0xef3375b491cff653eaf7c9955a5466f7ea06f37b',
-        assetIn: '0xc7283b66eb1eb5fb86327f08e1b5816b0720212b',
+        assetIn: {
+          type: 'erc20',
+          address: '0xc7283b66eb1eb5fb86327f08e1b5816b0720212b',
+        },
         amountIn: 76382000000000000000000n,
-        assetOut: '0x956f47f50a910163d8bf957cf5846d573e7f87ca',
+        assetOut: {
+          type: 'erc20',
+          address: '0x956f47f50a910163d8bf957cf5846d573e7f87ca',
+        },
         amountOut: 29934139188201577438792n,
         block: {
           hash: '0xed0883b6e3f80ff2f8263bbeb17717805ae54297dabc998da8384384f9f29fc5',
@@ -59,9 +65,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0x11111112542d85b3ef69ae05771c2dccff4faa26',
         to: '0xce84867c3c02b05dc570d0135103d3fb9cc19433',
-        assetIn: '0x514910771af9ca656af840dff83e8264ecf986ca',
+        assetIn: {
+          type: 'erc20',
+          address: '0x514910771af9ca656af840dff83e8264ecf986ca',
+        },
         amountIn: 2918704295536500000n,
-        assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        assetOut: {
+          type: 'erc20',
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         amountOut: 11499148166696888n,
         block: {
           hash: '0x693c6ec11898b2b82cd1c964e7dced504447b0e82da2e76ce4b3d29de6f655fe',
@@ -91,9 +103,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0x11111112542d85b3ef69ae05771c2dccff4faa26',
         to: '0x416d1a4f718a8c3dda7fc3645435580e743d9249',
-        assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        assetIn: {
+          type: 'erc20',
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         amountIn: 11499148166696888n,
-        assetOut: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
+        assetOut: {
+          type: 'erc20',
+          address: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
+        },
         amountOut: 13787057162799104322n,
         block: {
           hash: '0x693c6ec11898b2b82cd1c964e7dced504447b0e82da2e76ce4b3d29de6f655fe',
@@ -131,9 +149,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0x220bda5c8994804ac96ebe4df184d25e5c2196d4',
         to: '0x220bda5c8994804ac96ebe4df184d25e5c2196d4',
-        assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        assetIn: {
+          type: 'erc20',
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         amountIn: 1200000000000000000n,
-        assetOut: '0x408e41876cccdc0f92210600ef50372656052a38',
+        assetOut: {
+          type: 'erc20',
+          address: '0x408e41876cccdc0f92210600ef50372656052a38',
+        },
         amountOut: 12343477954337594771362n,
         block: {
           hash: '0xce0bb790b8b7ff2c72039aab32867442b94e3f3a167a22be31825675e6c2960c',
@@ -163,9 +187,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0x220bda5c8994804ac96ebe4df184d25e5c2196d4',
         to: '0x220bda5c8994804ac96ebe4df184d25e5c2196d4',
-        assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        assetIn: {
+          type: 'erc20',
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         amountIn: 2200000000000000000n,
-        assetOut: '0x408e41876cccdc0f92210600ef50372656052a38',
+        assetOut: {
+          type: 'erc20',
+          address: '0x408e41876cccdc0f92210600ef50372656052a38',
+        },
         amountOut: 22594064483837836468324n,
         block: {
           hash: '0xce0bb790b8b7ff2c72039aab32867442b94e3f3a167a22be31825675e6c2960c',
@@ -195,9 +225,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0x220bda5c8994804ac96ebe4df184d25e5c2196d4',
         to: '0x220bda5c8994804ac96ebe4df184d25e5c2196d4',
-        assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        assetIn: {
+          type: 'erc20',
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         amountIn: 2400000000000000000n,
-        assetOut: '0x408e41876cccdc0f92210600ef50372656052a38',
+        assetOut: {
+          type: 'erc20',
+          address: '0x408e41876cccdc0f92210600ef50372656052a38',
+        },
         amountOut: 24663570517081979225739n,
         block: {
           hash: '0xce0bb790b8b7ff2c72039aab32867442b94e3f3a167a22be31825675e6c2960c',
@@ -227,9 +263,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0x220bda5c8994804ac96ebe4df184d25e5c2196d4',
         to: '0x220bda5c8994804ac96ebe4df184d25e5c2196d4',
-        assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        assetIn: {
+          type: 'erc20',
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         amountIn: 4200000000000000000n,
-        assetOut: '0x408e41876cccdc0f92210600ef50372656052a38',
+        assetOut: {
+          type: 'erc20',
+          address: '0x408e41876cccdc0f92210600ef50372656052a38',
+        },
         amountOut: 43098743320715046083583n,
         block: {
           hash: '0xce0bb790b8b7ff2c72039aab32867442b94e3f3a167a22be31825675e6c2960c',
@@ -267,9 +309,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0x0000000000005117dd3a72e64a705198753fdd54',
         to: '0x0000000000005117dd3a72e64a705198753fdd54',
-        assetIn: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+        assetIn: {
+          type: 'erc20',
+          address: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+        },
         amountIn: 1750639111n,
-        assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        assetOut: {
+          type: 'erc20',
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         amountOut: 239024634916096132545n,
         block: {
           hash: '0xef740f61a6a8a0d45114d57a9e9b9d5f4de852b9026b6c5b4d8cc18815819d00',
@@ -299,9 +347,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0x0000000000005117dd3a72e64a705198753fdd54',
         to: '0x0000000000005117dd3a72e64a705198753fdd54',
-        assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        assetIn: {
+          type: 'erc20',
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         amountIn: 238841017533640100000n,
-        assetOut: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+        assetOut: {
+          type: 'erc20',
+          address: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+        },
         amountOut: 1750639111n,
         block: {
           hash: '0xef740f61a6a8a0d45114d57a9e9b9d5f4de852b9026b6c5b4d8cc18815819d00',
@@ -326,7 +380,10 @@ describe('MEV: arbitrage', () => {
         swaps: [swaps[1], swaps[0]],
         profit: {
           amount: 183617382456032545n,
-          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          asset: {
+            type: 'erc20',
+            address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          },
         },
         arbitrager: '0x0000000000005117dd3a72e64a705198753fdd54',
       },
@@ -348,9 +405,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0x5f62593c70069abb35dfe2b63db969e8906609d6',
         to: '0x3ce42ef6b6617b5950c13d1c258ecfdcd30bb4de',
-        assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        assetIn: {
+          type: 'erc20',
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         amountIn: 760000000000000000n,
-        assetOut: '0x4fe83213d56308330ec302a8bd641f1d0113a4cc',
+        assetOut: {
+          type: 'erc20',
+          address: '0x4fe83213d56308330ec302a8bd641f1d0113a4cc',
+        },
         amountOut: 6627194964611846570392n,
         block: {
           hash: '0x0c1613b51d33f1a48d9ce4e77f7b6d0fa465a2597a61fa43ab45164c47874bd0',
@@ -380,9 +443,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0x5f62593c70069abb35dfe2b63db969e8906609d6',
         to: '0xcc2bd4f3c00c37adb00864d9a0a8cfef8b6ff56a',
-        assetIn: '0x4fe83213d56308330ec302a8bd641f1d0113a4cc',
+        assetIn: {
+          type: 'erc20',
+          address: '0x4fe83213d56308330ec302a8bd641f1d0113a4cc',
+        },
         amountIn: 6627194964611846570392n,
-        assetOut: '0x3b94440c8c4f69d5c9f47bab9c5a93064df460f5',
+        assetOut: {
+          type: 'erc20',
+          address: '0x3b94440c8c4f69d5c9f47bab9c5a93064df460f5',
+        },
         amountOut: 206953215405128955955015n,
         block: {
           hash: '0x0c1613b51d33f1a48d9ce4e77f7b6d0fa465a2597a61fa43ab45164c47874bd0',
@@ -412,9 +481,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0x5f62593c70069abb35dfe2b63db969e8906609d6',
         to: '0x2519042aa735edb4688a8376d69d4bb69431206c',
-        assetIn: '0x3b94440c8c4f69d5c9f47bab9c5a93064df460f5',
+        assetIn: {
+          type: 'erc20',
+          address: '0x3b94440c8c4f69d5c9f47bab9c5a93064df460f5',
+        },
         amountIn: 206953215405128955955015n,
-        assetOut: '0x58b6a8a3302369daec383334672404ee733ab239',
+        assetOut: {
+          type: 'erc20',
+          address: '0x58b6a8a3302369daec383334672404ee733ab239',
+        },
         amountOut: 91552167112393573131n,
         block: {
           hash: '0x0c1613b51d33f1a48d9ce4e77f7b6d0fa465a2597a61fa43ab45164c47874bd0',
@@ -444,9 +519,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0x5f62593c70069abb35dfe2b63db969e8906609d6',
         to: '0x5f62593c70069abb35dfe2b63db969e8906609d6',
-        assetIn: '0x58b6a8a3302369daec383334672404ee733ab239',
+        assetIn: {
+          type: 'erc20',
+          address: '0x58b6a8a3302369daec383334672404ee733ab239',
+        },
         amountIn: 91552167112393573131n,
-        assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        assetOut: {
+          type: 'erc20',
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         amountOut: 778733861336038399n,
         block: {
           hash: '0x0c1613b51d33f1a48d9ce4e77f7b6d0fa465a2597a61fa43ab45164c47874bd0',
@@ -471,7 +552,10 @@ describe('MEV: arbitrage', () => {
         swaps,
         profit: {
           amount: 18733861336038399n,
-          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          asset: {
+            type: 'erc20',
+            address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          },
         },
         arbitrager: '0x5f62593c70069abb35dfe2b63db969e8906609d6',
       },
@@ -493,9 +577,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0xab319a82803ea5f8f335dc373ce248008d4f2671',
         to: '0x0bec54c89a7d9f15c4e7faa8d47adedf374462ed',
-        assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        assetIn: {
+          type: 'erc20',
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         amountIn: 69743953265453911n,
-        assetOut: '0x2791bfd60d232150bff86b39b7146c0eaaa2ba81',
+        assetOut: {
+          type: 'erc20',
+          address: '0x2791bfd60d232150bff86b39b7146c0eaaa2ba81',
+        },
         amountOut: 8519704802137125560027n,
         block: {
           hash: '0x7177d1d8378095a76ec8212d4962b16d3bdc466732b269b1d61ba4eb5fa1399c',
@@ -525,9 +615,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0xab319a82803ea5f8f335dc373ce248008d4f2671',
         to: '0xab319a82803ea5f8f335dc373ce248008d4f2671',
-        assetIn: '0x2791bfd60d232150bff86b39b7146c0eaaa2ba81',
+        assetIn: {
+          type: 'erc20',
+          address: '0x2791bfd60d232150bff86b39b7146c0eaaa2ba81',
+        },
         amountIn: 8519704802137125560027n,
-        assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        assetOut: {
+          type: 'erc20',
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         amountOut: 74553296475971132n,
         block: {
           hash: '0x7177d1d8378095a76ec8212d4962b16d3bdc466732b269b1d61ba4eb5fa1399c',
@@ -552,7 +648,10 @@ describe('MEV: arbitrage', () => {
         swaps: swapsA,
         profit: {
           amount: 4809343210517221n,
-          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          asset: {
+            type: 'erc20',
+            address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          },
         },
         arbitrager: '0xab319a82803ea5f8f335dc373ce248008d4f2671',
       },
@@ -572,9 +671,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0x5aa3393e361c2eb342408559309b3e873cd876d6',
         to: '0x58418d6c83efab01ed78b0ac42e55af01ee77dba',
-        assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        assetIn: {
+          type: 'erc20',
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         amountIn: 5137825921816247575n,
-        assetOut: '0x64aa3364f17a4d01c6f1751fd97c2bd3d7e7f1d5',
+        assetOut: {
+          type: 'erc20',
+          address: '0x64aa3364f17a4d01c6f1751fd97c2bd3d7e7f1d5',
+        },
         amountOut: 722121104748n,
         block: {
           hash: '0xd63d013d0a3cf4c4bdf189229fd3c8153e8fd3f0b0107f81dda2b82a46de34fc',
@@ -604,9 +709,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0x58418d6c83efab01ed78b0ac42e55af01ee77dba',
         to: '0x5aa3393e361c2eb342408559309b3e873cd876d6',
-        assetIn: '0x64aa3364f17a4d01c6f1751fd97c2bd3d7e7f1d5',
+        assetIn: {
+          type: 'erc20',
+          address: '0x64aa3364f17a4d01c6f1751fd97c2bd3d7e7f1d5',
+        },
         amountIn: 722121104748n,
-        assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        assetOut: {
+          type: 'erc20',
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         amountOut: 5187612076728941787n,
         block: {
           hash: '0xd63d013d0a3cf4c4bdf189229fd3c8153e8fd3f0b0107f81dda2b82a46de34fc',
@@ -631,7 +742,10 @@ describe('MEV: arbitrage', () => {
         swaps: swapsB,
         profit: {
           amount: 49786154912694212n,
-          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          asset: {
+            type: 'erc20',
+            address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          },
         },
         arbitrager: '0x5aa3393e361c2eb342408559309b3e873cd876d6',
       },
@@ -653,9 +767,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0x563bdabaa8846ec445b25bfbed88d160890a02ed',
         to: '0x563bdabaa8846ec445b25bfbed88d160890a02ed',
-        assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        assetIn: {
+          type: 'erc20',
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         amountIn: 1320898745109993396n,
-        assetOut: '0x33349b282065b0284d756f0577fb39c158f935e6',
+        assetOut: {
+          type: 'erc20',
+          address: '0x33349b282065b0284d756f0577fb39c158f935e6',
+        },
         amountOut: 76585579871319070341n,
         block: {
           hash: '0xadc569bbf37a3e458ecf692979b977fc839a767c3625d07545612ca449351a89',
@@ -685,9 +805,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0x563bdabaa8846ec445b25bfbed88d160890a02ed',
         to: '0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640',
-        assetIn: '0x33349b282065b0284d756f0577fb39c158f935e6',
+        assetIn: {
+          type: 'erc20',
+          address: '0x33349b282065b0284d756f0577fb39c158f935e6',
+        },
         amountIn: 76585572212761083209n,
-        assetOut: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        assetOut: {
+          type: 'erc20',
+          address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        },
         amountOut: 3796458224n,
         block: {
           hash: '0xadc569bbf37a3e458ecf692979b977fc839a767c3625d07545612ca449351a89',
@@ -717,9 +843,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0x563bdabaa8846ec445b25bfbed88d160890a02ed',
         to: '0x563bdabaa8846ec445b25bfbed88d160890a02ed',
-        assetIn: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        assetIn: {
+          type: 'erc20',
+          address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        },
         amountIn: 3796458224n,
-        assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        assetOut: {
+          type: 'erc20',
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         amountOut: 1334971529092923524n,
         block: {
           hash: '0xadc569bbf37a3e458ecf692979b977fc839a767c3625d07545612ca449351a89',
@@ -744,7 +876,10 @@ describe('MEV: arbitrage', () => {
         swaps,
         profit: {
           amount: 14072783982930128n,
-          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          asset: {
+            type: 'erc20',
+            address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          },
         },
         arbitrager: '0x563bdabaa8846ec445b25bfbed88d160890a02ed',
       },
@@ -766,9 +901,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
         to: '0xee51984781254ad1a0ee3ae0ca26c4d53dea6ecb',
-        assetIn: '0x6b175474e89094c44da98b954eedeac495271d0f',
+        assetIn: {
+          type: 'erc20',
+          address: '0x6b175474e89094c44da98b954eedeac495271d0f',
+        },
         amountIn: 244490660460949241856n,
-        assetOut: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+        assetOut: {
+          type: 'erc20',
+          address: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+        },
         amountOut: 634888n,
         block: {
           hash: '0x0b598c9b3121baecd1db3ece3ff690bb1c91c8c46f9298517f58b6aaec982a8f',
@@ -798,9 +939,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
         to: '0xf3933a6a82fba8a349a7124c8d8226d7c4d7b6cb',
-        assetIn: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+        assetIn: {
+          type: 'erc20',
+          address: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+        },
         amountIn: 634888n,
-        assetOut: '0x697ef32b4a3f5a4c39de1cb7563f24ca7bfc5947',
+        assetOut: {
+          type: 'erc20',
+          address: '0x697ef32b4a3f5a4c39de1cb7563f24ca7bfc5947',
+        },
         amountOut: 1275909030322046339158n,
         block: {
           hash: '0x0b598c9b3121baecd1db3ece3ff690bb1c91c8c46f9298517f58b6aaec982a8f',
@@ -830,9 +977,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
         to: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
-        assetIn: '0x697ef32b4a3f5a4c39de1cb7563f24ca7bfc5947',
+        assetIn: {
+          type: 'erc20',
+          address: '0x697ef32b4a3f5a4c39de1cb7563f24ca7bfc5947',
+        },
         amountIn: 1275909030322046339158n,
-        assetOut: '0x6b175474e89094c44da98b954eedeac495271d0f',
+        assetOut: {
+          type: 'erc20',
+          address: '0x6b175474e89094c44da98b954eedeac495271d0f',
+        },
         amountOut: 263265751127846220157n,
         block: {
           hash: '0x0b598c9b3121baecd1db3ece3ff690bb1c91c8c46f9298517f58b6aaec982a8f',
@@ -857,7 +1010,10 @@ describe('MEV: arbitrage', () => {
         swaps,
         profit: {
           amount: 18775090666896978301n,
-          asset: '0x6b175474e89094c44da98b954eedeac495271d0f',
+          asset: {
+            type: 'erc20',
+            address: '0x6b175474e89094c44da98b954eedeac495271d0f',
+          },
         },
         arbitrager: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
       },
@@ -879,9 +1035,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
         to: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
-        assetIn: '0xb2089a7069861c8d90c8da3aacab8e9188c0c531',
+        assetIn: {
+          type: 'erc20',
+          address: '0xb2089a7069861c8d90c8da3aacab8e9188c0c531',
+        },
         amountIn: 1987151334450n,
-        assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        assetOut: {
+          type: 'erc20',
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         amountOut: 55589057873471949n,
         block: {
           hash: '0x2ba2cb87946f4700af442d62d8eea00940c6e5a14e33c74f00d8a5287bc94272',
@@ -911,9 +1073,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
         to: '0x7f46c12a7ac8343d11652fffdaed411d2d427eb0',
-        assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        assetIn: {
+          type: 'erc20',
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         amountIn: 50662506837650511n,
-        assetOut: '0xb2089a7069861c8d90c8da3aacab8e9188c0c531',
+        assetOut: {
+          type: 'erc20',
+          address: '0xb2089a7069861c8d90c8da3aacab8e9188c0c531',
+        },
         amountOut: 1987151334450n,
         block: {
           hash: '0x2ba2cb87946f4700af442d62d8eea00940c6e5a14e33c74f00d8a5287bc94272',
@@ -943,9 +1111,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
         to: '0x5399a36f54ca91a5db5c148eeb2b909bba81b82c',
-        assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        assetIn: {
+          type: 'erc20',
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         amountIn: 236177765391862272n,
-        assetOut: '0x630d98424efe0ea27fb1b3ab7741907dffeaad78',
+        assetOut: {
+          type: 'erc20',
+          address: '0x630d98424efe0ea27fb1b3ab7741907dffeaad78',
+        },
         amountOut: 1370607005377n,
         block: {
           hash: '0x2ba2cb87946f4700af442d62d8eea00940c6e5a14e33c74f00d8a5287bc94272',
@@ -975,9 +1149,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
         to: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
-        assetIn: '0x630d98424efe0ea27fb1b3ab7741907dffeaad78',
+        assetIn: {
+          type: 'erc20',
+          address: '0x630d98424efe0ea27fb1b3ab7741907dffeaad78',
+        },
         amountIn: 1370607005377n,
-        assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        assetOut: {
+          type: 'erc20',
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         amountOut: 240392410078442798n,
         block: {
           hash: '0x2ba2cb87946f4700af442d62d8eea00940c6e5a14e33c74f00d8a5287bc94272',
@@ -1002,7 +1182,10 @@ describe('MEV: arbitrage', () => {
         swaps: [swaps[1], swaps[0]],
         profit: {
           amount: 4926551035821438n,
-          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          asset: {
+            type: 'erc20',
+            address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          },
         },
         arbitrager: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
       },
@@ -1010,7 +1193,10 @@ describe('MEV: arbitrage', () => {
         swaps: [swaps[2], swaps[3]],
         profit: {
           amount: 4214644686580526n,
-          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          asset: {
+            type: 'erc20',
+            address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          },
         },
         arbitrager: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
       },
@@ -1032,9 +1218,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
         to: '0x1374042f78fb0fc78658b17c053678940c008543',
-        assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        assetIn: {
+          type: 'erc20',
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         amountIn: 414065221269164835n,
-        assetOut: '0x1fe24f25b1cf609b9c4e7e12d802e3640dfa5e43',
+        assetOut: {
+          type: 'erc20',
+          address: '0x1fe24f25b1cf609b9c4e7e12d802e3640dfa5e43',
+        },
         amountOut: 4834125186588659431531n,
         block: {
           hash: '0x2ba2cb87946f4700af442d62d8eea00940c6e5a14e33c74f00d8a5287bc94272',
@@ -1064,9 +1256,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
         to: '0x60594a405d53811d3bc4766596efd80fd545a270',
-        assetIn: '0x1fe24f25b1cf609b9c4e7e12d802e3640dfa5e43',
+        assetIn: {
+          type: 'erc20',
+          address: '0x1fe24f25b1cf609b9c4e7e12d802e3640dfa5e43',
+        },
         amountIn: 4834120317098111321210n,
-        assetOut: '0x6b175474e89094c44da98b954eedeac495271d0f',
+        assetOut: {
+          type: 'erc20',
+          address: '0x6b175474e89094c44da98b954eedeac495271d0f',
+        },
         amountOut: 1191073880145115762817n,
         block: {
           hash: '0x2ba2cb87946f4700af442d62d8eea00940c6e5a14e33c74f00d8a5287bc94272',
@@ -1096,9 +1294,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
         to: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
-        assetIn: '0x6b175474e89094c44da98b954eedeac495271d0f',
+        assetIn: {
+          type: 'erc20',
+          address: '0x6b175474e89094c44da98b954eedeac495271d0f',
+        },
         amountIn: 1191072689011330014562n,
-        assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        assetOut: {
+          type: 'erc20',
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         amountOut: 421189973521534385n,
         block: {
           hash: '0x2ba2cb87946f4700af442d62d8eea00940c6e5a14e33c74f00d8a5287bc94272',
@@ -1123,7 +1327,10 @@ describe('MEV: arbitrage', () => {
         swaps,
         profit: {
           amount: 7124752252369550n,
-          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          asset: {
+            type: 'erc20',
+            address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          },
         },
         arbitrager: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
       },
@@ -1145,9 +1352,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0xeef86c2e49e11345f1a693675df9a38f7d880c8f',
         to: '0x8fe536c7dc019455cce34746755c64bbe2aa163b',
-        assetIn: '0x853d955acef822db058eb8505911ed77f175b99e',
+        assetIn: {
+          type: 'erc20',
+          address: '0x853d955acef822db058eb8505911ed77f175b99e',
+        },
         amountIn: 8570113295352525635508n,
-        assetOut: '0xc2544a32872a91f4a553b404c6950e89de901fdb',
+        assetOut: {
+          type: 'erc20',
+          address: '0xc2544a32872a91f4a553b404c6950e89de901fdb',
+        },
         amountOut: 1482727342492416365490n,
         block: {
           hash: '0x1942042bd0cc1d24530856b513b17cfba954db2ddf81db5b377806fa77a2ea80',
@@ -1177,9 +1390,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0xeef86c2e49e11345f1a693675df9a38f7d880c8f',
         to: '0x25be6ce04a504d4bcecb6ba7f5967f7aae6af579',
-        assetIn: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        assetIn: {
+          type: 'erc20',
+          address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        },
         amountIn: 8570994710n,
-        assetOut: '0x853d955acef822db058eb8505911ed77f175b99e',
+        assetOut: {
+          type: 'erc20',
+          address: '0x853d955acef822db058eb8505911ed77f175b99e',
+        },
         amountOut: 8570113295352525635508n,
         block: {
           hash: '0x1942042bd0cc1d24530856b513b17cfba954db2ddf81db5b377806fa77a2ea80',
@@ -1209,9 +1428,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0xeef86c2e49e11345f1a693675df9a38f7d880c8f',
         to: '0xc63b0708e2f7e69cb8a1df0e1389a98c35a76d52',
-        assetIn: '0xc2544a32872a91f4a553b404c6950e89de901fdb',
+        assetIn: {
+          type: 'erc20',
+          address: '0xc2544a32872a91f4a553b404c6950e89de901fdb',
+        },
         amountIn: 1482727342492416365490n,
-        assetOut: '0x853d955acef822db058eb8505911ed77f175b99e',
+        assetOut: {
+          type: 'erc20',
+          address: '0x853d955acef822db058eb8505911ed77f175b99e',
+        },
         amountOut: 8673476107028977732054n,
         block: {
           hash: '0x1942042bd0cc1d24530856b513b17cfba954db2ddf81db5b377806fa77a2ea80',
@@ -1241,9 +1466,15 @@ describe('MEV: arbitrage', () => {
         },
         from: '0xeef86c2e49e11345f1a693675df9a38f7d880c8f',
         to: '0xeef86c2e49e11345f1a693675df9a38f7d880c8f',
-        assetIn: '0x853d955acef822db058eb8505911ed77f175b99e',
+        assetIn: {
+          type: 'erc20',
+          address: '0x853d955acef822db058eb8505911ed77f175b99e',
+        },
         amountIn: 8673475239681367029156n,
-        assetOut: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        assetOut: {
+          type: 'erc20',
+          address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        },
         amountOut: 8667791350n,
         block: {
           hash: '0x1942042bd0cc1d24530856b513b17cfba954db2ddf81db5b377806fa77a2ea80',
@@ -1269,7 +1500,10 @@ describe('MEV: arbitrage', () => {
         swaps: [swaps[1], swaps[0], swaps[2], swaps[3]],
         profit: {
           amount: 96796640n,
-          asset: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+          asset: {
+            type: 'erc20',
+            address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+          },
         },
         arbitrager: '0xeef86c2e49e11345f1a693675df9a38f7d880c8f',
       },

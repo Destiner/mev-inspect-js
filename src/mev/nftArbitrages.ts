@@ -1,9 +1,9 @@
-import { Asset, NftSwap } from '../classifier/index.js';
+import { Asset, Erc20Asset, NftSwap } from '../classifier/index.js';
 
 interface NftArbitrage {
   swaps: NftSwap[];
   profit: {
-    asset: string;
+    asset: Erc20Asset;
     amount: bigint;
   };
   arbitrager: string;
@@ -50,7 +50,7 @@ function getTransactionArbitrages(swaps: NftSwap[]): NftArbitrage[] {
         swaps: route,
         profit: {
           amount: profitAmount,
-          asset: profitAsset.address,
+          asset: profitAsset,
         },
         arbitrager,
       };

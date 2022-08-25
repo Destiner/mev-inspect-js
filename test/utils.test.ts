@@ -28,9 +28,15 @@ describe('Utilities', () => {
             },
             from: '0x0000000000005117dd3a72e64a705198753fdd54',
             to: '0x0000000000005117dd3a72e64a705198753fdd54',
-            assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+            assetIn: {
+              type: 'erc20',
+              address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+            },
             amountIn: 238841017533640100000n,
-            assetOut: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+            assetOut: {
+              type: 'erc20',
+              address: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+            },
             amountOut: 1750639111n,
             block: {
               hash: '0xef740f61a6a8a0d45114d57a9e9b9d5f4de852b9026b6c5b4d8cc18815819d00',
@@ -60,9 +66,15 @@ describe('Utilities', () => {
             },
             from: '0x0000000000005117dd3a72e64a705198753fdd54',
             to: '0x0000000000005117dd3a72e64a705198753fdd54',
-            assetIn: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+            assetIn: {
+              type: 'erc20',
+              address: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+            },
             amountIn: 1750639111n,
-            assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+            assetOut: {
+              type: 'erc20',
+              address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+            },
             amountOut: 239024634916096132545n,
             block: {
               hash: '0xef740f61a6a8a0d45114d57a9e9b9d5f4de852b9026b6c5b4d8cc18815819d00',
@@ -82,7 +94,10 @@ describe('Utilities', () => {
         ],
         profit: {
           amount: 183617382456032545n,
-          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          asset: {
+            type: 'erc20',
+            address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          },
         },
         arbitrager: '0x0000000000005117dd3a72e64a705198753fdd54',
       },
@@ -101,9 +116,15 @@ describe('Utilities', () => {
             },
             from: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
             to: '0xee51984781254ad1a0ee3ae0ca26c4d53dea6ecb',
-            assetIn: '0x6b175474e89094c44da98b954eedeac495271d0f',
+            assetIn: {
+              type: 'erc20',
+              address: '0x6b175474e89094c44da98b954eedeac495271d0f',
+            },
             amountIn: 244490660460949241856n,
-            assetOut: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+            assetOut: {
+              type: 'erc20',
+              address: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+            },
             amountOut: 634888n,
             block: {
               hash: '0x0b598c9b3121baecd1db3ece3ff690bb1c91c8c46f9298517f58b6aaec982a8f',
@@ -133,9 +154,15 @@ describe('Utilities', () => {
             },
             from: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
             to: '0xf3933a6a82fba8a349a7124c8d8226d7c4d7b6cb',
-            assetIn: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+            assetIn: {
+              type: 'erc20',
+              address: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+            },
             amountIn: 634888n,
-            assetOut: '0x697ef32b4a3f5a4c39de1cb7563f24ca7bfc5947',
+            assetOut: {
+              type: 'erc20',
+              address: '0x697ef32b4a3f5a4c39de1cb7563f24ca7bfc5947',
+            },
             amountOut: 1275909030322046339158n,
             block: {
               hash: '0x0b598c9b3121baecd1db3ece3ff690bb1c91c8c46f9298517f58b6aaec982a8f',
@@ -165,9 +192,15 @@ describe('Utilities', () => {
             },
             from: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
             to: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
-            assetIn: '0x697ef32b4a3f5a4c39de1cb7563f24ca7bfc5947',
+            assetIn: {
+              type: 'erc20',
+              address: '0x697ef32b4a3f5a4c39de1cb7563f24ca7bfc5947',
+            },
             amountIn: 1275909030322046339158n,
-            assetOut: '0x6b175474e89094c44da98b954eedeac495271d0f',
+            assetOut: {
+              type: 'erc20',
+              address: '0x6b175474e89094c44da98b954eedeac495271d0f',
+            },
             amountOut: 263265751127846220157n,
             block: {
               hash: '0x0b598c9b3121baecd1db3ece3ff690bb1c91c8c46f9298517f58b6aaec982a8f',
@@ -187,7 +220,10 @@ describe('Utilities', () => {
         ],
         profit: {
           amount: 18775090666896978301n,
-          asset: '0x6b175474e89094c44da98b954eedeac495271d0f',
+          asset: {
+            type: 'erc20',
+            address: '0x6b175474e89094c44da98b954eedeac495271d0f',
+          },
         },
         arbitrager: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
       },
@@ -229,7 +265,10 @@ describe('Utilities', () => {
           },
           payer: '0xb5c7ad3cb6506c65da01f2fac2e667dcb9e66e9c',
           borrower: '0xf7f6192e35d15a153105d4476a1b4d59ec2014dd',
-          asset: '0x8e870d67f660d95d5be530380d0ec0bd388289e1',
+          asset: {
+            type: 'erc20',
+            address: '0x8e870d67f660d95d5be530380d0ec0bd388289e1',
+          },
           amount: 1257619793546196402568n,
         },
         seizure: {
@@ -258,17 +297,26 @@ describe('Utilities', () => {
           },
           seizor: '0xb5c7ad3cb6506c65da01f2fac2e667dcb9e66e9c',
           borrower: '0xf7f6192e35d15a153105d4476a1b4d59ec2014dd',
-          asset: '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
+          asset: {
+            type: 'erc20',
+            address: '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
+          },
           amount: 3402851288n,
         },
         liquidator: '0xb5c7ad3cb6506c65da01f2fac2e667dcb9e66e9c',
         borrower: '0xf7f6192e35d15a153105d4476a1b4d59ec2014dd',
         collateral: {
-          asset: '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
+          asset: {
+            type: 'erc20',
+            address: '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
+          },
           amount: 3402851288n,
         },
         debt: {
-          asset: '0x8e870d67f660d95d5be530380d0ec0bd388289e1',
+          asset: {
+            type: 'erc20',
+            address: '0x8e870d67f660d95d5be530380d0ec0bd388289e1',
+          },
           amount: 1257619793546196402568n,
         },
       },
@@ -299,7 +347,10 @@ describe('Utilities', () => {
           },
           payer: '0xd911560979b78821d7b045c79e36e9cbfc2f6c6f',
           borrower: '0xa8556b50ab7781eeccf647eec1c0bf3bf9e5b3ad',
-          asset: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+          asset: {
+            type: 'erc20',
+            address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+          },
           amount: 631587280n,
         },
         seizure: {
@@ -328,17 +379,26 @@ describe('Utilities', () => {
           },
           seizor: '0xd911560979b78821d7b045c79e36e9cbfc2f6c6f',
           borrower: '0xa8556b50ab7781eeccf647eec1c0bf3bf9e5b3ad',
-          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          asset: {
+            type: 'erc20',
+            address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          },
           amount: 344839185141066670n,
         },
         liquidator: '0xd911560979b78821d7b045c79e36e9cbfc2f6c6f',
         borrower: '0xa8556b50ab7781eeccf647eec1c0bf3bf9e5b3ad',
         collateral: {
-          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          asset: {
+            type: 'erc20',
+            address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          },
           amount: 344839185141066670n,
         },
         debt: {
-          asset: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+          asset: {
+            type: 'erc20',
+            address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+          },
           amount: 631587280n,
         },
       },
@@ -380,7 +440,10 @@ describe('Utilities', () => {
           },
           payer: '0xb5c7ad3cb6506c65da01f2fac2e667dcb9e66e9c',
           borrower: '0xf7f6192e35d15a153105d4476a1b4d59ec2014dd',
-          asset: '0x8e870d67f660d95d5be530380d0ec0bd388289e1',
+          asset: {
+            type: 'erc20',
+            address: '0x8e870d67f660d95d5be530380d0ec0bd388289e1',
+          },
           amount: 1257619793546196402568n,
         },
         seizure: {
@@ -409,17 +472,26 @@ describe('Utilities', () => {
           },
           seizor: '0xb5c7ad3cb6506c65da01f2fac2e667dcb9e66e9c',
           borrower: '0xf7f6192e35d15a153105d4476a1b4d59ec2014dd',
-          asset: '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
+          asset: {
+            type: 'erc20',
+            address: '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
+          },
           amount: 3402851288n,
         },
         liquidator: '0xb5c7ad3cb6506c65da01f2fac2e667dcb9e66e9c',
         borrower: '0xf7f6192e35d15a153105d4476a1b4d59ec2014dd',
         collateral: {
-          asset: '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
+          asset: {
+            type: 'erc20',
+            address: '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
+          },
           amount: 3402851288n,
         },
         debt: {
-          asset: '0x8e870d67f660d95d5be530380d0ec0bd388289e1',
+          asset: {
+            type: 'erc20',
+            address: '0x8e870d67f660d95d5be530380d0ec0bd388289e1',
+          },
           amount: 1257619793546196402568n,
         },
       },
@@ -450,7 +522,10 @@ describe('Utilities', () => {
           },
           payer: '0xd911560979b78821d7b045c79e36e9cbfc2f6c6f',
           borrower: '0xa8556b50ab7781eeccf647eec1c0bf3bf9e5b3ad',
-          asset: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+          asset: {
+            type: 'erc20',
+            address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+          },
           amount: 631587280n,
         },
         seizure: {
@@ -479,17 +554,26 @@ describe('Utilities', () => {
           },
           seizor: '0xd911560979b78821d7b045c79e36e9cbfc2f6c6f',
           borrower: '0xa8556b50ab7781eeccf647eec1c0bf3bf9e5b3ad',
-          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          asset: {
+            type: 'erc20',
+            address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          },
           amount: 344839185141066670n,
         },
         liquidator: '0xd911560979b78821d7b045c79e36e9cbfc2f6c6f',
         borrower: '0xa8556b50ab7781eeccf647eec1c0bf3bf9e5b3ad',
         collateral: {
-          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          asset: {
+            type: 'erc20',
+            address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          },
           amount: 344839185141066670n,
         },
         debt: {
-          asset: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+          asset: {
+            type: 'erc20',
+            address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+          },
           amount: 631587280n,
         },
       },
@@ -519,9 +603,15 @@ describe('Utilities', () => {
             },
             from: '0x0000000000005117dd3a72e64a705198753fdd54',
             to: '0x0000000000005117dd3a72e64a705198753fdd54',
-            assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+            assetIn: {
+              type: 'erc20',
+              address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+            },
             amountIn: 238841017533640100000n,
-            assetOut: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+            assetOut: {
+              type: 'erc20',
+              address: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+            },
             amountOut: 1750639111n,
             block: {
               hash: '0xef740f61a6a8a0d45114d57a9e9b9d5f4de852b9026b6c5b4d8cc18815819d00',
@@ -551,9 +641,15 @@ describe('Utilities', () => {
             },
             from: '0x0000000000005117dd3a72e64a705198753fdd54',
             to: '0x0000000000005117dd3a72e64a705198753fdd54',
-            assetIn: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+            assetIn: {
+              type: 'erc20',
+              address: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+            },
             amountIn: 1750639111n,
-            assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+            assetOut: {
+              type: 'erc20',
+              address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+            },
             amountOut: 239024634916096132545n,
             block: {
               hash: '0xef740f61a6a8a0d45114d57a9e9b9d5f4de852b9026b6c5b4d8cc18815819d00',
@@ -573,7 +669,10 @@ describe('Utilities', () => {
         ],
         profit: {
           amount: 183617382456032545n,
-          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          asset: {
+            type: 'erc20',
+            address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          },
         },
         arbitrager: '0x0000000000005117dd3a72e64a705198753fdd54',
       },
@@ -592,9 +691,15 @@ describe('Utilities', () => {
             },
             from: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
             to: '0xee51984781254ad1a0ee3ae0ca26c4d53dea6ecb',
-            assetIn: '0x6b175474e89094c44da98b954eedeac495271d0f',
+            assetIn: {
+              type: 'erc20',
+              address: '0x6b175474e89094c44da98b954eedeac495271d0f',
+            },
             amountIn: 244490660460949241856n,
-            assetOut: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+            assetOut: {
+              type: 'erc20',
+              address: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+            },
             amountOut: 634888n,
             block: {
               hash: '0x0b598c9b3121baecd1db3ece3ff690bb1c91c8c46f9298517f58b6aaec982a8f',
@@ -624,9 +729,15 @@ describe('Utilities', () => {
             },
             from: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
             to: '0xf3933a6a82fba8a349a7124c8d8226d7c4d7b6cb',
-            assetIn: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+            assetIn: {
+              type: 'erc20',
+              address: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+            },
             amountIn: 634888n,
-            assetOut: '0x697ef32b4a3f5a4c39de1cb7563f24ca7bfc5947',
+            assetOut: {
+              type: 'erc20',
+              address: '0x697ef32b4a3f5a4c39de1cb7563f24ca7bfc5947',
+            },
             amountOut: 1275909030322046339158n,
             block: {
               hash: '0x0b598c9b3121baecd1db3ece3ff690bb1c91c8c46f9298517f58b6aaec982a8f',
@@ -656,9 +767,15 @@ describe('Utilities', () => {
             },
             from: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
             to: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
-            assetIn: '0x697ef32b4a3f5a4c39de1cb7563f24ca7bfc5947',
+            assetIn: {
+              type: 'erc20',
+              address: '0x697ef32b4a3f5a4c39de1cb7563f24ca7bfc5947',
+            },
             amountIn: 1275909030322046339158n,
-            assetOut: '0x6b175474e89094c44da98b954eedeac495271d0f',
+            assetOut: {
+              type: 'erc20',
+              address: '0x6b175474e89094c44da98b954eedeac495271d0f',
+            },
             amountOut: 263265751127846220157n,
             block: {
               hash: '0x0b598c9b3121baecd1db3ece3ff690bb1c91c8c46f9298517f58b6aaec982a8f',
@@ -678,7 +795,10 @@ describe('Utilities', () => {
         ],
         profit: {
           amount: 18775090666896978301n,
-          asset: '0x6b175474e89094c44da98b954eedeac495271d0f',
+          asset: {
+            type: 'erc20',
+            address: '0x6b175474e89094c44da98b954eedeac495271d0f',
+          },
         },
         arbitrager: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
       },

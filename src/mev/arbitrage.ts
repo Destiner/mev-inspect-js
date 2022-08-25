@@ -1,10 +1,10 @@
-import { Swap } from '../classifier/index.js';
+import { Erc20Asset, Swap } from '../classifier/index.js';
 import { equalWithTolerance } from '../utils.js';
 
 interface Arbitrage {
   swaps: Swap[];
   profit: {
-    asset: string;
+    asset: Erc20Asset;
     amount: bigint;
   };
   arbitrager: string;
@@ -141,7 +141,8 @@ function getStartEndSwaps(swaps: Swap[]): [Swap, Swap[]][] {
 
     for (const potentialEndSwap of remainingSwaps) {
       if (
-        potentialStartSwap.assetIn === potentialEndSwap.assetOut &&
+        potentialStartSwap.assetIn.address ===
+          potentialEndSwap.assetOut.address &&
         potentialStartSwap.from === potentialEndSwap.to &&
         !pools.includes(potentialStartSwap.from)
       ) {
@@ -159,7 +160,7 @@ function getStartEndSwaps(swaps: Swap[]): [Swap, Swap[]][] {
 
 function swapOutsMatchSwapIns(swapOut: Swap, swapIn: Swap): boolean {
   return (
-    swapOut.assetOut === swapIn.assetIn &&
+    swapOut.assetOut.address === swapIn.assetIn.address &&
     (swapOut.contract.address == swapIn.from ||
       swapOut.to == swapIn.contract.address ||
       swapOut.to == swapIn.from) &&

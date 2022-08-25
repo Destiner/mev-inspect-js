@@ -98,9 +98,15 @@ describe('Classfiers: Uniswap V2', () => {
       },
       from: '0xef3375b491cff653eaf7c9955a5466f7ea06f37b',
       to: '0xef3375b491cff653eaf7c9955a5466f7ea06f37b',
-      assetIn: '0xc7283b66eb1eb5fb86327f08e1b5816b0720212b',
+      assetIn: {
+        type: 'erc20',
+        address: '0xc7283b66eb1eb5fb86327f08e1b5816b0720212b',
+      },
       amountIn: 76382000000000000000000n,
-      assetOut: '0x956f47f50a910163d8bf957cf5846d573e7f87ca',
+      assetOut: {
+        type: 'erc20',
+        address: '0x956f47f50a910163d8bf957cf5846d573e7f87ca',
+      },
       amountOut: 29934139188201577438792n,
       block: {
         hash: '0xed0883b6e3f80ff2f8263bbeb17717805ae54297dabc998da8384384f9f29fc5',
@@ -208,9 +214,15 @@ describe('Classfiers: Uniswap V2', () => {
       },
       from: '0x6ba6c53c8757c99adc983e84ce7e87f240bf7531',
       to: '0x7a250d5630b4cf539739df2c5dacb4c659f2488d',
-      assetIn: '0xd46ba6d942050d489dbd938a2c909a5d5039a161',
+      assetIn: {
+        type: 'erc20',
+        address: '0xd46ba6d942050d489dbd938a2c909a5d5039a161',
+      },
       amountIn: 793000000000n,
-      assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      assetOut: {
+        type: 'erc20',
+        address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      },
       amountOut: 361056661812569468n,
       block: {
         hash: '0xed0883b6e3f80ff2f8263bbeb17717805ae54297dabc998da8384384f9f29fc5',
@@ -400,9 +412,15 @@ describe('Classfiers: Uniswap V2', () => {
       },
       from: '0x044727e50ff30db57fad06ff4f5846eab5ea52a2',
       to: '0x7a250d5630b4cf539739df2c5dacb4c659f2488d',
-      assetIn: '0x044727e50ff30db57fad06ff4f5846eab5ea52a2',
+      assetIn: {
+        type: 'erc20',
+        address: '0x044727e50ff30db57fad06ff4f5846eab5ea52a2',
+      },
       amountIn: 100000000000000000n,
-      assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      assetOut: {
+        type: 'erc20',
+        address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      },
       amountOut: 364189303982833736n,
       block: {
         hash: '0x862075e92411e281ceb88f12ce97422482fba3f4f9821441f8769332e35c3260',
@@ -433,9 +451,15 @@ describe('Classfiers: Uniswap V2', () => {
       },
       from: '0x328ee1e1cb2af17ae0f8c05ceeb06ba8548dcb5a',
       to: '0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45',
-      assetIn: '0x044727e50ff30db57fad06ff4f5846eab5ea52a2',
+      assetIn: {
+        type: 'erc20',
+        address: '0x044727e50ff30db57fad06ff4f5846eab5ea52a2',
+      },
       amountIn: 45114259892886817n,
-      assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      assetOut: {
+        type: 'erc20',
+        address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      },
       amountOut: 163735299645864923n,
       block: {
         hash: '0x862075e92411e281ceb88f12ce97422482fba3f4f9821441f8769332e35c3260',
@@ -597,9 +621,15 @@ describe('Classfiers: Uniswap V2', () => {
       },
       from: '0x416d1a4f718a8c3dda7fc3645435580e743d9249',
       to: '0xce84867c3c02b05dc570d0135103d3fb9cc19433',
-      assetIn: '0x514910771af9ca656af840dff83e8264ecf986ca',
+      assetIn: {
+        type: 'erc20',
+        address: '0x514910771af9ca656af840dff83e8264ecf986ca',
+      },
       amountIn: 2918704295536500000n,
-      assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      assetOut: {
+        type: 'erc20',
+        address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      },
       amountOut: 11499148166696888n,
       block: {
         hash: '0x693c6ec11898b2b82cd1c964e7dced504447b0e82da2e76ce4b3d29de6f655fe',
@@ -629,9 +659,15 @@ describe('Classfiers: Uniswap V2', () => {
       },
       from: '0xa2107fa5b38d9bbd2c461d6edf11b11a50f6b974',
       to: '0x416d1a4f718a8c3dda7fc3645435580e743d9249',
-      assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      assetIn: {
+        type: 'erc20',
+        address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      },
       amountIn: 11499148166696888n,
-      assetOut: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
+      assetOut: {
+        type: 'erc20',
+        address: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
+      },
       amountOut: 13787057162799104322n,
       block: {
         hash: '0x693c6ec11898b2b82cd1c964e7dced504447b0e82da2e76ce4b3d29de6f655fe',
@@ -845,9 +881,15 @@ describe('Classfiers: Uniswap V2', () => {
       },
       from: '0x731ea79a1b2b90683507da2aab498bd8ff8f7ff1',
       to: '0x6137a55b535b98e26c5ca5c9cb329022bf1b9318',
-      assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      assetIn: {
+        type: 'erc20',
+        address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      },
       amountIn: 396025622087811072n,
-      assetOut: '0xb31ef9e52d94d4120eb44fe1ddfde5b4654a6515',
+      assetOut: {
+        type: 'erc20',
+        address: '0xb31ef9e52d94d4120eb44fe1ddfde5b4654a6515',
+      },
       amountOut: 9203736012517381854992n,
       block: {
         hash: '0x297a3329b58600a2e192297a9b1dee94fbecbe80df2a141694ea3cbcc6ad19fe',
@@ -877,9 +919,15 @@ describe('Classfiers: Uniswap V2', () => {
       },
       from: '0xe2e998f6f498cf9acdeda38de77ca95d1d8288f6',
       to: '0x0d80f8a039cc61b659ff299bb132de271c757325',
-      assetIn: '0xb31ef9e52d94d4120eb44fe1ddfde5b4654a6515',
+      assetIn: {
+        type: 'erc20',
+        address: '0xb31ef9e52d94d4120eb44fe1ddfde5b4654a6515',
+      },
       amountIn: 9203736012517381854992n,
-      assetOut: '0x46e98ffe40e408ba6412beb670507e083c8b95ff',
+      assetOut: {
+        type: 'erc20',
+        address: '0x46e98ffe40e408ba6412beb670507e083c8b95ff',
+      },
       amountOut: 9810940048285013383131n,
       block: {
         hash: '0x297a3329b58600a2e192297a9b1dee94fbecbe80df2a141694ea3cbcc6ad19fe',
@@ -909,9 +957,15 @@ describe('Classfiers: Uniswap V2', () => {
       },
       from: '0x6137a55b535b98e26c5ca5c9cb329022bf1b9318',
       to: '0x731ea79a1b2b90683507da2aab498bd8ff8f7ff1',
-      assetIn: '0x46e98ffe40e408ba6412beb670507e083c8b95ff',
+      assetIn: {
+        type: 'erc20',
+        address: '0x46e98ffe40e408ba6412beb670507e083c8b95ff',
+      },
       amountIn: 9810940048285013383131n,
-      assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      assetOut: {
+        type: 'erc20',
+        address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      },
       amountOut: 402011216481376330n,
       block: {
         hash: '0x297a3329b58600a2e192297a9b1dee94fbecbe80df2a141694ea3cbcc6ad19fe',
@@ -1040,9 +1094,15 @@ describe('Classfiers: Uniswap V2', () => {
       },
       from: '0x9e0905249ceefffb9605e034b534544684a58be6',
       to: '0x5aa3393e361c2eb342408559309b3e873cd876d6',
-      assetIn: '0x2b591e99afe9f32eaa6214f7b7629768c40eeb39',
+      assetIn: {
+        type: 'erc20',
+        address: '0x2b591e99afe9f32eaa6214f7b7629768c40eeb39',
+      },
       amountIn: 4426537110163n,
-      assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      assetOut: {
+        type: 'erc20',
+        address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      },
       amountOut: 2767561675144940562n,
       block: {
         hash: '0x699c148c52b18879a1bd5cf0e64e8e1c2dfad478a6bce1f576a75144b48b30e7',

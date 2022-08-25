@@ -87,7 +87,10 @@ function parseRepayment(market: Market, event: ClassifiedEvent): Repayment {
     },
     payer,
     borrower,
-    asset,
+    asset: {
+      type: 'erc20',
+      address: asset,
+    },
     amount,
   };
 }
@@ -132,7 +135,10 @@ function parseSeizure(market: Market, event: ClassifiedEvent): Seizure {
     },
     seizor,
     borrower,
-    asset,
+    asset: {
+      type: 'erc20',
+      address: asset,
+    },
     amount,
   };
 }

@@ -98,9 +98,9 @@ interface Swap extends Base {
   };
   from: string;
   to: string;
-  assetIn: string;
+  assetIn: Erc20Asset;
   amountIn: bigint;
-  assetOut: string;
+  assetOut: Erc20Asset;
   amountOut: bigint;
   metadata: Record<string, unknown>;
 }
@@ -114,7 +114,7 @@ interface LiquidityDeposit extends Base {
     };
   };
   depositor: string;
-  assets: string[];
+  assets: Erc20Asset[];
   amounts: bigint[];
   metadata: Record<string, unknown>;
 }
@@ -128,7 +128,7 @@ interface LiquidityWithdrawal extends Base {
     };
   };
   withdrawer: string;
-  assets: string[];
+  assets: Erc20Asset[];
   amounts: bigint[];
   metadata: Record<string, unknown>;
 }
@@ -162,8 +162,8 @@ interface Repayment extends Base {
   };
   payer: string;
   borrower: string;
+  asset: Erc20Asset;
   amount: bigint;
-  asset: string;
 }
 
 interface Seizure extends Base {
@@ -179,7 +179,7 @@ interface Seizure extends Base {
   };
   seizor: string;
   borrower: string;
-  asset: string;
+  asset: Erc20Asset;
   amount: bigint;
 }
 
@@ -332,6 +332,7 @@ export {
   Base,
   Block,
   Classifier,
+  Erc20Asset,
   LendingProtocol,
   LiquidityDeposit,
   LiquidityWithdrawal,

@@ -181,10 +181,16 @@ describe('Classfiers: Balancer V2', () => {
       },
       from: '0x0000006daea1723962647b7e189d311d757fb793',
       to: '0x0000006daea1723962647b7e189d311d757fb793',
-      assetOut: '0xba100000625a3754423978a60c9317c58a424e3d',
-      amountOut: 3698791690807238453478n,
-      assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      assetIn: {
+        type: 'erc20',
+        address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      },
       amountIn: 17608500000000000000n,
+      assetOut: {
+        type: 'erc20',
+        address: '0xba100000625a3754423978a60c9317c58a424e3d',
+      },
+      amountOut: 3698791690807238453478n,
       metadata: {},
     });
   });
@@ -391,10 +397,16 @@ describe('Classfiers: Balancer V2', () => {
       },
       from: '0x45716d9eddbc332df1d42b9f540fbebed671b20f',
       to: '0x0d0d65e7a7db277d3e0f5e1676325e75f3340455',
-      assetOut: '0xa3bed4e1c75d00fa6f4e5e6922db7261b5e9acd2',
-      amountOut: 6329353631552147493643n,
-      assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      assetIn: {
+        type: 'erc20',
+        address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      },
       amountIn: 728566000000000000n,
+      assetOut: {
+        type: 'erc20',
+        address: '0xa3bed4e1c75d00fa6f4e5e6922db7261b5e9acd2',
+      },
+      amountOut: 6329353631552147493643n,
       metadata: {},
     });
   });
@@ -500,10 +512,16 @@ describe('Classfiers: Balancer V2', () => {
     }
     const swap = swapClassifier.parse(pool, event, transfers, allEvents);
     expect(swap).toEqual<Swap>({
+      assetIn: {
+        type: 'erc20',
+        address: '0x333a4823466879eef910a04d473505da62142069',
+      },
       amountIn: 2999965234102545687n,
+      assetOut: {
+        type: 'erc20',
+        address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      },
       amountOut: 2741671875097021985n,
-      assetIn: '0x333a4823466879eef910a04d473505da62142069',
-      assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       from: '0xed308a08b051da28d59606d9dd9a3dced7ad188c',
       to: '0xed308a08b051da28d59606d9dd9a3dced7ad188c',
       contract: {
@@ -634,10 +652,16 @@ describe('Classfiers: Balancer V2', () => {
     }
     const swap = swapClassifier.parse(pool, event, transfers, allEvents);
     expect(swap).toEqual<Swap>({
+      assetIn: {
+        type: 'erc20',
+        address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      },
       amountIn: 600000000000000000n,
+      assetOut: {
+        type: 'erc20',
+        address: '0xba100000625a3754423978a60c9317c58a424e3d',
+      },
       amountOut: 129942993539481086123n,
-      assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      assetOut: '0xba100000625a3754423978a60c9317c58a424e3d',
       from: '0x98bed949d4e5607a753185cfb7153b53e0c3c80a',
       to: '0x98bed949d4e5607a753185cfb7153b53e0c3c80a',
       contract: {
@@ -863,10 +887,16 @@ describe('Classfiers: Balancer V2', () => {
     const swapB = swapClassifier.parse(poolB, eventB, transfers, allEvents);
 
     expect(swapA).toEqual<Swap>({
+      assetIn: {
+        type: 'erc20',
+        address: '0xba100000625a3754423978a60c9317c58a424e3d',
+      },
       amountIn: 707320915873140540667n,
+      assetOut: {
+        type: 'erc20',
+        address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      },
       amountOut: 3182646897577764252n,
-      assetIn: '0xba100000625a3754423978a60c9317c58a424e3d',
-      assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       from: '0x20eadfcaf91bd98674ff8fc341d148e1731576a4',
       to: '0xba12222222228d8ba445958a75a0704d566bf2c8',
       contract: {
@@ -895,10 +925,16 @@ describe('Classfiers: Balancer V2', () => {
       metadata: {},
     });
     expect(swapB).toEqual<Swap>({
+      assetIn: {
+        type: 'erc20',
+        address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      },
       amountIn: 3182646897577764252n,
+      assetOut: {
+        type: 'erc20',
+        address: '0x6b175474e89094c44da98b954eedeac495271d0f',
+      },
       amountOut: 8969838903747320318121n,
-      assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      assetOut: '0x6b175474e89094c44da98b954eedeac495271d0f',
       from: '0xba12222222228d8ba445958a75a0704d566bf2c8',
       to: '0x20eadfcaf91bd98674ff8fc341d148e1731576a4',
       contract: {
@@ -1087,10 +1123,16 @@ describe('Classfiers: Balancer V2', () => {
     const swapB = swapClassifier.parse(poolB, eventB, transfers, allEvents);
 
     expect(swapA).toEqual<Swap>({
+      assetIn: {
+        type: 'erc20',
+        address: '0x90b831fa3bebf58e9744a14d638e25b4ee06f9bc',
+      },
       amountIn: 5555555555555556000000n,
+      assetOut: {
+        type: 'erc20',
+        address: '0x68037790a0229e9ce6eaa8a99ea92964106c4703',
+      },
       amountOut: 299405020376757441274n,
-      assetIn: '0x90b831fa3bebf58e9744a14d638e25b4ee06f9bc',
-      assetOut: '0x68037790a0229e9ce6eaa8a99ea92964106c4703',
       from: '0x0b8f77dcedbb7d6cee0905b0ebc4af6d50b4a07d',
       to: '0xba12222222228d8ba445958a75a0704d566bf2c8',
       contract: {
@@ -1119,10 +1161,16 @@ describe('Classfiers: Balancer V2', () => {
       metadata: {},
     });
     expect(swapB).toEqual<Swap>({
+      assetIn: {
+        type: 'erc20',
+        address: '0x68037790a0229e9ce6eaa8a99ea92964106c4703',
+      },
       amountIn: 299405020376757441274n,
+      assetOut: {
+        type: 'erc20',
+        address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      },
       amountOut: 110769549730538937n,
-      assetIn: '0x68037790a0229e9ce6eaa8a99ea92964106c4703',
-      assetOut: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       from: '0xba12222222228d8ba445958a75a0704d566bf2c8',
       to: '0x0b8f77dcedbb7d6cee0905b0ebc4af6d50b4a07d',
       contract: {
@@ -1350,10 +1398,16 @@ describe('Classfiers: Balancer V2', () => {
     const swap = swapClassifier.parse(pool, event, transfers, allEvents);
 
     expect(swap).toEqual<Swap>({
+      assetIn: {
+        type: 'erc20',
+        address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      },
       amountIn: 7355372670797717877n,
+      assetOut: {
+        type: 'erc20',
+        address: '0x6b175474e89094c44da98b954eedeac495271d0f',
+      },
       amountOut: 14352793511021426617821n,
-      assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      assetOut: '0x6b175474e89094c44da98b954eedeac495271d0f',
       from: '0x0000e0ca771e21bd00057f54a68c30d400000000',
       to: '0xa478c2975ab1ea89e8196811f51a7b7ade33eb11',
       contract: {
@@ -1618,10 +1672,16 @@ describe('Classfiers: Balancer V2', () => {
     const swap = swapClassifier.parse(pool, event, transfers, allEvents);
 
     expect(swap).toEqual<Swap>({
+      assetIn: {
+        type: 'erc20',
+        address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      },
       amountIn: 4449336536062977526n,
+      assetOut: {
+        type: 'erc20',
+        address: '0x6b175474e89094c44da98b954eedeac495271d0f',
+      },
       amountOut: 8761963574800069056410n,
-      assetIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      assetOut: '0x6b175474e89094c44da98b954eedeac495271d0f',
       from: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
       to: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
       contract: {
@@ -1922,10 +1982,16 @@ describe('Classfiers: Balancer V2', () => {
     const swapD = swapClassifier.parse(poolD, eventD, transfers, allEvents);
 
     expect(swapA).toEqual<Swap>({
+      assetIn: {
+        type: 'erc20',
+        address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+      },
       amountIn: 570000000000n,
+      assetOut: {
+        type: 'erc20',
+        address: '0xdac17f958d2ee523a2206206994597c13d831ec7',
+      },
       amountOut: 572002212483n,
-      assetIn: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
-      assetOut: '0xdac17f958d2ee523a2206206994597c13d831ec7',
       from: '0xb0057edcd99b344a3b3738690e0792f8723a879a',
       to: '0xba12222222228d8ba445958a75a0704d566bf2c8',
       contract: {
@@ -1954,10 +2020,16 @@ describe('Classfiers: Balancer V2', () => {
       metadata: {},
     });
     expect(swapB).toEqual<Swap>({
+      assetIn: {
+        type: 'erc20',
+        address: '0xdac17f958d2ee523a2206206994597c13d831ec7',
+      },
       amountIn: 572002212483n,
+      assetOut: {
+        type: 'erc20',
+        address: '0x2bbf681cc4eb09218bee85ea2a5d3d13fa40fc0c',
+      },
       amountOut: 566414170229289246555042n,
-      assetIn: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      assetOut: '0x2bbf681cc4eb09218bee85ea2a5d3d13fa40fc0c',
       from: '0xba12222222228d8ba445958a75a0704d566bf2c8',
       to: '0xba12222222228d8ba445958a75a0704d566bf2c8',
       contract: {
@@ -1986,10 +2058,16 @@ describe('Classfiers: Balancer V2', () => {
       metadata: {},
     });
     expect(swapC).toEqual<Swap>({
+      assetIn: {
+        type: 'erc20',
+        address: '0x2bbf681cc4eb09218bee85ea2a5d3d13fa40fc0c',
+      },
       amountIn: 566414170229289246555042n,
+      assetOut: {
+        type: 'erc20',
+        address: '0x9210f1204b5a24742eba12f710636d76240df3d0',
+      },
       amountOut: 565458830552881067912288n,
-      assetIn: '0x2bbf681cc4eb09218bee85ea2a5d3d13fa40fc0c',
-      assetOut: '0x9210f1204b5a24742eba12f710636d76240df3d0',
       from: '0xba12222222228d8ba445958a75a0704d566bf2c8',
       to: '0xba12222222228d8ba445958a75a0704d566bf2c8',
       contract: {
@@ -2018,10 +2096,16 @@ describe('Classfiers: Balancer V2', () => {
       metadata: {},
     });
     expect(swapD).toEqual<Swap>({
+      assetIn: {
+        type: 'erc20',
+        address: '0x9210f1204b5a24742eba12f710636d76240df3d0',
+      },
       amountIn: 565458830552881067912288n,
+      assetOut: {
+        type: 'erc20',
+        address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+      },
       amountOut: 570210527750n,
-      assetIn: '0x9210f1204b5a24742eba12f710636d76240df3d0',
-      assetOut: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
       from: '0xba12222222228d8ba445958a75a0704d566bf2c8',
       to: '0xb0057edcd99b344a3b3738690e0792f8723a879a',
       contract: {
@@ -2214,9 +2298,18 @@ describe('Classfiers: Balancer V2', () => {
       },
       depositor: '0xa2815c834e7aa4ac010aec8b213b71e1f84de3e8',
       assets: [
-        '0x6b175474e89094c44da98b954eedeac495271d0f',
-        '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
-        '0xdac17f958d2ee523a2206206994597c13d831ec7',
+        {
+          type: 'erc20',
+          address: '0x6b175474e89094c44da98b954eedeac495271d0f',
+        },
+        {
+          type: 'erc20',
+          address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        },
+        {
+          type: 'erc20',
+          address: '0xdac17f958d2ee523a2206206994597c13d831ec7',
+        },
       ],
       amounts: [10735659260273910803893n, 0n, 0n],
       metadata: {},
@@ -2283,9 +2376,18 @@ describe('Classfiers: Balancer V2', () => {
       },
       depositor: '0x305e5d785eb274832a68745fda66a70b1ad2c635',
       assets: [
-        '0x6b175474e89094c44da98b954eedeac495271d0f',
-        '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
-        '0xdac17f958d2ee523a2206206994597c13d831ec7',
+        {
+          type: 'erc20',
+          address: '0x6b175474e89094c44da98b954eedeac495271d0f',
+        },
+        {
+          type: 'erc20',
+          address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        },
+        {
+          type: 'erc20',
+          address: '0xdac17f958d2ee523a2206206994597c13d831ec7',
+        },
       ],
       amounts: [2076650615254415750034n, 1857499347n, 1702213659n],
       metadata: {},
@@ -2370,9 +2472,18 @@ describe('Classfiers: Balancer V2', () => {
       },
       withdrawer: '0xf5ec0e5ca12f9b247c7a016ff897b2de469db702',
       assets: [
-        '0x6b175474e89094c44da98b954eedeac495271d0f',
-        '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
-        '0xdac17f958d2ee523a2206206994597c13d831ec7',
+        {
+          type: 'erc20',
+          address: '0x6b175474e89094c44da98b954eedeac495271d0f',
+        },
+        {
+          type: 'erc20',
+          address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        },
+        {
+          type: 'erc20',
+          address: '0xdac17f958d2ee523a2206206994597c13d831ec7',
+        },
       ],
       amounts: [45228883925675247840n, 0n, 0n],
       metadata: {},
@@ -2438,9 +2549,18 @@ describe('Classfiers: Balancer V2', () => {
       },
       withdrawer: '0x305e5d785eb274832a68745fda66a70b1ad2c635',
       assets: [
-        '0x6b175474e89094c44da98b954eedeac495271d0f',
-        '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
-        '0xdac17f958d2ee523a2206206994597c13d831ec7',
+        {
+          type: 'erc20',
+          address: '0x6b175474e89094c44da98b954eedeac495271d0f',
+        },
+        {
+          type: 'erc20',
+          address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        },
+        {
+          type: 'erc20',
+          address: '0xdac17f958d2ee523a2206206994597c13d831ec7',
+        },
       ],
       amounts: [1968345382253628458677n, 1952758253n, 1715252717n],
       metadata: {},

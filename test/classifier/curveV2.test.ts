@@ -84,9 +84,18 @@ describe('Classfiers: Curve V2', () => {
       },
       depositor: '0x3993d34e7e99abf6b6f367309975d1360222d446',
       assets: [
-        '0xdac17f958d2ee523a2206206994597c13d831ec7',
-        '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
-        '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        {
+          type: 'erc20',
+          address: '0xdac17f958d2ee523a2206206994597c13d831ec7',
+        },
+        {
+          type: 'erc20',
+          address: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+        },
+        {
+          type: 'erc20',
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
       ],
       amounts: [18022107731n, 0n, 0n],
       metadata: {},
@@ -162,9 +171,18 @@ describe('Classfiers: Curve V2', () => {
       },
       withdrawer: '0x871fbd4e01012e2e8457346059e8c189d664dba4',
       assets: [
-        '0xdac17f958d2ee523a2206206994597c13d831ec7',
-        '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
-        '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        {
+          type: 'erc20',
+          address: '0xdac17f958d2ee523a2206206994597c13d831ec7',
+        },
+        {
+          type: 'erc20',
+          address: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+        },
+        {
+          type: 'erc20',
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
       ],
       amounts: [23457526136n, 100937498n, 13594163931071854968n],
       metadata: {},
@@ -233,7 +251,12 @@ describe('Classfiers: Curve V2', () => {
         },
       },
       withdrawer: '0x3e03e274eb8c770d95b849230cb8087e192ee311',
-      assets: ['0xdac17f958d2ee523a2206206994597c13d831ec7'],
+      assets: [
+        {
+          type: 'erc20',
+          address: '0xdac17f958d2ee523a2206206994597c13d831ec7',
+        },
+      ],
       amounts: [12726234498n],
       metadata: {},
     });

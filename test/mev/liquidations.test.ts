@@ -32,7 +32,10 @@ describe('MEV: liquidations', () => {
         },
         payer: '0xb5c7ad3cb6506c65da01f2fac2e667dcb9e66e9c',
         borrower: '0xf7f6192e35d15a153105d4476a1b4d59ec2014dd',
-        asset: '0x8e870d67f660d95d5be530380d0ec0bd388289e1',
+        asset: {
+          type: 'erc20',
+          address: '0x8e870d67f660d95d5be530380d0ec0bd388289e1',
+        },
         amount: 1257619793546196402568n,
       },
     ];
@@ -64,7 +67,10 @@ describe('MEV: liquidations', () => {
         },
         seizor: '0xb5c7ad3cb6506c65da01f2fac2e667dcb9e66e9c',
         borrower: '0xf7f6192e35d15a153105d4476a1b4d59ec2014dd',
-        asset: '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
+        asset: {
+          type: 'erc20',
+          address: '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
+        },
         amount: 3402851288n,
       },
     ];
@@ -96,7 +102,10 @@ describe('MEV: liquidations', () => {
         },
         payer: '0x9a0ef593dcc6a77f80699c9fa00d1e138b67d832',
         borrower: '0x532fd36ea87cf9f316fad40b39385a4716065b8c',
-        asset: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        asset: {
+          type: 'erc20',
+          address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        },
         amount: 242839054n,
       },
     ];
@@ -128,7 +137,10 @@ describe('MEV: liquidations', () => {
         },
         seizor: '0x9a0ef593dcc6a77f80699c9fa00d1e138b67d832',
         borrower: '0x532fd36ea87cf9f316fad40b39385a4716065b8c',
-        asset: '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
+        asset: {
+          type: 'erc20',
+          address: '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
+        },
         amount: 670843809n,
       },
     ];
@@ -143,11 +155,17 @@ describe('MEV: liquidations', () => {
         liquidator: '0xb5c7ad3cb6506c65da01f2fac2e667dcb9e66e9c',
         borrower: '0xf7f6192e35d15a153105d4476a1b4d59ec2014dd',
         collateral: {
-          asset: '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
+          asset: {
+            type: 'erc20',
+            address: '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
+          },
           amount: 3402851288n,
         },
         debt: {
-          asset: '0x8e870d67f660d95d5be530380d0ec0bd388289e1',
+          asset: {
+            type: 'erc20',
+            address: '0x8e870d67f660d95d5be530380d0ec0bd388289e1',
+          },
           amount: 1257619793546196402568n,
         },
       },
@@ -159,11 +177,17 @@ describe('MEV: liquidations', () => {
         liquidator: '0x9a0ef593dcc6a77f80699c9fa00d1e138b67d832',
         borrower: '0x532fd36ea87cf9f316fad40b39385a4716065b8c',
         collateral: {
-          asset: '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
+          asset: {
+            type: 'erc20',
+            address: '0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5',
+          },
           amount: 670843809n,
         },
         debt: {
-          asset: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+          asset: {
+            type: 'erc20',
+            address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+          },
           amount: 242839054n,
         },
       },
@@ -198,7 +222,10 @@ describe('MEV: liquidations', () => {
         },
         payer: '0xd911560979b78821d7b045c79e36e9cbfc2f6c6f',
         borrower: '0xa8556b50ab7781eeccf647eec1c0bf3bf9e5b3ad',
-        asset: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        asset: {
+          type: 'erc20',
+          address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        },
         amount: 631587280n,
       },
     ];
@@ -230,7 +257,10 @@ describe('MEV: liquidations', () => {
         },
         seizor: '0xd911560979b78821d7b045c79e36e9cbfc2f6c6f',
         borrower: '0xa8556b50ab7781eeccf647eec1c0bf3bf9e5b3ad',
-        asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        asset: {
+          type: 'erc20',
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         amount: 344839185141066670n,
       },
     ];
@@ -262,7 +292,10 @@ describe('MEV: liquidations', () => {
         },
         payer: '0x5e37d0aaf14f00f91fd3fb64f3cd576dcbaaac41',
         borrower: '0xabdc47ed04c62b6c0d58f2668cd09200688e1495',
-        asset: '0xdac17f958d2ee523a2206206994597c13d831ec7',
+        asset: {
+          type: 'erc20',
+          address: '0xdac17f958d2ee523a2206206994597c13d831ec7',
+        },
         amount: 1191908646n,
       },
     ];
@@ -294,7 +327,10 @@ describe('MEV: liquidations', () => {
         },
         seizor: '0x5e37d0aaf14f00f91fd3fb64f3cd576dcbaaac41',
         borrower: '0xabdc47ed04c62b6c0d58f2668cd09200688e1495',
-        asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        asset: {
+          type: 'erc20',
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
         amount: 608477290571450223n,
       },
     ];
@@ -309,11 +345,17 @@ describe('MEV: liquidations', () => {
         liquidator: '0xd911560979b78821d7b045c79e36e9cbfc2f6c6f',
         borrower: '0xa8556b50ab7781eeccf647eec1c0bf3bf9e5b3ad',
         collateral: {
-          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          asset: {
+            type: 'erc20',
+            address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          },
           amount: 344839185141066670n,
         },
         debt: {
-          asset: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+          asset: {
+            type: 'erc20',
+            address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+          },
           amount: 631587280n,
         },
       },
@@ -325,11 +367,17 @@ describe('MEV: liquidations', () => {
         liquidator: '0x5e37d0aaf14f00f91fd3fb64f3cd576dcbaaac41',
         borrower: '0xabdc47ed04c62b6c0d58f2668cd09200688e1495',
         collateral: {
-          asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          asset: {
+            type: 'erc20',
+            address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          },
           amount: 608477290571450223n,
         },
         debt: {
-          asset: '0xdac17f958d2ee523a2206206994597c13d831ec7',
+          asset: {
+            type: 'erc20',
+            address: '0xdac17f958d2ee523a2206206994597c13d831ec7',
+          },
           amount: 1191908646n,
         },
       },

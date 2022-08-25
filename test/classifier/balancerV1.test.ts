@@ -76,7 +76,12 @@ describe('Classfiers: Balancer V1', () => {
         },
       },
       depositor: '0xa8a8a82bbcdf1f682398ac3ef8490f34927ebf93',
-      assets: ['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
+      assets: [
+        {
+          type: 'erc20',
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
+      ],
       amounts: [18314290307656602532n],
       metadata: {},
     });
@@ -143,7 +148,12 @@ describe('Classfiers: Balancer V1', () => {
         },
       },
       withdrawer: '0x1f08863f246fe456f94579d1a2009108b574f509',
-      assets: ['0x6b175474e89094c44da98b954eedeac495271d0f'],
+      assets: [
+        {
+          type: 'erc20',
+          address: '0x6b175474e89094c44da98b954eedeac495271d0f',
+        },
+      ],
       amounts: [82427045215513159373n],
       metadata: {},
     });

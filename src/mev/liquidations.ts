@@ -1,4 +1,4 @@
-import { Repayment, Seizure } from '../classifier/index.js';
+import { Erc20Asset, Repayment, Seizure } from '../classifier/index.js';
 
 interface Liquidation {
   seizure: Seizure;
@@ -6,11 +6,11 @@ interface Liquidation {
   liquidator: string;
   borrower: string;
   collateral: {
-    asset: string;
+    asset: Erc20Asset;
     amount: bigint;
   };
   debt: {
-    asset: string;
+    asset: Erc20Asset;
     amount: bigint;
   };
 }
