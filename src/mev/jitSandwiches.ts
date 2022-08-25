@@ -27,7 +27,7 @@ function getJitSandwiches(
   const orderedDeposits = [...deposits];
   orderedDeposits.sort((a, b) => a.event.logIndex - b.event.logIndex);
   const reverseOrderedWithdrawals = [...withdrawals];
-  reverseOrderedWithdrawals.sort((a, b) => b.event.logIndex - a.event.logIndex);
+  reverseOrderedWithdrawals.sort((a, b) => a.event.logIndex - b.event.logIndex);
   const uniswapV3Swaps = orderedSwaps.filter(
     (swap) => swap.contract.protocol.abi === 'UniswapV3',
   );

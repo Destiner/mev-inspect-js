@@ -596,4 +596,303 @@ describe('MEV: JIT liquidity sandwiches', () => {
       },
     ]);
   });
+
+  test('Multiple similar Uniswap V3 sandwiches', () => {
+    // Same block, same pool, same ticks
+    const swaps: Swap[] = [
+      {
+        contract: {
+          address: '0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640',
+          protocol: {
+            abi: 'UniswapV3',
+            factory: {
+              address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+              label: 'Uniswap V3',
+            },
+          },
+        },
+        block: {
+          hash: '0x12b0837236240f41771bcebd7b4d0b6fbcc2c996e94cbf8319ff6b1ca9d803c6',
+          number: 15409705,
+        },
+        transaction: {
+          from: '0xfb941d2344b72ea9101400392b818173772d0ddf',
+          hash: '0x3c247a4ff06fd0aa90bb328c0d5add384acbd28165de29ed4cb4c013c4bf3b8d',
+          index: 7,
+          gasUsed: 121370,
+        },
+        event: {
+          address: '0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640',
+          logIndex: 43,
+        },
+        from: '0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45',
+        to: '0xfb941d2344b72ea9101400392b818173772d0ddf',
+        assetIn: {
+          type: 'erc20',
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
+        amountIn: 115000000000000000000n,
+        assetOut: {
+          type: 'erc20',
+          address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        },
+        amountOut: 197250085227n,
+        metadata: { tick: 201842 },
+      },
+      {
+        contract: {
+          address: '0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640',
+          protocol: {
+            abi: 'UniswapV3',
+            factory: {
+              address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+              label: 'Uniswap V3',
+            },
+          },
+        },
+        block: {
+          hash: '0x12b0837236240f41771bcebd7b4d0b6fbcc2c996e94cbf8319ff6b1ca9d803c6',
+          number: 15409705,
+        },
+        transaction: {
+          from: '0x21e2fb232e9fc401201e34176cb5eea01f28c854',
+          hash: '0x1db399781528b7771091c9e08315799a6cf329d49bff6c12c82e6fba5700206a',
+          index: 14,
+          gasUsed: 155356,
+        },
+        event: {
+          address: '0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640',
+          logIndex: 81,
+        },
+        from: '0x21e2fb232e9fc401201e34176cb5eea01f28c854',
+        to: '0x21e2fb232e9fc401201e34176cb5eea01f28c854',
+        assetIn: {
+          type: 'erc20',
+          address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        },
+        amountIn: 207638205660n,
+        assetOut: {
+          type: 'erc20',
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
+        amountOut: 120935459739423113501n,
+        metadata: { tick: 201842 },
+      },
+    ];
+    const deposits: LiquidityDeposit[] = [
+      {
+        contract: {
+          address: '0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640',
+          protocol: {
+            abi: 'UniswapV3',
+            factory: {
+              address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+              label: 'Uniswap V3',
+            },
+          },
+        },
+        block: {
+          hash: '0x12b0837236240f41771bcebd7b4d0b6fbcc2c996e94cbf8319ff6b1ca9d803c6',
+          number: 15409705,
+        },
+        transaction: {
+          from: '0x479bc00624e58398f4cf59d78884d12fb515790a',
+          hash: '0x62339551453235e684917cc738ba0c172e25702019be394a07dfa31939f64239',
+          index: 6,
+          gasUsed: 477817,
+        },
+        event: {
+          address: '0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640',
+          logIndex: 37,
+        },
+        depositor: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+        assets: [
+          {
+            type: 'erc20',
+            address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+          },
+          {
+            type: 'erc20',
+            address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          },
+        ],
+        amounts: [20917241851983n, 3662206179883887766772n],
+        metadata: { tickLower: 201840, tickUpper: 201850 },
+      },
+      {
+        contract: {
+          address: '0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640',
+          protocol: {
+            abi: 'UniswapV3',
+            factory: {
+              address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+              label: 'Uniswap V3',
+            },
+          },
+        },
+        block: {
+          hash: '0x12b0837236240f41771bcebd7b4d0b6fbcc2c996e94cbf8319ff6b1ca9d803c6',
+          number: 15409705,
+        },
+        transaction: {
+          from: '0xff82bf5238637b7e5e345888bab9cd99f5ebe331',
+          hash: '0x5c85e7cb34390ba7c732636a2fa509b8aaddd4663f6c96885b66de27feaf2f9e',
+          index: 13,
+          gasUsed: 538979,
+        },
+        event: {
+          address: '0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640',
+          logIndex: 74,
+        },
+        depositor: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+        assets: [
+          {
+            type: 'erc20',
+            address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+          },
+          {
+            type: 'erc20',
+            address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          },
+        ],
+        amounts: [24262006564671n, 4420624986701829705638n],
+        metadata: { tickLower: 201840, tickUpper: 201850 },
+      },
+    ];
+    const withdrawals: LiquidityWithdrawal[] = [
+      {
+        contract: {
+          address: '0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640',
+          protocol: {
+            abi: 'UniswapV3',
+            factory: {
+              address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+              label: 'Uniswap V3',
+            },
+          },
+        },
+        block: {
+          hash: '0x12b0837236240f41771bcebd7b4d0b6fbcc2c996e94cbf8319ff6b1ca9d803c6',
+          number: 15409705,
+        },
+        transaction: {
+          from: '0x479bc00624e58398f4cf59d78884d12fb515790a',
+          hash: '0x81f52a0c54f51869eb4246c9e7c63b28cf72a47140feaf7c0454e2e1e2fe7aff',
+          index: 8,
+          gasUsed: 244783,
+        },
+        event: {
+          address: '0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640',
+          logIndex: 48,
+        },
+        withdrawer: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+        assets: [
+          {
+            type: 'erc20',
+            address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+          },
+          {
+            type: 'erc20',
+            address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          },
+        ],
+        amounts: [20722464609620n, 3775764472372429786912n],
+        metadata: { tickLower: 201840, tickUpper: 201850 },
+      },
+      {
+        contract: {
+          address: '0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640',
+          protocol: {
+            abi: 'UniswapV3',
+            factory: {
+              address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
+              label: 'Uniswap V3',
+            },
+          },
+        },
+        block: {
+          hash: '0x12b0837236240f41771bcebd7b4d0b6fbcc2c996e94cbf8319ff6b1ca9d803c6',
+          number: 15409705,
+        },
+        transaction: {
+          from: '0xff82bf5238637b7e5e345888bab9cd99f5ebe331',
+          hash: '0x5c82b8d6b671b6892b065afc76a90362e7ec733fefdd932d24dda8e156d63e27',
+          index: 15,
+          gasUsed: 260078,
+        },
+        event: {
+          address: '0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640',
+          logIndex: 86,
+        },
+        withdrawer: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+        assets: [
+          {
+            type: 'erc20',
+            address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+          },
+          {
+            type: 'erc20',
+            address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+          },
+        ],
+        amounts: [24467417380128n, 4300986833771812751511n],
+        metadata: { tickLower: 201840, tickUpper: 201850 },
+      },
+    ];
+
+    const sandwiches = getJitSandwiches(swaps, deposits, withdrawals);
+
+    expect(sandwiches).toEqual<JitSandwich[]>([
+      {
+        sandwicher: {
+          sender: '0x479bc00624e58398f4cf59d78884d12fb515790a',
+          beneficiary: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+        },
+        deposit: deposits[0],
+        withdrawal: withdrawals[0],
+        sandwiched: [swaps[0]],
+        deltas: [
+          {
+            asset: {
+              type: 'erc20',
+              address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+            },
+            amount: -194777242363n,
+          },
+          {
+            asset: {
+              type: 'erc20',
+              address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+            },
+            amount: 113558292488542020140n,
+          },
+        ],
+      },
+      {
+        sandwicher: {
+          sender: '0xff82bf5238637b7e5e345888bab9cd99f5ebe331',
+          beneficiary: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+        },
+        deposit: deposits[1],
+        withdrawal: withdrawals[1],
+        sandwiched: [swaps[1]],
+        deltas: [
+          {
+            asset: {
+              type: 'erc20',
+              address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+            },
+            amount: 205410815457n,
+          },
+          {
+            asset: {
+              type: 'erc20',
+              address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+            },
+            amount: -119638152930016954127n,
+          },
+        ],
+      },
+    ]);
+  });
 });
