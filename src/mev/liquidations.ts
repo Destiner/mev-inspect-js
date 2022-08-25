@@ -1,9 +1,14 @@
-import { Erc20Asset, Repayment, Seizure } from '../classifier/index.js';
+import {
+  Erc20Asset,
+  Repayment,
+  Searcher,
+  Seizure,
+} from '../classifier/index.js';
 
 interface Liquidation {
   seizure: Seizure;
   repayment: Repayment;
-  liquidator: string;
+  liquidator: Searcher;
   borrower: string;
   collateral: {
     asset: Erc20Asset;
@@ -21,6 +26,7 @@ function getLiquidations(
 ): Liquidation[] {
   return seizures
     .map((seizure) => {
+      const sender = seizure.transaction.from;
       const repayment = getRepayment(seizure, repayments);
       if (!repayment) {
         return null;
@@ -28,7 +34,7 @@ function getLiquidations(
       return {
         repayment,
         seizure,
-        liquidator: seizure.seizor,
+        liquidator: { sender, beneficiary: seizure.seizor },
         borrower: seizure.borrower,
         collateral: {
           asset: seizure.asset,

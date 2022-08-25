@@ -156,7 +156,10 @@ describe('MEV: liquidations', () => {
       {
         repayment: repaymentsA[0],
         seizure: seizuresA[0],
-        liquidator: '0xb5c7ad3cb6506c65da01f2fac2e667dcb9e66e9c',
+        liquidator: {
+          sender: '0xf4bb585ab3bcb7ce3b817ab2abd1c8ea2e691687',
+          beneficiary: '0xb5c7ad3cb6506c65da01f2fac2e667dcb9e66e9c',
+        },
         borrower: '0xf7f6192e35d15a153105d4476a1b4d59ec2014dd',
         collateral: {
           asset: {
@@ -178,7 +181,10 @@ describe('MEV: liquidations', () => {
       {
         repayment: repaymentsB[0],
         seizure: seizuresB[0],
-        liquidator: '0x9a0ef593dcc6a77f80699c9fa00d1e138b67d832',
+        liquidator: {
+          sender: '0x0177ffdf6b5c00ff8eab1a498ea10191ebc965db',
+          beneficiary: '0x9a0ef593dcc6a77f80699c9fa00d1e138b67d832',
+        },
         borrower: '0x532fd36ea87cf9f316fad40b39385a4716065b8c',
         collateral: {
           asset: {
@@ -350,7 +356,10 @@ describe('MEV: liquidations', () => {
       {
         repayment: repaymentsA[0],
         seizure: seizuresA[0],
-        liquidator: '0xd911560979b78821d7b045c79e36e9cbfc2f6c6f',
+        liquidator: {
+          sender: '0x01a5677183bd82e97be53ad6900bbcff50ca6743',
+          beneficiary: '0xd911560979b78821d7b045c79e36e9cbfc2f6c6f',
+        },
         borrower: '0xa8556b50ab7781eeccf647eec1c0bf3bf9e5b3ad',
         collateral: {
           asset: {
@@ -372,7 +381,10 @@ describe('MEV: liquidations', () => {
       {
         repayment: repaymentsB[0],
         seizure: seizuresB[0],
-        liquidator: '0x5e37d0aaf14f00f91fd3fb64f3cd576dcbaaac41',
+        liquidator: {
+          sender: '0x5368b4d517645749e9e7f8ba10d81ae609c40beb',
+          beneficiary: '0x5e37d0aaf14f00f91fd3fb64f3cd576dcbaaac41',
+        },
         borrower: '0xabdc47ed04c62b6c0d58f2668cd09200688e1495',
         collateral: {
           asset: {

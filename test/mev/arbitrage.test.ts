@@ -394,7 +394,10 @@ describe('MEV: arbitrage', () => {
             address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
           },
         },
-        arbitrager: '0x0000000000005117dd3a72e64a705198753fdd54',
+        arbitrager: {
+          sender: '0x0000000a9dbf8af9fe5ea03ff1272d8242ed3ab1',
+          beneficiary: '0x0000000000005117dd3a72e64a705198753fdd54',
+        },
       },
     ]);
   });
@@ -570,7 +573,10 @@ describe('MEV: arbitrage', () => {
             address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
           },
         },
-        arbitrager: '0x5f62593c70069abb35dfe2b63db969e8906609d6',
+        arbitrager: {
+          sender: '0xd7e1236c08731c3632519dcd1a581bfe6876a3b2',
+          beneficiary: '0x5f62593c70069abb35dfe2b63db969e8906609d6',
+        },
       },
     ]);
   });
@@ -668,7 +674,10 @@ describe('MEV: arbitrage', () => {
             address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
           },
         },
-        arbitrager: '0xab319a82803ea5f8f335dc373ce248008d4f2671',
+        arbitrager: {
+          sender: '0x5cf8face6064e435b97e6dc3cc1ad1f8dddc3905',
+          beneficiary: '0xab319a82803ea5f8f335dc373ce248008d4f2671',
+        },
       },
     ]);
 
@@ -764,7 +773,10 @@ describe('MEV: arbitrage', () => {
             address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
           },
         },
-        arbitrager: '0x5aa3393e361c2eb342408559309b3e873cd876d6',
+        arbitrager: {
+          sender: '0x5cf8face6064e435b97e6dc3cc1ad1f8dddc3905',
+          beneficiary: '0x5aa3393e361c2eb342408559309b3e873cd876d6',
+        },
       },
     ]);
   });
@@ -901,7 +913,10 @@ describe('MEV: arbitrage', () => {
             address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
           },
         },
-        arbitrager: '0x563bdabaa8846ec445b25bfbed88d160890a02ed',
+        arbitrager: {
+          sender: '0x82836c765a5096e8635637459dd77076ad54cd08',
+          beneficiary: '0x563bdabaa8846ec445b25bfbed88d160890a02ed',
+        },
       },
     ]);
   });
@@ -1038,7 +1053,10 @@ describe('MEV: arbitrage', () => {
             address: '0x6b175474e89094c44da98b954eedeac495271d0f',
           },
         },
-        arbitrager: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
+        arbitrager: {
+          sender: '0x38accdeb1c62dade625bcabdca85701d5f6c8618',
+          beneficiary: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
+        },
       },
     ]);
   });
@@ -1214,7 +1232,10 @@ describe('MEV: arbitrage', () => {
             address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
           },
         },
-        arbitrager: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
+        arbitrager: {
+          sender: '0x74067744295a1b9d440e900e1af660c90150d510',
+          beneficiary: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
+        },
       },
       {
         swaps: [swaps[2], swaps[3]],
@@ -1225,7 +1246,10 @@ describe('MEV: arbitrage', () => {
             address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
           },
         },
-        arbitrager: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
+        arbitrager: {
+          sender: '0x74067744295a1b9d440e900e1af660c90150d510',
+          beneficiary: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
+        },
       },
     ]);
   });
@@ -1362,7 +1386,10 @@ describe('MEV: arbitrage', () => {
             address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
           },
         },
-        arbitrager: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
+        arbitrager: {
+          sender: '0x74067744295a1b9d440e900e1af660c90150d510',
+          beneficiary: '0x4d944a25bc871d6c6ee08baef0b7da0b08e6b7b3',
+        },
       },
     ]);
   });
@@ -1539,7 +1566,10 @@ describe('MEV: arbitrage', () => {
             address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
           },
         },
-        arbitrager: '0xeef86c2e49e11345f1a693675df9a38f7d880c8f',
+        arbitrager: {
+          sender: '0xb691ce1def24a1cb0d7aaffd6340aea33f886503',
+          beneficiary: '0xeef86c2e49e11345f1a693675df9a38f7d880c8f',
+        },
       },
     ]);
   });

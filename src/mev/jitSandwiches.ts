@@ -2,11 +2,12 @@ import {
   Erc20Asset,
   LiquidityDeposit,
   LiquidityWithdrawal,
+  Searcher,
   Swap,
 } from '../classifier/index.js';
 
 interface JitSandwich {
-  sandwicher: string;
+  sandwicher: Searcher;
   deposit: LiquidityDeposit;
   withdrawal: LiquidityWithdrawal;
   sandwiched: Swap[];
@@ -88,6 +89,7 @@ function getUniswapV3Sandwiches(
       if (sandwiched.length === 0) {
         continue;
       } else {
+        const sender = deposit.transaction.from;
         const deltas = deposit.assets.map((asset, index) => {
           const addedAmount = deposit.amounts[index];
           const removedAmount = withdrawal.amounts[index];
@@ -97,7 +99,7 @@ function getUniswapV3Sandwiches(
           };
         });
         sandwiches.push({
-          sandwicher: deposit.depositor,
+          sandwicher: { sender, beneficiary: deposit.depositor },
           deposit,
           withdrawal,
           sandwiched,

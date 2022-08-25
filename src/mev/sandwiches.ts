@@ -3,13 +3,14 @@ import {
   Erc20Asset,
   LiquidityDeposit,
   LiquidityWithdrawal,
+  Searcher,
   Swap,
   isKnownRouter,
 } from '../classifier/index.js';
 import { minByAbs } from '../utils.js';
 
 interface Sandwich {
-  sandwicher: string;
+  sandwicher: Searcher;
   frontSwap: Swap;
   backSwap: Swap;
   sandwiched: (Swap | LiquidityDeposit | LiquidityWithdrawal)[];
@@ -67,10 +68,10 @@ function getSandwich(
   frontSwap: Swap,
   restEvents: (Swap | LiquidityDeposit | LiquidityWithdrawal)[],
 ): Sandwich | null {
-  const sandwicher = frontSwap.to;
+  const beneficiary = frontSwap.to;
   const sandwiched: (Swap | LiquidityDeposit | LiquidityWithdrawal)[] = [];
 
-  if (isKnownRouter(chainId, sandwicher)) {
+  if (isKnownRouter(chainId, beneficiary)) {
     return null;
   }
 
@@ -84,7 +85,7 @@ function getSandwich(
         isSwap(event) &&
         event.assetIn.address === frontSwap.assetIn.address &&
         event.assetOut.address === frontSwap.assetOut.address &&
-        event.from !== sandwicher
+        event.from !== beneficiary
       ) {
         sandwiched.push(event);
       } else if (
@@ -96,7 +97,7 @@ function getSandwich(
           .filter((_asset, index) => event.amounts[index] > 0)
           .map((asset) => asset.address)
           .includes(frontSwap.assetIn.address) &&
-        event.depositor !== sandwicher
+        event.depositor !== beneficiary
       ) {
         sandwiched.push(event);
       } else if (
@@ -106,18 +107,22 @@ function getSandwich(
           .filter((_asset, index) => event.amounts[index] > 0)
           .map((asset) => asset.address)
           .includes(frontSwap.assetOut.address) &&
-        event.withdrawer !== sandwicher
+        event.withdrawer !== beneficiary
       ) {
         sandwiched.push(event);
       } else if (
         isSwap(event) &&
         event.assetOut.address === frontSwap.assetIn.address &&
         event.assetIn.address === frontSwap.assetOut.address &&
-        event.from === sandwicher
+        event.from === beneficiary
       ) {
+        const sender = event.transaction.from;
         if (sandwiched.length > 0) {
           return {
-            sandwicher,
+            sandwicher: {
+              sender,
+              beneficiary,
+            },
             frontSwap,
             backSwap: event,
             sandwiched,

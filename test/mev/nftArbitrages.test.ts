@@ -144,7 +144,10 @@ describe('MEV: arbitrage', () => {
             address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
           },
         },
-        arbitrager: '0x00000007d259e6b322766529ac387b53a1584724',
+        arbitrager: {
+          sender: '0x00000009761a2585aa49edf3d93ed39febab9f59',
+          beneficiary: '0x00000007d259e6b322766529ac387b53a1584724',
+        },
       },
     ]);
   });
@@ -242,7 +245,10 @@ describe('MEV: arbitrage', () => {
             address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
           },
         },
-        arbitrager: '0x8f44e22ac221cc25a46289d1c307d4f34a4dd6c2',
+        arbitrager: {
+          sender: '0x52f0a3371065e3eb50b48c4f8ce62e00ff8acf6c',
+          beneficiary: '0x8f44e22ac221cc25a46289d1c307d4f34a4dd6c2',
+        },
       },
     ]);
 
@@ -338,7 +344,10 @@ describe('MEV: arbitrage', () => {
             address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
           },
         },
-        arbitrager: '0x0000007370af0000ad00be0efd2f1eb6e6e9d700',
+        arbitrager: {
+          sender: '0x0676d673a2a0a13fe37a3ec7812a8ccc571ca07b',
+          beneficiary: '0x0000007370af0000ad00be0efd2f1eb6e6e9d700',
+        },
       },
     ]);
   });

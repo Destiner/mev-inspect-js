@@ -881,7 +881,10 @@ describe('MEV: sandwiches', () => {
 
     expect(sandwichesA).toEqual<Sandwich[]>([
       {
-        sandwicher: '0x0000000000d9455cc7eb92d06e00582a982f68fe',
+        sandwicher: {
+          sender: '0x4ecde565958dd14ac37dcc9d3d08125f17c7aaaf',
+          beneficiary: '0x0000000000d9455cc7eb92d06e00582a982f68fe',
+        },
         frontSwap: swapsA[0],
         backSwap: swapsA[1],
         sandwiched: [swapsA[2]],
@@ -896,7 +899,10 @@ describe('MEV: sandwiches', () => {
     ]);
     expect(sandwichesB).toEqual<Sandwich[]>([
       {
-        sandwicher: '0x000000000035b5e5ad9019092c665357240f594e',
+        sandwicher: {
+          sender: '0x7aa0426f10c7603bbfb8ceb8afb8d8c329ccfe8b',
+          beneficiary: '0x000000000035b5e5ad9019092c665357240f594e',
+        },
         frontSwap: swapsB[0],
         backSwap: swapsB[2],
         sandwiched: [swapsB[1]],
@@ -1036,7 +1042,10 @@ describe('MEV: sandwiches', () => {
 
     expect(sandwiches).toEqual<Sandwich[]>([
       {
-        sandwicher: '0x00000000008c4fb1c916e0c88fd4cc402d935e7d',
+        sandwicher: {
+          sender: '0x4970197593ef5aed9d2c33409b953f5f9bb22563',
+          beneficiary: '0x00000000008c4fb1c916e0c88fd4cc402d935e7d',
+        },
         frontSwap: swaps[0],
         backSwap: swaps[2],
         sandwiched: [swaps[1]],
@@ -1784,7 +1793,10 @@ describe('MEV: sandwiches', () => {
 
     expect(sandwichesA).toEqual<Sandwich[]>([
       {
-        sandwicher: '0x51399b32cd0186bb32230e24167489f3b2f47870',
+        sandwicher: {
+          sender: '0x007eadd74bfa83347b05bf470a7107a68df285c2',
+          beneficiary: '0x51399b32cd0186bb32230e24167489f3b2f47870',
+        },
         frontSwap: swapsA[0],
         backSwap: swapsA[2],
         sandwiched: [swapsA[1]],
@@ -1799,7 +1811,10 @@ describe('MEV: sandwiches', () => {
     ]);
     expect(sandwichesB).toEqual<Sandwich[]>([
       {
-        sandwicher: '0xdeadad06b9cfcce57d0e9118d7e2cfda52ccdead',
+        sandwicher: {
+          sender: '0x520db7c2161aa43fb7eb1bd87c40a084de2c5008',
+          beneficiary: '0xdeadad06b9cfcce57d0e9118d7e2cfda52ccdead',
+        },
         frontSwap: swapsB[0],
         backSwap: swapsB[2],
         sandwiched: [swapsB[1]],
@@ -1814,7 +1829,10 @@ describe('MEV: sandwiches', () => {
     ]);
     expect(sandwichesC).toEqual<Sandwich[]>([
       {
-        sandwicher: '0x000000000000084e91743124a982076c59f10084',
+        sandwicher: {
+          sender: '0xdd07249e403979bd79848c27aa5454c7e66bdee7',
+          beneficiary: '0x000000000000084e91743124a982076c59f10084',
+        },
         frontSwap: swapsC[0],
         backSwap: swapsC[2],
         sandwiched: [swapsC[1]],
@@ -1961,7 +1979,10 @@ describe('MEV: sandwiches', () => {
 
     expect(sandwiches).toEqual<Sandwich[]>([
       {
-        sandwicher: '0xe8c060f8052e07423f71d445277c61ac5138a2e5',
+        sandwicher: {
+          sender: '0xb8feffac830c45b4cd210ecdaab9d11995d338ee',
+          beneficiary: '0xe8c060f8052e07423f71d445277c61ac5138a2e5',
+        },
         frontSwap: swaps[0],
         backSwap: swaps[1],
         sandwiched: [deposits[0]],

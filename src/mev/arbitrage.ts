@@ -1,4 +1,4 @@
-import { Erc20Asset, Swap } from '../classifier/index.js';
+import { Erc20Asset, Searcher, Swap } from '../classifier/index.js';
 import { equalWithTolerance } from '../utils.js';
 
 interface Arbitrage {
@@ -7,7 +7,7 @@ interface Arbitrage {
     asset: Erc20Asset;
     amount: bigint;
   };
-  arbitrager: string;
+  arbitrager: Searcher;
 }
 
 const MAX_TOKEN_AMOUNT_PERCENT_DIFFERENCE = 0.00001;
@@ -40,7 +40,8 @@ function getTransactionArbitrages(swaps: Swap[]): Arbitrage[] {
     const route = getShortestRoute(start, unusedEnds, swaps);
 
     if (route.length > 0) {
-      const arbitrager = route[0].from;
+      const sender = route[0].transaction.from;
+      const beneficiary = route[0].from;
       const profitAmount =
         route[route.length - 1].amountOut - route[0].amountIn;
       const profitAsset = route[0].assetIn;
@@ -51,7 +52,10 @@ function getTransactionArbitrages(swaps: Swap[]): Arbitrage[] {
           amount: profitAmount,
           asset: profitAsset,
         },
-        arbitrager,
+        arbitrager: {
+          sender,
+          beneficiary,
+        },
       };
       arbitrages.push(arbitrage);
       for (const swap of route) {

@@ -1,4 +1,4 @@
-import { Asset, Erc20Asset, NftSwap } from '../classifier/index.js';
+import { Asset, Erc20Asset, NftSwap, Searcher } from '../classifier/index.js';
 
 interface NftArbitrage {
   swaps: NftSwap[];
@@ -6,7 +6,7 @@ interface NftArbitrage {
     asset: Erc20Asset;
     amount: bigint;
   };
-  arbitrager: string;
+  arbitrager: Searcher;
 }
 
 function getNftArbitrages(swaps: NftSwap[]): NftArbitrage[] {
@@ -37,7 +37,8 @@ function getTransactionArbitrages(swaps: NftSwap[]): NftArbitrage[] {
     const route = getShortestRoute(start, unusedEnds, swaps);
 
     if (route.length > 0) {
-      const arbitrager = route[0].from;
+      const sender = route[0].transaction.from;
+      const beneficiary = route[0].from;
       const profitAmount =
         route[route.length - 1].amountOut - route[0].amountIn;
       const profitAsset = route[0].assetIn;
@@ -52,7 +53,10 @@ function getTransactionArbitrages(swaps: NftSwap[]): NftArbitrage[] {
           amount: profitAmount,
           asset: profitAsset,
         },
-        arbitrager,
+        arbitrager: {
+          sender,
+          beneficiary,
+        },
       };
       arbitrages.push(arbitrage);
       for (const swap of route) {

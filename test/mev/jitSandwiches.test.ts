@@ -494,7 +494,10 @@ describe('MEV: JIT liquidity sandwiches', () => {
 
     expect(sandwiches).toEqual<JitSandwich[]>([
       {
-        sandwicher: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+        sandwicher: {
+          sender: '0x4603180bbb8221157880afaa84638e0fc467738d',
+          beneficiary: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+        },
         deposit: {
           contract: {
             address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',

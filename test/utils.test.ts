@@ -101,7 +101,10 @@ describe('Utilities', () => {
             address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
           },
         },
-        arbitrager: '0x0000000000005117dd3a72e64a705198753fdd54',
+        arbitrager: {
+          sender: '0x0000000a9dbf8af9fe5ea03ff1272d8242ed3ab1',
+          beneficiary: '0x0000000000005117dd3a72e64a705198753fdd54',
+        },
       },
       {
         swaps: [
@@ -230,7 +233,10 @@ describe('Utilities', () => {
             address: '0x6b175474e89094c44da98b954eedeac495271d0f',
           },
         },
-        arbitrager: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
+        arbitrager: {
+          sender: '0x38accdeb1c62dade625bcabdca85701d5f6c8618',
+          beneficiary: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
+        },
       },
     ];
 
@@ -310,7 +316,10 @@ describe('Utilities', () => {
           },
           amount: 3402851288n,
         },
-        liquidator: '0xb5c7ad3cb6506c65da01f2fac2e667dcb9e66e9c',
+        liquidator: {
+          sender: '0xf4bb585ab3bcb7ce3b817ab2abd1c8ea2e691687',
+          beneficiary: '0xb5c7ad3cb6506c65da01f2fac2e667dcb9e66e9c',
+        },
         borrower: '0xf7f6192e35d15a153105d4476a1b4d59ec2014dd',
         collateral: {
           asset: {
@@ -394,7 +403,10 @@ describe('Utilities', () => {
           },
           amount: 344839185141066670n,
         },
-        liquidator: '0xd911560979b78821d7b045c79e36e9cbfc2f6c6f',
+        liquidator: {
+          sender: '0x01a5677183bd82e97be53ad6900bbcff50ca6743',
+          beneficiary: '0xd911560979b78821d7b045c79e36e9cbfc2f6c6f',
+        },
         borrower: '0xa8556b50ab7781eeccf647eec1c0bf3bf9e5b3ad',
         collateral: {
           asset: {
@@ -489,7 +501,10 @@ describe('Utilities', () => {
           },
           amount: 3402851288n,
         },
-        liquidator: '0xb5c7ad3cb6506c65da01f2fac2e667dcb9e66e9c',
+        liquidator: {
+          sender: '0xf4bb585ab3bcb7ce3b817ab2abd1c8ea2e691687',
+          beneficiary: '0xb5c7ad3cb6506c65da01f2fac2e667dcb9e66e9c',
+        },
         borrower: '0xf7f6192e35d15a153105d4476a1b4d59ec2014dd',
         collateral: {
           asset: {
@@ -573,7 +588,10 @@ describe('Utilities', () => {
           },
           amount: 344839185141066670n,
         },
-        liquidator: '0xd911560979b78821d7b045c79e36e9cbfc2f6c6f',
+        liquidator: {
+          sender: '0x01a5677183bd82e97be53ad6900bbcff50ca6743',
+          beneficiary: '0xd911560979b78821d7b045c79e36e9cbfc2f6c6f',
+        },
         borrower: '0xa8556b50ab7781eeccf647eec1c0bf3bf9e5b3ad',
         collateral: {
           asset: {
@@ -689,7 +707,10 @@ describe('Utilities', () => {
             address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
           },
         },
-        arbitrager: '0x0000000000005117dd3a72e64a705198753fdd54',
+        arbitrager: {
+          sender: '0x0000000a9dbf8af9fe5ea03ff1272d8242ed3ab1',
+          beneficiary: '0x0000000000005117dd3a72e64a705198753fdd54',
+        },
       },
       {
         swaps: [
@@ -818,7 +839,10 @@ describe('Utilities', () => {
             address: '0x6b175474e89094c44da98b954eedeac495271d0f',
           },
         },
-        arbitrager: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
+        arbitrager: {
+          sender: '0x38accdeb1c62dade625bcabdca85701d5f6c8618',
+          beneficiary: '0xb23dc3f00856288cd7b6bde5d06159f01b75aa4c',
+        },
       },
     ];
 
