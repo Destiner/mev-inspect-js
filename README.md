@@ -31,6 +31,7 @@ Other, less fundamental, changes include:
 - getLiquidations(mevList): filter out non-liquidation MEV
 - getSandwiches(mevList): filter out non-sandwich MEV
 - getJitSandwiches(mevList): filter out non-JIT liquidity sandwich MEV
+- getNftArbitrages(mevList): filter out non-NFT arbitrage MEV
 
 A common data flow is to first fetch all the MEV using any of the Inspector method, then filter it by type using `getArbitrages`, etc, and finally process each type of MEV separately
 
@@ -67,6 +68,7 @@ For more examlples, see [`examples`](./examples/).
 - Liquidations
 - Sandwiches
 - JIT liquidity sandwiches
+- NFT arbitrage
 
 ### Chains
 
@@ -80,6 +82,7 @@ For more examlples, see [`examples`](./examples/).
 
 - Swaps: Uniswap V2/V3 (+ forks), Balancer V1/V2, Curve V1/V2, 0x V3/V4, Bancor V2/V3
 - Lending: Compound V2 (+ forks), Aave V1/V2/V3
+- NFT swaps: Opensea (Seaport), LooksRare, Sudoswap, X2Y2
 
 ## How it works
 
