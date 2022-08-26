@@ -166,7 +166,7 @@ describe('MEV: JIT liquidity sandwiches', () => {
           address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
           logIndex: 24,
         },
-        depositor: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+        depositor: '0x56178a0d5f301baf6cf3e1cd53d9863437345bf9',
         assets: [
           {
             type: 'erc20',
@@ -207,7 +207,7 @@ describe('MEV: JIT liquidity sandwiches', () => {
           address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
           logIndex: 35,
         },
-        withdrawer: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+        withdrawer: '0x56178a0d5f301baf6cf3e1cd53d9863437345bf9',
         assets: [
           {
             type: 'erc20',
@@ -433,7 +433,7 @@ describe('MEV: JIT liquidity sandwiches', () => {
           address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
           logIndex: 24,
         },
-        depositor: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+        depositor: '0x56178a0d5f301baf6cf3e1cd53d9863437345bf9',
         assets: [
           {
             type: 'erc20',
@@ -474,7 +474,7 @@ describe('MEV: JIT liquidity sandwiches', () => {
           address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
           logIndex: 35,
         },
-        withdrawer: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+        withdrawer: '0x56178a0d5f301baf6cf3e1cd53d9863437345bf9',
         assets: [
           {
             type: 'erc20',
@@ -496,86 +496,10 @@ describe('MEV: JIT liquidity sandwiches', () => {
       {
         sandwicher: {
           sender: '0x4603180bbb8221157880afaa84638e0fc467738d',
-          beneficiary: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+          beneficiary: '0x56178a0d5f301baf6cf3e1cd53d9863437345bf9',
         },
-        deposit: {
-          contract: {
-            address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
-            protocol: {
-              abi: 'UniswapV3',
-              factory: {
-                address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
-                label: 'Uniswap V3',
-              },
-            },
-          },
-          block: {
-            hash: '0x46242a1e6f84eadb3cb4d6a1074115b2e2c63a647d999985ea71078fbab2f6ec',
-            number: 15194488,
-          },
-          transaction: {
-            from: '0x4603180bbb8221157880afaa84638e0fc467738d',
-            hash: '0x5ffe23a52fd695160fc5eef15678576574e7c42cb7203568031f33ce09d30c49',
-            index: 4,
-            gasUsed: 591690,
-          },
-          event: {
-            address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
-            logIndex: 24,
-          },
-          depositor: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
-          assets: [
-            {
-              type: 'erc20',
-              address: '0x4d224452801aced8b2f0aebe155379bb5d594381',
-            },
-            {
-              type: 'erc20',
-              address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-            },
-          ],
-          amounts: [129735801701915403613047n, 458679217156579091198n],
-          metadata: { tickLower: -54900, tickUpper: -54840 },
-        },
-        withdrawal: {
-          contract: {
-            address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
-            protocol: {
-              abi: 'UniswapV3',
-              factory: {
-                address: '0x1f98431c8ad98523631ae4a59f267346ea31f984',
-                label: 'Uniswap V3',
-              },
-            },
-          },
-          block: {
-            hash: '0x46242a1e6f84eadb3cb4d6a1074115b2e2c63a647d999985ea71078fbab2f6ec',
-            number: 15194488,
-          },
-          transaction: {
-            from: '0x4603180bbb8221157880afaa84638e0fc467738d',
-            hash: '0x0e93b0006f66e5efd9e5b26c090f7dab202bea6151bb6f942e636601034567eb',
-            index: 6,
-            gasUsed: 253098,
-          },
-          event: {
-            address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
-            logIndex: 35,
-          },
-          withdrawer: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
-          assets: [
-            {
-              type: 'erc20',
-              address: '0x4d224452801aced8b2f0aebe155379bb5d594381',
-            },
-            {
-              type: 'erc20',
-              address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-            },
-          ],
-          amounts: [138200019333940881352647n, 423637645189105331266n],
-          metadata: { tickLower: -54900, tickUpper: -54840 },
-        },
+        deposit: deposits[0],
+        withdrawal: withdrawals[0],
         sandwiched: [swaps[0]],
         deltas: [
           {
@@ -705,7 +629,7 @@ describe('MEV: JIT liquidity sandwiches', () => {
           address: '0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640',
           logIndex: 37,
         },
-        depositor: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+        depositor: '0x57c1e0c2adf6eecdb135bcf9ec5f23b319be2c94',
         assets: [
           {
             type: 'erc20',
@@ -744,7 +668,7 @@ describe('MEV: JIT liquidity sandwiches', () => {
           address: '0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640',
           logIndex: 74,
         },
-        depositor: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+        depositor: '0x56178a0d5f301baf6cf3e1cd53d9863437345bf9',
         assets: [
           {
             type: 'erc20',
@@ -785,7 +709,7 @@ describe('MEV: JIT liquidity sandwiches', () => {
           address: '0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640',
           logIndex: 48,
         },
-        withdrawer: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+        withdrawer: '0x57c1e0c2adf6eecdb135bcf9ec5f23b319be2c94',
         assets: [
           {
             type: 'erc20',
@@ -824,7 +748,7 @@ describe('MEV: JIT liquidity sandwiches', () => {
           address: '0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640',
           logIndex: 86,
         },
-        withdrawer: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+        withdrawer: '0x56178a0d5f301baf6cf3e1cd53d9863437345bf9',
         assets: [
           {
             type: 'erc20',
@@ -846,7 +770,7 @@ describe('MEV: JIT liquidity sandwiches', () => {
       {
         sandwicher: {
           sender: '0x479bc00624e58398f4cf59d78884d12fb515790a',
-          beneficiary: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+          beneficiary: '0x57c1e0c2adf6eecdb135bcf9ec5f23b319be2c94',
         },
         deposit: deposits[0],
         withdrawal: withdrawals[0],
@@ -871,7 +795,7 @@ describe('MEV: JIT liquidity sandwiches', () => {
       {
         sandwicher: {
           sender: '0xff82bf5238637b7e5e345888bab9cd99f5ebe331',
-          beneficiary: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+          beneficiary: '0x56178a0d5f301baf6cf3e1cd53d9863437345bf9',
         },
         deposit: deposits[1],
         withdrawal: withdrawals[1],

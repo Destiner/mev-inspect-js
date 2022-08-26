@@ -1581,6 +1581,128 @@ describe('Classfiers: Uniswap V3', () => {
   });
 
   test('liquidity deposit', () => {
+    const transfers: Transfer[] = [
+      {
+        asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        block: {
+          hash: '0x6a1f7b9df7c4f75f802b6ae9c7ba29a55184e135c7ddfb1229ff844e22e6f094',
+          number: 15196081,
+        },
+        transaction: {
+          from: '0xfb9779477e5b4834bf2bc02dd29b97b344d0f700',
+          hash: '0xf618862404eaa9a2d6e1d95b8a4ec74627e4e44fb0dd520e743359b7721a7778',
+          index: 2,
+          gasUsed: 500595,
+        },
+        event: {
+          logIndex: 6,
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
+        from: '0x56178a0d5f301baf6cf3e1cd53d9863437345bf9',
+        to: '0xa57bd00134b2850b2a1c55860c9e9ea100fdd6cf',
+        value: 21096147899993320166063n,
+      },
+      {
+        asset: '0xdac17f958d2ee523a2206206994597c13d831ec7',
+        block: {
+          hash: '0x6a1f7b9df7c4f75f802b6ae9c7ba29a55184e135c7ddfb1229ff844e22e6f094',
+          number: 15196081,
+        },
+        transaction: {
+          from: '0xfb9779477e5b4834bf2bc02dd29b97b344d0f700',
+          hash: '0xf618862404eaa9a2d6e1d95b8a4ec74627e4e44fb0dd520e743359b7721a7778',
+          index: 2,
+          gasUsed: 500595,
+        },
+        event: {
+          logIndex: 7,
+          address: '0xdac17f958d2ee523a2206206994597c13d831ec7',
+        },
+        from: '0x56178a0d5f301baf6cf3e1cd53d9863437345bf9',
+        to: '0xa57bd00134b2850b2a1c55860c9e9ea100fdd6cf',
+        value: 8159878373566n,
+      },
+      {
+        asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        block: {
+          hash: '0x6a1f7b9df7c4f75f802b6ae9c7ba29a55184e135c7ddfb1229ff844e22e6f094',
+          number: 15196081,
+        },
+        transaction: {
+          from: '0xfb9779477e5b4834bf2bc02dd29b97b344d0f700',
+          hash: '0xf618862404eaa9a2d6e1d95b8a4ec74627e4e44fb0dd520e743359b7721a7778',
+          index: 2,
+          gasUsed: 500595,
+        },
+        event: {
+          logIndex: 8,
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
+        from: '0xa57bd00134b2850b2a1c55860c9e9ea100fdd6cf',
+        to: '0x4e68ccd3e89f51c3074ca5072bbac773960dfa36',
+        value: 21096147899993320165870n,
+      },
+      {
+        asset: '0xdac17f958d2ee523a2206206994597c13d831ec7',
+        block: {
+          hash: '0x6a1f7b9df7c4f75f802b6ae9c7ba29a55184e135c7ddfb1229ff844e22e6f094',
+          number: 15196081,
+        },
+        transaction: {
+          from: '0xfb9779477e5b4834bf2bc02dd29b97b344d0f700',
+          hash: '0xf618862404eaa9a2d6e1d95b8a4ec74627e4e44fb0dd520e743359b7721a7778',
+          index: 2,
+          gasUsed: 500595,
+        },
+        event: {
+          logIndex: 9,
+          address: '0xdac17f958d2ee523a2206206994597c13d831ec7',
+        },
+        from: '0xa57bd00134b2850b2a1c55860c9e9ea100fdd6cf',
+        to: '0x4e68ccd3e89f51c3074ca5072bbac773960dfa36',
+        value: 7486084510631n,
+      },
+      {
+        asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        block: {
+          hash: '0x6a1f7b9df7c4f75f802b6ae9c7ba29a55184e135c7ddfb1229ff844e22e6f094',
+          number: 15196081,
+        },
+        transaction: {
+          from: '0xfb9779477e5b4834bf2bc02dd29b97b344d0f700',
+          hash: '0xf618862404eaa9a2d6e1d95b8a4ec74627e4e44fb0dd520e743359b7721a7778',
+          index: 2,
+          gasUsed: 500595,
+        },
+        event: {
+          logIndex: 13,
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
+        from: '0xa57bd00134b2850b2a1c55860c9e9ea100fdd6cf',
+        to: '0x56178a0d5f301baf6cf3e1cd53d9863437345bf9',
+        value: 193n,
+      },
+      {
+        asset: '0xdac17f958d2ee523a2206206994597c13d831ec7',
+        block: {
+          hash: '0x6a1f7b9df7c4f75f802b6ae9c7ba29a55184e135c7ddfb1229ff844e22e6f094',
+          number: 15196081,
+        },
+        transaction: {
+          from: '0xfb9779477e5b4834bf2bc02dd29b97b344d0f700',
+          hash: '0xf618862404eaa9a2d6e1d95b8a4ec74627e4e44fb0dd520e743359b7721a7778',
+          index: 2,
+          gasUsed: 500595,
+        },
+        event: {
+          logIndex: 14,
+          address: '0xdac17f958d2ee523a2206206994597c13d831ec7',
+        },
+        from: '0xa57bd00134b2850b2a1c55860c9e9ea100fdd6cf',
+        to: '0x56178a0d5f301baf6cf3e1cd53d9863437345bf9',
+        value: 673793862935n,
+      },
+    ];
     const pool: Pool = {
       address: '0x4e68ccd3e89f51c3074ca5072bbac773960dfa36',
       assets: [
@@ -1619,7 +1741,7 @@ describe('Classfiers: Uniswap V3', () => {
     if (liquidityDepositClassifier.type !== 'liquidity_deposit') {
       expect.fail();
     }
-    const deposit = liquidityDepositClassifier.parse(pool, event);
+    const deposit = liquidityDepositClassifier.parse(pool, event, transfers);
     expect(deposit).toEqual<LiquidityDeposit>({
       contract: {
         address: '0x4e68ccd3e89f51c3074ca5072bbac773960dfa36',
@@ -1631,7 +1753,7 @@ describe('Classfiers: Uniswap V3', () => {
           },
         },
       },
-      depositor: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+      depositor: '0xa57bd00134b2850b2a1c55860c9e9ea100fdd6cf',
       assets: [
         {
           type: 'erc20',
@@ -1665,6 +1787,48 @@ describe('Classfiers: Uniswap V3', () => {
   });
 
   test('liquidity withdrawal', () => {
+    const transfers: Transfer[] = [
+      {
+        asset: '0x4d224452801aced8b2f0aebe155379bb5d594381',
+        block: {
+          hash: '0x46242a1e6f84eadb3cb4d6a1074115b2e2c63a647d999985ea71078fbab2f6ec',
+          number: 15194488,
+        },
+        transaction: {
+          from: '0x4603180bbb8221157880afaa84638e0fc467738d',
+          hash: '0x0e93b0006f66e5efd9e5b26c090f7dab202bea6151bb6f942e636601034567eb',
+          index: 6,
+          gasUsed: 253098,
+        },
+        event: {
+          logIndex: 37,
+          address: '0x4d224452801aced8b2f0aebe155379bb5d594381',
+        },
+        from: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
+        to: '0x56178a0d5f301baf6cf3e1cd53d9863437345bf9',
+        value: 138225488394017186701914n,
+      },
+      {
+        asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        block: {
+          hash: '0x46242a1e6f84eadb3cb4d6a1074115b2e2c63a647d999985ea71078fbab2f6ec',
+          number: 15194488,
+        },
+        transaction: {
+          from: '0x4603180bbb8221157880afaa84638e0fc467738d',
+          hash: '0x0e93b0006f66e5efd9e5b26c090f7dab202bea6151bb6f942e636601034567eb',
+          index: 6,
+          gasUsed: 253098,
+        },
+        event: {
+          logIndex: 38,
+          address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        },
+        from: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
+        to: '0x56178a0d5f301baf6cf3e1cd53d9863437345bf9',
+        value: 423637645189105331266n,
+      },
+    ];
     const pool: Pool = {
       address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
       assets: [
@@ -1686,15 +1850,15 @@ describe('Classfiers: Uniswap V3', () => {
         '0x0e93b0006f66e5efd9e5b26c090f7dab202bea6151bb6f942e636601034567eb',
       transactionIndex: 6,
       gasUsed: 253098,
-      logIndex: 35,
+      logIndex: 39,
       classifier: liquidityWithdrawalClassifier,
-      name: 'Burn',
+      name: 'Collect',
       values: {
         owner: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+        recipient: '0x56178a0d5f301baf6cf3e1cd53d9863437345bf9',
         tickLower: -202860,
         tickUpper: -202800,
-        amount: BigNumber.from('5162920175728293086597263'),
-        amount0: BigNumber.from('138200019333940881352647'),
+        amount0: BigNumber.from('138225488394017186701914'),
         amount1: BigNumber.from('423637645189105331266'),
       },
     };
@@ -1702,7 +1866,11 @@ describe('Classfiers: Uniswap V3', () => {
     if (liquidityWithdrawalClassifier.type !== 'liquidity_withdrawal') {
       expect.fail();
     }
-    const withdrawal = liquidityWithdrawalClassifier.parse(pool, event);
+    const withdrawal = liquidityWithdrawalClassifier.parse(
+      pool,
+      event,
+      transfers,
+    );
     expect(withdrawal).toEqual<LiquidityWithdrawal>({
       contract: {
         address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
@@ -1714,7 +1882,7 @@ describe('Classfiers: Uniswap V3', () => {
           },
         },
       },
-      withdrawer: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+      withdrawer: '0x56178a0d5f301baf6cf3e1cd53d9863437345bf9',
       assets: [
         {
           type: 'erc20',
@@ -1725,7 +1893,7 @@ describe('Classfiers: Uniswap V3', () => {
           address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
         },
       ],
-      amounts: [138200019333940881352647n, 423637645189105331266n],
+      amounts: [138225488394017186701914n, 423637645189105331266n],
       block: {
         hash: '0x46242a1e6f84eadb3cb4d6a1074115b2e2c63a647d999985ea71078fbab2f6ec',
         number: 15194488,
@@ -1738,7 +1906,7 @@ describe('Classfiers: Uniswap V3', () => {
       },
       event: {
         address: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
-        logIndex: 35,
+        logIndex: 39,
       },
       metadata: {
         tickLower: -202860,

@@ -135,7 +135,8 @@ function parseSwap(
 function parseLiquidityDeposit(
   pool: Pool,
   event: ClassifiedEvent,
-): LiquidityDeposit {
+  transfers: Transfer[],
+): LiquidityDeposit | null {
   const {
     values,
     transactionFrom,
@@ -149,13 +150,18 @@ function parseLiquidityDeposit(
   } = event;
   const { assets } = pool;
 
-  const depositor = (values.owner as string).toLowerCase();
   const amount0 = (values.amount0 as BigNumber).toBigInt();
   const amount1 = (values.amount1 as BigNumber).toBigInt();
   const tickLower = values.tickLower;
   const tickUpper = values.tickUpper;
 
   const amounts = [amount0, amount1];
+
+  const depositor = getDepositor(assets, amounts, logIndex, address, transfers);
+
+  if (!depositor) {
+    return null;
+  }
 
   return {
     contract: {
@@ -197,7 +203,8 @@ function parseLiquidityDeposit(
 function parseLiquidityWithdrawal(
   pool: Pool,
   event: ClassifiedEvent,
-): LiquidityWithdrawal {
+  transfers: Transfer[],
+): LiquidityWithdrawal | null {
   const {
     values,
     transactionFrom,
@@ -211,13 +218,24 @@ function parseLiquidityWithdrawal(
   } = event;
   const { assets } = pool;
 
-  const withdrawer = (values.owner as string).toLowerCase();
   const amount0 = (values.amount0 as BigNumber).toBigInt();
   const amount1 = (values.amount1 as BigNumber).toBigInt();
   const tickLower = values.tickLower as number;
   const tickUpper = values.tickUpper as number;
 
   const amounts = [amount0, amount1];
+
+  const withdrawer = getWithdrawer(
+    assets,
+    amounts,
+    logIndex,
+    address,
+    transfers,
+  );
+
+  if (!withdrawer) {
+    return null;
+  }
 
   return {
     contract: {
@@ -256,6 +274,68 @@ function parseLiquidityWithdrawal(
   };
 }
 
+function getDepositor(
+  assets: string[],
+  amounts: bigint[],
+  logIndex: number,
+  address: string,
+  transfers: Transfer[],
+): string | null {
+  const transferA = transfers.find(
+    (transfer) => transfer.event.logIndex === logIndex - 2,
+  );
+  const transferB = transfers.find(
+    (transfer) => transfer.event.logIndex === logIndex - 1,
+  );
+  if (!transferA || !transferB) {
+    return null;
+  }
+  if (transferA.to !== address || transferB.to !== address) {
+    return null;
+  }
+  if (transferA.asset !== assets[0] || transferB.asset !== assets[1]) {
+    return null;
+  }
+  if (transferA.value !== amounts[0] || transferB.value !== amounts[1]) {
+    return null;
+  }
+  if (transferA.from !== transferB.from) {
+    return null;
+  }
+  return transferA.from;
+}
+
+function getWithdrawer(
+  assets: string[],
+  amounts: bigint[],
+  logIndex: number,
+  address: string,
+  transfers: Transfer[],
+): string | null {
+  const transferA = transfers.find(
+    (transfer) => transfer.event.logIndex === logIndex - 2,
+  );
+  const transferB = transfers.find(
+    (transfer) => transfer.event.logIndex === logIndex - 1,
+  );
+  if (!transferA || !transferB) {
+    return null;
+  }
+  if (transferA.from !== address || transferB.from !== address) {
+    return null;
+  }
+  if (transferA.asset !== assets[0] || transferB.asset !== assets[1]) {
+    return null;
+  }
+  if (transferA.value !== amounts[0] || transferB.value !== amounts[1]) {
+    return null;
+  }
+  if (transferA.to !== transferB.to) {
+    return null;
+  }
+  return transferA.to;
+}
+
 const CLASSIFIER: Classifier[] = [
   {
     type: 'swap',
@@ -291,4 +371,5 @@ const CLASSIFIER: Classifier[] = [
     },
   },
 ];
+
 export default CLASSIFIER;

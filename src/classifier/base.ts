@@ -241,7 +241,11 @@ interface LiquidityDepositClassifier extends BaseClassifier {
   protocol: SwapProtocol;
   type: 'liquidity_deposit';
   isValid: (event: Event, address: string, chainId: ChainId) => boolean;
-  parse: (pool: Pool, event: ClassifiedEvent) => LiquidityDeposit | null;
+  parse: (
+    pool: Pool,
+    event: ClassifiedEvent,
+    transfers: Transfer[],
+  ) => LiquidityDeposit | null;
   pool: {
     getCalls: (id: string) => Call[];
     processCalls: (result: unknown[], address: string) => PoolData | null;
@@ -252,7 +256,11 @@ interface LiquidityWithdrawalClassifier extends BaseClassifier {
   protocol: SwapProtocol;
   type: 'liquidity_withdrawal';
   isValid: (event: Event, address: string, chainId: ChainId) => boolean;
-  parse: (pool: Pool, event: ClassifiedEvent) => LiquidityWithdrawal | null;
+  parse: (
+    pool: Pool,
+    event: ClassifiedEvent,
+    transfers: Transfer[],
+  ) => LiquidityWithdrawal | null;
   pool: {
     getCalls: (id: string) => Call[];
     processCalls: (result: unknown[], address: string) => PoolData | null;

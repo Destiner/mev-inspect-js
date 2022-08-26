@@ -22,7 +22,7 @@ function getPoolAddress(log: ClassifiedEvent): string {
 function getLiquidityDeposits(
   chainId: ChainId,
   pools: Pool[],
-  _transfers: Transfer[],
+  transfers: Transfer[],
   logs: ClassifiedEvent[],
 ): LiquidityDeposit[] {
   return logs
@@ -43,7 +43,7 @@ function getLiquidityDeposits(
       if (!isValidFactory(chainId, swapProtocol, pool.factory)) {
         return null;
       }
-      return log.classifier.parse(pool, log);
+      return log.classifier.parse(pool, log, transfers);
     })
     .filter(
       (deposit: LiquidityDeposit | null): deposit is LiquidityDeposit =>
