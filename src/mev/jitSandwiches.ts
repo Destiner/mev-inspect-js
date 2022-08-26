@@ -61,9 +61,6 @@ function getUniswapV3Sandwiches(
       if (deposit.event.address !== withdrawal.event.address) {
         continue;
       }
-      if (deposit.depositor !== withdrawal.withdrawer) {
-        continue;
-      }
       if (deposit.metadata.tickLower !== withdrawal.metadata.tickLower) {
         continue;
       }
@@ -99,7 +96,7 @@ function getUniswapV3Sandwiches(
           };
         });
         sandwiches.push({
-          sandwicher: { sender, beneficiary: deposit.depositor },
+          sandwicher: { sender, beneficiary: withdrawal.withdrawer },
           deposit,
           withdrawal,
           sandwiched,
