@@ -63,9 +63,6 @@ class Inspector {
     const events = classify(this.chainId, logs);
     const pools = await fetchPools(this.chainId, this.provider, events);
     const transfers = getTransfers(events);
-    for (const transfer of transfers) {
-      console.log('xyz', transfer);
-    }
     const swaps = getSwaps(this.chainId, pools, transfers, events);
     const arbitrages = getArbitrages(swaps);
     const markets = await fetchMarkets(this.chainId, this.provider, events);
