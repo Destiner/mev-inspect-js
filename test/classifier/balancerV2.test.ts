@@ -2356,7 +2356,7 @@ describe('Classfiers: Balancer V2', () => {
         ],
       },
     };
-    const depositA = depositClassifier.parse(pool, eventA);
+    const depositA = depositClassifier.parse(pool, eventA, []);
     expect(depositA).toEqual<LiquidityDeposit>({
       block: {
         hash: '0x93a40cc2bb48ebe9109272403b805133a8cc1e61c987680b66b8e248ecbf0c65',
@@ -2436,7 +2436,7 @@ describe('Classfiers: Balancer V2', () => {
         ],
       },
     };
-    const depositB = depositClassifier.parse(pool, eventB);
+    const depositB = depositClassifier.parse(pool, eventB, []);
     expect(depositB).toEqual<LiquidityDeposit>({
       block: {
         hash: '0x868732ce7ebc03309855c29b28cfb275ae3762d4afe26d7b50c9ae4bfb02c4a2',
@@ -2534,7 +2534,7 @@ describe('Classfiers: Balancer V2', () => {
         ],
       },
     };
-    const withdrawalA = withdrawalClassifier.parse(pool, eventA);
+    const withdrawalA = withdrawalClassifier.parse(pool, eventA, []);
     expect(withdrawalA).toEqual<LiquidityWithdrawal>({
       block: {
         hash: '0x303487ad9d5187579e24741c12bf7449ef0e347cba0ddde0b21a2fa82dcf6f2d',
@@ -2613,7 +2613,7 @@ describe('Classfiers: Balancer V2', () => {
         ],
       },
     };
-    const withdrawalB = withdrawalClassifier.parse(pool, eventB);
+    const withdrawalB = withdrawalClassifier.parse(pool, eventB, []);
     expect(withdrawalB).toEqual<LiquidityWithdrawal>({
       block: {
         hash: '0x55963fb8b65553f7a0e8cf80283735968d461d9ae992706c7de8a1eda5f83204',

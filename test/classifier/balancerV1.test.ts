@@ -51,7 +51,7 @@ describe('Classfiers: Balancer V1', () => {
         tokenAmountIn: BigNumber.from('18314290307656602532'),
       },
     };
-    const deposit = depositClassifier.parse(pool, event);
+    const deposit = depositClassifier.parse(pool, event, []);
     expect(deposit).toEqual<LiquidityDeposit>({
       block: {
         hash: '0x6defb498480d1584f1aad238f69bb4badb2d2dc0f3fed3ce3e36d413eec8ad85',
@@ -125,7 +125,7 @@ describe('Classfiers: Balancer V1', () => {
         tokenAmountOut: BigNumber.from('82427045215513159373'),
       },
     };
-    const withdrawal = withdrawalClassifier.parse(pool, event);
+    const withdrawal = withdrawalClassifier.parse(pool, event, []);
     expect(withdrawal).toEqual<LiquidityWithdrawal>({
       block: {
         hash: '0x2e5b5a0f9782ffd40d0d8ef22ed38e7d334e31577c2a34fa9a3eb7127ac04b81',

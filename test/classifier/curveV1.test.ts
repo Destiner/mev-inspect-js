@@ -63,7 +63,7 @@ describe('Classfiers: Curve V1', () => {
         token_supply: BigNumber.from('962020550720010116353691445'),
       },
     };
-    const deposit = depositClassifier.parse(pool, event);
+    const deposit = depositClassifier.parse(pool, event, []);
     expect(deposit).toEqual<LiquidityDeposit>({
       block: {
         hash: '0x8f355d242b4acfc89ab660543078cf96134c201570b20b7ca5e70e508fdc2ccb',
@@ -153,7 +153,7 @@ describe('Classfiers: Curve V1', () => {
         token_supply: BigNumber.from('962156948317988516166781257'),
       },
     };
-    const withdrawal = withdrawalClassifier.parse(pool, event);
+    const withdrawal = withdrawalClassifier.parse(pool, event, []);
     expect(withdrawal).toEqual<LiquidityWithdrawal>({
       block: {
         hash: '0x461a16fa0eb3d0170f26409044498e759a6c3cdcfacc04c5267287536aa464a0',
