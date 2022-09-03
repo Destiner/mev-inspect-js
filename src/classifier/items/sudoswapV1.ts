@@ -194,12 +194,16 @@ function getNewSpotPrice(
     return null;
   }
   const sudoswapCoder = new Coder(poolAbi);
-  const event = sudoswapCoder.decodeEvent(log.topics, log.data);
-  const price = (event.values.newSpotPrice as BigNumber).toBigInt();
-  return {
-    logIndex: log.logIndex,
-    value: price,
-  };
+  try {
+    const event = sudoswapCoder.decodeEvent(log.topics, log.data);
+    const price = (event.values.newSpotPrice as BigNumber).toBigInt();
+    return {
+      logIndex: log.logIndex,
+      value: price,
+    };
+  } catch (e) {
+    return null;
+  }
 }
 
 function getNftTransfers(
