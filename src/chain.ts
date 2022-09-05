@@ -27,7 +27,7 @@ class Chain {
   }
 
   async getTransactionLogs(hash: string): Promise<Log[]> {
-    const receipt = await this.#getReceipt(hash);
+    const receipt = await this.getReceipt(hash);
     if (!receipt) {
       return [];
     }
@@ -45,11 +45,7 @@ class Chain {
     return logs.flat();
   }
 
-  parseReceipts(receipts: TransactionReceipt[]): Log[] {
-    return receipts.map((receipt) => this.#getLogs(receipt)).flat();
-  }
-
-  async #getReceipt(hash: string): Promise<TransactionReceipt | null> {
+  async getReceipt(hash: string): Promise<TransactionReceipt | null> {
     let receipt: TransactionReceipt | null | undefined = undefined;
     while (receipt === undefined) {
       try {
@@ -66,6 +62,24 @@ class Chain {
       }
     }
     return receipt;
+  }
+
+  async getBlockReceipts(number: number): Promise<TransactionReceipt[]> {
+    const block = await this.#getBlock(number);
+    const hashes = block.transactions.map((tx) => tx.hash);
+    const receipts: TransactionReceipt[] = [];
+    for (const hash of hashes) {
+      const receipt = await this.getReceipt(hash);
+      if (!receipt) {
+        continue;
+      }
+      receipts.push(receipt);
+    }
+    return receipts;
+  }
+
+  parseReceipts(receipts: TransactionReceipt[]): Log[] {
+    return receipts.map((receipt) => this.#getLogs(receipt)).flat();
   }
 
   async #getBlock(number: number): Promise<BlockWithTransactions> {
