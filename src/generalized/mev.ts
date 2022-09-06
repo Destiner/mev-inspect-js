@@ -81,7 +81,7 @@ interface BareArbitrage extends BaseArbitrage {
 
 type Mev = BareArbitrage;
 
-const WETH = '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2';
+const WETH = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2';
 const TRANSFER_EVENT_TOPIC =
   '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef';
 
@@ -94,7 +94,7 @@ function getAssets(receipts: TransactionReceipt[]): string[] {
   for (const receipt of receipts) {
     for (const log of receipt.logs) {
       if (log.topics[0] === TRANSFER_EVENT_TOPIC) {
-        assets.add(log.address);
+        assets.add(log.address.toLowerCase());
       }
     }
   }
@@ -190,15 +190,16 @@ function getErc20Transfers(receipt: TransactionReceipt): Erc20Transfer[] {
   const wethCoder = new Coder(wethAbi);
   const coder = new Coder(erc20Abi);
   for (const log of receipt.logs) {
-    const type = assetTypes[log.address];
+    const asset = log.address.toLowerCase();
+    const type = assetTypes[asset];
     if (type !== 'erc20') {
       continue;
     }
-    if (log.address === WETH) {
+    if (asset === WETH) {
       const event = wethCoder.decodeEvent(log.topics, log.data);
       if (event.name === 'Transfer') {
         transfers.push({
-          asset: log.address,
+          asset,
           from: (event.values.src as string).toLowerCase(),
           to: (event.values.dst as string).toLowerCase(),
           amount: (event.values.wad as BigNumber).toBigInt(),
@@ -206,7 +207,7 @@ function getErc20Transfers(receipt: TransactionReceipt): Erc20Transfer[] {
       }
       if (event.name === 'Deposit') {
         transfers.push({
-          asset: log.address,
+          asset,
           from: '0x0000000000000000000000000000000000000000',
           to: (event.values.dst as string).toLowerCase(),
           amount: (event.values.wad as BigNumber).toBigInt(),
@@ -214,7 +215,7 @@ function getErc20Transfers(receipt: TransactionReceipt): Erc20Transfer[] {
       }
       if (event.name === 'Withdrawal') {
         transfers.push({
-          asset: log.address,
+          asset,
           from: (event.values.src as string).toLowerCase(),
           to: '0x0000000000000000000000000000000000000000',
           amount: (event.values.wad as BigNumber).toBigInt(),
@@ -227,7 +228,7 @@ function getErc20Transfers(receipt: TransactionReceipt): Erc20Transfer[] {
           continue;
         }
         transfers.push({
-          asset: log.address,
+          asset,
           from: (event.values.from as string).toLowerCase(),
           to: (event.values.to as string).toLowerCase(),
           amount: (event.values.value as BigNumber).toBigInt(),
@@ -244,7 +245,8 @@ function getErc721Transfers(receipt: TransactionReceipt): Erc721Transfer[] {
   const transfers: Erc721Transfer[] = [];
   const coder = new Coder(erc721Abi);
   for (const log of receipt.logs) {
-    const type = assetTypes[log.address];
+    const collection = log.address.toLowerCase();
+    const type = assetTypes[collection];
     if (type !== 'erc721') {
       continue;
     }
@@ -254,7 +256,7 @@ function getErc721Transfers(receipt: TransactionReceipt): Erc721Transfer[] {
         continue;
       }
       transfers.push({
-        collection: log.address,
+        collection,
         id: (event.values.tokenId as BigNumber).toBigInt(),
         from: (event.values.from as string).toLowerCase(),
         to: (event.values.to as string).toLowerCase(),
@@ -271,10 +273,11 @@ function getErc1155Transfers(receipt: TransactionReceipt): Erc1155Transfer[] {
   const coder = new Coder(erc1155Abi);
   for (const log of receipt.logs) {
     try {
+      const collection = log.address.toLowerCase();
       const event = coder.decodeEvent(log.topics, log.data);
       if (event.name === 'TransferSingle') {
         transfers.push({
-          collection: log.address,
+          collection,
           ids: [(event.values.id as BigNumber).toBigInt()],
           amounts: [(event.values.value as BigNumber).toBigInt()],
           from: (event.values.from as string).toLowerCase(),
@@ -283,7 +286,7 @@ function getErc1155Transfers(receipt: TransactionReceipt): Erc1155Transfer[] {
       }
       if (event.name === 'TransferBatch') {
         transfers.push({
-          collection: log.address,
+          collection,
           ids: (event.values.ids as BigNumber[]).map((n) => n.toBigInt()),
           amounts: (event.values.values as BigNumber[]).map((n) =>
             n.toBigInt(),
@@ -484,7 +487,7 @@ function getBareArbitrages(
       arbitrages.push({
         transactions: [receipt.transactionHash],
         receipts: [receipt],
-        searcher: receipt.from,
+        searcher: receipt.from.toLowerCase(),
         beneficiary: account,
         assets: balances,
       });
