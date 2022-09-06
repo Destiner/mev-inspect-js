@@ -329,9 +329,9 @@ function isTransfer(trace: TransactionTrace): boolean {
   return false;
 }
 
-// Actor = address that send anything (and maybe receives something in return)
+// Actor = address that sends anything (and maybe receives something in return).
 // Conversely, passive addresses get something (e.g. via claim or rent),
-// but don't send anything
+// but don't send anything in return.
 function getActors(
   ethTransfers: EthTransfer[],
   erc20Transfers: Erc20Transfer[],
