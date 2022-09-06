@@ -1,4 +1,5 @@
 import { BigNumber } from '@ethersproject/bignumber';
+import { AddressZero } from '@ethersproject/constants';
 import { ErrorCode } from '@ethersproject/logger';
 import { Provider, TransactionReceipt } from '@ethersproject/providers';
 import { Coder } from 'abi-coder';
@@ -84,6 +85,8 @@ const WETH = '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2';
 const TRANSFER_EVENT_TOPIC =
   '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef';
 
+const THRESHOLD = 1000;
+
 const assetTypes: Record<string, AssetType> = {};
 
 function getAssets(receipts: TransactionReceipt[]): string[] {
@@ -150,7 +153,6 @@ function classify(
     const erc20Transfers = getErc20Transfers(receipt);
     const erc721Transfers = getErc721Transfers(receipt);
     const erc1155Transfers = getErc1155Transfers(receipt);
-    const actors = getActors(ethTransfers, erc20Transfers, erc721Transfers);
     if (isTransfer(trace)) {
       continue;
     }
@@ -160,7 +162,6 @@ function classify(
       erc20Transfers,
       erc721Transfers,
       erc1155Transfers,
-      actors,
     );
     for (const mevItem of txMev) {
       mev.push(mevItem);
@@ -329,34 +330,12 @@ function isTransfer(trace: TransactionTrace): boolean {
   return false;
 }
 
-// Actor = address that sends anything (and maybe receives something in return).
-// Conversely, passive addresses get something (e.g. via claim or rent),
-// but don't send anything in return.
-function getActors(
-  ethTransfers: EthTransfer[],
-  erc20Transfers: Erc20Transfer[],
-  erc721Transfers: Erc721Transfer[],
-): Set<string> {
-  const actors = new Set<string>();
-  for (const transfer of ethTransfers) {
-    actors.add(transfer.from);
-  }
-  for (const transfer of erc20Transfers) {
-    actors.add(transfer.from);
-  }
-  for (const transfer of erc721Transfers) {
-    actors.add(transfer.from);
-  }
-  return actors;
-}
-
 function getBareArbitrages(
   receipt: TransactionReceipt,
   ethTransfers: EthTransfer[],
   erc20Transfers: Erc20Transfer[],
   erc721Transfers: Erc721Transfer[],
   erc1155Transfers: Erc1155Transfer[],
-  actors: Set<string>,
 ): BareArbitrage[] {
   const arbitrages: BareArbitrage[] = [];
   // account => amount
@@ -373,6 +352,8 @@ function getBareArbitrages(
     string,
     Record<string, Record<string, bigint>>
   > = {};
+  // related accounts
+  const accounts: Set<string> = new Set<string>();
   for (const transfer of ethTransfers) {
     const { from, to, amount } = transfer;
     if (!ethDelta[from]) {
@@ -400,6 +381,8 @@ function getBareArbitrages(
     }
     erc20Delta[from][asset] -= amount;
     erc20Delta[to][asset] += amount;
+    accounts.add(from);
+    accounts.add(to);
   }
   for (const transfer of erc721Transfers) {
     const { collection, id, from, to } = transfer;
@@ -423,6 +406,8 @@ function getBareArbitrages(
     }
     erc721Delta[from][collection][id.toString()] -= 1n;
     erc721Delta[to][collection][id.toString()] += 1n;
+    accounts.add(from);
+    accounts.add(to);
   }
   for (const transfer of erc1155Transfers) {
     const { collection, ids, from, to, amounts } = transfer;
@@ -449,89 +434,59 @@ function getBareArbitrages(
       }
       erc1155Delta[from][collection][id.toString()] -= amount;
       erc1155Delta[to][collection][id.toString()] += amount;
+      accounts.add(from);
+      accounts.add(to);
     }
   }
-  for (const actor of actors) {
-    let hasNegativeDelta = false;
-    const actorEthDelta = ethDelta[actor];
-    if (actorEthDelta < 0n) {
-      hasNegativeDelta = true;
+  const senderBalances = getAccountAssetBalances(
+    receipt.from.toLowerCase(),
+    ethDelta,
+    erc20Delta,
+    erc721Delta,
+    erc1155Delta,
+  );
+  for (const account of accounts) {
+    let score = 1;
+    if (
+      hasOutgoingTransactions(
+        account,
+        ethTransfers,
+        erc20Transfers,
+        erc721Transfers,
+        erc1155Transfers,
+      )
+    ) {
+      score *= 8;
     }
-    const actorErc20Delta = erc20Delta[actor];
-    for (const asset in actorErc20Delta) {
-      const amount = actorErc20Delta[asset];
-      if (amount < 0n) {
-        hasNegativeDelta = true;
-      }
+    if (account !== AddressZero) {
+      score *= 10;
     }
-    const actorErc721Delta = erc721Delta[actor];
-    for (const collection in actorErc721Delta) {
-      const actorCollectionDelta = actorErc721Delta[collection];
-      for (const id in actorCollectionDelta) {
-        const amount = actorCollectionDelta[id];
-        if (amount < 0n) {
-          hasNegativeDelta = true;
-        }
-      }
+    if (account === receipt.from.toLowerCase()) {
+      score *= 10;
     }
-    const actorErc1155Delta = erc1155Delta[actor];
-    for (const collection in actorErc1155Delta) {
-      const actorCollectionDelta = actorErc1155Delta[collection];
-      for (const id in actorCollectionDelta) {
-        const amount = actorCollectionDelta[id];
-        if (amount < 0n) {
-          hasNegativeDelta = true;
-        }
-      }
+    if (account === receipt.to.toLowerCase()) {
+      score *= 5;
     }
-    if (hasNegativeDelta) {
+    if (senderBalances) {
+      score *= 4;
+    }
+    if (score < THRESHOLD) {
       continue;
     }
-    const assets: Asset[] = [];
-    if (actorEthDelta > 0n) {
-      assets.push({
-        amount: actorEthDelta,
-      });
-    }
-    for (const asset in actorErc20Delta) {
-      const amount = actorErc20Delta[asset];
-      if (amount > 0n) {
-        assets.push({
-          address: asset,
-          amount,
-        });
-      }
-    }
-    for (const collection in actorErc721Delta) {
-      for (const id in actorErc721Delta[collection]) {
-        const amount = actorErc721Delta[collection][id];
-        if (amount > 0n) {
-          assets.push({
-            collection,
-            id: BigInt(id),
-          });
-        }
-      }
-    }
-    for (const collection in actorErc1155Delta) {
-      for (const id in actorErc1155Delta[collection]) {
-        const amount = actorErc1155Delta[collection][id];
-        if (amount > 0n) {
-          assets.push({
-            collection,
-            id: BigInt(id),
-            amount,
-          });
-        }
-      }
-    }
-    if (assets.length > 0) {
+    const balances = getAccountAssetBalances(
+      account,
+      ethDelta,
+      erc20Delta,
+      erc721Delta,
+      erc1155Delta,
+    );
+    if (!!balances && balances.length > 0) {
       arbitrages.push({
         transactions: [receipt.transactionHash],
         receipts: [receipt],
         searcher: receipt.from,
-        beneficiary: actor,
-        assets,
+        beneficiary: account,
+        assets: balances,
       });
     }
   }
@@ -570,6 +525,119 @@ async function getNullableCallResults<T>(
     }
   }
   return allResults;
+}
+
+function getAccountAssetBalances(
+  account: string,
+  ethDelta: Record<string, bigint>,
+  erc20Delta: Record<string, Record<string, bigint>>,
+  erc721Delta: Record<string, Record<string, Record<string, bigint>>>,
+  erc1155Delta: Record<string, Record<string, Record<string, bigint>>>,
+): Asset[] | null {
+  let hasNegativeDelta = false;
+  const actorEthDelta = ethDelta[account];
+  if (actorEthDelta < 0n) {
+    hasNegativeDelta = true;
+  }
+  const actorErc20Delta = erc20Delta[account];
+  for (const asset in actorErc20Delta) {
+    const amount = actorErc20Delta[asset];
+    if (amount < 0n) {
+      hasNegativeDelta = true;
+    }
+  }
+  const actorErc721Delta = erc721Delta[account];
+  for (const collection in actorErc721Delta) {
+    const actorCollectionDelta = actorErc721Delta[collection];
+    for (const id in actorCollectionDelta) {
+      const amount = actorCollectionDelta[id];
+      if (amount < 0n) {
+        hasNegativeDelta = true;
+      }
+    }
+  }
+  const actorErc1155Delta = erc1155Delta[account];
+  for (const collection in actorErc1155Delta) {
+    const actorCollectionDelta = actorErc1155Delta[collection];
+    for (const id in actorCollectionDelta) {
+      const amount = actorCollectionDelta[id];
+      if (amount < 0n) {
+        hasNegativeDelta = true;
+      }
+    }
+  }
+  if (hasNegativeDelta) {
+    return null;
+  }
+  const assets: Asset[] = [];
+  if (actorEthDelta > 0n) {
+    assets.push({
+      amount: actorEthDelta,
+    });
+  }
+  for (const asset in actorErc20Delta) {
+    const amount = actorErc20Delta[asset];
+    if (amount > 0n) {
+      assets.push({
+        address: asset,
+        amount,
+      });
+    }
+  }
+  for (const collection in actorErc721Delta) {
+    for (const id in actorErc721Delta[collection]) {
+      const amount = actorErc721Delta[collection][id];
+      if (amount > 0n) {
+        assets.push({
+          collection,
+          id: BigInt(id),
+        });
+      }
+    }
+  }
+  for (const collection in actorErc1155Delta) {
+    for (const id in actorErc1155Delta[collection]) {
+      const amount = actorErc1155Delta[collection][id];
+      if (amount > 0n) {
+        assets.push({
+          collection,
+          id: BigInt(id),
+          amount,
+        });
+      }
+    }
+  }
+  return assets;
+}
+
+function hasOutgoingTransactions(
+  account: string,
+  ethTransfers: EthTransfer[],
+  erc20Transfers: Erc20Transfer[],
+  erc721Transfers: Erc721Transfer[],
+  erc1155Transfers: Erc1155Transfer[],
+): boolean {
+  for (const transfer of ethTransfers) {
+    if (transfer.from === account) {
+      return true;
+    }
+  }
+  for (const transfer of erc20Transfers) {
+    if (transfer.from === account) {
+      return true;
+    }
+  }
+  for (const transfer of erc721Transfers) {
+    if (transfer.from === account) {
+      return true;
+    }
+  }
+  for (const transfer of erc1155Transfers) {
+    if (transfer.from === account) {
+      return true;
+    }
+  }
+  return false;
 }
 
 export { Mev, getAssets, fetchAssetTypes, classify };
