@@ -4,7 +4,7 @@ import Chain from '../chain.js';
 import { groupBy } from '../utils.js';
 
 import { Mev, getAssets, fetchAssetTypes, classify } from './mev.js';
-import { getBlockTraces } from './traces.js';
+import { getBlockTraces, getTransactionTrace } from './traces.js';
 
 type ChainId = 1;
 
@@ -24,8 +24,7 @@ class Inspector {
     if (!receipt) {
       return [];
     }
-    const block = receipt.blockNumber;
-    return await this.#getMev(this.provider, [receipt], block);
+    return await this.#getTxMev(this.provider, receipt, hash);
   }
 
   async block(number: number): Promise<Mev[]> {
@@ -47,6 +46,26 @@ class Inspector {
       }
     }
     return mev;
+  }
+
+  async #getTxMev(
+    provider: JsonRpcProvider,
+    receipt: TransactionReceipt,
+    hash: string,
+  ): Promise<Mev[]> {
+    const receiptMap = {
+      [hash]: receipt,
+    };
+    const trace = await getTransactionTrace(provider, hash);
+    if (!trace) {
+      return [];
+    }
+    const traceMap = {
+      [hash]: trace,
+    };
+    const assets = getAssets([receipt]);
+    await fetchAssetTypes(provider, assets);
+    return classify(traceMap, receiptMap);
   }
 
   async #getMev(

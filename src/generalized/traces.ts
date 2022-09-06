@@ -65,6 +65,17 @@ interface TransactionTrace {
   }[];
 }
 
+async function getTransactionTrace(
+  provider: JsonRpcProvider,
+  hash: string,
+): Promise<TransactionTrace | null> {
+  const response = (await provider.send('trace_replayTransaction', [
+    hash,
+    ['trace'],
+  ])) as RawTransactionReplay;
+  return parseTrace(response);
+}
+
 async function getBlockTraces(
   provider: JsonRpcProvider,
   block: number,
@@ -79,31 +90,32 @@ async function getBlockTraces(
     }
   }
   return Object.fromEntries(
-    response.map((trace) => {
-      return [
-        trace.transactionHash,
-        {
-          calls: trace.trace
-            .filter(
-              (trace): trace is SuccessfulTrace =>
-                trace.type === 'call' && 'result' in trace,
-            )
-            .map((trace) => {
-              const { action, result } = trace;
-              return {
-                from: action.from,
-                to: action.to,
-                input: action.input,
-                output: result.output,
-                value: BigInt(action.value),
-                gas: BigInt(action.gas),
-                gasUsed: BigInt(result.gasUsed),
-              };
-            }),
-        },
-      ];
+    response.map((replay) => {
+      return [replay.transactionHash, parseTrace(replay)];
     }),
   );
 }
 
-export { TransactionTrace, getBlockTraces };
+function parseTrace(replay: RawTransactionReplay): TransactionTrace {
+  return {
+    calls: replay.trace
+      .filter(
+        (trace): trace is SuccessfulTrace =>
+          trace.type === 'call' && 'result' in trace,
+      )
+      .map((trace) => {
+        const { action, result } = trace;
+        return {
+          from: action.from,
+          to: action.to,
+          input: action.input,
+          output: result.output,
+          value: BigInt(action.value),
+          gas: BigInt(action.gas),
+          gasUsed: BigInt(result.gasUsed),
+        };
+      }),
+  };
+}
+
+export { TransactionTrace, getBlockTraces, getTransactionTrace };
