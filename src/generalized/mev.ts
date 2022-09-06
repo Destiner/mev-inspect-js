@@ -121,7 +121,7 @@ async function fetchAssetTypes(
   );
   const supportsInterfaceResults = await getNullableCallResults<boolean>(
     supportsInterfaceCalls,
-    20,
+    5,
     provider,
   );
   // Store new assets
