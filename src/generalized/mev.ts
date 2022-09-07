@@ -153,6 +153,9 @@ function classify(
     const erc20Transfers = getErc20Transfers(receipt);
     const erc721Transfers = getErc721Transfers(receipt);
     const erc1155Transfers = getErc1155Transfers(receipt);
+    if (isContractDeployment(receipt)) {
+      continue;
+    }
     if (isTransfer(trace)) {
       continue;
     }
@@ -300,6 +303,10 @@ function getErc1155Transfers(receipt: TransactionReceipt): Erc1155Transfer[] {
     }
   }
   return transfers;
+}
+
+function isContractDeployment(receipt: TransactionReceipt): boolean {
+  return !receipt.to;
 }
 
 function isTransfer(trace: TransactionTrace): boolean {
