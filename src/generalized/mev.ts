@@ -309,7 +309,7 @@ function isTransfer(trace: TransactionTrace): boolean {
   const topLevelCall = trace.calls[0];
   const { value, input } = topLevelCall;
   // ETH transfer
-  if (value > 0n) {
+  if (value > 0n && input === '0x') {
     return true;
   }
   // ERC20 transfer
