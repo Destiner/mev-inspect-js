@@ -458,7 +458,7 @@ function getPureArbitrages(
   for (const account of accounts) {
     let score = 1;
     if (
-      hasOutgoingTransactions(
+      hasOutgoingTransfers(
         account,
         ethTransfers,
         erc20Transfers,
@@ -620,7 +620,7 @@ function getAccountAssetBalances(
   return assets;
 }
 
-function hasOutgoingTransactions(
+function hasOutgoingTransfers(
   account: string,
   ethTransfers: EthTransfer[],
   erc20Transfers: Erc20Transfer[],
