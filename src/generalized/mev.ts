@@ -74,12 +74,12 @@ interface Erc1155Asset {
 
 type Asset = EthAsset | Erc20Asset | Erc721Asset | Erc1155Asset;
 
-interface BareArbitrage extends BaseArbitrage {
+interface PureArbitrage extends BaseArbitrage {
   beneficiary: string;
   assets: Asset[];
 }
 
-type Mev = BareArbitrage;
+type Mev = PureArbitrage;
 
 const WETH = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2';
 const TRANSFER_EVENT_TOPIC =
@@ -159,7 +159,7 @@ function classify(
     if (isTransfer(trace)) {
       continue;
     }
-    const txMev = getBareArbitrages(
+    const txMev = getPureArbitrages(
       receipt,
       ethTransfers,
       erc20Transfers,
@@ -340,14 +340,14 @@ function isTransfer(trace: TransactionTrace): boolean {
   return false;
 }
 
-function getBareArbitrages(
+function getPureArbitrages(
   receipt: TransactionReceipt,
   ethTransfers: EthTransfer[],
   erc20Transfers: Erc20Transfer[],
   erc721Transfers: Erc721Transfer[],
   erc1155Transfers: Erc1155Transfer[],
-): BareArbitrage[] {
-  const arbitrages: BareArbitrage[] = [];
+): PureArbitrage[] {
+  const arbitrages: PureArbitrage[] = [];
   // account => amount
   const ethDelta: Record<string, bigint> = {};
   // account => asset => amount
