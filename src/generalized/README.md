@@ -26,4 +26,4 @@ Speaking of false positives, currently about 7% of results mistakenly classified
 
 ## Details
 
-For more information, see [this paper](docs/mev_hackathon_paper.pdf).
+For more information, see [this paper](/docs/mev_hackathon_paper.pdf).
