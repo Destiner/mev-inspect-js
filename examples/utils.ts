@@ -1,9 +1,9 @@
 import 'dotenv/config';
-import { AlchemyProvider, Provider } from '@ethersproject/providers';
+import { AlchemyProvider, JsonRpcProvider } from '@ethersproject/providers';
 
 const key = process.env.ALCHEMY_KEY;
 
-function getProvider(chainId: number): Provider {
+function getProvider(chainId: number): JsonRpcProvider {
   return new AlchemyProvider(chainId, key);
 }
 
