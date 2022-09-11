@@ -23,3 +23,7 @@ Additionally, as we go deeper on this route, we realize that setting a line betw
 At current stage, we are able to classify around 70% of DEX arbitrage transactions (with the ideas to bring that to \~95%). We are also able to classify more esoteric type of MEV, like pool balancing, nft arbitrage, complex arbs, and more.
 
 Speaking of false positives, currently about 7% of results mistakenly classified as MEV.
+
+## Details
+
+For more information, see [this paper](docs/mev_hackathon_paper.pdf).
