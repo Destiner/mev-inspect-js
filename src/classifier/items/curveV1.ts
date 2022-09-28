@@ -22,20 +22,30 @@ interface CurvePool {
   chainId: ChainId;
 }
 
-function isValidSwap(event: Event): boolean {
+function isValidSwap(event: Event, address: string, chain: ChainId): boolean {
   return (
-    event.name === 'TokenExchange' || event.name === 'TokenExchangeUnderlying'
+    isValidPool(address, chain) &&
+    (event.name === 'TokenExchange' || event.name === 'TokenExchangeUnderlying')
   );
 }
 
-function isValidDeposit(event: Event): boolean {
-  return event.name === 'AddLiquidity';
+function isValidDeposit(
+  event: Event,
+  address: string,
+  chain: ChainId,
+): boolean {
+  return isValidPool(address, chain) && event.name === 'AddLiquidity';
 }
 
-function isValidWithdrawal(event: Event): boolean {
+function isValidWithdrawal(
+  event: Event,
+  address: string,
+  chain: ChainId,
+): boolean {
   return (
-    event.name === 'RemoveLiquidity' ||
-    event.name === 'RemoveLiquidityImbalance'
+    isValidPool(address, chain) &&
+    (event.name === 'RemoveLiquidity' ||
+      event.name === 'RemoveLiquidityImbalance')
   );
 }
 
@@ -249,6 +259,12 @@ function parseWithdrawal(
     amounts,
     metadata: {},
   };
+}
+
+function isValidPool(address: string, chain: ChainId): boolean {
+  return pools.some(
+    (pool) => pool.chainId === chain && pool.address === address.toLowerCase(),
+  );
 }
 
 const pools: CurvePool[] = [
