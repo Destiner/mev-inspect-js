@@ -155,5 +155,7 @@ export {
   isArbitrage,
   isLiquidation,
   isSandwich,
+  isJitSandwich,
+  isNftArbitrage,
   minByAbs,
 };
