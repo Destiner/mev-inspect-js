@@ -5,9 +5,11 @@ import { NftPool, NftSwap } from '../../src/classifier/base.js';
 import { ClassifiedEvent } from '../../src/classifier/index.js';
 import classifier from '../../src/classifier/items/openseaSeaport.js';
 
+const swapClassifier = classifier.nftSwap;
+
 describe('Classfiers: Opensea Seaport', () => {
   test('nft swap', () => {
-    if (classifier.type !== 'nft_swap') {
+    if (!swapClassifier) {
       expect.fail();
     }
 
@@ -32,7 +34,7 @@ describe('Classfiers: Opensea Seaport', () => {
       transactionIndex: 82,
       gasUsed: 339555,
       logIndex: 161,
-      classifier,
+      classifier: swapClassifier,
       name: 'OrderFulfilled',
       values: {
         orderHash:
@@ -73,7 +75,7 @@ describe('Classfiers: Opensea Seaport', () => {
         ],
       },
     };
-    const swap = classifier.parse(pool, event, 1, []);
+    const swap = swapClassifier.parse(pool, event, 1, []);
 
     expect(swap).toEqual<NftSwap>({
       block: {

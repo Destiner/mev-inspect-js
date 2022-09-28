@@ -4,7 +4,7 @@ import { Event } from 'abi-coder';
 import { Call } from 'ethcall';
 
 import exchangeAbi from '../../abi/x2y2V1.js';
-import { Classifier, NftPool, NftPoolData, NftSwap } from '../base.js';
+import { Classifiers, NftPool, NftPoolData, NftSwap } from '../base.js';
 import { ChainId, ClassifiedEvent, nativeAsset } from '../index.js';
 
 interface Item {
@@ -100,15 +100,18 @@ function parse(
   };
 }
 
-const CLASSIFIER: Classifier = {
-  type: 'nft_swap',
-  protocol: 'X2Y2V1',
-  abi: exchangeAbi,
-  isValid,
-  parse,
-  pool: {
-    getCalls: getPoolCalls,
-    processCalls: processPoolCalls,
+const CLASSIFIER: Classifiers = {
+  nftSwap: {
+    type: 'nft_swap',
+    protocol: 'X2Y2V1',
+    abi: exchangeAbi,
+    isValid,
+    parse,
+    pool: {
+      getCalls: getPoolCalls,
+      processCalls: processPoolCalls,
+    },
   },
 };
+
 export default CLASSIFIER;

@@ -9,14 +9,14 @@ import {
 import { ClassifiedEvent } from '../../src/classifier/index.js';
 import balancerV1Classifiers from '../../src/classifier/items/balancerV1.js';
 
-const depositClassifier = balancerV1Classifiers[1];
-const withdrawalClassifier = balancerV1Classifiers[2];
+const depositClassifier = balancerV1Classifiers.liquidityDeposit;
+const withdrawalClassifier = balancerV1Classifiers.liquidityWithdrawal;
 
 describe('Classfiers: Balancer V1', () => {
   test.todo('swap');
 
   test('liquidity deposit', () => {
-    if (depositClassifier.type !== 'liquidity_deposit') {
+    if (!depositClassifier) {
       expect.fail();
     }
 
@@ -90,7 +90,7 @@ describe('Classfiers: Balancer V1', () => {
   });
 
   test('liquidity withdrawal', () => {
-    if (withdrawalClassifier.type !== 'liquidity_withdrawal') {
+    if (!withdrawalClassifier) {
       expect.fail();
     }
 

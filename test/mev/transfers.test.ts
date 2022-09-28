@@ -7,6 +7,10 @@ import getTransfers from '../../src/mev/transfers.js';
 
 describe('MEV: transfers', () => {
   test('skip irrelevant logs', () => {
+    if (!uniswapV2Classifiers.swap) {
+      expect.fail();
+    }
+
     const swapLog: ClassifiedEvent = {
       address: '0xa478c2975ab1ea89e8196811f51a7b7ade33eb11',
       blockHash:
@@ -18,7 +22,7 @@ describe('MEV: transfers', () => {
       transactionIndex: 141,
       gasUsed: 98948,
       logIndex: 141,
-      classifier: uniswapV2Classifiers,
+      classifier: uniswapV2Classifiers.swap,
       name: 'Swap',
       values: {
         sender: '0x8aff5ca996f77487a4f04f1ce905bf3d27455580',

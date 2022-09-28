@@ -5,9 +5,11 @@ import { NftPool, NftSwap } from '../../src/classifier/base.js';
 import { ClassifiedEvent } from '../../src/classifier/index.js';
 import classifier from '../../src/classifier/items/x2y2V1.js';
 
+const swapClassifier = classifier.nftSwap;
+
 describe('Classfiers: X2Y2 V1', () => {
   test('nft swap', () => {
-    if (classifier.type !== 'nft_swap') {
+    if (!swapClassifier) {
       expect.fail();
     }
 
@@ -32,7 +34,7 @@ describe('Classfiers: X2Y2 V1', () => {
       transactionIndex: 118,
       gasUsed: 190476,
       logIndex: 201,
-      classifier,
+      classifier: swapClassifier,
       name: 'EvInventory',
       values: {
         itemHash:
@@ -66,7 +68,7 @@ describe('Classfiers: X2Y2 V1', () => {
         },
       },
     };
-    const swap = classifier.parse(pool, event, 1, []);
+    const swap = swapClassifier.parse(pool, event, 1, []);
 
     expect(swap).toEqual<NftSwap>({
       block: {

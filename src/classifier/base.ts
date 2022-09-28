@@ -317,6 +317,16 @@ interface SeizureClassifier extends BaseClassifier {
   };
 }
 
+interface Classifiers {
+  transfer?: TransferClassifier;
+  swap?: SwapClassifier;
+  liquidityDeposit?: LiquidityDepositClassifier;
+  liquidityWithdrawal?: LiquidityWithdrawalClassifier;
+  nftSwap?: NftSwapClassifier;
+  repayment?: RepaymentClassifier;
+  seizure?: SeizureClassifier;
+}
+
 type Classifier =
   | TransferClassifier
   | SwapClassifier
@@ -346,6 +356,7 @@ export {
   Base,
   Block,
   Classifier,
+  Classifiers,
   Erc20Asset,
   LendingProtocol,
   LiquidityDeposit,

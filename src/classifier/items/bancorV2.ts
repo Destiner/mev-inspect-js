@@ -3,7 +3,7 @@ import { Event } from 'abi-coder';
 import { Call } from 'ethcall';
 
 import exchangeAbi from '../../abi/bancorV2.js';
-import { Classifier, Pool, PoolData, Swap } from '../base.js';
+import { Classifiers, Pool, PoolData, Swap } from '../base.js';
 import { ClassifiedEvent } from '../index.js';
 
 function isValid(event: Event): boolean {
@@ -96,15 +96,17 @@ function normalizeAsset(asset: string): string {
   return asset;
 }
 
-const CLASSIFIER: Classifier = {
-  type: 'swap',
-  protocol: 'BancorV2',
-  abi: exchangeAbi,
-  isValid,
-  parse,
-  pool: {
-    getCalls: getPoolCalls,
-    processCalls: processPoolCalls,
+const CLASSIFIER: Classifiers = {
+  swap: {
+    type: 'swap',
+    protocol: 'BancorV2',
+    abi: exchangeAbi,
+    isValid,
+    parse,
+    pool: {
+      getCalls: getPoolCalls,
+      processCalls: processPoolCalls,
+    },
   },
 };
 

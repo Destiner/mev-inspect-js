@@ -3,7 +3,7 @@ import { Event } from 'abi-coder';
 import { Call } from 'ethcall';
 
 import exchangeAbi from '../../abi/zeroExV3.js';
-import { Classifier, Pool, PoolData, Swap } from '../base.js';
+import { Classifiers, Pool, PoolData, Swap } from '../base.js';
 import { ClassifiedEvent } from '../index.js';
 
 function isValid(event: Event): boolean {
@@ -105,15 +105,18 @@ function getAsset(assetData: string): string | null {
   }
 }
 
-const CLASSIFIER: Classifier = {
-  type: 'swap',
-  protocol: 'ZeroExV3',
-  abi: exchangeAbi,
-  isValid,
-  parse,
-  pool: {
-    getCalls: getPoolCalls,
-    processCalls: processPoolCalls,
+const CLASSIFIER: Classifiers = {
+  swap: {
+    type: 'swap',
+    protocol: 'ZeroExV3',
+    abi: exchangeAbi,
+    isValid,
+    parse,
+    pool: {
+      getCalls: getPoolCalls,
+      processCalls: processPoolCalls,
+    },
   },
 };
+
 export default CLASSIFIER;

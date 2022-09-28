@@ -4,9 +4,11 @@ import { describe, test, expect } from 'vitest';
 import { ClassifiedEvent, Transfer } from '../../src/classifier/index.js';
 import classifier from '../../src/classifier/items/erc20.js';
 
+const transferClassifier = classifier.transfer;
+
 describe('Classfiers: ERC20', () => {
   test('transfer', () => {
-    if (classifier.type !== 'transfer') {
+    if (!transferClassifier) {
       expect.fail();
     }
 
@@ -33,7 +35,7 @@ describe('Classfiers: ERC20', () => {
       transactionIndex,
       gasUsed,
       logIndex,
-      classifier,
+      classifier: transferClassifier,
       name: 'Transfer',
       values: {
         from,
@@ -41,7 +43,7 @@ describe('Classfiers: ERC20', () => {
         value,
       },
     };
-    const transfer = classifier.parse(log);
+    const transfer = transferClassifier.parse(log);
 
     expect(transfer).toEqual<Transfer>({
       asset: address.toLowerCase(),
@@ -66,6 +68,10 @@ describe('Classfiers: ERC20', () => {
   });
 
   test('multiple transfers', () => {
+    if (!transferClassifier) {
+      expect.fail();
+    }
+
     const blockHashes = [
       '0x20e8da414e1e2578cf0486e0fe1f3901446a1c5481bec488be5f37cfa9b81199',
       '0x1071ba06c5f6c8c9c60653a5843e484e90eafe61a6c87ab0827793e7aa6cd79c',
@@ -119,7 +125,7 @@ describe('Classfiers: ERC20', () => {
           transactionIndex: transactionIndices[index],
           gasUsed: gasUsedList[index],
           logIndex: logIndices[index],
-          classifier,
+          classifier: transferClassifier,
           name: 'Transfer',
           values: {
             from: fromList[index],
@@ -131,10 +137,7 @@ describe('Classfiers: ERC20', () => {
     );
 
     const transfers = logs.map((log) => {
-      if (classifier.type !== 'transfer') {
-        expect.fail();
-      }
-      return classifier.parse(log);
+      return transferClassifier.parse(log);
     });
 
     const expectedTransfers = transactionHashes.map(

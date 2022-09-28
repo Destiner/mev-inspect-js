@@ -9,14 +9,14 @@ import {
 import { ClassifiedEvent } from '../../src/classifier/index.js';
 import curveV1Classifiers from '../../src/classifier/items/curveV1.js';
 
-const depositClassifier = curveV1Classifiers[1];
-const withdrawalClassifier = curveV1Classifiers[2];
+const depositClassifier = curveV1Classifiers.liquidityDeposit;
+const withdrawalClassifier = curveV1Classifiers.liquidityWithdrawal;
 
 describe('Classfiers: Curve V1', () => {
   test.todo('swap');
 
   test('liquidity deposit', () => {
-    if (depositClassifier.type !== 'liquidity_deposit') {
+    if (!depositClassifier) {
       expect.fail();
     }
 
@@ -111,7 +111,7 @@ describe('Classfiers: Curve V1', () => {
   });
 
   test('liquidity withdrawal', () => {
-    if (withdrawalClassifier.type !== 'liquidity_withdrawal') {
+    if (!withdrawalClassifier) {
       expect.fail();
     }
 
@@ -140,7 +140,7 @@ describe('Classfiers: Curve V1', () => {
       transactionIndex: 262,
       gasUsed: 330640,
       logIndex: 410,
-      classifier: depositClassifier,
+      classifier: withdrawalClassifier,
       name: 'RemoveLiquidity',
       values: {
         provider: '0xd632f22692fac7611d2aa1c0d552930d43caed3b',

@@ -5,7 +5,7 @@ import { Call, Contract } from 'ethcall';
 import erc721Abi from '../../abi/erc721.js';
 import poolAbi from '../../abi/sudoswapV1.js';
 import { Log } from '../../chain.js';
-import { Classifier, NftPool, NftPoolData, NftSwap } from '../base.js';
+import { Classifiers, NftPool, NftPoolData, NftSwap } from '../base.js';
 import { ChainId, ClassifiedEvent, nativeAsset } from '../index.js';
 
 const EXPONENTIAL_CURVE = '0x432f962d8209781da23fb37b6b59ee15de7d9841';
@@ -267,15 +267,17 @@ function getEffectivePrice(
       precisionMultiplier;
 }
 
-const CLASSIFIER: Classifier = {
-  type: 'nft_swap',
-  protocol: 'SudoswapV1',
-  abi: poolAbi,
-  isValid,
-  parse,
-  pool: {
-    getCalls: getPoolCalls,
-    processCalls: processPoolCalls,
+const CLASSIFIER: Classifiers = {
+  nftSwap: {
+    type: 'nft_swap',
+    protocol: 'SudoswapV1',
+    abi: poolAbi,
+    isValid,
+    parse,
+    pool: {
+      getCalls: getPoolCalls,
+      processCalls: processPoolCalls,
+    },
   },
 };
 

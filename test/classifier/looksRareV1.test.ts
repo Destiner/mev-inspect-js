@@ -6,9 +6,11 @@ import { NftPool, NftSwap } from '../../src/classifier/base.js';
 import { ClassifiedEvent } from '../../src/classifier/index.js';
 import classifier from '../../src/classifier/items/looksRareV1.js';
 
+const swapClassifier = classifier.nftSwap;
+
 describe('Classfiers: LooksRare V1', () => {
   test('nft sell', () => {
-    if (classifier.type !== 'nft_swap') {
+    if (!swapClassifier) {
       expect.fail();
     }
 
@@ -33,7 +35,7 @@ describe('Classfiers: LooksRare V1', () => {
       transactionIndex: 35,
       gasUsed: 208730,
       logIndex: 90,
-      classifier,
+      classifier: swapClassifier,
       name: 'TakerAsk',
       values: {
         orderHash:
@@ -181,7 +183,7 @@ describe('Classfiers: LooksRare V1', () => {
         gasUsed: 208730,
       },
     ];
-    const swap = classifier.parse(pool, event, 1, logs);
+    const swap = swapClassifier.parse(pool, event, 1, logs);
 
     expect(swap).toEqual<NftSwap>({
       block: {
@@ -225,7 +227,7 @@ describe('Classfiers: LooksRare V1', () => {
   });
 
   test('nft buy', () => {
-    if (classifier.type !== 'nft_swap') {
+    if (!swapClassifier) {
       expect.fail();
     }
 
@@ -250,7 +252,7 @@ describe('Classfiers: LooksRare V1', () => {
       transactionIndex: 114,
       gasUsed: 261116,
       logIndex: 323,
-      classifier,
+      classifier: swapClassifier,
       name: 'TakerBid',
       values: {
         orderHash:
@@ -266,7 +268,7 @@ describe('Classfiers: LooksRare V1', () => {
         price: BigNumber.from('31000000000000000'),
       },
     };
-    const swap = classifier.parse(pool, event, 1, []);
+    const swap = swapClassifier.parse(pool, event, 1, []);
 
     expect(swap).toEqual<NftSwap>({
       block: {

@@ -3,7 +3,13 @@ import { Event } from 'abi-coder';
 import { Call, Contract } from 'ethcall';
 
 import marketAbi from '../../abi/compoundV2Market.js';
-import { Classifier, Market, MarketData, Repayment, Seizure } from '../base.js';
+import {
+  Classifiers,
+  Market,
+  MarketData,
+  Repayment,
+  Seizure,
+} from '../base.js';
 import { ChainId, nativeAsset } from '../directory.js';
 import { ClassifiedEvent } from '../index.js';
 
@@ -147,8 +153,8 @@ function parseSeizure(market: Market, event: ClassifiedEvent): Seizure {
   };
 }
 
-const CLASSIFIERS: Classifier[] = [
-  {
+const CLASSIFIERS: Classifiers = {
+  repayment: {
     type: 'repayment',
     protocol: 'CompoundV2',
     abi: marketAbi,
@@ -159,7 +165,7 @@ const CLASSIFIERS: Classifier[] = [
       processCalls: processMarketCalls,
     },
   },
-  {
+  seizure: {
     type: 'seizure',
     protocol: 'CompoundV2',
     abi: marketAbi,
@@ -170,6 +176,6 @@ const CLASSIFIERS: Classifier[] = [
       processCalls: processMarketCalls,
     },
   },
-];
+};
 
 export default CLASSIFIERS;

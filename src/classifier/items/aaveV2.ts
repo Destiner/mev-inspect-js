@@ -3,7 +3,13 @@ import { Event } from 'abi-coder';
 import { Call } from 'ethcall';
 
 import poolAbi from '../../abi/aaveV2Pool.js';
-import { Classifier, Market, MarketData, Repayment, Seizure } from '../base.js';
+import {
+  Classifiers,
+  Market,
+  MarketData,
+  Repayment,
+  Seizure,
+} from '../base.js';
 import { ChainId, ClassifiedEvent, isValidPool } from '../index.js';
 
 function isValid(event: Event, address: string, chainId: ChainId): boolean {
@@ -123,8 +129,8 @@ function parseSeizure(market: Market, event: ClassifiedEvent): Seizure {
   };
 }
 
-const CLASSIFIERS: Classifier[] = [
-  {
+const CLASSIFIERS: Classifiers = {
+  repayment: {
     type: 'repayment',
     protocol: 'AaveV2',
     abi: poolAbi,
@@ -135,7 +141,7 @@ const CLASSIFIERS: Classifier[] = [
       processCalls: processMarketCalls,
     },
   },
-  {
+  seizure: {
     type: 'seizure',
     protocol: 'AaveV2',
     abi: poolAbi,
@@ -146,6 +152,6 @@ const CLASSIFIERS: Classifier[] = [
       processCalls: processMarketCalls,
     },
   },
-];
+};
 
 export default CLASSIFIERS;

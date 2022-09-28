@@ -9,16 +9,21 @@ import {
 } from '../../src/classifier/base.js';
 import { ClassifiedEvent } from '../../src/classifier/index.js';
 import balancerV2Classifiers from '../../src/classifier/items/balancerV2.js';
-import uniswapClassifier from '../../src/classifier/items/uniswapV2.js';
+import uniswapClassifiers from '../../src/classifier/items/uniswapV2.js';
 import { Swap } from '../../src/index.js';
 
-const swapClassifier = balancerV2Classifiers[0];
-const depositClassifier = balancerV2Classifiers[1];
-const withdrawalClassifier = balancerV2Classifiers[2];
-const transferClassifier = balancerV2Classifiers[3];
+const uniswapClassifier = uniswapClassifiers.swap;
+const swapClassifier = balancerV2Classifiers.swap;
+const depositClassifier = balancerV2Classifiers.liquidityDeposit;
+const withdrawalClassifier = balancerV2Classifiers.liquidityWithdrawal;
+const transferClassifier = balancerV2Classifiers.transfer;
 
 describe('Classfiers: Balancer V2', () => {
   test('swap', () => {
+    if (!swapClassifier || !transferClassifier) {
+      expect.fail();
+    }
+
     const pool: Pool = {
       address: '0x5c6ee304399dbdb9c8ef030ab642b10820db8f56',
       assets: [
@@ -203,6 +208,10 @@ describe('Classfiers: Balancer V2', () => {
   });
 
   test('swap with different from/to', () => {
+    if (!swapClassifier || !transferClassifier || !uniswapClassifier) {
+      expect.fail();
+    }
+
     const pool: Pool = {
       address: '0xe2469f47ab58cf9cf59f9822e3c5de4950a41c49',
       assets: [
@@ -382,9 +391,6 @@ describe('Classfiers: Balancer V2', () => {
       },
     ];
 
-    if (swapClassifier.type !== 'swap') {
-      expect.fail();
-    }
     const swap = swapClassifier.parse(pool, event, transfers, allEvents);
     expect(swap).toEqual<Swap>({
       block: {
@@ -428,6 +434,10 @@ describe('Classfiers: Balancer V2', () => {
   });
 
   test('eth -> token swap', () => {
+    if (!swapClassifier || !transferClassifier) {
+      expect.fail();
+    }
+
     const pool: Pool = {
       address: '0x0bf37157d30dfe6f56757dcadff01aed83b08cd6',
       assets: [
@@ -527,9 +537,6 @@ describe('Classfiers: Balancer V2', () => {
       },
     ];
 
-    if (swapClassifier.type !== 'swap') {
-      expect.fail();
-    }
     const swap = swapClassifier.parse(pool, event, transfers, allEvents);
     expect(swap).toEqual<Swap>({
       assetIn: {
@@ -573,6 +580,10 @@ describe('Classfiers: Balancer V2', () => {
   });
 
   test('token -> eth swap', () => {
+    if (!swapClassifier || !transferClassifier) {
+      expect.fail();
+    }
+
     const pool: Pool = {
       address: '0x3ebf48cd7586d7a4521ce59e53d9a907ebf1480f',
       assets: [
@@ -672,9 +683,6 @@ describe('Classfiers: Balancer V2', () => {
       },
     ];
 
-    if (swapClassifier.type !== 'swap') {
-      expect.fail();
-    }
     const swap = swapClassifier.parse(pool, event, transfers, allEvents);
     expect(swap).toEqual<Swap>({
       assetIn: {
@@ -718,7 +726,7 @@ describe('Classfiers: Balancer V2', () => {
   });
 
   test('swap with an approval', () => {
-    if (swapClassifier.type !== 'swap') {
+    if (!swapClassifier || !transferClassifier) {
       expect.fail();
     }
 
@@ -1001,7 +1009,7 @@ describe('Classfiers: Balancer V2', () => {
   });
 
   test('multi-path swap', () => {
-    if (swapClassifier.type !== 'swap') {
+    if (!swapClassifier || !transferClassifier) {
       expect.fail();
     }
 
@@ -1245,7 +1253,7 @@ describe('Classfiers: Balancer V2', () => {
   });
 
   test('swap with internal "from" transfer', () => {
-    if (swapClassifier.type !== 'swap') {
+    if (!swapClassifier || !transferClassifier || !uniswapClassifier) {
       expect.fail();
     }
 
@@ -1492,7 +1500,7 @@ describe('Classfiers: Balancer V2', () => {
   });
 
   test('swap with internal "to" transfer', () => {
-    if (swapClassifier.type !== 'swap') {
+    if (!swapClassifier || !transferClassifier) {
       expect.fail();
     }
 
@@ -1778,7 +1786,7 @@ describe('Classfiers: Balancer V2', () => {
   });
 
   test('batch swap', () => {
-    if (swapClassifier.type !== 'swap') {
+    if (!swapClassifier || !transferClassifier) {
       expect.fail();
     }
 
@@ -2216,7 +2224,7 @@ describe('Classfiers: Balancer V2', () => {
   });
 
   test('internal transfer', () => {
-    if (transferClassifier.type !== 'transfer') {
+    if (!transferClassifier) {
       expect.fail();
     }
 
@@ -2305,7 +2313,7 @@ describe('Classfiers: Balancer V2', () => {
   });
 
   test('liquidity deposit', () => {
-    if (depositClassifier.type !== 'liquidity_deposit') {
+    if (!depositClassifier) {
       expect.fail();
     }
 
@@ -2483,7 +2491,7 @@ describe('Classfiers: Balancer V2', () => {
   });
 
   test('liquidity withdrawal', () => {
-    if (withdrawalClassifier.type !== 'liquidity_withdrawal') {
+    if (!withdrawalClassifier) {
       expect.fail();
     }
 

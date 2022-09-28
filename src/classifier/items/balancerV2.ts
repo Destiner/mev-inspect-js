@@ -5,7 +5,7 @@ import { Call, Contract } from 'ethcall';
 
 import vaultAbi from '../../abi/balancerV2Vault.js';
 import {
-  Classifier,
+  Classifiers,
   LiquidityDeposit,
   LiquidityWithdrawal,
   Pool,
@@ -445,8 +445,8 @@ function getSwapValues(swap: ClassifiedEvent): {
   };
 }
 
-const CLASSIFIERS: Classifier[] = [
-  {
+const CLASSIFIERS: Classifiers = {
+  swap: {
     type: 'swap',
     protocol: 'BalancerV2',
     abi: vaultAbi,
@@ -457,7 +457,7 @@ const CLASSIFIERS: Classifier[] = [
       processCalls: processPoolCalls,
     },
   },
-  {
+  liquidityDeposit: {
     type: 'liquidity_deposit',
     protocol: 'BalancerV2',
     abi: vaultAbi,
@@ -468,7 +468,7 @@ const CLASSIFIERS: Classifier[] = [
       processCalls: processPoolCalls,
     },
   },
-  {
+  liquidityWithdrawal: {
     type: 'liquidity_withdrawal',
     protocol: 'BalancerV2',
     abi: vaultAbi,
@@ -479,12 +479,12 @@ const CLASSIFIERS: Classifier[] = [
       processCalls: processPoolCalls,
     },
   },
-  {
+  transfer: {
     type: 'transfer',
     abi: vaultAbi,
     isValid: isValidTransfer,
     parse: parseTransfer,
   },
-];
+};
 
 export default CLASSIFIERS;

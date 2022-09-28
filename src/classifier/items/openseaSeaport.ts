@@ -3,7 +3,7 @@ import { Event } from 'abi-coder';
 import { Call } from 'ethcall';
 
 import exchangeAbi from '../../abi/openseaSeaport.js';
-import { Classifier, NftPool, NftPoolData, NftSwap } from '../base.js';
+import { Classifiers, NftPool, NftPoolData, NftSwap } from '../base.js';
 import { ChainId, ClassifiedEvent, nativeAsset } from '../index.js';
 
 interface SpentItem {
@@ -147,15 +147,18 @@ function parse(
   };
 }
 
-const CLASSIFIER: Classifier = {
-  type: 'nft_swap',
-  protocol: 'OpenseaSeaport',
-  abi: exchangeAbi,
-  isValid,
-  parse,
-  pool: {
-    getCalls: getPoolCalls,
-    processCalls: processPoolCalls,
+const CLASSIFIER: Classifiers = {
+  nftSwap: {
+    type: 'nft_swap',
+    protocol: 'OpenseaSeaport',
+    abi: exchangeAbi,
+    isValid,
+    parse,
+    pool: {
+      getCalls: getPoolCalls,
+      processCalls: processPoolCalls,
+    },
   },
 };
+
 export default CLASSIFIER;

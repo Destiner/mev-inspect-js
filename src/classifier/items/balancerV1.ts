@@ -5,7 +5,7 @@ import { Call, Contract } from 'ethcall';
 import factoryAbi from '../../abi/balancerV1Factory.js';
 import poolAbi from '../../abi/balancerV1Pool.js';
 import {
-  Classifier,
+  Classifiers,
   LiquidityDeposit,
   LiquidityWithdrawal,
   Pool,
@@ -211,8 +211,8 @@ function parseWithdrawal(
   };
 }
 
-const CLASSIFIER: Classifier[] = [
-  {
+const CLASSIFIER: Classifiers = {
+  swap: {
     type: 'swap',
     protocol: 'BalancerV1',
     abi: poolAbi,
@@ -223,7 +223,7 @@ const CLASSIFIER: Classifier[] = [
       processCalls: processPoolCalls,
     },
   },
-  {
+  liquidityDeposit: {
     type: 'liquidity_deposit',
     protocol: 'BalancerV1',
     abi: poolAbi,
@@ -234,7 +234,7 @@ const CLASSIFIER: Classifier[] = [
       processCalls: processPoolCalls,
     },
   },
-  {
+  liquidityWithdrawal: {
     type: 'liquidity_withdrawal',
     protocol: 'BalancerV1',
     abi: poolAbi,
@@ -245,6 +245,6 @@ const CLASSIFIER: Classifier[] = [
       processCalls: processPoolCalls,
     },
   },
-];
+};
 
 export default CLASSIFIER;

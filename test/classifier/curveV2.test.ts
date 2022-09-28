@@ -9,14 +9,14 @@ import {
 import { ClassifiedEvent } from '../../src/classifier/index.js';
 import curveV2Classifiers from '../../src/classifier/items/curveV2.js';
 
-const depositClassifier = curveV2Classifiers[1];
-const withdrawalClassifier = curveV2Classifiers[2];
+const depositClassifier = curveV2Classifiers.liquidityDeposit;
+const withdrawalClassifier = curveV2Classifiers.liquidityWithdrawal;
 
 describe('Classfiers: Curve V2', () => {
   test.todo('swap');
 
   test('liquidity deposit', () => {
-    if (depositClassifier.type !== 'liquidity_deposit') {
+    if (!depositClassifier) {
       expect.fail();
     }
 
@@ -106,7 +106,7 @@ describe('Classfiers: Curve V2', () => {
   });
 
   test('liquidity withdrawal', () => {
-    if (withdrawalClassifier.type !== 'liquidity_withdrawal') {
+    if (!withdrawalClassifier) {
       expect.fail();
     }
 

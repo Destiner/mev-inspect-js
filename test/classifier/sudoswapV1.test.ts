@@ -7,9 +7,11 @@ import classifier, {
   getEffectivePrice,
 } from '../../src/classifier/items/sudoswapV1.js';
 
+const swapClassifier = classifier.nftSwap;
+
 describe('Classfiers: Sudoswap V1', () => {
   test('buy nft', () => {
-    if (classifier.type !== 'nft_swap') {
+    if (!swapClassifier) {
       expect.fail();
     }
 
@@ -39,7 +41,7 @@ describe('Classfiers: Sudoswap V1', () => {
       transactionIndex: 119,
       gasUsed: 170731,
       logIndex: 292,
-      classifier,
+      classifier: swapClassifier,
       name: 'SwapNFTOutPair',
       values: {},
     };
@@ -116,7 +118,7 @@ describe('Classfiers: Sudoswap V1', () => {
       },
     ];
 
-    const swapA = classifier.parse(poolA, eventA, 1, logsA);
+    const swapA = swapClassifier.parse(poolA, eventA, 1, logsA);
     expect(swapA).toEqual<NftSwap>({
       block: {
         number: 15329509,
@@ -161,7 +163,7 @@ describe('Classfiers: Sudoswap V1', () => {
   });
 
   test('sell nft', () => {
-    if (classifier.type !== 'nft_swap') {
+    if (!swapClassifier) {
       expect.fail();
     }
 
@@ -191,7 +193,7 @@ describe('Classfiers: Sudoswap V1', () => {
       transactionIndex: 45,
       gasUsed: 156230,
       logIndex: 62,
-      classifier,
+      classifier: swapClassifier,
       name: 'SwapNFTInPair',
       values: {},
     };
@@ -268,7 +270,7 @@ describe('Classfiers: Sudoswap V1', () => {
       },
     ];
 
-    const swapA = classifier.parse(poolA, eventA, 1, logsA);
+    const swapA = swapClassifier.parse(poolA, eventA, 1, logsA);
     expect(swapA).toEqual<NftSwap>({
       block: {
         number: 15334408,

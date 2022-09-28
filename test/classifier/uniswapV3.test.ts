@@ -11,12 +11,16 @@ import { ClassifiedEvent } from '../../src/classifier/index.js';
 import classifiers from '../../src/classifier/items/uniswapV3.js';
 import { Swap } from '../../src/index.js';
 
-const swapClassifier = classifiers[0];
-const liquidityDepositClassifier = classifiers[1];
-const liquidityWithdrawalClassifier = classifiers[2];
+const swapClassifier = classifiers.swap;
+const liquidityDepositClassifier = classifiers.liquidityDeposit;
+const liquidityWithdrawalClassifier = classifiers.liquidityWithdrawal;
 
 describe('Classfiers: Uniswap V3', () => {
   test('swap', () => {
+    if (!swapClassifier) {
+      expect.fail();
+    }
+
     const poolA: Pool = {
       address: '0x19f83460e387f1b01f94b85c2532ebc15b0b712e',
       assets: [
@@ -94,9 +98,6 @@ describe('Classfiers: Uniswap V3', () => {
       },
     ];
 
-    if (swapClassifier.type !== 'swap') {
-      expect.fail();
-    }
     const swapA = swapClassifier.parse(poolA, eventA, transfersA, []);
     expect(swapA).toEqual<Swap>({
       contract: {
@@ -285,6 +286,10 @@ describe('Classfiers: Uniswap V3', () => {
   });
 
   test('split swaps', () => {
+    if (!swapClassifier) {
+      expect.fail();
+    }
+
     const poolA: Pool = {
       address: '0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640',
       assets: [
@@ -782,6 +787,10 @@ describe('Classfiers: Uniswap V3', () => {
   });
 
   test('multi-hop swaps', () => {
+    if (!swapClassifier) {
+      expect.fail();
+    }
+
     const poolA: Pool = {
       address: '0x8ad599c3a0ff1de082011efddc58f1908eb6e6d8',
       assets: [
@@ -1023,6 +1032,10 @@ describe('Classfiers: Uniswap V3', () => {
   });
 
   test('arbitrage swaps', () => {
+    if (!swapClassifier) {
+      expect.fail();
+    }
+
     const poolA: Pool = {
       address: '0x41b536722c014a577f06a4bb0dfa08bf0b8f5e87',
       assets: [
@@ -1436,6 +1449,10 @@ describe('Classfiers: Uniswap V3', () => {
   });
 
   test('cross-protocol arbitrage swaps', () => {
+    if (!swapClassifier) {
+      expect.fail();
+    }
+
     const pool: Pool = {
       address: '0x9e0905249ceefffb9605e034b534544684a58be6',
       assets: [
@@ -1581,6 +1598,10 @@ describe('Classfiers: Uniswap V3', () => {
   });
 
   test('liquidity deposit', () => {
+    if (!liquidityDepositClassifier) {
+      expect.fail();
+    }
+
     const transfers: Transfer[] = [
       {
         asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
@@ -1738,9 +1759,6 @@ describe('Classfiers: Uniswap V3', () => {
       },
     };
 
-    if (liquidityDepositClassifier.type !== 'liquidity_deposit') {
-      expect.fail();
-    }
     const deposit = liquidityDepositClassifier.parse(pool, event, transfers);
     expect(deposit).toEqual<LiquidityDeposit>({
       contract: {
@@ -1787,6 +1805,10 @@ describe('Classfiers: Uniswap V3', () => {
   });
 
   test('liquidity withdrawal', () => {
+    if (!liquidityWithdrawalClassifier) {
+      expect.fail();
+    }
+
     const transfers: Transfer[] = [
       {
         asset: '0x4d224452801aced8b2f0aebe155379bb5d594381',
@@ -1863,9 +1885,6 @@ describe('Classfiers: Uniswap V3', () => {
       },
     };
 
-    if (liquidityWithdrawalClassifier.type !== 'liquidity_withdrawal') {
-      expect.fail();
-    }
     const withdrawal = liquidityWithdrawalClassifier.parse(
       pool,
       event,

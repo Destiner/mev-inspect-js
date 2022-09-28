@@ -5,7 +5,7 @@ import { Call } from 'ethcall';
 import erc20Abi from '../../abi/erc20.js';
 import exchangeAbi from '../../abi/looksRareV1.js';
 import { Log } from '../../chain.js';
-import { Classifier, NftPool, NftPoolData, NftSwap } from '../base.js';
+import { Classifiers, NftPool, NftPoolData, NftSwap } from '../base.js';
 import { ChainId, ClassifiedEvent } from '../index.js';
 
 function isValid(event: Event): boolean {
@@ -152,15 +152,18 @@ function getAmount(
   return 0n;
 }
 
-const CLASSIFIER: Classifier = {
-  type: 'nft_swap',
-  protocol: 'LooksRareV1',
-  abi: exchangeAbi,
-  isValid,
-  parse,
-  pool: {
-    getCalls: getPoolCalls,
-    processCalls: processPoolCalls,
+const CLASSIFIER: Classifiers = {
+  nftSwap: {
+    type: 'nft_swap',
+    protocol: 'LooksRareV1',
+    abi: exchangeAbi,
+    isValid,
+    parse,
+    pool: {
+      getCalls: getPoolCalls,
+      processCalls: processPoolCalls,
+    },
   },
 };
+
 export default CLASSIFIER;

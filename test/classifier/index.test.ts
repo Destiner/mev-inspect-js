@@ -6,14 +6,28 @@ import classify from '../../src/classifier/index.js';
 import aaveV2Classifiers from '../../src/classifier/items/aaveV2.js';
 import balancerV2Classifiers from '../../src/classifier/items/balancerV2.js';
 import compoundV2Classifiers from '../../src/classifier/items/compoundV2.js';
-import erc20Classifier from '../../src/classifier/items/erc20.js';
-import uniswapV2Classifier from '../../src/classifier/items/uniswapV2.js';
-import uniswapV3Classifier from '../../src/classifier/items/uniswapV3.js';
+import erc20Classifiers from '../../src/classifier/items/erc20.js';
+import uniswapV2Classifiers from '../../src/classifier/items/uniswapV2.js';
+import uniswapV3Classifiers from '../../src/classifier/items/uniswapV3.js';
+
+const erc20Classifier = erc20Classifiers.transfer;
+const uniswapV2Classifier = uniswapV2Classifiers.swap;
+const uniswapV3Classifier = uniswapV3Classifiers.swap;
+const balancerV2SwapClassifier = balancerV2Classifiers.swap;
+const balancerV2TransferClassifier = balancerV2Classifiers.transfer;
+const compoundV2RepaymentClassifier = compoundV2Classifiers.repayment;
+const aaveV2RepaymentClassifier = aaveV2Classifiers.repayment;
+const compoundV2SeizureClassifier = compoundV2Classifiers.seizure;
+const aaveV2SeizureClassifier = aaveV2Classifiers.seizure;
 
 const ETHEREUM = 1;
 
 describe('Classfiers', () => {
   test('transfers', () => {
+    if (!erc20Classifier || !balancerV2TransferClassifier) {
+      expect.fail();
+    }
+
     const erc20TransferLog: Log = {
       blockHash:
         '0x81c4fe77261262d47111f7cdc4752d627b7d4153802e5d629bbe05fd5b6fe1b0',
@@ -57,11 +71,19 @@ describe('Classfiers', () => {
 
     expect(classifiedLogs[0].classifier).toEqual<Classifier>(erc20Classifier);
     expect(classifiedLogs[1].classifier).toEqual<Classifier>(
-      balancerV2Classifiers[3],
+      balancerV2TransferClassifier,
     );
   });
 
   test('swaps', () => {
+    if (
+      !uniswapV2Classifier ||
+      !uniswapV3Classifier ||
+      !balancerV2SwapClassifier
+    ) {
+      expect.fail();
+    }
+
     const uniswapV2SwapLog: Log = {
       blockHash:
         '0x8ba06d42b983e83504399c641f72e8ee1cd73bc6c1417a66fbe79401a8702d80',
@@ -127,10 +149,10 @@ describe('Classfiers', () => {
       uniswapV2Classifier,
     );
     expect(classifiedLogs[1].classifier).toEqual<Classifier>(
-      uniswapV3Classifier[0],
+      uniswapV3Classifier,
     );
     expect(classifiedLogs[2].classifier).toEqual<Classifier>(
-      balancerV2Classifiers[0],
+      balancerV2SwapClassifier,
     );
   });
 
@@ -176,10 +198,10 @@ describe('Classfiers', () => {
     const classifiedLogs = classify(ETHEREUM, logs);
 
     const compoundV2RepaymentEvents = classifiedLogs.filter(
-      (log) => log.classifier === compoundV2Classifiers[0],
+      (log) => log.classifier === compoundV2RepaymentClassifier,
     );
     const aaveV2RepaymentEvents = classifiedLogs.filter(
-      (log) => log.classifier === aaveV2Classifiers[0],
+      (log) => log.classifier === aaveV2RepaymentClassifier,
     );
 
     expect(compoundV2RepaymentEvents.length).toEqual(1);
@@ -228,10 +250,10 @@ describe('Classfiers', () => {
     const classifiedLogs = classify(ETHEREUM, logs);
 
     const compoundV2SeizureEvents = classifiedLogs.filter(
-      (log) => log.classifier === compoundV2Classifiers[1],
+      (log) => log.classifier === compoundV2SeizureClassifier,
     );
     const aaveV2SeizureEvents = classifiedLogs.filter(
-      (log) => log.classifier === aaveV2Classifiers[1],
+      (log) => log.classifier === aaveV2SeizureClassifier,
     );
 
     expect(compoundV2SeizureEvents.length).toEqual(1);

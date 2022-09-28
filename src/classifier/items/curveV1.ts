@@ -4,7 +4,7 @@ import { Call } from 'ethcall';
 
 import poolAbi from '../../abi/curveV1.js';
 import {
-  Classifier,
+  Classifiers,
   LiquidityDeposit,
   LiquidityWithdrawal,
   Pool,
@@ -902,8 +902,8 @@ const pools: CurvePool[] = [
   },
 ];
 
-const CLASSIFIER: Classifier[] = [
-  {
+const CLASSIFIER: Classifiers = {
+  swap: {
     type: 'swap',
     protocol: 'CurveV1',
     abi: poolAbi,
@@ -914,7 +914,7 @@ const CLASSIFIER: Classifier[] = [
       processCalls: processPoolCalls,
     },
   },
-  {
+  liquidityDeposit: {
     type: 'liquidity_deposit',
     protocol: 'CurveV1',
     abi: poolAbi,
@@ -925,7 +925,7 @@ const CLASSIFIER: Classifier[] = [
       processCalls: processPoolCalls,
     },
   },
-  {
+  liquidityWithdrawal: {
     type: 'liquidity_withdrawal',
     protocol: 'CurveV1',
     abi: poolAbi,
@@ -936,6 +936,6 @@ const CLASSIFIER: Classifier[] = [
       processCalls: processPoolCalls,
     },
   },
-];
+};
 
 export default CLASSIFIER;

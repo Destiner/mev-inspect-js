@@ -5,7 +5,7 @@ import { Call, Contract } from 'ethcall';
 import pairAbi from '../../abi/uniswapV2Pair.js';
 import { equalWithTolerance } from '../../utils.js';
 import {
-  Classifier,
+  Classifiers,
   Pool,
   PoolData,
   Swap,
@@ -121,15 +121,18 @@ function parse(
   };
 }
 
-const CLASSIFIER: Classifier = {
-  type: 'swap',
-  protocol: 'UniswapV2',
-  abi: pairAbi,
-  isValid,
-  parse,
-  pool: {
-    getCalls: getPoolCalls,
-    processCalls: processPoolCalls,
+const CLASSIFIER: Classifiers = {
+  swap: {
+    type: 'swap',
+    protocol: 'UniswapV2',
+    abi: pairAbi,
+    isValid,
+    parse,
+    pool: {
+      getCalls: getPoolCalls,
+      processCalls: processPoolCalls,
+    },
   },
 };
+
 export default CLASSIFIER;

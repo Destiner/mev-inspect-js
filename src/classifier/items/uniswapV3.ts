@@ -5,7 +5,7 @@ import { Call, Contract } from 'ethcall';
 import poolAbi from '../../abi/uniswapV3Pool.js';
 import { equalWithTolerance } from '../../utils.js';
 import {
-  Classifier,
+  Classifiers,
   LiquidityDeposit,
   LiquidityWithdrawal,
   Pool,
@@ -336,8 +336,8 @@ function getWithdrawer(
   return transferA.to;
 }
 
-const CLASSIFIER: Classifier[] = [
-  {
+const CLASSIFIER: Classifiers = {
+  swap: {
     type: 'swap',
     protocol: 'UniswapV3',
     abi: poolAbi,
@@ -348,7 +348,7 @@ const CLASSIFIER: Classifier[] = [
       processCalls: processPoolCalls,
     },
   },
-  {
+  liquidityDeposit: {
     type: 'liquidity_deposit',
     protocol: 'UniswapV3',
     abi: poolAbi,
@@ -359,7 +359,7 @@ const CLASSIFIER: Classifier[] = [
       processCalls: processPoolCalls,
     },
   },
-  {
+  liquidityWithdrawal: {
     type: 'liquidity_withdrawal',
     protocol: 'UniswapV3',
     abi: poolAbi,
@@ -370,6 +370,6 @@ const CLASSIFIER: Classifier[] = [
       processCalls: processPoolCalls,
     },
   },
-];
+};
 
 export default CLASSIFIER;
