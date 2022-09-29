@@ -162,9 +162,6 @@ describe('Classfiers: Balancer V2', () => {
       },
     ];
 
-    if (swapClassifier.type !== 'swap') {
-      expect.fail();
-    }
     const swap = swapClassifier.parse(pool, event, transfers, allEvents);
     expect(swap).toEqual<Swap>({
       block: {

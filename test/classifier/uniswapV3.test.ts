@@ -238,9 +238,6 @@ describe('Classfiers: Uniswap V3', () => {
       },
     ];
 
-    if (swapClassifier.type !== 'swap') {
-      expect.fail();
-    }
     const swapB = swapClassifier.parse(poolB, eventB, transfersB, []);
     expect(swapB).toEqual<Swap>({
       contract: {
@@ -655,9 +652,6 @@ describe('Classfiers: Uniswap V3', () => {
       },
     ];
 
-    if (swapClassifier.type !== 'swap') {
-      expect.fail();
-    }
     const swapA = swapClassifier.parse(poolA, eventA, transfers, []);
     const swapB = swapClassifier.parse(poolB, eventB, transfers, []);
     const swapC = swapClassifier.parse(poolC, eventC, transfers, []);
@@ -942,9 +936,6 @@ describe('Classfiers: Uniswap V3', () => {
       },
     ];
 
-    if (swapClassifier.type !== 'swap') {
-      expect.fail();
-    }
     const swapA = swapClassifier.parse(poolA, eventA, transfers, []);
     const swapB = swapClassifier.parse(poolB, eventB, transfers, []);
     expect(swapA).toEqual<Swap>({
@@ -1275,9 +1266,6 @@ describe('Classfiers: Uniswap V3', () => {
       },
     ];
 
-    if (swapClassifier.type !== 'swap') {
-      expect.fail();
-    }
     const swapA = swapClassifier.parse(poolA, eventA, transfers, []);
     const swapB = swapClassifier.parse(poolB, eventB, transfers, []);
     const swapC = swapClassifier.parse(poolC, eventC, transfers, []);
@@ -1550,9 +1538,6 @@ describe('Classfiers: Uniswap V3', () => {
       },
     ];
 
-    if (swapClassifier.type !== 'swap') {
-      expect.fail();
-    }
     const swap = swapClassifier.parse(pool, event, transfers, []);
     expect(swap).toEqual<Swap>({
       contract: {
