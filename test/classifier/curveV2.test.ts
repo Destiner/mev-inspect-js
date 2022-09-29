@@ -5,15 +5,97 @@ import {
   LiquidityDeposit,
   LiquidityWithdrawal,
   Pool,
+  Swap,
 } from '../../src/classifier/base.js';
 import { ClassifiedEvent } from '../../src/classifier/index.js';
 import curveV2Classifiers from '../../src/classifier/items/curveV2.js';
 
+const swapClassifier = curveV2Classifiers.swap;
 const depositClassifier = curveV2Classifiers.liquidityDeposit;
 const withdrawalClassifier = curveV2Classifiers.liquidityWithdrawal;
 
 describe('Classfiers: Curve V2', () => {
-  test.todo('swap');
+  test('swap', () => {
+    if (!swapClassifier) {
+      expect.fail();
+    }
+
+    const pool: Pool = {
+      address: '0xd51a44d3fae010294c616388b506acda1bfaae46',
+      assets: [
+        '0xdac17f958d2ee523a2206206994597c13d831ec7',
+        '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+        '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      ],
+      factory: {
+        address: '0xb9fc157394af804a3578134a6585c0dc9cc990d4',
+        label: 'Curve V2',
+      },
+    };
+
+    const event: ClassifiedEvent = {
+      address: '0xD51a44d3FaE010294C616388b506AcdA1bfAAE46',
+      blockHash:
+        '0x30a5f34247fe2ea33f6c7b35ec9a0c4a3b905eb2f538b6c64ae635f5c77c22ee',
+      blockNumber: 15591593,
+      transactionFrom: '0x5093852B185c1BDF2a87Cb76824ca43611400a02',
+      transactionHash:
+        '0x726d1833568844c15e482d8fcb0a2f250d2acb5add7a5f648115e21e5fdc3617',
+      transactionIndex: 157,
+      gasUsed: 410029,
+      logIndex: 258,
+      classifier: swapClassifier,
+      name: 'TokenExchange',
+      values: {
+        buyer: '0x00000000C2Cf7648c169b25ef1C217864bFa38cC',
+        sold_id: BigNumber.from('1'),
+        tokens_sold: BigNumber.from('1492384890'),
+        bought_id: BigNumber.from('2'),
+        tokens_bought: BigNumber.from('218812804721126460228'),
+      },
+    };
+
+    const swap = swapClassifier.parse(pool, event, [], []);
+    expect(swap).toEqual<Swap>({
+      contract: {
+        address: '0xD51a44d3FaE010294C616388b506AcdA1bfAAE46',
+        protocol: {
+          abi: 'CurveV2',
+          factory: {
+            address: '0xb9fc157394af804a3578134a6585c0dc9cc990d4',
+            label: 'Curve V2',
+          },
+        },
+      },
+      block: {
+        hash: '0x30a5f34247fe2ea33f6c7b35ec9a0c4a3b905eb2f538b6c64ae635f5c77c22ee',
+        number: 15591593,
+      },
+      transaction: {
+        from: '0x5093852b185c1bdf2a87cb76824ca43611400a02',
+        hash: '0x726d1833568844c15e482d8fcb0a2f250d2acb5add7a5f648115e21e5fdc3617',
+        index: 157,
+        gasUsed: 410029,
+      },
+      event: {
+        address: '0xd51a44d3fae010294c616388b506acda1bfaae46',
+        logIndex: 258,
+      },
+      from: '0x00000000c2cf7648c169b25ef1c217864bfa38cc',
+      to: '0x00000000c2cf7648c169b25ef1c217864bfa38cc',
+      assetIn: {
+        type: 'erc20',
+        address: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+      },
+      amountIn: 1492384890n,
+      assetOut: {
+        type: 'erc20',
+        address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+      },
+      amountOut: 218812804721126460228n,
+      metadata: {},
+    });
+  });
 
   test('liquidity deposit', () => {
     if (!depositClassifier) {
