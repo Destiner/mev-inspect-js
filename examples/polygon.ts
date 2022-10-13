@@ -29,7 +29,7 @@ const transactions: Transaction[] = [
   {
     label: 'Cream liquidation',
     hash: '0xe452500d18f4da21d591a8122ad022059d53ec8ce076166d9bd9576791720784',
-  }
+  },
 ];
 
 async function run(): Promise<void> {
