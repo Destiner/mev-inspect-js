@@ -55,7 +55,7 @@ function processPoolCalls(
 ): NftPoolData | null {
   const factory = (results[0] as string).toLowerCase();
   const token = (results[1] as string | null)?.toLowerCase();
-  const nft = (results[2] as string).toLowerCase();
+  const nft = (results[2] as string | null)?.toLowerCase();
   const bondingCurve = (results[3] as string).toLowerCase();
   const fee = (results[4] as BigNumber).toBigInt();
   const delta = (results[5] as BigNumber).toBigInt();
@@ -65,6 +65,9 @@ function processPoolCalls(
       : bondingCurve === LINEAR_CURVE
       ? 'linear'
       : null;
+  if (!nft) {
+    return null;
+  }
   if (!type) {
     return null;
   }
