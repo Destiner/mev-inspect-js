@@ -1,4 +1,3 @@
-import { BigNumber } from '@ethersproject/bignumber';
 import { Event } from 'abi-coder';
 import { Call } from 'ethcall';
 
@@ -87,9 +86,9 @@ function parseSwap(pool: Pool, event: ClassifiedEvent): Swap | null {
 
   const buyer = (values.buyer as string).toLowerCase();
   const sold_id = values.sold_id as number;
-  const tokens_sold = (values.tokens_sold as BigNumber).toBigInt();
+  const tokens_sold = values.tokens_sold as bigint;
   const bought_id = values.bought_id as number;
-  const tokens_bought = (values.tokens_bought as BigNumber).toBigInt();
+  const tokens_bought = values.tokens_bought as bigint;
 
   const curvePool = pools.find(
     (curvePool) => curvePool.address === pool.address,
@@ -168,9 +167,7 @@ function parseDeposit(
   const { assets } = pool;
 
   const depositor = (values.provider as string).toLowerCase();
-  const amounts = (values.token_amounts as BigNumber[]).map((value) =>
-    value.toBigInt(),
-  );
+  const amounts = values.token_amounts as bigint[];
 
   return {
     contract: {
@@ -224,12 +221,12 @@ function parseWithdrawal(
   const withdrawer = (values.provider as string).toLowerCase();
   const assets: string[] =
     event.name === 'RemoveLiquidityOne'
-      ? [pool.assets[(values.coin_index as BigNumber).toNumber()]]
+      ? [pool.assets[parseInt((values.coin_index as bigint).toString())]]
       : pool.assets;
   const amounts: bigint[] =
     event.name === 'RemoveLiquidityOne'
-      ? [(values.coin_amount as BigNumber).toBigInt()]
-      : (values.token_amounts as BigNumber[]).map((value) => value.toBigInt());
+      ? [values.coin_amount as bigint]
+      : (values.token_amounts as bigint[]);
 
   return {
     contract: {

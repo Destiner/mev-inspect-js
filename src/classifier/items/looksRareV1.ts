@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { BigNumber } from '@ethersproject/bignumber';
 import { Coder, Event } from 'abi-coder';
 import { Call } from 'ethcall';
@@ -50,9 +51,9 @@ function parse(
   const taker = (values.taker as string).toLowerCase();
   const currency = (values.currency as string).toLowerCase();
   const collection = (values.collection as string).toLowerCase();
-  const tokenId = (values.tokenId as BigNumber).toBigInt();
-  const amount = (values.amount as BigNumber).toBigInt();
-  const price = (values.price as BigNumber).toBigInt();
+  const tokenId = values.tokenId as bigint;
+  const amount = values.amount as bigint;
+  const price = values.price as bigint;
 
   const txLogs = allLogs.filter((log) => log.transactionHash === hash);
   const erc20Amount =
@@ -134,7 +135,7 @@ function getAmount(
 
   for (const log of currencyLogs) {
     try {
-      const event = nftCoder.decodeEvent(log.topics, log.data);
+      const event = nftCoder.decodeEvent(log.topics as string[], log.data);
       if (event.name !== 'Transfer') {
         continue;
       }

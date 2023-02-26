@@ -1,9 +1,14 @@
-import { BigNumber } from '@ethersproject/bignumber';
-import { AddressZero } from '@ethersproject/constants';
-import { ErrorCode } from '@ethersproject/logger';
-import { Provider, TransactionReceipt } from '@ethersproject/providers';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { JsonRpcProvider as LegacyJsonRpcProvider } from '@ethersproject/providers';
 import { Coder } from 'abi-coder';
 import { Call, Contract, Provider as EthcallProvider } from 'ethcall';
+import {
+  ErrorCode,
+  JsonRpcProvider,
+  Provider,
+  TransactionReceipt,
+  ZeroAddress,
+} from 'ethers';
 
 import erc1155Abi from '../abi/erc1155.js';
 import erc20Abi from '../abi/erc20.js';
@@ -105,8 +110,11 @@ async function fetchAssetTypes(
   provider: Provider,
   assets: string[],
 ): Promise<void> {
+  const legacyProvider = new LegacyJsonRpcProvider(
+    (provider as JsonRpcProvider)._getConnection().url,
+  );
   const ethcallProvider = new EthcallProvider();
-  await ethcallProvider.init(provider);
+  await ethcallProvider.init(legacyProvider);
   const newAssets = assets.filter((asset) => !assetTypes[asset]);
   const decimalCalls: Call[] = newAssets.map((asset) => {
     const contract = new Contract(asset, erc20Abi);
@@ -199,13 +207,13 @@ function getErc20Transfers(receipt: TransactionReceipt): Erc20Transfer[] {
       continue;
     }
     if (asset === WETH) {
-      const event = wethCoder.decodeEvent(log.topics, log.data);
+      const event = wethCoder.decodeEvent(log.topics as string[], log.data);
       if (event.name === 'Transfer') {
         transfers.push({
           asset,
           from: (event.values.src as string).toLowerCase(),
           to: (event.values.dst as string).toLowerCase(),
-          amount: (event.values.wad as BigNumber).toBigInt(),
+          amount: event.values.wad as bigint,
         });
       }
       if (event.name === 'Deposit') {
@@ -213,7 +221,7 @@ function getErc20Transfers(receipt: TransactionReceipt): Erc20Transfer[] {
           asset,
           from: '0x0000000000000000000000000000000000000000',
           to: (event.values.dst as string).toLowerCase(),
-          amount: (event.values.wad as BigNumber).toBigInt(),
+          amount: event.values.wad as bigint,
         });
       }
       if (event.name === 'Withdrawal') {
@@ -221,12 +229,12 @@ function getErc20Transfers(receipt: TransactionReceipt): Erc20Transfer[] {
           asset,
           from: (event.values.src as string).toLowerCase(),
           to: '0x0000000000000000000000000000000000000000',
-          amount: (event.values.wad as BigNumber).toBigInt(),
+          amount: event.values.wad as bigint,
         });
       }
     } else {
       try {
-        const event = coder.decodeEvent(log.topics, log.data);
+        const event = coder.decodeEvent(log.topics as string[], log.data);
         if (event.name !== 'Transfer') {
           continue;
         }
@@ -234,7 +242,7 @@ function getErc20Transfers(receipt: TransactionReceipt): Erc20Transfer[] {
           asset,
           from: (event.values.from as string).toLowerCase(),
           to: (event.values.to as string).toLowerCase(),
-          amount: (event.values.value as BigNumber).toBigInt(),
+          amount: event.values.value as bigint,
         });
       } catch (e) {
         continue;
@@ -254,13 +262,13 @@ function getErc721Transfers(receipt: TransactionReceipt): Erc721Transfer[] {
       continue;
     }
     try {
-      const event = coder.decodeEvent(log.topics, log.data);
+      const event = coder.decodeEvent(log.topics as string[], log.data);
       if (event.name !== 'Transfer') {
         continue;
       }
       transfers.push({
         collection,
-        id: (event.values.tokenId as BigNumber).toBigInt(),
+        id: event.values.tokenId as bigint,
         from: (event.values.from as string).toLowerCase(),
         to: (event.values.to as string).toLowerCase(),
       });
@@ -277,12 +285,12 @@ function getErc1155Transfers(receipt: TransactionReceipt): Erc1155Transfer[] {
   for (const log of receipt.logs) {
     try {
       const collection = log.address.toLowerCase();
-      const event = coder.decodeEvent(log.topics, log.data);
+      const event = coder.decodeEvent(log.topics as string[], log.data);
       if (event.name === 'TransferSingle') {
         transfers.push({
           collection,
-          ids: [(event.values.id as BigNumber).toBigInt()],
-          amounts: [(event.values.value as BigNumber).toBigInt()],
+          ids: [event.values.id as bigint],
+          amounts: [event.values.value as bigint],
           from: (event.values.from as string).toLowerCase(),
           to: (event.values.to as string).toLowerCase(),
         });
@@ -290,10 +298,8 @@ function getErc1155Transfers(receipt: TransactionReceipt): Erc1155Transfer[] {
       if (event.name === 'TransferBatch') {
         transfers.push({
           collection,
-          ids: (event.values.ids as BigNumber[]).map((n) => n.toBigInt()),
-          amounts: (event.values.values as BigNumber[]).map((n) =>
-            n.toBigInt(),
-          ),
+          ids: event.values.ids as bigint[],
+          amounts: event.values.values as bigint[],
           from: (event.values.from as string).toLowerCase(),
           to: (event.values.to as string).toLowerCase(),
         });
@@ -468,13 +474,13 @@ function getPureArbitrages(
     ) {
       score *= 8;
     }
-    if (account !== AddressZero) {
+    if (account !== ZeroAddress) {
       score *= 10;
     }
     if (account === receipt.from.toLowerCase()) {
       score *= 10;
     }
-    if (account === receipt.to.toLowerCase()) {
+    if (account === receipt.to?.toLowerCase()) {
       score *= 5;
     }
     if (senderBalances) {
@@ -492,7 +498,7 @@ function getPureArbitrages(
     );
     if (!!balances && balances.length > 0) {
       arbitrages.push({
-        transactions: [receipt.transactionHash],
+        transactions: [receipt.hash],
         receipts: [receipt],
         searcher: receipt.from.toLowerCase(),
         beneficiary: account,
@@ -509,8 +515,11 @@ async function getNullableCallResults<T>(
   provider: Provider,
   block?: number,
 ): Promise<(T | null)[]> {
+  const legacyProvider = new LegacyJsonRpcProvider(
+    (provider as JsonRpcProvider)._getConnection().url,
+  );
   const ethcallProvider = new EthcallProvider();
-  await ethcallProvider.init(provider);
+  await ethcallProvider.init(legacyProvider);
 
   const allResults: (T | null)[] = [];
   for (let i = 0; i < allCalls.length / limit; i++) {
@@ -523,7 +532,7 @@ async function getNullableCallResults<T>(
         results = await ethcallProvider.tryAll<T>(calls, block);
       } catch (e: unknown) {
         const errorCode = (e as Error).code as ErrorCode;
-        if (errorCode === ErrorCode.TIMEOUT) {
+        if (errorCode === 'TIMEOUT') {
           console.log(`Failed to fetch state, reason: ${errorCode}, retrying`);
         } else {
           throw e;

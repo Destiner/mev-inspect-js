@@ -1,4 +1,3 @@
-import { BigNumber } from '@ethersproject/bignumber';
 import { describe, test, expect } from 'vitest';
 
 import {
@@ -50,8 +49,8 @@ describe('Classfiers: Balancer V1', () => {
         caller: '0x0000000000007F150Bd6f54c40A34d7C3d5e9f56',
         tokenIn: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
         tokenOut: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
-        tokenAmountIn: BigNumber.from('1419913847'),
-        tokenAmountOut: BigNumber.from('1438429917528496631819'),
+        tokenAmountIn: 1419913847n,
+        tokenAmountOut: 1438429917528496631819n,
       },
     };
 
@@ -130,7 +129,7 @@ describe('Classfiers: Balancer V1', () => {
       values: {
         caller: '0xa8a8a82bbcdf1f682398ac3ef8490f34927ebf93',
         tokenIn: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-        tokenAmountIn: BigNumber.from('18314290307656602532'),
+        tokenAmountIn: 18314290307656602532n,
       },
     };
     const deposit = depositClassifier.parse(pool, event, []);
@@ -204,7 +203,7 @@ describe('Classfiers: Balancer V1', () => {
       values: {
         caller: '0x1f08863f246fe456f94579d1a2009108b574f509',
         tokenOut: '0x6b175474e89094c44da98b954eedeac495271d0f',
-        tokenAmountOut: BigNumber.from('82427045215513159373'),
+        tokenAmountOut: 82427045215513159373n,
       },
     };
     const withdrawal = withdrawalClassifier.parse(pool, event, []);

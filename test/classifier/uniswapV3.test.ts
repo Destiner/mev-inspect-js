@@ -1,4 +1,3 @@
-import { BigNumber } from '@ethersproject/bignumber';
 import { describe, test, expect } from 'vitest';
 
 import {
@@ -48,10 +47,10 @@ describe('Classfiers: Uniswap V3', () => {
       values: {
         sender: '0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45',
         recipient: '0x6c309614D7EFd5633fF34d4C455f0Ca213271048',
-        amount0: BigNumber.from('-5164834278'),
-        amount1: BigNumber.from('300000000000000000000000'),
-        sqrtPriceX96: BigNumber.from('605186618988380239203360521488605796'),
-        liquidity: BigNumber.from('5236922016626795541'),
+        amount0: -5164834278n,
+        amount1: 300000000000000000000000n,
+        sqrtPriceX96: 605186618988380239203360521488605796n,
+        liquidity: 5236922016626795541n,
         tick: 316990,
       },
     };
@@ -168,10 +167,10 @@ describe('Classfiers: Uniswap V3', () => {
       values: {
         sender: '0x4d944a25bC871D6C6EE08baEf0b7dA0b08E6b7b3',
         recipient: '0x4d944a25bC871D6C6EE08baEf0b7dA0b08E6b7b3',
-        amount0: BigNumber.from('76164663463'),
-        amount1: BigNumber.from('-35132165820280149733'),
-        sqrtPriceX96: BigNumber.from('1701807279290655656150308810063139'),
-        liquidity: BigNumber.from('6657767753184375592'),
+        amount0: 76164663463n,
+        amount1: -35132165820280149733n,
+        sqrtPriceX96: 1701807279290655656150308810063139n,
+        liquidity: 6657767753184375592n,
         tick: 199507,
       },
     };
@@ -336,10 +335,10 @@ describe('Classfiers: Uniswap V3', () => {
       values: {
         sender: '0xE592427A0AEce92De3Edee1F18E0157C05861564',
         recipient: '0x22F9dCF4647084d6C31b2765F6910cd85C178C18',
-        amount0: BigNumber.from('-655542493837'),
-        amount1: BigNumber.from('305846153846153863077'),
-        sqrtPriceX96: BigNumber.from('1713099674283590876756634035645162'),
-        liquidity: BigNumber.from('5236837348312764474'),
+        amount0: -655542493837n,
+        amount1: 305846153846153863077n,
+        sqrtPriceX96: 1713099674283590876756634035645162n,
+        liquidity: 5236837348312764474n,
         tick: 199639,
       },
     };
@@ -359,10 +358,10 @@ describe('Classfiers: Uniswap V3', () => {
       values: {
         sender: '0xE592427A0AEce92De3Edee1F18E0157C05861564',
         recipient: '0xE592427A0AEce92De3Edee1F18E0157C05861564',
-        amount0: BigNumber.from('-555672359'),
-        amount1: BigNumber.from('76461538461538460768'),
-        sqrtPriceX96: BigNumber.from('29346641572432228498627094012504715'),
-        liquidity: BigNumber.from('2336712802363359643'),
+        amount0: -555672359n,
+        amount1: 76461538461538460768n,
+        sqrtPriceX96: 29346641572432228498627094012504715n,
+        liquidity: 2336712802363359643n,
         tick: 256459,
       },
     };
@@ -382,10 +381,10 @@ describe('Classfiers: Uniswap V3', () => {
       values: {
         sender: '0xE592427A0AEce92De3Edee1F18E0157C05861564',
         recipient: '0x22F9dCF4647084d6C31b2765F6910cd85C178C18',
-        amount0: BigNumber.from('555672359'),
-        amount1: BigNumber.from('-165760006238'),
-        sqrtPriceX96: BigNumber.from('1369399345523876183225070477709'),
-        liquidity: BigNumber.from('6234329277674'),
+        amount0: 555672359n,
+        amount1: -165760006238n,
+        sqrtPriceX96: 1369399345523876183225070477709n,
+        liquidity: 6234329277674n,
         tick: 56998,
       },
     };
@@ -823,10 +822,10 @@ describe('Classfiers: Uniswap V3', () => {
       values: {
         sender: '0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45',
         recipient: '0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45',
-        amount0: BigNumber.from('-9740653424'),
-        amount1: BigNumber.from('4500000000000000000'),
-        sqrtPriceX96: BigNumber.from('1700367240901089360088535069080891'),
-        liquidity: BigNumber.from('13529723483113463258'),
+        amount0: -9740653424n,
+        amount1: 4500000000000000000n,
+        sqrtPriceX96: 1700367240901089360088535069080891n,
+        liquidity: 13529723483113463258n,
         tick: 199490,
       },
     };
@@ -846,10 +845,10 @@ describe('Classfiers: Uniswap V3', () => {
       values: {
         sender: '0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45',
         recipient: '0xFd3BB774d6460fAD27B8691214Bd628A20783ba5',
-        amount0: BigNumber.from('-6523542739377'),
-        amount1: BigNumber.from('9740653424'),
-        sqrtPriceX96: BigNumber.from('3058062055705573845531102158'),
-        liquidity: BigNumber.from('327592062877931'),
+        amount0: -6523542739377n,
+        amount1: 9740653424n,
+        sqrtPriceX96: 3058062055705573845531102158n,
+        liquidity: 327592062877931n,
         tick: -65095,
       },
     };
@@ -1087,10 +1086,10 @@ describe('Classfiers: Uniswap V3', () => {
       values: {
         sender: '0x5f62593C70069AbB35dFe2B63db969e8906609d6',
         recipient: '0x3Ce42eF6b6617b5950C13D1c258eCFDcd30bB4De',
-        amount0: BigNumber.from('-6627194964611846570392'),
-        amount1: BigNumber.from('760000000000000000'),
-        sqrtPriceX96: BigNumber.from('850450570881608614360786996'),
-        liquidity: BigNumber.from('4776812432910168750236'),
+        amount0: -6627194964611846570392n,
+        amount1: 760000000000000000n,
+        sqrtPriceX96: 850450570881608614360786996n,
+        liquidity: 4776812432910168750236n,
         tick: -90691,
       },
     };
@@ -1110,10 +1109,10 @@ describe('Classfiers: Uniswap V3', () => {
       values: {
         sender: '0x5f62593C70069AbB35dFe2B63db969e8906609d6',
         recipient: '0xCC2bd4F3c00c37aDb00864D9a0a8cfEf8B6Ff56a',
-        amount0: BigNumber.from('-206953215405128955955015'),
-        amount1: BigNumber.from('6627194964611846570392'),
-        sqrtPriceX96: BigNumber.from('14174669532177055937058346653'),
-        liquidity: BigNumber.from('14416215588472917738542855'),
+        amount0: -206953215405128955955015n,
+        amount1: 6627194964611846570392n,
+        sqrtPriceX96: 14174669532177055937058346653n,
+        liquidity: 14416215588472917738542855n,
         tick: -34420,
       },
     };
@@ -1133,10 +1132,10 @@ describe('Classfiers: Uniswap V3', () => {
       values: {
         sender: '0x5f62593C70069AbB35dFe2B63db969e8906609d6',
         recipient: '0x2519042aa735eDb4688a8376d69D4BB69431206c',
-        amount0: BigNumber.from('206953215405128955955015'),
-        amount1: BigNumber.from('-91552167112393573131'),
-        sqrtPriceX96: BigNumber.from('1666445914003289698493150263'),
-        liquidity: BigNumber.from('1476952441328276419451751'),
+        amount0: 206953215405128955955015n,
+        amount1: -91552167112393573131n,
+        sqrtPriceX96: 1666445914003289698493150263n,
+        liquidity: 1476952441328276419451751n,
         tick: -77237,
       },
     };
@@ -1156,10 +1155,10 @@ describe('Classfiers: Uniswap V3', () => {
       values: {
         sender: '0x5f62593C70069AbB35dFe2B63db969e8906609d6',
         recipient: '0x5f62593C70069AbB35dFe2B63db969e8906609d6',
-        amount0: BigNumber.from('91552167112393573131'),
-        amount1: BigNumber.from('-778733861336038399'),
-        sqrtPriceX96: BigNumber.from('7328306219751814609666008477'),
-        liquidity: BigNumber.from('1985990536649819433647'),
+        amount0: 91552167112393573131n,
+        amount1: -778733861336038399n,
+        sqrtPriceX96: 7328306219751814609666008477n,
+        liquidity: 1985990536649819433647n,
         tick: -47615,
       },
     };
@@ -1468,10 +1467,10 @@ describe('Classfiers: Uniswap V3', () => {
       values: {
         sender: '0x58418d6c83EfAB01ed78b0AC42E55af01eE77DbA',
         recipient: '0x55D5c232D921B9eAA6b37b5845E439aCD04b4DBa',
-        amount0: BigNumber.from('-4426537110163'),
-        amount1: BigNumber.from('2749128322331574924'),
-        sqrtPriceX96: BigNumber.from('62357290094933858923698528073152'),
-        liquidity: BigNumber.from('7993771494716273693'),
+        amount0: -4426537110163n,
+        amount1: 2749128322331574924n,
+        sqrtPriceX96: 62357290094933858923698528073152n,
+        liquidity: 7993771494716273693n,
         tick: 133372,
       },
     };
@@ -1738,9 +1737,9 @@ describe('Classfiers: Uniswap V3', () => {
         owner: '0xc36442b4a4522e871399cd717abdd847ab11fe88',
         tickLower: -202860,
         tickUpper: -202800,
-        amount: BigNumber.from('340729203560686282072'),
-        amount0: BigNumber.from('21096147899993320165870'),
-        amount1: BigNumber.from('7486084510631'),
+        amount: 340729203560686282072n,
+        amount0: 21096147899993320165870n,
+        amount1: 7486084510631n,
       },
     };
 
@@ -1865,8 +1864,8 @@ describe('Classfiers: Uniswap V3', () => {
         recipient: '0x56178a0d5f301baf6cf3e1cd53d9863437345bf9',
         tickLower: -202860,
         tickUpper: -202800,
-        amount0: BigNumber.from('138225488394017186701914'),
-        amount1: BigNumber.from('423637645189105331266'),
+        amount0: 138225488394017186701914n,
+        amount1: 423637645189105331266n,
       },
     };
 

@@ -1,6 +1,4 @@
-import { BlockWithTransactions } from '@ethersproject/abstract-provider';
-import { ErrorCode } from '@ethersproject/logger';
-import { Provider, TransactionReceipt } from '@ethersproject/providers';
+import { Block, Provider, TransactionReceipt } from 'ethers';
 
 interface Log {
   blockHash: string;
@@ -11,7 +9,7 @@ interface Log {
   logIndex: number;
   gasUsed: number;
   address: string;
-  topics: string[];
+  topics: readonly string[];
   data: string;
 }
 
@@ -36,7 +34,7 @@ class Chain {
 
   async getBlockLogs(number: number): Promise<Log[]> {
     const block = await this.#getBlock(number);
-    const hashes = block.transactions.map((tx) => tx.hash);
+    const hashes = block.transactions;
     const logs: Log[][] = [];
     for (const hash of hashes) {
       const txLogs = await this.getTransactionLogs(hash);
@@ -52,7 +50,7 @@ class Chain {
         receipt = await this.provider.getTransactionReceipt(hash);
       } catch (e: unknown) {
         const errorCode = (e as Error).code;
-        if (errorCode === ErrorCode.TIMEOUT) {
+        if (errorCode === 'TIMEOUT') {
           console.log(
             `Failed to fetch receipts, reason: ${errorCode}, retrying`,
           );
@@ -66,7 +64,7 @@ class Chain {
 
   async getBlockReceipts(number: number): Promise<TransactionReceipt[]> {
     const block = await this.#getBlock(number);
-    const hashes = block.transactions.map((tx) => tx.hash);
+    const hashes = block.transactions;
     const receipts: TransactionReceipt[] = [];
     for (const hash of hashes) {
       const receipt = await this.getReceipt(hash);
@@ -82,14 +80,14 @@ class Chain {
     return receipts.map((receipt) => this.#getLogs(receipt)).flat();
   }
 
-  async #getBlock(number: number): Promise<BlockWithTransactions> {
-    let block: BlockWithTransactions | null = null;
+  async #getBlock(number: number): Promise<Block> {
+    let block: Block | null = null;
     while (!block) {
       try {
-        block = await this.provider.getBlockWithTransactions(number);
+        block = await this.provider.getBlock(number, true);
       } catch (e: unknown) {
         const errorCode = (e as Error).code;
-        if (errorCode === ErrorCode.TIMEOUT) {
+        if (errorCode === 'TIMEOUT') {
           console.log(
             `Failed to fetch the block, reason: ${errorCode}, retrying`,
           );
@@ -107,7 +105,7 @@ class Chain {
       const {
         transactionHash,
         transactionIndex,
-        logIndex,
+        index,
         address,
         topics,
         data,
@@ -120,8 +118,8 @@ class Chain {
         transactionFrom: from,
         transactionHash,
         transactionIndex,
-        logIndex,
-        gasUsed: gasUsed.toNumber(),
+        logIndex: index,
+        gasUsed: parseInt(gasUsed.toString()),
         address,
         topics,
         data,

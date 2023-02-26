@@ -1,4 +1,3 @@
-import { BigNumber } from '@ethersproject/bignumber';
 import { describe, test, expect } from 'vitest';
 
 import {
@@ -48,10 +47,10 @@ describe('Classfiers: Curve V2', () => {
       name: 'TokenExchange',
       values: {
         buyer: '0x00000000C2Cf7648c169b25ef1C217864bFa38cC',
-        sold_id: BigNumber.from('1'),
-        tokens_sold: BigNumber.from('1492384890'),
-        bought_id: BigNumber.from('2'),
-        tokens_bought: BigNumber.from('218812804721126460228'),
+        sold_id: 1n,
+        tokens_sold: 1492384890n,
+        bought_id: 2n,
+        tokens_bought: 218812804721126460228n,
       },
     };
 
@@ -131,13 +130,9 @@ describe('Classfiers: Curve V2', () => {
       name: 'AddLiquidity',
       values: {
         provider: '0x3993d34e7e99abf6b6f367309975d1360222d446',
-        token_amounts: [
-          BigNumber.from('18022107731'),
-          BigNumber.from('0'),
-          BigNumber.from('0'),
-        ],
-        fee: BigNumber.from('8302836161510171'),
-        token_supply: BigNumber.from('260176026314976780821455'),
+        token_amounts: [18022107731n, 0n, 0n],
+        fee: 8302836161510171n,
+        token_supply: 260176026314976780821455n,
       },
     };
     const deposit = depositClassifier.parse(pool, event, []);
@@ -221,12 +216,8 @@ describe('Classfiers: Curve V2', () => {
       name: 'RemoveLiquidity',
       values: {
         provider: '0x871fbd4e01012e2e8457346059e8c189d664dba4',
-        token_amounts: [
-          BigNumber.from('23457526136'),
-          BigNumber.from('100937498'),
-          BigNumber.from('13594163931071854968'),
-        ],
-        token_supply: BigNumber.from('259343735761388914741131'),
+        token_amounts: [23457526136n, 100937498n, 13594163931071854968n],
+        token_supply: 259343735761388914741131n,
       },
     };
     const withdrawalA = withdrawalClassifier.parse(poolA, eventA, []);
@@ -307,9 +298,9 @@ describe('Classfiers: Curve V2', () => {
       name: 'RemoveLiquidityOne',
       values: {
         provider: '0x3e03e274eb8c770d95b849230cb8087e192ee311',
-        token_amount: BigNumber.from('11756942807822947515'),
-        coin_index: BigNumber.from('0'),
-        coin_amount: BigNumber.from('12726234498'),
+        token_amount: 11756942807822947515n,
+        coin_index: 0n,
+        coin_amount: 12726234498n,
       },
     };
     const withdrawalB = withdrawalClassifier.parse(poolB, eventB, []);

@@ -1,4 +1,3 @@
-import { BigNumber } from '@ethersproject/bignumber';
 import { Event } from 'abi-coder';
 import { Call, Contract } from 'ethcall';
 
@@ -64,8 +63,8 @@ function parseSwap(pool: Pool, event: ClassifiedEvent): Swap | null {
   const sender = (values.caller as string).toLowerCase();
   const assetIn = (values.tokenIn as string).toLowerCase();
   const assetOut = (values.tokenOut as string).toLowerCase();
-  const amountIn = (values.tokenAmountIn as BigNumber).toBigInt();
-  const amountOut = (values.tokenAmountOut as BigNumber).toBigInt();
+  const amountIn = values.tokenAmountIn as bigint;
+  const amountOut = values.tokenAmountOut as bigint;
 
   return {
     contract: {
@@ -122,7 +121,7 @@ function parseDeposit(
   } = event;
   const depositor = (values.caller as string).toLowerCase();
   const asset = (values.tokenIn as string).toLowerCase();
-  const amount = (values.tokenAmountIn as BigNumber).toBigInt();
+  const amount = values.tokenAmountIn as bigint;
 
   return {
     contract: {
@@ -175,7 +174,7 @@ function parseWithdrawal(
   } = event;
   const withdrawer = (values.caller as string).toLowerCase();
   const asset = (values.tokenOut as string).toLowerCase();
-  const amount = (values.tokenAmountOut as BigNumber).toBigInt();
+  const amount = values.tokenAmountOut as bigint;
 
   return {
     contract: {

@@ -1,4 +1,3 @@
-import { BigNumber } from '@ethersproject/bignumber';
 import { Event } from 'abi-coder';
 import { Call } from 'ethcall';
 
@@ -40,12 +39,8 @@ function parse(pool: Pool, event: ClassifiedEvent): Swap | null {
   const makerAssetData = values.makerAssetData as string;
   const takerAssetData = values.takerAssetData as string;
   const takerAddress = (values.takerAddress as string).toLowerCase();
-  const makerAssetFilledAmount = (
-    values.makerAssetFilledAmount as BigNumber
-  ).toBigInt();
-  const takerAssetFilledAmount = (
-    values.takerAssetFilledAmount as BigNumber
-  ).toBigInt();
+  const makerAssetFilledAmount = values.makerAssetFilledAmount as bigint;
+  const takerAssetFilledAmount = values.takerAssetFilledAmount as bigint;
 
   const from = takerAddress;
   const to = takerAddress;

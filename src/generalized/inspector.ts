@@ -1,4 +1,4 @@
-import { JsonRpcProvider, TransactionReceipt } from '@ethersproject/providers';
+import { JsonRpcProvider, TransactionReceipt } from 'ethers';
 
 import Chain from '../chain.js';
 import { groupBy } from '../utils.js';
@@ -92,7 +92,7 @@ function groupReceiptsByTransaction(
 ): Record<string, TransactionReceipt> {
   const group: Record<string, TransactionReceipt> = {};
   for (const receipt of receipts) {
-    const hash = receipt.transactionHash;
+    const hash = receipt.hash;
     group[hash] = receipt;
   }
   return group;

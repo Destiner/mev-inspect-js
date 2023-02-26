@@ -1,4 +1,3 @@
-import { BigNumber } from '@ethersproject/bignumber';
 import { Event } from 'abi-coder';
 import { Call } from 'ethcall';
 
@@ -44,7 +43,7 @@ function parseRepayment(market: Market, event: ClassifiedEvent): Repayment {
 
   const asset = (values.debtAsset as string).toLowerCase();
   const borrower = (values.user as string).toLowerCase();
-  const amount = (values.debtToCover as BigNumber).toBigInt();
+  const amount = values.debtToCover as bigint;
   const payer = (values.liquidator as string).toLowerCase();
 
   return {
@@ -94,7 +93,7 @@ function parseSeizure(market: Market, event: ClassifiedEvent): Seizure {
 
   const asset = (values.collateralAsset as string).toLowerCase();
   const borrower = (values.user as string).toLowerCase();
-  const amount = (values.liquidatedCollateralAmount as BigNumber).toBigInt();
+  const amount = values.liquidatedCollateralAmount as bigint;
   const seizor = (values.liquidator as string).toLowerCase();
 
   return {

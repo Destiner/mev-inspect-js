@@ -1,4 +1,3 @@
-import { BigNumber } from '@ethersproject/bignumber';
 import { Event } from 'abi-coder';
 import { Call } from 'ethcall';
 
@@ -9,8 +8,8 @@ import { ChainId, ClassifiedEvent, nativeAsset } from '../index.js';
 interface SpentItem {
   itemType: number;
   token: string;
-  identifier: BigNumber;
-  amount: BigNumber;
+  identifier: bigint;
+  amount: bigint;
 }
 
 interface ReceivedItem extends SpentItem {
@@ -72,10 +71,10 @@ function parse(
   const spentItem = offer[0];
   const receivedItem = recipientConsideration[0];
   const considerationAmount = consideration.reduce(
-    (total, item) => total + item.amount.toBigInt(),
+    (total, item) => total + item.amount,
     0n,
   );
-  const feeAmount = considerationAmount - receivedItem.amount.toBigInt();
+  const feeAmount = considerationAmount - receivedItem.amount;
 
   const from = recipient;
   const to = recipient;
@@ -118,7 +117,7 @@ function parse(
         : {
             type: 'erc721',
             collection: receivedItem.token.toLowerCase(),
-            id: receivedItem.identifier.toBigInt(),
+            id: receivedItem.identifier,
           },
     amountIn:
       receivedItem.itemType < 2
@@ -138,12 +137,12 @@ function parse(
         : {
             type: 'erc721',
             collection: spentItem.token.toLowerCase(),
-            id: spentItem.identifier.toBigInt(),
+            id: spentItem.identifier,
           },
     amountOut:
       receivedItem.itemType < 2
-        ? spentItem.amount.toBigInt()
-        : spentItem.amount.toBigInt() - feeAmount,
+        ? spentItem.amount
+        : spentItem.amount - feeAmount,
   };
 }
 

@@ -1,4 +1,3 @@
-import { BigNumber } from '@ethersproject/bignumber';
 import { describe, test, expect } from 'vitest';
 
 import { ClassifiedEvent } from '../../src/classifier/index.js';
@@ -27,10 +26,10 @@ describe('MEV: transfers', () => {
       values: {
         sender: '0x8aff5ca996f77487a4f04f1ce905bf3d27455580',
         to: '0x8aff5ca996f77487a4f04f1ce905bf3d27455580',
-        amount0In: BigNumber.from('29169800000000004980736'),
+        amount0In: 29169800000000004980736n,
         amount1In: 0,
         amount0Out: 0,
-        amount1Out: BigNumber.from('12715167144261793792'),
+        amount1Out: 12715167144261793792n,
       },
     };
 

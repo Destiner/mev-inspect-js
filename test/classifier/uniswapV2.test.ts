@@ -1,4 +1,3 @@
-import { BigNumber } from '@ethersproject/bignumber';
 import { describe, test, expect } from 'vitest';
 
 import { Pool, Transfer } from '../../src/classifier/base.js';
@@ -40,10 +39,10 @@ describe('Classfiers: Uniswap V2', () => {
       name: 'Swap',
       values: {
         sender: '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D',
-        amount0In: BigNumber.from('0'),
-        amount1In: BigNumber.from('76382000000000000000000'),
-        amount0Out: BigNumber.from('29934139188201577438792'),
-        amount1Out: BigNumber.from('0'),
+        amount0In: 0n,
+        amount1In: 76382000000000000000000n,
+        amount0Out: 29934139188201577438792n,
+        amount1Out: 0n,
         to: '0xEf3375B491CFf653eAf7C9955a5466f7EA06F37B',
       },
     };
@@ -157,10 +156,10 @@ describe('Classfiers: Uniswap V2', () => {
       name: 'Swap',
       values: {
         sender: '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D',
-        amount0In: BigNumber.from('0'),
-        amount1In: BigNumber.from('793000000000'),
-        amount0Out: BigNumber.from('361056661812569468'),
-        amount1Out: BigNumber.from('0'),
+        amount0In: 0n,
+        amount1In: 793000000000n,
+        amount0Out: 361056661812569468n,
+        amount1Out: 0n,
         to: '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D',
       },
     };
@@ -280,10 +279,10 @@ describe('Classfiers: Uniswap V2', () => {
       name: 'Swap',
       values: {
         sender: '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D',
-        amount0In: BigNumber.from('100000000000000000'),
-        amount1In: BigNumber.from('0'),
-        amount0Out: BigNumber.from('0'),
-        amount1Out: BigNumber.from('364189303982833736'),
+        amount0In: 100000000000000000n,
+        amount1In: 0n,
+        amount0Out: 0n,
+        amount1Out: 364189303982833736n,
         to: '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D',
       },
     };
@@ -303,10 +302,10 @@ describe('Classfiers: Uniswap V2', () => {
       name: 'Swap',
       values: {
         sender: '0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45',
-        amount0In: BigNumber.from('45114259892886817'),
-        amount1In: BigNumber.from('0'),
-        amount0Out: BigNumber.from('0'),
-        amount1Out: BigNumber.from('163735299645864923'),
+        amount0In: 45114259892886817n,
+        amount1In: 0n,
+        amount0Out: 0n,
+        amount1Out: 163735299645864923n,
         to: '0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45',
       },
     };
@@ -538,10 +537,10 @@ describe('Classfiers: Uniswap V2', () => {
       name: 'Swap',
       values: {
         sender: '0x11111112542D85B3EF69AE05771c2dCCff4fAa26',
-        amount0In: BigNumber.from('2918704295536500000'),
-        amount1In: BigNumber.from('0'),
-        amount0Out: BigNumber.from('0'),
-        amount1Out: BigNumber.from('11499148166696888'),
+        amount0In: 2918704295536500000n,
+        amount1In: 0n,
+        amount0Out: 0n,
+        amount1Out: 11499148166696888n,
         to: '0xCE84867c3c02B05dc570d0135103d3fB9CC19433',
       },
     };
@@ -560,10 +559,10 @@ describe('Classfiers: Uniswap V2', () => {
       name: 'Swap',
       values: {
         sender: '0x11111112542D85B3EF69AE05771c2dCCff4fAa26',
-        amount0In: BigNumber.from('0'),
-        amount1In: BigNumber.from('11499148166696888'),
-        amount0Out: BigNumber.from('13787057162799104322'),
-        amount1Out: BigNumber.from('0'),
+        amount0In: 0n,
+        amount1In: 11499148166696888n,
+        amount0Out: 13787057162799104322n,
+        amount1Out: 0n,
         to: '0x416d1a4F718a8C3dda7FC3645435580E743D9249',
       },
     };
@@ -765,10 +764,10 @@ describe('Classfiers: Uniswap V2', () => {
       name: 'Swap',
       values: {
         sender: '0x731Ea79A1B2B90683507Da2aaB498bd8fF8f7ff1',
-        amount0In: BigNumber.from('0'),
-        amount1In: BigNumber.from('396025622087811072'),
-        amount0Out: BigNumber.from('9203736012517381854992'),
-        amount1Out: BigNumber.from('0'),
+        amount0In: 0n,
+        amount1In: 396025622087811072n,
+        amount0Out: 9203736012517381854992n,
+        amount1Out: 0n,
         to: '0x6137A55b535B98e26C5cA5C9Cb329022bF1B9318',
       },
     };
@@ -787,10 +786,10 @@ describe('Classfiers: Uniswap V2', () => {
       name: 'Swap',
       values: {
         sender: '0x731Ea79A1B2B90683507Da2aaB498bd8fF8f7ff1',
-        amount0In: BigNumber.from('0'),
-        amount1In: BigNumber.from('9203736012517381854992'),
-        amount0Out: BigNumber.from('9810940048285013383131'),
-        amount1Out: BigNumber.from('0'),
+        amount0In: 0n,
+        amount1In: 9203736012517381854992n,
+        amount0Out: 9810940048285013383131n,
+        amount1Out: 0n,
         to: '0x0D80F8A039cc61b659ff299bB132dE271c757325',
       },
     };
@@ -809,10 +808,10 @@ describe('Classfiers: Uniswap V2', () => {
       name: 'Swap',
       values: {
         sender: '0x731Ea79A1B2B90683507Da2aaB498bd8fF8f7ff1',
-        amount0In: BigNumber.from('9810940048285013383131'),
-        amount1In: BigNumber.from('0'),
-        amount0Out: BigNumber.from('0'),
-        amount1Out: BigNumber.from('402011216481376330'),
+        amount0In: 9810940048285013383131n,
+        amount1In: 0n,
+        amount0Out: 0n,
+        amount1Out: 402011216481376330n,
         to: '0x731Ea79A1B2B90683507Da2aaB498bd8fF8f7ff1',
       },
     };
@@ -1052,10 +1051,10 @@ describe('Classfiers: Uniswap V2', () => {
       name: 'Swap',
       values: {
         sender: '0x58418d6c83EfAB01ed78b0AC42E55af01eE77DbA',
-        amount0In: BigNumber.from('4426537110163'),
-        amount1In: BigNumber.from('0'),
-        amount0Out: BigNumber.from('0'),
-        amount1Out: BigNumber.from('2767561675144940562'),
+        amount0In: 4426537110163n,
+        amount1In: 0n,
+        amount0Out: 0n,
+        amount1Out: 2767561675144940562n,
         to: '0x5AA3393e361C2EB342408559309b3e873CD876d6',
       },
     };

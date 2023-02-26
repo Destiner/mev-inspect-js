@@ -1,4 +1,3 @@
-import { BigNumber } from '@ethersproject/bignumber';
 import { describe, test, expect } from 'vitest';
 
 import {
@@ -53,8 +52,8 @@ describe('Classfiers: Balancer V2', () => {
           '0x5c6ee304399dbdb9c8ef030ab642b10820db8f56000200000000000000000014',
         tokenIn: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
         tokenOut: '0xba100000625a3754423978a60c9317c58a424e3D',
-        amountIn: BigNumber.from('17608500000000000000'),
-        amountOut: BigNumber.from('3698791690807238453478'),
+        amountIn: 17608500000000000000n,
+        amountOut: 3698791690807238453478n,
       },
     };
     const transfers: Transfer[] = [
@@ -118,8 +117,8 @@ describe('Classfiers: Balancer V2', () => {
             '0x5c6ee304399dbdb9c8ef030ab642b10820db8f56000200000000000000000014',
           tokenIn: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
           tokenOut: '0xba100000625a3754423978a60c9317c58a424e3D',
-          amountIn: BigNumber.from('17608500000000000000'),
-          amountOut: BigNumber.from('3698791690807238453478'),
+          amountIn: 17608500000000000000n,
+          amountOut: 3698791690807238453478n,
         },
       },
       {
@@ -138,7 +137,7 @@ describe('Classfiers: Balancer V2', () => {
         values: {
           from: '0x0000006daea1723962647b7e189d311d757Fb793',
           to: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
-          value: BigNumber.from('17608500000000000000'),
+          value: 17608500000000000000n,
         },
       },
       {
@@ -157,7 +156,7 @@ describe('Classfiers: Balancer V2', () => {
         values: {
           from: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
           to: '0x0000006daea1723962647b7e189d311d757Fb793',
-          value: BigNumber.from('3698791690807238453478'),
+          value: 3698791690807238453478n,
         },
       },
     ];
@@ -238,8 +237,8 @@ describe('Classfiers: Balancer V2', () => {
           '0xe2469f47ab58cf9cf59f9822e3c5de4950a41c49000200000000000000000089',
         tokenIn: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
         tokenOut: '0xa3BeD4E1c75D00fa6f4E5E6922DB7261B5E9AcD2',
-        amountIn: BigNumber.from('728566000000000000'),
-        amountOut: BigNumber.from('6329353631552147493643'),
+        amountIn: 728566000000000000n,
+        amountOut: 6329353631552147493643n,
       },
     };
     const transfers: Transfer[] = [
@@ -303,8 +302,8 @@ describe('Classfiers: Balancer V2', () => {
             '0xe2469f47ab58cf9cf59f9822e3c5de4950a41c49000200000000000000000089',
           tokenIn: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
           tokenOut: '0xa3BeD4E1c75D00fa6f4E5E6922DB7261B5E9AcD2',
-          amountIn: BigNumber.from('728566000000000000'),
-          amountOut: BigNumber.from('6329353631552147493643'),
+          amountIn: 728566000000000000n,
+          amountOut: 6329353631552147493643n,
         },
       },
       {
@@ -323,7 +322,7 @@ describe('Classfiers: Balancer V2', () => {
         values: {
           from: '0x45716d9EDdbc332df1D42b9F540FBEBeD671B20F',
           to: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
-          value: BigNumber.from('728566000000000000'),
+          value: 728566000000000000n,
         },
       },
       {
@@ -342,7 +341,7 @@ describe('Classfiers: Balancer V2', () => {
         values: {
           from: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
           to: '0x0d0d65E7A7dB277d3E0F5E1676325E75f3340455',
-          value: BigNumber.from('6329353631552147493643'),
+          value: 6329353631552147493643n,
         },
       },
       {
@@ -361,7 +360,7 @@ describe('Classfiers: Balancer V2', () => {
         values: {
           from: '0x0d0d65E7A7dB277d3E0F5E1676325E75f3340455',
           to: '0x45716d9EDdbc332df1D42b9F540FBEBeD671B20F',
-          value: BigNumber.from('736414889979992618'),
+          value: 736414889979992618n,
         },
       },
       {
@@ -379,10 +378,10 @@ describe('Classfiers: Balancer V2', () => {
         name: 'Swap',
         values: {
           sender: '0x45716d9EDdbc332df1D42b9F540FBEBeD671B20F',
-          amount0In: BigNumber.from('6329353631552147493643'),
-          amount1In: BigNumber.from('0'),
-          amount0Out: BigNumber.from('0'),
-          amount1Out: BigNumber.from('736414889979992618'),
+          amount0In: 6329353631552147493643n,
+          amount1In: 0n,
+          amount0Out: 0n,
+          amount1Out: 736414889979992618n,
           to: '0x45716d9EDdbc332df1D42b9F540FBEBeD671B20F',
         },
       },
@@ -464,8 +463,8 @@ describe('Classfiers: Balancer V2', () => {
           '0x0bf37157d30dfe6f56757dcadff01aed83b08cd600020000000000000000019a',
         tokenIn: '0x333A4823466879eeF910A04D473505da62142069',
         tokenOut: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
-        amountIn: BigNumber.from('0x29a2047c65342d17'),
-        amountOut: BigNumber.from('0x260c600b5dd64e21'),
+        amountIn: 2999965234102545687n,
+        amountOut: 2741671875097021985n,
       },
     };
     const transfers: Transfer[] = [
@@ -509,8 +508,8 @@ describe('Classfiers: Balancer V2', () => {
             '0x0bf37157d30dfe6f56757dcadff01aed83b08cd600020000000000000000019a',
           tokenIn: '0x333A4823466879eeF910A04D473505da62142069',
           tokenOut: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
-          amountIn: BigNumber.from('0x29a2047c65342d17'),
-          amountOut: BigNumber.from('0x260c600b5dd64e21'),
+          amountIn: 2999965234102545687n,
+          amountOut: 2741671875097021985n,
         },
       },
       {
@@ -529,7 +528,7 @@ describe('Classfiers: Balancer V2', () => {
         values: {
           from: '0xEd308A08B051dA28D59606D9Dd9a3dced7Ad188c',
           to: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
-          value: BigNumber.from('0x29a2047c65342d17'),
+          value: 2999965234102545687n,
         },
       },
     ];
@@ -610,8 +609,8 @@ describe('Classfiers: Balancer V2', () => {
           '0x3ebf48cd7586d7a4521ce59e53d9a907ebf1480f000200000000000000000028',
         tokenIn: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
         tokenOut: '0xba100000625a3754423978a60c9317c58a424e3D',
-        amountIn: BigNumber.from('0x0853a0d2313c0000'),
-        amountOut: BigNumber.from('0x070b5240281ba628ab'),
+        amountIn: 600000000000000000n,
+        amountOut: 129942993539481086123n,
       },
     };
     const transfers: Transfer[] = [
@@ -655,8 +654,8 @@ describe('Classfiers: Balancer V2', () => {
             '0x3ebf48cd7586d7a4521ce59e53d9a907ebf1480f000200000000000000000028',
           tokenIn: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
           tokenOut: '0xba100000625a3754423978a60c9317c58a424e3D',
-          amountIn: BigNumber.from('0x0853a0d2313c0000'),
-          amountOut: BigNumber.from('0x070b5240281ba628ab'),
+          amountIn: 600000000000000000n,
+          amountOut: 129942993539481086123n,
         },
       },
       {
@@ -675,7 +674,7 @@ describe('Classfiers: Balancer V2', () => {
         values: {
           from: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
           to: '0x98bED949D4e5607A753185cfb7153B53e0c3c80a',
-          value: BigNumber.from('0x070b5240281ba628ab'),
+          value: 129942993539481086123n,
         },
       },
     ];
@@ -788,8 +787,8 @@ describe('Classfiers: Balancer V2', () => {
             '0x5c6ee304399dbdb9c8ef030ab642b10820db8f56000200000000000000000014',
           tokenIn: '0xba100000625a3754423978a60c9317c58a424e3D',
           tokenOut: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
-          amountIn: BigNumber.from('0x26580cb170967f84fb'),
-          amountOut: BigNumber.from('0x2c2b087daf9f259c'),
+          amountIn: 707320915873140540667n,
+          amountOut: 3182646897577764252n,
         },
       },
       {
@@ -810,8 +809,8 @@ describe('Classfiers: Balancer V2', () => {
             '0x0b09dea16768f0799065c475be02919503cb2a3500020000000000000000001a',
           tokenIn: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
           tokenOut: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
-          amountIn: BigNumber.from('0x2c2b087daf9f259c'),
-          amountOut: BigNumber.from('0x01e641855eb7024988a9'),
+          amountIn: 3182646897577764252n,
+          amountOut: 8969838903747320318121n,
         },
       },
       {
@@ -830,7 +829,7 @@ describe('Classfiers: Balancer V2', () => {
         values: {
           from: '0x20EADfcaf91BD98674FF8fc341D148E1731576A4',
           to: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
-          value: BigNumber.from('0x26580cb170967f84fb'),
+          value: 707320915873140540667n,
         },
       },
       {
@@ -849,7 +848,7 @@ describe('Classfiers: Balancer V2', () => {
         values: {
           from: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
           to: '0x20EADfcaf91BD98674FF8fc341D148E1731576A4',
-          value: BigNumber.from('0x01e641855eb7024988a9'),
+          value: 8969838903747320318121n,
         },
       },
     ];
@@ -883,8 +882,8 @@ describe('Classfiers: Balancer V2', () => {
           '0x5c6ee304399dbdb9c8ef030ab642b10820db8f56000200000000000000000014',
         tokenIn: '0xba100000625a3754423978a60c9317c58a424e3D',
         tokenOut: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
-        amountIn: BigNumber.from('0x26580cb170967f84fb'),
-        amountOut: BigNumber.from('0x2c2b087daf9f259c'),
+        amountIn: 707320915873140540667n,
+        amountOut: 3182646897577764252n,
       },
     };
     const swapA = swapClassifier.parse(poolA, eventA, transfers, allEvents);
@@ -918,8 +917,8 @@ describe('Classfiers: Balancer V2', () => {
           '0x0b09dea16768f0799065c475be02919503cb2a3500020000000000000000001a',
         tokenIn: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
         tokenOut: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
-        amountIn: BigNumber.from('0x2c2b087daf9f259c'),
-        amountOut: BigNumber.from('0x01e641855eb7024988a9'),
+        amountIn: 3182646897577764252n,
+        amountOut: 8969838903747320318121n,
       },
     };
 
@@ -1051,8 +1050,8 @@ describe('Classfiers: Balancer V2', () => {
             '0x5b1c06c4923dbba4b27cfa270ffb2e60aa28615900020000000000000000004a',
           tokenIn: '0x90B831fa3Bebf58E9744A14D638E25B4eE06f9Bc',
           tokenOut: '0x68037790A0229e9Ce6EaA8A99ea92964106C4703',
-          amountIn: BigNumber.from('0x012d2ad2372ed4d50100'),
-          amountOut: BigNumber.from('0x103b144fb7853812fa'),
+          amountIn: 5555555555555556000000n,
+          amountOut: 299405020376757441274n,
         },
       },
       {
@@ -1073,8 +1072,8 @@ describe('Classfiers: Balancer V2', () => {
             '0x29d7a7e0d781c957696697b94d4bc18c651e358e000200000000000000000049',
           tokenIn: '0x68037790A0229e9Ce6EaA8A99ea92964106C4703',
           tokenOut: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
-          amountIn: BigNumber.from('0x103b144fb7853812fa'),
-          amountOut: BigNumber.from('0x018988518f9e65b9'),
+          amountIn: 299405020376757441274n,
+          amountOut: 110769549730538937n,
         },
       },
       {
@@ -1093,7 +1092,7 @@ describe('Classfiers: Balancer V2', () => {
         values: {
           from: '0x0B8F77DCeDbb7D6cEE0905b0EBc4AF6D50b4a07d',
           to: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
-          value: BigNumber.from('0x012d2ad2372ed4d50100'),
+          value: 5555555555555556000000n,
         },
       },
     ];
@@ -1127,8 +1126,8 @@ describe('Classfiers: Balancer V2', () => {
           '0x5b1c06c4923dbba4b27cfa270ffb2e60aa28615900020000000000000000004a',
         tokenIn: '0x90B831fa3Bebf58E9744A14D638E25B4eE06f9Bc',
         tokenOut: '0x68037790A0229e9Ce6EaA8A99ea92964106C4703',
-        amountIn: BigNumber.from('0x012d2ad2372ed4d50100'),
-        amountOut: BigNumber.from('0x103b144fb7853812fa'),
+        amountIn: 5555555555555556000000n,
+        amountOut: 299405020376757441274n,
       },
     };
 
@@ -1161,8 +1160,8 @@ describe('Classfiers: Balancer V2', () => {
           '0x29d7a7e0d781c957696697b94d4bc18c651e358e000200000000000000000049',
         tokenIn: '0x68037790A0229e9Ce6EaA8A99ea92964106C4703',
         tokenOut: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
-        amountIn: BigNumber.from('0x103b144fb7853812fa'),
-        amountOut: BigNumber.from('0x018988518f9e65b9'),
+        amountIn: 299405020376757441274n,
+        amountOut: 110769549730538937n,
       },
     };
 
@@ -1283,8 +1282,8 @@ describe('Classfiers: Balancer V2', () => {
           '0x0b09dea16768f0799065c475be02919503cb2a3500020000000000000000001a',
         tokenIn: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
         tokenOut: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
-        amountIn: BigNumber.from('0x661388794183a175'),
-        amountOut: BigNumber.from('0x030a1105d5ea33bdaddd'),
+        amountIn: 7355372670797717877n,
+        amountOut: 14352793511021426617821n,
       },
     };
     const transfers: Transfer[] = [
@@ -1368,8 +1367,8 @@ describe('Classfiers: Balancer V2', () => {
             '0x0b09dea16768f0799065c475be02919503cb2a3500020000000000000000001a',
           tokenIn: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
           tokenOut: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
-          amountIn: BigNumber.from('0x661388794183a175'),
-          amountOut: BigNumber.from('0x030a1105d5ea33bdaddd'),
+          amountIn: 7355372670797717877n,
+          amountOut: 14352793511021426617821n,
         },
       },
       {
@@ -1388,7 +1387,7 @@ describe('Classfiers: Balancer V2', () => {
         values: {
           user: '0x0000E0Ca771e21bD00057F54A68C30D400000000',
           token: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
-          delta: BigNumber.from('-0x661388794183a175'),
+          delta: -7355372670797717877n,
         },
       },
       {
@@ -1407,7 +1406,7 @@ describe('Classfiers: Balancer V2', () => {
         values: {
           from: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
           to: '0xA478c2975Ab1Ea89e8196811F51A7B7Ade33eB11',
-          value: BigNumber.from('0x030a1105d5ea33bdaddd'),
+          value: 14352793511021426617821n,
         },
       },
       {
@@ -1426,7 +1425,7 @@ describe('Classfiers: Balancer V2', () => {
         values: {
           from: '0xA478c2975Ab1Ea89e8196811F51A7B7Ade33eB11',
           to: '0x0000E0Ca771e21bD00057F54A68C30D400000000',
-          value: BigNumber.from('0x6655a58bca357ae7'),
+          value: 7373981984700594919n,
         },
       },
       {
@@ -1444,10 +1443,10 @@ describe('Classfiers: Balancer V2', () => {
         name: 'Swap',
         values: {
           sender: '0x0000E0Ca771e21bD00057F54A68C30D400000000',
-          amount0In: BigNumber.from('0x030a1105d5ea33bdaddd'),
-          amount1In: BigNumber.from('0x00'),
-          amount0Out: BigNumber.from('0x00'),
-          amount1Out: BigNumber.from('0x6655a58bca357ae7'),
+          amount0In: 14352793511021426617821n,
+          amount1In: 0,
+          amount0Out: 0,
+          amount1Out: 7373981984700594919n,
           to: '0x0000E0Ca771e21bD00057F54A68C30D400000000',
         },
       },
@@ -1530,8 +1529,8 @@ describe('Classfiers: Balancer V2', () => {
           '0x0b09dea16768f0799065c475be02919503cb2a3500020000000000000000001a',
         tokenIn: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
         tokenOut: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
-        amountIn: BigNumber.from('0x3dbf3801863365f6'),
-        amountOut: BigNumber.from('0x01dafcabd86875e6579a'),
+        amountIn: 4449336536062977526n,
+        amountOut: 8761963574800069056410n,
       },
     };
     const transfers: Transfer[] = [
@@ -1635,8 +1634,8 @@ describe('Classfiers: Balancer V2', () => {
             '0x0b09dea16768f0799065c475be02919503cb2a3500020000000000000000001a',
           tokenIn: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
           tokenOut: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
-          amountIn: BigNumber.from('0x3dbf3801863365f6'),
-          amountOut: BigNumber.from('0x01dafcabd86875e6579a'),
+          amountIn: 4449336536062977526n,
+          amountOut: 8761963574800069056410n,
         },
       },
       {
@@ -1655,7 +1654,7 @@ describe('Classfiers: Balancer V2', () => {
         values: {
           from: '0x4d944a25bC871D6C6EE08baEf0b7dA0b08E6b7b3',
           to: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
-          value: BigNumber.from('0x3dbf3801863365f6'),
+          value: 4449336536062977526n,
         },
       },
       {
@@ -1674,7 +1673,7 @@ describe('Classfiers: Balancer V2', () => {
         values: {
           user: '0x4d944a25bC871D6C6EE08baEf0b7dA0b08E6b7b3',
           token: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
-          delta: BigNumber.from('0x01dafcabd86875e6579a'),
+          delta: 8761963574800069056410n,
         },
       },
       {
@@ -1695,8 +1694,8 @@ describe('Classfiers: Balancer V2', () => {
             '0xc45d42f801105e861e86658648e3678ad7aa70f900010000000000000000011e',
           tokenIn: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
           tokenOut: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
-          amountIn: BigNumber.from('0x01dafc8c9091e6152219'),
-          amountOut: BigNumber.from('0x3e14f9c1eab3cd22'),
+          amountIn: 8761954770088929600025n,
+          amountOut: 4473474941147401506n,
         },
       },
       {
@@ -1715,7 +1714,7 @@ describe('Classfiers: Balancer V2', () => {
         values: {
           user: '0x4d944a25bC871D6C6EE08baEf0b7dA0b08E6b7b3',
           token: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
-          delta: BigNumber.from('-0x01dafc8c9091e6152219'),
+          delta: -8761954770088929600025n,
         },
       },
       {
@@ -1734,7 +1733,7 @@ describe('Classfiers: Balancer V2', () => {
         values: {
           from: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
           to: '0x4d944a25bC871D6C6EE08baEf0b7dA0b08E6b7b3',
-          value: BigNumber.from('0x3e14f9c1eab3cd22'),
+          value: 4473474941147401506n,
         },
       },
     ];
@@ -1828,8 +1827,8 @@ describe('Classfiers: Balancer V2', () => {
             '0x06df3b2bbb68adc8b0e302443692037ed9f91b42000000000000000000000063',
           tokenIn: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
           tokenOut: '0xdAC17F958D2ee523a2206206994597C13D831ec7',
-          amountIn: BigNumber.from('0x84b6a5c400'),
-          amountOut: BigNumber.from('0x852dfd1a83'),
+          amountIn: 570000000000n,
+          amountOut: 572002212483n,
         },
       },
       {
@@ -1850,8 +1849,8 @@ describe('Classfiers: Balancer V2', () => {
             '0x2bbf681cc4eb09218bee85ea2a5d3d13fa40fc0c0000000000000000000000fd',
           tokenIn: '0xdAC17F958D2ee523a2206206994597C13D831ec7',
           tokenOut: '0x2BBf681cC4eb09218BEe85EA2a5d3D13Fa40fC0C',
-          amountIn: BigNumber.from('0x852dfd1a83'),
-          amountOut: BigNumber.from('0x77f15faa70a5e5607ba2'),
+          amountIn: 572002212483n,
+          amountOut: 566414170229289246555042n,
         },
       },
       {
@@ -1872,8 +1871,8 @@ describe('Classfiers: Balancer V2', () => {
             '0x7b50775383d3d6f0215a8f290f2c9e2eebbeceb20000000000000000000000fe',
           tokenIn: '0x2BBf681cC4eb09218BEe85EA2a5d3D13Fa40fC0C',
           tokenOut: '0x9210F1204b5a24742Eba12f710636D76240dF3d0',
-          amountIn: BigNumber.from('0x77f15faa70a5e5607ba2'),
-          amountOut: BigNumber.from('0x77bd95aa1a8fb342ec60'),
+          amountIn: 566414170229289246555042n,
+          amountOut: 565458830552881067912288n,
         },
       },
       {
@@ -1894,8 +1893,8 @@ describe('Classfiers: Balancer V2', () => {
             '0x9210f1204b5a24742eba12f710636d76240df3d00000000000000000000000fc',
           tokenIn: '0x9210F1204b5a24742Eba12f710636D76240dF3d0',
           tokenOut: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
-          amountIn: BigNumber.from('0x77bd95aa1a8fb342ec60'),
-          amountOut: BigNumber.from('0x84c3322a06'),
+          amountIn: 565458830552881067912288n,
+          amountOut: 570210527750n,
         },
       },
       {
@@ -1914,7 +1913,7 @@ describe('Classfiers: Balancer V2', () => {
         values: {
           user: '0xb0057edcd99B344a3B3738690e0792F8723a879A',
           token: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
-          delta: BigNumber.from('0x0c8c6606'),
+          delta: 210527750n,
         },
       },
     ];
@@ -1949,8 +1948,8 @@ describe('Classfiers: Balancer V2', () => {
           '0x06df3b2bbb68adc8b0e302443692037ed9f91b42000000000000000000000063',
         tokenIn: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
         tokenOut: '0xdAC17F958D2ee523a2206206994597C13D831ec7',
-        amountIn: BigNumber.from('0x84b6a5c400'),
-        amountOut: BigNumber.from('0x852dfd1a83'),
+        amountIn: 570000000000n,
+        amountOut: 572002212483n,
       },
     };
     const poolB: Pool = {
@@ -1983,8 +1982,8 @@ describe('Classfiers: Balancer V2', () => {
           '0x2bbf681cc4eb09218bee85ea2a5d3d13fa40fc0c0000000000000000000000fd',
         tokenIn: '0xdAC17F958D2ee523a2206206994597C13D831ec7',
         tokenOut: '0x2BBf681cC4eb09218BEe85EA2a5d3D13Fa40fC0C',
-        amountIn: BigNumber.from('0x852dfd1a83'),
-        amountOut: BigNumber.from('0x77f15faa70a5e5607ba2'),
+        amountIn: 572002212483n,
+        amountOut: 566414170229289246555042n,
       },
     };
     const poolC: Pool = {
@@ -2018,8 +2017,8 @@ describe('Classfiers: Balancer V2', () => {
           '0x7b50775383d3d6f0215a8f290f2c9e2eebbeceb20000000000000000000000fe',
         tokenIn: '0x2BBf681cC4eb09218BEe85EA2a5d3D13Fa40fC0C',
         tokenOut: '0x9210F1204b5a24742Eba12f710636D76240dF3d0',
-        amountIn: BigNumber.from('0x77f15faa70a5e5607ba2'),
-        amountOut: BigNumber.from('0x77bd95aa1a8fb342ec60'),
+        amountIn: 566414170229289246555042n,
+        amountOut: 565458830552881067912288n,
       },
     };
     const poolD: Pool = {
@@ -2052,8 +2051,8 @@ describe('Classfiers: Balancer V2', () => {
           '0x9210f1204b5a24742eba12f710636d76240df3d00000000000000000000000fc',
         tokenIn: '0x9210F1204b5a24742Eba12f710636D76240dF3d0',
         tokenOut: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
-        amountIn: BigNumber.from('0x77bd95aa1a8fb342ec60'),
-        amountOut: BigNumber.from('0x84c3322a06'),
+        amountIn: 565458830552881067912288n,
+        amountOut: 570210527750n,
       },
     };
 
@@ -2241,7 +2240,7 @@ describe('Classfiers: Balancer V2', () => {
       values: {
         user: '0x0000E0Ca771e21bD00057F54A68C30D400000000',
         token: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
-        delta: BigNumber.from('-7355372670797717877'),
+        delta: -7355372670797717877n,
       },
     };
     const transferA = transferClassifier.parse(eventA);
@@ -2262,7 +2261,7 @@ describe('Classfiers: Balancer V2', () => {
       values: {
         user: '0x4d944a25bC871D6C6EE08baEf0b7dA0b08E6b7b3',
         token: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
-        delta: BigNumber.from('8761963574800069056410'),
+        delta: 8761963574800069056410n,
       },
     };
     const transferB = transferClassifier.parse(eventB);
@@ -2349,16 +2348,8 @@ describe('Classfiers: Balancer V2', () => {
           '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
           '0xdac17f958d2ee523a2206206994597c13d831ec7',
         ],
-        deltas: [
-          BigNumber.from('10735659260273910803893'),
-          BigNumber.from('0'),
-          BigNumber.from('0'),
-        ],
-        protocolFeeAmounts: [
-          BigNumber.from('0'),
-          BigNumber.from('47871145'),
-          BigNumber.from('0'),
-        ],
+        deltas: [10735659260273910803893n, 0n, 0n],
+        protocolFeeAmounts: [0n, 47871145n, 0n],
       },
     };
     const depositA = depositClassifier.parse(pool, eventA, []);
@@ -2429,16 +2420,8 @@ describe('Classfiers: Balancer V2', () => {
           '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
           '0xdac17f958d2ee523a2206206994597c13d831ec7',
         ],
-        deltas: [
-          BigNumber.from('2076650615254415750034'),
-          BigNumber.from('1857499347'),
-          BigNumber.from('1702213659'),
-        ],
-        protocolFeeAmounts: [
-          BigNumber.from('73711198765601586943'),
-          BigNumber.from('0'),
-          BigNumber.from('0'),
-        ],
+        deltas: [2076650615254415750034n, 1857499347n, 1702213659n],
+        protocolFeeAmounts: [73711198765601586943n, 0n, 0n],
       },
     };
     const depositB = depositClassifier.parse(pool, eventB, []);
@@ -2527,16 +2510,8 @@ describe('Classfiers: Balancer V2', () => {
           '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
           '0xdac17f958d2ee523a2206206994597c13d831ec7',
         ],
-        deltas: [
-          BigNumber.from('-45228883925675247840'),
-          BigNumber.from('0'),
-          BigNumber.from('0'),
-        ],
-        protocolFeeAmounts: [
-          BigNumber.from('16416769003776781498'),
-          BigNumber.from('0'),
-          BigNumber.from('0'),
-        ],
+        deltas: [-45228883925675247840n, 0n, 0n],
+        protocolFeeAmounts: [16416769003776781498n, 0n, 0n],
       },
     };
     const withdrawalA = withdrawalClassifier.parse(pool, eventA, []);
@@ -2606,16 +2581,8 @@ describe('Classfiers: Balancer V2', () => {
           '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
           '0xdac17f958d2ee523a2206206994597c13d831ec7',
         ],
-        deltas: [
-          BigNumber.from('-1968345382253628458677'),
-          BigNumber.from('-1952758253'),
-          BigNumber.from('-1715252717'),
-        ],
-        protocolFeeAmounts: [
-          BigNumber.from('0'),
-          BigNumber.from('0'),
-          BigNumber.from('0'),
-        ],
+        deltas: [-1968345382253628458677n, -1952758253n, -1715252717n],
+        protocolFeeAmounts: [0n, 0n, 0n],
       },
     };
     const withdrawalB = withdrawalClassifier.parse(pool, eventB, []);

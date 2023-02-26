@@ -1,14 +1,13 @@
-import { BigNumber } from '@ethersproject/bignumber';
-import { AddressZero } from '@ethersproject/constants';
 import { Event } from 'abi-coder';
 import { Call } from 'ethcall';
+import { ZeroAddress } from 'ethers';
 
 import exchangeAbi from '../../abi/x2y2V1.js';
 import { Classifiers, NftPool, NftPoolData, NftSwap } from '../base.js';
 import { ChainId, ClassifiedEvent, nativeAsset } from '../index.js';
 
 interface Item {
-  price: BigNumber;
+  price: bigint;
   data: string;
 }
 
@@ -50,7 +49,7 @@ function parse(
   } = event;
   const taker = (values.taker as string).toLowerCase();
   const currency = (values.currency as string).toLowerCase();
-  const price = (values.item as Item).price.toBigInt();
+  const price = (values.item as Item).price;
   const data = (values.item as Item).data.toLowerCase();
 
   const from = taker;
@@ -81,7 +80,7 @@ function parse(
     from,
     to,
     assetIn:
-      currency === AddressZero
+      currency === ZeroAddress
         ? {
             type: 'erc20',
             address: nativeAsset[chainId],

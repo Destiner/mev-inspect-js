@@ -1,4 +1,3 @@
-import { BigNumber } from '@ethersproject/bignumber';
 import { describe, test, expect } from 'vitest';
 
 import { NftPool, NftSwap } from '../../src/classifier/base.js';
@@ -41,29 +40,29 @@ describe('Classfiers: X2Y2 V1', () => {
           '0x9ec0c5280b8ebf88ea15e5cfc053fd12da875b46628504fef38665419ec83268',
         maker: '0x313B34C5A86a8309B07E9bF6F432f8A50Ae4B5Cc',
         taker: '0x9bc79BF9EC3DfF0Fd812f442eC9575F82c6832e6',
-        orderSalt: BigNumber.from('0xb2c94d02ed56278ce85e8e96092efe03'),
-        settleSalt: BigNumber.from('0x015a06b3b74945'),
-        intent: BigNumber.from('0x01'),
-        delegateType: BigNumber.from('0x01'),
-        deadline: BigNumber.from('0x6318222f'),
+        orderSalt: 237647796895728433657090224489470295555n,
+        settleSalt: 380459808147781n,
+        intent: 1n,
+        delegateType: 1n,
+        deadline: 1662525999n,
         currency: '0x0000000000000000000000000000000000000000',
         dataMask: '0x',
         item: {
-          price: BigNumber.from('0x0aa87bee538000'),
+          price: 3000000000000000n,
           data: '0x00000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000001000000000000000000000000d2cebaebb6e3f3a39ff2bdeeadd5413421c8e38400000000000000000000000000000000000000000000000000000000000006e5',
         },
         detail: {
           op: 1,
-          orderIdx: BigNumber.from('0x00'),
-          itemIdx: BigNumber.from('0x03'),
-          price: BigNumber.from('0x0aa87bee538000'),
+          orderIdx: 0n,
+          itemIdx: 3n,
+          price: 3000000000000000n,
           itemHash:
             '0x9ec0c5280b8ebf88ea15e5cfc053fd12da875b46628504fef38665419ec83268',
           executionDelegate: '0xF849de01B080aDC3A814FaBE1E2087475cF2E354',
           dataReplacement: '0x',
-          bidIncentivePct: BigNumber.from('0x00'),
-          aucMinIncrementPct: BigNumber.from('0x00'),
-          aucIncDurationSecs: BigNumber.from('0x00'),
+          bidIncentivePct: 0n,
+          aucMinIncrementPct: 0n,
+          aucIncDurationSecs: 0n,
           fees: [[Array]],
         },
       },

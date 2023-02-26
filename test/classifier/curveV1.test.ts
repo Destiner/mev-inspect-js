@@ -1,4 +1,3 @@
-import { BigNumber } from '@ethersproject/bignumber';
 import { describe, test, expect } from 'vitest';
 
 import {
@@ -46,10 +45,10 @@ describe('Classfiers: Curve V1', () => {
       name: 'TokenExchange',
       values: {
         buyer: '0x0000000000a84D1a9B0063A910315C7fFA9Cd248',
-        sold_id: BigNumber.from('1'),
-        tokens_sold: BigNumber.from('20671444528711966725'),
-        bought_id: BigNumber.from('0'),
-        tokens_bought: BigNumber.from('20116003577312598078'),
+        sold_id: 1n,
+        tokens_sold: 20671444528711966725n,
+        bought_id: 0n,
+        tokens_bought: 20116003577312598078n,
       },
     };
 
@@ -129,18 +128,10 @@ describe('Classfiers: Curve V1', () => {
       name: 'AddLiquidity',
       values: {
         provider: '0xd632f22692fac7611d2aa1c0d552930d43caed3b',
-        token_amounts: [
-          BigNumber.from('0'),
-          BigNumber.from('0'),
-          BigNumber.from('16693478136'),
-        ],
-        fees: [
-          BigNumber.from('241451091954517168'),
-          BigNumber.from('223748'),
-          BigNumber.from('465102'),
-        ],
-        invariant: BigNumber.from('983041678849594703189995803'),
-        token_supply: BigNumber.from('962020550720010116353691445'),
+        token_amounts: [0n, 0n, 16693478136n],
+        fees: [241451091954517168n, 223748n, 465102n],
+        invariant: 983041678849594703189995803n,
+        token_supply: 962020550720010116353691445n,
       },
     };
     const deposit = depositClassifier.parse(pool, event, []);
@@ -224,13 +215,9 @@ describe('Classfiers: Curve V1', () => {
       name: 'RemoveLiquidity',
       values: {
         provider: '0xd632f22692fac7611d2aa1c0d552930d43caed3b',
-        token_amounts: [
-          BigNumber.from('15522500385952297880271'),
-          BigNumber.from('14370661805'),
-          BigNumber.from('10352720391'),
-        ],
-        fees: [BigNumber.from('0'), BigNumber.from('0'), BigNumber.from('0')],
-        token_supply: BigNumber.from('962156948317988516166781257'),
+        token_amounts: [15522500385952297880271n, 14370661805n, 10352720391n],
+        fees: [0n, 0n, 0n],
+        token_supply: 962156948317988516166781257n,
       },
     };
     const withdrawal = withdrawalClassifier.parse(pool, event, []);

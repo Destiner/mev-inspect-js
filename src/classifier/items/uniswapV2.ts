@@ -1,4 +1,3 @@
-import { BigNumber } from '@ethersproject/bignumber';
 import { Event } from 'abi-coder';
 import { Call, Contract } from 'ethcall';
 
@@ -65,10 +64,10 @@ function parse(
 
   const from = poolTransfer.from;
   const to = (values.to as string).toLowerCase();
-  const amount0In = (values.amount0In as BigNumber).toBigInt();
-  const amount1In = (values.amount1In as BigNumber).toBigInt();
-  const amount0Out = (values.amount0Out as BigNumber).toBigInt();
-  const amount1Out = (values.amount1Out as BigNumber).toBigInt();
+  const amount0In = values.amount0In as bigint;
+  const amount1In = values.amount1In as bigint;
+  const amount0Out = values.amount0Out as bigint;
+  const amount1Out = values.amount1Out as bigint;
 
   const assetOut = amount0In === 0n ? assets[0] : assets[1];
   const amountOut = amount0In === 0n ? amount0Out : amount1Out;

@@ -1,4 +1,4 @@
-import { Provider, TransactionReceipt } from '@ethersproject/providers';
+import { Provider, TransactionReceipt } from 'ethers';
 
 import Chain, { Log } from './chain.js';
 import classify, { ChainId } from './classifier/index.js';

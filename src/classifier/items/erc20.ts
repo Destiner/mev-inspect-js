@@ -1,4 +1,3 @@
-import { BigNumber } from '@ethersproject/bignumber';
 import { Event } from 'abi-coder';
 
 import erc20Abi from '../../abi/erc20.js';
@@ -24,7 +23,7 @@ function parse(event: ClassifiedEvent): Transfer {
 
   const from = (values.from as string).toLowerCase();
   const to = (values.to as string).toLowerCase();
-  const value = (values.value as BigNumber).toBigInt();
+  const value = values.value as bigint;
 
   return {
     asset: address.toLowerCase(),

@@ -1,4 +1,3 @@
-import { BigNumber } from '@ethersproject/bignumber';
 import { describe, test, expect } from 'vitest';
 
 import { NftPool, NftSwap } from '../../src/classifier/base.js';
@@ -46,30 +45,30 @@ describe('Classfiers: Opensea Seaport', () => {
           {
             itemType: 2,
             token: '0x06911466341299D79E9E1368A016C73d009691cc',
-            identifier: BigNumber.from('0x1871'),
-            amount: BigNumber.from('0x01'),
+            identifier: 6257n,
+            amount: 1n,
           },
         ],
         consideration: [
           {
             itemType: 0,
             token: '0x0000000000000000000000000000000000000000',
-            identifier: BigNumber.from('0x00'),
-            amount: BigNumber.from('0x030927f74c9de000'),
+            identifier: 0n,
+            amount: 218750000000000000n,
             recipient: '0xE46dF87D3fc3c68C71B9adfcecB6479e285021d9',
           },
           {
             itemType: 0,
             token: '0x0000000000000000000000000000000000000000',
-            identifier: BigNumber.from('0x00'),
-            amount: BigNumber.from('0x16345785d8a000'),
+            identifier: 0n,
+            amount: 6250000000000000n,
             recipient: '0x8De9C5A032463C561423387a9648c5C7BCC5BC90',
           },
           {
             itemType: 0,
             token: '0x0000000000000000000000000000000000000000',
-            identifier: BigNumber.from('0x00'),
-            amount: BigNumber.from('0x58d15e17628000'),
+            identifier: 0n,
+            amount: 25000000000000000n,
             recipient: '0x295990aC057a3a4b786102A3B61C84eFF764c033',
           },
         ],

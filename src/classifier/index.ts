@@ -1,4 +1,4 @@
-import { Coder, Event } from 'abi-coder';
+import { Coder, ValueMap } from 'abi-coder';
 
 import { Log } from '../chain.js';
 
@@ -56,7 +56,7 @@ import x2y2V1Classifier from './items/x2y2V1.js';
 import zeroExV3Classifier from './items/zeroExV3.js';
 import zeroExV4Classifier from './items/zeroExV4.js';
 
-interface ClassifiedEvent extends Event {
+interface ClassifiedEvent {
   address: string;
   blockHash: string;
   blockNumber: number;
@@ -66,6 +66,8 @@ interface ClassifiedEvent extends Event {
   gasUsed: number;
   logIndex: number;
   classifier: Classifier;
+  name: string;
+  values: ValueMap;
 }
 
 function classify(chainId: ChainId, logs: Log[]): ClassifiedEvent[] {
@@ -90,7 +92,7 @@ function classifyLog(chainId: ChainId, log: Log): ClassifiedEvent[] {
         blockHash,
         blockNumber,
       } = log;
-      const event = coder.decodeEvent(topics, data);
+      const event = coder.decodeEvent(topics as string[], data);
       if (!classifier.isValid(event, address, chainId)) {
         continue;
       }

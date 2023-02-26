@@ -1,6 +1,6 @@
-import { JsonFragment } from '@ethersproject/abi';
 import { Event } from 'abi-coder';
 import { Call } from 'ethcall';
+import { JsonFragment } from 'ethers';
 
 import { Log } from '../chain.js';
 

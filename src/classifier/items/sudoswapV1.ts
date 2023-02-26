@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { BigNumber } from '@ethersproject/bignumber';
 import { Coder, Event } from 'abi-coder';
 import { Call, Contract } from 'ethcall';
@@ -57,8 +58,8 @@ function processPoolCalls(
   const token = (results[1] as string | null)?.toLowerCase();
   const nft = (results[2] as string | null)?.toLowerCase();
   const bondingCurve = (results[3] as string).toLowerCase();
-  const fee = (results[4] as BigNumber).toBigInt();
-  const delta = (results[5] as BigNumber).toBigInt();
+  const fee = results[4] as bigint;
+  const delta = results[5] as bigint;
   const type: PoolType | null =
     bondingCurve === EXPONENTIAL_CURVE
       ? 'exponential'
@@ -198,7 +199,7 @@ function getNewSpotPrice(
   }
   const sudoswapCoder = new Coder(poolAbi);
   try {
-    const event = sudoswapCoder.decodeEvent(log.topics, log.data);
+    const event = sudoswapCoder.decodeEvent(log.topics as string[], log.data);
     const price = (event.values.newSpotPrice as BigNumber).toBigInt();
     return {
       logIndex: log.logIndex,
@@ -225,7 +226,7 @@ function getNftTransfers(
   return collectionLogs
     .map((log) => {
       try {
-        const event = nftCoder.decodeEvent(log.topics, log.data);
+        const event = nftCoder.decodeEvent(log.topics as string[], log.data);
         return event.name === 'Transfer'
           ? {
               from: (event.values.from as string).toLowerCase(),

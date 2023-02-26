@@ -1,4 +1,3 @@
-import { BigNumber } from '@ethersproject/bignumber';
 import { describe, test, expect } from 'vitest';
 
 import { Log } from '../../src/chain.js';
@@ -40,15 +39,15 @@ describe('Classfiers: LooksRare V1', () => {
       values: {
         orderHash:
           '0x2ef7bf76b6b12f77fd31e0e3c4137d46d5f731bc97c2aef0aa59dcd3ef1f85ff',
-        orderNonce: BigNumber.from('648'),
+        orderNonce: 648n,
         taker: '0x30d4B8b42a2EfE78c9536Faa88f0AFbbede2864F',
         maker: '0xb00154e628C7880cEdDF01c36888Fa9e6FD3ecb9',
         strategy: '0x86F909F70813CdB1Bc733f4D97Dc6b03B8e7E8F3',
         currency: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
         collection: '0x19cB5b009BdAD0Dad0404DD860b0beA75465E678',
-        tokenId: BigNumber.from('4036'),
-        amount: BigNumber.from('1'),
-        price: BigNumber.from('25000000000000000'),
+        tokenId: 4036n,
+        amount: 1n,
+        price: 25000000000000000n,
       },
     };
     const logs: Log[] = [
@@ -257,15 +256,15 @@ describe('Classfiers: LooksRare V1', () => {
       values: {
         orderHash:
           '0xe4338a641c4feaa72e77933081bb21ac9539272328881d9243e7a190ec1a0f09',
-        orderNonce: BigNumber.from('78'),
+        orderNonce: 78n,
         taker: '0x69Cf8871F61FB03f540bC519dd1f1D4682Ea0bF6',
         maker: '0xD67360166BAF50bd81Bf7972ae5a4bC105E79f2A',
         strategy: '0x56244Bb70CbD3EA9Dc8007399F61dFC065190031',
         currency: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
         collection: '0xEC0a7A26456B8451aefc4b00393ce1BefF5eB3e9',
-        tokenId: BigNumber.from('9903'),
-        amount: BigNumber.from('1'),
-        price: BigNumber.from('31000000000000000'),
+        tokenId: 9903n,
+        amount: 1n,
+        price: 31000000000000000n,
       },
     };
     const swap = swapClassifier.parse(pool, event, 1, []);

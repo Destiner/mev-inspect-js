@@ -1,7 +1,6 @@
-import { BigNumber } from '@ethersproject/bignumber';
-import { AddressZero } from '@ethersproject/constants';
 import { Event } from 'abi-coder';
 import { Call, Contract } from 'ethcall';
+import { ZeroAddress } from 'ethers';
 
 import vaultAbi from '../../abi/balancerV2Vault.js';
 import {
@@ -24,22 +23,20 @@ function isValidSwap(event: Event): boolean {
 }
 
 function isValidDeposit(event: Event): boolean {
-  const deltaValues = event.values.deltas as BigNumber[] | null;
-  if (!deltaValues) {
+  const deltas = event.values.deltas as bigint[] | null;
+  if (!deltas) {
     return false;
   }
-  const deltas = deltaValues.map((value) => value.toBigInt());
   return (
     event.name === 'PoolBalanceChanged' && deltas.every((delta) => delta >= 0)
   );
 }
 
 function isValidWithdrawal(event: Event): boolean {
-  const deltaValues = event.values.deltas as BigNumber[] | null;
-  if (!deltaValues) {
+  const deltas = event.values.deltas as bigint[] | null;
+  if (!deltas) {
     return false;
   }
-  const deltas = deltaValues.map((value) => value.toBigInt());
   return (
     event.name === 'PoolBalanceChanged' && deltas.every((delta) => delta <= 0)
   );
@@ -151,9 +148,7 @@ function parseDeposit(
   const assets = (values.tokens as string[]).map((token) =>
     token.toLowerCase(),
   );
-  const amounts = (values.deltas as BigNumber[]).map((value) =>
-    value.toBigInt(),
-  );
+  const amounts = values.deltas as bigint[];
 
   return {
     contract: {
@@ -208,9 +203,7 @@ function parseWithdrawal(
   const assets = (values.tokens as string[]).map((token) =>
     token.toLowerCase(),
   );
-  const amounts = (values.deltas as BigNumber[]).map(
-    (value) => -value.toBigInt(),
-  );
+  const amounts = (values.deltas as bigint[]).map((value) => -value);
 
   return {
     contract: {
@@ -261,7 +254,7 @@ function parseTransfer(event: ClassifiedEvent): Transfer {
 
   const user = (values.user as string).toLowerCase();
   const token = (values.token as string).toLowerCase();
-  const delta = (values.delta as BigNumber).toBigInt();
+  const delta = values.delta as bigint;
 
   const vault = event.address.toLowerCase();
 
@@ -308,8 +301,8 @@ function getClusterInputOutput(
   }
 
   const emptyInputOutput = {
-    from: AddressZero,
-    to: AddressZero,
+    from: ZeroAddress,
+    to: ZeroAddress,
   };
 
   const sortedEvents = [...allEvents];
@@ -409,13 +402,13 @@ function getClusterInputOutput(
   const clusterFrom =
     clusterInflows.length === 0
       ? clusterOutflows.length === 0
-        ? AddressZero
+        ? ZeroAddress
         : lastOutflow.to
       : firstInflow.from;
   const clusterTo =
     clusterOutflows.length === 0
       ? clusterInflows.length === 0
-        ? AddressZero
+        ? ZeroAddress
         : firstInflow.from
       : lastOutflow.to;
   const from = logIndex === startSwap.logIndex ? clusterFrom : vault;
@@ -434,8 +427,8 @@ function getSwapValues(swap: ClassifiedEvent): {
 } {
   const assetIn = (swap.values.tokenIn as string).toLowerCase();
   const assetOut = (swap.values.tokenOut as string).toLowerCase();
-  const amountIn = (swap.values.amountIn as BigNumber).toBigInt();
-  const amountOut = (swap.values.amountOut as BigNumber).toBigInt();
+  const amountIn = swap.values.amountIn as bigint;
+  const amountOut = swap.values.amountOut as bigint;
 
   return {
     assetIn,

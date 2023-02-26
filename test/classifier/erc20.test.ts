@@ -1,4 +1,3 @@
-import { BigNumber } from '@ethersproject/bignumber';
 import { describe, test, expect } from 'vitest';
 
 import { ClassifiedEvent, Transfer } from '../../src/classifier/index.js';
@@ -24,7 +23,7 @@ describe('Classfiers: ERC20', () => {
     const logIndex = 49;
     const from = '0xbe6356E4D92ECBD321C83CCDD79B3fD6F2D4f0e7';
     const to = '0x3B0a40B97a1037A09C2075CA472868D668454a18';
-    const value = BigNumber.from('50000000000000000000');
+    const value = 50000000000000000000n;
 
     const log: ClassifiedEvent = {
       address,
@@ -49,7 +48,7 @@ describe('Classfiers: ERC20', () => {
       asset: address.toLowerCase(),
       from: from.toLowerCase(),
       to: to.toLowerCase(),
-      value: value.toBigInt(),
+      value,
       block: {
         hash: blockHash,
         number: blockNumber,
@@ -107,11 +106,9 @@ describe('Classfiers: ERC20', () => {
       '0x3Aff86656A65F3d81B3E0B4C4F8d4199f3B3Fbde',
     ];
     const valueList = [
-      BigNumber.from(
-        '115792089237316195423570985008687907853269984665640564039457584007913129639935',
-      ),
-      BigNumber.from('50000000000'),
-      BigNumber.from('7180000000000000000'),
+      115792089237316195423570985008687907853269984665640564039457584007913129639935n,
+      50000000000n,
+      7180000000000000000n,
     ];
 
     const logs: ClassifiedEvent[] = transactionHashes.map(
@@ -146,7 +143,7 @@ describe('Classfiers: ERC20', () => {
           asset: addresses[index].toLowerCase(),
           from: fromList[index].toLowerCase(),
           to: toList[index].toLowerCase(),
-          value: valueList[index].toBigInt(),
+          value: valueList[index],
           block: {
             hash: blockHashes[index],
             number: blockNumbers[index],
