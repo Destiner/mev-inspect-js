@@ -37,6 +37,8 @@ A common data flow is to first fetch all the MEV using any of the Inspector meth
 
 ## Usage
 
+> This package requires ethers V6. If you use ethers V5, you need to use mev-inspect V3.
+
 > This package uses [BigInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt). If you use a bundler, you may want to set the build target to `es2020`.
 
 > This package is a pure ESM package. Follow [this guide](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c) for more info.
