@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { AlchemyProvider, JsonRpcProvider } from '@ethersproject/providers';
+import { AlchemyProvider, JsonRpcProvider } from 'ethers';
 
 const key = process.env.ALCHEMY_KEY;
 

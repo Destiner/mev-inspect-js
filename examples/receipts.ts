@@ -1,10 +1,34 @@
-import { Provider, TransactionReceipt } from '@ethersproject/abstract-provider';
-import { BigNumber } from '@ethersproject/bignumber';
-import { JsonRpcProvider } from '@ethersproject/providers';
+import { JsonRpcProvider, Provider, TransactionReceipt } from 'ethers';
 
 import { Inspector } from '../src/index.js';
 
 import getProvider from './utils.js';
+
+interface AlchemyTransactionReceipt {
+  blockHash: string;
+  blockNumber: string;
+  contractAddress: string;
+  cumulativeGasUsed: string;
+  effectiveGasPrice: string;
+  from: string;
+  gasUsed: string;
+  logs: {
+    address: string;
+    blockHash: string;
+    blockNumber: string;
+    data: string;
+    logIndex: string;
+    topics: string[];
+    transactionHash: string;
+    transactionIndex: string;
+  }[];
+  logsBloom: string;
+  status: string;
+  to: string | null;
+  transactionHash: string;
+  transactionIndex: string;
+  type: string;
+}
 
 const CHAIN_ID = 1;
 
@@ -25,7 +49,7 @@ async function getBlockReceipts(
     'alchemy_getTransactionReceipts',
     [{ blockNumber: `0x${number.toString(16)}` }],
   );
-  return response.receipts.map((receipt: TransactionReceipt) => {
+  return response.receipts.map((receipt: AlchemyTransactionReceipt) => {
     const {
       blockHash,
       blockNumber,
@@ -44,12 +68,12 @@ async function getBlockReceipts(
     } = receipt;
     return {
       blockHash,
-      blockNumber: parseInt(blockNumber.toString(), 16),
+      blockNumber: parseInt(blockNumber, 16),
       contractAddress,
-      cumulativeGasUsed: BigNumber.from(cumulativeGasUsed),
-      effectiveGasPrice: BigNumber.from(effectiveGasPrice),
+      cumulativeGasUsed: BigInt(cumulativeGasUsed),
+      effectiveGasPrice: BigInt(effectiveGasPrice),
       from,
-      gasUsed: BigNumber.from(gasUsed),
+      gasUsed: BigInt(gasUsed),
       logs: logs.map((log) => {
         const {
           address,
@@ -64,20 +88,20 @@ async function getBlockReceipts(
         return {
           address,
           blockHash,
-          blockNumber: parseInt(blockNumber.toString(), 16),
+          blockNumber: parseInt(blockNumber, 16),
           data,
-          logIndex: parseInt(logIndex.toString(), 16),
+          index: parseInt(logIndex, 16),
           topics,
           transactionHash,
-          transactionIndex: parseInt(transactionIndex.toString(), 16),
+          transactionIndex: parseInt(transactionIndex, 16),
         };
       }),
       logsBloom,
-      status: parseInt(status?.toString() || '0x0', 16),
+      status: parseInt(status, 16),
       to,
       transactionHash,
-      transactionIndex: parseInt(transactionIndex?.toString(), 16),
-      type: parseInt(type?.toString(), 16),
+      transactionIndex: parseInt(transactionIndex, 16),
+      type: parseInt(type, 16),
     };
   });
 }
