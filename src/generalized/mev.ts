@@ -110,11 +110,6 @@ async function fetchAssetTypes(
   provider: Provider,
   assets: string[],
 ): Promise<void> {
-  const legacyProvider = new LegacyJsonRpcProvider(
-    (provider as JsonRpcProvider)._getConnection().url,
-  );
-  const ethcallProvider = new EthcallProvider();
-  await ethcallProvider.init(legacyProvider);
   const newAssets = assets.filter((asset) => !assetTypes[asset]);
   const decimalCalls: Call[] = newAssets.map((asset) => {
     const contract = new Contract(asset, erc20Abi);
