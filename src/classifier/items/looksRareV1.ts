@@ -1,5 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { BigNumber } from '@ethersproject/bignumber';
 import { Coder, Event } from 'abi-coder';
 import { Call } from 'ethcall';
 
@@ -141,7 +139,7 @@ function getAmount(
       }
       const from = (event.values.from as string).toLowerCase();
       const to = (event.values.to as string).toLowerCase();
-      const value = (event.values.value as BigNumber).toBigInt();
+      const value = event.values.value as bigint;
       if (maker !== from || taker !== to) {
         continue;
       }

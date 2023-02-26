@@ -30,7 +30,7 @@
     "prepack": "npm run build"
   },
   "dependencies": {
-    "abi-coder": "^4.1.1",
+    "abi-coder": "^5.0.0",
     "ethcall": "^4.8.0"
   },
   "devDependencies": {

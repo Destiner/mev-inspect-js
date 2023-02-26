@@ -1,5 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { BigNumber } from '@ethersproject/bignumber';
 import { Coder, Event } from 'abi-coder';
 import { Call, Contract } from 'ethcall';
 
@@ -200,7 +198,7 @@ function getNewSpotPrice(
   const sudoswapCoder = new Coder(poolAbi);
   try {
     const event = sudoswapCoder.decodeEvent(log.topics as string[], log.data);
-    const price = (event.values.newSpotPrice as BigNumber).toBigInt();
+    const price = event.values.newSpotPrice as bigint;
     return {
       logIndex: log.logIndex,
       value: price,
@@ -231,7 +229,7 @@ function getNftTransfers(
           ? {
               from: (event.values.from as string).toLowerCase(),
               to: (event.values.to as string).toLowerCase(),
-              id: (event.values.tokenId as BigNumber).toBigInt(),
+              id: event.values.tokenId as bigint,
             }
           : null;
       } catch (e) {
