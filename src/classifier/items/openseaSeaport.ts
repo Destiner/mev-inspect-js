@@ -6,7 +6,7 @@ import { Classifiers, NftPool, NftPoolData, NftSwap } from '../base.js';
 import { ChainId, ClassifiedEvent, nativeAsset } from '../index.js';
 
 interface SpentItem {
-  itemType: number;
+  itemType: bigint;
   token: string;
   identifier: bigint;
   amount: bigint;
@@ -104,12 +104,12 @@ function parse(
     from,
     to,
     assetIn:
-      receivedItem.itemType === 0
+      receivedItem.itemType === 0n
         ? {
             type: 'erc20',
             address: nativeAsset[chainId],
           }
-        : receivedItem.itemType === 1
+        : receivedItem.itemType === 1n
         ? {
             type: 'erc20',
             address: spentItem.token.toLowerCase(),
@@ -124,12 +124,12 @@ function parse(
         ? considerationAmount
         : considerationAmount - feeAmount,
     assetOut:
-      spentItem.itemType === 0
+      spentItem.itemType === 0n
         ? {
             type: 'erc20',
             address: nativeAsset[chainId],
           }
-        : spentItem.itemType === 1
+        : spentItem.itemType === 1n
         ? {
             type: 'erc20',
             address: spentItem.token.toLowerCase(),

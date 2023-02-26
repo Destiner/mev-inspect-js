@@ -1,3 +1,5 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { BigNumber } from '@ethersproject/bignumber';
 import { Coder, Event } from 'abi-coder';
 import { Call, Contract } from 'ethcall';
 
@@ -100,8 +102,8 @@ function parse(
   } = event;
   const { address, asset, collection, metadata } = pool;
 
-  const fee = metadata.fee as bigint;
-  const delta = metadata.delta as bigint;
+  const fee = (metadata.fee as BigNumber).toBigInt();
+  const delta = (metadata.delta as BigNumber).toBigInt();
   const poolType = metadata.type as PoolType;
 
   const txLogs = allLogs.filter((log) => log.transactionHash === hash);
