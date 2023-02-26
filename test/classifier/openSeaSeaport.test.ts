@@ -43,7 +43,7 @@ describe('Classfiers: Opensea Seaport', () => {
         recipient: '0x6d660980b00c3405C2DEc173cf2259B15572B9B5',
         offer: [
           {
-            itemType: 2,
+            itemType: 2n,
             token: '0x06911466341299D79E9E1368A016C73d009691cc',
             identifier: 6257n,
             amount: 1n,
@@ -51,21 +51,21 @@ describe('Classfiers: Opensea Seaport', () => {
         ],
         consideration: [
           {
-            itemType: 0,
+            itemType: 0n,
             token: '0x0000000000000000000000000000000000000000',
             identifier: 0n,
             amount: 218750000000000000n,
             recipient: '0xE46dF87D3fc3c68C71B9adfcecB6479e285021d9',
           },
           {
-            itemType: 0,
+            itemType: 0n,
             token: '0x0000000000000000000000000000000000000000',
             identifier: 0n,
             amount: 6250000000000000n,
             recipient: '0x8De9C5A032463C561423387a9648c5C7BCC5BC90',
           },
           {
-            itemType: 0,
+            itemType: 0n,
             token: '0x0000000000000000000000000000000000000000',
             identifier: 0n,
             amount: 25000000000000000n,
