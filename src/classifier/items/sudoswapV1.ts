@@ -1,5 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { BigNumber } from '@ethersproject/bignumber';
 import { Coder, Event } from 'abi-coder';
 import { Call, Contract } from 'ethcall';
 
