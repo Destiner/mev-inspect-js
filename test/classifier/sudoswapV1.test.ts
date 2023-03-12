@@ -1,3 +1,5 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { BigNumber } from '@ethersproject/bignumber';
 import { describe, test, expect } from 'vitest';
 
 import { Log } from '../../src/chain.js';
@@ -25,8 +27,8 @@ describe('Classfiers: Sudoswap V1', () => {
       asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       collection: '0x42069abfe407c60cf4ae4112bedead391dba1cdb',
       metadata: {
-        fee: 25_000_000_000_000_000n,
-        delta: 1_080_000_000_000_000_000n,
+        fee: BigNumber.from('25000000000000000'),
+        delta: BigNumber.from('1080000000000000000'),
         type: 'exponential',
       },
     };
@@ -177,8 +179,8 @@ describe('Classfiers: Sudoswap V1', () => {
       asset: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       collection: '0x42069abfe407c60cf4ae4112bedead391dba1cdb',
       metadata: {
-        fee: 25_000_000_000_000_000n,
-        delta: 1_080_000_000_000_000_000n,
+        fee: BigNumber.from('25000000000000000'),
+        delta: BigNumber.from('1080000000000000000'),
         type: 'exponential',
       },
     };

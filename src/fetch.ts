@@ -37,8 +37,7 @@ async function fetchPools(
   const legacyProvider = new LegacyJsonRpcProvider(
     (provider as JsonRpcProvider)._getConnection().url,
   );
-  const ethcallProvider = new EthcallProvider();
-  await ethcallProvider.init(legacyProvider);
+  const ethcallProvider = new EthcallProvider(chainId, legacyProvider);
   const calls = Object.values(callMap).flat();
   const results = await ethcallProvider.tryAll(calls);
   let i = 0;
@@ -101,10 +100,9 @@ async function fetchNftPools(
   const legacyProvider = new LegacyJsonRpcProvider(
     (provider as JsonRpcProvider)._getConnection().url,
   );
-  const ethcallProvider = new EthcallProvider();
-  await ethcallProvider.init(legacyProvider);
+  const ethcallProvider = new EthcallProvider(chainId, legacyProvider);
   const calls = Object.values(callMap).flat();
-  const results = await ethcallProvider.tryAll(calls, block);
+  const results = await ethcallProvider.tryAll(calls, { blockTag: block });
   let i = 0;
   for (const log of logs) {
     if (log.classifier.type !== 'nft_swap') {
@@ -170,8 +168,7 @@ async function fetchMarkets(
   const legacyProvider = new LegacyJsonRpcProvider(
     (provider as JsonRpcProvider)._getConnection().url,
   );
-  const ethcallProvider = new EthcallProvider();
-  await ethcallProvider.init(legacyProvider);
+  const ethcallProvider = new EthcallProvider(chainId, legacyProvider);
   const calls = Object.values(callMap).flat();
   const results = await ethcallProvider.tryAll(calls);
   let i = 0;
