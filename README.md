@@ -48,13 +48,14 @@ npm i mev-inspect
 ```
 
 ```ts
-import { ethers } from 'ethers';
+// Ethers V6
+import { AlchemyProvider } from 'ethers';
 import { Inspector } from 'mev-inspect';
 
 const arbitrageTx =
   '0x06387618ee3752bed447f192802895921a7d45a60875927adfedc93a68bcbe05';
 const key = process.env.PROVIDER_KEY;
-const provider = new ethers.providers.AlchemyProvider(1, key);
+const provider = new AlchemyProvider(1, key);
 const inspector = new Inspector(1, provider);
 const txMev = await inspector.tx(arbitrageTx);
 console.log(txMev);
