@@ -24,12 +24,12 @@ class Inspector {
     if (!receipt) {
       return [];
     }
-    return await this.#getTxMev(this.provider, receipt, hash);
+    return await this.#getTxMev(this.chainId, this.provider, receipt, hash);
   }
 
   async block(number: number): Promise<Mev[]> {
     const logs = await this.chain.getBlockReceipts(number);
-    return await this.#getMev(this.provider, logs, number);
+    return await this.#getMev(this.chainId, this.provider, logs, number);
   }
 
   async receipts(receipts: TransactionReceipt[]): Promise<Mev[]> {
@@ -40,7 +40,12 @@ class Inspector {
     for (const block in receiptsByBlock) {
       const number = parseInt(block);
       const blockReceipts = receiptsByBlock[block];
-      const blockMev = await this.#getMev(this.provider, blockReceipts, number);
+      const blockMev = await this.#getMev(
+        this.chainId,
+        this.provider,
+        blockReceipts,
+        number,
+      );
       for (const mevItem of blockMev) {
         mev.push(mevItem);
       }
@@ -49,6 +54,7 @@ class Inspector {
   }
 
   async #getTxMev(
+    chainId: ChainId,
     provider: JsonRpcProvider,
     receipt: TransactionReceipt,
     hash: string,
@@ -64,11 +70,12 @@ class Inspector {
       [hash]: trace,
     };
     const assets = getAssets([receipt]);
-    await fetchAssetTypes(provider, assets);
+    await fetchAssetTypes(chainId, provider, assets);
     return classify(traceMap, receiptMap);
   }
 
   async #getMev(
+    chainId: ChainId,
     provider: JsonRpcProvider,
     receipts: TransactionReceipt[],
     block: number,
@@ -82,7 +89,7 @@ class Inspector {
       return [];
     }
     const assets = getAssets(receipts);
-    await fetchAssetTypes(provider, assets);
+    await fetchAssetTypes(chainId, provider, assets);
     return classify(traces, receiptMap);
   }
 }

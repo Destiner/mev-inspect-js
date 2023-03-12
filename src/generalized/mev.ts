@@ -14,6 +14,7 @@ import erc1155Abi from '../abi/erc1155.js';
 import erc20Abi from '../abi/erc20.js';
 import erc721Abi from '../abi/erc721.js';
 import wethAbi from '../abi/weth.js';
+import { ChainId } from '../index.js';
 
 import { TransactionTrace } from './traces.js';
 
@@ -107,6 +108,7 @@ function getAssets(receipts: TransactionReceipt[]): string[] {
 }
 
 async function fetchAssetTypes(
+  chainId: ChainId,
   provider: Provider,
   assets: string[],
 ): Promise<void> {
@@ -121,11 +123,13 @@ async function fetchAssetTypes(
     return contract.supportsInterface(INTERFACE_ID_ERC721);
   });
   const decimalResults = await getNullableCallResults<number>(
+    chainId,
     decimalCalls,
     50,
     provider,
   );
   const supportsInterfaceResults = await getNullableCallResults<boolean>(
+    chainId,
     supportsInterfaceCalls,
     5,
     provider,
@@ -505,6 +509,7 @@ function getPureArbitrages(
 }
 
 async function getNullableCallResults<T>(
+  chainId: ChainId,
   allCalls: Call[],
   limit: number,
   provider: Provider,
@@ -513,8 +518,7 @@ async function getNullableCallResults<T>(
   const legacyProvider = new LegacyJsonRpcProvider(
     (provider as JsonRpcProvider)._getConnection().url,
   );
-  const ethcallProvider = new EthcallProvider();
-  await ethcallProvider.init(legacyProvider);
+  const ethcallProvider = new EthcallProvider(chainId, legacyProvider);
 
   const allResults: (T | null)[] = [];
   for (let i = 0; i < allCalls.length / limit; i++) {
@@ -524,7 +528,7 @@ async function getNullableCallResults<T>(
     let results = null;
     while (!results) {
       try {
-        results = await ethcallProvider.tryAll<T>(calls, block);
+        results = await ethcallProvider.tryAll<T>(calls, { blockTag: block });
       } catch (e: unknown) {
         const errorCode = (e as Error).code as ErrorCode;
         if (errorCode === 'TIMEOUT') {
