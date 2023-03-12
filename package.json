@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "abi-coder": "^5.0.0",
-    "ethcall": "^5.0.1"
+    "ethcall": "^6.0.0"
   },
   "devDependencies": {
     "@types/node": "^18.0.3",

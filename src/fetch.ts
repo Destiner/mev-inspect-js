@@ -1,7 +1,5 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { JsonRpcProvider as LegacyJsonRpcProvider } from '@ethersproject/providers';
 import { Call, Provider as EthcallProvider } from 'ethcall';
-import { Provider, JsonRpcProvider } from 'ethers';
+import { Provider } from 'ethers';
 
 import {
   ChainId,
@@ -34,10 +32,7 @@ async function fetchPools(
     const logCalls = log.classifier.pool.getCalls(id);
     callMap[log.logIndex] = logCalls;
   }
-  const legacyProvider = new LegacyJsonRpcProvider(
-    (provider as JsonRpcProvider)._getConnection().url,
-  );
-  const ethcallProvider = new EthcallProvider(chainId, legacyProvider);
+  const ethcallProvider = new EthcallProvider(chainId, provider);
   const calls = Object.values(callMap).flat();
   const results = await ethcallProvider.tryAll(calls);
   let i = 0;
@@ -97,10 +92,7 @@ async function fetchNftPools(
     const logCalls = log.classifier.pool.getCalls(address);
     callMap[log.logIndex] = logCalls;
   }
-  const legacyProvider = new LegacyJsonRpcProvider(
-    (provider as JsonRpcProvider)._getConnection().url,
-  );
-  const ethcallProvider = new EthcallProvider(chainId, legacyProvider);
+  const ethcallProvider = new EthcallProvider(chainId, provider);
   const calls = Object.values(callMap).flat();
   const results = await ethcallProvider.tryAll(calls, { blockTag: block });
   let i = 0;
@@ -165,10 +157,7 @@ async function fetchMarkets(
     const logCalls = log.classifier.market.getCalls(address);
     callMap[log.logIndex] = logCalls;
   }
-  const legacyProvider = new LegacyJsonRpcProvider(
-    (provider as JsonRpcProvider)._getConnection().url,
-  );
-  const ethcallProvider = new EthcallProvider(chainId, legacyProvider);
+  const ethcallProvider = new EthcallProvider(chainId, provider);
   const calls = Object.values(callMap).flat();
   const results = await ethcallProvider.tryAll(calls);
   let i = 0;

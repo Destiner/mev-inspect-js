@@ -1,14 +1,6 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { JsonRpcProvider as LegacyJsonRpcProvider } from '@ethersproject/providers';
 import { Coder } from 'abi-coder';
 import { Call, Contract, Provider as EthcallProvider } from 'ethcall';
-import {
-  ErrorCode,
-  JsonRpcProvider,
-  Provider,
-  TransactionReceipt,
-  ZeroAddress,
-} from 'ethers';
+import { ErrorCode, Provider, TransactionReceipt, ZeroAddress } from 'ethers';
 
 import erc1155Abi from '../abi/erc1155.js';
 import erc20Abi from '../abi/erc20.js';
@@ -515,10 +507,7 @@ async function getNullableCallResults<T>(
   provider: Provider,
   block?: number,
 ): Promise<(T | null)[]> {
-  const legacyProvider = new LegacyJsonRpcProvider(
-    (provider as JsonRpcProvider)._getConnection().url,
-  );
-  const ethcallProvider = new EthcallProvider(chainId, legacyProvider);
+  const ethcallProvider = new EthcallProvider(chainId, provider);
 
   const allResults: (T | null)[] = [];
   for (let i = 0; i < allCalls.length / limit; i++) {
