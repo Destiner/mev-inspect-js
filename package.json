@@ -1,6 +1,6 @@
 {
   "name": "mev-inspect",
-  "version": "4.0.1",
+  "version": "4.1.0",
   "description": "A JS port of 'mev-inspect-py' optimised for ease of use.",
   "author": "Timur Badretdinov <destinerx@gmail.com>",
   "keywords": [
