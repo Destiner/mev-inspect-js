@@ -1,4 +1,4 @@
-import {
+import type {
   Erc20Asset,
   Repayment,
   Searcher,
@@ -70,4 +70,5 @@ function getRepayment(
   return repayment ? repayment : null;
 }
 
-export { Liquidation, getLiquidations };
+export { getLiquidations };
+export type { Liquidation };

@@ -1,4 +1,4 @@
-import { Transfer, ClassifiedEvent } from '../classifier/index.js';
+import type { Transfer, ClassifiedEvent } from '../classifier/index.js';
 
 function getTransfers(logs: ClassifiedEvent[]): Transfer[] {
   return logs

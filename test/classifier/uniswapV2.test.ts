@@ -1,9 +1,9 @@
 import { describe, test, expect } from 'vitest';
 
-import { Pool, Transfer } from '../../src/classifier/base.js';
-import { ClassifiedEvent } from '../../src/classifier/index.js';
+import type { Pool, Transfer } from '../../src/classifier/base.js';
+import type { ClassifiedEvent } from '../../src/classifier/index.js';
 import classifier from '../../src/classifier/items/uniswapV2.js';
-import { Swap } from '../../src/index.js';
+import type { Swap } from '../../src/index.js';
 
 const swapClassifier = classifier.swap;
 

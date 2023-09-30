@@ -1,10 +1,10 @@
 import { describe, test, expect } from 'vitest';
 
-import { Arbitrage } from '../src/mev/arbitrage.js';
-import { JitSandwich } from '../src/mev/jitSandwiches.js';
-import { Liquidation } from '../src/mev/liquidations.js';
-import { NftArbitrage } from '../src/mev/nftArbitrages.js';
-import { Sandwich } from '../src/mev/sandwiches.js';
+import type { Arbitrage } from '../src/mev/arbitrage.js';
+import type { JitSandwich } from '../src/mev/jitSandwiches.js';
+import type { Liquidation } from '../src/mev/liquidations.js';
+import type { NftArbitrage } from '../src/mev/nftArbitrages.js';
+import type { Sandwich } from '../src/mev/sandwiches.js';
 import {
   isArbitrage,
   isLiquidation,

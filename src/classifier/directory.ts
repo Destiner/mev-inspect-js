@@ -1,4 +1,4 @@
-import { SwapProtocol, LendingProtocol, NftSwapProtocol } from './base.js';
+import type { SwapProtocol, LendingProtocol, NftSwapProtocol } from './base.js';
 
 const ETHEREUM = 1;
 const OPTIMISM = 10;
@@ -619,9 +619,6 @@ function isKnownRouter(chainId: ChainId, address: string): boolean {
 }
 
 export {
-  ChainId,
-  Factory,
-  LendingPool,
   nativeAsset,
   getFactories,
   getFactoryByAddress,
@@ -632,3 +629,4 @@ export {
   isValidPool,
   isKnownRouter,
 };
+export type { ChainId, Factory, LendingPool };

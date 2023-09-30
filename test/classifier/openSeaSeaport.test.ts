@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'vitest';
 
-import { NftPool, NftSwap } from '../../src/classifier/base.js';
-import { ClassifiedEvent } from '../../src/classifier/index.js';
+import type { NftPool, NftSwap } from '../../src/classifier/base.js';
+import type { ClassifiedEvent } from '../../src/classifier/index.js';
 import classifier from '../../src/classifier/items/openseaSeaport.js';
 
 const swapClassifier = classifier.nftSwap;

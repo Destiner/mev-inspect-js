@@ -1,12 +1,12 @@
 import { describe, test, expect } from 'vitest';
 
-import {
+import type {
   LiquidityDeposit,
   LiquidityWithdrawal,
   Pool,
   Swap,
 } from '../../src/classifier/base.js';
-import { ClassifiedEvent } from '../../src/classifier/index.js';
+import type { ClassifiedEvent } from '../../src/classifier/index.js';
 import balancerV1Classifiers from '../../src/classifier/items/balancerV1.js';
 
 const swapClassifier = balancerV1Classifiers.swap;

@@ -1,11 +1,14 @@
-import { Coder, Event } from 'abi-coder';
-import { Call, Contract } from 'ethcall';
+import type { Event } from 'abi-coder';
+import { Coder } from 'abi-coder';
+import type { Call } from 'ethcall';
+import { Contract } from 'ethcall';
 
 import erc721Abi from '../../abi/erc721.js';
 import poolAbi from '../../abi/sudoswapV1.js';
-import { Log } from '../../chain.js';
-import { Classifiers, NftPool, NftPoolData, NftSwap } from '../base.js';
-import { ChainId, ClassifiedEvent, nativeAsset } from '../index.js';
+import type { Log } from '../../chain.js';
+import type { Classifiers, NftPool, NftPoolData, NftSwap } from '../base.js';
+import type { ChainId, ClassifiedEvent } from '../index.js';
+import { nativeAsset } from '../index.js';
 
 const EXPONENTIAL_CURVE = '0x432f962d8209781da23fb37b6b59ee15de7d9841';
 const LINEAR_CURVE = '0x5b6ac51d9b1cede0068a1b26533cace807f883ee';

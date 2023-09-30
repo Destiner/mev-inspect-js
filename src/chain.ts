@@ -1,4 +1,5 @@
-import { Block, Provider, TransactionReceipt } from 'ethers';
+import type { Provider } from 'ethers';
+import { Block, TransactionReceipt } from 'ethers';
 
 interface Log {
   blockHash: string;
@@ -129,5 +130,4 @@ class Chain {
 }
 
 export default Chain;
-
-export { Log };
+export type { Log };

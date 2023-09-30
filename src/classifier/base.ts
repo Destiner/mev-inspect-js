@@ -1,12 +1,12 @@
-import { Event } from 'abi-coder';
-import { Call } from 'ethcall';
-import { JsonFragment } from 'ethers';
+import type { Event } from 'abi-coder';
+import type { Call } from 'ethcall';
+import type { JsonFragment } from 'ethers';
 
-import { Log } from '../chain.js';
+import type { Log } from '../chain.js';
 
-import { Factory } from './directory.js';
+import type { Factory } from './directory.js';
 
-import { ChainId, ClassifiedEvent } from './index.js';
+import type { ChainId, ClassifiedEvent } from './index.js';
 
 interface Searcher {
   sender: string;
@@ -351,7 +351,8 @@ function getLatestPoolTransfer(
   return previousTransfers[0];
 }
 
-export {
+export { getLatestPoolTransfer };
+export type {
   Asset,
   Base,
   Block,
@@ -377,5 +378,4 @@ export {
   SwapProtocol,
   Transaction,
   Transfer,
-  getLatestPoolTransfer,
 };

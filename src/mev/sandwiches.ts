@@ -1,12 +1,12 @@
-import {
+import type {
   ChainId,
   Erc20Asset,
   LiquidityDeposit,
   LiquidityWithdrawal,
   Searcher,
   Swap,
-  isKnownRouter,
 } from '../classifier/index.js';
+import { isKnownRouter } from '../classifier/index.js';
 import { minByAbs } from '../utils.js';
 
 interface Sandwich {
@@ -157,4 +157,5 @@ function getProfit(frontSwap: Swap, backSwap: Swap): bigint {
   return minByAbs(profitFrontrun, profitBackrun);
 }
 
-export { Sandwich, getSandwiches };
+export { getSandwiches };
+export type { Sandwich };

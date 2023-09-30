@@ -1,4 +1,4 @@
-import {
+import type {
   Erc20Asset,
   LiquidityDeposit,
   LiquidityWithdrawal,
@@ -109,4 +109,5 @@ function getUniswapV3Sandwiches(
   return sandwiches;
 }
 
-export { JitSandwich, getJitSandwiches };
+export { getJitSandwiches };
+export type { JitSandwich };

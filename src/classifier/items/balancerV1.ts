@@ -1,9 +1,10 @@
-import { Event } from 'abi-coder';
-import { Call, Contract } from 'ethcall';
+import type { Event } from 'abi-coder';
+import type { Call } from 'ethcall';
+import { Contract } from 'ethcall';
 
 import factoryAbi from '../../abi/balancerV1Factory.js';
 import poolAbi from '../../abi/balancerV1Pool.js';
-import {
+import type {
   Classifiers,
   LiquidityDeposit,
   LiquidityWithdrawal,
@@ -11,7 +12,7 @@ import {
   PoolData,
   Swap,
 } from '../base.js';
-import { ClassifiedEvent } from '../index.js';
+import type { ClassifiedEvent } from '../index.js';
 
 const FACTORY_ADDRESS = '0x9424b1412450d0f8fc2255faf6046b98213b76bd';
 

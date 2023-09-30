@@ -1,8 +1,8 @@
-import { Event } from 'abi-coder';
+import type { Event } from 'abi-coder';
 
 import erc20Abi from '../../abi/erc20.js';
-import { Classifiers, Transfer } from '../base.js';
-import { ClassifiedEvent } from '../index.js';
+import type { Classifiers, Transfer } from '../base.js';
+import type { ClassifiedEvent } from '../index.js';
 
 function isValid(event: Event): boolean {
   return event.name === 'Transfer';

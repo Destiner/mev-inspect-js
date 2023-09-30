@@ -1,8 +1,8 @@
 import { describe, test, expect } from 'vitest';
 
-import { Log } from '../../src/chain.js';
-import { NftPool, NftSwap } from '../../src/classifier/base.js';
-import { ClassifiedEvent } from '../../src/classifier/index.js';
+import type { Log } from '../../src/chain.js';
+import type { NftPool, NftSwap } from '../../src/classifier/base.js';
+import type { ClassifiedEvent } from '../../src/classifier/index.js';
 import classifier, {
   getEffectivePrice,
 } from '../../src/classifier/items/sudoswapV1.js';

@@ -3,7 +3,8 @@ import { JsonRpcProvider, TransactionReceipt } from 'ethers';
 import Chain from '../chain.js';
 import { groupBy } from '../utils.js';
 
-import { Mev, getAssets, fetchAssetTypes, classify } from './mev.js';
+import type { Mev } from './mev.js';
+import { getAssets, fetchAssetTypes, classify } from './mev.js';
 import { getBlockTraces, getTransactionTrace } from './traces.js';
 
 type ChainId = 1;

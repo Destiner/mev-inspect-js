@@ -1,4 +1,9 @@
-import { Asset, Erc20Asset, NftSwap, Searcher } from '../classifier/index.js';
+import type {
+  Asset,
+  Erc20Asset,
+  NftSwap,
+  Searcher,
+} from '../classifier/index.js';
 
 interface NftArbitrage {
   swaps: NftSwap[];
@@ -189,4 +194,5 @@ function areAssetsEqual(assetA: Asset, assetB: Asset): boolean {
   }
 }
 
-export { NftArbitrage, getNftArbitrages };
+export { getNftArbitrages };
+export type { NftArbitrage };

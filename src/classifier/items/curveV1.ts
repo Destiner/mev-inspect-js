@@ -1,8 +1,8 @@
-import { Event } from 'abi-coder';
-import { Call } from 'ethcall';
+import type { Event } from 'abi-coder';
+import type { Call } from 'ethcall';
 
 import poolAbi from '../../abi/curveV1.js';
-import {
+import type {
   Classifiers,
   LiquidityDeposit,
   LiquidityWithdrawal,
@@ -10,8 +10,9 @@ import {
   PoolData,
   Swap,
 } from '../base.js';
-import { ChainId, getFactories } from '../directory.js';
-import { ClassifiedEvent } from '../index.js';
+import type { ChainId } from '../directory.js';
+import { getFactories } from '../directory.js';
+import type { ClassifiedEvent } from '../index.js';
 
 interface CurvePool {
   address: string;

@@ -1,9 +1,10 @@
-import { Event } from 'abi-coder';
-import { Call, Contract } from 'ethcall';
+import type { Event } from 'abi-coder';
+import type { Call } from 'ethcall';
+import { Contract } from 'ethcall';
 import { ZeroAddress } from 'ethers';
 
 import vaultAbi from '../../abi/balancerV2Vault.js';
-import {
+import type {
   Classifiers,
   LiquidityDeposit,
   LiquidityWithdrawal,
@@ -12,7 +13,7 @@ import {
   Swap,
   Transfer,
 } from '../base.js';
-import { ClassifiedEvent } from '../index.js';
+import type { ClassifiedEvent } from '../index.js';
 
 interface PoolTokens {
   tokens: string[];

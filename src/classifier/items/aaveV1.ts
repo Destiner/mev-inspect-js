@@ -1,15 +1,16 @@
-import { Event } from 'abi-coder';
-import { Call } from 'ethcall';
+import type { Event } from 'abi-coder';
+import type { Call } from 'ethcall';
 
 import poolAbi from '../../abi/aaveV1Pool.js';
-import {
+import type {
   Classifiers,
   Market,
   MarketData,
   Repayment,
   Seizure,
 } from '../base.js';
-import { ChainId, ClassifiedEvent, isValidPool } from '../index.js';
+import type { ChainId, ClassifiedEvent } from '../index.js';
+import { isValidPool } from '../index.js';
 
 function isValid(event: Event, address: string, chainId: ChainId): boolean {
   return (

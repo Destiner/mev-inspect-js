@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest';
 
-import { ClassifiedEvent } from '../../src/classifier/index.js';
+import type { ClassifiedEvent } from '../../src/classifier/index.js';
 import uniswapV2Classifiers from '../../src/classifier/items/uniswapV2.js';
 import getTransfers from '../../src/mev/transfers.js';
 

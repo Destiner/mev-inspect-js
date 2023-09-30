@@ -1,11 +1,12 @@
-import { Coder, Event } from 'abi-coder';
-import { Call } from 'ethcall';
+import type { Event } from 'abi-coder';
+import { Coder } from 'abi-coder';
+import type { Call } from 'ethcall';
 
 import erc20Abi from '../../abi/erc20.js';
 import exchangeAbi from '../../abi/looksRareV1.js';
-import { Log } from '../../chain.js';
-import { Classifiers, NftPool, NftPoolData, NftSwap } from '../base.js';
-import { ChainId, ClassifiedEvent } from '../index.js';
+import type { Log } from '../../chain.js';
+import type { Classifiers, NftPool, NftPoolData, NftSwap } from '../base.js';
+import type { ChainId, ClassifiedEvent } from '../index.js';
 
 function isValid(event: Event): boolean {
   return event.name === 'TakerAsk' || event.name === 'TakerBid';

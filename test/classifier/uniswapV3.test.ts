@@ -1,14 +1,14 @@
 import { describe, test, expect } from 'vitest';
 
-import {
+import type {
   LiquidityDeposit,
   LiquidityWithdrawal,
   Pool,
   Transfer,
 } from '../../src/classifier/base.js';
-import { ClassifiedEvent } from '../../src/classifier/index.js';
+import type { ClassifiedEvent } from '../../src/classifier/index.js';
 import classifiers from '../../src/classifier/items/uniswapV3.js';
-import { Swap } from '../../src/index.js';
+import type { Swap } from '../../src/index.js';
 
 const swapClassifier = classifiers.swap;
 const liquidityDepositClassifier = classifiers.liquidityDeposit;

@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest';
 
-import { ClassifiedEvent, Transfer } from '../../src/classifier/index.js';
+import type { ClassifiedEvent, Transfer } from '../../src/classifier/index.js';
 import classifier from '../../src/classifier/items/erc20.js';
 
 const transferClassifier = classifier.transfer;

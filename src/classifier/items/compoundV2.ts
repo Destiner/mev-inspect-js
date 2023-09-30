@@ -1,16 +1,18 @@
-import { Event } from 'abi-coder';
-import { Call, Contract } from 'ethcall';
+import type { Event } from 'abi-coder';
+import type { Call } from 'ethcall';
+import { Contract } from 'ethcall';
 
 import marketAbi from '../../abi/compoundV2Market.js';
-import {
+import type {
   Classifiers,
   Market,
   MarketData,
   Repayment,
   Seizure,
 } from '../base.js';
-import { ChainId, nativeAsset } from '../directory.js';
-import { ClassifiedEvent } from '../index.js';
+import type { ChainId } from '../directory.js';
+import { nativeAsset } from '../directory.js';
+import type { ClassifiedEvent } from '../index.js';
 
 const CETH_MARKET: Record<string, string> = {
   '0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b':

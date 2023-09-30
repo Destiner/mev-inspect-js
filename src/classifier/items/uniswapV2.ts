@@ -1,17 +1,12 @@
-import { Event } from 'abi-coder';
-import { Call, Contract } from 'ethcall';
+import type { Event } from 'abi-coder';
+import type { Call } from 'ethcall';
+import { Contract } from 'ethcall';
 
 import pairAbi from '../../abi/uniswapV2Pair.js';
 import { equalWithTolerance } from '../../utils.js';
-import {
-  Classifiers,
-  Pool,
-  PoolData,
-  Swap,
-  Transfer,
-  getLatestPoolTransfer,
-} from '../base.js';
-import { ClassifiedEvent } from '../index.js';
+import type { Classifiers, Pool, PoolData, Swap, Transfer } from '../base.js';
+import { getLatestPoolTransfer } from '../base.js';
+import type { ClassifiedEvent } from '../index.js';
 
 function isValid(event: Event): boolean {
   return event.name === 'Swap';

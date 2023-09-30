@@ -1,4 +1,4 @@
-import { Erc20Asset, Searcher, Swap } from '../classifier/index.js';
+import type { Erc20Asset, Searcher, Swap } from '../classifier/index.js';
 import { equalWithTolerance } from '../utils.js';
 
 interface Arbitrage {
@@ -179,4 +179,5 @@ function swapOutsMatchSwapIns(swapOut: Swap, swapIn: Swap): boolean {
   );
 }
 
-export { Arbitrage, getArbitrages };
+export { getArbitrages };
+export type { Arbitrage };

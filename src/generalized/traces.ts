@@ -118,4 +118,5 @@ function parseTrace(replay: RawTransactionReplay): TransactionTrace {
   };
 }
 
-export { TransactionTrace, getBlockTraces, getTransactionTrace };
+export { getBlockTraces, getTransactionTrace };
+export type { TransactionTrace };

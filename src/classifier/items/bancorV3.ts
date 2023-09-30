@@ -1,9 +1,9 @@
-import { Event } from 'abi-coder';
-import { Call } from 'ethcall';
+import type { Event } from 'abi-coder';
+import type { Call } from 'ethcall';
 
 import exchangeAbi from '../../abi/bancorV3.js';
-import { Classifiers, Pool, PoolData, Swap } from '../base.js';
-import { ClassifiedEvent } from '../index.js';
+import type { Classifiers, Pool, PoolData, Swap } from '../base.js';
+import type { ClassifiedEvent } from '../index.js';
 
 function isValid(event: Event): boolean {
   return event.name === 'TokensTraded';

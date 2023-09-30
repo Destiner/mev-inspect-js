@@ -1,12 +1,12 @@
-import {
+import type {
   ChainId,
   ClassifiedEvent,
   Pool,
   Swap,
   SwapProtocol,
   Transfer,
-  isValidFactory,
 } from '../classifier/index.js';
+import { isValidFactory } from '../classifier/index.js';
 
 function getPoolAddress(log: ClassifiedEvent): string {
   if (log.classifier.type !== 'swap') {

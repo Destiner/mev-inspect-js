@@ -1,7 +1,8 @@
 import { describe, test, expect } from 'vitest';
 
-import { Swap } from '../../src/index.js';
-import { Arbitrage, getArbitrages } from '../../src/mev/arbitrage.js';
+import type { Swap } from '../../src/index.js';
+import type { Arbitrage } from '../../src/mev/arbitrage.js';
+import { getArbitrages } from '../../src/mev/arbitrage.js';
 
 describe('MEV: arbitrage', () => {
   test('skip simple swaps', () => {

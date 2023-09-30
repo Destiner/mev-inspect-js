@@ -1,7 +1,8 @@
 import { describe, test, expect } from 'vitest';
 
-import { Repayment, Seizure } from '../../src/index.js';
-import { Liquidation, getLiquidations } from '../../src/mev/liquidations.js';
+import type { Repayment, Seizure } from '../../src/index.js';
+import type { Liquidation } from '../../src/mev/liquidations.js';
+import { getLiquidations } from '../../src/mev/liquidations.js';
 
 describe('MEV: liquidations', () => {
   test('Compound V2 liquidation', () => {

@@ -1,7 +1,8 @@
 import { describe, test, expect } from 'vitest';
 
-import { NftSwap } from '../../src/index.js';
-import { NftArbitrage, getNftArbitrages } from '../../src/mev/nftArbitrages.js';
+import type { NftSwap } from '../../src/index.js';
+import type { NftArbitrage } from '../../src/mev/nftArbitrages.js';
+import { getNftArbitrages } from '../../src/mev/nftArbitrages.js';
 
 describe('MEV: arbitrage', () => {
   test('skip simple swaps', () => {

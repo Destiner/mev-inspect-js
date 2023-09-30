@@ -1,4 +1,4 @@
-import {
+import type {
   Asset,
   Block,
   ChainId,
@@ -14,7 +14,7 @@ import {
   Transfer,
 } from './classifier/index.js';
 import Inspector from './inspector.js';
-import {
+import type {
   Arbitrage,
   JitSandwich,
   Liquidation,
@@ -33,6 +33,15 @@ import {
 } from './utils.js';
 
 export {
+  getArbitrages,
+  getBlock,
+  getJitSandwiches,
+  getLiquidations,
+  getNftArbitrages,
+  getSandwiches,
+  getTransaction,
+};
+export type {
   Arbitrage,
   Asset,
   Block,
@@ -53,11 +62,4 @@ export {
   Seizure,
   Swap,
   Transfer,
-  getArbitrages,
-  getBlock,
-  getJitSandwiches,
-  getLiquidations,
-  getNftArbitrages,
-  getSandwiches,
-  getTransaction,
 };

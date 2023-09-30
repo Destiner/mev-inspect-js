@@ -1,8 +1,9 @@
-import { Coder, ValueMap } from 'abi-coder';
+import type { ValueMap } from 'abi-coder';
+import { Coder } from 'abi-coder';
 
-import { Log } from '../chain.js';
+import type { Log } from '../chain.js';
 
-import {
+import type {
   Asset,
   Base,
   Block,
@@ -25,8 +26,8 @@ import {
   Transaction,
   Transfer,
 } from './base.js';
+import type { ChainId } from './directory.js';
 import {
-  ChainId,
   getFactoryByAddress,
   getNftFactoryByAddress,
   getPoolByAddress,
@@ -143,6 +144,16 @@ function getClassifiers(): Classifier[] {
 export default classify;
 
 export {
+  getFactoryByAddress,
+  getNftFactoryByAddress,
+  getPoolByAddress,
+  isValidFactory,
+  isValidNftFactory,
+  isValidPool,
+  isKnownRouter,
+  nativeAsset,
+};
+export type {
   Asset,
   Base,
   Block,
@@ -165,12 +176,4 @@ export {
   SwapProtocol,
   Transaction,
   Transfer,
-  getFactoryByAddress,
-  getNftFactoryByAddress,
-  getPoolByAddress,
-  isValidFactory,
-  isValidNftFactory,
-  isValidPool,
-  isKnownRouter,
-  nativeAsset,
 };

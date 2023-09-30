@@ -1,9 +1,10 @@
-import { Event } from 'abi-coder';
-import { Call, Contract } from 'ethcall';
+import type { Event } from 'abi-coder';
+import type { Call } from 'ethcall';
+import { Contract } from 'ethcall';
 
 import poolAbi from '../../abi/uniswapV3Pool.js';
 import { equalWithTolerance } from '../../utils.js';
-import {
+import type {
   Classifiers,
   LiquidityDeposit,
   LiquidityWithdrawal,
@@ -11,9 +12,9 @@ import {
   PoolData,
   Swap,
   Transfer,
-  getLatestPoolTransfer,
 } from '../base.js';
-import { ClassifiedEvent } from '../index.js';
+import { getLatestPoolTransfer } from '../base.js';
+import type { ClassifiedEvent } from '../index.js';
 
 function isSwapValid(event: Event): boolean {
   return event.name === 'Swap';

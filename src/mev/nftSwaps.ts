@@ -1,12 +1,12 @@
-import { Log } from '../chain.js';
-import {
+import type { Log } from '../chain.js';
+import type {
   ChainId,
   ClassifiedEvent,
   NftSwap,
   NftSwapProtocol,
   NftPool,
-  isValidNftFactory,
 } from '../classifier/index.js';
+import { isValidNftFactory } from '../classifier/index.js';
 
 function getSwaps(
   chainId: ChainId,

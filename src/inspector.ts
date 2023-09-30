@@ -1,10 +1,13 @@
-import { Provider, TransactionReceipt } from 'ethers';
+import type { Provider } from 'ethers';
+import { TransactionReceipt } from 'ethers';
 
-import Chain, { Log } from './chain.js';
-import classify, { ChainId } from './classifier/index.js';
+import type { Log } from './chain.js';
+import Chain from './chain.js';
+import type { ChainId } from './classifier/index.js';
+import classify from './classifier/index.js';
 import { fetchPools, fetchNftPools, fetchMarkets } from './fetch.js';
+import type { Mev } from './mev/index.js';
 import {
-  Mev,
   getArbitrages,
   getJitSandwiches,
   getSeizures,

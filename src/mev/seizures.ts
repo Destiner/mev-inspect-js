@@ -1,11 +1,11 @@
-import { Seizure } from '../classifier/base.js';
-import {
+import type { Seizure } from '../classifier/base.js';
+import type {
   ChainId,
   ClassifiedEvent,
   LendingProtocol,
   Market,
-  isValidPool,
 } from '../classifier/index.js';
+import { isValidPool } from '../classifier/index.js';
 
 function getMarketAddress(log: ClassifiedEvent): string {
   return log.address.toLowerCase();

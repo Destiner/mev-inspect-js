@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'vitest';
 
-import { Log } from '../../src/chain.js';
-import { Classifier } from '../../src/classifier/base.js';
+import type { Log } from '../../src/chain.js';
+import type { Classifier } from '../../src/classifier/base.js';
 import classify from '../../src/classifier/index.js';
 import aaveV2Classifiers from '../../src/classifier/items/aaveV2.js';
 import balancerV2Classifiers from '../../src/classifier/items/balancerV2.js';

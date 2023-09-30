@@ -1,14 +1,16 @@
 import { Coder } from 'abi-coder';
-import { Call, Contract, Provider as EthcallProvider } from 'ethcall';
-import { ErrorCode, Provider, TransactionReceipt, ZeroAddress } from 'ethers';
+import type { Call } from 'ethcall';
+import { Contract, Provider as EthcallProvider } from 'ethcall';
+import type { ErrorCode, Provider } from 'ethers';
+import { TransactionReceipt, ZeroAddress } from 'ethers';
 
 import erc1155Abi from '../abi/erc1155.js';
 import erc20Abi from '../abi/erc20.js';
 import erc721Abi from '../abi/erc721.js';
 import wethAbi from '../abi/weth.js';
-import { ChainId } from '../index.js';
+import type { ChainId } from '../index.js';
 
-import { TransactionTrace } from './traces.js';
+import type { TransactionTrace } from './traces.js';
 
 type AssetType = 'erc20' | 'erc721' | 'unknown';
 
@@ -647,4 +649,5 @@ function hasOutgoingTransfers(
   return false;
 }
 
-export { Mev, getAssets, fetchAssetTypes, classify };
+export { getAssets, fetchAssetTypes, classify };
+export type { Mev };

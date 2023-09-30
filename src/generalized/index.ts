@@ -1,4 +1,5 @@
 import Inspector from './inspector.js';
-import { Mev } from './mev.js';
+import type { Mev } from './mev.js';
 
-export { Inspector, Mev };
+export { Inspector };
+export type { Mev };

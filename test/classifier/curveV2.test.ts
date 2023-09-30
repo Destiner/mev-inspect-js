@@ -1,12 +1,12 @@
 import { describe, test, expect } from 'vitest';
 
-import {
+import type {
   LiquidityDeposit,
   LiquidityWithdrawal,
   Pool,
   Swap,
 } from '../../src/classifier/base.js';
-import { ClassifiedEvent } from '../../src/classifier/index.js';
+import type { ClassifiedEvent } from '../../src/classifier/index.js';
 import curveV2Classifiers from '../../src/classifier/items/curveV2.js';
 
 const swapClassifier = curveV2Classifiers.swap;

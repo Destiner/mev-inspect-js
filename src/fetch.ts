@@ -1,12 +1,15 @@
-import { Call, Provider as EthcallProvider } from 'ethcall';
-import { Provider } from 'ethers';
+import type { Call } from 'ethcall';
+import { Provider as EthcallProvider } from 'ethcall';
+import type { Provider } from 'ethers';
 
-import {
+import type {
   ChainId,
   ClassifiedEvent,
   Market,
   NftPool,
   Pool,
+} from './classifier/index.js';
+import {
   getFactoryByAddress,
   getNftFactoryByAddress,
   getPoolByAddress,

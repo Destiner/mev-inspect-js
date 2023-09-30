@@ -1,5 +1,9 @@
-import { Base as BaseEvent, Block, Transaction } from './classifier/index.js';
-import {
+import type {
+  Base as BaseEvent,
+  Block,
+  Transaction,
+} from './classifier/index.js';
+import type {
   Arbitrage,
   JitSandwich,
   Liquidation,

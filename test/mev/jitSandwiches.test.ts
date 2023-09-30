@@ -1,11 +1,12 @@
 import { describe, test, expect } from 'vitest';
 
-import {
+import type {
   LiquidityDeposit,
   LiquidityWithdrawal,
   Swap,
 } from '../../src/index.js';
-import { JitSandwich, getJitSandwiches } from '../../src/mev/jitSandwiches.js';
+import type { JitSandwich } from '../../src/mev/jitSandwiches.js';
+import { getJitSandwiches } from '../../src/mev/jitSandwiches.js';
 
 describe('MEV: JIT liquidity sandwiches', () => {
   test('skip an empty list of swaps', () => {

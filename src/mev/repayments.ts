@@ -1,5 +1,6 @@
-import { LendingProtocol, Market, Repayment } from '../classifier/base.js';
-import { ChainId, ClassifiedEvent, isValidPool } from '../classifier/index.js';
+import type { LendingProtocol, Market, Repayment } from '../classifier/base.js';
+import type { ChainId, ClassifiedEvent } from '../classifier/index.js';
+import { isValidPool } from '../classifier/index.js';
 
 function getMarketAddress(log: ClassifiedEvent): string {
   return log.address.toLowerCase();

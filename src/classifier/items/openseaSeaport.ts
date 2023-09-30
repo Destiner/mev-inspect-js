@@ -1,9 +1,10 @@
-import { Event } from 'abi-coder';
-import { Call } from 'ethcall';
+import type { Event } from 'abi-coder';
+import type { Call } from 'ethcall';
 
 import exchangeAbi from '../../abi/openseaSeaport.js';
-import { Classifiers, NftPool, NftPoolData, NftSwap } from '../base.js';
-import { ChainId, ClassifiedEvent, nativeAsset } from '../index.js';
+import type { Classifiers, NftPool, NftPoolData, NftSwap } from '../base.js';
+import type { ChainId, ClassifiedEvent } from '../index.js';
+import { nativeAsset } from '../index.js';
 
 interface SpentItem {
   itemType: bigint;
