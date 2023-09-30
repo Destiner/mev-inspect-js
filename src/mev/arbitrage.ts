@@ -68,12 +68,15 @@ function getTransactionArbitrages(swaps: Swap[]): Arbitrage[] {
 }
 
 function groupSwapsByTransaction(swaps: Swap[]): Record<string, Swap[]> {
-  return swaps.reduce((result, swap) => {
-    const hash = swap.transaction.hash;
-    if (!result[hash]) result[hash] = [];
-    result[hash].push(swap);
-    return result;
-  }, {} as Record<string, Swap[]>);
+  return swaps.reduce(
+    (result, swap) => {
+      const hash = swap.transaction.hash;
+      if (!result[hash]) result[hash] = [];
+      result[hash].push(swap);
+      return result;
+    },
+    {} as Record<string, Swap[]>,
+  );
 }
 
 function getShortestRoute(

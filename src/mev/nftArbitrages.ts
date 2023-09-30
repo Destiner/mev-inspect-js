@@ -69,12 +69,15 @@ function getTransactionArbitrages(swaps: NftSwap[]): NftArbitrage[] {
 }
 
 function groupSwapsByTransaction(swaps: NftSwap[]): Record<string, NftSwap[]> {
-  return swaps.reduce((result, swap) => {
-    const hash = swap.transaction.hash;
-    if (!result[hash]) result[hash] = [];
-    result[hash].push(swap);
-    return result;
-  }, {} as Record<string, NftSwap[]>);
+  return swaps.reduce(
+    (result, swap) => {
+      const hash = swap.transaction.hash;
+      if (!result[hash]) result[hash] = [];
+      result[hash].push(swap);
+      return result;
+    },
+    {} as Record<string, NftSwap[]>,
+  );
 }
 
 function getShortestRoute(
