@@ -111,15 +111,15 @@ function parse(
             address: nativeAsset[chainId],
           }
         : receivedItem.itemType === 1n
-        ? {
-            type: 'erc20',
-            address: spentItem.token.toLowerCase(),
-          }
-        : {
-            type: 'erc721',
-            collection: receivedItem.token.toLowerCase(),
-            id: receivedItem.identifier,
-          },
+          ? {
+              type: 'erc20',
+              address: spentItem.token.toLowerCase(),
+            }
+          : {
+              type: 'erc721',
+              collection: receivedItem.token.toLowerCase(),
+              id: receivedItem.identifier,
+            },
     amountIn:
       receivedItem.itemType < 2
         ? considerationAmount
@@ -131,15 +131,15 @@ function parse(
             address: nativeAsset[chainId],
           }
         : spentItem.itemType === 1n
-        ? {
-            type: 'erc20',
-            address: spentItem.token.toLowerCase(),
-          }
-        : {
-            type: 'erc721',
-            collection: spentItem.token.toLowerCase(),
-            id: spentItem.identifier,
-          },
+          ? {
+              type: 'erc20',
+              address: spentItem.token.toLowerCase(),
+            }
+          : {
+              type: 'erc721',
+              collection: spentItem.token.toLowerCase(),
+              id: spentItem.identifier,
+            },
     amountOut:
       receivedItem.itemType < 2
         ? spentItem.amount

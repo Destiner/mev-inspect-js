@@ -65,8 +65,8 @@ function processPoolCalls(
     bondingCurve === EXPONENTIAL_CURVE
       ? 'exponential'
       : bondingCurve === LINEAR_CURVE
-      ? 'linear'
-      : null;
+        ? 'linear'
+        : null;
   if (!nft) {
     return null;
   }
@@ -256,8 +256,8 @@ function getEffectivePrice(
         ? nextSpotPrice + delta
         : nextSpotPrice - delta
       : swapIn
-      ? (nextSpotPrice * delta) / precisionMultiplier
-      : (nextSpotPrice * precisionMultiplier) / delta;
+        ? (nextSpotPrice * delta) / precisionMultiplier
+        : (nextSpotPrice * precisionMultiplier) / delta;
   return type === 'linear'
     ? swapIn
       ? (spotPrice * (precisionMultiplier - fee - PROTOCOL_FEE)) /
@@ -265,11 +265,11 @@ function getEffectivePrice(
       : ((spotPrice + delta) * (precisionMultiplier + fee + PROTOCOL_FEE)) /
         precisionMultiplier
     : swapIn
-    ? (spotPrice * (precisionMultiplier - fee - PROTOCOL_FEE)) /
-      precisionMultiplier
-    : (spotPrice * (precisionMultiplier + fee + PROTOCOL_FEE) * delta) /
-      precisionMultiplier /
-      precisionMultiplier;
+      ? (spotPrice * (precisionMultiplier - fee - PROTOCOL_FEE)) /
+        precisionMultiplier
+      : (spotPrice * (precisionMultiplier + fee + PROTOCOL_FEE) * delta) /
+        precisionMultiplier /
+        precisionMultiplier;
 }
 
 const CLASSIFIER: Classifiers = {

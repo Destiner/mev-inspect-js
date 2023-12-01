@@ -136,8 +136,8 @@ async function fetchAssetTypes(
     const type: AssetType = decimalResult
       ? 'erc20'
       : supportsInterfaceResult
-      ? 'erc721'
-      : 'unknown';
+        ? 'erc721'
+        : 'unknown';
     assetTypes[asset] = type;
   }
 }
